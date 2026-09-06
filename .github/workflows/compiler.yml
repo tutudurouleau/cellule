@@ -63,6 +63,40 @@ jobs:
             -destination 'generic/platform=iOS Simulator' \
             CODE_SIGNING_ALLOWED=NO
 
+  ipa:
+    name: IPA
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Un binaire pour vrai appareil, sans signature : la clé de signature
+      # n'appartient qu'au porteur du téléphone, et n'a rien à faire ici.
+      - name: Construire l'application pour appareil
+        run: |
+          xcodebuild build \
+            -project ios/Cellule.xcodeproj \
+            -scheme Cellule \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build/dd \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
+      # Un .ipa n'est qu'un zip contenant Payload/<nom>.app : c'est ce format
+      # qu'attendent les outils de signature côté utilisateur.
+      - name: Empaqueter en IPA
+        run: |
+          APP="build/dd/Build/Products/Release-iphoneos/Cellule.app"
+          test -d "$APP" || { echo "application introuvable"; ls -R build/dd/Build/Products || true; exit 1; }
+          mkdir -p paquet/Payload
+          cp -R "$APP" paquet/Payload/
+          (cd paquet && zip -qry ../cellule-non-signe.ipa Payload)
+          unzip -l cellule-non-signe.ipa | head -20
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cellule-ipa
+          path: cellule-non-signe.ipa
+          if-no-files-found: error
+
   apk:
     name: APK
     runs-on: ubuntu-latest
@@ -85,6 +119,47 @@ jobs:
   # Les artefacts d'Actions arrivent en zip et exigent d'être connecté : peu
   # commode depuis un téléphone. Une Release à tag fixe donne un lien direct
   # vers le .apk, toujours à jour, qu'on ouvre d'une touche sur l'appareil.
+  publier-ipa:
+    name: Publier l'IPA
+    needs: ipa
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: cellule-ipa
+          path: ipa
+      - name: Publier la Release « ipa »
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          notes=$(cat <<TEXTE
+          Compilation de \`${GITHUB_SHA:0:7}\` sur \`${GITHUB_REF_NAME}\`.
+
+          **[Télécharger cellule-non-signe.ipa](https://github.com/${GITHUB_REPOSITORY}/releases/download/ipa/cellule-non-signe.ipa)**
+
+          Cet IPA n'est **pas signé** : un iPhone le refusera tel quel. Apple
+          exige qu'une application soit signée par un identifiant Apple, et
+          cette clé n'appartient qu'au porteur du téléphone.
+
+          La marche à suivre est dans le README, section « Installer sans
+          passer par l'App Store ». En deux mots : AltStore ou Sideloadly le
+          signent avec ton propre identifiant Apple, gratuitement, pour sept
+          jours renouvelables ; un compte développeur payant porte ça à un an,
+          ou ouvre TestFlight, qui s'installe d'un lien depuis le téléphone.
+
+          Ce lien ne change jamais et pointe toujours sur la dernière compilation.
+          TEXTE
+          )
+          gh release delete ipa --yes --cleanup-tag 2>/dev/null || true
+          gh release create ipa ipa/cellule-non-signe.ipa \
+            --title "Cellule — dernier IPA (non signé)" \
+            --notes "$notes" \
+            --prerelease
+
   publier:
     name: Publier l'APK
     needs: apk

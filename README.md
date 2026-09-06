@@ -111,26 +111,54 @@ Mêmes écrans, mêmes calculs, mêmes chiffres. Le module `ios/Sources/CelluleC
 est la traduction Swift de `core/`, testée par le même jeu de vérifications :
 c'est la CI qui le prouve à chaque envoi, sur un runner macOS.
 
-### L'installer
+### Installer sans passer par l'App Store
 
-Il n'y a pas d'équivalent du lien direct vers l'APK : iOS n'installe pas
-d'application hors de l'App Store, et c'est un choix d'Apple sur lequel ce
-dépôt ne peut rien. Il faut donc compiler soi-même, ce qui demande un Mac :
+**[cellule-non-signe.ipa](https://github.com/tutudurouleau/cellule/releases/download/ipa/cellule-non-signe.ipa)**
 
-```
-ouvrir ios/Cellule.xcodeproj dans Xcode
-choisir son iPhone dans la barre du haut
-Signing & Capabilities → Team → son identifiant Apple
-⌘R
-```
+Le workflow compile à chaque envoi et remplace ce fichier, exactement comme il
+le fait pour l'APK. Le lien ne change jamais. Aucune donnée ne sort de
+l'appareil — pas de réseau, pas de compte, pas de télémétrie.
 
-Un identifiant Apple gratuit suffit — l'application est alors signée pour
-**sept jours**, après quoi il faut la relancer depuis Xcode. Un compte
-développeur payant porte cette durée à un an, et ouvre TestFlight si tu veux
-la poser sur d'autres téléphones que le tien.
+Mais il faut être franc sur ce que ce lien ne fait pas : **cet IPA n'est pas
+signé, et un iPhone le refusera tel quel.** Ce n'est pas un oubli. Apple exige
+qu'une application soit signée par un identifiant Apple avant qu'un appareil
+l'accepte, et cette clé n'appartient qu'au porteur du téléphone : elle n'a rien
+à faire dans un dépôt public, et personne d'autre ne peut la fabriquer.
 
-Au premier lancement, l'iPhone demande d'aller autoriser le développeur dans
-*Réglages → Général → VPN et gestion de l'appareil*.
+Ce que la compilation continue retire, c'est l'autre obstacle — celui de devoir
+posséder un Mac pour *construire*. Il ne reste que la signature.
+
+Trois façons de la faire, de la moins chère à la plus commode.
+
+**Identifiant Apple gratuit, avec AltStore ou Sideloadly.** Ces outils signent
+l'IPA avec ton propre identifiant, par le mécanisme de provisionnement gratuit
+qu'Apple fournit pour ses développeurs. Il faut un ordinateur — Windows ou Mac —
+branché une fois, puis sur le même réseau pour renouveler. L'application vit
+**sept jours**, après quoi elle expire et se réinstalle d'un geste. Gratuit,
+mais cette corvée hebdomadaire est réelle.
+
+**Compte développeur Apple, 99 € par an.** La même signature vaut alors **un
+an**. Depuis un Mac, `ios/Cellule.xcodeproj` s'ouvre dans Xcode : *Signing &
+Capabilities → Team*, choisir son équipe, brancher l'iPhone, ⌘R. Sans Mac, la
+signature peut se faire en compilation continue en déposant certificat et
+profil de provisionnement dans les secrets du dépôt.
+
+**TestFlight, avec le même compte payant.** C'est le seul chemin qui n'exige
+aucun ordinateur au moment d'installer : on dépose la compilation sur
+App Store Connect, et le téléphone l'installe depuis l'application TestFlight,
+d'un lien. Chaque compilation vit **quatre-vingt-dix jours**. C'est ce qui
+ressemble le plus à l'APK, et de loin le plus confortable à l'usage.
+
+Au premier lancement par les deux premières voies, l'iPhone demande d'aller
+autoriser le développeur dans *Réglages → Général → VPN et gestion de
+l'appareil*.
+
+**Ce qu'il ne faut pas faire.** Il existe des sites qui proposent de signer un
+IPA en ligne, sans compte et sans ordinateur. Ils recyclent des certificats
+d'entreprise détournés de leur usage. Apple les révoque en série, l'application
+cesse de fonctionner sans prévenir, et il faut confier son binaire à un tiers
+qui n'a aucune raison d'être digne de confiance. Le jeu n'en vaut pas la
+chandelle pour un posemètre.
 
 ### Ce qui change, et pourquoi
 
