@@ -16,21 +16,17 @@ Deux outils dans ce dépôt, qui partagent la même photométrie :
 
 ### Récupérer l'APK
 
-Le dépôt n'a pas d'APK versionné : il se construit tout seul. À chaque envoi
-sur une branche, le workflow `.github/workflows/compiler.yml` compile et publie
-l'APK de débogage.
+**[cellule.apk](https://github.com/tutudurouleau/cellule/releases/download/apk/cellule.apk)**
 
-1. Onglet **Actions** du dépôt → dernier passage de **Compiler**.
-2. En bas de la page, section **Artifacts** → **cellule-debug**.
-3. Décompresse le zip, transfère l'APK sur le téléphone, ouvre-le.
+Ouvre ce lien depuis le téléphone. Android télécharge le fichier, puis demande
+d'autoriser l'installation depuis cette source : c'est normal pour un APK non
+signé par le Play Store. Aucune donnée ne sort de l'appareil — pas de réseau,
+pas de compte, pas de télémétrie.
 
-Android demandera d'autoriser l'installation depuis une source inconnue : c'est
-normal pour un APK non signé par le Play Store. Aucune donnée ne sort de
-l'appareil — pas de réseau, pas de compte, pas de télémétrie.
-
-Les artefacts d'Actions expirent au bout de quatre-vingt-dix jours. Passé ce
-délai, relance le workflow depuis l'onglet Actions (**Run workflow**) et un APK
-frais réapparaît.
+Le lien ne change jamais : le workflow `.github/workflows/compiler.yml` compile
+à chaque envoi et remplace le fichier de la Release `apk`. Le même APK se
+trouve aussi en artefact d'Actions, mais en zip et derrière une connexion — le
+lien direct est plus commode.
 
 Pour compiler soi-même, avec le SDK Android installé :
 

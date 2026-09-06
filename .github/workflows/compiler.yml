@@ -56,3 +56,43 @@ jobs:
           name: cellule-debug
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
+
+  # Les artefacts d'Actions arrivent en zip et exigent d'être connecté : peu
+  # commode depuis un téléphone. Une Release à tag fixe donne un lien direct
+  # vers le .apk, toujours à jour, qu'on ouvre d'une touche sur l'appareil.
+  publier:
+    name: Publier l'APK
+    needs: apk
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: cellule-debug
+          path: apk
+      - name: Nommer le fichier
+        run: mv apk/*.apk cellule.apk
+      - name: Publier la Release « apk »
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          notes=$(cat <<TEXTE
+          Compilation de \`${GITHUB_SHA:0:7}\` sur \`${GITHUB_REF_NAME}\`.
+
+          **[Télécharger cellule.apk](https://github.com/${GITHUB_REPOSITORY}/releases/download/apk/cellule.apk)**
+
+          Ouvre ce lien depuis le téléphone : Android téléchargera le fichier,
+          puis demandera d'autoriser l'installation depuis cette source. C'est
+          un APK de débogage, non signé par le Play Store.
+
+          Ce lien ne change jamais et pointe toujours sur la dernière compilation.
+          TEXTE
+          )
+          gh release delete apk --yes --cleanup-tag 2>/dev/null || true
+          gh release create apk cellule.apk \
+            --title "Cellule — dernier APK" \
+            --notes "$notes" \
+            --prerelease
