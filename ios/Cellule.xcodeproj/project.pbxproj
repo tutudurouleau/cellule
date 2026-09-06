@@ -1,0 +1,357 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CD877A708712EE973C559608 /* CelluleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F55FC5F2E18170B9ED14D32 /* CelluleApp.swift */; };
+		09644076ED93269280887694 /* Composants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731646880A69A3E4511066F /* Composants.swift */; };
+		7B52FA21D18C2EBADF61EBDA /* Reglages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108CC435FFB66B666BA332EB /* Reglages.swift */; };
+		59A8CE6980F300D298D0D4E4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58E86D307C11541DD1B3705 /* Theme.swift */; };
+		526402547F5A2A1F5FC01A08 /* EcranEstimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E6234E52DD58FD2BEBF78 /* EcranEstimer.swift */; };
+		56D0FAAD1483F45E12D5AFD2 /* EcranJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C24F1C5E381FB0ED5B146 /* EcranJournal.swift */; };
+		0098AAAC62225EA971BC4F4D /* EcranMesurer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4443E020669F84E38BE763 /* EcranMesurer.swift */; };
+		6493152ECBF168DA4D27C0DD /* EcranTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F342469B28A4FE583455A2 /* EcranTables.swift */; };
+		1B4C55271BBBD621BDE68E84 /* MoteurCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85673A7588BB1FE629306481 /* MoteurCamera.swift */; };
+		8CFF36C6D8A11DD32F2C199E /* VueApercu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D71F62A4E2817CC372D4AA0 /* VueApercu.swift */; };
+		6D4B18BB9D720C3827F571E5 /* Ciel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA1D3802DDF01344D5C573D /* Ciel.swift */; };
+		D13B224BBE6032C34C309C78 /* Estimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B9AE82A573F18EF2AED14B /* Estimation.swift */; };
+		46D0FC13AE78DC98566D0BCB /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7109AC1F7987AD94DB4E96 /* Journal.swift */; };
+		8FBBFC02695A20479378D93D /* Matieres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5078A46F7B6A549BC15B4063 /* Matieres.swift */; };
+		AACD5036E7179A60A5F0326E /* Outils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F496CE6305CB7F99D7A1BF /* Outils.swift */; };
+		0198A82414A5D9D4FBB2AFBA /* Photometrie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E1687D5621F19DF1DC305C /* Photometrie.swift */; };
+		9166485667F70B2D548156D6 /* Posemetre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7CD57C898D024A0EE4151E /* Posemetre.swift */; };
+		54EDDCA527B3B957820223FB /* Reperes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CC9BB8FDD380C96878E9C6 /* Reperes.swift */; };
+		B28D38D151079FE6872BEE92 /* Soleil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFF538C5BD351340E251680 /* Soleil.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4F55FC5F2E18170B9ED14D32 /* CelluleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelluleApp.swift; sourceTree = "<group>"; };
+		D731646880A69A3E4511066F /* Composants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Composants.swift; sourceTree = "<group>"; };
+		108CC435FFB66B666BA332EB /* Reglages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reglages.swift; sourceTree = "<group>"; };
+		F58E86D307C11541DD1B3705 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		704E6234E52DD58FD2BEBF78 /* EcranEstimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcranEstimer.swift; sourceTree = "<group>"; };
+		3E3C24F1C5E381FB0ED5B146 /* EcranJournal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcranJournal.swift; sourceTree = "<group>"; };
+		7E4443E020669F84E38BE763 /* EcranMesurer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcranMesurer.swift; sourceTree = "<group>"; };
+		D1F342469B28A4FE583455A2 /* EcranTables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcranTables.swift; sourceTree = "<group>"; };
+		85673A7588BB1FE629306481 /* MoteurCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteurCamera.swift; sourceTree = "<group>"; };
+		6D71F62A4E2817CC372D4AA0 /* VueApercu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VueApercu.swift; sourceTree = "<group>"; };
+		1BA1D3802DDF01344D5C573D /* Ciel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ciel.swift; sourceTree = "<group>"; };
+		C1B9AE82A573F18EF2AED14B /* Estimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Estimation.swift; sourceTree = "<group>"; };
+		EC7109AC1F7987AD94DB4E96 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
+		5078A46F7B6A549BC15B4063 /* Matieres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matieres.swift; sourceTree = "<group>"; };
+		04F496CE6305CB7F99D7A1BF /* Outils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outils.swift; sourceTree = "<group>"; };
+		64E1687D5621F19DF1DC305C /* Photometrie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photometrie.swift; sourceTree = "<group>"; };
+		8F7CD57C898D024A0EE4151E /* Posemetre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posemetre.swift; sourceTree = "<group>"; };
+		52CC9BB8FDD380C96878E9C6 /* Reperes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reperes.swift; sourceTree = "<group>"; };
+		7BFF538C5BD351340E251680 /* Soleil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Soleil.swift; sourceTree = "<group>"; };
+		7D3EA7493AADC62EAE6F3761 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0BB4C7E015A1C30B35D28396 /* Cellule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cellule.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		21552ADA66C030AD2C09C432 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A316990B201E47DF6F1C6F54 = {
+			isa = PBXGroup;
+			children = (
+				55EB7996B3E4E8C8E04FA8E6 /* Cellule */,
+				46715F2B63B21FDEA4773E2A /* Sources */,
+				3532C6F88F3E36E105B21467 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3532C6F88F3E36E105B21467 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0BB4C7E015A1C30B35D28396 /* Cellule.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		46715F2B63B21FDEA4773E2A /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				657C3E66D4F1287142A5DBDB /* CelluleCore */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		55EB7996B3E4E8C8E04FA8E6 /* Cellule */ = {
+			isa = PBXGroup;
+			children = (
+				4F55FC5F2E18170B9ED14D32 /* CelluleApp.swift */,
+				D731646880A69A3E4511066F /* Composants.swift */,
+				108CC435FFB66B666BA332EB /* Reglages.swift */,
+				F58E86D307C11541DD1B3705 /* Theme.swift */,
+				CF35C19EB082B5E8BB6A83EF /* Ecrans */,
+				84C699CA3FDAD090AE639A2A /* Mesure */,
+				7D3EA7493AADC62EAE6F3761 /* Info.plist */,
+			);
+			path = Cellule;
+			sourceTree = "<group>";
+		};
+		CF35C19EB082B5E8BB6A83EF /* Ecrans */ = {
+			isa = PBXGroup;
+			children = (
+				704E6234E52DD58FD2BEBF78 /* EcranEstimer.swift */,
+				3E3C24F1C5E381FB0ED5B146 /* EcranJournal.swift */,
+				7E4443E020669F84E38BE763 /* EcranMesurer.swift */,
+				D1F342469B28A4FE583455A2 /* EcranTables.swift */,
+			);
+			path = Ecrans;
+			sourceTree = "<group>";
+		};
+		84C699CA3FDAD090AE639A2A /* Mesure */ = {
+			isa = PBXGroup;
+			children = (
+				85673A7588BB1FE629306481 /* MoteurCamera.swift */,
+				6D71F62A4E2817CC372D4AA0 /* VueApercu.swift */,
+			);
+			path = Mesure;
+			sourceTree = "<group>";
+		};
+		657C3E66D4F1287142A5DBDB /* CelluleCore */ = {
+			isa = PBXGroup;
+			children = (
+				1BA1D3802DDF01344D5C573D /* Ciel.swift */,
+				C1B9AE82A573F18EF2AED14B /* Estimation.swift */,
+				EC7109AC1F7987AD94DB4E96 /* Journal.swift */,
+				5078A46F7B6A549BC15B4063 /* Matieres.swift */,
+				04F496CE6305CB7F99D7A1BF /* Outils.swift */,
+				64E1687D5621F19DF1DC305C /* Photometrie.swift */,
+				8F7CD57C898D024A0EE4151E /* Posemetre.swift */,
+				52CC9BB8FDD380C96878E9C6 /* Reperes.swift */,
+				7BFF538C5BD351340E251680 /* Soleil.swift */,
+			);
+			path = CelluleCore;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CF0BEBB42995806F48B67793 /* Cellule */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C8B7AA959AA6898DEC815E65 /* Build configuration list for PBXNativeTarget "Cellule" */;
+			buildPhases = (
+				B63677AF47176BEAF8861252 /* Sources */,
+				21552ADA66C030AD2C09C432 /* Frameworks */,
+				5D66CF1AD889F32085193254 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Cellule;
+			productName = Cellule;
+			productReference = 0BB4C7E015A1C30B35D28396 /* Cellule.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		31BD0520866DBFC8E4793B18 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					CF0BEBB42995806F48B67793 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 0AC03183EA6D9124D0196A8C /* Build configuration list for PBXProject "Cellule" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = fr;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				fr,
+				Base,
+			);
+			mainGroup = A316990B201E47DF6F1C6F54;
+			productRefGroup = 3532C6F88F3E36E105B21467 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CF0BEBB42995806F48B67793 /* Cellule */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5D66CF1AD889F32085193254 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B63677AF47176BEAF8861252 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD877A708712EE973C559608 /* CelluleApp.swift in Sources */,
+				09644076ED93269280887694 /* Composants.swift in Sources */,
+				7B52FA21D18C2EBADF61EBDA /* Reglages.swift in Sources */,
+				59A8CE6980F300D298D0D4E4 /* Theme.swift in Sources */,
+				526402547F5A2A1F5FC01A08 /* EcranEstimer.swift in Sources */,
+				56D0FAAD1483F45E12D5AFD2 /* EcranJournal.swift in Sources */,
+				0098AAAC62225EA971BC4F4D /* EcranMesurer.swift in Sources */,
+				6493152ECBF168DA4D27C0DD /* EcranTables.swift in Sources */,
+				1B4C55271BBBD621BDE68E84 /* MoteurCamera.swift in Sources */,
+				8CFF36C6D8A11DD32F2C199E /* VueApercu.swift in Sources */,
+				6D4B18BB9D720C3827F571E5 /* Ciel.swift in Sources */,
+				D13B224BBE6032C34C309C78 /* Estimation.swift in Sources */,
+				46D0FC13AE78DC98566D0BCB /* Journal.swift in Sources */,
+				8FBBFC02695A20479378D93D /* Matieres.swift in Sources */,
+				AACD5036E7179A60A5F0326E /* Outils.swift in Sources */,
+				0198A82414A5D9D4FBB2AFBA /* Photometrie.swift in Sources */,
+				9166485667F70B2D548156D6 /* Posemetre.swift in Sources */,
+				54EDDCA527B3B957820223FB /* Reperes.swift in Sources */,
+				B28D38D151079FE6872BEE92 /* Soleil.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CC3293290DDB32752AA3AB42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		785726ACBB07B84D3AE697D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		464E93A56E5CCF32DE659B67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Cellule/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.cellule.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0EECF8B905D869C9BDE5FAEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Cellule/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.cellule.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0AC03183EA6D9124D0196A8C /* Build configuration list for PBXProject "Cellule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC3293290DDB32752AA3AB42 /* Debug */,
+				785726ACBB07B84D3AE697D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C8B7AA959AA6898DEC815E65 /* Build configuration list for PBXNativeTarget "Cellule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				464E93A56E5CCF32DE659B67 /* Debug */,
+				0EECF8B905D869C9BDE5FAEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 31BD0520866DBFC8E4793B18 /* Project object */;
+}

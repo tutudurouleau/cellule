@@ -6,6 +6,12 @@ local.properties
 # Le jar du wrapper doit rester versionné, sinon la CI ne peut plus rien lancer.
 !gradle/wrapper/gradle-wrapper.jar
 
+# Sorties de build iOS
+ios/.build/
+ios/DerivedData/
+*.xcuserdatad
+xcuserdata/
+
 # Environnements de développement
 .idea/
 *.iml

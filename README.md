@@ -3,12 +3,15 @@
 Exposer à vue, sans posemètre — et mesurer quand même, avec ce qu'on a dans la
 poche.
 
-Deux outils dans ce dépôt, qui partagent la même photométrie :
+Trois outils dans ce dépôt, qui partagent la même photométrie :
 
 - **`index.html`** — une page unique, sans réseau ni dépendance, à enregistrer
-  sur le téléphone. Elle estime, convertit, entraîne et récapitule.
+  sur le téléphone. Elle estime, convertit, entraîne et récapitule. Elle
+  fonctionne sur n'importe quel navigateur, iPhone compris.
 - **`app/`** — une application Android qui fait tout cela **et mesure**, en se
   servant de la caméra et du capteur de luminosité ambiante.
+- **`ios/`** — la même application, en Swift et SwiftUI, avec les mêmes
+  calculs au chiffre près.
 
 ---
 
@@ -102,6 +105,83 @@ probablement là qu'est le problème.
 
 ---
 
+## L'application iOS
+
+Mêmes écrans, mêmes calculs, mêmes chiffres. Le module `ios/Sources/CelluleCore`
+est la traduction Swift de `core/`, testée par le même jeu de vérifications :
+c'est la CI qui le prouve à chaque envoi, sur un runner macOS.
+
+### L'installer
+
+Il n'y a pas d'équivalent du lien direct vers l'APK : iOS n'installe pas
+d'application hors de l'App Store, et c'est un choix d'Apple sur lequel ce
+dépôt ne peut rien. Il faut donc compiler soi-même, ce qui demande un Mac :
+
+```
+ouvrir ios/Cellule.xcodeproj dans Xcode
+choisir son iPhone dans la barre du haut
+Signing & Capabilities → Team → son identifiant Apple
+⌘R
+```
+
+Un identifiant Apple gratuit suffit — l'application est alors signée pour
+**sept jours**, après quoi il faut la relancer depuis Xcode. Un compte
+développeur payant porte cette durée à un an, et ouvre TestFlight si tu veux
+la poser sur d'autres téléphones que le tien.
+
+Au premier lancement, l'iPhone demande d'aller autoriser le développeur dans
+*Réglages → Général → VPN et gestion de l'appareil*.
+
+### Ce qui change, et pourquoi
+
+**La voie incidente n'a pas de capteur.** iOS n'ouvre aucune API publique au
+capteur de luminosité ambiante — l'organe existe dans l'appareil, rien ne
+permet de le lire. Le mode **Incident** passe donc par l'objectif frontal,
+celui qui regarde là où regarde l'écran, exactement la géométrie du capteur
+d'ambiance sur Android : on tourne l'écran vers la source, un diffuseur devant
+l'objectif.
+
+Le calcul est celui de n'importe quelle mesure réfléchie sur une matière
+connue. Visant un diffuseur de coefficient ρ, la caméra sur-annonce de
+log₂(ρ/0,18) — c'est ce qu'on lui retire. Une feuille de papier blanc vaut
+environ 0,80, soit 2,15 diaphs à reprendre. Le reste, l'étalonnage incident
+l'absorbe, comme la charte grise absorbe la cible du gris moyen en réfléchi.
+
+C'est une contrepartie honnête : plus fin qu'un capteur d'ambiance, qui sature
+avant le plein soleil, mais il faut avoir pensé au bout de papier.
+
+**La plage du plan de luminance n'est plus une devinette.** Sur Android il
+faut deviner si le plan Y arrive en 16-235 ou en 0-255, et l'étalonnage
+rattrape l'erreur. Sur iOS c'est le format demandé à la capture qui la fixe —
+`420YpCbCr8BiPlanarVideoRange` ou `...FullRange` — et le réglage choisit les
+deux ensemble. Ils ne peuvent donc pas se contredire.
+
+**Les métadonnées décrivent l'image, pas l'appareil.** Le problème des deux
+flux qui ne se correspondent pas, celui qui oblige à guetter `CONTROL_AE_STATE`
+sur Android, disparaît en grande partie : chaque tampon transporte son propre
+Exif, avec le temps de pose et la sensibilité de *cette* image. Quand l'Exif
+manque, on retombe sur les propriétés de `AVCaptureDevice` et la précaution
+redevient nécessaire — l'écran de diagnostic dit laquelle des deux sources a
+servi.
+
+**L'aperçu est en 16:9** plutôt qu'en 4:3, et le cadre adopte les proportions
+exactes de l'image : sans quoi le point touché ne désignerait plus le pixel
+visé, et le spot mesurerait ailleurs que là où il est dessiné.
+
+### Compiler et vérifier soi-même
+
+```
+swift test --package-path ios     la photométrie, sans Xcode ni simulateur
+xcodebuild build -project ios/Cellule.xcodeproj -scheme Cellule \
+  -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO
+```
+
+Le premier ne demande qu'une chaîne Swift ; il tourne aussi bien sur Linux que
+sur macOS. C'est le même partage que côté Android : les calculs se vérifient
+sans appareil, sans émulateur et sans SDK.
+
+---
+
 ## Le modèle d'estimation
 
 L'éclairement direct suit `E₀ · sin(h) · τ^(AM^0,678)`, avec la masse d'air de
@@ -150,21 +230,31 @@ deux mois), **reconnaissance** (le chiffre arrive sans calcul).
 ## Structure
 
 ```
-index.html              la page hors-ligne, autonome
-tests/verifier.mjs      ses 89 vérifications
-core/                   Kotlin pur — toute la photométrie, zéro Android
-app/                    l'application : mesure, estimation, journal, tables
-docs/echelle-lumiere.md le document de référence, relu et corrigé
+index.html                  la page hors-ligne, autonome
+tests/verifier.mjs          ses 89 vérifications
+core/                       Kotlin pur — toute la photométrie, zéro Android
+app/                        l'application Android : mesure, estimation, journal, tables
+ios/Sources/CelluleCore/    Swift pur — la même photométrie, zéro iOS
+ios/Tests/                  les mêmes vérifications, portées en XCTest
+ios/Cellule/                l'application iOS, en SwiftUI
+docs/echelle-lumiere.md     le document de référence, relu et corrigé
 ```
 
-`core` ne dépend d'aucune bibliothèque Android, ce qui n'est pas un détail de
-rangement : la photométrie s'y teste sans appareil, sans émulateur et sans le
-SDK. Chaque module déclare ses propres plugins Gradle, si bien que
-`./gradlew :core:test` ne contacte jamais le dépôt Google.
+Ni `core` ni `CelluleCore` ne dépendent de leur plateforme, ce qui n'est pas un
+détail de rangement : la photométrie s'y teste sans appareil, sans émulateur et
+sans SDK. Chaque module Gradle déclare ses propres plugins, si bien que
+`./gradlew :core:test` ne contacte jamais le dépôt Google ; et `swift test`
+n'ouvre jamais Xcode.
+
+Les fichiers de `ios/Sources/CelluleCore` servent deux fois : `Package.swift`
+en fait un module testable, et le projet Xcode les compile directement dans
+l'application. Une seule copie, jamais deux versions à tenir d'accord.
 
 ```
-./gradlew :core:test    57 vérifications  (photométrie, posemètre, soleil)
-node tests/verifier.mjs 89 vérifications  (la page hors-ligne)
+./gradlew :core:test        57 vérifications  (photométrie, posemètre, soleil)
+swift test --package-path ios
+                            les mêmes, portées en Swift, plus la voie incidente
+node tests/verifier.mjs     89 vérifications  (la page hors-ligne)
 ```
 
 Ce que les tests couvrent, entre autres : l'étalonnage Sunny 16, la reproduction

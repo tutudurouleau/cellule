@@ -38,6 +38,31 @@ jobs:
       - name: Vérifier index.html
         run: node tests/verifier.mjs
 
+  photometrie-ios:
+    name: Photométrie iOS
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Le module CelluleCore ne dépend pas d'iOS : il se teste sans simulateur
+      # ni projet Xcode, exactement comme son jumeau Kotlin se teste sans SDK.
+      - name: Vérifier les calculs
+        run: swift test --package-path ios
+
+  application-ios:
+    name: Application iOS
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Destination générique et signature désactivée : la compilation se
+      # vérifie sans compte de développeur ni runtime de simulateur installé.
+      - name: Compiler l'application
+        run: |
+          xcodebuild build \
+            -project ios/Cellule.xcodeproj \
+            -scheme Cellule \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO
+
   apk:
     name: APK
     runs-on: ubuntu-latest
