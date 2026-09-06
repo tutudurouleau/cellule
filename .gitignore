@@ -1,0 +1,12 @@
+# Sorties de build
+build/
+.gradle/
+local.properties
+
+# Le jar du wrapper doit rester versionné, sinon la CI ne peut plus rien lancer.
+!gradle/wrapper/gradle-wrapper.jar
+
+# Environnements de développement
+.idea/
+*.iml
+.DS_Store

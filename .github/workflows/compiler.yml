@@ -1,0 +1,58 @@
+name: Compiler
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+
+  photometrie:
+    name: Photométrie
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@v4
+      # Le module core ne dépend pas d'Android : il se teste sans SDK ni émulateur.
+      - name: Vérifier les calculs
+        run: ./gradlew :core:test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rapport-tests-photometrie
+          path: core/build/reports/tests/test
+
+  page:
+    name: Page hors-ligne
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Vérifier index.html
+        run: node tests/verifier.mjs
+
+  apk:
+    name: APK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Construire l'APK de débogage
+        run: ./gradlew :app:assembleDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cellule-debug
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error

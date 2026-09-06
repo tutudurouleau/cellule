@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Un disque à moitié plein : la lumière et son absence, de part et d'autre
+     du gris moyen. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#E8A13C"
+        android:pathData="M54,26a28,28 0 1,0 0.01,0zM54,32a22,22 0 1,1 -0.01,0z" />
+    <path
+        android:fillColor="#E8A13C"
+        android:pathData="M54,32a22,22 0 0,0 0,44z" />
+</vector>

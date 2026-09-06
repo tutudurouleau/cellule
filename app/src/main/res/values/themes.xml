@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tout est peint par Compose ; ce thème ne sert qu'à la fenêtre,
+         pour éviter le flash blanc au lancement. -->
+    <style name="Theme.Cellule" parent="@android:style/Theme.DeviceDefault.NoActionBar">
+        <item name="android:windowBackground">@color/fond</item>
+    </style>
+</resources>
