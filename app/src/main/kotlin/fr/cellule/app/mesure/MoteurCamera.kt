@@ -47,6 +47,19 @@ import java.util.concurrent.Executors
  * respecter : tant qu'elle est fausse, la lecture est en train de bouger et ne
  * vaut rien.
  */
+/** Ce qu'il faut savoir pour expliquer une lecture qui ne vient pas. */
+data class Diagnostic(
+    val largeur: Int,
+    val hauteur: Int,
+    val pasDeLigne: Int,
+    val pasDePixel: Int,
+    val octets: Int,
+    val rotation: Int,
+    val cibleCapteurX: Float,
+    val cibleCapteurY: Float,
+    val echantillons: Int
+)
+
 @OptIn(ExperimentalCamera2Interop::class)
 class MoteurCamera(private val contexte: Context) {
 
@@ -59,6 +72,20 @@ class MoteurCamera(private val contexte: Context) {
         private set
 
     var rotationAnalyse by mutableStateOf(0)
+        private set
+
+    /**
+     * Proportions de l'image telle qu'elle s'affiche, largeur sur hauteur.
+     *
+     * Le cadre de l'aperçu doit les adopter exactement : si l'image y était
+     * mise en boîte aux lettres, la position touchée ne correspondrait plus au
+     * pixel visé, et le spot mesurerait ailleurs que là où on le voit.
+     */
+    var rapportApercu by mutableStateOf(3f / 4f)
+        private set
+
+    /** Dernier diagnostic d'analyse, pour comprendre une lecture qui refuse. */
+    var diagnostic by mutableStateOf<Diagnostic?>(null)
         private set
 
     /** L'exposition automatique a convergé : les deux flux se correspondent. */
@@ -207,10 +234,14 @@ class MoteurCamera(private val contexte: Context) {
             val amplification = result.get(CaptureResult.CONTROL_POST_RAW_SENSITIVITY_BOOST) ?: 100
             val isoEffectif = (sensibilite * amplification / 100).coerceAtLeast(1)
 
+            /* Seuls deux états signifient que l'exposition bouge encore. Tous
+               les autres sont calés — y compris FLASH_REQUIRED, qui veut dire
+               « convergé, mais un flash aiderait » et qui est l'état permanent
+               en intérieur. Énumérer les états instables plutôt que les stables
+               évite de rejeter à tort tout ce qu'on n'avait pas prévu. */
             val etatAe = result.get(CaptureResult.CONTROL_AE_STATE)
-            val stable = etatAe == null ||
-                etatAe == CaptureResult.CONTROL_AE_STATE_CONVERGED ||
-                etatAe == CaptureResult.CONTROL_AE_STATE_LOCKED
+            val stable = etatAe != CaptureResult.CONTROL_AE_STATE_SEARCHING &&
+                etatAe != CaptureResult.CONTROL_AE_STATE_PRECAPTURE
 
             val lecture = ExpositionCamera(ouverture, temps, isoEffectif, compensation())
             principal.post {
@@ -242,10 +273,28 @@ class MoteurCamera(private val contexte: Context) {
                 centreY = y,
                 rayonRelatif = rayon
             )
+            val rapport = if (rotation % 180 == 90) {
+                image.height.toFloat() / image.width.toFloat()
+            } else {
+                image.width.toFloat() / image.height.toFloat()
+            }
+            val diag = Diagnostic(
+                largeur = image.width,
+                hauteur = image.height,
+                pasDeLigne = plan.rowStride,
+                pasDePixel = plan.pixelStride,
+                octets = octets.size,
+                rotation = rotation,
+                cibleCapteurX = x,
+                cibleCapteurY = y,
+                echantillons = resultat.echantillons
+            )
             principal.post {
                 if (!gele) {
                     rotationAnalyse = rotation
+                    rapportApercu = rapport
                     spot = resultat
+                    diagnostic = diag
                 }
             }
         } catch (e: Exception) {

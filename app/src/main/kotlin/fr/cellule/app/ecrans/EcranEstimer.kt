@@ -14,7 +14,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -279,8 +278,8 @@ fun EcranEstimer(reglages: Reglages, etat: EtatApplication) {
                 modifier = Modifier.padding(top = 8.dp)
             )
             Spacer(Modifier.height(8.dp))
-            OutlinedButton(onClick = { etat.annonceProposee = estimation.ev100Scene }) {
-                Text("Verser cette estimation au journal")
+            BoutonPlat("Verser cette estimation au carnet", accent = true) {
+                etat.annonceProposee = estimation.ev100Scene
             }
         }
     }

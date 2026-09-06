@@ -188,3 +188,40 @@ class PosemetreTest {
         assertEquals(incident.ev100, Posemetre.ev100Spot(expo, spot), 0.06)
     }
 }
+
+class PosemetreRobustesseTest {
+
+    private val expo = ExpositionCamera(1.8, 8_333_333, 100)
+
+    @Test
+    fun `un disque degenere lit quand meme le pixel central`() {
+        val d = DecodeurLuma(plageVideo = false)
+        val plan = ByteArray(64 * 64) { 118.toByte() }
+        /* Rayon nul : la boucle ne retient rien, le repli doit prendre le relais. */
+        val spot = d.analyser(plan, 64, 64, rowStride = 64, rayonRelatif = 0.0f)
+        assertEquals(1, spot.echantillons)
+        assertEquals(0.18, spot.moyenneLineaire, 0.01)
+        assertTrue(!Posemetre.ev100Spot(expo, spot).isNaN())
+    }
+
+    @Test
+    fun `une zone entierement bouchee reste bornee au lieu de partir a l infini`() {
+        val d = DecodeurLuma(plageVideo = true)
+        val noir = d.analyser(ByteArray(64 * 64), 64, 64, rowStride = 64)
+        val ev = Posemetre.ev100Spot(expo, noir)
+        assertTrue(!ev.isNaN() && ev.isFinite(), "EV = $ev")
+        /* Plafonnée au premier niveau de quantification : douze diaphs sous le gris. */
+        assertEquals(Posemetre.ev100Moyen(expo) - 9.5, ev, 0.6)
+        assertFalse(noir.fiable, "la lecture doit rester signalée comme non fiable")
+    }
+
+    @Test
+    fun `un cadre entierement crame reste lisible et signale`() {
+        val d = DecodeurLuma(plageVideo = true)
+        val blanc = d.analyser(ByteArray(64 * 64) { 255.toByte() }, 64, 64, rowStride = 64)
+        val ev = Posemetre.ev100Spot(expo, blanc)
+        assertTrue(ev.isFinite())
+        assertTrue(ev > Posemetre.ev100Moyen(expo) + 2)
+        assertFalse(blanc.fiable)
+    }
+}

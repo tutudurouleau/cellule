@@ -46,7 +46,10 @@ class ReperesTest {
 class JournalTest {
 
     private fun entree(annonce: Double, mesure: Double, type: String = "Plein soleil") =
-        EntreeJournal(1, "2026-09-06", type, annonce, mesure)
+        EntreeJournal(
+            identifiant = 1, date = "2026-09-06", typeScene = type,
+            annonce = annonce, mesure = mesure
+        )
 
     @Test
     fun `un journal vide n a pas de bilan`() {
@@ -105,6 +108,47 @@ class JournalTest {
         assertTrue(sousExpose.verdict.contains("sous-expose"))
         val surExpose = Statistiques.bilan(List(5) { entree(12.0, 14.0) })!!
         assertTrue(surExpose.verdict.contains("surexpose"))
+    }
+
+    @Test
+    fun `une photo notee sans exercice ne fausse pas le bilan`() {
+        /* On note une vue sans avoir annoncé : elle appartient au carnet,
+           pas à l'entraînement. */
+        val photo = EntreeJournal(
+            identifiant = 2, date = "2026-09-06", pellicule = "Kodak Portra 400",
+            vue = "12", sujet = "La Restonica au soleil rasant", reglage = "f/8 · 1/500"
+        )
+        assertEquals(null, photo.ecart)
+        assertEquals(false, photo.compteAuBilan)
+        val bilan = Statistiques.bilan(listOf(photo, entree(15.0, 14.0)))!!
+        assertEquals(1, bilan.nombre)
+        assertEquals(1.0, bilan.biais, 1e-9)
+        assertEquals("vue 12 · Kodak Portra 400 · f/8 · 1/500", photo.resume)
+    }
+
+    @Test
+    fun `le numero de vue suit la pellicule chargee`() {
+        val entrees = listOf(
+            EntreeJournal(1, "2026-09-06", pellicule = "Tri-X 400", vue = "11"),
+            EntreeJournal(2, "2026-09-06", pellicule = "Tri-X 400", vue = "12"),
+            EntreeJournal(3, "2026-09-06", pellicule = "Portra 400", vue = "3")
+        )
+        assertEquals("13", Statistiques.vueSuivante(entrees, "Tri-X 400"))
+        assertEquals("4", Statistiques.vueSuivante(entrees, "Portra 400"))
+        /* Une pellicule qu'on vient de charger repart à un. */
+        assertEquals("1", Statistiques.vueSuivante(entrees, "HP5 Plus 400"))
+        assertEquals("1", Statistiques.vueSuivante(emptyList(), "Tri-X 400"))
+    }
+
+    @Test
+    fun `chaque pellicule connait sa sensibilite et sa latitude`() {
+        val portra = PELLICULES.first { it.nom == "Kodak Portra 400" }
+        assertEquals(400, portra.iso)
+        assertEquals(TypeFilm.NEGATIF_COULEUR, portra.type)
+        assertTrue(conseilLatitude(TypeFilm.NEGATIF_COULEUR).contains("surexpose"))
+        assertTrue(conseilLatitude(TypeFilm.INVERSIBLE).contains("ferme"))
+        /* Aucune pellicule sans sensibilité plausible. */
+        PELLICULES.forEach { assertTrue(it.iso in 25..6400, it.nom) }
     }
 
     @Test

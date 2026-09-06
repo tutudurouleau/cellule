@@ -125,8 +125,21 @@ class DecodeurLuma(val plageVideo: Boolean = true) {
             y += pas
         }
 
-        return if (n == 0) ResultatSpot(Double.NaN, 0.0, 0.0, 0)
-        else ResultatSpot(somme / n, cramees.toDouble() / n, bouchees.toDouble() / n, n)
+        if (n == 0) {
+            /* Disque dégénéré — rayon minuscule, bord de cadre, pas de ligne
+               inattendu. On lit le pixel central plutôt que de ne rien rendre. */
+            val x = cx.toInt().coerceIn(0, largeur - 1)
+            val y = cy.toInt().coerceIn(0, hauteur - 1)
+            val index = y * rowStride + x * pixelStride
+            if (index in luma.indices) {
+                val v = luma[index].toInt() and 0xFF
+                return ResultatSpot(
+                    table[v], if (v >= 250) 1.0 else 0.0, if (v <= 6) 1.0 else 0.0, 1
+                )
+            }
+            return ResultatSpot(Double.NaN, 0.0, 0.0, 0)
+        }
+        return ResultatSpot(somme / n, cramees.toDouble() / n, bouchees.toDouble() / n, n)
     }
 }
 
@@ -166,8 +179,13 @@ object Posemetre {
         etalonnage: Double = 0.0,
         cibleGris: Double = CIBLE_GRIS
     ): Double {
-        if (spot.echantillons == 0 || spot.moyenneLineaire <= 0.0) return Double.NaN
-        return ev100Moyen(exposition, etalonnage) + log2(spot.moyenneLineaire / cibleGris)
+        if (spot.echantillons == 0 || spot.moyenneLineaire.isNaN()) return Double.NaN
+        /* Une zone entièrement bouchée donne une moyenne nulle, dont le
+           logarithme part à l'infini. On la plafonne au premier niveau de
+           quantification : c'est faux, mais borné, et le drapeau « non fiable »
+           dit déjà de ne pas s'y fier. */
+        val moyenne = spot.moyenneLineaire.coerceAtLeast(1.0 / 4096)
+        return ev100Moyen(exposition, etalonnage) + log2(moyenne / cibleGris)
     }
 
     /**
