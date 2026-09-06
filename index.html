@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Estimer l'exposition à vue, sans cellule : chaîne de facteurs, conversion EV vers diaph/vitesse/ISO, journal d'entraînement.">
+<meta name="theme-color" content="#f4f2ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12120f" media="(prefers-color-scheme: dark)">
+<title>Cellule — exposition à vue</title>
+<style>
+:root{
+  --bg:#f4f2ee; --panel:#fffdf9; --sunk:#ebe7df;
+  --ink:#16150f; --ink2:#57534a; --ink3:#8b857a;
+  --line:#ddd8cf; --line2:#ece8e1;
+  --accent:#a8560a; --accent-soft:#f6e6d2; --accent-ink:#fff;
+  --pos:#1d6b3f; --neg:#a33a12;
+  --shadow:0 1px 2px rgba(20,18,12,.06), 0 6px 20px rgba(20,18,12,.05);
+}
+:root[data-theme="dark"], :root:not([data-theme="light"]){}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111110; --panel:#1a1a17; --sunk:#232320;
+    --ink:#f1eee6; --ink2:#a9a396; --ink3:#767065;
+    --line:#302f2a; --line2:#26251f;
+    --accent:#e8a13c; --accent-soft:#33281a; --accent-ink:#17140d;
+    --pos:#57b37c; --neg:#e0794e;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 6px 20px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111110; --panel:#1a1a17; --sunk:#232320;
+  --ink:#f1eee6; --ink2:#a9a396; --ink3:#767065;
+  --line:#302f2a; --line2:#26251f;
+  --accent:#e8a13c; --accent-soft:#33281a; --accent-ink:#17140d;
+  --pos:#57b37c; --neg:#e0794e;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 6px 20px rgba(0,0,0,.3);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:400 16px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-variant-numeric:tabular-nums; -webkit-font-smoothing:antialiased;
+  padding-bottom:4rem;
+}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px}
+h1,h2,h3{line-height:1.2;margin:0;font-weight:600;letter-spacing:-.01em}
+h2{font-size:1.05rem;margin-bottom:.15rem}
+h3{font-size:.82rem;text-transform:uppercase;letter-spacing:.09em;color:var(--ink3);font-weight:600}
+p{margin:.5rem 0}
+a{color:var(--accent)}
+small{font-size:.8rem}
+
+/* ---- en-tête ---- */
+.top{padding-top:22px;padding-bottom:14px;display:flex;align-items:flex-start;gap:14px}
+.top .brand{flex:1;min-width:0}
+.brand .name{font-size:1.45rem;font-weight:600;letter-spacing:-.02em}
+.brand .sub{color:var(--ink2);font-size:.87rem;margin-top:.1rem}
+.iconbtn{
+  flex:none;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);
+  background:var(--panel);color:var(--ink2);cursor:pointer;font-size:1rem;line-height:1;
+  display:grid;place-items:center;
+}
+.iconbtn:hover{color:var(--ink);border-color:var(--ink3)}
+.iconbtn svg{display:block}
+
+/* ---- onglets ---- */
+.tabs{
+  position:sticky;top:0;z-index:20;background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);margin-bottom:20px;
+}
+.tabs .wrap{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.tabs .wrap::-webkit-scrollbar{display:none}
+.tab{
+  flex:none;appearance:none;background:none;border:0;border-bottom:2px solid transparent;
+  padding:12px 12px 10px;font:inherit;font-size:.92rem;font-weight:500;color:var(--ink3);
+  cursor:pointer;white-space:nowrap;
+}
+.tab:hover{color:var(--ink2)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+
+/* ---- cartes ---- */
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:16px;margin-bottom:14px;box-shadow:var(--shadow);
+}
+.card > h2:first-child{margin-bottom:.4rem}
+.hint{color:var(--ink2);font-size:.87rem;margin:.35rem 0 0}
+.hint.tight{margin-top:.2rem}
+
+/* ---- options tappables ---- */
+.opts{display:grid;gap:6px;margin-top:10px}
+.opts.two{grid-template-columns:1fr 1fr}
+@media (max-width:520px){.opts.two{grid-template-columns:1fr}}
+.opt{
+  display:flex;align-items:baseline;gap:8px;padding:9px 11px;border-radius:10px;
+  border:1px solid var(--line2);background:var(--sunk);cursor:pointer;
+  font-size:.93rem;transition:border-color .12s, background .12s;
+}
+.opt input{position:absolute;opacity:0;pointer-events:none;width:0;height:0}
+.opt .lbl{font-weight:500}
+.opt .det{color:var(--ink3);font-size:.8rem;flex:1;min-width:0}
+.opt .val{color:var(--ink3);font-size:.82rem;font-weight:500;margin-left:auto;flex:none}
+.opt.on{border-color:var(--accent);background:var(--accent-soft)}
+.opt.on .val{color:var(--accent)}
+.opt.off{opacity:.45}
+
+/* ---- champs ---- */
+.fields{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.field{flex:1 1 130px;min-width:0}
+.field label{display:block;font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);margin-bottom:3px;font-weight:600}
+input[type=text],input[type=number],input[type=date],input[type=time],select,textarea{
+  width:100%;padding:8px 10px;border-radius:9px;border:1px solid var(--line);
+  background:var(--sunk);color:var(--ink);font:inherit;font-size:.93rem;
+}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,.opt:focus-within{
+  outline:2px solid var(--accent);outline-offset:1px
+}
+textarea{resize:vertical;min-height:52px}
+.btn{
+  appearance:none;border:1px solid var(--line);background:var(--sunk);color:var(--ink);
+  padding:8px 14px;border-radius:9px;font:inherit;font-size:.9rem;font-weight:500;cursor:pointer;
+}
+.btn:hover{border-color:var(--ink3)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.sm{padding:5px 10px;font-size:.83rem}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+
+/* ---- affichage principal ---- */
+.readout{
+  display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;
+  padding:16px;border-radius:12px;background:var(--sunk);border:1px solid var(--line2);
+}
+.readout .ev{display:flex;align-items:baseline;gap:6px}
+.readout .ev b{font-size:3.1rem;font-weight:600;letter-spacing:-.03em;line-height:.95}
+.readout .ev span{font-size:1rem;color:var(--ink3);font-weight:500}
+.readout .side{font-size:.85rem;color:var(--ink2);line-height:1.45}
+.readout .side b{color:var(--ink);font-weight:600}
+.setting{
+  margin-top:12px;padding:14px 16px;border-radius:12px;
+  background:var(--accent-soft);border:1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+}
+.setting .big{font-size:1.7rem;font-weight:600;letter-spacing:-.02em}
+.setting .cap{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:600;margin-bottom:2px}
+.setting .note{font-size:.83rem;color:var(--ink2);margin-top:5px;border-left:0;padding-left:0}
+
+/* ---- chaîne de facteurs ---- */
+.chain{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:4px}
+.chain td{padding:5px 0;vertical-align:baseline}
+.chain td:last-child{text-align:right;white-space:nowrap;font-weight:600;padding-left:10px}
+.chain .det{display:block;color:var(--ink3);font-size:.78rem;font-weight:400}
+.chain .rule td{border-top:1px solid var(--line);padding-top:8px}
+.chain .tot td{font-weight:600}
+.chain .muted td{color:var(--ink3)}
+.pos{color:var(--pos)} .neg{color:var(--neg)}
+
+/* ---- tableaux ---- */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:10px}
+table.data{width:100%;border-collapse:collapse;font-size:.87rem;white-space:nowrap}
+table.data th{
+  text-align:left;font-weight:600;font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--ink3);padding:6px 12px 6px 0;border-bottom:1px solid var(--line);
+}
+table.data td{padding:6px 12px 6px 0;border-bottom:1px solid var(--line2)}
+table.data th:last-child,table.data td:last-child{padding-right:0}
+table.data tr:last-child td{border-bottom:0}
+table.data tr.hi td{background:var(--accent-soft);font-weight:600}
+table.data td.num,table.data th.num{text-align:right}
+.chip{
+  display:inline-block;padding:1px 7px;border-radius:20px;font-size:.75rem;font-weight:600;
+  background:var(--sunk);border:1px solid var(--line);color:var(--ink2);
+}
+.chip.ok{color:var(--pos);border-color:color-mix(in srgb,var(--pos) 35%,transparent)}
+.chip.warn{color:var(--neg);border-color:color-mix(in srgb,var(--neg) 35%,transparent)}
+
+/* ---- stats entraînement ---- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:10px}
+.stat{padding:11px 12px;border-radius:10px;background:var(--sunk);border:1px solid var(--line2)}
+.stat .k{font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink3);font-weight:600}
+.stat .v{font-size:1.5rem;font-weight:600;letter-spacing:-.02em;margin-top:1px}
+.stat .u{font-size:.78rem;color:var(--ink3)}
+.bar{height:7px;border-radius:4px;background:var(--line2);overflow:hidden;margin-top:5px}
+.bar i{display:block;height:100%;background:var(--accent)}
+.formula{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85rem;
+  background:var(--sunk);border:1px solid var(--line2);border-radius:9px;padding:10px 12px;
+  overflow-x:auto;white-space:pre;
+}
+.note{
+  border-left:3px solid var(--accent);padding:2px 0 2px 12px;margin:12px 0 0;
+  color:var(--ink2);font-size:.86rem;
+}
+.note b{color:var(--ink)}
+details{margin-top:10px;border-top:1px solid var(--line2);padding-top:8px}
+summary{cursor:pointer;font-size:.85rem;color:var(--ink2);font-weight:500;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸ ";color:var(--ink3)}
+details[open] summary::before{content:"▾ "}
+footer{color:var(--ink3);font-size:.8rem;padding:18px 0 6px;border-top:1px solid var(--line);margin-top:26px}
+[hidden]{display:none !important}
+</style>
+</head>
+<body>
+
+<header class="wrap top">
+  <div class="brand">
+    <div class="name">Cellule</div>
+    <div class="sub">Exposer à vue, sans posemètre</div>
+  </div>
+  <button class="iconbtn" id="theme" type="button" title="Basculer clair / sombre" aria-label="Basculer clair / sombre"><svg width="17" height="17" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 0 0 12.5z" fill="currentColor"/></svg></button>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" id="t-estimer"   aria-controls="p-estimer"   aria-selected="true">Estimer</button>
+    <button class="tab" role="tab" id="t-convertir" aria-controls="p-convertir" aria-selected="false">Convertir</button>
+    <button class="tab" role="tab" id="t-entrainer" aria-controls="p-entrainer" aria-selected="false">Entraîner</button>
+    <button class="tab" role="tab" id="t-tables"    aria-controls="p-tables"    aria-selected="false">Tables</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ══════════════ ESTIMER ══════════════ -->
+<section id="p-estimer" role="tabpanel" aria-labelledby="t-estimer">
+
+  <div class="card" id="resultat">
+    <div class="readout">
+      <div class="ev"><b id="r-ev">15,0</b><span>EV<sub>100</sub></span></div>
+      <div class="side" id="r-side"></div>
+    </div>
+    <div class="setting">
+      <div class="cap" id="r-cap">Réglage conseillé</div>
+      <div class="big" id="r-setting">f/16 · 1/125</div>
+      <div class="note" id="r-note"></div>
+    </div>
+    <details id="d-chaine" open>
+      <summary>La chaîne de facteurs</summary>
+      <table class="chain"><tbody id="r-chain"></tbody></table>
+      <p class="hint" id="r-chain-note"></p>
+    </details>
+    <details id="d-equiv">
+      <summary>Tous les couples équivalents</summary>
+      <div class="tw"><table class="data" id="r-equiv"></table></div>
+    </details>
+  </div>
+
+  <div class="card">
+    <h2>1 · La lumière du ciel</h2>
+    <p class="hint tight">Ce que fait le ciel, avant tout obstacle. Le repère infaillible, c'est l'ombre portée.</p>
+    <div class="opts" id="f-ciel"></div>
+  </div>
+
+  <div class="card">
+    <h2>2 · La hauteur du soleil</h2>
+    <p class="hint tight">C'est elle qui gouverne le reste : l'éclairement suit le sinus de la hauteur, puis chute plus vite encore sous 15° à cause de l'épaisseur d'atmosphère traversée.</p>
+    <div class="opts two" id="f-hmode"></div>
+    <div id="pan-calc">
+      <div class="fields">
+        <div class="field"><label for="i-lieu">Lieu</label><select id="i-lieu"></select></div>
+        <div class="field"><label for="i-lat">Latitude °N</label><input type="number" id="i-lat" step="0.05" value="42.30"></div>
+        <div class="field"><label for="i-lon">Longitude °E</label><input type="number" id="i-lon" step="0.05" value="9.15"></div>
+      </div>
+      <div class="fields">
+        <div class="field"><label for="i-date">Date</label><input type="date" id="i-date"></div>
+        <div class="field"><label for="i-heure">Heure légale</label><input type="time" id="i-heure"></div>
+        <div class="field"><label for="i-tz">Fuseau</label><select id="i-tz">
+          <option value="2">UTC+2 (heure d'été FR)</option>
+          <option value="1">UTC+1 (heure d'hiver FR)</option>
+          <option value="0">UTC+0</option>
+          <option value="3">UTC+3</option>
+          <option value="-5">UTC−5</option>
+        </select></div>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <button class="btn sm" id="b-maintenant" type="button">Maintenant</button>
+        <button class="btn sm" id="b-geo" type="button">Ma position</button>
+      </div>
+      <p class="hint" id="r-solaire"></p>
+    </div>
+    <div id="pan-vue" hidden>
+      <div class="opts" id="f-hauteur"></div>
+      <p class="hint">Plante-toi au soleil et compare ton ombre à ta taille : c'est le goniomètre le plus fiable que tu aies sur toi.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>3 · Ce qui bouche la lumière</h2>
+    <p class="hint tight">Un seul choix : l'obstacle dominant entre le ciel et ton sujet.</p>
+    <div class="opts" id="f-obst"></div>
+  </div>
+
+  <div class="card">
+    <h2>4 · Ce qui la renvoie</h2>
+    <p class="hint tight">Cumulable. Ce sont des gains d'éclairement réel — de la lumière qui revient sur le sujet, pas une correction de mesure.</p>
+    <div class="opts" id="f-gains"></div>
+  </div>
+
+  <div class="card">
+    <h2>5 · Le film dans le dos</h2>
+    <div class="fields">
+      <div class="field"><label for="i-iso">Sensibilité ISO</label><select id="i-iso"></select></div>
+      <div class="field"><label for="i-vit">Vitesse de référence</label><select id="i-vit"></select></div>
+      <div class="field"><label for="i-modele">Modèle de calcul</label><select id="i-modele">
+        <option value="phys">Physique (atmosphère + diffus)</option>
+        <option value="flat">Grille mentale (additive)</option>
+      </select></div>
+    </div>
+    <p class="hint" id="r-modele-note"></p>
+  </div>
+
+</section>
+
+<!-- ══════════════ CONVERTIR ══════════════ -->
+<section id="p-convertir" role="tabpanel" aria-labelledby="t-convertir" hidden>
+
+  <div class="card">
+    <h2>EV → réglages</h2>
+    <p class="hint tight">Tu connais ton EV, tu veux les couples. Ou l'inverse : entre un couple, lis l'EV.</p>
+    <div class="fields">
+      <div class="field"><label for="c-ev">EV<sub>100</sub></label><input type="number" id="c-ev" step="0.1" value="15"></div>
+      <div class="field"><label for="c-iso">ISO</label><select id="c-iso"></select></div>
+      <div class="field"><label for="c-nd">Filtre ND</label><select id="c-nd"></select></div>
+    </div>
+    <div class="readout" style="margin-top:12px">
+      <div class="ev"><b id="c-evcam">15,0</b><span>EV appareil</span></div>
+      <div class="side" id="c-side"></div>
+    </div>
+    <div class="tw"><table class="data" id="c-table"></table></div>
+    <p class="hint" id="c-recip"></p>
+  </div>
+
+  <div class="card">
+    <h2>Réglages → EV</h2>
+    <div class="fields">
+      <div class="field"><label for="c2-n">Ouverture f/</label><select id="c2-n"></select></div>
+      <div class="field"><label for="c2-t">Vitesse</label><select id="c2-t"></select></div>
+      <div class="field"><label for="c2-iso">ISO</label><select id="c2-iso"></select></div>
+    </div>
+    <p class="hint" id="c2-out"></p>
+  </div>
+
+  <div class="card">
+    <h2>L'ombre portée comme goniomètre</h2>
+    <p class="hint tight">Rapport entre la longueur de l'ombre et la hauteur de l'objet qui la projette.</p>
+    <div class="fields">
+      <div class="field" style="flex:1 1 100%">
+        <label for="s-ratio">Ombre / hauteur : <span id="s-ratio-v">1,0</span> ×</label>
+        <input type="range" id="s-ratio" min="0.15" max="6" step="0.05" value="1" style="width:100%">
+      </div>
+    </div>
+    <p class="hint" id="s-out"></p>
+  </div>
+
+  <div class="card">
+    <h2>Réflectance et placement en zone</h2>
+    <p class="hint tight">Ceci n'entre <em>pas</em> dans la chaîne d'estimation : ça corrige une <em>mesure réfléchie</em>, ou ça place une matière dans l'échelle des zones. Une cellule réfléchie suppose toujours ρ = 0,18 ; elle a tort dès que le sujet ne l'est pas.</p>
+    <div class="fields">
+      <div class="field"><label for="z-mat">Matière visée</label><select id="z-mat"></select></div>
+      <div class="field"><label for="z-lect">Lecture spot EV</label><input type="number" id="z-lect" step="0.1" value="15"></div>
+      <div class="field"><label for="z-zone">Placer en zone</label><select id="z-zone"></select></div>
+    </div>
+    <p class="hint" id="z-out"></p>
+  </div>
+
+</section>
+
+<!-- ══════════════ ENTRAÎNER ══════════════ -->
+<section id="p-entrainer" role="tabpanel" aria-labelledby="t-entrainer" hidden>
+
+  <div class="card">
+    <h2>Le journal</h2>
+    <p class="hint tight">Devant la scène : annonce un chiffre <em>avant</em> de mesurer, puis note l'écart. Le but n'est pas d'avoir juste, c'est de découvrir ton biais systématique — et il est presque toujours dans les ombres.</p>
+    <div class="fields">
+      <div class="field"><label for="j-type">Type de scène</label><select id="j-type"></select></div>
+      <div class="field"><label for="j-annonce">EV annoncé</label><input type="number" id="j-annonce" step="0.1" inputmode="decimal"></div>
+      <div class="field"><label for="j-mesure">EV mesuré</label><input type="number" id="j-mesure" step="0.1" inputmode="decimal"></div>
+    </div>
+    <div class="fields">
+      <div class="field" style="flex:1 1 100%"><label for="j-note">Chaîne annoncée / contexte <span style="text-transform:none;letter-spacing:0">(facultatif)</span></label>
+        <textarea id="j-note" placeholder="base 15, −0,8 hauteur, −1,5 sous l'arbre, +1 réverbération eau → 13,7"></textarea></div>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <button class="btn primary" id="j-add" type="button">Enregistrer</button>
+      <button class="btn sm" id="j-fromest" type="button">Reprendre l'estimation en cours</button>
+    </div>
+    <p class="hint" id="j-msg"></p>
+  </div>
+
+  <div class="card">
+    <h2>Ton biais</h2>
+    <p class="hint tight">Écart = annoncé − mesuré. Positif : tu crois qu'il fait plus clair qu'il ne fait, et tu sous-exposes.</p>
+    <div class="stats" id="j-stats"></div>
+    <div id="j-bytype"></div>
+    <details>
+      <summary>Les 30 dernières entrées</summary>
+      <div class="tw"><table class="data" id="j-list"></table></div>
+      <div class="row" style="margin-top:10px">
+        <button class="btn sm" id="j-export" type="button">Exporter en CSV</button>
+        <button class="btn sm" id="j-clear" type="button">Tout effacer</button>
+      </div>
+    </details>
+  </div>
+
+  <div class="card">
+    <h2>Entraînement à blanc</h2>
+    <p class="hint tight">Pour les jours où tu ne sors pas. Une scène décrite, tu annonces, on compare.</p>
+    <div id="q-scene" style="padding:14px 16px;border-radius:12px;background:var(--sunk);border:1px solid var(--line2);font-size:1rem;line-height:1.5"></div>
+    <div class="fields">
+      <div class="field"><label for="q-rep">Ta réponse (EV<sub>100</sub>)</label><input type="number" id="q-rep" step="0.1" inputmode="decimal"></div>
+      <div class="field" style="display:flex;align-items:flex-end;gap:8px">
+        <button class="btn primary" id="q-check" type="button">Vérifier</button>
+        <button class="btn" id="q-next" type="button">Suivante</button>
+      </div>
+    </div>
+    <p class="hint" id="q-out"></p>
+    <div class="stats" id="q-stats"></div>
+  </div>
+
+  <div class="card">
+    <h2>Le protocole en trois phases</h2>
+    <table class="chain"><tbody>
+      <tr><td><b>Phase 1 — ancrage</b><span class="det">2 à 3 semaines. Annonce un EV devant chaque scène, vérifie, note l'écart. Tu ne cherches pas la justesse, tu cherches ton biais.</span></td></tr>
+      <tr><td><b>Phase 2 — décomposition</b><span class="det">1 à 2 mois. Arrête d'annoncer un chiffre : annonce la chaîne. « Base 15, moins 0,8 pour l'heure, moins 2 pour l'ombre, plus 1 pour l'eau → 13,2. » C'est la décomposition qui se grave, pas le résultat.</span></td></tr>
+      <tr><td><b>Phase 3 — reconnaissance</b><span class="det">Le chiffre arrive sans calcul. Tu ne vérifies plus que sur les scènes ambiguës : mixtes, contre-jour, lumière artificielle mêlée.</span></td></tr>
+    </tbody></table>
+    <p class="note"><b>Trois calibrations locales à faire une fois pour toutes.</b> La rivière corse à midi, réverbération comprise : le point haut de ton échelle. Un sous-bois du Gers en automne : le point bas de ta plage utile en extérieur jour. Ton intérieur habituel le soir : le raccord vers l'artificiel, là où l'adaptation de l'œil te trompe le plus.</p>
+  </div>
+
+</section>
+
+<!-- ══════════════ TABLES ══════════════ -->
+<section id="p-tables" role="tabpanel" aria-labelledby="t-tables" hidden>
+  <div id="tables-host"></div>
+</section>
+
+<footer class="wrap">
+  <p><b>Cellule</b> — page unique, sans réseau ni dépendance. Enregistre-la sur ton téléphone (« Ajouter à l'écran d'accueil ») et elle fonctionne en montagne comme au fond d'un sous-bois.</p>
+  <p>Constantes de calibration : C = 250 (incident, dôme plat) et K = 12,5 (réfléchi, standard Sekonic / Canon / Nikon).</p>
+</footer>
+
+</main>
+<script>
+(function(){
+'use strict';
+
+/* ═══════════════════════════════════════════════════════════════
+   Utilitaires
+   ═══════════════════════════════════════════════════════════════ */
+//<pure>
+var $  = function(s,r){ return (r||document).querySelector(s); };
+var $$ = function(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+var rad = function(d){ return d*Math.PI/180; };
+var deg = function(r){ return r*180/Math.PI; };
+var clamp = function(v,a,b){ return Math.min(b, Math.max(a, v)); };
+var log2 = function(x){ return Math.log(x)/Math.LN2; };
+
+function fmt(n, d){
+  if(n===null || n===undefined || !isFinite(n)) return '—';
+  if(d===undefined) d = 1;
+  return n.toFixed(d).replace('.', ',');
+}
+function sgn(n, d){
+  if(!isFinite(n)) return '—';
+  if(Math.abs(n) < 0.05) return '0';
+  return (n>0 ? '+' : '−') + fmt(Math.abs(n), d===undefined?1:d);
+}
+function fmtAuto(x){
+  if(!isFinite(x)) return '—';
+  var a = Math.abs(x);
+  var d = a >= 100 ? 0 : a >= 10 ? 1 : a >= 1 ? 2 : a >= 0.01 ? 3 : 4;
+  var t = x.toFixed(d);
+  if(t.indexOf('.') >= 0) t = t.replace(/0+$/, '').replace(/\.$/, '');
+  return t.replace('.', ',').replace('-', '−');
+}
+/* Trois chiffres significatifs : au-delà, on ferait croire à une précision
+   que ni l'atmosphère ni l'œil ne possèdent. */
+function sig3(x){
+  if(!x) return 0;
+  var m = Math.pow(10, 2 - Math.floor(Math.log(Math.abs(x)) / Math.LN10));
+  return Math.round(x * m) / m;
+}
+function fmtLux(lx){
+  if(!isFinite(lx)) return '—';
+  if(lx >= 1000) return String(sig3(lx)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' lx';
+  if(lx >= 100)  return String(Math.round(lx)) + ' lx';
+  return fmtAuto(lx) + ' lx';
+}
+/* Écart exprimé en tiers de diaph, avec fractions typographiques. */
+function stopsLabel(x){
+  if(!isFinite(x)) return '—';
+  if(Math.abs(x) < 0.08) return 'juste';
+  var thirds = Math.round(x*3);
+  if(thirds === 0) return 'juste';
+  var whole = Math.floor(Math.abs(thirds)/3);
+  var rem   = Math.abs(thirds) % 3;
+  var frac  = rem === 1 ? '⅓' : rem === 2 ? '⅔' : '';
+  var body  = whole ? String(whole) + (frac ? ' ' + frac : '') : frac;
+  return (x < 0 ? '−' : '+') + body;
+}
+var store = {
+  mem: {},
+  get: function(k, dflt){
+    try{ var v = localStorage.getItem(k); return v === null ? dflt : JSON.parse(v); }
+    catch(e){ return (k in this.mem) ? this.mem[k] : dflt; }
+  },
+  set: function(k, v){
+    this.mem[k] = v;
+    try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){}
+  }
+};
+
+/* ═══════════════════════════════════════════════════════════════
+   Photométrie — les constantes du système
+   C = 250 (cellule incidente, dôme plat)  →  E = 2,5 × 2^EV
+   K = 12,5 (cellule réfléchie)            →  L = 0,125 × 2^EV
+   ═══════════════════════════════════════════════════════════════ */
+var GRIS = 0.18;
+var ev2lux   = function(ev){ return 2.5 * Math.pow(2, ev); };
+var lux2ev   = function(lx){ return log2(lx / 2.5); };
+var ev2cdm2  = function(ev){ return 0.125 * Math.pow(2, ev); };
+var luminance = function(E, rho){ return E * rho / Math.PI; };
+
+/* ═══════════════════════════════════════════════════════════════
+   Position du soleil
+   ═══════════════════════════════════════════════════════════════ */
+function dayOfYear(d){
+  var start = Date.UTC(d.getFullYear(), 0, 0);
+  var here  = Date.UTC(d.getFullYear(), d.getMonth(), d.getDate());
+  return Math.round((here - start) / 86400000);
+}
+/* Séries de Spencer. La formule courte en cos(0,98563·(n−173)) dérive de plus
+   d'un degré près des équinoxes, là où la déclinaison change le plus vite ;
+   celle-ci reste sous 0,05°. */
+function angleJour(n){ return 2 * Math.PI * (n - 1) / 365; }
+/* Déclinaison solaire, en degrés. */
+function declinaison(n){
+  var g = angleJour(n);
+  return deg(0.006918
+    - 0.399912*Math.cos(g)   + 0.070257*Math.sin(g)
+    - 0.006758*Math.cos(2*g) + 0.000907*Math.sin(2*g)
+    - 0.002697*Math.cos(3*g) + 0.001480*Math.sin(3*g));
+}
+/* Équation du temps, en minutes. */
+function equationTemps(n){
+  var g = angleJour(n);
+  return 229.18 * (0.000075
+    + 0.001868*Math.cos(g)   - 0.032077*Math.sin(g)
+    - 0.014615*Math.cos(2*g) - 0.040849*Math.sin(2*g));
+}
+/* Heure solaire vraie, en heures décimales. */
+function tempsSolaire(heureLegale, n, lonEst, tzHeures){
+  return heureLegale - tzHeures + lonEst/15 + equationTemps(n)/60;
+}
+function midiSolaire(n, lonEst, tzHeures){
+  return 12 + tzHeures - lonEst/15 - equationTemps(n)/60;
+}
+function hauteurSoleil(latNord, n, tsv){
+  var dec = rad(declinaison(n)), lat = rad(latNord);
+  var H = rad(15 * (tsv - 12));
+  var s = Math.sin(lat)*Math.sin(dec) + Math.cos(lat)*Math.cos(dec)*Math.cos(H);
+  return deg(Math.asin(clamp(s, -1, 1)));
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Modèle d'éclairement
+   Direct : E0·sin(h)·τ^(AM^0,678), masse d'air de Kasten-Young.
+   C'est ce terme qui s'effondre sous 15° — bien plus vite que
+   le simple sin(h) — et qui rend la golden hour si rapide.
+   Diffus : composante de ciel, en sin(h)^0,8, beaucoup plus plate.
+   Étalonnage : soleil à 52°, ciel pur → EV 15,0, soit Sunny 16.
+   ═══════════════════════════════════════════════════════════════ */
+var E0 = 128000;
+var PART_DIFFUS = 0.155;
+var PART_DIRECT_REF = 0.80;   /* fraction directe par ciel pur, soleil haut */
+
+function masseAir(h){
+  var hh = Math.max(h, -0.5);
+  return 1 / (Math.sin(rad(hh)) + 0.50572 * Math.pow(hh + 6.07995, -1.6364));
+}
+/* Crépuscule : interpolation logarithmique sur des points d'ancrage mesurés. */
+var CREPUSCULE = [[0,400],[-2,100],[-4,16],[-6,3.4],[-8,0.6],[-10,0.09],[-12,0.008],[-14,0.002],[-16,0.0016],[-18,0.0015]];
+function luxCrepuscule(h){
+  if(h <= -18) return 0.0015;
+  for(var i=0; i<CREPUSCULE.length-1; i++){
+    var a = CREPUSCULE[i], b = CREPUSCULE[i+1];
+    if(h <= a[0] && h >= b[0]){
+      var f = (a[0] - h) / (a[0] - b[0]);
+      return Math.pow(10, Math.log(a[1])/Math.LN10 * (1-f) + Math.log(b[1])/Math.LN10 * f);
+    }
+  }
+  return 400;
+}
+function eclairementCiel(h, ciel){
+  var direct = 0, diffus = 0;
+  if(h > 0){
+    var s = Math.sin(rad(h));
+    var tau = Math.pow(0.7, Math.pow(masseAir(h), 0.678));
+    direct = E0 * s * tau;
+    diffus = E0 * PART_DIFFUS * Math.pow(s, 0.8) + 350;
+  }else{
+    diffus = luxCrepuscule(h);
+  }
+  direct *= ciel.dir;
+  diffus *= ciel.dif;
+  var total = direct + diffus;
+  return {
+    direct: direct,
+    diffus: diffus,
+    total: total,
+    ev: lux2ev(total),
+    /* Part de soleil direct, ramenée à 1 pour un plein soleil franc.
+       C'est elle qui décide si « ombre portée » veut encore dire
+       quelque chose : par ciel couvert, il n'y a plus d'ombre à porter. */
+    soleil: clamp((total > 0 ? direct/total : 0) / PART_DIRECT_REF, 0, 1)
+  };
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Données de terrain
+   ═══════════════════════════════════════════════════════════════ */
+var CIEL = [
+  {id:'soleil',  nom:'Plein soleil',    det:'ombre franche, bord net',        dir:1.00, dif:1.00, flat:0},
+  {id:'voile',   nom:'Voile léger',     det:'ombre visible mais bord flou',   dir:0.30, dif:1.45, flat:-1},
+  {id:'blanc',   nom:'Couvert clair',   det:'ciel blanc lumineux, sans ombre',dir:0.00, dif:1.60, flat:-1.5},
+  {id:'couvert', nom:'Ciel couvert',    det:'gris uniforme, aucune ombre',    dir:0.00, dif:1.00, flat:-2.5},
+  {id:'lourd',   nom:'Couvert lourd',   det:'orage, il fait sombre à midi',   dir:0.00, dif:0.30, flat:-4.5}
+];
+var OBSTRUCTION = [
+  {id:'ouvert',    nom:'Terrain ouvert',      det:'sujet directement éclairé',      sun:0,    dif:0},
+  {id:'ombre',     nom:'Ombre portée',        det:'ciel dégagé au-dessus',          sun:-2.5, dif:0},
+  {id:'cj',        nom:'Contre-jour',         det:'soleil derrière le sujet',       sun:-1.5, dif:0},
+  {id:'arbre',     nom:'Sous un arbre isolé', det:'feuillage clair, taches de jour',sun:-1.5, dif:-1.0},
+  {id:'sousbois',  nom:'Sous-bois dense',     det:'canopée fermée',                 sun:-3.5, dif:-3.0},
+  {id:'versant',   nom:'Ombre de versant',    det:'vallée encaissée, relief',       sun:-2.5, dif:-0.5},
+  {id:'rue',       nom:'Rue étroite, cour',   det:'ciel réduit à une bande',        sun:-3.5, dif:-2.5},
+  {id:'vitre',     nom:'Près de la fenêtre',  det:'intérieur, à un mètre de la vitre', sun:-4.5, dif:-4.0},
+  {id:'interieur', nom:'Intérieur, fond de pièce', det:'lumière du jour seule',     sun:-8.0, dif:-7.5}
+];
+var GAINS = [
+  {id:'neige',   nom:'Neige fraîche plein cadre',  v:1.5},
+  {id:'sable',   nom:'Sable clair, plage',         v:1.0},
+  {id:'eau',     nom:'Eau au soleil, galets clairs', v:1.0},
+  {id:'granite', nom:'Granite clair, calcaire',    v:0.75},
+  {id:'mur',     nom:'Mur blanc proche',           v:0.75},
+  {id:'alt',     nom:'Altitude > 2 000 m',         v:0.75},
+  {id:'sec',     nom:'Air très sec, méditerranéen', v:0.4}
+];
+/* Repères de hauteur en mode « à vue » — l'ombre portée sert de goniomètre. */
+var HAUTEURS = [
+  {h:75, nom:'Soleil au zénith ou presque', det:'ombre très courte, été, midi'},
+  {h:60, nom:'Soleil haut',                 det:'ombre = ⅗ de ta taille'},
+  {h:45, nom:'Soleil à 45°',                det:'ombre = ta taille exactement'},
+  {h:30, nom:'Soleil bas',                  det:'ombre = 2 × ta taille'},
+  {h:20, nom:'Fin d’après-midi',       det:'ombre = 3 × ta taille'},
+  {h:10, nom:'Golden hour',                 det:'ombre = 6 × ta taille, lumière rasante'},
+  {h:4,  nom:'Soleil sur l’horizon',   det:'disque écrasé, rouge'},
+  {h:-3, nom:'Crépuscule civil',            det:'soleil couché, on lit encore'},
+  {h:-9, nom:'Crépuscule nautique',         det:'horizon encore visible'}
+];
+var LIEUX = [
+  {nom:'Corte (Corse)',       lat:42.30, lon:9.15},
+  {nom:'Auch (Gers)',         lat:43.65, lon:0.59},
+  {nom:'Toulouse',            lat:43.60, lon:1.44},
+  {nom:'Paris',               lat:48.86, lon:2.35},
+  {nom:'Marseille',           lat:43.30, lon:5.37},
+  {nom:'Brest',               lat:48.39, lon:-4.49},
+  {nom:'Personnalisé',        lat:null,  lon:null}
+];
+var MATIERES = [
+  {nom:'Neige fraîche',                 rho:0.85},
+  {nom:'Peinture blanche, mur chaulé',  rho:0.75},
+  {nom:'Béton neuf',                    rho:0.475},
+  {nom:'Sable de désert, plage claire', rho:0.40},
+  {nom:'Peau claire',                   rho:0.35},
+  {nom:'Granite clair (Restonica)',     rho:0.30},
+  {nom:'Herbe verte vive',              rho:0.25},
+  {nom:'Béton vieilli, pierre grise',   rho:0.25},
+  {nom:'Gris moyen (charte)',           rho:0.18},
+  {nom:'Sol nu, terre sèche',           rho:0.17},
+  {nom:'Feuillage caduc',               rho:0.165},
+  {nom:'Herbe sèche, maquis grillé',    rho:0.15},
+  {nom:'Peau foncée',                   rho:0.125},
+  {nom:'Asphalte usé',                  rho:0.12},
+  {nom:'Forêt de conifères',            rho:0.11},
+  {nom:'Océan, eau profonde (diffus)',  rho:0.06},
+  {nom:'Asphalte neuf',                 rho:0.045},
+  {nom:'Velours noir, charbon',         rho:0.015}
+];
+var ZONES = [
+  {z:'0',    d:-5, r:'Noir absolu, aucune densité'},
+  {z:'I',    d:-4, r:'Noir, aucune texture'},
+  {z:'II',   d:-3, r:'Premier noir texturé'},
+  {z:'III',  d:-2, r:'Ombre texturée'},
+  {z:'IV',   d:-1, r:'Ombre ouverte, feuillage sombre, peau foncée'},
+  {z:'V',    d:0,  r:'Gris moyen — ce que donne toute cellule'},
+  {z:'VI',   d:1,  r:'Peau claire, ciel bleu profond'},
+  {z:'VII',  d:2,  r:'Blanc texturé, neige à l’ombre'},
+  {z:'VIII', d:3,  r:'Dernier blanc texturé'},
+  {z:'IX',   d:4,  r:'Blanc sans texture'}
+];
+var APERTURES = [1, 1.4, 2, 2.8, 4, 5.6, 8, 11, 16, 22, 32, 45, 64];
+var SHUTTERS = [
+  {l:'1/8000', t:1/8000},{l:'1/4000', t:1/4000},{l:'1/2000', t:1/2000},{l:'1/1000', t:1/1000},
+  {l:'1/500', t:1/500},{l:'1/250', t:1/250},{l:'1/125', t:1/125},{l:'1/60', t:1/60},
+  {l:'1/30', t:1/30},{l:'1/15', t:1/15},{l:'1/8', t:1/8},{l:'1/4', t:1/4},{l:'1/2', t:1/2},
+  {l:'1 s', t:1},{l:'2 s', t:2},{l:'4 s', t:4},{l:'8 s', t:8},{l:'15 s', t:15},{l:'30 s', t:30},
+  {l:'1 min', t:60},{l:'2 min', t:120},{l:'4 min', t:240},{l:'8 min', t:480},{l:'15 min', t:900},{l:'30 min', t:1800}
+];
+var ISOS = [25, 50, 64, 100, 125, 160, 200, 400, 800, 1600, 3200, 6400, 12800];
+var NDS = [
+  {l:'Aucun', v:0},{l:'ND2 · 0,3', v:1},{l:'ND4 · 0,6', v:2},{l:'ND8 · 0,9', v:3},
+  {l:'ND16 · 1,2', v:4},{l:'ND32 · 1,5', v:5},{l:'ND64 · 1,8', v:6},
+  {l:'ND256 · 2,4', v:8},{l:'ND1000 · 3,0', v:10}
+];
+var VITESSES_REF = [
+  {l:'1/ISO (règle du Sunny 16)', v:'iso'},
+  {l:'1/1000', v:1/1000},{l:'1/500', v:1/500},{l:'1/250', v:1/250},{l:'1/125', v:1/125},
+  {l:'1/60', v:1/60},{l:'1/50 — ciné 25 fps', v:1/50},{l:'1/48 — ciné 24 fps', v:1/48},
+  {l:'1/30', v:1/30}
+];
+var TYPES_SCENE = ['Plein soleil','Ombre au soleil','Couvert','Sous-bois','Intérieur jour','Intérieur artificiel','Crépuscule','Nuit urbaine'];
+var SITUATIONS = [
+  [15.5,'Neige ou sable au soleil zénithal'],[14.5,'Plein soleil franc'],
+  [13.5,'Plein jour vif'],[12.5,'Plein jour doux'],
+  [11.5,'Jour gris et plat'],[10.5,'Jour sombre, ombre ouverte'],
+  [9.5,'Jour très sombre, sous-bois'],[8.5,'Fin de journée'],
+  [7.5,'Intérieur très éclairé, vitrine'],[6.5,'Bureau bien éclairé'],[5.5,'Salon éclairé'],
+  [4.5,'Rue de nuit bien éclairée'],[2.5,'Rue de nuit moyenne'],[0.5,'Éclairage public faible'],
+  [-1.5,'Crépuscule avancé'],[-4.5,'Pleine lune sur paysage'],[-7.5,'Quart de lune'],
+  [-99,'Nuit noire, ciel étoilé']
+];
+function situation(ev){
+  for(var i=0;i<SITUATIONS.length;i++){ if(ev >= SITUATIONS[i][0]) return SITUATIONS[i][1]; }
+  return '';
+}
+//</pure>
+
+/* ═══════════════════════════════════════════════════════════════
+   État
+   ═══════════════════════════════════════════════════════════════ */
+//<pure>
+function pick(arr, id){
+  for(var i=0;i<arr.length;i++){ if(arr[i].id === id) return arr[i]; }
+  return arr[0];
+}
+//</pure>
+var now = new Date();
+var tzAuto = -now.getTimezoneOffset() / 60;
+if([3,2,1,0,-5].indexOf(tzAuto) < 0) tzAuto = 2;
+var S = store.get('cellule.etat', null) || {};
+var defaults = {
+  ciel:'soleil', hmode:'calc', hauteur:45, obst:'ouvert', gains:{},
+  lieu:0, lat:42.30, lon:9.15, tz:tzAuto,
+  date: now.toISOString().slice(0,10),
+  heure: String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0'),
+  iso:100, vit:'iso', modele:'phys'
+};
+for(var k in defaults){ if(!(k in S)) S[k] = defaults[k]; }
+function save(){ store.set('cellule.etat', S); }
+
+//<pure>
+/* Table du document source : perte en diaphs = log2(sin h), pour le mode « grille mentale ». */
+var FLAT_H = [[90,0],[60,-0.2],[45,-0.5],[30,-1],[20,-1.5],[15,-2],[10,-2.5],[5,-3.5],[0,-6],[-3,-9],[-6,-12],[-9,-15],[-18,-24]];
+function hauteurFlat(h){
+  if(h >= 90) return 0;
+  for(var i=0;i<FLAT_H.length-1;i++){
+    var a = FLAT_H[i], b = FLAT_H[i+1];
+    if(h <= a[0] && h >= b[0]){
+      var f = (a[0]-h)/(a[0]-b[0]);
+      return a[1]*(1-f) + b[1]*f;
+    }
+  }
+  return -24;
+}
+//</pure>
+
+function hauteurCourante(){
+  if(S.hmode === 'vue') return S.hauteur;
+  var d = new Date(S.date + 'T12:00:00');
+  if(isNaN(d.getTime())) d = new Date();
+  var hm = (S.heure || '12:00').split(':');
+  var heureLegale = parseFloat(hm[0]) + parseFloat(hm[1] || 0)/60;
+  var n = dayOfYear(d);
+  var tsv = tempsSolaire(heureLegale, n, S.lon, S.tz);
+  return hauteurSoleil(S.lat, n, tsv);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Le calcul central
+   ═══════════════════════════════════════════════════════════════ */
+function calcul(){
+  var ciel = pick(CIEL, S.ciel);
+  var obst = pick(OBSTRUCTION, S.obst);
+  var h = hauteurCourante();
+  var evCiel, sunF, sky;
+
+  if(S.modele === 'phys'){
+    sky = eclairementCiel(h, ciel);
+    evCiel = sky.ev;
+    sunF = sky.soleil;
+  }else{
+    evCiel = 15 + ciel.flat + hauteurFlat(h);
+    sunF = ciel.dir > 0 ? 1 : 0;
+    sky = {total: ev2lux(evCiel), ev: evCiel, soleil: sunF, direct: 0, diffus: 0};
+  }
+
+  /* Un obstacle ne coupe que ce qui existe : sans soleil direct,
+     « ombre portée » ne veut plus rien dire, « sous-bois » si. */
+  var oStops = (S.modele === 'phys')
+    ? obst.dif + (obst.sun - obst.dif) * sunF
+    : obst.sun;
+
+  /* Une surface réverbérante rend surtout du soleil direct.
+     Par ciel couvert elle rend encore, mais nettement moins. */
+  var gScale = (S.modele === 'phys') ? (0.4 + 0.6 * sunF) : 1;
+  var gainList = [], gTotal = 0;
+  GAINS.forEach(function(g){
+    if(S.gains[g.id]){
+      var v = g.v * gScale;
+      gainList.push({g:g, v:v});
+      gTotal += v;
+    }
+  });
+
+  var evScene = evCiel + oStops + gTotal;
+  var evCam = evScene + log2(S.iso / 100);
+
+  return {
+    h:h, ciel:ciel, obst:obst, sky:sky, sunF:sunF,
+    oStops:oStops, gainList:gainList, gTotal:gTotal, gScale:gScale,
+    evCiel:evCiel, evScene:evScene, evCam:evCam
+  };
+}
+
+//<pure>
+function nearestAp(N){
+  var best = APERTURES[0], bd = Infinity;
+  for(var i=0;i<APERTURES.length;i++){
+    var d = Math.abs(log2(APERTURES[i]) - log2(N));
+    if(d < bd){ bd = d; best = APERTURES[i]; }
+  }
+  return best;
+}
+function couples(evCam){
+  var out = [];
+  for(var i=0;i<SHUTTERS.length;i++){
+    var t = SHUTTERS[i].t;
+    var N = Math.sqrt(Math.pow(2, evCam) * t);
+    if(N < 0.9 || N > 76) continue;
+    var near = nearestAp(N);
+    out.push({sh:SHUTTERS[i], N:N, near:near, err: -2*log2(near/N)});
+  }
+  return out;
+}
+/* Couple de référence pour la table maîtresse : on reste dans les ouvertures
+   qu'un objectif possède vraiment, et on s'écarte du 1/125 seulement s'il le faut. */
+function coupleTable(ev){
+  var rows = couples(ev).filter(function(r){ return r.near >= 2 && r.near <= 22; });
+  if(!rows.length) return coupleConseille(ev, 1/125);
+  var best = rows[0], bd = Infinity;
+  for(var i=0;i<rows.length;i++){
+    var d = Math.abs(log2(rows[i].sh.t * 125));
+    if(d < bd){ bd = d; best = rows[i]; }
+  }
+  return best;
+}
+function coupleConseille(evCam, tPref){
+  var rows = couples(evCam);
+  if(!rows.length) return null;
+  var best = rows[0], bd = Infinity;
+  for(var i=0;i<rows.length;i++){
+    var d = Math.abs(log2(rows[i].sh.t / tPref));
+    if(d < bd){ bd = d; best = rows[i]; }
+  }
+  return best;
+}
+//</pure>
+function vitessePreferee(iso){
+  if(S.vit === 'iso') return 1/iso;
+  return parseFloat(S.vit);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Listes d'options
+   ═══════════════════════════════════════════════════════════════ */
+function buildOpts(host, items, type, onPick){
+  host.innerHTML = '';
+  items.forEach(function(it){
+    var lab = document.createElement('label');
+    lab.className = 'opt';
+    var input = document.createElement('input');
+    input.type = type; input.name = host.id;
+    var s1 = document.createElement('span'); s1.className = 'lbl'; s1.textContent = it.nom;
+    var s2 = document.createElement('span'); s2.className = 'det'; s2.textContent = it.det || '';
+    var s3 = document.createElement('span'); s3.className = 'val';
+    lab.appendChild(input); lab.appendChild(s1); lab.appendChild(s2); lab.appendChild(s3);
+    lab._it = it; lab._val = s3; lab._in = input;
+    input.addEventListener('change', function(){ onPick(it); });
+    host.appendChild(lab);
+  });
+}
+function paintOpts(host, isOn, valueOf, isOff){
+  $$('.opt', host).forEach(function(lab){
+    var on = isOn(lab._it);
+    lab.classList.toggle('on', on);
+    lab.classList.toggle('off', !!(isOff && isOff(lab._it)));
+    lab._in.checked = on;
+    lab._val.textContent = valueOf ? valueOf(lab._it) : '';
+  });
+}
+
+function selectFrom(sel, items, label, value, current){
+  sel.innerHTML = '';
+  items.forEach(function(it, i){
+    var o = document.createElement('option');
+    o.value = value(it, i); o.textContent = label(it, i);
+    sel.appendChild(o);
+  });
+  sel.value = String(current);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Rendu — onglet Estimer
+   ═══════════════════════════════════════════════════════════════ */
+function ligne(tbody, titre, detail, valeur, cls){
+  var tr = document.createElement('tr');
+  if(cls) tr.className = cls;
+  var td1 = document.createElement('td');
+  td1.appendChild(document.createTextNode(titre));
+  if(detail){
+    var sp = document.createElement('span'); sp.className = 'det'; sp.textContent = detail;
+    td1.appendChild(sp);
+  }
+  var td2 = document.createElement('td');
+  if(typeof valeur === 'string'){ td2.textContent = valeur; }
+  else{
+    td2.textContent = sgn(valeur);
+    td2.className = valeur > 0.05 ? 'pos' : valeur < -0.05 ? 'neg' : '';
+  }
+  tr.appendChild(td1); tr.appendChild(td2);
+  tbody.appendChild(tr);
+  return tr;
+}
+
+function renderEstimer(){
+  var c = calcul();
+
+  /* --- affichage principal --- */
+  $('#r-ev').textContent = fmt(c.evScene, 1);
+  var L = luminance(ev2lux(c.evScene), GRIS);
+  $('#r-side').innerHTML =
+    '<b>Niveau — ' + situation(c.evScene).toLowerCase() + '</b><br>' +
+    fmtLux(ev2lux(c.evScene)) + ' sur le sujet · ' +
+    fmt(L, L < 10 ? 2 : 0) + ' cd/m² pour un gris 18 %<br>' +
+    'Soleil à ' + fmt(c.h, 1) + '°';
+
+  /* --- réglage conseillé --- */
+  var tPref = vitessePreferee(S.iso);
+  var best = coupleConseille(c.evCam, tPref);
+  if(best){
+    $('#r-setting').textContent = 'f/' + (best.near % 1 ? fmt(best.near,1) : best.near) + ' · ' + best.sh.l;
+    var notes = [];
+    notes.push('Exact : f/' + fmt(best.N, 1) + ' — l’arrondi au diaph plein coûte ' + stopsLabel(best.err) + ' de diaph.');
+    if(best.sh.t >= 1) notes.push('Au-delà de 1 s, le défaut de réciprocité du film mange encore ⅓ à 1 diaph : ouvre ou rallonge.');
+    else if(best.sh.t > 1/30) notes.push('Plus lent que 1/30 : trépied, ou cale-toi contre quelque chose.');
+    $('#r-note').innerHTML = notes.join('<br>');
+    $('#r-cap').textContent = 'Réglage conseillé — ' + S.iso + ' ISO';
+  }else{
+    $('#r-setting').textContent = 'Hors de portée';
+    $('#r-note').textContent = 'Aucun couple standard ne couvre EV ' + fmt(c.evCam,1) + ' à ' + S.iso + ' ISO. Monte en sensibilité ou ouvre davantage.';
+    $('#r-cap').textContent = 'Réglage conseillé';
+  }
+
+  /* --- la chaîne --- */
+  var tb = $('#r-chain'); tb.innerHTML = '';
+  var detCiel = c.ciel.nom.toLowerCase() + ' · soleil à ' + fmt(c.h, 1) + '°';
+  ligne(tb, 'Lumière du ciel', detCiel, 'EV ' + fmt(c.evCiel, 1));
+  if(Math.abs(c.evCiel - 15) > 0.05){
+    ligne(tb, '', 'soit ' + sgn(c.evCiel - 15) + ' par rapport au Sunny 16', '', 'muted');
+  }
+  if(Math.abs(c.oStops) > 0.02 || c.obst.id !== 'ouvert'){
+    var dObst = c.obst.det;
+    if(S.modele === 'phys' && c.sunF < 0.85 && c.obst.id !== 'ouvert'){
+      dObst += ' · atténué, il ne reste que ' + Math.round(c.sunF*100) + ' % de soleil direct à couper';
+    }
+    ligne(tb, c.obst.nom, dObst, c.oStops);
+  }
+  c.gainList.forEach(function(x){
+    var d = (S.modele === 'phys' && c.gScale < 0.9) ? fmt(x.g.v,2) + ' × ' + fmt(c.gScale,2) + ' (peu de soleil direct)' : '';
+    ligne(tb, x.g.nom, d, x.v);
+  });
+  ligne(tb, 'Scène', situation(c.evScene), 'EV ' + fmt(c.evScene, 1), 'rule tot');
+  if(S.iso !== 100) ligne(tb, S.iso + ' ISO', 'EV = EV₁₀₀ + log₂(ISO/100)', log2(S.iso/100));
+  ligne(tb, 'Appareil', 'ce que doit lire ton couple diaph/vitesse', 'EV ' + fmt(c.evCam, 1), 'rule tot');
+
+  $('#r-chain-note').textContent = (S.modele === 'phys')
+    ? 'Les termes s’additionnent en diaphs, jamais en pourcentages — c’est tout l’intérêt du log₂.'
+    : 'Mode grille mentale : facteurs bruts, exactement ce que tu calcules de tête. Aucune atténuation croisée.';
+
+  /* --- couples équivalents --- */
+  var rows = couples(c.evCam);
+  var html = '<tr><th>Vitesse</th><th class="num">Diaph exact</th><th class="num">Diaph réel</th><th class="num">Écart</th></tr>';
+  rows.forEach(function(r){
+    var hi = best && r.sh.l === best.sh.l ? ' class="hi"' : '';
+    html += '<tr' + hi + '><td>' + r.sh.l + '</td><td class="num">f/' + fmt(r.N,1) +
+            '</td><td class="num">f/' + (r.near % 1 ? fmt(r.near,1) : r.near) +
+            '</td><td class="num">' + stopsLabel(r.err) + '</td></tr>';
+  });
+  $('#r-equiv').innerHTML = html;
+
+  /* --- repeindre les listes, valeurs à jour --- */
+  paintOpts($('#f-ciel'), function(it){ return it.id === S.ciel; }, function(it){
+    var ev = (S.modele === 'phys') ? eclairementCiel(c.h, it).ev : 15 + it.flat + hauteurFlat(c.h);
+    return 'EV ' + fmt(ev, 1);
+  });
+  paintOpts($('#f-hauteur'), function(it){ return Math.abs(it.h - S.hauteur) < 0.01; }, function(it){
+    var ev = (S.modele === 'phys') ? eclairementCiel(it.h, c.ciel).ev : 15 + c.ciel.flat + hauteurFlat(it.h);
+    return sgn(ev - 15);
+  });
+  paintOpts($('#f-obst'), function(it){ return it.id === S.obst; }, function(it){
+    var v = (S.modele === 'phys') ? it.dif + (it.sun - it.dif) * c.sunF : it.sun;
+    return v ? sgn(v) : '—';
+  }, function(it){
+    var v = (S.modele === 'phys') ? it.dif + (it.sun - it.dif) * c.sunF : it.sun;
+    return it.id !== 'ouvert' && Math.abs(v) < 0.1;
+  });
+  paintOpts($('#f-gains'), function(it){ return !!S.gains[it.id]; }, function(it){
+    return sgn(it.v * c.gScale);
+  });
+  paintOpts($('#f-hmode'), function(it){ return it.id === S.hmode; });
+
+  /* --- panneau solaire --- */
+  var d = new Date(S.date + 'T12:00:00');
+  if(!isNaN(d.getTime())){
+    var n = dayOfYear(d);
+    var midi = midiSolaire(n, S.lon, S.tz);
+    var hMidi = hauteurSoleil(S.lat, n, 12);
+    var hh = Math.floor(midi), mm = Math.round((midi - hh) * 60);
+    if(mm === 60){ hh++; mm = 0; }
+    $('#r-solaire').textContent =
+      'Midi solaire à ' + hh + 'h' + String(mm).padStart(2,'0') + ' heure légale · ' +
+      'déclinaison ' + sgn(declinaison(n)) + '° · ' +
+      'le soleil culmine à ' + fmt(hMidi, 1) + '° aujourd’hui · ' +
+      'à l’heure indiquée il est à ' + fmt(c.h, 1) + '°.';
+  }
+  $('#r-modele-note').textContent = (S.modele === 'phys')
+    ? 'Le modèle physique tient compte de la masse d’air et de la part de ciel diffus : sous 15° la chute est bien plus raide que le simple sin(h), et par temps couvert la hauteur du soleil compte beaucoup moins.'
+    : 'La grille mentale reprend les facteurs plats du document de référence. C’est ce que tu peux calculer de tête ; l’écart avec le modèle physique te dit où l’approximation lâche.';
+
+  $('#pan-calc').hidden = (S.hmode !== 'calc');
+  $('#pan-vue').hidden  = (S.hmode === 'calc');
+  return c;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Rendu — onglet Convertir
+   ═══════════════════════════════════════════════════════════════ */
+function renderConvertir(){
+  var ev  = parseFloat($('#c-ev').value);
+  var iso = parseFloat($('#c-iso').value);
+  var nd  = parseFloat($('#c-nd').value);
+  if(!isFinite(ev)) ev = 15;
+
+  /* Un ND retire de la lumière : l'appareil doit être réglé plus bas d'autant. */
+  var evCam = ev + log2(iso/100) - nd;
+  $('#c-evcam').textContent = fmt(evCam, 1);
+  var L = luminance(ev2lux(ev), GRIS);
+  $('#c-side').innerHTML =
+    '<b>' + situation(ev) + '</b><br>' +
+    fmtLux(ev2lux(ev)) + ' incident · ' + fmt(L, L < 10 ? 2 : 0) + ' cd/m² sur un gris 18 %' +
+    (nd ? '<br>' + nd + ' diaph' + (nd>1?'s':'') + ' avalés par le filtre' : '');
+
+  var rows = couples(evCam);
+  var html = '<tr><th>Vitesse</th><th class="num">Diaph exact</th><th class="num">Diaph réel</th><th class="num">Écart</th></tr>';
+  if(!rows.length){
+    html += '<tr><td colspan="4">Aucun couple standard ne couvre cet EV.</td></tr>';
+  }
+  rows.forEach(function(r){
+    html += '<tr><td>' + r.sh.l + '</td><td class="num">f/' + fmt(r.N,1) +
+            '</td><td class="num">f/' + (r.near % 1 ? fmt(r.near,1) : r.near) +
+            '</td><td class="num">' + stopsLabel(r.err) + '</td></tr>';
+  });
+  $('#c-table').innerHTML = html;
+  var lents = rows.filter(function(r){ return r.sh.t >= 1; });
+  $('#c-recip').textContent = lents.length
+    ? 'Les poses d’une seconde et plus sont sujettes au défaut de réciprocité : sur film, compte ⅓ à 1 diaph de plus à 10 s, davantage encore au-delà. Le numérique n’en souffre pas.'
+    : '';
+}
+
+function renderConvertir2(){
+  var N   = parseFloat($('#c2-n').value);
+  var t   = parseFloat($('#c2-t').value);
+  var iso = parseFloat($('#c2-iso').value);
+  var evCam = log2(N*N / t);
+  var ev100 = evCam - log2(iso/100);
+  $('#c2-out').innerHTML =
+    'f/' + (N % 1 ? fmt(N,1) : N) + ' à ' + (t >= 1 ? fmt(t,0) + ' s' : '1/' + Math.round(1/t)) +
+    ' → <b>EV appareil ' + fmt(evCam,1) + '</b>, soit <b>EV₁₀₀ ' + fmt(ev100,1) + '</b> à ' + iso + ' ISO.<br>' +
+    'Cela suppose une scène à ' + fmtLux(ev2lux(ev100)) + ' — ' + situation(ev100).toLowerCase() + '.';
+}
+
+function renderOmbre(){
+  var ratio = parseFloat($('#s-ratio').value);
+  $('#s-ratio-v').textContent = fmt(ratio, 2);
+  var h = deg(Math.atan(1/ratio));
+  var evPur = eclairementCiel(h, CIEL[0]).ev;
+  var sinPur = hauteurFlat(h);
+  $('#s-out').innerHTML =
+    'Ombre ' + fmt(ratio,2) + ' × la hauteur → <b>soleil à ' + fmt(h,1) + '°</b>.<br>' +
+    'Ciel pur : <b>EV ' + fmt(evPur,1) + '</b>, soit ' + sgn(evPur - 15) + ' par rapport au Sunny 16.<br>' +
+    'La table en log₂(sin h) du document annoncerait ' + sgn(sinPur) + ' — ' +
+    (Math.abs(evPur - 15 - sinPur) < 0.25
+      ? 'les deux concordent à cette hauteur.'
+      : 'l’écart vient de la masse d’air traversée, que le sinus seul ignore.');
+}
+
+function renderZone(){
+  var mat  = MATIERES[parseInt($('#z-mat').value, 10)];
+  var lect = parseFloat($('#z-lect').value);
+  var zi   = parseInt($('#z-zone').value, 10);
+  var zone = ZONES[zi];
+  var dEV  = log2(mat.rho / GRIS);
+  var zNat = 5 + dEV;
+  if(!isFinite(lect)) lect = 15;
+  var evExpo = lect - (zone.d);
+  var sens = zone.d > 0 ? 'ouvrir' : zone.d < 0 ? 'fermer' : 'ne rien changer';
+  $('#z-out').innerHTML =
+    '<b>' + mat.nom + '</b> — ρ = ' + fmt(mat.rho, 3) + ', soit ' + sgn(dEV) + ' diaph par rapport au gris 18 %.<br>' +
+    'Sa place naturelle dans l’échelle : <b>zone ' + (ZONES[Math.round(clamp(zNat,0,9))] || ZONES[5]).z +
+    '</b> (' + fmt(zNat, 1) + ').<br><br>' +
+    'Une lecture spot de <b>EV ' + fmt(lect,1) + '</b> sur cette matière la rendrait en zone V, gris moyen. ' +
+    'Pour la placer en <b>zone ' + zone.z + '</b> — ' + zone.r.toLowerCase() + ' — règle l’appareil sur <b>EV ' + fmt(evExpo,1) + '</b>, ' +
+    'c’est-à-dire ' + sens + ' de ' + fmt(Math.abs(zone.d),0) + ' diaph par rapport à la lecture.<br><br>' +
+    '<span style="color:var(--ink3)">Le piège classique de la neige tient tout entier là : le spot lit ' + sgn(log2(0.85/GRIS)) +
+    ' de trop, tu suis la lecture, et la neige sort grise.</span>';
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Rendu — onglet Entraîner
+   ═══════════════════════════════════════════════════════════════ */
+function journal(){ return store.get('cellule.journal', []); }
+function setJournal(j){ store.set('cellule.journal', j); }
+
+function statCard(k, v, u){
+  return '<div class="stat"><div class="k">' + k + '</div><div class="v">' + v + '</div><div class="u">' + (u||'') + '</div></div>';
+}
+
+function renderJournal(){
+  var j = journal();
+  var host = $('#j-stats');
+  if(!j.length){
+    host.innerHTML = '<div class="stat" style="grid-column:1/-1"><div class="k">Journal vide</div>' +
+      '<div class="u" style="margin-top:4px">Annonce, mesure, enregistre. Une dizaine d’entrées suffisent déjà à faire sortir un biais.</div></div>';
+    $('#j-bytype').innerHTML = '';
+    $('#j-list').innerHTML = '';
+    return;
+  }
+  var ecarts = j.map(function(e){ return e.a - e.m; });
+  var n = ecarts.length;
+  var biais = ecarts.reduce(function(s,x){ return s+x; }, 0) / n;
+  var abs   = ecarts.reduce(function(s,x){ return s+Math.abs(x); }, 0) / n;
+  var dansD = ecarts.filter(function(x){ return Math.abs(x) <= 0.5; }).length / n * 100;
+  var dans1 = ecarts.filter(function(x){ return Math.abs(x) <= 1; }).length / n * 100;
+
+  host.innerHTML =
+    statCard('Entrées', n, n < 10 ? 'encore un peu court' : 'échantillon utile') +
+    statCard('Biais moyen', sgn(biais), biais > 0.3 ? 'tu surestimes la lumière' : biais < -0.3 ? 'tu la sous-estimes' : 'pas de biais net') +
+    statCard('Erreur absolue', fmt(abs) , 'diaph en moyenne') +
+    statCard('Dans ±½ diaph', Math.round(dansD) + ' %', 'objectif : 70 %') +
+    statCard('Dans ±1 diaph', Math.round(dans1) + ' %', 'objectif : 95 %');
+
+  /* Biais par type de scène : c'est là que se cache l'erreur systématique. */
+  var byType = {};
+  j.forEach(function(e){
+    if(!byType[e.t]) byType[e.t] = [];
+    byType[e.t].push(e.a - e.m);
+  });
+  var html = '<h3 style="margin-top:18px">Où ton œil se trompe</h3><div class="tw"><table class="data">' +
+             '<tr><th>Type de scène</th><th class="num">n</th><th class="num">Biais</th><th>Lecture</th></tr>';
+  Object.keys(byType).sort().forEach(function(t){
+    var arr = byType[t];
+    var b = arr.reduce(function(s,x){ return s+x; }, 0) / arr.length;
+    var verdict = arr.length < 4 ? 'trop peu d’entrées'
+      : b > 0.5 ? 'tu ouvres trop peu — tu sous-exposes'
+      : b < -0.5 ? 'tu ouvres trop — tu surexposes'
+      : 'calé';
+    html += '<tr><td>' + t + '</td><td class="num">' + arr.length + '</td><td class="num">' + sgn(b) +
+            '</td><td style="white-space:normal;color:var(--ink3)">' + verdict + '</td></tr>';
+  });
+  html += '</table></div>';
+  $('#j-bytype').innerHTML = html;
+
+  var lh = '<tr><th>Date</th><th>Scène</th><th class="num">Annoncé</th><th class="num">Mesuré</th><th class="num">Écart</th><th></th></tr>';
+  j.slice(-30).reverse().forEach(function(e){
+    lh += '<tr><td>' + e.d + '</td><td>' + e.t + '</td><td class="num">' + fmt(e.a) + '</td><td class="num">' + fmt(e.m) +
+          '</td><td class="num">' + sgn(e.a - e.m) + '</td><td><button class="btn sm" data-del="' + e.id + '">✕</button></td></tr>';
+  });
+  $('#j-list').innerHTML = lh;
+  $$('#j-list [data-del]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var id = b.getAttribute('data-del');
+      setJournal(journal().filter(function(e){ return String(e.id) !== id; }));
+      renderJournal();
+    });
+  });
+}
+
+/* --- Entraînement à blanc --- */
+var quizCourant = null;
+function tirer(arr){ return arr[Math.floor(Math.random() * arr.length)]; }
+function nouveauQuiz(){
+  var ciel = tirer(CIEL);
+  var haut = tirer(HAUTEURS.filter(function(x){ return ciel.dir > 0 ? x.h > 0 : x.h > 5; }));
+  var obst = tirer(OBSTRUCTION);
+  var gains = [];
+  if(Math.random() < 0.45) gains.push(tirer(GAINS));
+  if(Math.random() < 0.15) gains.push(tirer(GAINS));
+
+  var sky = eclairementCiel(haut.h, ciel);
+  var sunF = sky.soleil;
+  var gScale = 0.4 + 0.6 * sunF;
+  var ev = sky.ev + (obst.dif + (obst.sun - obst.dif) * sunF);
+  var uniques = {};
+  gains.forEach(function(g){
+    if(uniques[g.id]) return;
+    uniques[g.id] = 1;
+    ev += g.v * gScale;
+  });
+
+  var txt = ciel.nom + ', ' + ciel.det + '. ';
+  txt += (haut.h <= 0)
+    ? haut.nom + ' : ' + haut.det + '. '
+    : (ciel.dir > 0
+        ? 'Le soleil est à ' + haut.h + '° — ' + haut.det + '. '
+        : 'Derrière la couche, le soleil est à ' + haut.h + '° au-dessus de l’horizon. ');
+  txt += (obst.id === 'ouvert') ? 'Ton sujet est en terrain ouvert. '
+                                : 'Ton sujet est ' + obst.nom.toLowerCase() + ' — ' + obst.det + '. ';
+  var gnames = Object.keys(uniques).map(function(id){ return pick(GAINS, id).nom.toLowerCase(); });
+  if(gnames.length) txt += 'Autour : ' + gnames.join(', ') + '. ';
+
+  quizCourant = {txt:txt, ev:ev};
+  $('#q-scene').textContent = txt;
+  $('#q-rep').value = '';
+  $('#q-out').textContent = '';
+}
+function verifierQuiz(){
+  if(!quizCourant) return;
+  var r = parseFloat($('#q-rep').value);
+  if(!isFinite(r)){ $('#q-out').textContent = 'Annonce un chiffre d’abord.'; return; }
+  var err = r - quizCourant.ev;
+  var verdict = Math.abs(err) <= 0.5 ? '<span class="chip ok">dans la cible</span>'
+              : Math.abs(err) <= 1   ? '<span class="chip">à un diaph près</span>'
+                                     : '<span class="chip warn">à revoir</span>';
+  var tPref = 1/100;
+  var best = coupleConseille(quizCourant.ev, tPref);
+  $('#q-out').innerHTML = verdict + ' Réponse : <b>EV ' + fmt(quizCourant.ev,1) + '</b>, tu as dit ' + fmt(r,1) +
+    ' — écart de ' + sgn(err) + ' diaph.' +
+    (best ? '<br>Sur le terrain à 100 ISO : ' + best.sh.l + ' à f/' + fmt(best.N,1) + '.' : '');
+
+  var st = store.get('cellule.quiz', {n:0, sum:0, abs:0, ok:0});
+  st.n++; st.sum += err; st.abs += Math.abs(err);
+  if(Math.abs(err) <= 0.5) st.ok++;
+  store.set('cellule.quiz', st);
+  renderQuizStats();
+}
+function renderQuizStats(){
+  var st = store.get('cellule.quiz', {n:0, sum:0, abs:0, ok:0});
+  if(!st.n){ $('#q-stats').innerHTML = ''; return; }
+  $('#q-stats').innerHTML =
+    statCard('Scènes', st.n, '') +
+    statCard('Biais', sgn(st.sum/st.n), 'sur l’ensemble') +
+    statCard('Erreur absolue', fmt(st.abs/st.n), 'diaph') +
+    statCard('Dans ±½', Math.round(st.ok/st.n*100) + ' %', '');
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Rendu — onglet Tables
+   ═══════════════════════════════════════════════════════════════ */
+function dataTable(cols, rows){
+  var h = '<div class="tw"><table class="data"><tr>';
+  cols.forEach(function(c){ h += '<th' + (c.num ? ' class="num"' : '') + '>' + c.t + '</th>'; });
+  h += '</tr>';
+  rows.forEach(function(r){
+    var cls = r.hi ? ' class="hi"' : '';
+    var cells = r.cells || r;
+    h += '<tr' + cls + '>';
+    cells.forEach(function(v, i){ h += '<td' + (cols[i] && cols[i].num ? ' class="num"' : '') + '>' + v + '</td>'; });
+    h += '</tr>';
+  });
+  return h + '</table></div>';
+}
+function carte(titre, hint, corps){
+  return '<div class="card"><h2>' + titre + '</h2>' +
+         (hint ? '<p class="hint tight">' + hint + '</p>' : '') + corps + '</div>';
+}
+
+function renderTables(){
+  var out = '';
+
+  /* --- 1. table maîtresse, entièrement calculée --- */
+  var rows = [];
+  [16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0,-2,-3,-4,-6].forEach(function(ev){
+    var best = coupleTable(ev);
+    rows.push({
+      hi: ev === 15,
+      cells: [
+        String(ev).replace('-', '−'),
+        best ? 'f/' + (best.near % 1 ? fmt(best.near,1) : best.near) + ' · ' + best.sh.l : '—',
+        situation(ev),
+        fmtLux(ev2lux(ev)),
+        fmtAuto(ev2cdm2(ev))
+      ]
+    });
+  });
+  out += carte('La table maîtresse — 100 ISO',
+    'Trois colonnes pour la même chose : ce qui arrive sur la scène, ce qui en repart vers l’objectif, ce que tu affiches sur l’appareil. Sunny 16 est la ligne EV 15.',
+    dataTable([{t:'EV₁₀₀',num:true},{t:'Réglage type'},{t:'Situation'},{t:'Incident',num:true},{t:'cd/m²',num:true}], rows));
+
+  /* --- 2. facteurs cumulables --- */
+  var fc = [];
+  CIEL.forEach(function(c){ if(c.flat) fc.push(['Ciel — ' + c.nom.toLowerCase(), c.det, sgn(c.flat)]); });
+  OBSTRUCTION.forEach(function(o){ if(o.sun) fc.push(['Obstacle — ' + o.nom.toLowerCase(), o.det, sgn(o.sun)]); });
+  GAINS.forEach(function(g){ fc.push(['Renvoi — ' + g.nom.toLowerCase(), '', sgn(g.v)]); });
+  out += carte('Les facteurs cumulables',
+    'Départ : plein soleil, soleil haut, terrain ouvert, sujet à ρ = 0,18 → EV₁₀₀ 15, soit f/16 au 1/ISO. Tout le reste s’ajoute et se retranche <em>en diaphs</em>, jamais en pourcentages.',
+    dataTable([{t:'Facteur'},{t:'Signe distinctif'},{t:'Diaphs',num:true}], fc));
+
+  /* --- 3. hauteur du soleil : les deux modèles face à face --- */
+  var hs = [];
+  [90,75,60,45,30,20,15,10,5,2,0,-3,-6].forEach(function(h){
+    var phys = eclairementCiel(h, CIEL[0]).ev - 15;
+    hs.push([h + '°', h > 0 ? fmt(Math.sin(rad(h)), 2) : '—',
+             h > 0 ? sgn(hauteurFlat(h)) : '—', sgn(phys),
+             h > 0 ? fmtLux(eclairementCiel(h, CIEL[0]).total) : fmtLux(luxCrepuscule(h))]);
+  });
+  out += carte('Hauteur du soleil — sinus contre atmosphère',
+    'La colonne log₂(sin h) est celle du document de référence. Elle est juste tant que le soleil est haut, et de plus en plus fausse en descendant : sous 15°, l’épaisseur d’atmosphère traversée ajoute une extinction que le sinus ignore complètement. C’est cet écart qui rend la golden hour si rapide à basculer.',
+    dataTable([{t:'Hauteur',num:true},{t:'sin(h)',num:true},{t:'log₂(sin h)',num:true},{t:'Modèle réel',num:true},{t:'Éclairement',num:true}], hs));
+
+  /* --- 4. réflectances --- */
+  out += carte('Réflectances',
+    'L’écart au gris 18 % vaut log₂(ρ / 0,18). Attention à l’eau : sa réflectance <em>diffuse</em> est très basse (0,06), mais sa composante spéculaire approche 1,0. Une rivière au soleil rasant renvoie donc à la fois presque rien et presque tout — d’où sa dynamique énorme, et le piège qu’elle tend à toute cellule moyenne.',
+    dataTable([{t:'Matière'},{t:'ρ',num:true},{t:'Écart au gris',num:true},{t:'Zone naturelle',num:true}],
+      MATIERES.map(function(m){
+        var d = log2(m.rho / GRIS);
+        var z = ZONES[Math.round(clamp(5 + d, 0, 9))];
+        return {hi: m.rho === 0.18, cells:[m.nom, fmt(m.rho,3), stopsLabel(d), z ? z.z : '—']};
+      })));
+
+  /* --- 5. zones --- */
+  out += carte('Le zone system',
+    'Une zone = un diaph. La zone V est ce que donne toute cellule, quelle que soit la matière visée. Usage de terrain : spot sur l’ombre la plus sombre où tu veux encore de la matière, place-la en zone III — donc ferme de 2 diaphs par rapport à la lecture — et vérifie que les hautes lumières restent sous la zone VIII.',
+    dataTable([{t:'Zone'},{t:'Écart',num:true},{t:'Rendu'},{t:'Réflectance',num:true}],
+      ZONES.map(function(z){
+        return {hi: z.d === 0, cells:[z.z, sgn(z.d, 0), z.r, fmt(GRIS * Math.pow(2, z.d) * 100, 1) + ' %']};
+      })));
+
+  /* --- 6. ISO --- */
+  out += carte('Compensation ISO',
+    'EV<sub>réel</sub> = EV₁₀₀ + log₂(ISO / 100). À 400 ISO, Sunny 16 devient EV 17 — f/16 au 1/500.',
+    dataTable([{t:'ISO',num:true},{t:'Décalage',num:true},{t:'Sunny 16 devient'}],
+      ISOS.map(function(i){
+        var b = coupleConseille(15 + log2(i/100), 1/i);
+        return {hi: i === 100, cells:[i, sgn(log2(i/100), 0), b ? 'f/' + b.near + ' · ' + b.sh.l : '—']};
+      })));
+
+  /* --- 7. ND + ciné --- */
+  out += carte('Filtres neutres et vitesse verrouillée',
+    'Règle des 180° : t = 1 / (2 × fps). La vitesse étant fixée, il ne reste que l’ouverture, l’EI et les ND pour tenir l’exposition.',
+    dataTable([{t:'Filtre'},{t:'Diaphs',num:true}], NDS.filter(function(n){ return n.v; }).map(function(n){ return [n.l, n.v]; })) +
+    dataTable([{t:'Cadence'},{t:'Obturation'},{t:'Plein soleil, 800 EI'}], [
+      ['24 fps','1/48','f/64'],['25 fps','1/50','f/64'],['30 fps','1/60','f/64'],
+      ['50 fps','1/100','f/45'],['60 fps','1/120','f/45']
+    ]) +
+    '<p class="note"><b>Le cas qui fait acheter des ND.</b> 25 fps, 800 EI, plein soleil : EV 15 à 100 ISO devient EV 18 à 800. À 1/50 il faudrait <b>f/64</b>. Un ND 1,2 (4 diaphs) te ramène à f/18, un ND 1,8 (6 diaphs) à f/9. C’est exactement pourquoi les roues internes ou les ND variables sont indispensables en extérieur jour.</p>');
+
+  /* --- 8. dynamique --- */
+  out += carte('Plage dynamique — supports et scènes',
+    'Quand l’amplitude de la scène dépasse la plage du support, tu ne « rates » pas l’exposition : tu <em>choisis</em> ce que tu sacrifies. C’est une décision, pas une erreur.',
+    dataTable([{t:'Support'},{t:'Diaphs exploitables',num:true}], [
+      ['Œil, adaptation locale instantanée','10–14'],['Œil, adaptation complète','20–24'],
+      ['Caméra ciné haut de gamme','~17'],['Capteur plein format récent','13–15'],
+      ['Négatif couleur (Portra, Ultramax)','13–14'],['Négatif N&amp;B (Tri-X, HP5)','12–13'],
+      ['Diapositive, inversible','5–6'],['Rec.709, écran SDR','~6'],['Tirage papier','~7']
+    ]) +
+    dataTable([{t:'Scène'},{t:'Amplitude',num:true}], [
+      ['Plein soleil, ombres dures','8–11'],['Soleil voilé','6–8'],['Couvert uniforme','3–5'],
+      ['Intérieur avec fenêtre','10–14'],['Nuit urbaine avec sources','12–16']
+    ]) +
+    dataTable([{t:'Négatif couleur — écart'},{t:'Résultat'}], [
+      ['−2 diaphs','Ombres bouchées, grain marqué, récupérable de justesse'],
+      ['−1 diaph','Correct, contraste un peu sec'],
+      ['Nominal','Optimal'],
+      ['+1 à +2 diaphs','Souvent <b>meilleur</b> — grain plus fin, ombres ouvertes'],
+      ['+3 diaphs','Toujours exploitable, hautes lumières qui se tassent'],
+      ['+4 à +5 diaphs','Densité forte, mais l’information est encore là']
+    ]) +
+    '<p class="note"><b>D’où la règle de terrain : en cas de doute avec du négatif, surexpose.</b> L’asymétrie est réelle et large. Avec de l’inversible ou du numérique en log, c’est exactement l’inverse — l’écrêtage des hautes lumières est définitif.</p>');
+
+  /* --- 9. perception --- */
+  var perc = [100, 90, 75, 60, 50, 40, 25, 10].map(function(Ls){
+    var Y = Math.pow((Ls + 16) / 116, 3);
+    return {hi: Ls === 50, cells:[Ls, fmt(Y * 100, 1) + ' %', Y > 0 ? stopsLabel(log2(Y / GRIS)) : '—']};
+  });
+  out += carte('Perception contre physique',
+    'La clarté perçue suit une racine cubique de la luminance : L* = 116 × Y<sup>⅓</sup> − 16. Applique-la à 18 % et tu tombes sur 49,5 — <b>une surface qui ne renvoie que 18 % de la lumière est perçue exactement à mi-chemin entre le noir et le blanc</b>. Le gris moyen n’est pas 50 % de réflectance, il est 50 % de clarté perçue.',
+    dataTable([{t:'Clarté perçue L*',num:true},{t:'Réflectance réelle',num:true},{t:'Écart au gris 18 %',num:true}], perc) +
+    '<p class="note">Regarde les écarts : passer de 25 à 50 de clarté perçue coûte <b>2 diaphs</b>, mais passer de 50 à 75 n’en coûte que <b>1,4</b>. La perception compresse les hautes lumières et dilate les ombres. C’est pour ça qu’un ciel cramé se voit immédiatement alors qu’une ombre bouchée passe inaperçue à l’œil et explose à l’image — et c’est aussi pourquoi les courbes de transfert existent : elles allouent les bits selon la perception, pas selon la physique.</p>');
+
+  /* --- 10. encodages --- */
+  out += carte('Où tombe le gris moyen selon l’encodage',
+    'Règle unique : on utilise toujours la valeur de l’espace dans lequel on se trouve <em>à cet instant du pipeline</em>. Après une conversion, c’est la valeur du nouvel espace qui compte.',
+    dataTable([{t:'Encodage'},{t:'Gris moyen',num:true},{t:'IRE',num:true}], [
+      ['Linéaire (scene-referred)','0,18','—'],['sRGB','0,46','46 %'],['Gamma 2,4 pur','0,489','49 %'],
+      {hi:true, cells:['Rec.709 (OETF caméra)','0,409','41 %']},
+      ['ARRI LogC3','0,391','39 %'],['ARRI LogC4','0,28','28 %'],['Sony S-Log3','0,411','41 %'],
+      ['Panasonic V-Log','0,423','42 %'],['Canon Log 2','0,398','40 %'],['Canon Log 3','0,343','34 %'],
+      ['RED Log3G10','0,333','33 %'],['Blackmagic Film Gen5','0,466','47 %'],
+      ['DaVinci Wide Gamut / Intermediate','0,336','34 %']
+    ]) +
+    '<p class="hint">Repères en Rec.709 : blancs texturés vers 80–90 IRE, peau claire 55–70, peau moyenne 45–55, ombres vers 20.</p>');
+
+  /* --- 11. carré inverse --- */
+  out += carte('Lumière artificielle — loi du carré inverse',
+    'E = I / d². Plus la source est <em>proche</em>, plus la chute est brutale entre le sujet et le fond. Source lointaine = éclairement quasi uniforme sur toute la profondeur. C’est l’outil principal pour régler le rapport sujet/décor sans toucher aux projecteurs du fond.',
+    dataTable([{t:'Rapport de distance'},{t:'Écart',num:true}], [
+      ['×1,4','−1 diaph'],['×2','−2 diaphs'],['×2,8','−3 diaphs'],['×4','−4 diaphs']
+    ]) +
+    '<p class="hint">Ratios d’éclairage classiques : 2:1 = 1 diaph d’écart key/fill · 4:1 = 2 diaphs · 8:1 = 3 diaphs.</p>');
+
+  /* --- 12. les six relations --- */
+  out += carte('Les six relations à retenir par cœur', '',
+    '<div class="formula">1.  L = E × ρ / π                 luminance depuis éclairement et matière\n' +
+    '2.  EV₁₀₀ = log₂(E / 2,5)         éclairement incident → EV\n' +
+    '3.  EV₁₀₀ = log₂(L / 0,125)       luminance réfléchie → EV\n' +
+    '4.  EV = log₂(N² / t)             réglages → EV\n' +
+    '5.  ΔEV = log₂(ρ / 0,18)          correction de réflectance\n' +
+    '6.  L* = 116 × Y^⅓ − 16           luminance physique → clarté perçue</div>' +
+    '<p class="note">Les cinq premières font le lien entre le monde et l’appareil. La sixième fait le lien entre le monde et ton œil — c’est celle qui explique pourquoi ton intuition et ton posemètre ne sont jamais tout à fait d’accord.</p>');
+
+  /* --- 13. réserves --- */
+  out += carte('Ce que ces chiffres ne disent pas', '',
+    '<p class="hint"><b>C = 250 et K = 12,5 ne sont pas exactement cohérents entre eux.</b> Un éclairement de 82 000 lx donne EV 15,0 par la voie incidente ; le même éclairement sur un gris 18 % donne 4 700 cd/m², soit EV 15,2 par la voie réfléchie. Cet écart de 0,2 diaph est structurel, pas une erreur de calcul : la cohérence exigerait C = K·π/ρ ≈ 218. Négligeable en pratique, bon à savoir quand deux cellules ne tombent pas d’accord. Certains fabricants utilisent d’ailleurs C = 320 (dôme hémisphérique) ou K = 14 (Minolta, Pentax).</p>' +
+    '<p class="hint"><b>Les réflectances sont des médianes.</b> Elles varient avec l’humidité, l’angle d’incidence, la saison et l’état de surface. De l’herbe sèche perd facilement 0,10 sur de l’herbe verte irriguée ; de l’asphalte mouillé chute vers 0,05.</p>' +
+    '<p class="hint"><b>Le modèle atmosphérique suppose un ciel clair et propre.</b> Brume de chaleur, poussière, fumée d’incendie, pollution : chacune retire de ½ à 2 diaphs sans prévenir, et l’œil s’y adapte trop bien pour les voir.</p>' +
+    '<p class="hint"><b>Corrections apportées au document source.</b> Zone I à 1,1 % de réflectance et non 0,6 % (−4 diaphs sur 18 %). L’exemple ciné 25 fps / 800 EI demande f/64 à 1/50, pas f/45 — donc f/18 sous ND 1,2 et f/9 sous ND 1,8. À Corte début septembre, le midi solaire tombe à 13 h 21 et non 13 h 10, et le soleil est à ~30° à 17 h, pas à 40° : l’exemple de la Restonica se recalcule alors à EV 14,0 au lieu de 14,2 — la conclusion f/8–f/11 tient. Enfin, la fourchette « journée couverte, 1 000 à 10 000 lx » de la section 6 contredit le facteur « couvert, −2 à −3 diaphs » de la section 12, qui correspond plutôt à 10 000–20 500 lx : c’est ce second chiffre, calé sur le terrain, qui est retenu ici.</p>');
+
+  $('#tables-host').innerHTML = out;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Câblage
+   ═══════════════════════════════════════════════════════════════ */
+var tablesFaites = false;
+function renderAll(){
+  renderEstimer();
+  renderConvertir();
+  renderConvertir2();
+  renderOmbre();
+  renderZone();
+}
+
+/* --- thème --- */
+(function(){
+  var t = store.get('cellule.theme', null);
+  if(t) document.documentElement.setAttribute('data-theme', t);
+  $('#theme').addEventListener('click', function(){
+    var cur = document.documentElement.getAttribute('data-theme');
+    if(!cur){
+      cur = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    store.set('cellule.theme', next);
+  });
+})();
+
+/* --- onglets --- */
+(function(){
+  var tabs = $$('.tab');
+  function activer(id){
+    tabs.forEach(function(t){
+      var on = t.id === id;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      $('#' + t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if(id === 't-tables' && !tablesFaites){ renderTables(); tablesFaites = true; }
+    store.set('cellule.onglet', id);
+    window.scrollTo(0, 0);
+  }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ activer(t.id); }); });
+  var mem = store.get('cellule.onglet', 't-estimer');
+  if($('#' + mem)) activer(mem);
+})();
+
+/* --- listes de l'estimateur --- */
+var HMODES = [
+  {id:'calc', nom:'Calculer', det:'lieu, date, heure'},
+  {id:'vue',  nom:'Estimer à vue', det:'d’après l’ombre portée'}
+];
+buildOpts($('#f-hmode'), HMODES, 'radio', function(it){ S.hmode = it.id; save(); renderAll(); });
+buildOpts($('#f-ciel'), CIEL, 'radio', function(it){ S.ciel = it.id; save(); renderAll(); });
+buildOpts($('#f-hauteur'), HAUTEURS, 'radio', function(it){ S.hauteur = it.h; save(); renderAll(); });
+buildOpts($('#f-obst'), OBSTRUCTION, 'radio', function(it){ S.obst = it.id; save(); renderAll(); });
+buildOpts($('#f-gains'), GAINS, 'checkbox', function(it){
+  S.gains[it.id] = !S.gains[it.id];
+  save(); renderAll();
+});
+
+/* --- champs de l'estimateur --- */
+selectFrom($('#i-lieu'), LIEUX, function(l){ return l.nom; }, function(l, i){ return i; }, S.lieu);
+selectFrom($('#i-iso'), ISOS, function(i){ return i + ' ISO'; }, function(i){ return i; }, S.iso);
+selectFrom($('#i-vit'), VITESSES_REF, function(v){ return v.l; }, function(v){ return v.v; }, S.vit);
+$('#i-lat').value = S.lat; $('#i-lon').value = S.lon;
+$('#i-tz').value = String(S.tz);
+$('#i-date').value = S.date; $('#i-heure').value = S.heure;
+$('#i-modele').value = S.modele;
+
+$('#i-lieu').addEventListener('change', function(){
+  S.lieu = parseInt(this.value, 10);
+  var l = LIEUX[S.lieu];
+  if(l && l.lat !== null){ S.lat = l.lat; S.lon = l.lon; $('#i-lat').value = l.lat; $('#i-lon').value = l.lon; }
+  save(); renderAll();
+});
+['#i-lat','#i-lon'].forEach(function(sel){
+  $(sel).addEventListener('input', function(){
+    var v = parseFloat(this.value);
+    if(!isFinite(v)) return;
+    S[sel === '#i-lat' ? 'lat' : 'lon'] = v;
+    S.lieu = LIEUX.length - 1; $('#i-lieu').value = String(S.lieu);
+    save(); renderAll();
+  });
+});
+$('#i-tz').addEventListener('change', function(){ S.tz = parseFloat(this.value); save(); renderAll(); });
+$('#i-date').addEventListener('change', function(){ S.date = this.value; save(); renderAll(); });
+$('#i-heure').addEventListener('input', function(){ S.heure = this.value; save(); renderAll(); });
+$('#i-iso').addEventListener('change', function(){ S.iso = parseFloat(this.value); save(); renderAll(); });
+$('#i-vit').addEventListener('change', function(){ S.vit = this.value; save(); renderAll(); });
+$('#i-modele').addEventListener('change', function(){ S.modele = this.value; save(); renderAll(); });
+
+$('#b-maintenant').addEventListener('click', function(){
+  var d = new Date();
+  S.date = d.toISOString().slice(0,10);
+  S.heure = String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+  $('#i-date').value = S.date; $('#i-heure').value = S.heure;
+  save(); renderAll();
+});
+$('#b-geo').addEventListener('click', function(){
+  var btn = this;
+  if(!navigator.geolocation){ btn.textContent = 'Indisponible'; return; }
+  btn.textContent = 'Recherche…';
+  navigator.geolocation.getCurrentPosition(function(p){
+    S.lat = Math.round(p.coords.latitude * 100) / 100;
+    S.lon = Math.round(p.coords.longitude * 100) / 100;
+    $('#i-lat').value = S.lat; $('#i-lon').value = S.lon;
+    S.lieu = LIEUX.length - 1; $('#i-lieu').value = String(S.lieu);
+    btn.textContent = 'Ma position';
+    save(); renderAll();
+  }, function(){
+    btn.textContent = 'Refusé — saisis à la main';
+  }, {timeout:8000, maximumAge:600000});
+});
+
+/* --- onglet Convertir --- */
+selectFrom($('#c-iso'), ISOS, function(i){ return i + ' ISO'; }, function(i){ return i; }, 100);
+selectFrom($('#c-nd'), NDS, function(n){ return n.l; }, function(n){ return n.v; }, 0);
+selectFrom($('#c2-n'), APERTURES, function(a){ return 'f/' + a; }, function(a){ return a; }, 16);
+selectFrom($('#c2-t'), SHUTTERS, function(s){ return s.l; }, function(s){ return s.t; }, 1/125);
+selectFrom($('#c2-iso'), ISOS, function(i){ return i + ' ISO'; }, function(i){ return i; }, 100);
+selectFrom($('#z-mat'), MATIERES, function(m){ return m.nom + ' — ρ ' + fmt(m.rho, 2); }, function(m, i){ return i; }, 8);
+selectFrom($('#z-zone'), ZONES, function(z){ return 'Zone ' + z.z + ' — ' + z.r; }, function(z, i){ return i; }, 5);
+
+['#c-ev','#c-iso','#c-nd'].forEach(function(s){
+  $(s).addEventListener('input', renderConvertir);
+  $(s).addEventListener('change', renderConvertir);
+});
+['#c2-n','#c2-t','#c2-iso'].forEach(function(s){ $(s).addEventListener('change', renderConvertir2); });
+$('#s-ratio').addEventListener('input', renderOmbre);
+['#z-mat','#z-lect','#z-zone'].forEach(function(s){
+  $(s).addEventListener('input', renderZone);
+  $(s).addEventListener('change', renderZone);
+});
+
+/* --- onglet Entraîner --- */
+selectFrom($('#j-type'), TYPES_SCENE, function(t){ return t; }, function(t){ return t; }, TYPES_SCENE[0]);
+
+$('#j-add').addEventListener('click', function(){
+  var a = parseFloat($('#j-annonce').value);
+  var m = parseFloat($('#j-mesure').value);
+  if(!isFinite(a) || !isFinite(m)){
+    $('#j-msg').textContent = 'Il faut les deux chiffres : ce que tu as annoncé, et ce que la mesure a donné.';
+    return;
+  }
+  var j = journal();
+  j.push({
+    id: Date.now(),
+    d: new Date().toISOString().slice(0,10),
+    t: $('#j-type').value,
+    a: a, m: m,
+    n: $('#j-note').value.trim()
+  });
+  setJournal(j);
+  $('#j-annonce').value = ''; $('#j-mesure').value = ''; $('#j-note').value = '';
+  var e = a - m;
+  $('#j-msg').textContent = Math.abs(e) < 0.3
+    ? 'Enregistré — écart ' + sgn(e) + ' diaph. Bien vu.'
+    : 'Enregistré — écart ' + sgn(e) + ' diaph. ' +
+      (e > 0 ? 'Tu as cru qu’il faisait plus clair qu’il ne faisait.' : 'Tu as cru qu’il faisait plus sombre qu’il ne faisait.');
+  renderJournal();
+});
+
+$('#j-fromest').addEventListener('click', function(){
+  var c = calcul();
+  $('#j-annonce').value = fmt(c.evScene, 1).replace(',', '.');
+  var parts = ['base ciel ' + fmt(c.evCiel, 1) + ' (' + c.ciel.nom.toLowerCase() + ', soleil ' + fmt(c.h, 0) + '°)'];
+  if(Math.abs(c.oStops) > 0.05) parts.push(sgn(c.oStops) + ' ' + c.obst.nom.toLowerCase());
+  c.gainList.forEach(function(x){ parts.push(sgn(x.v) + ' ' + x.g.nom.toLowerCase()); });
+  $('#j-note').value = parts.join(', ') + ' → ' + fmt(c.evScene, 1);
+  var t = c.evScene >= 14.2 ? 'Plein soleil'
+        : c.obst.id === 'sousbois' ? 'Sous-bois'
+        : c.evScene >= 12.5 ? 'Couvert'
+        : c.evScene >= 11 ? 'Ombre au soleil'
+        : c.evScene >= 6 ? 'Intérieur jour'
+        : c.evScene >= 2 ? 'Crépuscule' : 'Nuit urbaine';
+  $('#j-type').value = t;
+  $('#j-msg').textContent = 'Estimation reprise. Mesure maintenant, puis enregistre.';
+});
+
+$('#j-export').addEventListener('click', function(){
+  var j = journal();
+  if(!j.length) return;
+  var csv = 'date;type;annonce;mesure;ecart;note\n' + j.map(function(e){
+    return [e.d, e.t, e.a, e.m, (e.a - e.m).toFixed(2), '"' + String(e.n || '').replace(/"/g, '""') + '"'].join(';');
+  }).join('\n');
+  var a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = 'cellule-journal.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+});
+$('#j-clear').addEventListener('click', function(){
+  if(!journal().length) return;
+  if(window.confirm('Effacer définitivement toutes les entrées du journal ?')){
+    setJournal([]); renderJournal();
+  }
+});
+
+$('#q-next').addEventListener('click', nouveauQuiz);
+$('#q-check').addEventListener('click', verifierQuiz);
+$('#q-rep').addEventListener('keydown', function(e){ if(e.key === 'Enter') verifierQuiz(); });
+
+/* --- démarrage --- */
+renderAll();
+renderJournal();
+renderQuizStats();
+nouveauQuiz();
+
+})();
+</script>
+</body>
+</html>
