@@ -54,6 +54,30 @@ struct EcranEstimer: View {
         )
     }
 
+    /// « 17h30 » — l'heure du curseur, telle qu'on la lit.
+    private var heureLisible: String {
+        let heures = Int(heure)
+        let minutes = Int(heure.truncatingRemainder(dividingBy: 1) * 60)
+        return String(format: "%02dh%02d", heures, minutes)
+    }
+
+    /// Où en est le soleil : son midi, son culmen, et sa hauteur à cette heure.
+    private var phraseSoleil: String {
+        let midi = Soleil.midiSolaire(
+            jourDeLAnnee: jour, longitudeEst: lieu.longitude, decalageFuseau: reglages.fuseau
+        )
+        let midiLisible = String(
+            format: "%dh%02d",
+            Int(midi),
+            arrondi(midi.truncatingRemainder(dividingBy: 1) * 60)
+        )
+        let culmen = fmt(
+            Soleil.hauteur(latitudeNord: lieu.latitude, jourDeLAnnee: jour, tempsSolaire: 12.0)
+        )
+        return "Midi solaire à \(midiLisible) · le soleil culmine à \(culmen)°"
+            + " · à l'heure indiquée il est à \(fmt(hauteur))°."
+    }
+
     private var vitesseVoulue: Double {
         reglages.vitesseReference > 0 ? reglages.vitesseReference : 1.0 / Double(reglages.iso)
     }
@@ -88,11 +112,15 @@ struct EcranEstimer: View {
         etat.dernierTypeScene = Statistiques.typeSuggere(ev100: e.ev100Scene, obstacle: obstacle)
         let chaine = e.termes
             .filter { $0.diaphs != nil }
-            .map { signe($0.diaphs!) + " " + $0.nom.lowercased() }
+            .map { terme -> String in
+                let valeur: String = signe(terme.diaphs ?? 0)
+                let nom: String = terme.nom.lowercased()
+                return "\(valeur) \(nom)"
+            }
             .joined(separator: ", ")
-        etat.derniereChaine = "ciel " + fmt(e.ev100Ciel)
-            + (chaine.isEmpty ? "" : ", \(chaine)")
-            + " → " + fmt(e.ev100Scene)
+        let debut: String = "ciel \(fmt(e.ev100Ciel))"
+        let milieu: String = chaine.isEmpty ? "" : ", \(chaine)"
+        etat.derniereChaine = "\(debut)\(milieu) → \(fmt(e.ev100Scene))"
     }
 
     private func resultat(e: Estimation, couple: Couple?) -> some View {
@@ -183,20 +211,12 @@ struct EcranEstimer: View {
                     )
                 }
                 Spacer().frame(height: 6)
-                Text("Heure légale : " + String(format: "%02dh%02d", Int(heure), Int((heure.truncatingRemainder(dividingBy: 1)) * 60)))
+                Text("Heure légale : \(heureLisible)")
                     .font(Police.corps)
                     .foregroundColor(Teinte.surSurface)
                 Slider(value: $heure, in: 0...23.98)
                     .tint(Teinte.primaire)
-                let midi = Soleil.midiSolaire(
-                    jourDeLAnnee: jour, longitudeEst: lieu.longitude, decalageFuseau: reglages.fuseau
-                )
-                Text(
-                    "Midi solaire à " + String(format: "%dh%02d", Int(midi), arrondi(midi.truncatingRemainder(dividingBy: 1) * 60))
-                        + " · le soleil culmine à "
-                        + fmt(Soleil.hauteur(latitudeNord: lieu.latitude, jourDeLAnnee: jour, tempsSolaire: 12.0))
-                        + "° · à l'heure indiquée il est à " + fmt(hauteur) + "°."
-                )
+                Text(phraseSoleil)
                 .font(Police.detail)
                 .foregroundColor(Teinte.surVarianteSurface)
                 .fixedSize(horizontal: false, vertical: true)

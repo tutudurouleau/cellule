@@ -29,7 +29,7 @@ struct EcranTables: View {
                 Ligne(
                     intitule: "EV \(ev)",
                     valeur: c.map { "\(libelleOuverture($0.ouverture)) · \($0.vitesse.libelle)" } ?? "—",
-                    detail: Situations.nom(Double(ev)) + " · " + fmtLux(Photometrie.lux(Double(ev))),
+                    detail: "\(Situations.nom(Double(ev))) · \(fmtLux(Photometrie.lux(Double(ev))))",
                     accent: ev == 15
                 )
             }
@@ -42,15 +42,15 @@ struct EcranTables: View {
             sousTitre: "Départ : plein soleil, soleil haut, terrain ouvert, sujet à 18 % → EV 15, soit f/16 au 1/ISO. Tout le reste s'ajoute en diaphs."
         ) {
             ForEach(CIELS.filter { $0.plat != 0.0 }) { c in
-                Ligne(intitule: "Ciel — " + c.nom.lowercased(), valeur: signe(c.plat), detail: c.detail)
+                Ligne(intitule: "Ciel — \(c.nom.lowercased())", valeur: signe(c.plat), detail: c.detail)
             }
             Spacer().frame(height: 4)
             ForEach(OBSTACLES.filter { $0.auSoleil != 0.0 }) { o in
-                Ligne(intitule: "Obstacle — " + o.nom.lowercased(), valeur: signe(o.auSoleil), detail: o.detail)
+                Ligne(intitule: "Obstacle — \(o.nom.lowercased())", valeur: signe(o.auSoleil), detail: o.detail)
             }
             Spacer().frame(height: 4)
             ForEach(RENVOIS) { r in
-                Ligne(intitule: "Renvoi — " + r.nom.lowercased(), valeur: signe(r.diaphs))
+                Ligne(intitule: "Renvoi — \(r.nom.lowercased())", valeur: signe(r.diaphs))
             }
         }
     }
@@ -64,7 +64,7 @@ struct EcranTables: View {
                 Ligne(
                     intitule: m.nom,
                     valeur: libelleDiaphs(m.ecartAuGris),
-                    detail: "ρ = " + fmt(m.reflectance, 3),
+                    detail: "ρ = \(fmt(m.reflectance, 3))",
                     accent: m.reflectance == 0.18
                 )
             }
@@ -83,8 +83,8 @@ struct EcranTables: View {
         ) {
             ForEach(ZONES) { z in
                 Ligne(
-                    intitule: "Zone " + z.chiffre,
-                    valeur: fmt(z.reflectance * 100, 1) + " %",
+                    intitule: "Zone \(z.chiffre)",
+                    valeur: "\(fmt(z.reflectance * 100, 1)) %",
                     detail: z.rendu,
                     accent: z.ecart == 0
                 )
@@ -114,7 +114,7 @@ struct EcranTables: View {
             ForEach(FILTRES_ND.filter { $0.diaphs > 0 }, id: \.libelle) { f in
                 Ligne(
                     intitule: f.libelle,
-                    valeur: "\(f.diaphs) diaph" + (f.diaphs > 1 ? "s" : "")
+                    valeur: f.diaphs > 1 ? "\(f.diaphs) diaphs" : "\(f.diaphs) diaph"
                 )
             }
             Text("25 fps, 800 EI, plein soleil : EV 18 à 1/50 demande f/64. Un ND 1,2 te ramène à f/18, un ND 1,8 à f/9.")

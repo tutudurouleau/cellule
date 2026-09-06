@@ -119,6 +119,34 @@ struct EcranMesurer: View {
         }
     }
 
+    /// Ce que l'appareil a réellement choisi, et l'étalonnage s'il y en a un.
+    private var detailExposition: String {
+        guard let e = moteur.exposition else { return " " }
+        let pose = "\(fmt(e.tempsPoseSec * 1000, 2)) ms"
+        guard reglages.etalonnage != 0 else { return pose }
+        return "\(pose)  ·  étalonnage \(signe(reglages.etalonnage, 2))"
+    }
+
+    /// L'amplitude de la scène, et ce que le support en fera.
+    private func phraseAmplitude(_ amplitude: Double) -> String {
+        let verdict: String
+        if amplitude <= 5 {
+            verdict = "Tout tient, même en inversible."
+        } else if amplitude <= 9 {
+            verdict = "Le négatif encaisse sans broncher."
+        } else {
+            verdict = "Au-delà de la plage du support : tu ne rates pas l'exposition, tu choisis ce que tu sacrifies."
+        }
+        return "Amplitude : \(fmt(amplitude)) diaphs. \(verdict)"
+    }
+
+    private func detailDisque(_ spot: ResultatSpot) -> String {
+        let moyenne = fmt(spot.moyenneLineaire, 4)
+        let crames = arrondi(spot.fractionCramee * 100)
+        let bouches = arrondi(spot.fractionBouchee * 100)
+        return "moyenne linéaire \(moyenne) · cramés \(crames) % · bouchés \(bouches) %"
+    }
+
     private var vitesseVoulue: Double {
         reglages.vitesseReference > 0 ? reglages.vitesseReference : 1.0 / Double(reglages.iso)
     }
@@ -316,10 +344,7 @@ struct EcranMesurer: View {
             Ligne(
                 intitule: "L'appareil expose à",
                 valeur: moteur.exposition.map { "\(libelleOuverture($0.ouverture)) · \($0.iso) ISO" } ?? "—",
-                detail: moteur.exposition.map {
-                    fmt($0.tempsPoseSec * 1000, 2) + " ms"
-                        + (reglages.etalonnage != 0 ? "  ·  étalonnage \(signe(reglages.etalonnage, 2))" : "")
-                } ?? " "
+                detail: detailExposition
             )
 
             Spacer().frame(height: Espace.interligne)
@@ -441,13 +466,7 @@ struct EcranMesurer: View {
             if memoires.count >= 2 {
                 let amplitude = (memoires.map { $0.ev }.max() ?? 0) - (memoires.map { $0.ev }.min() ?? 0)
                 Spacer().frame(height: 4)
-                Text(
-                    "Amplitude : \(fmt(amplitude)) diaphs. " + {
-                        if amplitude <= 5 { return "Tout tient, même en inversible." }
-                        if amplitude <= 9 { return "Le négatif encaisse sans broncher." }
-                        return "Au-delà de la plage du support : tu ne rates pas l'exposition, tu choisis ce que tu sacrifies."
-                    }()
-                )
+                Text(phraseAmplitude(amplitude))
                 .font(Police.detail)
                 .foregroundColor(Teinte.surVarianteSurface)
                 .fixedSize(horizontal: false, vertical: true)
@@ -475,8 +494,7 @@ struct EcranMesurer: View {
             Ligne(
                 intitule: "Coefficient retiré",
                 valeur: libelleDiaphs(-Zones.correctionReflectance(reglages.diffuseurChoisi.coefficient)),
-                detail: reglages.diffuseurChoisi.detail
-                    + " · ρ = " + fmt(reglages.diffuseurChoisi.coefficient, 2)
+                detail: "\(reglages.diffuseurChoisi.detail) · ρ = \(fmt(reglages.diffuseurChoisi.coefficient, 2))"
             )
             if reglages.etalonnageIncident != 0 {
                 Ligne(
@@ -525,11 +543,7 @@ struct EcranMesurer: View {
                     Ligne(
                         intitule: "Échantillons du disque",
                         valeur: "\(d.echantillons)",
-                        detail: moteur.spot.map {
-                            "moyenne linéaire \(fmt($0.moyenneLineaire, 4)) · "
-                                + "cramés \(arrondi($0.fractionCramee * 100)) % · "
-                                + "bouchés \(arrondi($0.fractionBouchee * 100)) %"
-                        }
+                        detail: moteur.spot.map { detailDisque($0) }
                     )
                     Ligne(
                         intitule: "Proportions de l'aperçu",

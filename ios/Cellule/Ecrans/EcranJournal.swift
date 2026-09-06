@@ -173,7 +173,7 @@ struct EcranJournal: View {
                     valeur: "\(bilan.nombre)",
                     detail: bilan.nombre < 10 ? "encore un peu court" : "échantillon utile"
                 )
-                Ligne(intitule: "Erreur absolue moyenne", valeur: fmt(bilan.erreurAbsolue) + " diaph")
+                Ligne(intitule: "Erreur absolue moyenne", valeur: "\(fmt(bilan.erreurAbsolue)) diaph")
                 Ligne(
                     intitule: "Dans ±½ diaph",
                     valeur: "\(arrondi(bilan.partDansDemiDiaph * 100)) %",
@@ -248,7 +248,7 @@ private struct LigneCarnet: View {
         var morceaux: [String] = []
         if !entree.vue.isEmpty { morceaux.append("vue \(entree.vue)") }
         if !entree.pellicule.isEmpty { morceaux.append(entree.pellicule) }
-        morceaux.append(entree.date + (entree.heure.isEmpty ? "" : " · " + entree.heure))
+        morceaux.append(entree.heure.isEmpty ? entree.date : "\(entree.date) · \(entree.heure)")
         return morceaux.joined(separator: " · ")
     }
 

@@ -12,7 +12,7 @@ func fmt(_ x: Double, _ decimales: Int = 1) -> String {
 func signe(_ x: Double, _ decimales: Int = 1) -> String {
     if x.isNaN { return "—" }
     if abs(x) < 0.05 { return "0" }
-    return x > 0 ? "+" + fmt(x, decimales) : "−" + fmt(abs(x), decimales)
+    return x > 0 ? "+\(fmt(x, decimales))" : "−\(fmt(abs(x), decimales))"
 }
 
 /// Groupe les milliers par une espace insécable, comme le fait le français.
@@ -35,20 +35,20 @@ func fmtLux(_ lux: Double) -> String {
     if lux >= 1000 {
         let puissance = pow(10.0, 2 - floor(log10(lux)))
         let valeur = Double(arrondi(lux * puissance)) / puissance
-        return groupeMilliers(valeur) + " lx"
+        return "\(groupeMilliers(valeur)) lx"
     }
     if lux >= 100 { return "\(arrondi(lux)) lx" }
-    if lux >= 10 { return fmt(lux, 1) + " lx" }
-    if lux >= 1 { return fmt(lux, 2) + " lx" }
-    if lux >= 0.01 { return fmt(lux, 3) + " lx" }
-    return fmt(lux, 4) + " lx"
+    if lux >= 10 { return "\(fmt(lux, 1)) lx" }
+    if lux >= 1 { return "\(fmt(lux, 2)) lx" }
+    if lux >= 0.01 { return "\(fmt(lux, 3)) lx" }
+    return "\(fmt(lux, 4)) lx"
 }
 
 func fmtCdm2(_ l: Double) -> String {
     if l.isNaN || l.isInfinite { return "—" }
     if l >= 100 { return "\(arrondi(l)) cd/m²" }
-    if l >= 1 { return fmt(l, 1) + " cd/m²" }
-    return fmt(l, 3) + " cd/m²"
+    if l >= 1 { return "\(fmt(l, 1)) cd/m²" }
+    return "\(fmt(l, 3)) cd/m²"
 }
 
 func moisNom(_ m: Int) -> String {
@@ -221,7 +221,7 @@ struct Deroulant<T: Hashable>: View {
                 if !intitule.isEmpty {
                     Etiquette(intitule)
                 }
-                Text(libelle(selection) + "  ▾")
+                Text("\(libelle(selection))  ▾")
                     .font(Police.corps)
                     .lineLimit(1)
                     .truncationMode(.tail)
