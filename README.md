@@ -253,7 +253,8 @@ l'application. Une seule copie, jamais deux versions à tenir d'accord.
 ```
 ./gradlew :core:test        57 vérifications  (photométrie, posemètre, soleil)
 swift test --package-path ios
-                            les mêmes, portées en Swift, plus la voie incidente
+                            69 vérifications  (les mêmes, plus la voie incidente
+                            par diffuseur et l'aller-retour du carnet en JSON)
 node tests/verifier.mjs     89 vérifications  (la page hors-ligne)
 ```
 
