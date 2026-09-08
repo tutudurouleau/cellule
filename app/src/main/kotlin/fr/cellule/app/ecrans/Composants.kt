@@ -1,3 +1,8 @@
+/* ModalBottomSheet, SheetState et rememberModalBottomSheetState sont encore
+   annoncés expérimentaux dans cette version de Material3 : on les adopte
+   en connaissance de cause, ils sont stables en pratique depuis longtemps. */
+@file:OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+
 package fr.cellule.app.ecrans
 
 import androidx.compose.animation.animateColorAsState

@@ -194,7 +194,7 @@ private fun EnTeteEcran(titre: String, sousTitre: String) {
         Modifier
             .fillMaxWidth()
             .statusBarsPadding()
-            .padding(horizontal = Gouttiere, top = 14.dp, bottom = 8.dp)
+            .padding(start = Gouttiere, end = Gouttiere, top = 14.dp, bottom = 8.dp)
     ) {
         Text(titre, style = TitreEcran, color = MaterialTheme.colorScheme.onSurface)
         Text(sousTitre, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)

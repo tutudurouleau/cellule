@@ -1,3 +1,5 @@
+@file:OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+
 package fr.cellule.app.ecrans
 
 import android.Manifest
