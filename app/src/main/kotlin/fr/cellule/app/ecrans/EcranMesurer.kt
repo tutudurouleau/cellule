@@ -118,7 +118,14 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
     val moteur = remember { MoteurCamera(contexte) }
     val capteur = remember { CapteurAmbiance(contexte) }
     val vue = remember {
-        PreviewView(contexte).apply { scaleType = PreviewView.ScaleType.FIT_CENTER }
+        PreviewView(contexte).apply {
+            scaleType = PreviewView.ScaleType.FIT_CENTER
+            /* SurfaceView (le mode par défaut) compose sur une couche matérielle à
+               part : selon les appareils, elle peut passer devant les contrôles
+               placés au-dessus dans l'arbre Compose dès que la hiérarchie change de
+               forme. TextureView se dessine normalement, dans l'ordre habituel. */
+            implementationMode = PreviewView.ImplementationMode.COMPATIBLE
+        }
     }
 
     SideEffect { moteur.plageVideo = reglages.plageVideo }
