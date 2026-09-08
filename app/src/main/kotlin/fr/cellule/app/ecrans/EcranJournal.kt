@@ -31,6 +31,7 @@ import fr.cellule.app.Detail
 import fr.cellule.app.EtatApplication
 import fr.cellule.app.Interligne
 import fr.cellule.app.Reglages
+import fr.cellule.app.ZoneNavFlottante
 import fr.cellule.core.EntreeJournal
 import fr.cellule.core.PELLICULES
 import fr.cellule.core.Statistiques
@@ -82,7 +83,7 @@ fun EcranJournal(depot: DepotJournal, reglages: Reglages, etat: EtatApplication)
     val bilan = Statistiques.bilan(entrees)
 
     Column(
-        Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(bottom = 20.dp)
+        Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(bottom = ZoneNavFlottante)
     ) {
 
         Spacer(Modifier.height(Interligne))

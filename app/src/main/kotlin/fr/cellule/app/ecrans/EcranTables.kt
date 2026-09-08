@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import fr.cellule.app.ZoneNavFlottante
 import fr.cellule.core.CIELS
 import fr.cellule.core.FILTRES_ND
 import fr.cellule.core.MATIERES
@@ -28,7 +29,7 @@ import fr.cellule.core.libelleOuverture
 @Composable
 fun EcranTables() {
     Column(
-        Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(bottom = 16.dp)
+        Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(bottom = ZoneNavFlottante)
     ) {
 
         Carte(

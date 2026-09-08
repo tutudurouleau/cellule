@@ -14,9 +14,10 @@ import androidx.compose.ui.unit.sp
 /*
  * Un instrument, pas une application décorative.
  *
- * Fonds profonds et neutres, surfaces empilées plutôt que bordées, un seul
- * accent ambre — celui d'une aiguille de cellule ou d'une lampe inactinique.
- * La couleur ne sert qu'à dire ce qui est vivant : la mesure, l'état actif.
+ * Fonds profonds, surfaces empilées par contraste de ton plutôt que bordées,
+ * un seul accent ambre — celui d'une aiguille de cellule. Les écrans
+ * caméra (Mesurer, Focales) sont bord à bord : le viseur occupe tout
+ * l'écran, l'information flotte par-dessus dans un panneau translucide.
  */
 
 private val Sombre = darkColorScheme(
@@ -28,15 +29,15 @@ private val Sombre = darkColorScheme(
     onSecondary = Color(0xFF0B1B24),
     secondaryContainer = Color(0xFF1B3140),
     onSecondaryContainer = Color(0xFFB6DCF0),
-    background = Color(0xFF0B0B0A),
+    background = Color(0xFF0A0A09),
     onBackground = Color(0xFFF4F1EA),
     surface = Color(0xFF141413),
     onSurface = Color(0xFFF4F1EA),
-    surfaceVariant = Color(0xFF1F1F1D),
-    onSurfaceVariant = Color(0xFF9C968A),
+    surfaceVariant = Color(0xFF232320),
+    onSurfaceVariant = Color(0xFFA6A093),
     surfaceContainer = Color(0xFF1A1A18),
     surfaceContainerHigh = Color(0xFF232320),
-    surfaceContainerHighest = Color(0xFF2B2B27),
+    surfaceContainerHighest = Color(0xFF2C2C28),
     outline = Color(0xFF3A3934),
     outlineVariant = Color(0xFF232320),
     error = Color(0xFFEF9068),
@@ -57,7 +58,7 @@ private val Clair = lightColorScheme(
     surface = Color(0xFFFFFFFF),
     onSurface = Color(0xFF15140F),
     surfaceVariant = Color(0xFFEFEBE3),
-    onSurfaceVariant = Color(0xFF635E55),
+    onSurfaceVariant = Color(0xFF6B665C),
     surfaceContainer = Color(0xFFFBF9F6),
     surfaceContainerHigh = Color(0xFFF1EDE6),
     surfaceContainerHighest = Color(0xFFE9E4DA),
@@ -82,14 +83,14 @@ fun CelluleTheme(sombre: Boolean = isSystemInDarkTheme(), contenu: @Composable (
 private const val CHASSE_FIXE = "tnum"
 
 val ChiffreHero = TextStyle(
-    fontSize = 64.sp, lineHeight = 64.sp,
-    fontWeight = FontWeight.Medium, letterSpacing = (-2.4).sp,
+    fontSize = 68.sp, lineHeight = 68.sp,
+    fontWeight = FontWeight.Medium, letterSpacing = (-2.6).sp,
     fontFeatureSettings = CHASSE_FIXE
 )
 
 val ChiffreEnorme = TextStyle(
-    fontSize = 46.sp, lineHeight = 48.sp,
-    fontWeight = FontWeight.Medium, letterSpacing = (-1.4).sp,
+    fontSize = 48.sp, lineHeight = 50.sp,
+    fontWeight = FontWeight.Medium, letterSpacing = (-1.5).sp,
     fontFeatureSettings = CHASSE_FIXE
 )
 
@@ -100,8 +101,8 @@ val ChiffreGrand = TextStyle(
 )
 
 val TitreEcran = TextStyle(
-    fontSize = 22.sp, lineHeight = 26.sp,
-    fontWeight = FontWeight.SemiBold, letterSpacing = (-0.4).sp
+    fontSize = 24.sp, lineHeight = 28.sp,
+    fontWeight = FontWeight.SemiBold, letterSpacing = (-0.5).sp
 )
 
 val TitreCarte = TextStyle(fontSize = 15.5.sp, lineHeight = 20.sp, fontWeight = FontWeight.SemiBold)
@@ -115,8 +116,14 @@ val StyleEtiquette = TextStyle(
     fontWeight = FontWeight.Bold, letterSpacing = 1.1.sp
 )
 
-/* Un seul rythme, une seule famille de rayons. */
+/* Un seul rythme, une seule famille de rayons — poussée vers le « squircle »
+   plutôt que le rectangle à coins légèrement arrondis d'il y a dix ans. */
 val Gouttiere = 16.dp
 val Interligne = 10.dp
-val RayonCarte = 22.dp
-val RayonControle = 14.dp
+val RayonCarte = 28.dp
+val RayonControle = 16.dp
+val RayonFlottant = 32.dp
+
+/** Hauteur réservée en bas d'écran pour que rien ne se cache sous la pilule de
+    navigation flottante — approximative mais généreuse, jamais mesurée pile. */
+val ZoneNavFlottante = 100.dp

@@ -14,14 +14,18 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.SheetState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -39,6 +43,7 @@ import fr.cellule.app.Gouttiere
 import fr.cellule.app.Interligne
 import fr.cellule.app.RayonCarte
 import fr.cellule.app.RayonControle
+import fr.cellule.app.RayonFlottant
 import fr.cellule.app.StyleEtiquette
 import fr.cellule.app.TitreCarte
 import java.util.Locale
@@ -65,7 +70,7 @@ fun fmtLux(lux: Double): String = when {
         val puissance = Math.pow(10.0, 2 - Math.floor(Math.log10(lux)))
         val arrondi = Math.round(lux * puissance) / puissance
         String.format(Locale.FRANCE, "%,.0f", arrondi)
-            .replace(' ', ' ').replace(' ', ' ') + " lx"
+            .replace(' ', ' ').replace(' ', ' ') + " lx"
     }
     lux >= 100 -> "${Math.round(lux)} lx"
     lux >= 10 -> fmt(lux, 1) + " lx"
@@ -96,7 +101,7 @@ fun Etiquette(texte: String, modifier: Modifier = Modifier, accent: Boolean = fa
     )
 }
 
-/** Une carte : surface empilée, sans bordure ni ombre. */
+/** Une carte : surface empilée par contraste de ton, jamais de bordure. */
 @Composable
 fun Carte(
     titre: String? = null,
@@ -129,10 +134,24 @@ fun CarteInstrument(modifier: Modifier = Modifier, contenu: @Composable ColumnSc
     Column(
         modifier
             .fillMaxWidth()
-            .padding(horizontal = Gouttiere, vertical = 5.dp)
             .background(MaterialTheme.colorScheme.surfaceContainerHigh, RoundedCornerShape(RayonCarte))
             .padding(horizontal = Gouttiere + 2.dp, vertical = Gouttiere + 4.dp),
         content = contenu
+    )
+}
+
+/**
+ * Poignée décorative en tête d'un panneau flottant ou d'un tiroir — l'affordance
+ * qui dit « ceci se manipule », même quand on n'implémente pas le glissé lui-même.
+ */
+@Composable
+fun Poignee(modifier: Modifier = Modifier) {
+    Box(
+        modifier
+            .padding(vertical = 10.dp)
+            .width(34.dp)
+            .height(4.dp)
+            .background(MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.35f), RoundedCornerShape(50))
     )
 }
 
@@ -187,7 +206,7 @@ fun <T> ChoixSegmente(
     Row(
         Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surfaceContainer, RoundedCornerShape(50))
+            .background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(50))
             .padding(4.dp),
         horizontalArrangement = Arrangement.spacedBy(4.dp)
     ) {
@@ -217,7 +236,13 @@ fun <T> ChoixSegmente(
     }
 }
 
-/** Liste déroulante compacte, sans API expérimentale. */
+/**
+ * Sélecteur : déclencheur compact, réponse en tiroir qui remonte du bas.
+ *
+ * Un menu déroulant qui s'ouvre sous le doigt est illisible dès qu'on tient le
+ * téléphone à bout de bras ; une feuille qui remonte du bas, elle, se lit et se
+ * touche sans viser.
+ */
 @Composable
 fun <T> Deroulant(
     intitule: String,
@@ -228,37 +253,100 @@ fun <T> Deroulant(
     surChoix: (T) -> Unit
 ) {
     var ouvert by remember { mutableStateOf(false) }
-    Box(modifier) {
-        Column(
-            Modifier
-                .background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(RayonControle))
-                .clickable { ouvert = true }
-                .padding(horizontal = 13.dp, vertical = 10.dp)
-        ) {
-            if (intitule.isNotBlank()) {
-                Etiquette(intitule)
-                Spacer(Modifier.height(3.dp))
-            }
-            Text(
-                libelle(selection) + "  ▾",
-                style = Corps,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                color = MaterialTheme.colorScheme.onSurface
-            )
+    Column(
+        modifier
+            .background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(RayonControle))
+            .clickable { ouvert = true }
+            .padding(horizontal = 13.dp, vertical = 10.dp)
+    ) {
+        if (intitule.isNotBlank()) {
+            Etiquette(intitule)
+            Spacer(Modifier.height(3.dp))
         }
-        DropdownMenu(expanded = ouvert, onDismissRequest = { ouvert = false }) {
-            options.forEach { option ->
-                DropdownMenuItem(
-                    text = { Text(libelle(option), style = Corps) },
-                    onClick = { surChoix(option); ouvert = false }
+        Text(
+            libelle(selection) + "  ›",
+            style = Corps,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            color = MaterialTheme.colorScheme.onSurface
+        )
+    }
+    if (ouvert) {
+        FeuilleChoix(
+            titre = intitule,
+            options = options,
+            libelle = libelle,
+            selection = selection,
+            onDismiss = { ouvert = false },
+            onChoix = { surChoix(it); ouvert = false }
+        )
+    }
+}
+
+/** La feuille elle-même, réutilisable pour un choix qui n'a pas de déclencheur
+    dédié (par exemple depuis une autre feuille, ou un bouton). */
+@Composable
+fun <T> FeuilleChoix(
+    titre: String,
+    options: List<T>,
+    libelle: (T) -> String,
+    selection: T?,
+    onDismiss: () -> Unit,
+    onChoix: (T) -> Unit
+) {
+    val etat: SheetState = rememberModalBottomSheetState()
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = etat,
+        containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+        dragHandle = { Poignee() }
+    ) {
+        Column(Modifier.padding(bottom = Gouttiere + 8.dp)) {
+            if (titre.isNotBlank()) {
+                Text(
+                    titre,
+                    style = TitreCarte,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    modifier = Modifier.padding(horizontal = Gouttiere * 1.25f, vertical = Interligne)
                 )
+            }
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .heightIn(max = 440.dp)
+                    .verticalScroll(rememberScrollState())
+            ) {
+                options.forEach { option ->
+                    val actif = option == selection
+                    Row(
+                        Modifier
+                            .fillMaxWidth()
+                            .clickable { onChoix(option) }
+                            .padding(horizontal = Gouttiere * 1.25f, vertical = 13.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            libelle(option),
+                            style = Corps,
+                            color = if (actif) MaterialTheme.colorScheme.primary
+                            else MaterialTheme.colorScheme.onSurface
+                        )
+                        if (actif) {
+                            Box(
+                                Modifier
+                                    .background(MaterialTheme.colorScheme.primary, RoundedCornerShape(50))
+                                    .width(7.dp).height(7.dp)
+                            )
+                        }
+                    }
+                }
             }
         }
     }
 }
 
-/** Champ de saisie, aligné sur les déroulants. */
+/** Champ de saisie minimal : fond plein, aucun contour. */
 @Composable
 fun Champ(
     valeur: String,
@@ -281,8 +369,9 @@ fun Champ(
         colors = TextFieldDefaults.colors(
             focusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
             unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
-            focusedIndicatorColor = MaterialTheme.colorScheme.primary,
-            unfocusedIndicatorColor = Color.Transparent
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent,
+            focusedLabelColor = MaterialTheme.colorScheme.primary
         ),
         modifier = modifier
     )
@@ -393,4 +482,25 @@ fun LigneBoutons(contenu: @Composable RowScope.() -> Unit) {
         horizontalArrangement = Arrangement.spacedBy(Interligne),
         content = contenu
     )
+}
+
+/**
+ * Panneau flottant : le conteneur des écrans caméra, ancré en bas, coins
+ * arrondis seulement en haut, fond quasi opaque plutôt qu'une vraie
+ * transparence dépoli — le flou d'arrière-plan coûterait une dépendance et un
+ * risque de compilation pour un gain qu'une teinte à haute opacité obtient déjà.
+ */
+@Composable
+fun PanneauFlottant(modifier: Modifier = Modifier, contenu: @Composable ColumnScope.() -> Unit) {
+    Column(
+        modifier
+            .background(
+                MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.97f),
+                RoundedCornerShape(topStart = RayonFlottant, topEnd = RayonFlottant)
+            ),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Poignee()
+        Column(Modifier.fillMaxWidth().padding(horizontal = Gouttiere + 2.dp), content = contenu)
+    }
 }

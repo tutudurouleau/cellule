@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.cellule.app.EtatApplication
 import fr.cellule.app.Reglages
+import fr.cellule.app.ZoneNavFlottante
 import fr.cellule.core.CIELS
 import fr.cellule.core.Estimateur
 import fr.cellule.core.LIEUX
@@ -124,7 +125,7 @@ fun EcranEstimer(reglages: Reglages, etat: EtatApplication) {
     val couple = coupleConseille(estimation.evAppareil, vitesseVoulue)
 
     Column(
-        Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(bottom = 16.dp)
+        Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(bottom = ZoneNavFlottante)
     ) {
 
         Carte {
