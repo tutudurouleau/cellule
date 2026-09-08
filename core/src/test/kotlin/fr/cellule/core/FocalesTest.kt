@@ -137,3 +137,76 @@ class CadrageTest {
         assertEquals(FOCALES_CLASSIQUES.sortedBy { it.mm }, FOCALES_CLASSIQUES)
     }
 }
+
+class RatiosTest {
+
+    @Test
+    fun `les catalogues de ratios sont plausibles`() {
+        (RATIOS_PHOTO + RATIOS_CINE).forEach {
+            assertTrue(it.ratio in 0.5..3.0, "${it.nom} : ratio ${it.ratio}")
+            assertTrue(it.nom.isNotBlank())
+            assertTrue(it.detail.isNotBlank())
+        }
+        assertEquals(FamilleRatio.PHOTO, RATIOS_PHOTO.first().famille)
+        assertEquals(FamilleRatio.CINE, RATIOS_CINE.first().famille)
+        assertTrue(TOUS_LES_RATIOS.size == RATIOS_PHOTO.size + RATIOS_CINE.size)
+    }
+
+    @Test
+    fun `3 sur 2 est bien le plein format argentique`() {
+        assertEquals(1.5, RATIOS_PHOTO.first { it.nom == "3:2" }.ratio, 1e-9)
+    }
+
+    @Test
+    fun `2,39 scope est plus large que 1,85 flat`() {
+        val flat = RATIOS_CINE.first { it.nom == "1.85:1" }.ratio
+        val scope = RATIOS_CINE.first { it.nom == "2.39:1" }.ratio
+        assertTrue(scope > flat)
+    }
+
+    @Test
+    fun `un ratio de sortie plus large mange de la hauteur`() {
+        /* Scope 2.39 tiré d'un capteur 4:3 : la largeur reste entière,
+           la hauteur se réduit d'autant que l'exige le nouveau rapport. */
+        val g = guideDeCadrage(rapportCapteur = 4.0 / 3.0, rapportSortie = 2.39)
+        assertEquals(1.0, g.largeur, 1e-9)
+        assertEquals((4.0 / 3.0) / 2.39, g.hauteur, 1e-9)
+        assertTrue(g.hauteur < 1.0)
+    }
+
+    @Test
+    fun `un ratio de sortie plus etroit mange de la largeur`() {
+        /* Portrait 4:5 tiré du même capteur 4:3 : la hauteur reste entière. */
+        val g = guideDeCadrage(rapportCapteur = 4.0 / 3.0, rapportSortie = 4.0 / 5.0)
+        assertEquals(1.0, g.hauteur, 1e-9)
+        assertEquals((4.0 / 5.0) / (4.0 / 3.0), g.largeur, 1e-9)
+        assertTrue(g.largeur < 1.0)
+    }
+
+    @Test
+    fun `le capteur natif ne recadre rien`() {
+        val g = guideDeCadrage(rapportCapteur = 4.0 / 3.0, rapportSortie = 4.0 / 3.0)
+        assertEquals(1.0, g.largeur, 1e-9)
+        assertEquals(1.0, g.hauteur, 1e-9)
+    }
+
+    @Test
+    fun `le guide de cadrage et cadreUtile s accordent sur la meme geometrie`() {
+        /* Les deux fonctions décrivent le même recadrage par deux chemins
+           différents : leurs surfaces relatives doivent coïncider. */
+        val capteurL = 7.4; val capteurH = 5.55
+        val rapportCapteur = capteurL / capteurH
+        listOf(1.0, 4.0 / 3.0, 3.0 / 2.0, 1.85, 2.39, 4.0 / 5.0).forEach { sortie ->
+            val guide = guideDeCadrage(rapportCapteur, sortie)
+            val cadre = Focales.cadreUtile(capteurL, capteurH, 1.0, 1.0, sortie)
+            assertEquals(guide.largeur, cadre.largeurMm / capteurL, 1e-9, "sortie $sortie")
+            assertEquals(guide.hauteur, cadre.hauteurMm / capteurH, 1e-9, "sortie $sortie")
+        }
+    }
+
+    @Test
+    fun `passer d un ratio a un autre ne peut qu ajouter du recadrage, jamais l inverse`() {
+        val g = guideDeCadrage(rapportCapteur = 4.0 / 3.0, rapportSortie = 2.39)
+        assertTrue(g.largeur <= 1.0 && g.hauteur <= 1.0)
+    }
+}

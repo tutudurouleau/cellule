@@ -61,11 +61,24 @@ import fr.cellule.app.mesure.MoteurCamera
 import fr.cellule.core.Cadrage
 import fr.cellule.core.FOCALES_CLASSIQUES
 import fr.cellule.core.FocaleClassique
+import fr.cellule.core.GuideCadrage
+import fr.cellule.core.RATIOS_CINE
+import fr.cellule.core.RATIOS_PHOTO
+import fr.cellule.core.RatioCadre
+import fr.cellule.core.guideDeCadrage
 import kotlin.math.abs
 import kotlin.math.roundToInt
 
 private enum class Exercice(val libelle: String) {
     LIBRE("Libre"), CADRER("Cadrer"), RECONNAITRE("Reconnaître")
+}
+
+private data class OptionRatio(val libelle: String, val valeur: Double?)
+
+private val OPTIONS_RATIO: List<OptionRatio> = buildList {
+    add(OptionRatio("Capteur plein (natif)", null))
+    RATIOS_PHOTO.forEach { add(OptionRatio("Photo — ${it.nom}", it.ratio)) }
+    RATIOS_CINE.forEach { add(OptionRatio("Ciné — ${it.nom}", it.ratio)) }
 }
 
 /**
@@ -109,6 +122,11 @@ fun EcranFocales() {
     var justes by remember { mutableStateOf(0) }
     var posees by remember { mutableStateOf(0) }
     var detailsOuverts by remember { mutableStateOf(false) }
+    /* Source unique de la sélection affichée. Une recherche inverse par valeur
+       serait ambiguë : « Photo — 16:9 » et « Ciné — 1.78:1 » partagent le même
+       nombre, et la première correspondance du catalogue gagnerait toujours —
+       jamais forcément celle que l'utilisateur vient de choisir. */
+    var optionRatio by remember { mutableStateOf(OPTIONS_RATIO.first()) }
 
     val equivalence = moteur.equivalence
     val focaleActuelle = equivalence?.equivalentHorizontal
@@ -184,7 +202,9 @@ fun EcranFocales() {
 
         /* ── Le viseur ────────────────────────────────────────────────────
            Même précaution que sur l'écran Mesurer : le cadre garde exactement
-           les proportions du capteur, seul le fond noir va bord à bord. */
+           les proportions du capteur, seul le fond noir va bord à bord. Le
+           ratio choisi, lui, se dessine par-dessus comme un cache — jamais un
+           mode caméra réel, l'appareil ne peut demander que du 4:3 ou du 16:9. */
         Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Box(Modifier.fillMaxSize().aspectRatio(moteur.rapportApercu)) {
                 AndroidView(
@@ -196,10 +216,35 @@ fun EcranFocales() {
                         }
                 )
                 val teinte = MaterialTheme.colorScheme.primary
+                val ratioSortie = moteur.ratioSortie
                 if (focaleActuelle != null && !enExercice) {
                     Canvas(Modifier.fillMaxSize()) {
-                        /* Les quatre focales suivantes, emboîtées : c'est cette
-                           image qu'on veut garder en tête, pas le nombre. */
+                        /* Le rectangle du ratio choisi, à l'intérieur du capteur
+                           plein. Sans sélection, il couvre tout le cadre. */
+                        val guide = if (ratioSortie != null)
+                            guideDeCadrage(size.width / size.height.toDouble(), ratioSortie)
+                        else GuideCadrage(1.0, 1.0)
+                        val cadreL = (size.width * guide.largeur).toFloat()
+                        val cadreH = (size.height * guide.hauteur).toFloat()
+                        val cadreX = (size.width - cadreL) / 2
+                        val cadreY = (size.height - cadreH) / 2
+
+                        if (ratioSortie != null) {
+                            val cache = Color.Black.copy(alpha = 0.72f)
+                            if (cadreY > 0f) {
+                                drawRect(cache, Offset(0f, 0f), Size(size.width, cadreY))
+                                drawRect(cache, Offset(0f, cadreY + cadreH), Size(size.width, size.height - cadreY - cadreH))
+                            }
+                            if (cadreX > 0f) {
+                                drawRect(cache, Offset(0f, 0f), Size(cadreX, size.height))
+                                drawRect(cache, Offset(cadreX + cadreL, 0f), Size(size.width - cadreX - cadreL, size.height))
+                            }
+                            drawRect(teinte.copy(alpha = 0.9f), Offset(cadreX, cadreY), Size(cadreL, cadreH), style = Stroke(width = 1.5f))
+                        }
+
+                        /* Les quatre focales suivantes, emboîtées à l'intérieur
+                           du cadre choisi : c'est cette image qu'on veut garder
+                           en tête, pas le nombre. */
                         FOCALES_CLASSIQUES
                             .mapNotNull { f ->
                                 Cadrage.fractionDuCadre(focaleActuelle, f.mm.toDouble())
@@ -208,15 +253,36 @@ fun EcranFocales() {
                             .filter { it.second < 0.94 }
                             .take(4)
                             .forEach { (_, fraction) ->
-                                val l = (size.width * fraction).toFloat()
-                                val h = (size.height * fraction).toFloat()
+                                val l = cadreL * fraction
+                                val h = cadreH * fraction
                                 drawRect(
                                     color = teinte.copy(alpha = 0.75f),
-                                    topLeft = Offset((size.width - l) / 2, (size.height - h) / 2),
+                                    topLeft = Offset(cadreX + (cadreL - l) / 2, cadreY + (cadreH - h) / 2),
                                     size = Size(l, h),
                                     style = Stroke(width = 2f)
                                 )
                             }
+                    }
+                } else if (ratioSortie != null && enExercice) {
+                    /* Pendant les exercices, le cache reste visible même sans
+                       les rectangles emboîtés : le cadre qu'on entraîne ne
+                       doit pas changer sous les pieds selon le mode. */
+                    Canvas(Modifier.fillMaxSize()) {
+                        val guide = guideDeCadrage(size.width / size.height.toDouble(), ratioSortie)
+                        val cadreL = (size.width * guide.largeur).toFloat()
+                        val cadreH = (size.height * guide.hauteur).toFloat()
+                        val cadreX = (size.width - cadreL) / 2
+                        val cadreY = (size.height - cadreH) / 2
+                        val cache = Color.Black.copy(alpha = 0.72f)
+                        if (cadreY > 0f) {
+                            drawRect(cache, Offset(0f, 0f), Size(size.width, cadreY))
+                            drawRect(cache, Offset(0f, cadreY + cadreH), Size(size.width, size.height - cadreY - cadreH))
+                        }
+                        if (cadreX > 0f) {
+                            drawRect(cache, Offset(0f, 0f), Size(cadreX, size.height))
+                            drawRect(cache, Offset(cadreX + cadreL, 0f), Size(size.width - cadreX - cadreL, size.height))
+                        }
+                        drawRect(teinte.copy(alpha = 0.9f), Offset(cadreX, cadreY), Size(cadreL, cadreH), style = Stroke(width = 1.5f))
                     }
                 }
                 if (enExercice && cible != null && !revele) {
@@ -316,6 +382,15 @@ fun EcranFocales() {
                 alerte = focaleActuelle == null
             )
             Spacer(Modifier.height(4.dp))
+
+            Deroulant(
+                "Cadre",
+                OPTIONS_RATIO,
+                optionRatio,
+                { it.libelle },
+                Modifier.fillMaxWidth()
+            ) { optionRatio = it; moteur.choisirRatio(it.valeur) }
+            Spacer(Modifier.height(Interligne))
 
             if (!enExercice) {
                 Row(
@@ -425,6 +500,23 @@ fun EcranFocales() {
                             equivalence.equivalentDiagonal.roundToInt().toString() + " mm" else "—",
                         "calculée sur la diagonale ; le grand chiffre, lui, cadre la même largeur"
                     )
+                    Separateur()
+                    Etiquette("Les ratios de cadrage")
+                    Spacer(Modifier.height(8.dp))
+                    Text(
+                        "Un ratio ne s'obtient jamais en élargissant le capteur, seulement en soustrayant — le cache qui se dessine sur le viseur en est la preuve visuelle.",
+                        style = Detail,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Spacer(Modifier.height(8.dp))
+                    (RATIOS_PHOTO + RATIOS_CINE).forEach { r: RatioCadre ->
+                        Ligne(
+                            "${r.famille.libelle} — ${r.nom}",
+                            "",
+                            r.detail,
+                            accent = optionRatio.valeur == r.ratio && optionRatio.libelle.endsWith(r.nom)
+                        )
+                    }
                     Separateur()
                     Etiquette("Les focales et ce qu'elles font")
                     Spacer(Modifier.height(8.dp))

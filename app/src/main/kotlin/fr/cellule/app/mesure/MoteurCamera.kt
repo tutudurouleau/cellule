@@ -108,6 +108,19 @@ class MoteurCamera(private val contexte: Context) {
     var zoomMaximal by mutableStateOf(1f)
         private set
 
+    /**
+     * Ratio de sortie choisi (largeur/hauteur), pour recadrer le capteur comme
+     * le ferait un cadrage photo ou ciné. Null = capteur plein, sans recadrage —
+     * c'est tout ce que l'appareil peut demander nativement (4:3 ou 16:9) ; tout
+     * le reste est un cadre logiciel superposé, jamais un mode caméra réel.
+     */
+    var ratioSortie by mutableStateOf<Double?>(null)
+        private set
+
+    fun choisirRatio(ratio: Double?) {
+        ratioSortie = ratio
+    }
+
     /** Rapport largeur sur hauteur du flux, dans l'orientation du capteur. */
     private var rapportCapteur = 4f / 3f
     private var capteurLargeurMm = 0.0
@@ -336,7 +349,7 @@ class MoteurCamera(private val contexte: Context) {
         val cadre = Focales.cadreUtile(
             capteurLargeurMm, capteurHauteurMm,
             fx.coerceIn(0.001, 1.0), fy.coerceIn(0.001, 1.0),
-            rapportCapteur.toDouble()
+            ratioSortie ?: rapportCapteur.toDouble()
         )
         return Focales.equivalence(cadre, focale)
     }

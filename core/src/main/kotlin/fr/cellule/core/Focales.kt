@@ -119,6 +119,61 @@ val FOCALES_CLASSIQUES = listOf(
     FocaleClassique(200, "Long téléobjectif", "compression franche, sujet découpé du fond")
 )
 
+/* ── Les ratios de cadrage, photo et ciné ─────────────────────────────────── */
+
+enum class FamilleRatio(val libelle: String) { PHOTO("Photo"), CINE("Ciné") }
+
+/**
+ * Un ratio d'image nommé. [ratio] est toujours largeur/hauteur — un nombre
+ * inférieur à 1 (comme le 4:5 portrait) est donc un cadre plus haut que large,
+ * et le partage de la géométrie avec [cadreUtile] n'a besoin de rien de plus :
+ * un rapport est un rapport, qu'il soit vertical ou horizontal.
+ */
+data class RatioCadre(val nom: String, val ratio: Double, val famille: FamilleRatio, val detail: String)
+
+val RATIOS_PHOTO = listOf(
+    RatioCadre("1:1", 1.0, FamilleRatio.PHOTO, "Carré — moyen format, Instagram"),
+    RatioCadre("5:4", 5.0 / 4.0, FamilleRatio.PHOTO, "Grand format 4×5 pouces, tirage classique"),
+    RatioCadre("4:3", 4.0 / 3.0, FamilleRatio.PHOTO, "Compact, Micro 4/3 — le capteur natif de la plupart des téléphones"),
+    RatioCadre("3:2", 3.0 / 2.0, FamilleRatio.PHOTO, "24×36 argentique et plein format numérique"),
+    RatioCadre("16:9", 16.0 / 9.0, FamilleRatio.PHOTO, "Photo large, mode natif de certains téléphones"),
+    RatioCadre("4:5", 4.0 / 5.0, FamilleRatio.PHOTO, "Portrait — cadrage vertical, réseaux sociaux")
+)
+
+val RATIOS_CINE = listOf(
+    RatioCadre("1.37:1", 1.37, FamilleRatio.CINE, "Academy — le standard du 35 mm avant le grand écran"),
+    RatioCadre("1.66:1", 1.66, FamilleRatio.CINE, "European widescreen"),
+    RatioCadre("1.78:1", 16.0 / 9.0, FamilleRatio.CINE, "16:9 — HD, UHD, streaming"),
+    RatioCadre("1.85:1", 1.85, FamilleRatio.CINE, "Flat — le standard américain en salle"),
+    RatioCadre("2.35:1", 2.35, FamilleRatio.CINE, "Scope — le format large d'avant 1970"),
+    RatioCadre("2.39:1", 2.39, FamilleRatio.CINE, "Scope moderne — anamorphique")
+)
+
+val TOUS_LES_RATIOS: List<RatioCadre> = RATIOS_PHOTO + RATIOS_CINE
+
+/**
+ * Le rectangle qu'occuperait un ratio de sortie dans le cadre du capteur,
+ * en fractions [0, 1] de sa largeur et de sa hauteur — de quoi dessiner le
+ * cache qui matérialise le recadrage sur l'aperçu.
+ *
+ * Un ratio de sortie plus large que le capteur mange de la hauteur (bandes
+ * en haut et en bas, comme un cinémascope tiré d'un capteur 4:3) ; un ratio
+ * plus étroit mange de la largeur (bandes latérales, comme un cadrage
+ * portrait). Le capteur ne fournit jamais plus que ce qu'il a : on ne peut
+ * que soustraire, jamais élargir le champ par recadrage.
+ */
+fun guideDeCadrage(rapportCapteur: Double, rapportSortie: Double): GuideCadrage {
+    return if (rapportSortie > rapportCapteur) {
+        val hauteur = rapportCapteur / rapportSortie
+        GuideCadrage(largeur = 1.0, hauteur = hauteur)
+    } else {
+        val largeur = rapportSortie / rapportCapteur
+        GuideCadrage(largeur = largeur, hauteur = 1.0)
+    }
+}
+
+data class GuideCadrage(val largeur: Double, val hauteur: Double)
+
 object Cadrage {
 
     /** La classique la plus proche, en écart de focale relatif. */
