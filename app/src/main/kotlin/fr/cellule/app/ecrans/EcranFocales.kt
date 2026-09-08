@@ -177,27 +177,46 @@ fun EcranFocales() {
         if (juge) justes += 1
     }
 
-    Box(Modifier.fillMaxSize().background(Color.Black)) {
-
-        if (!autorisee) {
-            Column(
-                Modifier
-                    .fillMaxSize()
-                    .background(MaterialTheme.colorScheme.background)
-                    .statusBarsPadding()
-                    .padding(Gouttiere),
-                verticalArrangement = Arrangement.Center
+    if (!autorisee) {
+        Column(
+            Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+                .statusBarsPadding()
+                .padding(Gouttiere),
+            verticalArrangement = Arrangement.Center
+        ) {
+            Carte(
+                titre = "Accès à la caméra",
+                sousTitre = "L'angle de champ se lit dans les caractéristiques de l'optique et la zone de capteur réellement exposée. Aucune image n'est enregistrée ni transmise."
             ) {
-                Carte(
-                    titre = "Accès à la caméra",
-                    sousTitre = "L'angle de champ se lit dans les caractéristiques de l'optique et la zone de capteur réellement exposée. Aucune image n'est enregistrée ni transmise."
-                ) {
-                    BoutonPlat("Autoriser la caméra", accent = true) {
-                        demandeur.launch(Manifest.permission.CAMERA)
-                    }
+                BoutonPlat("Autoriser la caméra", accent = true) {
+                    demandeur.launch(Manifest.permission.CAMERA)
                 }
             }
-            return@Box
+        }
+        return
+    }
+
+    Column(Modifier.fillMaxSize().background(Color.Black)) {
+
+        /* ── Exercice, en haut ────────────────────────────────────────── */
+        Box(
+            Modifier
+                .fillMaxWidth()
+                .statusBarsPadding()
+                .padding(horizontal = Gouttiere, vertical = 10.dp)
+        ) {
+            ChoixSegmente(
+                options = Exercice.entries.toList(),
+                selection = exercice,
+                libelle = { it.libelle },
+                surChoix = {
+                    exercice = it
+                    cible = null; reponse = null; revele = false
+                    justes = 0; posees = 0
+                }
+            )
         }
 
         /* ── Le viseur ────────────────────────────────────────────────────
@@ -205,7 +224,7 @@ fun EcranFocales() {
            les proportions du capteur, seul le fond noir va bord à bord. Le
            ratio choisi, lui, se dessine par-dessus comme un cache — jamais un
            mode caméra réel, l'appareil ne peut demander que du 4:3 ou du 16:9. */
-        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Box(Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
             Box(Modifier.fillMaxSize().aspectRatio(moteur.rapportApercu)) {
                 AndroidView(
                     factory = { vue },
@@ -310,29 +329,9 @@ fun EcranFocales() {
             }
         }
 
-        /* ── Exercice, en haut ────────────────────────────────────────── */
-        Box(
-            Modifier
-                .fillMaxWidth()
-                .statusBarsPadding()
-                .padding(horizontal = Gouttiere, vertical = 10.dp)
-        ) {
-            ChoixSegmente(
-                options = Exercice.entries.toList(),
-                selection = exercice,
-                libelle = { it.libelle },
-                surChoix = {
-                    exercice = it
-                    cible = null; reponse = null; revele = false
-                    justes = 0; posees = 0
-                }
-            )
-        }
-
         /* ── Le panneau flottant du bas ───────────────────────────────── */
         PanneauFlottant(
             Modifier
-                .align(Alignment.BottomCenter)
                 .fillMaxWidth()
                 .navigationBarsPadding()
                 .padding(bottom = 92.dp)

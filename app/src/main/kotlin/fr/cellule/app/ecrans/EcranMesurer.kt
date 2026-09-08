@@ -201,81 +201,9 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
         coupleConseille(it + Photometrie.decalageIso(reglages.iso), vitesseVoulue)
     }
 
-    Box(Modifier.fillMaxSize().background(Color.Black)) {
+    Column(Modifier.fillMaxSize().background(Color.Black)) {
 
-        /* ── Le viseur, plein écran ───────────────────────────────────────
-           Le fond noir occupe tout l'écran, mais le cadre réellement mesuré
-           garde exactement les proportions du capteur (moteur.rapportApercu) :
-           c'est ce qui garantit que le point touché tombe sur le pixel visé.
-           Sur la plupart des téléphones l'image remplit déjà toute la largeur ;
-           l'éventuel bandeau noir en haut/bas se fond dans le fond, invisible. */
-        if (avecCamera && autorisee) {
-            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Box(Modifier.fillMaxSize().aspectRatio(moteur.rapportApercu)) {
-                    AndroidView(
-                        factory = { vue },
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .pointerInput(Unit) {
-                                detectTapGestures { position: Offset ->
-                                    moteur.viser(
-                                        position.x / size.width.toFloat(),
-                                        position.y / size.height.toFloat()
-                                    )
-                                }
-                            }
-                    )
-                    if (mode == ModeMesure.SPOT) {
-                        val teinte = MaterialTheme.colorScheme.primary
-                        Canvas(Modifier.fillMaxSize()) {
-                            val centre = Offset(moteur.cibleU * size.width, moteur.cibleV * size.height)
-                            val r = moteur.rayon * min(size.width, size.height)
-                            drawCircle(Color.Black.copy(alpha = 0.55f), r + 1.5f, centre, style = Stroke(width = 5f))
-                            drawCircle(teinte, r, centre, style = Stroke(width = 2.5f))
-                            drawCircle(teinte, 2.5f, centre)
-                        }
-                    }
-                }
-            }
-        } else if (!avecCamera) {
-            /* Mode incident : pas de flux caméra, un fond qui évoque le
-               capteur d'ambiance plutôt qu'un écran mort. */
-            Box(
-                Modifier
-                    .fillMaxSize()
-                    .background(
-                        Brush.radialGradient(
-                            listOf(
-                                MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.35f),
-                                Color.Black
-                            )
-                        )
-                    )
-            )
-        }
-
-        /* ── Demande d'accès, si nécessaire ───────────────────────────── */
-        if (avecCamera && !autorisee) {
-            Column(
-                Modifier
-                    .fillMaxSize()
-                    .background(MaterialTheme.colorScheme.background)
-                    .statusBarsPadding()
-                    .padding(Gouttiere),
-                verticalArrangement = Arrangement.Center
-            ) {
-                Carte(
-                    titre = "Accès à la caméra",
-                    sousTitre = "La mesure réfléchie lit les métadonnées d'exposition : temps de pose, sensibilité, ouverture. Aucune image n'est enregistrée ni transmise."
-                ) {
-                    BoutonPlat("Autoriser la caméra", accent = true) {
-                        demandeur.launch(Manifest.permission.CAMERA)
-                    }
-                }
-            }
-        }
-
-        /* ── Mode, en haut, flottant ──────────────────────────────────── */
+        /* ── Mode, en haut ────────────────────────────────────────────── */
         Box(
             Modifier
                 .fillMaxWidth()
@@ -289,27 +217,98 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
                 surChoix = { mode = it }
             )
         }
-        if (avecCamera && autorisee && mode == ModeMesure.SPOT) {
-            Row(
-                Modifier
-                    .align(Alignment.TopEnd)
-                    .statusBarsPadding()
-                    .padding(top = 66.dp, end = Gouttiere),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Slider(
-                    value = moteur.rayon,
-                    onValueChange = { moteur.reglerRayon(it) },
-                    valueRange = 0.02f..0.25f,
-                    modifier = Modifier.height(28.dp)
+
+        /* ── Le viseur ──────────────────────────────────────────────────
+           Il occupe tout ce qu'il reste une fois le sélecteur du haut et
+           le panneau du bas posés : jamais recouvert, jamais chevauché.
+           Le cadre réellement mesuré garde exactement les proportions du
+           capteur (moteur.rapportApercu), ce qui garantit que le point
+           touché tombe sur le pixel visé. */
+        Box(Modifier.weight(1f).fillMaxWidth()) {
+            if (avecCamera && autorisee) {
+                Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    Box(Modifier.fillMaxSize().aspectRatio(moteur.rapportApercu)) {
+                        AndroidView(
+                            factory = { vue },
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .pointerInput(Unit) {
+                                    detectTapGestures { position: Offset ->
+                                        moteur.viser(
+                                            position.x / size.width.toFloat(),
+                                            position.y / size.height.toFloat()
+                                        )
+                                    }
+                                }
+                        )
+                        if (mode == ModeMesure.SPOT) {
+                            val teinte = MaterialTheme.colorScheme.primary
+                            Canvas(Modifier.fillMaxSize()) {
+                                val centre = Offset(moteur.cibleU * size.width, moteur.cibleV * size.height)
+                                val r = moteur.rayon * min(size.width, size.height)
+                                drawCircle(Color.Black.copy(alpha = 0.55f), r + 1.5f, centre, style = Stroke(width = 5f))
+                                drawCircle(teinte, r, centre, style = Stroke(width = 2.5f))
+                                drawCircle(teinte, 2.5f, centre)
+                            }
+                        }
+                    }
+                }
+                if (mode == ModeMesure.SPOT) {
+                    Row(
+                        Modifier
+                            .align(Alignment.TopEnd)
+                            .padding(top = 12.dp, end = Gouttiere),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Slider(
+                            value = moteur.rayon,
+                            onValueChange = { moteur.reglerRayon(it) },
+                            valueRange = 0.02f..0.25f,
+                            modifier = Modifier.height(28.dp)
+                        )
+                    }
+                }
+            } else if (!avecCamera) {
+                /* Mode incident : pas de flux caméra, un fond qui évoque le
+                   capteur d'ambiance plutôt qu'un écran mort. */
+                Box(
+                    Modifier
+                        .fillMaxSize()
+                        .background(
+                            Brush.radialGradient(
+                                listOf(
+                                    MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.35f),
+                                    Color.Black
+                                )
+                            )
+                        )
                 )
+            }
+
+            /* ── Demande d'accès, si nécessaire ───────────────────────── */
+            if (avecCamera && !autorisee) {
+                Column(
+                    Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background)
+                        .padding(Gouttiere),
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Carte(
+                        titre = "Accès à la caméra",
+                        sousTitre = "La mesure réfléchie lit les métadonnées d'exposition : temps de pose, sensibilité, ouverture. Aucune image n'est enregistrée ni transmise."
+                    ) {
+                        BoutonPlat("Autoriser la caméra", accent = true) {
+                            demandeur.launch(Manifest.permission.CAMERA)
+                        }
+                    }
+                }
             }
         }
 
         /* ── Le panneau flottant du bas ───────────────────────────────── */
         PanneauFlottant(
             Modifier
-                .align(Alignment.BottomCenter)
                 .fillMaxWidth()
                 .navigationBarsPadding()
                 .padding(bottom = 92.dp)
