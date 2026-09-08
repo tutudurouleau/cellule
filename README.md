@@ -58,6 +58,19 @@ trouve derrière la vitre de l'écran, dont la réponse angulaire n'a rien de
 cosinusoïdale. L'application signale la saturation dès qu'elle survient plutôt
 que d'afficher un chiffre faux.
 
+### L'onglet Capteurs
+
+Un inventaire du matériel, lu dans l'API Camera2 sans jamais ouvrir de
+caméra : focale, ouverture, taille physique, résolution, stabilisation,
+autofocus, pour chaque capteur avant et arrière — y compris les capteurs
+physiques d'un module multi-caméras (grand-angle, ultra grand-angle,
+téléobjectif, macro) quand le fabricant les expose individuellement.
+Android ne publie jamais quel capteur joue quel rôle : celui qui est
+affiché est déduit de la focale équivalente 24×36 et de la distance de
+mise au point la plus proche, pas une donnée constructeur. Le capteur de
+luminosité ambiante y figure aussi, avec sa portée et sa résolution
+annoncées.
+
 ### Les trois modes
 
 **Spot** — un disque déplaçable dans l'aperçu, redimensionnable. C'est le mode

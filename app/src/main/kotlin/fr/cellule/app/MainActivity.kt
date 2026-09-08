@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
@@ -33,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import fr.cellule.app.ecrans.EcranCapteurs
 import fr.cellule.app.ecrans.EcranEstimer
 import fr.cellule.app.ecrans.EcranJournal
 import fr.cellule.app.ecrans.EcranMesurer
@@ -59,7 +61,8 @@ private enum class Onglet(val titre: String, val sousTitre: String, val icone: I
     MESURER("Mesurer", "posemètre réfléchi et incident", Icons.Filled.Search),
     ESTIMER("Estimer", "la chaîne de facteurs, sans cellule", Icons.Filled.Star),
     CARNET("Carnet", "ce que tu as photographié, et ton biais", Icons.Filled.DateRange),
-    TABLES("Tables", "les repères à retenir", Icons.Filled.List)
+    TABLES("Tables", "les repères à retenir", Icons.Filled.List),
+    CAPTEURS("Capteurs", "les caméras et le capteur d'ambiance de ce téléphone", Icons.Filled.Info)
 }
 
 class MainActivity : ComponentActivity() {
@@ -146,6 +149,7 @@ private fun Application() {
                 Onglet.ESTIMER -> EcranEstimer(reglages, etat)
                 Onglet.CARNET -> EcranJournal(depot, reglages, etat)
                 Onglet.TABLES -> EcranTables()
+                Onglet.CAPTEURS -> EcranCapteurs()
             }
         }
     }
