@@ -213,8 +213,10 @@ fun EcranFocales() {
                         .filter { it.second < 0.94 }
                         .take(4)
                         .forEach { (_, fraction) ->
-                            val l = size.width * fraction
-                            val h = size.height * fraction
+                            /* La fraction vient du calcul d'angle, en Double ;
+                               la géométrie de dessin, elle, est en Float. */
+                            val l = (size.width * fraction).toFloat()
+                            val h = (size.height * fraction).toFloat()
                             drawRect(
                                 color = teinte.copy(alpha = 0.75f),
                                 topLeft = Offset((size.width - l) / 2, (size.height - h) / 2),
