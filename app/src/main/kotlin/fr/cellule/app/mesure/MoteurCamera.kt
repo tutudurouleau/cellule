@@ -27,8 +27,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
+import android.graphics.Rect
 import fr.cellule.core.DecodeurLuma
+import fr.cellule.core.Equivalence
 import fr.cellule.core.ExpositionCamera
+import fr.cellule.core.Focales
 import fr.cellule.core.Reperes
 import fr.cellule.core.ResultatSpot
 import java.util.concurrent.ExecutorService
@@ -87,6 +90,41 @@ class MoteurCamera(private val contexte: Context) {
     /** Dernier diagnostic d'analyse, pour comprendre une lecture qui refuse. */
     var diagnostic by mutableStateOf<Diagnostic?>(null)
         private set
+
+    /**
+     * Angle de champ courant et son équivalence 24×36.
+     *
+     * Elle se recalcule à chaque capture parce que rien n'y est fixe : le zoom
+     * numérique recadre le capteur, et sur un téléphone à plusieurs modules
+     * l'objectif change physiquement en cours de route.
+     */
+    var equivalence by mutableStateOf<Equivalence?>(null)
+        private set
+
+    var zoomDemande by mutableStateOf(1f)
+        private set
+    var zoomMinimal by mutableStateOf(1f)
+        private set
+    var zoomMaximal by mutableStateOf(1f)
+        private set
+
+    /** Rapport largeur sur hauteur du flux, dans l'orientation du capteur. */
+    private var rapportCapteur = 4f / 3f
+    private var capteurLargeurMm = 0.0
+    private var capteurHauteurMm = 0.0
+    private var zoneActive: Rect? = null
+
+    fun reglerZoom(ratio: Float) {
+        val borne = ratio.coerceIn(zoomMinimal, zoomMaximal)
+        zoomDemande = borne
+        try {
+            camera?.cameraControl?.setZoomRatio(borne)
+        } catch (e: Exception) {
+            /* Certains appareils refusent une valeur pourtant annoncée. */
+        }
+    }
+
+    fun pincer(facteur: Float) = reglerZoom(zoomDemande * facteur)
 
     /** L'exposition automatique a convergé : les deux flux se correspondent. */
     var aeStable by mutableStateOf(false)
@@ -183,6 +221,7 @@ class MoteurCamera(private val contexte: Context) {
                 )
                 camera = cam
                 ouvertureParDefaut = ouvertureDeLOptique(cam) ?: ouvertureParDefaut
+                relevePlanFocal(cam)
             } catch (e: Exception) {
                 erreur = "Caméra indisponible : ${e.message ?: e.javaClass.simpleName}"
             }
@@ -198,6 +237,32 @@ class MoteurCamera(private val contexte: Context) {
         camera = null
         executeur?.shutdown()
         executeur = null
+    }
+
+    /** Taille physique du capteur et débattement de zoom : invariants de l'appareil. */
+    private fun relevePlanFocal(cam: Camera) {
+        try {
+            val info = Camera2CameraInfo.from(cam.cameraInfo)
+            info.getCameraCharacteristic(CameraCharacteristics.SENSOR_INFO_PHYSICAL_SIZE)?.let {
+                capteurLargeurMm = it.width.toDouble()
+                capteurHauteurMm = it.height.toDouble()
+            }
+            zoneActive = info.getCameraCharacteristic(
+                CameraCharacteristics.SENSOR_INFO_ACTIVE_ARRAY_SIZE
+            )
+        } catch (e: Exception) {
+            /* Sans ces caractéristiques, l'onglet des focales le dira. */
+        }
+        try {
+            cam.cameraInfo.zoomState.value?.let {
+                zoomMinimal = it.minZoomRatio
+                zoomMaximal = it.maxZoomRatio
+                zoomDemande = it.zoomRatio
+            }
+        } catch (e: Exception) {
+            zoomMinimal = 1f
+            zoomMaximal = 1f
+        }
     }
 
     private fun ouvertureDeLOptique(cam: Camera): Double? = try {
@@ -244,13 +309,36 @@ class MoteurCamera(private val contexte: Context) {
                 etatAe != CaptureResult.CONTROL_AE_STATE_PRECAPTURE
 
             val lecture = ExpositionCamera(ouverture, temps, isoEffectif, compensation())
+            val equiv = calculeEquivalence(result)
             principal.post {
                 if (!gele) {
                     exposition = lecture
                     aeStable = stable
                 }
+                if (equiv != null) equivalence = equiv
             }
         }
+    }
+
+    /**
+     * La focale déclarée et la zone de capteur réellement lue donnent l'angle
+     * de champ ; le reste n'est que géométrie.
+     */
+    private fun calculeEquivalence(result: TotalCaptureResult): Equivalence? {
+        val focale = result.get(CaptureResult.LENS_FOCAL_LENGTH)?.toDouble() ?: return null
+        if (focale <= 0.0 || capteurLargeurMm <= 0.0) return null
+        val active = zoneActive ?: return null
+        val recadrage = result.get(CaptureResult.SCALER_CROP_REGION)
+        val fx = if (recadrage != null && active.width() > 0)
+            recadrage.width().toDouble() / active.width() else 1.0
+        val fy = if (recadrage != null && active.height() > 0)
+            recadrage.height().toDouble() / active.height() else 1.0
+        val cadre = Focales.cadreUtile(
+            capteurLargeurMm, capteurHauteurMm,
+            fx.coerceIn(0.001, 1.0), fy.coerceIn(0.001, 1.0),
+            rapportCapteur.toDouble()
+        )
+        return Focales.equivalence(cadre, focale)
     }
 
     private fun analyser(image: ImageProxy) {
@@ -273,6 +361,7 @@ class MoteurCamera(private val contexte: Context) {
                 centreY = y,
                 rayonRelatif = rayon
             )
+            rapportCapteur = image.width.toFloat() / image.height.toFloat()
             val rapport = if (rotation % 180 == 90) {
                 image.height.toFloat() / image.width.toFloat()
             } else {

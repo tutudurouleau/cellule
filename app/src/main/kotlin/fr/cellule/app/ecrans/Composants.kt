@@ -1,7 +1,7 @@
 package fr.cellule.app.ecrans
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,6 +21,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -28,14 +29,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import fr.cellule.app.Corps
 import fr.cellule.app.Detail
-import fr.cellule.app.StyleEtiquette
 import fr.cellule.app.Gouttiere
 import fr.cellule.app.Interligne
+import fr.cellule.app.RayonCarte
+import fr.cellule.app.RayonControle
+import fr.cellule.app.StyleEtiquette
 import fr.cellule.app.TitreCarte
 import java.util.Locale
 import kotlin.math.abs
@@ -77,19 +81,22 @@ fun fmtCdm2(l: Double): String = when {
     else -> fmt(l, 3) + " cd/m²"
 }
 
+fun fmtDegres(a: Double): String = if (a.isNaN()) "—" else fmt(a, 1) + "°"
+
 /* ── Blocs ─────────────────────────────────────────────────────────────── */
 
 @Composable
-fun Etiquette(texte: String, modifier: Modifier = Modifier) {
+fun Etiquette(texte: String, modifier: Modifier = Modifier, accent: Boolean = false) {
     Text(
         texte.uppercase(Locale.FRANCE),
         style = StyleEtiquette,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        color = if (accent) MaterialTheme.colorScheme.primary
+        else MaterialTheme.colorScheme.onSurfaceVariant,
         modifier = modifier
     )
 }
 
-/** Une carte : bordure fine plutôt qu'une ombre, pour ne pas alourdir. */
+/** Une carte : surface empilée, sans bordure ni ombre. */
 @Composable
 fun Carte(
     titre: String? = null,
@@ -101,20 +108,32 @@ fun Carte(
         modifier
             .fillMaxWidth()
             .padding(horizontal = Gouttiere, vertical = 5.dp)
-            .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(16.dp))
-            .border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(16.dp))
-            .padding(Gouttiere)
+            .background(MaterialTheme.colorScheme.surfaceContainer, RoundedCornerShape(RayonCarte))
+            .padding(horizontal = Gouttiere, vertical = Gouttiere + 2.dp)
     ) {
         if (titre != null) {
             Text(titre, style = TitreCarte, color = MaterialTheme.colorScheme.onSurface)
         }
         if (sousTitre != null) {
-            Spacer(Modifier.height(3.dp))
+            Spacer(Modifier.height(4.dp))
             Text(sousTitre, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
-        if (titre != null || sousTitre != null) Spacer(Modifier.height(Interligne))
+        if (titre != null || sousTitre != null) Spacer(Modifier.height(Interligne + 2.dp))
         contenu()
     }
+}
+
+/** La carte de tête : celle qui porte la mesure, plus contrastée que les autres. */
+@Composable
+fun CarteInstrument(modifier: Modifier = Modifier, contenu: @Composable ColumnScope.() -> Unit) {
+    Column(
+        modifier
+            .fillMaxWidth()
+            .padding(horizontal = Gouttiere, vertical = 5.dp)
+            .background(MaterialTheme.colorScheme.surfaceContainerHigh, RoundedCornerShape(RayonCarte))
+            .padding(horizontal = Gouttiere + 2.dp, vertical = Gouttiere + 4.dp),
+        content = contenu
+    )
 }
 
 /** Une ligne « intitulé · valeur », le détail sous l'intitulé. */
@@ -126,7 +145,7 @@ fun Ligne(
     accent: Boolean = false
 ) {
     Row(
-        Modifier.fillMaxWidth().padding(vertical = 5.dp),
+        Modifier.fillMaxWidth().padding(vertical = 6.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.Top
     ) {
@@ -157,7 +176,7 @@ fun Separateur() {
     )
 }
 
-/** Un choix parmi quelques-uns, en bandeau. */
+/** Un choix parmi quelques-uns, en gélule. */
 @Composable
 fun <T> ChoixSegmente(
     options: List<T>,
@@ -168,28 +187,29 @@ fun <T> ChoixSegmente(
     Row(
         Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(11.dp))
-            .padding(3.dp),
-        horizontalArrangement = Arrangement.spacedBy(3.dp)
+            .background(MaterialTheme.colorScheme.surfaceContainer, RoundedCornerShape(50))
+            .padding(4.dp),
+        horizontalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         options.forEach { option ->
             val actif = option == selection
+            val fond by animateColorAsState(
+                if (actif) MaterialTheme.colorScheme.primaryContainer else Color.Transparent,
+                label = "fond"
+            )
             Box(
                 Modifier
                     .weight(1f)
-                    .background(
-                        if (actif) MaterialTheme.colorScheme.surface else androidx.compose.ui.graphics.Color.Transparent,
-                        RoundedCornerShape(9.dp)
-                    )
+                    .background(fond, RoundedCornerShape(50))
                     .clickable { surChoix(option) }
-                    .padding(vertical = 9.dp),
+                    .padding(vertical = 10.dp),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
                     libelle(option),
                     style = Corps,
                     maxLines = 1,
-                    color = if (actif) MaterialTheme.colorScheme.primary
+                    color = if (actif) MaterialTheme.colorScheme.onPrimaryContainer
                     else MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
@@ -211,13 +231,13 @@ fun <T> Deroulant(
     Box(modifier) {
         Column(
             Modifier
-                .background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(11.dp))
+                .background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(RayonControle))
                 .clickable { ouvert = true }
-                .padding(horizontal = 12.dp, vertical = 9.dp)
+                .padding(horizontal = 13.dp, vertical = 10.dp)
         ) {
             if (intitule.isNotBlank()) {
                 Etiquette(intitule)
-                Spacer(Modifier.height(2.dp))
+                Spacer(Modifier.height(3.dp))
             }
             Text(
                 libelle(selection) + "  ▾",
@@ -238,7 +258,7 @@ fun <T> Deroulant(
     }
 }
 
-/** Champ de saisie, à la même hauteur que les déroulants. */
+/** Champ de saisie, aligné sur les déroulants. */
 @Composable
 fun Champ(
     valeur: String,
@@ -257,7 +277,13 @@ fun Champ(
         },
         singleLine = surUneLigne,
         textStyle = Corps,
-        shape = RoundedCornerShape(11.dp),
+        shape = RoundedCornerShape(RayonControle),
+        colors = TextFieldDefaults.colors(
+            focusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+            unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+            focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+            unfocusedIndicatorColor = Color.Transparent
+        ),
         modifier = modifier
     )
 }
@@ -273,13 +299,14 @@ fun BandeauEtat(texte: String, alerte: Boolean) {
     Box(
         Modifier
             .fillMaxWidth()
-            .heightIn(min = 34.dp)
+            .heightIn(min = 36.dp)
             .background(
-                if (texte.isBlank()) androidx.compose.ui.graphics.Color.Transparent
+                if (texte.isBlank()) Color.Transparent
+                else if (alerte) MaterialTheme.colorScheme.surfaceContainerHighest
                 else MaterialTheme.colorScheme.surfaceVariant,
-                RoundedCornerShape(9.dp)
+                RoundedCornerShape(RayonControle)
             )
-            .padding(horizontal = 10.dp, vertical = 8.dp),
+            .padding(horizontal = 12.dp, vertical = 9.dp),
         contentAlignment = Alignment.CenterStart
     ) {
         Text(
@@ -293,25 +320,37 @@ fun BandeauEtat(texte: String, alerte: Boolean) {
     }
 }
 
-/** Une pastille de valeur, pour les états courts. */
+/** Une pastille de valeur, cliquable ou non. */
 @Composable
-fun Pastille(texte: String, accent: Boolean = false) {
-    Text(
-        texte,
-        style = Detail,
-        color = if (accent) MaterialTheme.colorScheme.primary
-        else MaterialTheme.colorScheme.onSurfaceVariant,
-        modifier = Modifier
-            .background(
-                if (accent) MaterialTheme.colorScheme.primaryContainer
-                else MaterialTheme.colorScheme.surfaceVariant,
-                RoundedCornerShape(20.dp)
-            )
-            .padding(horizontal = 9.dp, vertical = 3.dp)
+fun Pastille(
+    texte: String,
+    accent: Boolean = false,
+    modifier: Modifier = Modifier,
+    surClic: (() -> Unit)? = null
+) {
+    val fond by animateColorAsState(
+        if (accent) MaterialTheme.colorScheme.primaryContainer
+        else MaterialTheme.colorScheme.surfaceVariant,
+        label = "pastille"
     )
+    Box(
+        modifier
+            .background(fond, RoundedCornerShape(50))
+            .then(if (surClic != null) Modifier.clickable { surClic() } else Modifier)
+            .padding(horizontal = 13.dp, vertical = 7.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            texte,
+            style = Corps,
+            maxLines = 1,
+            color = if (accent) MaterialTheme.colorScheme.onPrimaryContainer
+            else MaterialTheme.colorScheme.onSurfaceVariant
+        )
+    }
 }
 
-/** Bouton discret, aligné sur le reste. */
+/** Bouton plat, aligné sur le reste. */
 @Composable
 fun BoutonPlat(
     texte: String,
@@ -325,13 +364,13 @@ fun BoutonPlat(
             .background(
                 when {
                     !actif -> MaterialTheme.colorScheme.surfaceVariant
-                    accent -> MaterialTheme.colorScheme.primaryContainer
+                    accent -> MaterialTheme.colorScheme.primary
                     else -> MaterialTheme.colorScheme.surfaceVariant
                 },
-                RoundedCornerShape(11.dp)
+                RoundedCornerShape(RayonControle)
             )
             .clickable(enabled = actif) { surClic() }
-            .padding(horizontal = 15.dp, vertical = 10.dp),
+            .padding(horizontal = 16.dp, vertical = 12.dp),
         contentAlignment = Alignment.Center
     ) {
         Text(
@@ -340,7 +379,7 @@ fun BoutonPlat(
             maxLines = 1,
             color = when {
                 !actif -> MaterialTheme.colorScheme.outline
-                accent -> MaterialTheme.colorScheme.primary
+                accent -> MaterialTheme.colorScheme.onPrimary
                 else -> MaterialTheme.colorScheme.onSurface
             }
         )

@@ -265,8 +265,8 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
         }
 
         /* ── L'instrument ─────────────────────────────────────────────── */
-        Carte {
-            Row(Modifier.fillMaxWidth().height(88.dp), verticalAlignment = Alignment.CenterVertically) {
+        CarteInstrument {
+            Row(Modifier.fillMaxWidth().height(84.dp), verticalAlignment = Alignment.CenterVertically) {
                 Column(Modifier.weight(1f)) {
                     Row(verticalAlignment = Alignment.Bottom) {
                         Text(
