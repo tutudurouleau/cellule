@@ -253,8 +253,11 @@ fun EcranFocales() {
                             .filter { it.second < 0.94 }
                             .take(4)
                             .forEach { (_, fraction) ->
-                                val l = cadreL * fraction
-                                val h = cadreH * fraction
+                                /* cadreL/cadreH sont des Float, fraction un Double :
+                                   sans conversion explicite le produit est un Double,
+                                   qu'Offset et Size refusent. */
+                                val l = (cadreL * fraction).toFloat()
+                                val h = (cadreH * fraction).toFloat()
                                 drawRect(
                                     color = teinte.copy(alpha = 0.75f),
                                     topLeft = Offset(cadreX + (cadreL - l) / 2, cadreY + (cadreH - h) / 2),
@@ -266,9 +269,12 @@ fun EcranFocales() {
                 } else if (ratioSortie != null && enExercice) {
                     /* Pendant les exercices, le cache reste visible même sans
                        les rectangles emboîtés : le cadre qu'on entraîne ne
-                       doit pas changer sous les pieds selon le mode. */
+                       doit pas changer sous les pieds selon le mode.
+                       Le ratio est revérifié dans le lambda de dessin plutôt
+                       que de compter sur un smart-cast à travers sa frontière. */
                     Canvas(Modifier.fillMaxSize()) {
-                        val guide = guideDeCadrage(size.width / size.height.toDouble(), ratioSortie)
+                        val ratio = ratioSortie ?: return@Canvas
+                        val guide = guideDeCadrage(size.width / size.height.toDouble(), ratio)
                         val cadreL = (size.width * guide.largeur).toFloat()
                         val cadreH = (size.height * guide.hauteur).toFloat()
                         val cadreX = (size.width - cadreL) / 2
