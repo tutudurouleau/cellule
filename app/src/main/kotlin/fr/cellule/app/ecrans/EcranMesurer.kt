@@ -45,6 +45,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -231,10 +232,19 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
            Le cadre réellement mesuré garde exactement les proportions du
            capteur (moteur.rapportApercu), ce qui garantit que le point
            touché tombe sur le pixel visé. */
-        Box(Modifier.weight(1f).fillMaxWidth()) {
+        Box(Modifier.weight(1f).fillMaxWidth().clipToBounds()) {
             if (avecCamera && autorisee) {
                 Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    Box(Modifier.fillMaxSize().aspectRatio(moteur.rapportApercu)) {
+                    /* Surtout pas de fillMaxSize() avant aspectRatio() : il fige la
+                       hauteur autant que la largeur, aucune taille ne peut alors
+                       satisfaire à la fois les contraintes et le ratio, et Compose
+                       retombe sur « largeur maximale, hauteur déduite » — sans
+                       plafonner cette hauteur. Tant que le viseur occupait tout
+                       l'écran la hauteur déduite y tenait ; depuis qu'il le partage,
+                       elle le dépassait et l'image débordait par-dessus le sélecteur.
+                       Sans fillMaxSize, les contraintes restent lâches et aspectRatio
+                       choisit de lui-même le côté limitant. */
+                    Box(Modifier.aspectRatio(moteur.rapportApercu)) {
                         AndroidView(
                             factory = { vue },
                             modifier = Modifier

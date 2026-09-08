@@ -42,6 +42,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -231,8 +232,17 @@ fun EcranFocales() {
            les proportions du capteur, seul le fond noir va bord à bord. Le
            ratio choisi, lui, se dessine par-dessus comme un cache — jamais un
            mode caméra réel, l'appareil ne peut demander que du 4:3 ou du 16:9. */
-        Box(Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
-            Box(Modifier.fillMaxSize().aspectRatio(moteur.rapportApercu)) {
+        Box(Modifier.weight(1f).fillMaxWidth().clipToBounds(), contentAlignment = Alignment.Center) {
+            /* Surtout pas de fillMaxSize() avant aspectRatio() : il fige la
+               hauteur autant que la largeur, aucune taille ne peut alors
+               satisfaire à la fois les contraintes et le ratio, et Compose
+               retombe sur « largeur maximale, hauteur déduite » — sans
+               plafonner cette hauteur. Tant que le viseur occupait tout
+               l'écran la hauteur déduite y tenait ; depuis qu'il le partage,
+               elle le dépassait et l'image débordait par-dessus le sélecteur.
+               Sans fillMaxSize, les contraintes restent lâches et aspectRatio
+               choisit de lui-même le côté limitant. */
+            Box(Modifier.aspectRatio(moteur.rapportApercu)) {
                 AndroidView(
                     factory = { vue },
                     modifier = Modifier
