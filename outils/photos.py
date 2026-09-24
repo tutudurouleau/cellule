@@ -9,15 +9,16 @@ est bien plus photographié que sur Commons. Pour chaque fiche de
 outils/photos.json :
 
 - sans « choix » : cherche des photos sous licence libre et en dépose des
-  vignettes dans outils/candidats/<id>/, avec leurs métadonnées, pour qu'un
-  humain regarde et choisisse. « fichiers » liste des candidates repérées à
+  vignettes dans outils/candidats/<id>/ (« apercu » en règle la largeur),
+  avec leurs métadonnées, pour qu'un humain regarde et choisisse. « fichiers » liste des candidates repérées à
   la main (voir outils/inventaire.py), « recherche » interroge Commons
   (syntaxe intitle: permise), « openverse » Openverse (texte simple, ou
   « titre:… » pour ne chercher que dans le titre des photos) ;
 - avec « choix » : un titre « File:… » de Commons ou un identifiant
-  « openverse:… ». La photo est téléchargée, ramenée à 960 px de large,
-  rangée dans app/src/main/assets/photos/<id>.jpg, et son auteur, sa
-  licence et sa source notés dans app/src/main/assets/photos/credits.json ;
+  « openverse:… », et au besoin un « recadrage » [gauche, haut, droite,
+  bas] en fractions de l'image. La photo est téléchargée, ramenée à 960 px
+  de large, rangée dans app/src/main/assets/photos/<id>.jpg, et son auteur,
+  sa licence et sa source notés dans app/src/main/assets/photos/credits.json ;
 - avec « aucune » : ni candidates ni photo, la fiche garde sa silhouette.
 
 Seules les licences libres passent : domaine public, CC0, CC BY, CC BY-SA.
@@ -243,9 +244,10 @@ def candidates_openverse(recherches, vus):
     return retenues
 
 
-def candidates_explicites(titres, vus):
+def candidates_explicites(titres, vus, largeur=LARGEUR_VIGNETTE):
     """Des fichiers repérés à la main (inventaire de Commons, Openverse) :
-    on vérifie leur licence et l'on en fait des vignettes, sans recherche."""
+    on vérifie leur licence et l'on en fait des vignettes, sans recherche.
+    Une largeur plus grande permet de juger une photo où le matériel est petit."""
     retenues = []
     for titre in titres:
         if titre in vus:
@@ -257,7 +259,7 @@ def candidates_explicites(titres, vus):
             description = f"{r.get('title') or ''} ({PLATEFORMES.get(r.get('source'), r.get('source'))})"[:200]
             taille = f"{r.get('width')}x{r.get('height')}"
         else:
-            page = api(titles=titre, iiurlwidth=str(LARGEUR_VIGNETTE), **INFOS_IMAGE)["query"]["pages"][0]
+            page = api(titles=titre, iiurlwidth=str(largeur), **INFOS_IMAGE)["query"]["pages"][0]
             info = (page.get("imageinfo") or [{}])[0]
             licence, vignette, auteur_ = licence_libre(info), info.get("thumburl"), auteur(info)
             description = texte(info.get("extmetadata", {}), "ImageDescription", 200)
@@ -280,11 +282,13 @@ def chercher_candidates(ident, entree, etat):
         "recherche": entree.get("recherche", []),
         "openverse": entree.get("openverse", []),
     }
+    apercu = entree.get("apercu", LARGEUR_VIGNETTE)
     if os.path.exists(index):
         with open(index, encoding="utf-8") as f:
             deja = json.load(f)
         faite = {cle: deja.get(cle, []) for cle in demande}
-        if faite == demande and deja.get("candidates") and deja.get("complet", True):
+        meme_apercu = deja.get("apercu", LARGEUR_VIGNETTE) == apercu
+        if faite == demande and meme_apercu and deja.get("candidates") and deja.get("complet", True):
             return  # déjà fait avec les mêmes recherches
         shutil.rmtree(dossier)
 
@@ -292,7 +296,7 @@ def chercher_candidates(ident, entree, etat):
     retenues = []
     complet = True
     try:
-        retenues += candidates_explicites(demande["fichiers"], vus)
+        retenues += candidates_explicites(demande["fichiers"], vus, apercu)
     except Limite:
         etat["limite"] = True
         complet = False
@@ -314,7 +318,7 @@ def chercher_candidates(ident, entree, etat):
         nom = f"{len(gardees)}.jpg"
         try:
             with open(os.path.join(dossier, nom), "wb") as f:
-                f.write(en_jpeg(lire(candidate["vignette"]), LARGEUR_VIGNETTE))
+                f.write(en_jpeg(lire(candidate["vignette"]), apercu))
         except Exception as e:  # une vignette illisible ne doit pas bloquer les autres
             print(f"  vignette illisible {candidate['titre']} : {e}", file=sys.stderr)
             continue
@@ -322,13 +326,13 @@ def chercher_candidates(ident, entree, etat):
         gardees.append(candidate)
         time.sleep(0.3)
     with open(index, "w", encoding="utf-8") as f:
-        json.dump({**demande, "complet": complet, "candidates": gardees}, f, ensure_ascii=False, indent=1)
+        json.dump({**demande, "apercu": apercu, "complet": complet, "candidates": gardees}, f, ensure_ascii=False, indent=1)
     print(f"{ident} : {len(gardees)} candidate(s)")
 
 
-def source_commons(titre):
+def source_commons(titre, largeur=LARGEUR_PHOTO):
     """Adresse, auteur, licence et page source d'un fichier de Commons."""
-    reponse = api(titles=titre, iiurlwidth=str(LARGEUR_PHOTO), **INFOS_IMAGE)
+    reponse = api(titles=titre, iiurlwidth=str(largeur), **INFOS_IMAGE)
     page = reponse["query"]["pages"][0]
     info = (page.get("imageinfo") or [{}])[0]
     licence = licence_libre(info)
@@ -357,18 +361,38 @@ def source_openverse(identifiant):
     }
 
 
-def telecharger_photo(ident, titre, credits):
+def recadrer(donnees, cadre):
+    """Garde la partie utile d'une photo : [gauche, haut, droite, bas], en
+    fractions de sa largeur et de sa hauteur (une vitrine de salon, par
+    exemple, dans une vue d'ensemble)."""
+    image = Image.open(io.BytesIO(donnees)).convert("RGB")
+    g, h, d, b = cadre
+    image = image.crop((round(g * image.width), round(h * image.height), round(d * image.width), round(b * image.height)))
+    sortie = io.BytesIO()
+    image.save(sortie, "PNG")
+    return sortie.getvalue()
+
+
+def telecharger_photo(ident, titre, credits, cadre=None):
     deja = credits.get(ident)
     fichier = f"{ident}.jpg"
     chemin = os.path.join(PHOTOS, fichier)
-    if deja and deja.get("titre") == titre and deja.get("plateforme") and os.path.exists(chemin):
+    inchangee = deja and deja.get("titre") == titre and deja.get("recadrage") == cadre and os.path.exists(chemin)
+    if inchangee and deja.get("plateforme"):
         return  # déjà là, crédit complet : inutile de redemander
-    origine = source_openverse(titre) if titre.startswith("openverse:") else source_commons(titre)
+    if titre.startswith("openverse:"):
+        origine = source_openverse(titre)
+    else:
+        # Un recadrage réclame une source bien plus grande que la photo finale.
+        origine = source_commons(titre, 3840 if cadre else LARGEUR_PHOTO)
     if not origine:
         print(f"{ident} : « {titre} » introuvable ou sous licence non libre, ignorée", file=sys.stderr)
         return
-    if not (deja and deja.get("titre") == titre and os.path.exists(chemin)):
-        donnees = en_jpeg(lire(origine.pop("url")), LARGEUR_PHOTO)
+    if not inchangee:
+        donnees = lire(origine.pop("url"))
+        if cadre:
+            donnees = recadrer(donnees, cadre)
+        donnees = en_jpeg(donnees, LARGEUR_PHOTO)
         if deja and deja.get("fichier") != fichier:
             ancien = os.path.join(PHOTOS, deja["fichier"])
             if os.path.exists(ancien):
@@ -378,6 +402,8 @@ def telecharger_photo(ident, titre, credits):
         print(f"{ident} : photo téléchargée")
     origine.pop("url", None)
     credits[ident] = {"fichier": fichier, "titre": titre, **origine}
+    if cadre:
+        credits[ident]["recadrage"] = cadre
 
 
 def main():
@@ -395,7 +421,7 @@ def main():
             if entree.get("aucune"):
                 continue
             if entree.get("choix"):
-                telecharger_photo(ident, entree["choix"], credits)
+                telecharger_photo(ident, entree["choix"], credits, entree.get("recadrage"))
             elif entree.get("fichiers") or entree.get("recherche") or entree.get("openverse"):
                 chercher_candidates(ident, entree, etat)
         except Limite:
