@@ -41,8 +41,10 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.PathData
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import fr.cellule.app.ecrans.EcranCameras
 import fr.cellule.app.ecrans.EcranEstimer
 import fr.cellule.app.ecrans.EcranFocales
 import fr.cellule.app.ecrans.EcranJournal
@@ -111,6 +113,14 @@ private val IconeFocales = icone("focales") {
     moveTo(9f, 9.5f); lineTo(15f, 9.5f); lineTo(15f, 14.5f); lineTo(9f, 14.5f); close()
 }
 
+/** Une caméra de cinéma et ses deux bobines : le matériel de tournage. */
+private val IconeCameras = icone("cameras") {
+    moveTo(4f, 7.5f); arcTo(2.8f, 2.8f, 0f, true, true, 9.6f, 7.5f); arcTo(2.8f, 2.8f, 0f, true, true, 4f, 7.5f); close()
+    moveTo(10.6f, 7.5f); arcTo(2.8f, 2.8f, 0f, true, true, 16.2f, 7.5f); arcTo(2.8f, 2.8f, 0f, true, true, 10.6f, 7.5f); close()
+    moveTo(3f, 12f); lineTo(16f, 12f); lineTo(16f, 19.5f); lineTo(3f, 19.5f); close()
+    moveTo(16f, 14f); lineTo(21f, 11.5f); lineTo(21f, 20f); lineTo(16f, 17.5f); close()
+}
+
 /** Un carnet : reliure et lignes. */
 private val IconeCarnet = icone("carnet") {
     moveTo(5f, 4f); lineTo(19f, 4f); lineTo(19f, 20f); lineTo(5f, 20f); close()
@@ -132,6 +142,7 @@ private enum class Onglet(val titre: String, val sousTitre: String, val icone: I
     MESURER("Mesurer", "posemètre réfléchi et incident", IconeMesurer, true),
     ESTIMER("Estimer", "la chaîne de facteurs, sans cellule", IconeEstimer, false),
     FOCALES("Focales", "apprendre à voir les angles de champ", IconeFocales, true),
+    CAMERAS("Caméras", "fiches et quiz du matériel de tournage", IconeCameras, false),
     CARNET("Carnet", "ce que tu as photographié, et ton biais", IconeCarnet, false),
     TABLES("Tables", "les repères à retenir", IconeTables, false)
 }
@@ -177,6 +188,7 @@ private fun Application() {
                     Onglet.MESURER -> EcranMesurer(reglages, etat)
                     Onglet.ESTIMER -> EcranEstimer(reglages, etat)
                     Onglet.FOCALES -> EcranFocales()
+                    Onglet.CAMERAS -> EcranCameras()
                     Onglet.CARNET -> EcranJournal(depot, reglages, etat)
                     Onglet.TABLES -> EcranTables()
                 }
@@ -229,18 +241,21 @@ private fun BoxScope.NavigationFlottante(onglet: Onglet, surChoix: (Onglet) -> U
             .padding(6.dp),
         horizontalArrangement = Arrangement.spacedBy(2.dp)
     ) {
-        Onglet.entries.forEach { o -> OngletFlottant(o, o == onglet) { surChoix(o) } }
+        /* Six onglets : sur un écran étroit, l'étiquette de l'onglet actif
+           ferait déborder la pilule ; l'icône en couleur suffit alors. */
+        val avecEtiquette = LocalConfiguration.current.screenWidthDp >= 380
+        Onglet.entries.forEach { o -> OngletFlottant(o, o == onglet, avecEtiquette) { surChoix(o) } }
     }
 }
 
 @Composable
-private fun RowScope.OngletFlottant(onglet: Onglet, actif: Boolean, surClic: () -> Unit) {
+private fun RowScope.OngletFlottant(onglet: Onglet, actif: Boolean, avecEtiquette: Boolean, surClic: () -> Unit) {
     Row(
         Modifier
             .clip(RoundedCornerShape(50))
             .background(if (actif) MaterialTheme.colorScheme.primaryContainer else Color.Transparent)
             .clickable { surClic() }
-            .padding(horizontal = if (actif) 16.dp else 13.dp, vertical = 12.dp),
+            .padding(horizontal = if (actif && avecEtiquette) 14.dp else 11.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
@@ -249,7 +264,7 @@ private fun RowScope.OngletFlottant(onglet: Onglet, actif: Boolean, surClic: () 
             tint = if (actif) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.size(22.dp)
         )
-        AnimatedVisibility(visible = actif, enter = fadeIn(), exit = fadeOut()) {
+        AnimatedVisibility(visible = actif && avecEtiquette, enter = fadeIn(), exit = fadeOut()) {
             Text(
                 onglet.titre,
                 style = Corps,
