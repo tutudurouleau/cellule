@@ -10,8 +10,9 @@ outils/photos.json :
 
 - sans « choix » : cherche des photos sous licence libre et en dépose des
   vignettes dans outils/candidats/<id>/, avec leurs métadonnées, pour qu'un
-  humain regarde et choisisse. « recherche » sert à Commons (syntaxe
-  intitle: permise), « openverse » à Openverse (texte simple) ;
+  humain regarde et choisisse. « fichiers » liste des candidates repérées à
+  la main (voir outils/inventaire.py), « recherche » interroge Commons
+  (syntaxe intitle: permise), « openverse » Openverse (texte simple) ;
 - avec « choix » : un titre « File:… » de Commons ou un identifiant
   « openverse:… ». La photo est téléchargée, ramenée à 960 px de large,
   rangée dans app/src/main/assets/photos/<id>.jpg, et son auteur, sa
@@ -237,21 +238,60 @@ def candidates_openverse(recherches, vus):
     return retenues
 
 
+def candidates_explicites(titres, vus):
+    """Des fichiers repérés à la main (inventaire de Commons, Openverse) :
+    on vérifie leur licence et l'on en fait des vignettes, sans recherche."""
+    retenues = []
+    for titre in titres:
+        if titre in vus:
+            continue
+        vus.add(titre)
+        if titre.startswith("openverse:"):
+            r = openverse(titre.split(":", 1)[1] + "/")
+            licence, vignette, auteur_ = licence_openverse(r), r.get("url"), (r.get("creator") or "")[:80]
+            description = f"{r.get('title') or ''} ({PLATEFORMES.get(r.get('source'), r.get('source'))})"[:200]
+            taille = f"{r.get('width')}x{r.get('height')}"
+        else:
+            page = api(titles=titre, iiurlwidth=str(LARGEUR_VIGNETTE), **INFOS_IMAGE)["query"]["pages"][0]
+            info = (page.get("imageinfo") or [{}])[0]
+            licence, vignette, auteur_ = licence_libre(info), info.get("thumburl"), auteur(info)
+            description = texte(info.get("extmetadata", {}), "ImageDescription", 200)
+            taille = f"{info.get('width')}x{info.get('height')}"
+        if not licence or not vignette:
+            print(f"  {titre} : introuvable ou sous licence non libre", file=sys.stderr)
+            continue
+        retenues.append({
+            "titre": titre, "licence": licence, "auteur": auteur_,
+            "description": description, "taille": taille, "vignette": vignette,
+        })
+    return retenues
+
+
 def chercher_candidates(ident, entree, etat):
     dossier = os.path.join(CANDIDATS, ident)
     index = os.path.join(dossier, "candidats.json")
-    demande = {"recherche": entree.get("recherche", []), "openverse": entree.get("openverse", [])}
+    demande = {
+        "fichiers": entree.get("fichiers", []),
+        "recherche": entree.get("recherche", []),
+        "openverse": entree.get("openverse", []),
+    }
     if os.path.exists(index):
         with open(index, encoding="utf-8") as f:
             deja = json.load(f)
-        faite = {"recherche": deja.get("recherche", []), "openverse": deja.get("openverse", [])}
+        faite = {cle: deja.get(cle, []) for cle in demande}
         if faite == demande and deja.get("candidates") and deja.get("complet", True):
             return  # déjà fait avec les mêmes recherches
         shutil.rmtree(dossier)
 
     vus = set()
-    retenues = candidates_commons(demande["recherche"], vus)
+    retenues = []
     complet = True
+    try:
+        retenues += candidates_explicites(demande["fichiers"], vus)
+    except Limite:
+        etat["limite"] = True
+        complet = False
+    retenues += candidates_commons(demande["recherche"], vus)
     if demande["openverse"]:
         if etat["limite"]:
             complet = False
@@ -351,7 +391,7 @@ def main():
                 continue
             if entree.get("choix"):
                 telecharger_photo(ident, entree["choix"], credits)
-            elif entree.get("recherche") or entree.get("openverse"):
+            elif entree.get("fichiers") or entree.get("recherche") or entree.get("openverse"):
                 chercher_candidates(ident, entree, etat)
         except Limite:
             print(f"{ident} : limite d'Openverse atteinte, la suite au prochain passage", file=sys.stderr)

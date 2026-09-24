@@ -11,6 +11,8 @@ on:
     paths:
       - "outils/photos.json"
       - "outils/photos.py"
+      - "outils/inventaire.json"
+      - "outils/inventaire.py"
   workflow_dispatch:
 
 concurrency:
@@ -33,6 +35,10 @@ jobs:
         run: pip install pillow
       - name: Chercher et télécharger
         run: python3 outils/photos.py
+      # La liste de ce que Commons range dans les catégories du matériel de
+      # tournage : on y repère les photos que sa recherche ne trouve pas.
+      - name: Inventorier Commons
+        run: python3 outils/inventaire.py
       - name: Verser dans le dépôt
         run: |
           git config user.name "github-actions[bot]"
