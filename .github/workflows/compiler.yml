@@ -47,7 +47,12 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
+      # Par défaut l'action installe aussi l'ancien paquet « tools », qui
+      # n'existe plus avec les cmdline-tools récentes des runners. Gradle
+      # télécharge lui-même la plateforme et les build-tools dont il a besoin.
       - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
       - uses: gradle/actions/setup-gradle@v4
       - name: Construire l'APK de débogage
         run: ./gradlew :app:assembleDebug
