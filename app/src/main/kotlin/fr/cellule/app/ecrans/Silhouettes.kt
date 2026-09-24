@@ -12,9 +12,9 @@ import fr.cellule.core.Silhouette
 
 /*
  * Des silhouettes au trait, dans le même esprit que les icônes de navigation.
- * Jamais de photo : l'application est distribuée hors ligne, et les photos
- * de matériel sont protégées. Le dessin dit la famille — caisson de studio,
- * cube compact, zoom à support — et les indices font le reste.
+ * Elles illustrent la liste du catalogue, et les fiches sans photo. Le dessin
+ * dit la famille — caisson de studio, cube compact, zoom à support — et les
+ * indices font le reste.
  *
  * Toutes sur une grille de 48 × 32, objectif vers la droite.
  */
@@ -141,6 +141,33 @@ private val Stabilisee = dessin("stabilisee") {
     trait(38f, 21f, 38f, 29f)
 }
 
+/* Caméra amateur à poignée : corps, zoom à l'avant, œilleton, poignée pistolet. */
+private val Poignee = dessin("poignee") {
+    rectangle(12f, 9f, 28f, 19f)
+    rectangle(28f, 10.5f, 38f, 17.5f)
+    trait(31f, 10.5f, 31f, 17.5f); trait(34f, 10.5f, 34f, 17.5f)
+    rectangle(38f, 9.5f, 40.5f, 18.5f)
+    rectangle(7f, 11f, 12f, 15f)
+    moveTo(17f, 19f); lineTo(15f, 28f); lineTo(20f, 28f); lineTo(22f, 19f)
+}
+
+/* Téléphone tenu à l'horizontale, vu de dos : le bloc d'objectifs dans un coin. */
+private val Telephone = dessin("telephone") {
+    moveTo(11f, 8f); lineTo(37f, 8f)
+    arcTo(3f, 3f, 0f, false, true, 40f, 11f)
+    lineTo(40f, 23f)
+    arcTo(3f, 3f, 0f, false, true, 37f, 26f)
+    lineTo(11f, 26f)
+    arcTo(3f, 3f, 0f, false, true, 8f, 23f)
+    lineTo(8f, 11f)
+    arcTo(3f, 3f, 0f, false, true, 11f, 8f)
+    close()
+    rectangle(11.5f, 11f, 20.5f, 20f)
+    cercle(14f, 13.5f, 1.5f)
+    cercle(18f, 13.5f, 1.5f)
+    cercle(14f, 17.5f, 1.5f)
+}
+
 /* Focale fixe : monture, fût à bagues crantées, avant évasé. */
 private val Fixe = dessin("fixe") {
     rectangle(8f, 11f, 11f, 21f)
@@ -188,6 +215,8 @@ fun Silhouette.image(): ImageVector = when (this) {
     Silhouette.CAISSON -> Caisson
     Silhouette.TOURELLE -> Tourelle
     Silhouette.STABILISEE -> Stabilisee
+    Silhouette.POIGNEE -> Poignee
+    Silhouette.TELEPHONE -> Telephone
     Silhouette.FIXE -> Fixe
     Silhouette.ZOOM -> Zoom
     Silhouette.ANAMORPHIQUE -> Anamorphique

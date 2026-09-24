@@ -12,7 +12,8 @@ outils/photos.json :
   vignettes dans outils/candidats/<id>/, avec leurs métadonnées, pour qu'un
   humain regarde et choisisse. « fichiers » liste des candidates repérées à
   la main (voir outils/inventaire.py), « recherche » interroge Commons
-  (syntaxe intitle: permise), « openverse » Openverse (texte simple) ;
+  (syntaxe intitle: permise), « openverse » Openverse (texte simple, ou
+  « titre:… » pour ne chercher que dans le titre des photos) ;
 - avec « choix » : un titre « File:… » de Commons ou un identifiant
   « openverse:… ». La photo est téléchargée, ramenée à 960 px de large,
   rangée dans app/src/main/assets/photos/<id>.jpg, et son auteur, sa
@@ -210,7 +211,11 @@ def candidates_commons(recherches, vus):
 def candidates_openverse(recherches, vus):
     retenues = []
     for recherche in recherches:
-        reponse = openverse("", q=recherche, license="by,by-sa,cc0,pdm", page_size="20")
+        # « titre:… » cherche dans le seul titre des photos : sur Flickr, le nom
+        # d'un objectif dans les mots-clés désigne souvent une photo prise AVEC
+        # lui, alors qu'une photo intitulée « Cooke S4 » le montre.
+        champ = {"title": recherche[6:]} if recherche.startswith("titre:") else {"q": recherche}
+        reponse = openverse("", license="by,by-sa,cc0,pdm", page_size="20", **champ)
         resultats = reponse.get("results", [])
         for r in resultats:
             titre = "openverse:" + r["id"]

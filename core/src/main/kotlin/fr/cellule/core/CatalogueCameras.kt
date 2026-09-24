@@ -199,6 +199,51 @@ private fun arriNumerique(): List<Camera> = listOf(
 
 private fun arriPellicule(): List<Camera> = listOf(
     Camera(
+        nom = "ARRIFLEX 35 (II et IIC)",
+        fabricant = "ARRI",
+        annee = 1937,
+        categorie = "Argentique 35 mm, portable, visée reflex",
+        silhouette = Silhouette.ARGENTIQUE,
+        punchline = "La première caméra 35 mm à visée reflex : on cadre enfin à travers l'objectif.",
+        chiffresCles = listOf(
+            "Format" vaut "35 mm",
+            "Visée" vaut "Reflex, miroir tournant",
+            "Poids" vaut "Environ 6 kg",
+            "Son" vaut "Bruyante"
+        ),
+        histoire = "Présentée à la foire de Leipzig en 1937 par la société munichoise Arnold & Richter, elle apporte une invention décisive de son ingénieur Erich Kästner : un obturateur à miroir tournant qui renvoie l'image vers le viseur entre deux expositions. Pour la première fois, l'opérateur cadre et juge le point à travers l'objectif, sans décalage. Déclinée en II, IIA, IIB puis IIC, elle se vend à plus de 17 000 exemplaires jusqu'en 1979.",
+        ficheTechnique = "Pellicule 35 mm en magasins de 60 ou 120 m posés sur le dessus, tourelle de trois objectifs. Obturateur à miroir incliné à 45 degrés : ce qu'on voit dans le viseur est exactement ce qui s'imprime. Petit moteur électrique, corps assez léger pour la main ou l'épaule. Mécanisme bruyant, qu'il faut enfermer dans un caisson insonorisant pour le son direct.",
+        commentLUtiliser = "On la prend en main ou sur un pied léger pour les plans mobiles, le reportage, l'action. Pour les scènes dialoguées, on l'enferme dans un caisson ou l'on postsynchronise. La visée reflex permet à l'opérateur de vérifier lui-même le cadre et le point pendant la prise.",
+        atouts = "Visée reflex sans parallaxe, légèreté, robustesse : elle a fixé le principe de toutes les caméras qui ont suivi.",
+        limites = "Trop bruyante pour le son direct sans caisson, magasins courts, exemplaires très anciens.",
+        films = listOf("Das Boot" par "Jost Vacano"),
+        aRetenir = "Pour Das Boot, Jost Vacano a fait monter une IIC sur un stabilisateur à gyroscopes de sa conception, et l'a portée à la main dans les coursives du sous-marin sur 90 % du film."
+    ),
+    Camera(
+        nom = "ARRIFLEX 35 BL",
+        fabricant = "ARRI",
+        annee = 1972,
+        categorie = "Argentique 35 mm, silencieuse, épaule et studio",
+        silhouette = Silhouette.ARGENTIQUE,
+        punchline = "La 35 mm silencieuse assez légère pour l'épaule : le son direct sort des studios.",
+        chiffresCles = listOf(
+            "Format" vaut "35 mm",
+            "Son" vaut "Silencieuse sans caisson",
+            "Portée" vaut "Épaule ou pied",
+            "Magasins" vaut "120 ou 300 m"
+        ),
+        histoire = "Présentée en 1972, elle est l'une des premières 35 mm assez silencieuses pour le son direct sans caisson, tout en restant assez légère pour l'épaule. Cinq générations se succèdent jusqu'à la BL4s du début des années 1990. Elle devient la caméra de tout un pan du cinéma d'auteur, de la publicité et du clip.",
+        ficheTechnique = "Pellicule 35 mm, magasins coaxiaux de 120 ou 300 m, visée reflex, mécanisme insonorisé dans le corps même. Monture à baïonnette sur les premières versions, puis monture PL. Une bobine de 300 m dure un peu plus de onze minutes à 24 images par seconde.",
+        commentLUtiliser = "Sur pied pour les dialogues, à l'épaule pour suivre l'action, sans changer de caméra : c'est ce qui a fait son succès. On surveille le compteur de pellicule, et l'on garde un magasin chargé d'avance pour ne pas couper l'élan d'une scène.",
+        atouts = "Silence, polyvalence entre épaule et studio, fiabilité ; beaucoup d'exemplaires sont encore en service.",
+        limites = "Plus lourde qu'une 16 mm d'épaule, et dépassée en ergonomie par les générations suivantes.",
+        films = listOf(
+            "Barry Lyndon" par "John Alcott",
+            "Fargo" par "Roger Deakins"
+        ),
+        aRetenir = "Pour Fargo, Roger Deakins a choisi une BL4, sa caméra de prédilection à l'époque, chargée de pellicule Eastman 200 ASA."
+    ),
+    Camera(
         nom = "ARRIFLEX 16SR",
         fabricant = "ARRI",
         annee = 1975,
@@ -287,6 +332,30 @@ private fun arriPellicule(): List<Camera> = listOf(
         limites = "Coût de la pellicule et du laboratoire, aucune image avant le développement : tourner en pellicule aujourd'hui est un choix qui se défend en production.",
         films = listOf("Killers of the Flower Moon" par "Rodrigo Prieto"),
         aRetenir = "Pour Killers of the Flower Moon, en 2023, Prieto a tourné l'essentiel en 35 mm avec ce système et n'a gardé le numérique que pour quelques scènes : la pellicule reste un choix actif."
+    ),
+    Camera(
+        nom = "ARRIFLEX 416",
+        fabricant = "ARRI",
+        annee = 2006,
+        categorie = "Argentique Super 16, épaule",
+        silhouette = Silhouette.EPAULE,
+        punchline = "La dernière grande Super 16, légère et silencieuse, pour le cinéma qui veut du grain.",
+        chiffresCles = listOf(
+            "Format" vaut "Super 16 et 16 mm",
+            "Magasin" vaut "120 m, environ 11 minutes",
+            "Cadence" vaut "1 à 75 im/s (150 en version HS)",
+            "Monture" vaut "PL"
+        ),
+        histoire = "Présentée en 2006, elle succède à la 16SR3 avec un corps plus compact et plus silencieux, qui partage de nombreux accessoires avec les caméras 35 mm de la marque. Elle arrive au moment où le numérique s'impose, et devient pourtant la caméra de référence de ceux qui gardent le Super 16 par choix esthétique.",
+        ficheTechnique = "Pellicule Super 16 ou 16 mm, magasins de 120 m, soit environ onze minutes à 24 images par seconde. Cadence de 1 à 75 images par seconde, jusqu'à 150 sur la version haute vitesse. Monture PL qui accepte les optiques 35 mm, visée reflex lumineuse, fonctionnement très silencieux pour le son direct.",
+        commentLUtiliser = "À l'épaule ou au Steadicam pour suivre les comédiens au plus près : sa légèreté se prête aux plans longs et mobiles. On choisit la pellicule pour sa texture, puis on étalonne en numérique après le scan des négatifs.",
+        atouts = "Compacité, silence, accès à toutes les optiques en monture PL, grain organique du Super 16 pour un coût bien inférieur au 35 mm.",
+        limites = "Définition du Super 16, bobines courtes, laboratoires de moins en moins nombreux.",
+        films = listOf(
+            "Black Swan" par "Matthew Libatique",
+            "Carol" par "Edward Lachman"
+        ),
+        aRetenir = "Pour Black Swan, Matthew Libatique a tourné presque tout le film avec une seule de ces caméras et des optiques Cooke, sur pellicule Fuji, pour suivre les danseuses au plus près."
     )
 )
 
@@ -462,6 +531,27 @@ private fun sony(): List<Camera> = listOf(
         aRetenir = "L'Attaque des clones, en 2002, est présenté comme le premier grand film hollywoodien tourné intégralement en numérique haute définition."
     ),
     Camera(
+        nom = "PMW-EX3",
+        fabricant = "Sony",
+        annee = 2008,
+        categorie = "Caméscope HD à objectif interchangeable",
+        silhouette = Silhouette.EPAULE,
+        punchline = "Le caméscope HD qui a suffi pour tourner un film de monstres avec une toute petite équipe.",
+        chiffresCles = listOf(
+            "Capteurs" vaut "3 CMOS de 1/2 pouce",
+            "Définition" vaut "1920 × 1080",
+            "Support" vaut "Cartes SxS",
+            "Objectifs" vaut "Interchangeables"
+        ),
+        histoire = "Présenté en 2008, il complète le PMW-EX1 de l'année précédente en ajoutant une monture d'objectifs interchangeable. Avec lui, la famille XDCAM EX fait entrer la haute définition sur cartes mémoire dans le documentaire et le cinéma à petit budget : plus de cassettes, des fichiers qu'on copie directement sur l'ordinateur de montage.",
+        ficheTechnique = "Trois capteurs CMOS de 1/2 pouce, enregistrement Full HD sur cartes SxS en XDCAM EX, jusqu'à 35 Mb/s. Monture à baïonnette 1/2 pouce, avec adaptateurs pour d'autres optiques ; ralentis jusqu'à 60 images par seconde en 720p. Poignée, écran et viseur intégrés.",
+        commentLUtiliser = "On l'emploie comme un caméscope de reportage, à la main ou à l'épaule. Pour retrouver la faible profondeur de champ du cinéma malgré ses petits capteurs, on lui ajoutait un adaptateur 35 mm : l'image d'un objectif photo, projetée sur un verre dépoli, que la caméra filme.",
+        atouts = "Fichiers directement exploitables, légèreté, image HD propre pour son prix.",
+        limites = "Petits capteurs : peu de flou d'arrière-plan sans adaptateur, et une latitude bien inférieure à celle des caméras de cinéma.",
+        films = listOf("Monsters" par "Gareth Edwards"),
+        aRetenir = "Gareth Edwards a filmé Monsters lui-même avec ce caméscope, un adaptateur Letus et trois optiques Nikon, puis a réalisé seul les effets visuels sur son ordinateur ; le film lui a ouvert les portes de Godzilla et de Rogue One."
+    ),
+    Camera(
         nom = "F65",
         fabricant = "Sony",
         annee = 2012,
@@ -582,6 +672,27 @@ private fun sony(): List<Camera> = listOf(
 )
 
 private fun canon(): List<Camera> = listOf(
+    Camera(
+        nom = "XL1 et XL1s",
+        fabricant = "Canon",
+        annee = 1998,
+        categorie = "Caméscope MiniDV à objectifs interchangeables",
+        silhouette = Silhouette.EPAULE,
+        punchline = "Le caméscope MiniDV qui a vidé les rues de Londres pour un film de zombies.",
+        chiffresCles = listOf(
+            "Capteurs" vaut "3 CCD de 1/3 de pouce",
+            "Support" vaut "Cassettes MiniDV",
+            "Définition" vaut "Standard (576 lignes en Europe)",
+            "Objectifs" vaut "Interchangeables"
+        ),
+        histoire = "Lancé en 1998, il est l'un des premiers caméscopes MiniDV à objectifs interchangeables, à la silhouette futuriste. Avec les autres caméscopes numériques de l'époque, il porte la vague du cinéma en vidéo, du Dogme 95 danois aux premiers films à tout petit budget. Une version XL1s affine ensuite l'image et le son.",
+        ficheTechnique = "Trois capteurs CCD de 1/3 de pouce, enregistrement sur cassettes MiniDV en définition standard. Monture propre à Canon, avec un adaptateur pour les objectifs photo de la marque et un autre pour des optiques 16 mm. Viseur, micro et poignée intégrés.",
+        commentLUtiliser = "On le porte à l'épaule ou à la main, souvent à plusieurs caméras à la fois : discret et bon marché, il permet de tourner vite, en décors réels, sans bloquer la rue. Pour le cinéma, on remplaçait volontiers l'objectif d'origine par des optiques 16 mm plus lumineuses.",
+        atouts = "Prix, légèreté, discrétion, objectifs interchangeables rares dans sa catégorie.",
+        limites = "Définition standard et compression DV : une image douce aux couleurs qui bavent, un rendu vidéo qu'on assume plutôt qu'on ne cache.",
+        films = listOf("28 jours plus tard" par "Anthony Dod Mantle"),
+        aRetenir = "Pour 28 jours plus tard, Danny Boyle et Anthony Dod Mantle ont filmé un Londres désert en tournant très vite au petit matin : avec des caméscopes aussi légers, on pouvait boucler un plan avant que la circulation ne reprenne."
+    ),
     Camera(
         nom = "EOS 5D Mark II",
         fabricant = "Canon",
@@ -725,6 +836,31 @@ private fun panavision(): List<Camera> = listOf(
         aRetenir = "Les Dents de la mer fut l'un des premiers films à profiter de sa mobilité : une caméra silencieuse assez légère pour tourner en mer, sur un bateau qui tangue."
     ),
     Camera(
+        nom = "System 65",
+        fabricant = "Panavision",
+        annee = 1991,
+        categorie = "Argentique 65 mm, studio",
+        silhouette = Silhouette.CAISSON,
+        punchline = "La 65 mm silencieuse de Panavision, qui a rendu le grand format compatible avec le son direct.",
+        chiffresCles = listOf(
+            "Négatif" vaut "65 mm, 5 perforations",
+            "Projection" vaut "Copies 70 mm",
+            "Son" vaut "Silencieuse",
+            "Exemplaires" vaut "Deux caméras de studio"
+        ),
+        histoire = "Présentée en 1991, elle est conçue comme la cousine 65 mm de la Panaflex : un corps silencieux à visée reflex, là où les caméras 65 mm des années 1950 et 1960 étaient bruyantes ou énormes. Seules deux caméras de studio ont été construites, complétées par d'anciennes caméras 65 mm portables adaptées à ses optiques.",
+        ficheTechnique = "Pellicule 65 mm à cinq perforations par image, projetée en copies 70 mm. Corps silencieux pour le son direct, visée reflex, série d'optiques sphériques dédiée. Un négatif plus de deux fois plus grand que celui du 35 mm.",
+        commentLUtiliser = "On la traite comme une caméra de studio 35 mm, sur pied ou sur grue, mais avec une pellicule plus chère et plus lourde à manipuler. Le grand négatif réduit la profondeur de champ à cadrage égal : l'assistant opérateur doit être d'une grande précision.",
+        atouts = "Finesse et ampleur du 65 mm, silence pour le son direct.",
+        limites = "Deux exemplaires seulement, coût de la pellicule et du laboratoire, très peu de salles équipées pour projeter en 70 mm.",
+        films = listOf(
+            "Horizons lointains (Far and Away)" par "Mikael Salomon",
+            "Hamlet" par "Alex Thomson",
+            "The Master" par "Mihai Mălaimare Jr."
+        ),
+        aRetenir = "Horizons lointains, avec Tom Cruise et Nicole Kidman, est en 1992 le premier long-métrage tourné avec elle."
+    ),
+    Camera(
         nom = "Genesis",
         fabricant = "Panavision",
         annee = 2004,
@@ -799,6 +935,75 @@ private fun panavision(): List<Camera> = listOf(
 )
 
 private fun autresNumeriques(): List<Camera> = listOf(
+    Camera(
+        nom = "Viper FilmStream",
+        fabricant = "Thomson",
+        annee = 2002,
+        categorie = "Numérique HD, sortie non compressée",
+        silhouette = Silhouette.STUDIO,
+        punchline = "La caméra HD sans compression de Michael Mann et de David Fincher, quand le numérique cherchait sa place au cinéma.",
+        chiffresCles = listOf(
+            "Capteurs" vaut "3 CCD de 2/3 de pouce",
+            "Signal" vaut "RGB 4:4:4 logarithmique",
+            "Définition" vaut "1920 × 1080",
+            "Enregistrement" vaut "Externe, par câble"
+        ),
+        histoire = "Présentée en 2002 par Thomson, dont l'activité caméras est devenue Grass Valley, elle est l'une des premières caméras numériques pensées pour le cinéma plutôt que pour la télévision : au lieu d'appliquer un traitement vidéo, elle livre un signal brut et logarithmique, qu'on étalonne ensuite comme un négatif. En 2017, l'Académie des Oscars lui a décerné un prix scientifique et technique.",
+        ficheTechnique = "Trois capteurs CCD de 2/3 de pouce à transfert de trame, obturateur mécanique contre le filé vertical, sortie RGB 4:4:4 non compressée. La caméra n'enregistre rien elle-même : un câble la relie à un enregistreur externe, magnétoscope HD ou baie de disques durs. Objectifs au format 2/3 de pouce.",
+        commentLUtiliser = "Elle se pilote comme une caméra de studio reliée par câble à son poste d'enregistrement : l'image brute, très terne, se regarde à travers une correction pour juger du rendu final. Sa sensibilité permettait de filmer la ville la nuit avec peu d'éclairage.",
+        atouts = "Image brute et étalonnable, bonne tenue en basse lumière, longues prises sans changer de bobine.",
+        limites = "Câble et enregistreur encombrants, capteurs à grande profondeur de champ, écosystème vite dépassé.",
+        films = listOf(
+            "Collateral" par "Dion Beebe, Paul Cameron",
+            "Zodiac" par "Harris Savides"
+        ),
+        aRetenir = "Zodiac est l'un des premiers films de studio tournés sans pellicule ni cassette : l'image non compressée partait directement sur des disques durs."
+    ),
+    Camera(
+        nom = "HERO",
+        fabricant = "GoPro",
+        annee = 2004,
+        categorie = "Caméra d'action miniature",
+        silhouette = Silhouette.COMPACTE,
+        punchline = "La petite caméra étanche qu'on fixe partout : sur un casque, une planche, ou le pont d'un chalutier.",
+        chiffresCles = listOf(
+            "Taille" vaut "Tient dans la main",
+            "Optique" vaut "Très grand-angle, fixe",
+            "Étanchéité" vaut "Boîtier ou caisson étanche",
+            "Définition" vaut "HD en 2009, plus de 5K aujourd'hui"
+        ),
+        histoire = "La marque naît en 2002 de l'envie d'un surfeur, Nick Woodman, de se filmer sur la vague. Le premier modèle, en 2004, est un simple appareil photo argentique 35 mm attaché au poignet ; la vidéo haute définition arrive en 2009, et la petite caméra étanche envahit le sport, le documentaire puis le cinéma, qui la cache dans les décors ou l'attache aux véhicules.",
+        ficheTechnique = "Un petit capteur, une optique très grand-angle fixe, un boîtier étanche et une multitude de fixations : casque, poitrine, ventouse, perche. Les modèles récents filment en plus de 5K et stabilisent l'image électroniquement.",
+        commentLUtiliser = "On la pose là où aucune autre caméra ne va : sur un casque, sous l'eau, dans une voiture qui va se crasher. On la considère comme un consommable. Son grand-angle déforme les lignes : on la réserve aux points de vue subjectifs ou spectaculaires.",
+        atouts = "Taille, robustesse, prix, étanchéité : des angles impossibles pour presque rien.",
+        limites = "Optique fixe très déformante, petit capteur médiocre en basse lumière, image difficile à raccorder avec celle d'une caméra de cinéma.",
+        films = listOf("Leviathan (documentaire)" par "Lucien Castaing-Taylor, Véréna Paravel"),
+        aRetenir = "Pour Leviathan, les deux réalisateurs ont perdu leur première caméra en mer et se sont rabattus sur ces petites caméras étanches, fixées un peu partout sur le chalutier et sur ses marins."
+    ),
+    Camera(
+        nom = "iPhone",
+        fabricant = "Apple",
+        annee = 2007,
+        categorie = "Téléphone devenu caméra de poche",
+        silhouette = Silhouette.TELEPHONE,
+        punchline = "Le téléphone devenu caméra de cinéma, de Tangerine à 28 ans plus tard.",
+        chiffresCles = listOf(
+            "Objectifs" vaut "Fixes, du grand-angle au téléobjectif",
+            "Vidéo" vaut "4K, ProRes Log sur les Pro récents",
+            "Poids" vaut "Environ 200 g",
+            "Accessoires" vaut "Cages, adaptateurs anamorphiques"
+        ),
+        histoire = "Le premier modèle, en 2007, ne filme pas ; la vidéo arrive en 2009, et dix ans plus tard la puissance de calcul des téléphones compense leurs minuscules capteurs. Des cinéastes s'en emparent, d'abord par nécessité, puis par choix : le téléphone passe partout, se fait oublier des passants et permet de multiplier les caméras.",
+        ficheTechnique = "Petits capteurs derrière des objectifs fixes, du très grand-angle au téléobjectif selon les modèles. Enregistrement en 4K et, depuis l'iPhone 15 Pro, en ProRes avec une courbe logarithmique qui laisse de la marge à l'étalonnage. Des applications de tournage donnent la main sur la mise au point, l'exposition et la cadence.",
+        commentLUtiliser = "On le fixe dans une cage avec poignées, micro et parfois un adaptateur anamorphique, et l'on utilise une application qui verrouille exposition et mise au point. Sa discrétion permet de tourner dans la rue sans attroupement ; sa légèreté, de multiplier les points de vue.",
+        atouts = "Discrétion absolue, coût dérisoire, légèreté, image traitée remarquablement propre.",
+        limites = "Petits capteurs peu à l'aise en basse lumière, optiques fixes, traitement d'image parfois difficile à contrôler, chauffe lors des longues prises.",
+        films = listOf(
+            "Tangerine" par "Sean Baker, Radium Cheung",
+            "28 ans plus tard" par "Anthony Dod Mantle"
+        ),
+        aRetenir = "Pour 28 ans plus tard, l'équipe a monté jusqu'à vingt téléphones sur un même support, déclenchés ensemble, pour composer une sorte de ralenti en rotation bricolé."
+    ),
     Camera(
         nom = "VariCam 35 et LT",
         fabricant = "Panasonic",
@@ -917,6 +1122,27 @@ private fun autresNumeriques(): List<Camera> = listOf(
 
 private fun histoirePellicule(): List<Camera> = listOf(
     Camera(
+        nom = "Parvo",
+        fabricant = "Debrie",
+        annee = 1908,
+        categorie = "Argentique 35 mm muet, à manivelle",
+        silhouette = Silhouette.CAISSON,
+        punchline = "La caméra française à manivelle du cinéma muet, vedette de L'Homme à la caméra.",
+        chiffresCles = listOf(
+            "Format" vaut "35 mm",
+            "Entraînement" vaut "Manivelle",
+            "Magasins" vaut "Internes, environ 120 m",
+            "Corps" vaut "Bois, puis métal"
+        ),
+        histoire = "Brevetée en 1908 par le Parisien Joseph Debrie, elle est compacte pour l'époque parce que ses deux magasins sont logés à l'intérieur du corps, côte à côte. Elle devient l'une des caméras les plus répandues du muet : Abel Gance, Sergueï Eisenstein ou Leni Riefenstahl l'ont utilisée.",
+        ficheTechnique = "Pellicule 35 mm, deux magasins internes d'environ 120 m, soit plus de six minutes à 16 images par seconde, la cadence du muet. Entraînement à la manivelle. Mise au point en regardant à travers la pellicule, cadrage par un viseur extérieur. Corps en bois, puis en métal à partir des années 1920.",
+        commentLUtiliser = "L'opérateur tourne la manivelle à un rythme régulier, environ deux tours par seconde : c'est lui qui fait la cadence, et il peut l'accélérer ou la ralentir pour jouer sur le mouvement à la projection. Compacte, elle se transporte partout, jusque sur des voitures ou des toits.",
+        atouts = "Compacité, légèreté pour l'époque, fiabilité : une caméra de reportage autant que de studio.",
+        limites = "Une manivelle qui exige un opérateur entraîné, des bobines de quelques minutes, aucune visée pendant la prise à travers l'objectif.",
+        films = listOf("L'Homme à la caméra" par "Mikhaïl Kaufman"),
+        aRetenir = "Dans L'Homme à la caméra de Dziga Vertov, en 1929, cette caméra est littéralement la vedette : on voit l'opérateur Mikhaïl Kaufman la porter sur les toits, les ponts et les voies ferrées."
+    ),
+    Camera(
         nom = "trois bandes",
         fabricant = "Technicolor",
         annee = 1932,
@@ -1026,6 +1252,74 @@ private fun histoirePellicule(): List<Camera> = listOf(
         limites = "Qualité de son limitée, montage contraint par le décalage entre image et son, poids.",
         films = listOf("Chelsea Girls" par "Andy Warhol"),
         aRetenir = "Chelsea Girls, projeté sur deux écrans côte à côte, appartient à la période où Warhol tournait avec elle de longues prises continues, son compris."
+    ),
+    Camera(
+        nom = "VistaVision",
+        fabricant = "Paramount",
+        annee = 1954,
+        categorie = "Argentique 35 mm horizontal, huit perforations",
+        silhouette = Silhouette.CAISSON,
+        punchline = "Le 35 mm qui défile à l'horizontale pour un négatif deux fois plus grand, ressuscité par The Brutalist.",
+        chiffresCles = listOf(
+            "Défilement" vaut "Horizontal",
+            "Image" vaut "8 perforations, environ 37 × 25 mm",
+            "Pellicule" vaut "35 mm standard",
+            "Surnom" vaut "« Lazy 8 »"
+        ),
+        histoire = "Paramount lance le procédé en 1954 avec White Christmas : la pellicule 35 mm ordinaire défile à l'horizontale, et chaque image occupe huit perforations au lieu de quatre, comme un négatif d'appareil photo. L'image, plus de deux fois plus grande, est réduite au tirage pour une netteté remarquable. Abandonné au début des années 1960, le format survit dans les effets spéciaux, puis revient en 2024 avec The Brutalist et en 2025 avec Une bataille après l'autre.",
+        ficheTechnique = "Pellicule 35 mm standard, défilement horizontal, image d'environ 37 × 25 mm sur huit perforations. Les caméras d'origine, construites par Mitchell pour Paramount, sont lourdes et bruyantes ; les caméras Beaumont, plus récentes, sont plus compactes. N'importe quel laboratoire 35 mm peut développer le négatif.",
+        commentLUtiliser = "On l'utilise comme une caméra 35 mm de studio, en sachant que chaque mètre de pellicule contient deux fois moins d'images : les magasins s'épuisent deux fois plus vite. Les caméras anciennes, capricieuses, demandent des techniciens spécialisés et de longs essais avant le tournage.",
+        atouts = "Un grand négatif sur une pellicule standard ; netteté et grain fin proches du 65 mm pour bien moins cher.",
+        limites = "Caméras rares et anciennes, bruit, consommation de pellicule doublée, magasins vite épuisés.",
+        films = listOf(
+            "White Christmas" par "Loyal Griggs",
+            "Sueurs froides (Vertigo)" par "Robert Burks",
+            "The Brutalist" par "Lol Crawley",
+            "Une bataille après l'autre" par "Michael Bauman"
+        ),
+        aRetenir = "Pour Une bataille après l'autre, l'équipe a raccourci les bobines d'environ 300 à 240 m : le moteur d'enroulement de la caméra, un modèle ancien remis en état, se bloquait avec les plus longues."
+    ),
+    Camera(
+        nom = "NPR",
+        fabricant = "Éclair",
+        annee = 1963,
+        categorie = "Argentique 16 mm, épaule, son synchrone",
+        silhouette = Silhouette.EPAULE,
+        punchline = "La 16 mm silencieuse d'épaule du cinéma direct, de Woodstock aux reportages de télévision.",
+        chiffresCles = listOf(
+            "Format" vaut "16 mm",
+            "Magasins" vaut "Coaxiaux, à changement instantané",
+            "Son" vaut "Silencieuse, synchrone",
+            "Nom" vaut "Noiseless Portable Reflex"
+        ),
+        histoire = "Présentée en 1963 par la société française Éclair, elle est la première 16 mm conçue dès l'origine pour être silencieuse, afin d'enregistrer le son synchrone caméra à l'épaule. Son magasin contient le système d'entraînement de la pellicule : on le change en quelques secondes. Elle devient la caméra des documentaristes des années 1960 et 1970.",
+        ficheTechnique = "Pellicule 16 mm, magasins coaxiaux de 120 m clipsés à l'arrière, qui contiennent débiteur et presseur : le corps ne porte que le moteur, l'obturateur et la visée reflex. Assez silencieuse pour le son direct, synchronisée avec un magnétophone séparé.",
+        commentLUtiliser = "On la porte sur l'épaule, l'opérateur suivant l'action pendant qu'un preneur de son l'accompagne avec son magnétophone. Les magasins préchargés se changent en quelques secondes : on ne rate pas la suite d'un concert ou d'une manifestation.",
+        atouts = "Silence, magasins à changement éclair, poids d'épaule : le son direct devient mobile.",
+        limites = "Forme massive et asymétrique, moins confortable que les caméras qui ont suivi ; mécanique ancienne à entretenir.",
+        films = listOf("Woodstock" par "Michael Wadleigh"),
+        aRetenir = "Michael Wadleigh a filmé Woodstock caméra à l'épaule avec l'une d'elles, au milieu d'une équipe d'opérateurs ; le film a remporté l'Oscar du meilleur documentaire."
+    ),
+    Camera(
+        nom = "4008",
+        fabricant = "Beaulieu",
+        annee = 1969,
+        categorie = "Argentique Super 8, haut de gamme",
+        silhouette = Silhouette.POIGNEE,
+        punchline = "La Super 8 française à objectif interchangeable, toujours recherchée par ceux qui tournent ce format.",
+        chiffresCles = listOf(
+            "Format" vaut "Super 8, en cartouche",
+            "Cartouche" vaut "15 m, environ 2 min 30",
+            "Objectif" vaut "Interchangeable, monture C",
+            "Visée" vaut "Reflex"
+        ),
+        histoire = "Présentée en 1969 par la maison française Beaulieu, elle est l'une des rares caméras Super 8 à objectif interchangeable, avec une visée reflex et un zoom motorisé à vitesse réglable. Déclinée jusqu'à la ZM4, elle reste une des Super 8 les plus recherchées par les cinéastes qui tournent encore ce format.",
+        ficheTechnique = "Cartouches Super 8 de 15 mètres, environ 2 minutes 30 à 24 images par seconde. Monture C, zoom Angénieux puis Schneider d'origine, visée reflex, cadences variables pour l'accéléré et le ralenti, posemètre intégré.",
+        commentLUtiliser = "On la tient à la main comme un caméscope, en comptant chaque seconde : une cartouche dure deux minutes et demie. Pour les plans importants, on vérifie le posemètre intégré à la cellule. Le film se scanne ensuite en haute définition pour l'étalonnage.",
+        atouts = "Qualité optique rare en Super 8, objectifs interchangeables, texture et couleurs de la pellicule.",
+        limites = "Cartouches très courtes et chères, alimentation spécifique, mécanique ancienne à faire réviser.",
+        films = listOf("Super 8 (images tournées par les enfants)" par "Larry Fong"),
+        aRetenir = "Dans Super 8 de J.J. Abrams, les films amateurs tournés par les jeunes héros ont réellement été filmés sur de la pellicule Super 8, avec des caméras de cette époque."
     ),
     Camera(
         nom = "15/70",

@@ -36,7 +36,7 @@ class CatalogueMaterielTest {
     @Test
     fun `les annees sont plausibles`() {
         CATALOGUE_MATERIEL.forEach { m ->
-            assertTrue(m.annee in 1920..2026, "${m.nomComplet} : ${m.annee}")
+            assertTrue(m.annee in 1895..2026, "${m.nomComplet} : ${m.annee}")
         }
     }
 

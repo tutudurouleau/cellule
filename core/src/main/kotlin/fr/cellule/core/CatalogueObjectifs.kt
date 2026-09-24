@@ -14,6 +14,7 @@ val ETAGERES_OBJECTIFS: List<Etagere<Objectif>> = listOf(
     Etagere("Zeiss et ARRI", zeissEtArri()),
     Etagere("Cooke", cooke()),
     Etagere("Angénieux", angenieux()),
+    Etagere("Fujinon", fujinon()),
     Etagere("Leitz", leitz()),
     Etagere("Panavision", panavisionOptiques()),
     Etagere("Anamorphiques de caractère", anamorphiques()),
@@ -21,6 +22,47 @@ val ETAGERES_OBJECTIFS: List<Etagere<Objectif>> = listOf(
 )
 
 private fun zeissEtArri(): List<Objectif> = listOf(
+    Objectif(
+        nom = "Standard Speed",
+        fabricant = "Zeiss",
+        annee = 1964,
+        anneeApprox = true,
+        categorie = "Focales fixes sphériques, vintage",
+        silhouette = Silhouette.ANCIENNE,
+        focales = "16 à 135 mm",
+        ouverture = "T2.1",
+        couverture = "Super 35 (existe aussi en 16 mm)",
+        monture = "Arri standard, puis PL",
+        disponibilite = Disponibilite.PLUS_FABRIQUEE,
+        punchline = "Les fixes Zeiss d'avant les Super Speed : petites, homogènes, à T2.1, et toujours au travail.",
+        histoire = "Développées pour les caméras Arriflex à partir du milieu des années 1960, elles ont été pendant des décennies la série de base des loueurs, avant que les Super Speed, plus lumineuses, ne leur volent la vedette. Réhoussées en monture PL, elles restent appréciées pour leur contraste doux et leur rendu chaleureux, qui adoucissent la netteté des capteurs numériques.",
+        ficheTechnique = "Une dizaine de focales de 16 à 135 mm, toutes à T2.1, corps compacts. Monture Arri standard à l'origine, puis PL. Traitements anti-reflets d'époque : contraste plus faible et flares plus présents que sur les séries modernes. Une version existe pour les caméras 16 mm.",
+        commentLUtiliser = "Une série de travail pour tout un film, légère à l'épaule comme au Steadicam. On la choisit aujourd'hui pour adoucir le numérique, en acceptant un peu moins de lumière qu'avec des optiques à T1.3.",
+        atouts = "Compacité, homogénéité, rendu doux et flatteur pour les visages, location abordable.",
+        limites = "Moins lumineuses que les séries modernes, mécaniques anciennes à faire réviser, couverture limitée au Super 35.",
+        films = listOf("Fargo" par "Roger Deakins"),
+        aRetenir = "Elles sont nées pour les Arriflex : leur monture d'origine est celle de ces caméras, bien avant la monture PL apparue au début des années 1980."
+    ),
+    Objectif(
+        nom = "Planar 50mm f/0.7",
+        fabricant = "Zeiss",
+        annee = 1966,
+        categorie = "Focale fixe ultra-lumineuse, pièce historique",
+        silhouette = Silhouette.ANCIENNE,
+        focales = "50 mm",
+        ouverture = "f/0,7",
+        couverture = "35 mm",
+        monture = "Spécifique : Mitchell BNC modifiée",
+        disponibilite = Disponibilite.PLUS_FABRIQUEE,
+        punchline = "L'objectif de la NASA que Kubrick a fait adapter pour filmer à la seule lumière des bougies.",
+        histoire = "Zeiss en fabrique une dizaine d'exemplaires dans les années 1960, dont six pour la NASA, qui voulait photographier la face cachée de la Lune. Stanley Kubrick en achète trois et les fait adapter au cinéma pour Barry Lyndon, afin de tourner des intérieurs du XVIIIe siècle éclairés uniquement à la bougie.",
+        ficheTechnique = "Une focale de 50 mm ouvrant à f/0,7, l'un des objectifs les plus lumineux jamais construits. Conçu pour un appareil photo, il a fallu le modifier et transformer définitivement une caméra Mitchell BNC pour le monter, son élément arrière venant presque toucher la pellicule.",
+        commentLUtiliser = "À f/0,7, la profondeur de champ se compte en centimètres : les comédiens devaient bouger très peu, et la mise au point se faisait à l'estime, sans marge d'erreur. On ne l'emploie que pour ce qu'aucune autre optique ne permet.",
+        atouts = "Une luminosité qui a rendu possible un projet jusque-là irréalisable : le XVIIIe siècle à la seule lumière des chandelles.",
+        limites = "Profondeur de champ infime, focale unique, caméra modifiée à demeure ; quasiment introuvable.",
+        films = listOf("Barry Lyndon" par "John Alcott"),
+        aRetenir = "Des trois exemplaires achetés par Kubrick, l'un a rejoint en 2022 le musée de l'optique de Zeiss."
+    ),
     Objectif(
         nom = "Super Speed",
         fabricant = "Zeiss",
@@ -85,6 +127,26 @@ private fun zeissEtArri(): List<Objectif> = listOf(
         aRetenir = "Roger Deakins les a choisies pour Blade Runner 2049 parce que c'étaient, selon lui, les optiques les plus rapides et les plus nettes qu'il pouvait trouver."
     ),
     Objectif(
+        nom = "Master Anamorphic",
+        fabricant = "ARRI / Zeiss",
+        annee = 2013,
+        categorie = "Anamorphiques modernes, lumineuses",
+        silhouette = Silhouette.ANAMORPHIQUE,
+        focales = "28 à 180 mm (neuf focales)",
+        ouverture = "T1.9",
+        couverture = "Super 35, anamorphose 2x",
+        monture = "PL",
+        disponibilite = Disponibilite.ACHAT,
+        punchline = "L'anamorphique sans défauts : les ovales et les traînées de lumière, sans le flou ni la distorsion des anciennes.",
+        histoire = "Présentées en 2013, elles appliquent aux anamorphiques la philosophie des Master Prime : une image nette d'un bord à l'autre, sans distorsion ni respiration, à T1.9, là où les anamorphiques anciennes sont lentes et capricieuses. Pour ceux qui les trouvaient trop sages, ARRI a ensuite proposé des jeux de flare qui réintroduisent des reflets.",
+        ficheTechnique = "Neuf focales de 28 à 180 mm, toutes à T1.9, anamorphose 2x pour un format final en 2,39:1. Netteté homogène sur tout le champ, distorsion et respiration presque nulles, flou d'arrière-plan ovale caractéristique. Optiques lourdes. Kits de flare optionnels pour des reflets plus marqués.",
+        commentLUtiliser = "On les utilise comme des fixes modernes : leur luminosité permet de tourner la nuit en anamorphique sans éclairer comme en plein jour. Le recadrage en post-production est plus facile qu'avec des anamorphiques anciennes, dont les bords se déforment.",
+        atouts = "Luminosité rare en anamorphique, netteté et homogénéité, traînées de lumière maîtrisées.",
+        limites = "Poids, prix, et un rendu jugé trop propre par ceux qui cherchent le caractère des anamorphiques anciennes.",
+        films = listOf("John Wick 2" par "Dan Laustsen"),
+        aRetenir = "Sur John Wick 2, le réalisateur voulait plus de reflets que ces optiques n'en donnaient : ARRI Rental a conçu pour l'occasion des filtres internes à monter dans la caméra."
+    ),
+    Objectif(
         nom = "CP.3",
         fabricant = "Zeiss",
         annee = 2016,
@@ -103,6 +165,27 @@ private fun zeissEtArri(): List<Objectif> = listOf(
         limites = "Moins lumineuses que les séries haut de gamme, rendu sage, sans caractère marqué.",
         films = listOf("All That Breathes (documentaire)" par "Riju Das"),
         aRetenir = "All That Breathes, documentaire sur deux frères qui soignent des rapaces à Delhi, a été tourné en partie avec elles et nommé à l'Oscar du meilleur documentaire."
+    ),
+    Objectif(
+        nom = "Prime DNA",
+        fabricant = "ARRI",
+        annee = 2016,
+        anneeApprox = true,
+        categorie = "Optiques anciennes réhoussées pour le 65 mm",
+        silhouette = Silhouette.FIXE,
+        focales = "28 à 200 mm",
+        ouverture = "Variable selon la focale",
+        couverture = "65 mm (ALEXA 65)",
+        monture = "XPL",
+        disponibilite = Disponibilite.LOCATION_EXCLUSIVE,
+        punchline = "Des verres anciens de moyen format, remontés par ARRI Rental pour donner du caractère au 65 mm numérique.",
+        histoire = "Pour accompagner l'ALEXA 65, proposée uniquement en location, ARRI Rental a constitué au fil des années une série de fixes à partir d'optiques anciennes, fabriquées entre la fin des années 1950 et la fin des années 1970, remontées dans des fûts modernes. Chaque focale garde la douceur, les flares et les transitions progressives vers le flou de son époque. Une déclinaison DNA LF a suivi en 2018 pour l'ALEXA LF.",
+        ficheTechnique = "Focales de 28, 35, 45, 50, 55, 60, 65, 70, 80, 110, 150 et 200 mm, couvrant le capteur de l'ALEXA 65. Verres anciens de moyen format dans des fûts neufs à bagues standard, monture XPL, données d'objectif pour la post-production.",
+        commentLUtiliser = "On choisit les focales une à une en essais, parce que chacune a sa personnalité, et on les associe à l'ALEXA 65 pour marier l'ampleur du grand format à une image moins clinique.",
+        atouts = "Le caractère des optiques anciennes sur le plus grand capteur numérique de cinéma, avec une mécanique moderne et fiable.",
+        limites = "Location exclusive, série moins homogène qu'une gamme moderne, luminosité variable d'une focale à l'autre.",
+        films = listOf("Joker" par "Lawrence Sher"),
+        aRetenir = "Pour Joker, Lawrence Sher les a montées sur l'ALEXA 65, avec une table de conversion imitant une pellicule Kodak, pour une image qui rappelle le cinéma des années 1970."
     ),
     Objectif(
         nom = "Supreme Prime",
@@ -333,6 +416,90 @@ private fun angenieux(): List<Objectif> = listOf(
     )
 )
 
+private fun fujinon(): List<Objectif> = listOf(
+    Objectif(
+        nom = "Premier (HK)",
+        fabricant = "Fujinon",
+        annee = 2006,
+        anneeApprox = true,
+        categorie = "Zooms de cinéma haut de gamme",
+        silhouette = Silhouette.ZOOM,
+        focales = "14,5-45, 18-85, 24-180 et 75-400 mm",
+        ouverture = "T2.0 à T2.8-3.8 selon le zoom",
+        couverture = "Super 35",
+        monture = "PL",
+        disponibilite = Disponibilite.ACHAT,
+        punchline = "Les zooms Fujinon qui se sont fait une place à côté des fixes, jusque sur les superproductions.",
+        histoire = "Fujifilm, connu pour ses pellicules, fabrique sous la marque Fujinon des optiques de télévision depuis des décennies. Au milieu des années 2000, la série Premier, référence HK, s'attaque au cinéma avec quatre zooms en monture PL, du grand-angle au long foyer, pensés pour rivaliser en netteté avec des focales fixes. Fujinon fabrique aussi pour ARRI les zooms Alura, et propose des zooms plus abordables, les MK, pour les caméras hybrides.",
+        ficheTechnique = "Quatre zooms : 14,5-45 mm et 18-85 mm à T2.0, 24-180 mm à T2.6, 75-400 mm à T2.8-3.8. Couverture Super 35, monture PL, bagues crantées aux positions standard. Faible respiration de mise au point et distorsion contenue. Des objectifs lourds, surtout le 24-180 et le 75-400.",
+        commentLUtiliser = "On les monte sur une caméra posée sur pied ou sur grue, avec des moteurs de zoom et de point. L'ouverture de T2.0 des deux plus courts permet de s'en servir comme de fixes : on change de focale sans changer d'objectif. Le 75-400 sert aux plans lointains, au sport et aux animaux.",
+        atouts = "Netteté proche des focales fixes, grande ouverture pour des zooms, presque tous les besoins couverts avec quatre optiques.",
+        limites = "Poids et encombrement, couverture limitée au Super 35, prix élevé.",
+        films = listOf("Oblivion" par "Claudio Miranda"),
+        aRetenir = "Claudio Miranda les a employés pour les extérieurs d'Oblivion, tourné avec la Sony F65, en les trouvant « ridiculement nets »."
+    ),
+    Objectif(
+        nom = "Alura",
+        fabricant = "ARRI / Fujinon",
+        annee = 2010,
+        categorie = "Zooms de cinéma légers et de studio",
+        silhouette = Silhouette.ZOOM,
+        focales = "15,5-45, 30-80, 18-80 et 45-250 mm",
+        ouverture = "T2.8 (légers), T2.6 (studio)",
+        couverture = "Super 35",
+        monture = "PL",
+        disponibilite = Disponibilite.PLUS_FABRIQUEE,
+        punchline = "Les zooms conçus avec ARRI et fabriqués par Fujinon : nets, compacts et abordables pour leur catégorie.",
+        histoire = "Nés en 2010 d'une association entre ARRI et Fujinon, ils sont essayés avec les prototypes de l'ALEXA puis accompagnent ses débuts. Deux zooms de studio, 18-80 et 45-250 mm, et deux zooms légers, 15,5-45 et 30-80 mm, forment une gamme de travail pour le cinéma, la série et la publicité, moins chère que les grands zooms de référence.",
+        ficheTechnique = "Zooms de studio 18-80 mm et 45-250 mm à T2.6, zooms légers 15,5-45 mm et 30-80 mm à T2.8. Couverture Super 35, monture PL. Bagues de point, de diaphragme et de zoom aux mêmes positions sur toute la gamme, pour ne pas refaire les réglages des moteurs à chaque changement.",
+        commentLUtiliser = "Les deux légers se portent à l'épaule ou au Steadicam ; les deux de studio se posent sur pied, avec support d'objectif. En série télévisée, un zoom de studio reste souvent monté toute la journée pour recadrer vite entre les plans.",
+        atouts = "Bon compromis entre poids, netteté et prix ; gamme homogène.",
+        limites = "Couverture Super 35 seulement, ouverture moindre que les meilleurs zooms, retirés depuis du catalogue.",
+        films = listOf("It Follows" par "Mike Gioulakis"),
+        aRetenir = "Pour It Follows, Mike Gioulakis a travaillé avec le zoom léger 15,5-45 mm de la gamme."
+    ),
+    Objectif(
+        nom = "Cabrio",
+        fabricant = "Fujinon",
+        annee = 2012,
+        categorie = "Zooms de cinéma à poignée motorisée amovible",
+        silhouette = Silhouette.ZOOM,
+        focales = "19-90, 85-300, 25-300 mm, entre autres",
+        ouverture = "T2.9 (19-90) à T3.5-3.85 (25-300)",
+        couverture = "Super 35",
+        monture = "PL",
+        disponibilite = Disponibilite.ACHAT,
+        punchline = "Le zoom de cinéma qui se pilote comme un zoom de télévision, grâce à une poignée motorisée qu'on retire à volonté.",
+        histoire = "Lancée en 2012 avec le 19-90 mm, la série Cabrio, référence ZK, réunit deux mondes : une optique de cinéma en monture PL, à bagues crantées, et la poignée motorisée des zooms de télévision, qui commande le zoom, le point et le diaphragme du bout des doigts. On retire la poignée pour travailler comme sur un plateau de cinéma, avec moteurs et assistant.",
+        ficheTechnique = "19-90 mm à T2.9, 85-300 mm, 25-300 mm à T3.5-3.85, et d'autres focales ensuite. Couverture Super 35, monture PL. Poignée motorisée amovible avec commande de zoom à bascule, compatible avec les télécommandes de tournage. Longue rotation de mise au point.",
+        commentLUtiliser = "Poignée montée, un seul opérateur zoome et fait le point à l'épaule ou sur pied, comme en reportage ; sans poignée, on retrouve l'organisation d'un plateau de cinéma. Le 19-90 mm couvre presque tout un entretien ou un reportage sans changer d'optique.",
+        atouts = "Polyvalence entre documentaire et fiction, un seul zoom pour la plupart des plans, commande à une main.",
+        limites = "Lourd pour l'épaule, moins lumineux que des fixes, couverture Super 35.",
+        films = listOf(ReferenceFilm("Anthony Bourdain: Parts Unknown (série documentaire)")),
+        aRetenir = "Le 19-90 mm a notamment accompagné la série documentaire où Anthony Bourdain parcourait le monde : un seul zoom pour filmer rues, cuisines et repas sans rien manquer."
+    ),
+    Objectif(
+        nom = "Premista",
+        fabricant = "Fujinon",
+        annee = 2019,
+        categorie = "Zooms de cinéma grand format",
+        silhouette = Silhouette.ZOOM,
+        focales = "19-45, 28-100 et 80-250 mm",
+        ouverture = "T2.9 (T3.5 en fin de 80-250)",
+        couverture = "Grand format (cercle de 46,3 mm)",
+        monture = "PL",
+        disponibilite = Disponibilite.ACHAT,
+        punchline = "Des zooms pensés pour les capteurs grand format, avec la douceur de rendu qu'on attend de fixes.",
+        histoire = "Lancée en 2019 avec le 28-100 mm puis le 80-250 mm, rejoints en 2021 par un 19-45 mm, la série répond au passage du cinéma aux capteurs plein format et plus grands, que les zooms Super 35 ne couvraient pas. Fujinon y soigne le flou d'arrière-plan et le rendu des carnations autant que la netteté.",
+        ficheTechnique = "28-100 mm à T2.9 constant, 80-250 mm à T2.9-3.5, 19-45 mm à T2.9. Cercle image de 46,3 mm qui couvre les caméras grand format, monture PL, données d'objectif pour la post-production. Les deux premiers ont la même longueur, le même poids et des bagues aux mêmes positions.",
+        commentLUtiliser = "On les emploie comme des focales fixes à géométrie variable, sur pied ou au Steadicam : on règle le cadre au zoom plutôt qu'en changeant d'objectif, ce qui fait gagner du temps entre les plans. Leur rendu doux se marie avec des séries de fixes modernes.",
+        atouts = "Couverture grand format, luminosité constante sur le 28-100, rendu doux, interchangeabilité sur le plateau.",
+        limites = "Poids, prix, plages de focales plus courtes que celles des grands zooms Super 35.",
+        films = listOf("Winner" par "Steve Yedlin"),
+        aRetenir = "Pour Winner, présenté à Sundance en 2024, Steve Yedlin les a associés à des focales fixes Zeiss, en choisissant son matériel pour sa souplesse plutôt que pour un « look »."
+    )
+)
+
 private fun leitz(): List<Objectif> = listOf(
     Objectif(
         nom = "Summilux-C et Summicron-C",
@@ -380,6 +547,30 @@ private fun leitz(): List<Objectif> = listOf(
 )
 
 private fun panavisionOptiques(): List<Objectif> = listOf(
+    Objectif(
+        nom = "APO Panatar 1.25x",
+        fabricant = "Panavision",
+        annee = 1957,
+        categorie = "Anamorphiques 65 mm, format Ultra Panavision 70",
+        silhouette = Silhouette.ANAMORPHIQUE,
+        focales = "Série historique de fixes",
+        ouverture = "Variable selon l'optique",
+        couverture = "65 mm, image finale en 2,76:1",
+        monture = "Panavision 65 mm",
+        disponibilite = Disponibilite.LOCATION_EXCLUSIVE,
+        punchline = "Les anamorphiques 1,25x de l'Ultra Panavision 70, ressorties des réserves pour Les Huit Salopards.",
+        histoire = "Créées à la fin des années 1950 pour le procédé MGM Camera 65, devenu ensuite Ultra Panavision 70, elles associent une pellicule 65 mm à une anamorphose légère de 1,25x : l'image finale, en 2,76:1, est l'une des plus larges de l'histoire du cinéma. Inutilisées depuis Khartoum en 1966, elles ont été remises en état pour Les Huit Salopards de Quentin Tarantino, puis montées sur une caméra numérique pour Rogue One.",
+        ficheTechnique = "Éléments anamorphiques cylindriques de 1,25x associés à des optiques 65 mm, pour un négatif 65 mm à cinq perforations. Rapport d'image final de 2,76:1. Optiques anciennes, grosses et sujettes aux flares ; certaines se prêtent mal à la caméra portée.",
+        commentLUtiliser = "On compose pour un cadre extrêmement large : des groupes, des paysages, mais aussi des intérieurs où chaque bord de l'image compte. La faible anamorphose déforme moins que les 2x habituelles, et le flou d'arrière-plan reste à peine ovale.",
+        atouts = "Un format d'une ampleur unique, un rendu ancien et doux, une rareté qui fait événement.",
+        limites = "Exemplaires rares et anciens, location exclusive, optiques lourdes et capricieuses, projection 70 mm devenue exceptionnelle.",
+        films = listOf(
+            "Ben-Hur" par "Robert Surtees",
+            "Les Huit Salopards" par "Robert Richardson",
+            "Rogue One: A Star Wars Story" par "Greig Fraser"
+        ),
+        aRetenir = "Pour Rogue One, Greig Fraser les a montées sur une ALEXA 65 : c'était leur première utilisation sur une caméra numérique pour un long-métrage."
+    ),
     Objectif(
         nom = "C-Series",
         fabricant = "Panavision",
@@ -570,6 +761,26 @@ private fun vintageEtAlternatives(): List<Objectif> = listOf(
         limites = "Piqué faible, contraste bas, rareté, fiabilité variable.",
         films = listOf("The Lighthouse" par "Jarin Blaschke"),
         aRetenir = "Pour The Lighthouse, Jarin Blaschke les a trouvées chez Panavision et les a décrites comme les plus belles optiques de portrait qu'il ait jamais vues."
+    ),
+    Objectif(
+        nom = "R réhoussés",
+        fabricant = "Leica",
+        annee = 1964,
+        categorie = "Optiques photo réhoussées pour le cinéma",
+        silhouette = Silhouette.ANCIENNE,
+        focales = "Du grand-angle au téléobjectif",
+        ouverture = "f/1.4 à f/2.8 selon la focale",
+        couverture = "Plein format (24 × 36)",
+        monture = "PL ou LPL après réhoussage",
+        disponibilite = Disponibilite.PLUS_FABRIQUEE,
+        punchline = "Les optiques des reflex Leica, remontées en fûts de cinéma : le plein format avant l'heure, et le VistaVision de The Brutalist.",
+        histoire = "Leica lance son système reflex en 1964 avec le Leicaflex, dont les optiques prennent le nom de R en 1976 ; la gamme s'arrête en 2009. Conçues pour le format photo 24 × 36, elles couvrent naturellement les capteurs plein format et le VistaVision : des ateliers spécialisés les démontent et les remontent dans des fûts de cinéma, avec bagues crantées et monture PL.",
+        ficheTechnique = "Fixes du grand-angle au téléobjectif, ouvrant à f/1.4 pour les Summilux-R, f/2 pour les Summicron-R, f/2.8 pour les Elmarit-R. Couverture du format 24 × 36. Après réhoussage : bagues de point et de diaphragme crantées, course de mise au point allongée, diamètre avant commun, monture PL ou LPL.",
+        commentLUtiliser = "On les choisit pour un rendu à la fois doux et contrasté, typique de la marque, sur une caméra plein format ou VistaVision, pour bien moins cher qu'une série moderne équivalente. Chaque série réhoussée est un peu différente : on fait des essais avant de choisir.",
+        atouts = "Couverture plein format, rendu flatteur, prix, compacité.",
+        limites = "Séries hétérogènes selon l'âge des optiques et le réhousseur, respiration de mise au point, ouvertures inégales d'une focale à l'autre.",
+        films = listOf("The Brutalist" par "Lol Crawley"),
+        aRetenir = "Pour les séquences en VistaVision de The Brutalist, Lol Crawley a choisi ces optiques : conçues pour le 24 × 36 de la photo, elles couvrent exactement ce format de cinéma à défilement horizontal."
     ),
     Objectif(
         nom = "K35",

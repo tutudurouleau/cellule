@@ -15,8 +15,7 @@
  "arri-alexa-65": {
   "recherche": [],
   "openverse": [
-   "ARRI Alexa 65",
-   "Alexa 65 camera"
+   "titre:Alexa 65"
   ]
  },
  "arri-alexa-mini": {
@@ -29,8 +28,7 @@
  "arri-alexa-lf": {
   "recherche": [],
   "openverse": [
-   "ARRI Alexa LF",
-   "Alexa LF camera"
+   "titre:Alexa LF"
   ]
  },
  "arri-alexa-mini-lf": {
@@ -88,22 +86,22 @@
  "red-weapon-8k-vv": {
   "recherche": [],
   "openverse": [
-   "RED Weapon",
-   "RED Weapon Helium"
+   "titre:RED Weapon",
+   "titre:Weapon 8K"
   ]
  },
  "red-monstro-8k-vv": {
   "recherche": [],
   "openverse": [
-   "RED Monstro",
-   "RED DSMC2 camera"
+   "titre:RED Monstro",
+   "titre:Monstro 8K"
   ]
  },
  "red-komodo-et-komodo-x": {
   "recherche": [],
   "openverse": [
-   "RED Komodo",
-   "RED Komodo 6K"
+   "titre:RED Komodo",
+   "titre:Komodo 6K"
   ]
  },
  "red-v-raptor": {
@@ -171,8 +169,9 @@
  "canon-eos-c300-mark-ii-et-mark-iii": {
   "recherche": [],
   "openverse": [
-   "Canon C300 Mark II",
-   "Canon C300 Mark III"
+   "titre:C300 Mark II",
+   "titre:C300 Mark III",
+   "titre:C300 MkII"
   ]
  },
  "blackmagic-pocket-4k-et-6k": {
@@ -185,8 +184,8 @@
  "blackmagic-ursa-mini-pro-12k": {
   "recherche": [],
   "openverse": [
-   "URSA Mini Pro 12K",
-   "Blackmagic URSA Mini Pro"
+   "titre:URSA Mini Pro 12K",
+   "titre:URSA Mini Pro"
   ]
  },
  "panavision-panaflex": {
@@ -219,8 +218,9 @@
  "panasonic-varicam-35-et-lt": {
   "recherche": [],
   "openverse": [
-   "Panasonic VariCam LT",
-   "Panasonic VariCam 35"
+   "titre:VariCam LT",
+   "titre:VariCam 35",
+   "titre:Varicam"
   ]
  },
  "z-cam-e2": {
@@ -239,8 +239,7 @@
  "silicon-imaging-si-2k": {
   "recherche": [],
   "openverse": [
-   "SI-2K camera",
-   "Silicon Imaging SI-2K"
+   "titre:SI-2K"
   ]
  },
  "vision-research-phantom": {
@@ -302,15 +301,15 @@
  "zeiss-super-speed": {
   "recherche": [],
   "openverse": [
-   "Zeiss Super Speed",
-   "Zeiss Superspeed lens"
+   "titre:Zeiss Super Speed",
+   "titre:Superspeed"
   ]
  },
  "arri-zeiss-ultra-prime": {
   "recherche": [],
   "openverse": [
-   "Zeiss Ultra Prime",
-   "Ultra Prime lens"
+   "titre:Ultra Prime",
+   "titre:UltraPrime"
   ]
  },
  "arri-zeiss-master-prime": {
@@ -324,8 +323,9 @@
  "zeiss-cp-3": {
   "recherche": [],
   "openverse": [
-   "Zeiss CP.3",
-   "Zeiss Compact Prime"
+   "titre:Zeiss CP.3",
+   "titre:Zeiss CP3",
+   "titre:Compact Prime"
   ]
  },
  "zeiss-supreme-prime": {
@@ -337,50 +337,44 @@
  "arri-signature-prime": {
   "recherche": [],
   "openverse": [
-   "ARRI Signature Prime",
-   "Signature Prime lens"
+   "titre:Signature Prime"
   ]
  },
  "cooke-speed-panchro": {
   "recherche": [],
   "openverse": [
-   "Cooke Speed Panchro",
-   "Speed Panchro lens"
+   "titre:Speed Panchro"
   ]
  },
  "cooke-s4-i": {
   "recherche": [],
   "openverse": [
-   "Cooke S4",
-   "Cooke S4/i lens"
+   "titre:Cooke S4"
   ]
  },
  "cooke-anamorphic-i": {
   "recherche": [],
   "openverse": [
-   "Cooke anamorphic lens",
-   "Cooke Anamorphic/i"
+   "titre:Cooke anamorphic"
   ]
  },
  "cooke-s7-i": {
   "recherche": [],
   "openverse": [
-   "Cooke S7/i",
-   "Cooke S7 lens"
+   "titre:Cooke S7"
   ]
  },
  "cooke-panchro-i-classic": {
   "recherche": [],
   "openverse": [
-   "Cooke Panchro Classic",
-   "Cooke Panchro/i"
+   "titre:Cooke Panchro"
   ]
  },
  "angenieux-25-250": {
   "recherche": [],
   "openverse": [
-   "Angenieux 25-250",
-   "Angénieux 25-250 zoom"
+   "titre:Angenieux 25-250",
+   "titre:Angénieux 25-250"
   ]
  },
  "angenieux-optimo-24-290": {
@@ -393,88 +387,83 @@
  "angenieux-ez-1-et-ez-2": {
   "recherche": [],
   "openverse": [
-   "Angenieux EZ-1",
-   "Angenieux EZ-2",
-   "Angenieux EZ zoom"
+   "titre:Angenieux EZ"
   ]
  },
  "leitz-summilux-c-et-summicron-c": {
   "recherche": [],
   "openverse": [
-   "Leica Summilux-C",
-   "Summilux-C cine lens",
-   "Summicron-C cine lens"
+   "titre:Summilux-C",
+   "titre:Summilux C lens"
   ]
  },
  "leitz-thalia": {
   "recherche": [],
   "openverse": [
-   "Leitz Thalia",
-   "Leica Thalia lens"
+   "titre:Leitz Thalia",
+   "titre:Leica Thalia"
   ]
  },
  "panavision-c-series": {
   "recherche": [],
   "openverse": [
-   "Panavision C Series anamorphic",
-   "Panavision anamorphic lens"
+   "titre:Panavision anamorphic",
+   "titre:Panavision C series"
   ]
  },
  "panavision-primo": {
   "recherche": [],
   "openverse": [
-   "Panavision Primo lens",
-   "Panavision Primo"
+   "titre:Panavision Primo"
   ]
  },
  "panavision-primo-70-et-sphero-65": {
   "recherche": [],
   "openverse": [
-   "Panavision Primo 70",
-   "Panavision Sphero 65"
+   "titre:Primo 70",
+   "titre:Sphero 65"
   ]
  },
  "panavision-t-series": {
   "recherche": [],
   "openverse": [
-   "Panavision T Series anamorphic",
-   "Panavision T-Series"
+   "titre:Panavision T series"
   ]
  },
  "kowa-cine-prominar-anamorphiques": {
   "recherche": [],
   "openverse": [
-   "Kowa anamorphic",
-   "Kowa Cine Prominar anamorphic"
+   "titre:Kowa anamorphic",
+   "titre:Kowa Prominar"
   ]
  },
  "lomo-square-front-et-round-front": {
   "recherche": [],
   "openverse": [
-   "LOMO anamorphic",
-   "LOMO round front",
-   "LOMO square front"
+   "titre:LOMO anamorphic",
+   "titre:LOMO round front",
+   "titre:LOMO square front"
   ]
  },
  "vantage-hawk-v-lite": {
   "recherche": [],
   "openverse": [
-   "Hawk anamorphic lens",
-   "Vantage Hawk V-Lite"
+   "titre:Hawk anamorphic",
+   "titre:Vantage Hawk"
   ]
  },
  "bausch-lomb-baltar": {
   "recherche": [],
   "openverse": [
-   "Bausch Lomb Baltar",
-   "Baltar lens"
+   "titre:Baltar lens",
+   "titre:Bausch Lomb Baltar"
   ]
  },
  "canon-k35": {
   "recherche": [],
   "openverse": [
-   "Canon K35 lens",
-   "Canon K-35"
+   "titre:Canon K35",
+   "titre:Canon K-35"
   ]
  },
  "nikon-ai-s-rehousses": {
@@ -490,5 +479,199 @@
    "Sigma FF High Speed Prime"
   ],
   "choix": "File:Duclos Lenses Sigma Cine 40mm.jpg"
+ },
+ "arriflex-35-ii-et-iic": {
+  "fichiers": [
+   "File:ARRI 35 1964.jpg",
+   "File:Caméra Arriflex 35 dans blimp.jpg",
+   "File:Arriflex - 35mm Movie Camera - Kolkata 2012-10-09 1594.JPG",
+   "File:Arriflex Filmkamera (53635725520).jpg"
+  ],
+  "recherche": [
+   "Arriflex 35 II"
+  ]
+ },
+ "arriflex-35-bl": {
+  "fichiers": [
+   "File:Arri 35 BL.jpg"
+  ],
+  "recherche": [
+   "Arriflex 35BL",
+   "Arriflex BL"
+  ]
+ },
+ "arriflex-416": {
+  "fichiers": [
+   "File:Arriflex 416 Plus HS Camera.jpg"
+  ],
+  "recherche": [
+   "Arriflex 416"
+  ]
+ },
+ "sony-pmw-ex3": {
+  "recherche": [
+   "Sony PMW-EX3",
+   "PMW-EX3"
+  ],
+  "openverse": [
+   "titre:PMW-EX3",
+   "titre:Sony EX3"
+  ]
+ },
+ "canon-xl1-et-xl1s": {
+  "fichiers": [
+   "File:Canon XL-1 3 CCD Digital Video Camcorder PAL Mini DV.jpg",
+   "File:Canon XL1s in case crop.JPG"
+  ],
+  "recherche": [
+   "Canon XL1"
+  ]
+ },
+ "panavision-system-65": {
+  "fichiers": [
+   "File:Panavision Camera System 65.jpg"
+  ]
+ },
+ "thomson-viper-filmstream": {
+  "recherche": [
+   "Thomson Viper camera",
+   "Viper FilmStream"
+  ],
+  "openverse": [
+   "titre:Thomson Viper",
+   "titre:Viper FilmStream"
+  ]
+ },
+ "gopro-hero": {
+  "fichiers": [
+   "File:Cyclisme & GoPro - GoPro Hero 4 (01).JPG",
+   "File:Cyclisme & GoPro - GoPro Hero 4 (02).JPG",
+   "File:Cyclisme & GoPro - GoPro Hero 4 (05).JPG"
+  ],
+  "recherche": [
+   "GoPro HERO camera"
+  ]
+ },
+ "apple-iphone": {
+  "recherche": [
+   "iPhone 15 Pro Max",
+   "iPhone 15 Pro back"
+  ]
+ },
+ "debrie-parvo": {
+  "fichiers": [
+   "File:Parvo 0678.jpg",
+   "File:Debrie Camera - May 1927 FD.jpg",
+   "File:André Debrie - 35mm Cine Camera - Kolkata 2012-09-29 1349.JPG"
+  ],
+  "recherche": [
+   "Debrie Parvo"
+  ]
+ },
+ "paramount-vistavision": {
+  "fichiers": [
+   "File:Debbie Reynolds Auction - Mitchell VistaVision Model V-V 35mm motion picture camera circa 1953-54.jpg",
+   "File:Debbie Reynolds Auction - Mitchell VistaVision Model V-V 35mm motion picture camera circa 1953-54 (2).jpg",
+   "File:Caméra Hitchcock.jpg"
+  ]
+ },
+ "eclair-npr": {
+  "fichiers": [
+   "File:Curtis Choy with a 16mm Éclair NPR - Fresno, 1976.jpg"
+  ],
+  "recherche": [
+   "Eclair NPR"
+  ],
+  "openverse": [
+   "titre:Eclair NPR"
+  ]
+ },
+ "beaulieu-4008": {
+  "recherche": [
+   "Beaulieu 4008"
+  ],
+  "openverse": [
+   "titre:Beaulieu 4008"
+  ]
+ },
+ "zeiss-standard-speed": {
+  "recherche": [
+   "Zeiss Standard Speed"
+  ],
+  "openverse": [
+   "titre:Zeiss Standard Speed"
+  ]
+ },
+ "zeiss-planar-50mm-f-0-7": {
+  "fichiers": [
+   "File:Zeiss Planar 50mm F0.7 lens.jpg",
+   "File:Zeiss Planar 50mm F0.7 lens attached to camera..jpg"
+  ]
+ },
+ "arri-zeiss-master-anamorphic": {
+  "recherche": [
+   "Master Anamorphic lens"
+  ],
+  "openverse": [
+   "titre:Master Anamorphic"
+  ]
+ },
+ "arri-prime-dna": {
+  "recherche": [
+   "ARRI DNA lens"
+  ],
+  "openverse": [
+   "titre:ARRI DNA"
+  ]
+ },
+ "fujinon-premier-hk": {
+  "fichiers": [
+   "File:Fujinon HK5.3x75.jpg"
+  ],
+  "recherche": [
+   "Fujinon Premier zoom"
+  ]
+ },
+ "arri-fujinon-alura": {
+  "recherche": [
+   "Alura zoom lens"
+  ],
+  "openverse": [
+   "titre:Alura zoom"
+  ]
+ },
+ "fujinon-cabrio": {
+  "recherche": [
+   "Fujinon Cabrio"
+  ],
+  "openverse": [
+   "titre:Fujinon Cabrio",
+   "titre:Cabrio lens"
+  ]
+ },
+ "fujinon-premista": {
+  "fichiers": [
+   "File:FUJINON Premista 28-100mm T2.9 20250517141029.jpg",
+   "File:FUJINON Premista 80-250mm T2.9 20250517140933.jpg"
+  ]
+ },
+ "panavision-apo-panatar-1-25x": {
+  "recherche": [
+   "Ultra Panavision 70"
+  ],
+  "openverse": [
+   "titre:Ultra Panavision",
+   "titre:Hateful Eight 70mm camera"
+  ]
+ },
+ "leica-r-rehousses": {
+  "recherche": [
+   "Leica Summilux-R",
+   "Leica R lens"
+  ],
+  "openverse": [
+   "titre:Summilux-R",
+   "titre:Leica R lens"
+  ]
  }
 }

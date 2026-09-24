@@ -37,6 +37,8 @@ enum class Silhouette(val genre: GenreMateriel) {
     CAISSON(GenreMateriel.CAMERA),
     TOURELLE(GenreMateriel.CAMERA),
     STABILISEE(GenreMateriel.CAMERA),
+    POIGNEE(GenreMateriel.CAMERA),
+    TELEPHONE(GenreMateriel.CAMERA),
     FIXE(GenreMateriel.OBJECTIF),
     ZOOM(GenreMateriel.OBJECTIF),
     ANAMORPHIQUE(GenreMateriel.OBJECTIF),
