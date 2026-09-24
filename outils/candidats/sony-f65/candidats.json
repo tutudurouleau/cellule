@@ -3,5 +3,42 @@
   "Sony F65",
   "Sony F65 CineAlta"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Sony CineAlta F65 20110412a.jpg",
+   "licence": "CC BY 2.0",
+   "auteur": "Masaru Kamikura",
+   "description": "​Sony CineAlta F65。",
+   "taille": "5616x3744",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Sony_CineAlta_F65_20110412a.jpg/250px-Sony_CineAlta_F65_20110412a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Sony CineAlta F65 20110412b.jpg",
+   "licence": "CC BY 2.0",
+   "auteur": "Masaru Kamikura",
+   "description": "​Sony CineAlta F65。",
+   "taille": "5616x3744",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Sony_CineAlta_F65_20110412b.jpg/250px-Sony_CineAlta_F65_20110412b.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:2013 Sony CineAlta 4K cam 2013 CP+.jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Morio",
+   "description": "CP+ 2013: 2013 Sony CineAlta 4K camcorder PMW-F55",
+   "taille": "2560x1707",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/2013_Sony_CineAlta_4K_cam_2013_CP%2B.jpg/250px-2013_Sony_CineAlta_4K_cam_2013_CP%2B.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:Sony CineAlta logo V3.png",
+   "licence": "Public domain",
+   "auteur": "Tetsuro Sano",
+   "description": "Sony CineAlta Logo",
+   "taille": "960x704",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Sony_CineAlta_logo_V3.png/250px-Sony_CineAlta_logo_V3.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.png"
+  }
+ ]
 }

@@ -3,5 +3,42 @@
   "Panaflex camera",
   "Panavision Panaflex"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Panavision Millennium DXL.jpg",
+   "licence": "CC BY 2.0",
+   "auteur": "Elio Yañez",
+   "description": "Kuvaaja: Elio Yañez",
+   "taille": "6016x4016",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Panavision_Millennium_DXL.jpg/250px-Panavision_Millennium_DXL.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Panavision movie camera.JPG",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Bubba73 (Jud McCranie)",
+   "description": "Panavision movie camera",
+   "taille": "4386x3836",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Panavision_movie_camera.JPG/250px-Panavision_movie_camera.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Elokuvaaja.jpg",
+   "licence": "CC BY 2.0",
+   "auteur": "Elio Yañez",
+   "description": "Kuvaaja: Elio Yañez",
+   "taille": "6016x4016",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Elokuvaaja.jpg/250px-Elokuvaaja.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:From film to digital.jpg",
+   "licence": "CC BY 2.0",
+   "auteur": "Elio Yañez",
+   "description": "Kuvaaja: Elio Yañez",
+   "taille": "4016x6016",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/From_film_to_digital.jpg/250px-From_film_to_digital.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  }
+ ]
 }

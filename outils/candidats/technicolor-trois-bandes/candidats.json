@@ -3,5 +3,42 @@
   "Technicolor three-strip camera",
   "Technicolor camera"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:3-strip Technicolor camera.jpg",
+   "licence": "CC BY 2.0",
+   "auteur": "Marcin Wichary from San Francisco, U.S.A.",
+   "description": "A 3-strip Technicolor camera from the 1930s. Two strips of 35 mm black and white film negative, one sensitive to blue light and the other to red light, ran together through an aperture behind a magent",
+   "taille": "3828x2548",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/3-strip_Technicolor_camera.jpg/250px-3-strip_Technicolor_camera.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Filmmuseum Berlin - Technicolor Three-Color Camera, Pathfinder Dolly.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "SunOfErat",
+   "description": "« Technicolor Three-Color Camera . In 1932 Technicolor developed color process 4, which allowed all three primary colors to be reproduced. In the special camera, a film for the green color selection a",
+   "taille": "3024x4032",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Filmmuseum_Berlin_-_Technicolor_Three-Color_Camera%2C_Pathfinder_Dolly.jpg/250px-Filmmuseum_Berlin_-_Technicolor_Three-Color_Camera%2C_Pathfinder_Dolly.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Filmmuseum Berlin - Technicolor Three-Color Camera, Pathfinder Dolly (2).jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "SunOfErat",
+   "description": "« Technicolor Three-Color Camera . In 1932 Technicolor developed color process 4, which allowed all three primary colors to be reproduced. In the special camera, a film for the green color selection a",
+   "taille": "3024x4032",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Filmmuseum_Berlin_-_Technicolor_Three-Color_Camera%2C_Pathfinder_Dolly_%282%29.jpg/250px-Filmmuseum_Berlin_-_Technicolor_Three-Color_Camera%2C_Pathfinder_Dolly_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:Caméra TECHNICOLOR.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "PODZO DI BORGO",
+   "description": "Caméra TECHNICOLOR trichrome ouverte. New York, Museum of the Moving Image.",
+   "taille": "756x618",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Cam%C3%A9ra_TECHNICOLOR.jpg/250px-Cam%C3%A9ra_TECHNICOLOR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  }
+ ]
 }

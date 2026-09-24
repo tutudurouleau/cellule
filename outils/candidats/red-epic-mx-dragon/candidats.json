@@ -3,5 +3,42 @@
   "RED Epic camera",
   "Red Epic Dragon"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Red EPIC camera.jpg",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "-Roge-",
+   "description": "Red EPIC camera Kodak Vision2 5219 Lightweight mode for steadycam",
+   "taille": "2048x1324",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Red_EPIC_camera.jpg/250px-Red_EPIC_camera.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:ISS-43 RED Epic Dragon 4K Camera in the Quest airlock.jpg",
+   "licence": "Public domain",
+   "auteur": "NASA",
+   "description": "View of RED video camera and display monitor floating between two Extravehicular Mobility Units (EMUs) in the airlock.",
+   "taille": "4928x3280",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/ISS-43_RED_Epic_Dragon_4K_Camera_in_the_Quest_airlock.jpg/250px-ISS-43_RED_Epic_Dragon_4K_Camera_in_the_Quest_airlock.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Peter Oberth with RED Epic Camera.jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Patricia Loggins",
+   "description": "Peter Oberth with RED Epic Camera",
+   "taille": "1464x1936",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Peter_Oberth_with_RED_Epic_Camera.jpg/250px-Peter_Oberth_with_RED_Epic_Camera.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:Helicam Red EPIC-X.jpg",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "Ville Hyvönen",
+   "description": "Helicopter carrying a Red EPIC-X camera, used by photographer Ville Hyvönen",
+   "taille": "5616x3744",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Helicam_Red_EPIC-X.jpg/250px-Helicam_Red_EPIC-X.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  }
+ ]
 }

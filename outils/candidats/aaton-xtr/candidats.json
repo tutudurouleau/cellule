@@ -3,5 +3,42 @@
   "Aaton XTR",
   "Aaton camera"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:La Paluche-1977.jpg",
+   "licence": "CC BY 4.0",
+   "auteur": "Elliptique",
+   "description": "La Paluche est une caméra miniature monotube délivrant un signal en noir et blanc, développée par la société française Aäton et commercialisée à partir de 1974. Elle est ici utilisée lors d'une fête a",
+   "taille": "2780x4107",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/La_Paluche-1977.jpg/250px-La_Paluche-1977.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:JeanPierre Beauviala Stockholm 1972.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Fourni par Jean-Pierre Beauviala",
+   "description": "Jean-Pierre Beauviala, Stockholm, 1972",
+   "taille": "660x897",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/JeanPierre_Beauviala_Stockholm_1972.jpg/250px-JeanPierre_Beauviala_Stockholm_1972.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Konrad Wickler und Katja Raganelli.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Alois Bindernagel",
+   "description": "Cameraman Konrad Wickler , Director Katja Raganelli working on a documentary filming with an Aaton 16mm camera",
+   "taille": "1511x1032",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Konrad_Wickler_und_Katja_Raganelli.jpg/250px-Konrad_Wickler_und_Katja_Raganelli.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:New Years Eve fireworks Oulu 20171231.jpg",
+   "licence": "CC0",
+   "auteur": "Estormiz",
+   "description": "New Year's Eve fireworks in Oulu.",
+   "taille": "2921x4500",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/New_Years_Eve_fireworks_Oulu_20171231.jpg/250px-New_Years_Eve_fireworks_Oulu_20171231.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  }
+ ]
 }

@@ -2,5 +2,42 @@
  "recherche": [
   "Sony Burano"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:San Martino (Burano) Campanile.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Didier Descouens",
+   "description": "Leaning campanile, of church San Martino in Burano .",
+   "taille": "2592x1944",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/San_Martino_%28Burano%29_Campanile.jpg/250px-San_Martino_%28Burano%29_Campanile.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Sony CineAlta BURANO with Sony FE 50-150mm F2 GM 20250726125041.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "TurnOnTheNight",
+   "description": "Sony CineAlta BURANO with Sony FE 50-150mm F2 GM",
+   "taille": "4439x2959",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Sony_CineAlta_BURANO_with_Sony_FE_50-150mm_F2_GM_20250726125041.jpg/250px-Sony_CineAlta_BURANO_with_Sony_FE_50-150mm_F2_GM_20250726125041.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Sony CineAlta BURANO with Sony FE 24-70mm F2.8 GM II 20250726120012.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "TurnOnTheNight",
+   "description": "Sony CineAlta BURANO with Sony FE 24-70mm F2.8 GM II",
+   "taille": "5125x3417",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Sony_CineAlta_BURANO_with_Sony_FE_24-70mm_F2.8_GM_II_20250726120012.jpg/250px-Sony_CineAlta_BURANO_with_Sony_FE_24-70mm_F2.8_GM_II_20250726120012.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:Burano 2005.jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Stipy",
+   "description": "Burano",
+   "taille": "1365x1024",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Burano_2005.jpg/250px-Burano_2005.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  }
+ ]
 }

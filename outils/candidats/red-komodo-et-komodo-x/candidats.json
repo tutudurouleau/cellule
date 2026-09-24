@@ -2,5 +2,42 @@
  "recherche": [
   "RED Komodo"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Starfish red komodo.jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Nhobgood Nick Hobgood",
+   "description": "Large red starfish Gomophia gomophia from Komodo National Park",
+   "taille": "1680x1260",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Starfish_red_komodo.jpg/250px-Starfish_red_komodo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Komodo APC variant Indodefence 2012.jpg",
+   "licence": "Public domain",
+   "auteur": "Taken by Badan Usaha Milik Negara/Ministry of State-owned Enterprises Indonesia",
+   "description": "A Pindad Komodo APC in Indodefence 2012 with red and yellow markings, which would indicate that it's to be used as a BRIMOB vehicle.",
+   "taille": "640x425",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Komodo_APC_variant_Indodefence_2012.jpg/250px-Komodo_APC_variant_Indodefence_2012.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Walking My Komodo Dragon (Explored) - Flickr - mdalmuld.jpg",
+   "licence": "CC BY 2.0",
+   "auteur": "Marc Dalmulder",
+   "description": "Picture was taken in the Australian Reptile Park in Somersby, Australia. One of the zoo keepers was walking this Komodo Dragon.",
+   "taille": "2048x1536",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Walking_My_Komodo_Dragon_%28Explored%29_-_Flickr_-_mdalmuld.jpg/250px-Walking_My_Komodo_Dragon_%28Explored%29_-_Flickr_-_mdalmuld.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:Clouded monitor, Singapore botanical Garden - Explore - Flickr - cattan2011.jpg",
+   "licence": "CC BY 2.0",
+   "auteur": "cattan2011",
+   "description": "Komodo Dragon, Singapore botanical Garden",
+   "taille": "5184x3456",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Clouded_monitor%2C_Singapore_botanical_Garden_-_Explore_-_Flickr_-_cattan2011.jpg/250px-Clouded_monitor%2C_Singapore_botanical_Garden_-_Explore_-_Flickr_-_cattan2011.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  }
+ ]
 }

@@ -3,5 +3,33 @@
   "RED Monstro",
   "RED DSMC2 camera"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Tracks and cerros - Flickr - emdot.jpg",
+   "licence": "CC BY 2.0",
+   "auteur": "emdot from San Luis Obispo, USA",
+   "description": "Cerro San Luis (aka Madonna Mountain, after this local monstros-- er, I mean, beloved landmark , which is built into the other side of this hillside) and Bishop's Peak -- the best hike in SLO Town.",
+   "taille": "1600x1200",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Tracks_and_cerros_-_Flickr_-_emdot.jpg/250px-Tracks_and_cerros_-_Flickr_-_emdot.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:The planets and their children Mercury PK-T-AW-257, PK-T-AW-258.tiff",
+   "licence": "CC BY 4.0",
+   "auteur": "Goltzius, Hendrik (1558-1617)",
+   "description": "Title: The planets and their children: Mercury PK-T-AW-257 Author/creator: Goltzius, Hendrik (1558-1617) Shelfmark: PK-T-AW-257 Reference: E.K.J. Reznicek, Die Zeichnungen von Hendrick Goltzius. Mit e",
+   "taille": "2099x2835",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/The_planets_and_their_children_Mercury_PK-T-AW-257%2C_PK-T-AW-258.tiff/lossy-page1-250px-The_planets_and_their_children_Mercury_PK-T-AW-257%2C_PK-T-AW-258.tiff.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Wooden Camera Zip Box Pro.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "MariahMartinez1",
+   "description": "A filter being loaded into a lightweight matte box on a RED DSMC2 camera.",
+   "taille": "6125x4437",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Wooden_Camera_Zip_Box_Pro.jpg/250px-Wooden_Camera_Zip_Box_Pro.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  }
+ ]
 }

@@ -3,5 +3,42 @@
   "Eclair Cameflex",
   "Caméflex"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Cameflex.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "PODZO DI BORGO",
+   "description": "Vue arrière de la célèbre caméra de la société française Éclair, le \"Caméflex\" (\"Camerette\" aux USA). Le magasin de pellicule a été enlevé. Cette caméra est ici au format 35 mm, mais existait aussi en",
+   "taille": "502x557",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Cameflex.jpg/250px-Cameflex.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Fotothek df roe-neg 0006367 019 Messestand mit Filmkameras (Éclair).jpg",
+   "licence": "CC BY-SA 3.0 de",
+   "auteur": "Roger Rössing / Renate Rössing",
+   "description": "Messestand mit Filmkamera Caméflex (Éclair)",
+   "taille": "800x539",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Fotothek_df_roe-neg_0006367_019_Messestand_mit_Filmkameras_%28%C3%89clair%29.jpg/250px-Fotothek_df_roe-neg_0006367_019_Messestand_mit_Filmkameras_%28%C3%89clair%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:(20260327) Filmmuseum Potsdam 30.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Roy Zuo",
+   "description": "Exhibit at Film Museum Potsdam: Recreated Equipment Setup of The Legend of Paul and Paula (Q457003)",
+   "taille": "4096x3072",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/%2820260327%29_Filmmuseum_Potsdam_30.jpg/250px-%2820260327%29_Filmmuseum_Potsdam_30.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:(20260327) Filmmuseum Potsdam 29.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Roy Zuo",
+   "description": "Exhibit at Film Museum Potsdam: Recreated Equipment Setup of The Legend of Paul and Paula (Q457003)",
+   "taille": "3072x4096",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/%2820260327%29_Filmmuseum_Potsdam_29.jpg/250px-%2820260327%29_Filmmuseum_Potsdam_29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  }
+ ]
 }

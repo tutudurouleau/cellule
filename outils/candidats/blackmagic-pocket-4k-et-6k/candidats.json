@@ -3,5 +3,42 @@
   "Blackmagic Pocket Cinema Camera 4K",
   "Blackmagic Pocket Cinema Camera 6K"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:BMPCC 6K.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Hidalgo944",
+   "description": "Pocket Cinema Camera by Blackmagic Design, 6K version, with a small rig and some vintage lens.",
+   "taille": "650x433",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/BMPCC_6K.jpg/250px-BMPCC_6K.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Memorial Stadium (3).jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Ian Ballinger",
+   "description": "",
+   "taille": "6144x3456",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Memorial_Stadium_%283%29.jpg/250px-Memorial_Stadium_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Memorial Stadium (4).jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Ian Ballinger",
+   "description": "",
+   "taille": "4234x1898",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Memorial_Stadium_%284%29.jpg/250px-Memorial_Stadium_%284%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:OutsideOfKansasStadium.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Ian Ballinger",
+   "description": "",
+   "taille": "6144x3456",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/OutsideOfKansasStadium.jpg/250px-OutsideOfKansasStadium.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  }
+ ]
 }

@@ -2,5 +2,42 @@
  "recherche": [
   "Canon EOS C300"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:CanonC300 Jan2013.jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Waltonbeneric",
+   "description": "Canon c300 (EF Mount)",
+   "taille": "2000x1464",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/CanonC300_Jan2013.jpg/250px-CanonC300_Jan2013.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:2013 11 09 Canon EOS C300 TVN Group.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "TVN Group",
+   "description": "Kamera-Setup der TVN Group beim Konzert zum Gedenken an die Reichspogromnacht vor 75 Jahren am 11.09.2013.",
+   "taille": "3888x2592",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/2013_11_09_Canon_EOS_C300_TVN_Group.jpg/250px-2013_11_09_Canon_EOS_C300_TVN_Group.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:2013 11 09 Canon EOS C300 Rueckseite TVN Group.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "TVN Group",
+   "description": "Kamera-Setup der TVN Group beim Konzert zum Gedenken an die Reichspogromnacht vor 75 Jahren am 11.09.2013.",
+   "taille": "3888x2592",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/2013_11_09_Canon_EOS_C300_Rueckseite_TVN_Group.jpg/250px-2013_11_09_Canon_EOS_C300_Rueckseite_TVN_Group.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:Canon C 300.JPG",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Resolution hire",
+   "description": "Canon EOS C300 Cinema EOS Camcorder (EF), 1920x1080 60/50i, 23.98/25p. Popular choice of most camera operators, used with Canon zoom or prime lenses. Equipped with two XLR inputs for audio and timecod",
+   "taille": "5616x3744",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Canon_C_300.JPG/250px-Canon_C_300.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  }
+ ]
 }

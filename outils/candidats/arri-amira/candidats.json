@@ -2,5 +2,42 @@
  "recherche": [
   "Arri Amira"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:ARRI AMIRA Camera.jpg",
+   "licence": "CC0",
+   "auteur": "Unknown",
+   "description": "ARRI AMIRA Camera",
+   "taille": "5760x3840",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/ARRI_AMIRA_Camera.jpg/250px-ARRI_AMIRA_Camera.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Arri Amira Use in Feature Film in Munich-Germany.jpeg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Pittigrilli~commonswiki",
+   "description": "This was a team filming in the main train station central station (Hauptbahnhof) in Munich, Germany, on 10 June 2020. The camera is an Arri Amira Digital movie camera.",
+   "taille": "3024x4032",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Arri_Amira_Use_in_Feature_Film_in_Munich-Germany.jpeg/250px-Arri_Amira_Use_in_Feature_Film_in_Munich-Germany.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Arri Amira Use in Feature Film in Munich-Germany 12 28 56 107000.jpeg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Pittigrilli~commonswiki",
+   "description": "This was a team filming in the central station (Hauptbahnhof) in Munich, Germany, on 10 June 2020. The camera is an Arri Amira Digital movie camera.",
+   "taille": "1601x1955",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Arri_Amira_Use_in_Feature_Film_in_Munich-Germany_12_28_56_107000.jpeg/250px-Arri_Amira_Use_in_Feature_Film_in_Munich-Germany_12_28_56_107000.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:Arri Amira Use in Feature Film in Munich-Germany 12 28 51 175000.jpeg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Pittigrilli~commonswiki",
+   "description": "This was a team filming in the main train station central station (Hauptbahnhof) in Munich, Germany, on 10 June 2020. The camera is an Arri Amira Digital movie camera.",
+   "taille": "3024x4032",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Arri_Amira_Use_in_Feature_Film_in_Munich-Germany_12_28_51_175000.jpeg/250px-Arri_Amira_Use_in_Feature_Film_in_Munich-Germany_12_28_51_175000.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  }
+ ]
 }

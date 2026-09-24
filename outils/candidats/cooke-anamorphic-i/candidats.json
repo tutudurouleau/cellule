@@ -2,5 +2,42 @@
  "recherche": [
   "Cooke anamorphic lens"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Ptp p85 img06.png",
+   "licence": "Public domain",
+   "auteur": "L.P. Clerc",
+   "description": "Sixth illustration on page 66 (85) captioned “Taylor's Cooke Lens, F /6.5”",
+   "taille": "423x419",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Ptp_p85_img06.png/250px-Ptp_p85_img06.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.png"
+  },
+  {
+   "titre": "File:The American annual of photography (1922) (14595119518).jpg",
+   "licence": "Public domain",
+   "auteur": "Gilmer Winston (1877-1939) Internet Archive Book Images",
+   "description": "Identifier : americanannualof36newy ( find matches ) Title : The American annual of photography Year : 1922 ( 1920s ) Authors : Subjects : Photography Publisher : New York : Tennant and Ward Contribut",
+   "taille": "1918x2994",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/The_American_annual_of_photography_%281922%29_%2814595119518%29.jpg/250px-The_American_annual_of_photography_%281922%29_%2814595119518%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:The National Pass, 1915 (3119443750).jpg",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "Blue Mountains Library, Local Studies from Blue Mountains, Australia",
+   "description": "Format: B&W stereo photograph, copy Licensing: Attribution, non-commercial, share alike, creative commons. If you use this image in any way, you should attribute it to Blue Mountains City Library. Res",
+   "taille": "3299x2057",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/The_National_Pass%2C_1915_%283119443750%29.jpg/250px-The_National_Pass%2C_1915_%283119443750%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:The National Pass, group of women walkers posed on the steps 1915 (3119630632).jpg",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "Blue Mountains Library, Local Studies from Blue Mountains, Australia",
+   "description": "Format: B&W stereo photograph, copy Licensing: Attribution, non-commercial, share alike, creative commons. If you use this image in any way, you should attribute it to Blue Mountains City Library. Res",
+   "taille": "3312x2057",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/The_National_Pass%2C_group_of_women_walkers_posed_on_the_steps_1915_%283119630632%29.jpg/250px-The_National_Pass%2C_group_of_women_walkers_posed_on_the_steps_1915_%283119630632%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  }
+ ]
 }

@@ -3,5 +3,42 @@
   "Bolex H16",
   "Bolex H16 Reflex"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Paillard-Bolex H16 Reflex camera 1956.jpg",
+   "licence": "CC BY 4.0",
+   "auteur": "Manuel Schmalstieg",
+   "description": "Film camera, Paillard-Bolex H16 Reflex. Produced in 1956 by Paillard SA, Sainte-Croix, Switzerland. It received a \"Die gute Form\" award by Schweizerischer Werkbund (SWB) in 1957. Exhibited at Museum f",
+   "taille": "4032x3024",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Paillard-Bolex_H16_Reflex_camera_1956.jpg/250px-Paillard-Bolex_H16_Reflex_camera_1956.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Bolex H16, 1935.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Collection Serge Oulevay",
+   "description": "First version of the camera Bolex H16",
+   "taille": "1000x1250",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Bolex_H16%2C_1935.jpg/250px-Bolex_H16%2C_1935.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Bolex H16.JPG",
+   "licence": "Public domain",
+   "auteur": "yohey1028",
+   "description": "Bolex H16 camera for 16mm filming.",
+   "taille": "3072x2304",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Bolex_H16.JPG/250px-Bolex_H16.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:Bolex H16 Reflex.jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Stylianos Karavias ( Hoverfish on en.wikipedia )",
+   "description": "A Bolex H16 Reflex film camera.",
+   "taille": "1024x768",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Bolex_H16_Reflex.jpg/250px-Bolex_H16_Reflex.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  }
+ ]
 }

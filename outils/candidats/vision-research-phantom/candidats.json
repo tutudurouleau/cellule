@@ -3,5 +3,42 @@
   "Phantom Flex camera",
   "Phantom high-speed camera"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Gravitation filming with Phantom Flex4K.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Andrei Severny",
+   "description": "Ballerina Diana Vishneva filmed with the Phantom Flex4K cameras on the set of Gravitation: Variation in Time and Space",
+   "taille": "563x510",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Gravitation_filming_with_Phantom_Flex4K.jpg/250px-Gravitation_filming_with_Phantom_Flex4K.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Phantom v12.1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Nathan Boor of Aimed Research",
+   "description": "Picture of a Phantom v12.1 camera from Vision Research. Picture taken by Nathan Boor, Aimed Research. Free file sharing must have accompanied credit to author, Nathan Boor of Aimed Research, on the in",
+   "taille": "3456x2304",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Phantom_v12.1.jpg/250px-Phantom_v12.1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Logo Vision Research.png",
+   "licence": "Public domain",
+   "auteur": "Constantdu13",
+   "description": "Logo officiel Vision Research Inc",
+   "taille": "1200x767",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Logo_Vision_Research.png/250px-Logo_Vision_Research.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.png"
+  },
+  {
+   "titre": "File:Eesti Lennundusmuuseum. Hävitaja F-4C Phantom II kabiin.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Lauri Veerde",
+   "description": "Estonian Aviation Museum. Cockpit of a McDonnell Douglas F-4 Phantom II .",
+   "taille": "16996x8498",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Eesti_Lennundusmuuseum._H%C3%A4vitaja_F-4C_Phantom_II_kabiin.jpg/250px-Eesti_Lennundusmuuseum._H%C3%A4vitaja_F-4C_Phantom_II_kabiin.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  }
+ ]
 }

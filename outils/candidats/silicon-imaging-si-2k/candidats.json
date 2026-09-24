@@ -3,5 +3,24 @@
   "Silicon Imaging SI-2K",
   "SI-2K camera"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:AvAlmReis2-2K(1950s).jpg",
+   "licence": "Public domain",
+   "auteur": "Anonymous ( writer ) Unknown author",
+   "description": "O edifício Almirante Reis 2-2K.",
+   "taille": "734x960",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/AvAlmReis2-2K%281950s%29.jpg/250px-AvAlmReis2-2K%281950s%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Beethovenstraße Pirna 2018 Norte noroeste.jpg",
+   "licence": "CC0",
+   "auteur": "Bambizoe from Dresden, Germany This image was originally posted to Flickr by Bam",
+   "description": "La Beethovenstraße de Pirna. Se ve bien, pero produce tráfico masivo, si tienes narcisistas que viven allí.",
+   "taille": "3562x2618",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Beethovenstra%C3%9Fe_Pirna_2018_Norte_noroeste.jpg/250px-Beethovenstra%C3%9Fe_Pirna_2018_Norte_noroeste.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  }
+ ]
 }

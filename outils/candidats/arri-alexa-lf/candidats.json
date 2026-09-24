@@ -2,5 +2,33 @@
  "recherche": [
   "Alexa LF camera"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Alexa Mini LF.jpg",
+   "licence": "CC BY 4.0",
+   "auteur": "Rémi sim",
+   "description": "Alexa Mini LF montée sur une grue.",
+   "taille": "4896x3672",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Alexa_Mini_LF.jpg/250px-Alexa_Mini_LF.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:ARRI ALEXA Mini LF with NiSi AUREUS PRIME 50mm T1.4 20250517131829.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "TurnOnTheNight",
+   "description": "​ARRI ALEXA Mini LF + 耐司AUREUS PRIME 50mm T1.4",
+   "taille": "5495x3663",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/ARRI_ALEXA_Mini_LF_with_NiSi_AUREUS_PRIME_50mm_T1.4_20250517131829.jpg/250px-ARRI_ALEXA_Mini_LF_with_NiSi_AUREUS_PRIME_50mm_T1.4_20250517131829.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:HFS Filming using Aerigon Drone, Movi Pro gimbal, ARRI Alexa Mini LF, Zeiss CP.3 Prime lens - Jeremy Braben operating camera, Henry Bridges flying drone, June 2021.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "MaisonFrancis",
+   "description": "HFS Filming using Aerigon Drone, Movi Pro gimbal, ARRI Alexa Mini LF, Zeiss CP.3 Prime lens - Jeremy Braben operating camera, Henry Bridges flying drone, June 2021",
+   "taille": "3648x2053",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/HFS_Filming_using_Aerigon_Drone%2C_Movi_Pro_gimbal%2C_ARRI_Alexa_Mini_LF%2C_Zeiss_CP.3_Prime_lens_-_Jeremy_Braben_operating_camera%2C_Henry_Bridges_flying_drone%2C_June_2021.jpg/250px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  }
+ ]
 }

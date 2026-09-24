@@ -3,5 +3,42 @@
   "Panavision C series anamorphic",
   "Panavision anamorphic lens"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Scotland topographic map-fr.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Eric Gaba ( Sting – fr:Sting )",
+   "description": "Topographic map in French of Scotland This is a lighter raster JPG format version of Image:Scotland_topographic_map-fr.svg which should be used in the article pages, the vector graphics version purpos",
+   "taille": "2400x3450",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Scotland_topographic_map-fr.jpg/250px-Scotland_topographic_map-fr.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:World Map 1689.JPG",
+   "licence": "Public domain",
+   "auteur": "Gerard van Schagen",
+   "description": "World map - Produced in Amsterdam First edition : 1689. Original size : 48.3 x 56.0 cm. Produced using copper engraving. Extremely rare set of maps, only known in one other example in the Amsterdam Un",
+   "taille": "4560x3936",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/World_Map_1689.JPG/250px-World_Map_1689.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:1794 Boulton and Anville Wall Map of Africa (most important 18th cntry map of Africa) - Geographicus - Africa2-boulton-1794.jpg",
+   "licence": "Public domain",
+   "auteur": "Solomon Boulton / Jean Baptiste Bourguignon d'Anville",
+   "description": "This is probably the most important map of Africa produced in the 18th century. Largely based upon the earlier D’Anville map, this map has been enlarged and expanded by Samuel Boulton. Depicts the con",
+   "taille": "5988x5025",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/1794_Boulton_and_Anville_Wall_Map_of_Africa_%28most_important_18th_cntry_map_of_Africa%29_-_Geographicus_-_Africa2-boulton-1794.jpg/250px-1794_Boulton_and_Anville_Wall_Map_of_Africa_%28most_important_18th_cntry_map_of_Africa%29_-_Geographicus_-_Africa2-boulton-1794.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:Vatican City map EN.png",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Thoroe",
+   "description": "Map of the Vatican City (English version)",
+   "taille": "2888x2230",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Vatican_City_map_EN.png/250px-Vatican_City_map_EN.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.png"
+  }
+ ]
 }

@@ -3,5 +3,42 @@
   "Canon K35",
   "Canon K-35 lens"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Karlstad (K35) NOCO2014 02.JPG",
+   "licence": "Public domain",
+   "auteur": "MKFI",
+   "description": "Swedish Visby class corvette Karlstad (K35) followed by sister ship Nyköping (K34) in Aura river in Turku during the Northern Coasts 2014 exercise public pre sail event. On the opposite shore is Danis",
+   "taille": "5184x3456",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Karlstad_%28K35%29_NOCO2014_02.JPG/250px-Karlstad_%28K35%29_NOCO2014_02.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Karlstad (K35) NOCO2014 04.JPG",
+   "licence": "Public domain",
+   "auteur": "MKFI",
+   "description": "Swedish Visby class corvette Karlstad (K35) in Aura river in Turku during the Northern Coasts 2014 exercise public pre sail event.",
+   "taille": "5184x3456",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Karlstad_%28K35%29_NOCO2014_04.JPG/250px-Karlstad_%28K35%29_NOCO2014_04.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Karlstad (K35) NOCO2014 03.JPG",
+   "licence": "Public domain",
+   "auteur": "MKFI",
+   "description": "Swedish Visby class corvette Karlstad (K35) in Aura river in Turku during the Northern Coasts 2014 exercise public pre sail event.",
+   "taille": "5184x3456",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Karlstad_%28K35%29_NOCO2014_03.JPG/250px-Karlstad_%28K35%29_NOCO2014_03.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:Karlstad (K35), Peter Willemoes (F362) NOCO2014 02.JPG",
+   "licence": "Public domain",
+   "auteur": "MKFI",
+   "description": "Swedish Visby class corvette Karlstad (K35) in Aura river in Turku during the Northern Coasts 2014 exercise public pre sail event. On the opposite shore is Danish Iver Huitfeldt-class frigate Peter Wi",
+   "taille": "4728x3152",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Karlstad_%28K35%29%2C_Peter_Willemoes_%28F362%29_NOCO2014_02.JPG/250px-Karlstad_%28K35%29%2C_Peter_Willemoes_%28F362%29_NOCO2014_02.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  }
+ ]
 }

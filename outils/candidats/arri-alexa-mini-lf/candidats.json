@@ -2,5 +2,42 @@
  "recherche": [
   "Alexa Mini LF"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Alexa Mini LF.jpg",
+   "licence": "CC BY 4.0",
+   "auteur": "Rémi sim",
+   "description": "Alexa Mini LF montée sur une grue.",
+   "taille": "4896x3672",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Alexa_Mini_LF.jpg/250px-Alexa_Mini_LF.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Arri Alexa camera.jpg",
+   "licence": "CC BY 2.0",
+   "auteur": "Sean P. Anderson from Dallas, TX, USA",
+   "description": "Arri Alexa Plus 4:3",
+   "taille": "4000x2664",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Arri_Alexa_camera.jpg/250px-Arri_Alexa_camera.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:ARRI ALEXA Mini LF with NiSi AUREUS PRIME 50mm T1.4 20250517131829.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "TurnOnTheNight",
+   "description": "​ARRI ALEXA Mini LF + 耐司AUREUS PRIME 50mm T1.4",
+   "taille": "5495x3663",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/ARRI_ALEXA_Mini_LF_with_NiSi_AUREUS_PRIME_50mm_T1.4_20250517131829.jpg/250px-ARRI_ALEXA_Mini_LF_with_NiSi_AUREUS_PRIME_50mm_T1.4_20250517131829.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:Arri Alexa 01.jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Major Eleven",
+   "description": "Full view of digital camera Alexa from german maker Arri.",
+   "taille": "1664x2496",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Arri_Alexa_01.jpg/250px-Arri_Alexa_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  }
+ ]
 }

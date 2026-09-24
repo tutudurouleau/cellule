@@ -3,5 +3,42 @@
   "Arriflex 16SR",
   "Arriflex 16 SR"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Arriflex 16SR-3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Hidalgo944",
+   "description": "ARRI Arriflex 16SR-3 movie camera on a tripod (right side) - with lens, viewfinder, camera magazine, \"magic hand\", etc.",
+   "taille": "1556x1224",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Arriflex_16SR-3.jpg/250px-Arriflex_16SR-3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Arriflex 16SR-3 (2).jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Hidalgo944",
+   "description": "ARRI Arriflex 16SR-3 movie camera on a tripod (left side) - with lens, viewfinder, focus pull, camera magazine, \"magic hand\", etc.",
+   "taille": "1632x1224",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Arriflex_16SR-3_%282%29.jpg/250px-Arriflex_16SR-3_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:16 mm Film camera.JPG",
+   "licence": "CC BY 3.0",
+   "auteur": "Nefirious ( talk )",
+   "description": "16 mm Film Camera",
+   "taille": "3888x2592",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/16_mm_Film_camera.JPG/250px-16_mm_Film_camera.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:ARRI 16 ST Stativ, 1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Holger.Ellgaard",
+   "description": "16mm filmkamera Arriflex 16 SR på trästativ",
+   "taille": "1141x1638",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/ARRI_16_ST_Stativ%2C_1.jpg/250px-ARRI_16_ST_Stativ%2C_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  }
+ ]
 }

@@ -3,5 +3,24 @@
   "Mitchell BNC camera",
   "Mitchell BNC"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Stanley Kubrick The Exhibition - LACMA - Mitchell BNC Camera (8998529347).jpg",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "Matthew J. Cotter from Wigan, United Kingdom",
+   "description": "displayed at Stanley Kubrick: The Exhibit , Los Angeles County Museum of Art.",
+   "taille": "2760x4912",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Stanley_Kubrick_The_Exhibition_-_LACMA_-_Mitchell_BNC_Camera_%288998529347%29.jpg/250px-Stanley_Kubrick_The_Exhibition_-_LACMA_-_Mitchell_BNC_Camera_%288998529347%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Viseur MITCHELL BNC années 30 à 60.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "PODZO DI BORGO",
+   "description": "Caméra Mitchell BNC années 1930 à 1960",
+   "taille": "2096x2292",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Viseur_MITCHELL_BNC_ann%C3%A9es_30_%C3%A0_60.jpg/250px-Viseur_MITCHELL_BNC_ann%C3%A9es_30_%C3%A0_60.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  }
+ ]
 }

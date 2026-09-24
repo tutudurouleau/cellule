@@ -3,5 +3,42 @@
   "Panavision DXL2",
   "Panavision Millennium DXL"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Panavision Millennium DXL.jpg",
+   "licence": "CC BY 2.0",
+   "auteur": "Elio Yañez",
+   "description": "Kuvaaja: Elio Yañez",
+   "taille": "6016x4016",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Panavision_Millennium_DXL.jpg/250px-Panavision_Millennium_DXL.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Amd Am386 DX-DXL 40 CPU.jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Dirk1981",
+   "description": "A Intel 386 CPU with 40 MHz",
+   "taille": "502x502",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Amd_Am386_DX-DXL_40_CPU.jpg/250px-Amd_Am386_DX-DXL_40_CPU.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Am386 DX-DXL-40 + i387DX 16-33.jpg",
+   "licence": "CC0",
+   "auteur": "Capitalistcakes",
+   "description": "Am386 DX/DXL-40 + i387DX 16-33",
+   "taille": "4000x3000",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Am386_DX-DXL-40_%2B_i387DX_16-33.jpg/250px-Am386_DX-DXL-40_%2B_i387DX_16-33.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:CS-DXL@LTN 01MAY13 (11641996255).jpg",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "Robert Underwood",
+   "description": "CS-DXL Cessna Citation Excel msn 560-5640 operated by NetJets Europe and seen landing on runway 08 at Luton Airport (LTN/EGGW).",
+   "taille": "1024x683",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/CS-DXL%40LTN_01MAY13_%2811641996255%29.jpg/250px-CS-DXL%40LTN_01MAY13_%2811641996255%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  }
+ ]
 }

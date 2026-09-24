@@ -3,5 +3,24 @@
   "Angenieux Optimo 24-290",
   "Angenieux Optimo"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Angenieux Optimo Ultra 12X.jpg",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "Angry-Monky Photography",
+   "description": "Angenieux Optimo Ultra 12X",
+   "taille": "6720x4480",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Angenieux_Optimo_Ultra_12X.jpg/250px-Angenieux_Optimo_Ultra_12X.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Teleprompter, RED camera, Angenieux Optimo lens.jpg",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "deejayqueue",
+   "description": "I wish I'd brought a better camera. This Angenieux Optimo T2.8 / 24-290mm lens is bigger than words can describe. The main barrel is about 10\" in diameter. It looks like it could take down a tank! It ",
+   "taille": "1600x1200",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Teleprompter%2C_RED_camera%2C_Angenieux_Optimo_lens.jpg/250px-Teleprompter%2C_RED_camera%2C_Angenieux_Optimo_lens.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  }
+ ]
 }
