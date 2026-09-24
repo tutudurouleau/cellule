@@ -2,9 +2,65 @@
  "fichiers": [],
  "recherche": [],
  "openverse": [
-  "Canon C300 Mark II",
-  "Canon C300 Mark III"
+  "titre:C300 Mark II",
+  "titre:C300 Mark III",
+  "titre:C300 MkII"
  ],
  "complet": true,
- "candidates": []
+ "candidates": [
+  {
+   "titre": "openverse:942f06d8-f128-4cdf-8abf-96e4be3d011d",
+   "licence": "CC BY 2.0",
+   "auteur": "Thomas Leuthard",
+   "description": "OM-D E-M1 Mark II (Flickr)",
+   "taille": "1024x576",
+   "vignette": "https://live.staticflickr.com/5595/30894721331_eff850ec12_b.jpg",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "openverse:e65137a1-729a-4ebb-b665-6a587123e3a8",
+   "licence": "CC BY 2.0",
+   "auteur": "Janitors",
+   "description": "Canon PowerShot G1x Mark II sample photo (Flickr)",
+   "taille": "1024x683",
+   "vignette": "https://live.staticflickr.com/5080/14064909390_082f2ddda6_b.jpg",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "openverse:c3d8deed-e7b4-4096-aca7-7d6c4ce1a48b",
+   "licence": "CC BY 2.0",
+   "auteur": "efanphotography v2",
+   "description": "CANON EOS 5D MARK II (Flickr)",
+   "taille": "500x333",
+   "vignette": "https://live.staticflickr.com/6003/5957682066_31c9ecb6b2.jpg",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "openverse:0a4c625f-cbfc-48d0-90f3-811006915729",
+   "licence": "CC BY 2.0",
+   "auteur": "jurvetson",
+   "description": "Canon 5D Mark II (Flickr)",
+   "taille": "1024x721",
+   "vignette": "https://live.staticflickr.com/3293/3136777592_6420176a4e_b.jpg",
+   "fichier": "3.jpg"
+  },
+  {
+   "titre": "openverse:d6fa842a-245a-40e6-8ac2-5f0099ae00de",
+   "licence": "CC BY 2.0",
+   "auteur": "efanphotography v2",
+   "description": "CANON EOS 5D MARK II (Flickr)",
+   "taille": "333x500",
+   "vignette": "https://live.staticflickr.com/6023/5960669535_d0d8dec32f.jpg",
+   "fichier": "4.jpg"
+  },
+  {
+   "titre": "openverse:356fbc57-bbec-4643-bb69-0982a9548e16",
+   "licence": "CC BY 2.0",
+   "auteur": "@yakobusan Jakob Montrasio",
+   "description": "Taken with a Canon EOS 5D Mark II. (Flickr)",
+   "taille": "1024x909",
+   "vignette": "https://live.staticflickr.com/3593/3638343023_ab5e36fde3_b.jpg",
+   "fichier": "5.jpg"
+  }
+ ]
 }

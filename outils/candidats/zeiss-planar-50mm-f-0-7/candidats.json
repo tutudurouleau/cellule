@@ -1,0 +1,29 @@
+{
+ "fichiers": [
+  "File:Zeiss Planar 50mm F0.7 lens.jpg",
+  "File:Zeiss Planar 50mm F0.7 lens attached to camera..jpg"
+ ],
+ "recherche": [],
+ "openverse": [],
+ "complet": true,
+ "candidates": [
+  {
+   "titre": "File:Zeiss Planar 50mm F0.7 lens.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Gbentinck",
+   "description": "One of Stanley Kubrick's Zeiss Planar 50mm F0.7 lenses used for shooting Barry Lyndon. Lens displayed as part of the Stanley Kubrick exhibition in San Francisco.",
+   "taille": "6000x4000",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Zeiss_Planar_50mm_F0.7_lens.jpg/250px-Zeiss_Planar_50mm_F0.7_lens.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Zeiss Planar 50mm F0.7 lens attached to camera..jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Gbentinck",
+   "description": "One of Stanley Kubrick's Zeiss Planar 50mm F0.7 lenses used for shooting Barry Lyndon. Lens displayed as part of the Stanley Kubrick exhibition in San Francisco attached to camera used for the film",
+   "taille": "4000x6000",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Zeiss_Planar_50mm_F0.7_lens_attached_to_camera..jpg/250px-Zeiss_Planar_50mm_F0.7_lens_attached_to_camera..jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  }
+ ]
+}

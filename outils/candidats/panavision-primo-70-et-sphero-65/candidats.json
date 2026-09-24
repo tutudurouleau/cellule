@@ -2,9 +2,64 @@
  "fichiers": [],
  "recherche": [],
  "openverse": [
-  "Panavision Primo 70",
-  "Panavision Sphero 65"
+  "titre:Primo 70",
+  "titre:Sphero 65"
  ],
  "complet": true,
- "candidates": []
+ "candidates": [
+  {
+   "titre": "openverse:c740aa0a-1552-4189-ac59-f232f528d2dd",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "Υπουργείο Εξωτερικών",
+   "description": "Ο ΥΠΟΥΡΓΟΣ ΕΞΩΤΕΡΙΚΩΝ Κ. Ν. ΚΟΤΖΙΑΣ ΜΕ ΤΟΝ ΡΩΣΟ ΠΡΕΣΒΥ ΣΤΗΝ ΑΘΗΝΑ Κ. Α. MASLOV ΣΕ ΕΚΔΗΛΩΣΗ ΡΩΣΙΚΗΣ ΠΡΕΣΒΕΙΑΣ ΓΙΑ ΤΟΝ ΕΟΡΤΑΣΜΟ ΤΩΝ 70 ΕΤΩΝ ΑΠΟ ΤΟ ΤΕΛΟΣ ΤΟΥ Β’ ΠΑΓΚΟΣΜΙΟΥ ΠΟΛΕΜΟΥ (ΑΘΗΝΑ, 8.5.2015) (Flic",
+   "taille": "1024x576",
+   "vignette": "https://live.staticflickr.com/7724/17422144492_c1e2bb3573_b.jpg",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "openverse:27b3161b-bfbd-47c5-815f-38666c39ab70",
+   "licence": "CC BY 2.0",
+   "auteur": "2C2KPhotography",
+   "description": "TXSUHomecomingParade102922#70 (Flickr)",
+   "taille": "1024x683",
+   "vignette": "https://live.staticflickr.com/65535/52468205677_ba1f8d8737_b.jpg",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "openverse:ca6c55c3-73ab-472f-a360-c1f9cafbaeed",
+   "licence": "CC BY 2.0",
+   "auteur": "joergermeister",
+   "description": "Pimp My Desktop Part 70 (Flickr)",
+   "taille": "1024x576",
+   "vignette": "https://live.staticflickr.com/8250/27843080583_2fdf3610c2_b.jpg",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "openverse:81f098e8-6f1a-4da6-818d-b67a8a43705a",
+   "licence": "CC BY 2.0",
+   "auteur": "wocintechchat.com",
+   "description": "wocintech (microsoft) - 70 (woc_tech)",
+   "taille": "1024x684",
+   "vignette": "https://live.staticflickr.com/1660/25926649961_cd1c6c990b_b.jpg",
+   "fichier": "3.jpg"
+  },
+  {
+   "titre": "openverse:733999b8-ffc8-4310-bf96-956f88ec032e",
+   "licence": "domaine public",
+   "auteur": "wynbergmedia",
+   "description": "WBHS-Grade10-Nyamezela-GroupA (70) (Flickr)",
+   "taille": "1024x683",
+   "vignette": "https://live.staticflickr.com/65535/52509847309_b0dd865a10_b.jpg",
+   "fichier": "4.jpg"
+  },
+  {
+   "titre": "openverse:751e3802-86e6-4df4-9842-f9b5bf21c933",
+   "licence": "CC BY 2.0",
+   "auteur": "Rita Willaert",
+   "description": "Danmark O, Fohn Fjord, Renodde.70°N/26°W (Flickr)",
+   "taille": "1024x681",
+   "vignette": "https://live.staticflickr.com/37/76566707_636f88a50d_b.jpg",
+   "fichier": "5.jpg"
+  }
+ ]
 }

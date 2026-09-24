@@ -2,10 +2,63 @@
  "fichiers": [],
  "recherche": [],
  "openverse": [
-  "Angenieux EZ-1",
-  "Angenieux EZ-2",
-  "Angenieux EZ zoom"
+  "titre:Angenieux EZ"
  ],
  "complet": true,
- "candidates": []
+ "candidates": [
+  {
+   "titre": "openverse:a8b86d6b-9132-4229-8c21-176bc450c93c",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "Ekinez Sortu",
+   "description": "Zezenketarik ez! - ¡No a las corridas de toros! - STOP Bullfighting! (Flickr)",
+   "taille": "1024x686",
+   "vignette": "https://live.staticflickr.com/3578/3823418694_3ec0a39f0f_b.jpg",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "openverse:8855e09d-c1f4-407e-9f6d-a773a5b08c8a",
+   "licence": "CC BY 2.0",
+   "auteur": "MTA C&D - EAST SIDE ACCESS",
+   "description": "GCTCJV WW4 EFCO EZ Deck System Scaffolding Erection Tile 3117 (2) (Flickr)",
+   "taille": "1024x768",
+   "vignette": "https://live.staticflickr.com/65535/51806329545_6ac96f022f_b.jpg",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "openverse:5ce8a209-f8c7-4d51-9a0b-5d10ed0cf479",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "Ekinez Sortu",
+   "description": "copyright ez, copyleft bai / copyright no, copyleft si (Flickr)",
+   "taille": "1024x768",
+   "vignette": "https://live.staticflickr.com/3305/3633063451_ba3d13942c_b.jpg",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "openverse:ce764423-3d77-468b-81cd-1dd6a6952384",
+   "licence": "CC BY 2.0",
+   "auteur": "trolleway",
+   "description": "Moscow metro vorobjovy gory train Ez 20080905_087 (Flickr)",
+   "taille": "1024x685",
+   "vignette": "https://live.staticflickr.com/7444/9737246178_226387856d_b.jpg",
+   "fichier": "3.jpg"
+  },
+  {
+   "titre": "openverse:a9ae73a7-45fd-45ad-b47c-be3af18d9f32",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "Ekinez Sortu",
+   "description": "Zezenketarik ez! - ¡No a las corridas de toros! - STOP Bullfighting! (Flickr)",
+   "taille": "685x1024",
+   "vignette": "https://live.staticflickr.com/2508/3823664484_f19f6e82b6_b.jpg",
+   "fichier": "4.jpg"
+  },
+  {
+   "titre": "openverse:c472d204-602f-4707-babf-cec2321931a0",
+   "licence": "CC BY 2.0",
+   "auteur": "Valdiney Pimenta",
+   "description": "Eze (Flickr)",
+   "taille": "1024x683",
+   "vignette": "https://live.staticflickr.com/5208/5334164382_e2b80fbdef_b.jpg",
+   "fichier": "5.jpg"
+  }
+ ]
 }

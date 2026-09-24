@@ -1,63 +1,64 @@
 {
+ "fichiers": [],
  "recherche": [],
  "openverse": [
-  "Bausch Lomb Baltar",
-  "Baltar lens"
+  "titre:Baltar lens",
+  "titre:Bausch Lomb Baltar"
  ],
  "complet": true,
  "candidates": [
   {
-   "titre": "openverse:747ce24c-a10e-4458-ba7c-198a903c66ab",
+   "titre": "openverse:63bd8fa0-fdb8-4d94-ae3c-0157d3fd6010",
    "licence": "CC BY-SA 2.0",
-   "auteur": "猜猜 Guess TSAI",
-   "description": "B&L Baltar 75F23-4513 (Flickr)",
-   "taille": "1024x768",
-   "vignette": "https://live.staticflickr.com/4413/37037507931_9acf239209_b.jpg",
+   "auteur": "tjmills1520",
+   "description": "Lens flare (Flickr)",
+   "taille": "1024x596",
+   "vignette": "https://live.staticflickr.com/65535/52433466349_326b7ee050_b.jpg",
    "fichier": "0.jpg"
   },
   {
-   "titre": "openverse:027f7523-3fc9-4884-9e3c-5e75ca8f8238",
+   "titre": "openverse:7a6a9a11-0122-4a09-9031-e4d45c26d584",
    "licence": "CC BY-SA 2.0",
-   "auteur": "猜猜 Guess TSAI",
-   "description": "B&L Baltar 75F23-4512 (Flickr)",
-   "taille": "1024x768",
-   "vignette": "https://live.staticflickr.com/4415/37037468821_ebc35e72e6_b.jpg",
+   "auteur": "archer10 (Dennis)",
+   "description": "DSC00661 - Where is my contact lens? (Flickr)",
+   "taille": "1024x683",
+   "vignette": "https://live.staticflickr.com/8021/7693651728_5b6098fd56_b.jpg",
    "fichier": "1.jpg"
   },
   {
-   "titre": "openverse:193d9486-b564-4977-a661-e97dbe88b0d2",
+   "titre": "openverse:e1480bdc-6a3d-4d1e-9298-b4e2db7e5776",
    "licence": "CC BY-SA 2.0",
-   "auteur": "猜猜 Guess TSAI",
-   "description": "B&L Baltar 75F23-4511 (Flickr)",
-   "taille": "1024x768",
-   "vignette": "https://live.staticflickr.com/4359/37037472271_c40b41edc7_b.jpg",
+   "auteur": "Vladimir K. Photography",
+   "description": "Nikkor Lens Showcase @ Berjaya Times Square's Nikon Centre (Flickr)",
+   "taille": "1024x683",
+   "vignette": "https://live.staticflickr.com/7295/9444422721_1a5594a70f_b.jpg",
    "fichier": "2.jpg"
   },
   {
-   "titre": "openverse:0826117e-6675-4e77-b77d-4f12d87bdbff",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "猜猜 Guess TSAI",
-   "description": "B&L Baltar 75F23-4510 (Flickr)",
-   "taille": "768x1024",
-   "vignette": "https://live.staticflickr.com/4410/37037475961_b5d20bd581_b.jpg",
+   "titre": "openverse:7b9d30d7-a7b3-4afc-a4f6-fbf800035fa4",
+   "licence": "CC BY 2.0",
+   "auteur": "s58y",
+   "description": "Canon FD 50mm f/1.4 S.S.C. Lens (Flickr)",
+   "taille": "1024x1024",
+   "vignette": "https://live.staticflickr.com/3042/5778074077_43b5e612a0_b.jpg",
    "fichier": "3.jpg"
   },
   {
-   "titre": "openverse:857577b9-2b64-4ff6-a586-be0780c8dafa",
+   "titre": "openverse:bfb270a5-9f12-4305-b05b-702097486893",
    "licence": "CC BY-SA 2.0",
-   "auteur": "猜猜 Guess TSAI",
-   "description": "B&L Baltar 75F23-4509 (Flickr)",
-   "taille": "1024x768",
-   "vignette": "https://live.staticflickr.com/4379/36342851914_0c138d405d_b.jpg",
+   "auteur": "flatworldsedge",
+   "description": "Circle Of Light (Lens Flare), Wisley (Flickr)",
+   "taille": "1024x683",
+   "vignette": "https://live.staticflickr.com/4138/5444490113_174f663ed2_b.jpg",
    "fichier": "4.jpg"
   },
   {
-   "titre": "openverse:a35b9a8a-ae94-4f1f-923d-fad48ebf1f67",
+   "titre": "openverse:ee908fd9-7a5c-432a-a5a2-d4f428239192",
    "licence": "CC BY-SA 2.0",
-   "auteur": "猜猜 Guess TSAI",
-   "description": "B&L Baltar 75F23-4503 (Flickr)",
-   "taille": "1024x768",
-   "vignette": "https://live.staticflickr.com/4373/36989955966_8968e9a2bf_b.jpg",
+   "auteur": "Portland Seminary",
+   "description": "Conversation with Len (Flickr)",
+   "taille": "1024x685",
+   "vignette": "https://live.staticflickr.com/5655/20550237513_bec54e713d_b.jpg",
    "fichier": "5.jpg"
   }
  ]

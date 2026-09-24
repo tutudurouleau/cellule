@@ -1,0 +1,66 @@
+{
+ "fichiers": [],
+ "recherche": [
+  "ARRI DNA lens"
+ ],
+ "openverse": [
+  "titre:ARRI DNA"
+ ],
+ "complet": true,
+ "candidates": [
+  {
+   "titre": "openverse:46c00583-a77c-4ccd-9587-0168ab98cfb2",
+   "licence": "CC BY 2.0",
+   "auteur": "dullhunk",
+   "description": "DNA Origami by Alex Bateman @alexbateman1 @sangerinstitute @emblebi #DNAOrigami (Flickr)",
+   "taille": "500x333",
+   "vignette": "https://live.staticflickr.com/2743/4422952742_30a436e31d.jpg",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "openverse:9205238c-37a1-41f9-9ef3-5f6f90011ffd",
+   "licence": "CC BY 2.0",
+   "auteur": "kaibara87",
+   "description": "DNA (Flickr)",
+   "taille": "500x375",
+   "vignette": "https://live.staticflickr.com/3225/2436446125_7ff05d072b.jpg",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "openverse:ef0c81ae-8bb8-409c-acde-d4e41c106dc8",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "mark sebastian",
+   "description": "Mark J. Sebastian Caricature by dNA (Flickr)",
+   "taille": "723x1024",
+   "vignette": "https://live.staticflickr.com/5056/5527543459_f949bf1c76_b.jpg",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "openverse:2d4f19cd-fea4-4e8a-a378-b61864cdd551",
+   "licence": "CC BY 2.0",
+   "auteur": "kyz",
+   "description": "Fairy DNA (Flickr)",
+   "taille": "1024x615",
+   "vignette": "https://live.staticflickr.com/3564/3340435836_d347c3ce3d_b.jpg",
+   "fichier": "3.jpg"
+  },
+  {
+   "titre": "openverse:e05e61b0-7edd-4f30-89fc-d718da5ae587",
+   "licence": "CC BY 2.0",
+   "auteur": "Ancestry.com",
+   "description": "My DNA Says I'm Kissable (Flickr)",
+   "taille": "240x240",
+   "vignette": "https://live.staticflickr.com/8624/16716255552_192e919cf3_m.jpg",
+   "fichier": "4.jpg"
+  },
+  {
+   "titre": "openverse:92f3cb6f-e3b2-4fa7-912d-98b403c06932",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "brewbooks",
+   "description": "This is how you read 300 billion bases of DNA. (Flickr)",
+   "taille": "1024x576",
+   "vignette": "https://live.staticflickr.com/5475/11136981673_da33473e08_b.jpg",
+   "fichier": "5.jpg"
+  }
+ ]
+}

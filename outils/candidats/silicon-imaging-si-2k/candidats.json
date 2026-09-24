@@ -2,9 +2,36 @@
  "fichiers": [],
  "recherche": [],
  "openverse": [
-  "SI-2K camera",
-  "Silicon Imaging SI-2K"
+  "titre:SI-2K"
  ],
  "complet": true,
- "candidates": []
+ "candidates": [
+  {
+   "titre": "openverse:b78f4d7e-f161-4479-898b-ebe0870535e5",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "Antonio Manfredonio",
+   "description": "Ma come si vogliono bene! (Flickr)",
+   "taille": "768x1024",
+   "vignette": "https://live.staticflickr.com/3104/2775184913_59e70accc2_b.jpg",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "openverse:53133ad9-1494-4555-a33d-acc715ed4999",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "ANSESGOB",
+   "description": "Soy mamá ¿Cómo cobro las asignaciones familiares si las percibe el padre? (Flickr)",
+   "taille": "1024x966",
+   "vignette": "https://live.staticflickr.com/7295/9085947761_7b24db9d16_b.jpg",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "openverse:38a1f330-10fc-40a5-8cbd-07d7f853d77c",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "Antonio Manfredonio",
+   "description": "Il #natale si avvicina. #luminarie #christmas #photostreet #manfrys #follows #red (Flickr)",
+   "taille": "500x500",
+   "vignette": "https://live.staticflickr.com/7481/15758713378_7f8392b610.jpg",
+   "fichier": "2.jpg"
+  }
+ ]
 }

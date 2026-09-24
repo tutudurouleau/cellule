@@ -2,9 +2,63 @@
  "fichiers": [],
  "recherche": [],
  "openverse": [
-  "ARRI Alexa LF",
-  "Alexa LF camera"
+  "titre:Alexa LF"
  ],
  "complet": true,
- "candidates": []
+ "candidates": [
+  {
+   "titre": "openverse:f4f82c7a-8059-41c2-a170-e85d9a4703b8",
+   "licence": "CC BY 2.0",
+   "auteur": "tj013579",
+   "description": "Giantess Alexa (Flickr)",
+   "taille": "1024x650",
+   "vignette": "https://live.staticflickr.com/2784/5795535918_7d68c96b33_b.jpg",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "openverse:970081d8-3ed6-4078-892b-08f9155963a3",
+   "licence": "CC BY 2.0",
+   "auteur": "TunnelBug",
+   "description": "Abandoned Milk Can (LF) (Flickr)",
+   "taille": "1024x800",
+   "vignette": "https://live.staticflickr.com/7390/9239174379_54837a9baa_b.jpg",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "openverse:d7b62cda-4f9a-4416-a005-cfa01757007b",
+   "licence": "CC BY 2.0",
+   "auteur": "Waterford_Man",
+   "description": "Alexa - Pride in London 2019 (Flickr)",
+   "taille": "727x1024",
+   "vignette": "https://live.staticflickr.com/65535/48224798681_7af129ed7a_b.jpg",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "openverse:25189302-f921-495a-8142-ce81add7c3e1",
+   "licence": "CC BY 2.0",
+   "auteur": "decar66",
+   "description": "Pussycat LF (Flickr)",
+   "taille": "683x1024",
+   "vignette": "https://live.staticflickr.com/7172/6589770427_cd5aaf6c43_b.jpg",
+   "fichier": "3.jpg"
+  },
+  {
+   "titre": "openverse:d29a4858-db8a-4654-97c6-e4175b34f48d",
+   "licence": "CC BY 2.0",
+   "auteur": "jerseytom55",
+   "description": "Alexa-1 (Flickr)",
+   "taille": "912x1024",
+   "vignette": "https://live.staticflickr.com/4536/38497363282_9c2d1ce978_b.jpg",
+   "fichier": "4.jpg"
+  },
+  {
+   "titre": "openverse:a9964b28-65b0-40a2-bcb3-b55f8cf44038",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "France1978",
+   "description": "Vintage Franklin Grand Piano Novelty Transistor Radio, Model LF-120, AM Band, 8 Transistors, Made In Japan, Circa 1963 (Flickr)",
+   "taille": "766x1024",
+   "vignette": "https://live.staticflickr.com/8498/8335090983_d9d1f205d8_b.jpg",
+   "fichier": "5.jpg"
+  }
+ ]
 }

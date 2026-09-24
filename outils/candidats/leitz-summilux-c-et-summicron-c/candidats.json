@@ -1,64 +1,64 @@
 {
+ "fichiers": [],
  "recherche": [],
  "openverse": [
-  "Leica Summilux-C",
-  "Summilux-C cine lens",
-  "Summicron-C cine lens"
+  "titre:Summilux-C",
+  "titre:Summilux C lens"
  ],
  "complet": true,
  "candidates": [
   {
-   "titre": "openverse:59284d96-88b2-4cd0-8cd5-d76c799ccc7b",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "VilleHoo",
-   "description": "Helicam Alta8 with Leica Summilux C (Flickr)",
-   "taille": "1024x1002",
-   "vignette": "https://live.staticflickr.com/4296/35890268290_76b6e75458_b.jpg",
+   "titre": "openverse:f5e7ddbb-2661-407c-a8b5-7550c01a27d6",
+   "licence": "domaine public",
+   "auteur": "blizzy63",
+   "description": "Postcard: S.S. Sicamous at Penticton, B.C., c.1961 (Flickr)",
+   "taille": "1024x661",
+   "vignette": "https://live.staticflickr.com/6168/6147838346_a66c3ac96f_b.jpg",
    "fichier": "0.jpg"
   },
   {
-   "titre": "openverse:8db8a7f6-7632-4225-ac96-c65f81ff6bb0",
-   "licence": "CC BY 2.0",
-   "auteur": "fluffisch",
-   "description": "weiter an der Wand lang (Flickr)",
-   "taille": "677x1024",
-   "vignette": "https://live.staticflickr.com/7583/15538974929_e2dd734d8b_b.jpg",
+   "titre": "openverse:82c04011-a041-4965-bfd3-999e88d58571",
+   "licence": "domaine public",
+   "auteur": "Queensland State Archives",
+   "description": "Victoria Bridge from Queen Street, Brisbane, c 1880 (Flickr)",
+   "taille": "1024x841",
+   "vignette": "https://live.staticflickr.com/8361/8278695857_e5f2a12b84_b.jpg",
    "fichier": "1.jpg"
   },
   {
-   "titre": "openverse:d7578d09-ec27-4237-8aa6-398037b14b65",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "czuerbig",
-   "description": "Shades of Brown (Flickr)",
-   "taille": "1024x684",
-   "vignette": "https://live.staticflickr.com/65535/47998034716_c11d1664b0_b.jpg",
+   "titre": "openverse:6ff72e27-3d23-4f0c-bd05-ee4475206a69",
+   "licence": "CC BY 2.0",
+   "auteur": "s58y",
+   "description": "105mm f/2.8 S-M-C Takumar (Flickr)",
+   "taille": "1024x951",
+   "vignette": "https://live.staticflickr.com/6144/5919620058_76d3c107a7_b.jpg",
    "fichier": "2.jpg"
   },
   {
-   "titre": "openverse:0e342f28-b147-4cef-bfc2-ea7eb4373dab",
-   "licence": "CC BY 2.0",
-   "auteur": "*嘟嘟嘟*",
-   "description": "50mm的視界 (Flickr)",
-   "taille": "1024x684",
-   "vignette": "https://live.staticflickr.com/4064/4691359330_2ef75f7332_b.jpg",
+   "titre": "openverse:8c5ecb66-993f-47b9-a935-1dedd32f56fa",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "FritzFlohrReynolds",
+   "description": "Erythronium albidum, C & O Canal Lock 6, 4/10/13 (Flickr)",
+   "taille": "768x1024",
+   "vignette": "https://live.staticflickr.com/2901/13783759094_fd488f8002_b.jpg",
    "fichier": "3.jpg"
   },
   {
-   "titre": "openverse:cc899aa1-a2b8-473c-a73f-562f3382b5eb",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "Jack Baty",
-   "description": "Self-portrait (Flickr)",
-   "taille": "1024x684",
-   "vignette": "https://live.staticflickr.com/65535/51703940065_45722c9053_b.jpg",
+   "titre": "openverse:795c2707-b8ea-448d-9524-b15718caeb2b",
+   "licence": "domaine public",
+   "auteur": "blizzy63",
+   "description": "Burrard Bridge, c.1948 (Flickr)",
+   "taille": "1024x754",
+   "vignette": "https://live.staticflickr.com/6190/6100423551_c2b0c49b8a_b.jpg",
    "fichier": "4.jpg"
   },
   {
-   "titre": "openverse:f55db84f-0074-4ca9-ad30-ae1b4ce1a8fb",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "Jack Baty",
-   "description": "Alice (2021) - Portra 400 (Flickr)",
-   "taille": "1024x679",
-   "vignette": "https://live.staticflickr.com/65535/51326443844_fd3bcaf124_b.jpg",
+   "titre": "openverse:9b72dcc8-7439-49c5-bab9-43ea3000e60d",
+   "licence": "domaine public",
+   "auteur": "blizzy63",
+   "description": "Postcard: Skaha Beach, Penticton, BC, c.1960 (Flickr)",
+   "taille": "1024x638",
+   "vignette": "https://live.staticflickr.com/8514/8477064163_9bd931899e_b.jpg",
    "fichier": "5.jpg"
   }
  ]

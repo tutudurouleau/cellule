@@ -2,9 +2,65 @@
  "fichiers": [],
  "recherche": [],
  "openverse": [
-  "Panasonic VariCam LT",
-  "Panasonic VariCam 35"
+  "titre:VariCam LT",
+  "titre:VariCam 35",
+  "titre:Varicam"
  ],
  "complet": true,
- "candidates": []
+ "candidates": [
+  {
+   "titre": "openverse:bd191ab6-dd9c-4048-98d0-0697b952190a",
+   "licence": "CC BY 2.0",
+   "auteur": "MDGovpics",
+   "description": "Lt. Governor Host MBE_Small Business Stakeholders Roundtable Discussion (Flickr)",
+   "taille": "1024x681",
+   "vignette": "https://live.staticflickr.com/3751/13603202635_4f314d46f1_b.jpg",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "openverse:7300fcd2-e128-4b71-9fc9-f2be494220fc",
+   "licence": "CC BY 2.0",
+   "auteur": "Ferlinka Borzoi (Deb West)",
+   "description": "Lt. David Lim. Introduction of the Sirius Courage Award. Lt. David Lim of the Port Authority New York/New Jersey K-9 Unit who received a portrait of his dog,Sirius. Sirius was the only working dog tha",
+   "taille": "1024x683",
+   "vignette": "https://live.staticflickr.com/6181/6146013956_e6dc166ee1_b.jpg",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "openverse:584493dd-ac5f-4593-86a3-b0ef43c2b3f1",
+   "licence": "CC BY 2.0",
+   "auteur": "Gambar Rumah + Desain Interior ANNAHAPE GALLERY",
+   "description": "Gambar Denah Rumah Minimalis 2 lantai Luas Tanah/LT 90m2 (Flickr)",
+   "taille": "500x210",
+   "vignette": "https://live.staticflickr.com/4033/4292556344_1c1b117a6c.jpg",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "openverse:ef0dcc1b-361d-46ba-ba0c-30fd5867f93e",
+   "licence": "domaine public",
+   "auteur": "U.S. Army ROTC",
+   "description": "Lt. Gen. Gary Brito Visit | CST 2022 (Flickr)",
+   "taille": "1024x683",
+   "vignette": "https://live.staticflickr.com/65535/52216406383_4c3c6dedfc_b.jpg",
+   "fichier": "3.jpg"
+  },
+  {
+   "titre": "openverse:0198b8a7-4156-4cd7-97e1-a288acf87ccf",
+   "licence": "domaine public",
+   "auteur": "Apollo Image Gallery",
+   "description": "AS10-35-5288 (nasa)",
+   "taille": "979x1024",
+   "vignette": "https://live.staticflickr.com/649/21937492272_52868d0a41_b.jpg",
+   "fichier": "4.jpg"
+  },
+  {
+   "titre": "openverse:525453af-94f0-472a-b62c-cdd02d060f3d",
+   "licence": "domaine public",
+   "auteur": "Apollo Image Gallery",
+   "description": "AS10-35-5197 (nasa)",
+   "taille": "979x1024",
+   "vignette": "https://live.staticflickr.com/751/21937640612_dc56c61ac2_b.jpg",
+   "fichier": "5.jpg"
+  }
+ ]
 }
