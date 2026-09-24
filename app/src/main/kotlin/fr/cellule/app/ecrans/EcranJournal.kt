@@ -294,6 +294,17 @@ fun EcranJournal(depot: DepotJournal, reglages: Reglages, etat: EtatApplication)
             }
             Spacer(Modifier.height(Interligne))
             BandeauEtat(messageSauvegarde, alerte = sauvegardeEchouee)
+            /* Pour vérifier qu'une mise à jour a bien pris. */
+            val version = remember {
+                runCatching { contexte.packageManager.getPackageInfo(contexte.packageName, 0).versionName }
+                    .getOrNull() ?: "?"
+            }
+            Text(
+                "Version installée : $version",
+                style = Detail,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = Interligne)
+            )
         }
     }
 }
