@@ -115,7 +115,10 @@ def pages_trouvees(recherche):
 
 def auteur(info):
     """L'auteur déclaré ou, à défaut, le compte qui a versé le fichier."""
-    return texte(info.get("extmetadata", {}), "Artist", 80) or info.get("user", "")
+    declare = texte(info.get("extmetadata", {}), "Artist", 80)
+    if re.match(r"unknown", declare, re.IGNORECASE):
+        return "auteur inconnu"
+    return declare or info.get("user", "")
 
 
 def chercher_candidates(ident, recherches):
