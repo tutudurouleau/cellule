@@ -1,9 +1,19 @@
 {
- "fichiers": [],
- "recherche": [],
- "openverse": [
-  "\"Signature Prime\""
+ "fichiers": [
+  "File:ARRI LF SYSTEM 장비들.jpg"
  ],
+ "recherche": [],
+ "openverse": [],
  "complet": true,
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:ARRI LF SYSTEM 장비들.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "CCUnderstand?",
+   "description": "KOBA 2019에 전시된 ARRI LF SYSTEM 장비들",
+   "taille": "6000x4000",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/ARRI_LF_SYSTEM_%EC%9E%A5%EB%B9%84%EB%93%A4.jpg/250px-ARRI_LF_SYSTEM_%EC%9E%A5%EB%B9%84%EB%93%A4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  }
+ ]
 }
