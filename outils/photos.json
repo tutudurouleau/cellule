@@ -16,7 +16,8 @@
   "recherche": [],
   "openverse": [
    "\"Alexa 65\""
-  ]
+  ],
+  "aucune": true
  },
  "arri-alexa-mini": {
   "recherche": [
@@ -26,10 +27,10 @@
   "choix": "File:Alexa Mini.jpg"
  },
  "arri-alexa-lf": {
-  "recherche": [],
-  "openverse": [
-   "\"Alexa LF\""
-  ]
+  "fichiers": [
+   "File:ARRI LF SYSTEM 장비들.jpg"
+  ],
+  "recherche": []
  },
  "arri-alexa-mini-lf": {
   "recherche": [
@@ -95,13 +96,15 @@
   "openverse": [
    "\"DSMC2\"",
    "\"RED Ranger\""
-  ]
+  ],
+  "aucune": true
  },
  "red-komodo-et-komodo-x": {
   "recherche": [],
   "openverse": [
    "\"RED Komodo\""
-  ]
+  ],
+  "aucune": true
  },
  "red-v-raptor": {
   "recherche": [
@@ -170,7 +173,8 @@
   "openverse": [
    "\"C300 Mark II\"",
    "\"C300 Mark III\""
-  ]
+  ],
+  "aucune": true
  },
  "blackmagic-pocket-4k-et-6k": {
   "recherche": [
@@ -183,7 +187,8 @@
   "recherche": [],
   "openverse": [
    "\"URSA Mini Pro\""
-  ]
+  ],
+  "aucune": true
  },
  "panavision-panaflex": {
   "recherche": [
@@ -217,7 +222,8 @@
   "openverse": [
    "\"VariCam LT\"",
    "\"VariCam 35\""
-  ]
+  ],
+  "aucune": true
  },
  "z-cam-e2": {
   "recherche": [
@@ -236,7 +242,8 @@
   "recherche": [],
   "openverse": [
    "\"SI-2K\""
-  ]
+  ],
+  "aucune": true
  },
  "vision-research-phantom": {
   "recherche": [
@@ -298,13 +305,15 @@
   "recherche": [],
   "openverse": [
    "\"Zeiss Super Speed\""
-  ]
+  ],
+  "aucune": true
  },
  "arri-zeiss-ultra-prime": {
   "recherche": [],
   "openverse": [
    "\"Ultra Prime\""
-  ]
+  ],
+  "aucune": true
  },
  "arri-zeiss-master-prime": {
   "recherche": [],
@@ -318,7 +327,8 @@
   "recherche": [],
   "openverse": [
    "\"Zeiss CP.3\""
-  ]
+  ],
+  "aucune": true
  },
  "zeiss-supreme-prime": {
   "recherche": [
@@ -327,28 +337,31 @@
   "choix": "File:ARRI-ZEISS의 Supreme prime 렌즈.jpg"
  },
  "arri-signature-prime": {
-  "recherche": [],
-  "openverse": [
-   "\"Signature Prime\""
-  ]
+  "fichiers": [
+   "File:ARRI LF SYSTEM 장비들.jpg"
+  ],
+  "recherche": []
  },
  "cooke-speed-panchro": {
   "recherche": [],
   "openverse": [
    "\"Speed Panchro\""
-  ]
+  ],
+  "aucune": true
  },
  "cooke-s4-i": {
   "recherche": [],
   "openverse": [
    "\"Cooke S4\""
-  ]
+  ],
+  "aucune": true
  },
  "cooke-anamorphic-i": {
   "recherche": [],
   "openverse": [
    "\"Cooke anamorphic\""
-  ]
+  ],
+  "aucune": true
  },
  "cooke-s7-i": {
   "recherche": [],
@@ -361,14 +374,16 @@
   "recherche": [],
   "openverse": [
    "\"Cooke Panchro\""
-  ]
+  ],
+  "aucune": true
  },
  "angenieux-25-250": {
   "recherche": [],
   "openverse": [
    "\"Angenieux 25-250\"",
    "\"Angénieux 25-250\""
-  ]
+  ],
+  "aucune": true
  },
  "angenieux-optimo-24-290": {
   "recherche": [
@@ -381,73 +396,85 @@
   "recherche": [],
   "openverse": [
    "\"Angenieux EZ\""
-  ]
+  ],
+  "aucune": true
  },
  "leitz-summilux-c-et-summicron-c": {
   "recherche": [],
   "openverse": [
    "\"Summilux-C\""
-  ]
+  ],
+  "aucune": true
  },
  "leitz-thalia": {
   "recherche": [],
   "openverse": [
    "\"Leitz Thalia\""
-  ]
+  ],
+  "aucune": true
  },
  "panavision-c-series": {
   "recherche": [],
   "openverse": [
    "\"Panavision anamorphic\""
-  ]
+  ],
+  "aucune": true
  },
  "panavision-primo": {
   "recherche": [],
   "openverse": [
    "\"Panavision Primo\""
-  ]
+  ],
+  "aucune": true
  },
  "panavision-primo-70-et-sphero-65": {
   "recherche": [],
   "openverse": [
    "\"Primo 70\""
-  ]
+  ],
+  "aucune": true
  },
  "panavision-t-series": {
   "recherche": [],
   "openverse": [
    "\"Panavision T Series\""
-  ]
+  ],
+  "aucune": true
  },
  "kowa-cine-prominar-anamorphiques": {
   "recherche": [],
   "openverse": [
    "\"Kowa anamorphic\""
-  ]
+  ],
+  "aucune": true
  },
  "lomo-square-front-et-round-front": {
   "recherche": [],
   "openverse": [
    "\"LOMO anamorphic\""
-  ]
+  ],
+  "aucune": true
  },
  "vantage-hawk-v-lite": {
   "recherche": [],
   "openverse": [
    "\"Hawk anamorphic\""
-  ]
+  ],
+  "aucune": true
  },
  "bausch-lomb-baltar": {
   "recherche": [],
   "openverse": [
    "\"Bausch & Lomb Baltar\""
-  ]
+  ],
+  "aucune": true
  },
  "canon-k35": {
   "recherche": [],
   "openverse": [
    "\"Canon K35\""
-  ]
+  ],
+  "aucune": true
  },
  "nikon-ai-s-rehousses": {
   "recherche": [
@@ -498,7 +525,8 @@
   "recherche": [],
   "openverse": [
    "\"PMW-EX3\""
-  ]
+  ],
+  "aucune": true
  },
  "canon-xl1-et-xl1s": {
   "fichiers": [
@@ -521,7 +549,8 @@
   "openverse": [
    "\"Viper FilmStream\"",
    "\"Thomson Viper\""
-  ]
+  ],
+  "aucune": true
  },
  "gopro-hero": {
   "fichiers": [
@@ -585,7 +614,8 @@
   "recherche": [],
   "openverse": [
    "\"Standard Speed\" Zeiss"
-  ]
+  ],
+  "aucune": true
  },
  "zeiss-planar-50mm-f-0-7": {
   "fichiers": [
@@ -598,13 +628,15 @@
   "recherche": [],
   "openverse": [
    "\"Master Anamorphic\""
-  ]
+  ],
+  "aucune": true
  },
  "arri-prime-dna": {
   "recherche": [],
   "openverse": [
    "\"DNA lens\""
-  ]
+  ],
+  "aucune": true
  },
  "fujinon-premier-hk": {
   "fichiers": [
@@ -619,7 +651,8 @@
   "recherche": [],
   "openverse": [
    "\"Alura\" zoom"
-  ]
+  ],
+  "aucune": true
  },
  "fujinon-cabrio": {
   "recherche": [],
@@ -639,7 +672,8 @@
   "recherche": [],
   "openverse": [
    "\"Ultra Panavision\""
-  ]
+  ],
+  "aucune": true
  },
  "leica-r-rehousses": {
   "recherche": [
