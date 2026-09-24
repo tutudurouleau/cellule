@@ -57,7 +57,13 @@ def lire(url):
 
 def api(**parametres):
     parametres.update(action="query", format="json", formatversion="2")
-    return json.loads(lire(API + "?" + urllib.parse.urlencode(parametres)))
+    reponse = json.loads(lire(API + "?" + urllib.parse.urlencode(parametres)))
+    # Une erreur d'API arrive en HTTP 200 : sans ce contrôle, elle passerait
+    # pour une recherche sans résultat.
+    for cle in ("error", "warnings"):
+        if cle in reponse:
+            print(f"  API {cle} : {json.dumps(reponse[cle], ensure_ascii=False)[:300]}", file=sys.stderr)
+    return reponse
 
 
 def texte(meta, cle, longueur=160):
@@ -73,8 +79,11 @@ def licence_libre(info):
 
 
 def extension(url):
-    fin = url.rsplit("/", 1)[-1].rsplit(".", 1)[-1].lower()
+    fin = url.split("?", 1)[0].rsplit("/", 1)[-1].rsplit(".", 1)[-1].lower()
     return "jpg" if fin in ("jpg", "jpeg") else fin
+
+
+FORMATS = ("jpg", "png", "webp")  # Android décode les trois
 
 
 def chercher_candidates(ident, recherches):
@@ -82,8 +91,9 @@ def chercher_candidates(ident, recherches):
     index = os.path.join(dossier, "candidats.json")
     if os.path.exists(index):
         with open(index, encoding="utf-8") as f:
-            if json.load(f).get("recherche") == recherches:
-                return  # déjà fait avec les mêmes recherches
+            deja = json.load(f)
+        if deja.get("recherche") == recherches and deja.get("candidates"):
+            return  # déjà fait avec les mêmes recherches
         shutil.rmtree(dossier)
 
     vus, retenues = set(), []
@@ -95,6 +105,7 @@ def chercher_candidates(ident, recherches):
             iiurlwidth=str(LARGEUR_VIGNETTE),
         )
         pages = sorted(reponse.get("query", {}).get("pages", []), key=lambda p: p.get("index", 0))
+        rejets = {"licence": 0, "format": 0}
         for page in pages:
             titre = page["title"]
             if titre in vus or titre.lower().endswith(".svg"):
@@ -102,7 +113,16 @@ def chercher_candidates(ident, recherches):
             vus.add(titre)
             info = (page.get("imageinfo") or [{}])[0]
             licence = licence_libre(info)
-            if not licence or "thumburl" not in info or extension(info["thumburl"]) not in ("jpg", "png"):
+            if not licence:
+                rejets["licence"] += 1
+                if rejets["licence"] == 1:
+                    nom = texte(info.get("extmetadata", {}), "LicenseShortName")
+                    print(f"  licence refusée : « {nom} » ({titre})", file=sys.stderr)
+                continue
+            if "thumburl" not in info or extension(info["thumburl"]) not in FORMATS:
+                rejets["format"] += 1
+                if rejets["format"] == 1:
+                    print(f"  format refusé : {info.get('thumburl')} ({titre})", file=sys.stderr)
                 continue
             meta = info.get("extmetadata", {})
             retenues.append({
@@ -115,6 +135,7 @@ def chercher_candidates(ident, recherches):
             })
             if len(retenues) >= NOMBRE_DE_CANDIDATES:
                 break
+        print(f"  « {recherche} » : {len(pages)} résultat(s), refus {rejets}")
         if len(retenues) >= NOMBRE_DE_CANDIDATES:
             break
         time.sleep(0.5)
@@ -140,6 +161,9 @@ def telecharger_photo(ident, titre, credits):
         print(f"{ident} : « {titre} » introuvable ou sous licence non libre, ignorée", file=sys.stderr)
         return
     url = info.get("thumburl") or info["url"]
+    if extension(url) not in FORMATS:
+        print(f"{ident} : format inattendu {url}, ignorée", file=sys.stderr)
+        return
     fichier = f"{ident}.{extension(url)}"
     deja = credits.get(ident)
     if not (deja and deja.get("titre") == titre and os.path.exists(os.path.join(PHOTOS, fichier))):
