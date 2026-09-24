@@ -544,7 +544,13 @@
   "fichiers": [
    "File:Panavision Camera System 65.jpg"
   ],
-  "choix": "File:Panavision Camera System 65.jpg"
+  "choix": "File:Panavision Camera System 65.jpg",
+  "recadrage": [
+   0.12,
+   0.3,
+   0.5,
+   0.86
+  ]
  },
  "thomson-viper-filmstream": {
   "recherche": [],
@@ -647,7 +653,13 @@
   "recherche": [
    "Fujinon Premier zoom"
   ],
-  "choix": "File:Fujinon HK5.3x75.jpg"
+  "choix": "File:Fujinon HK5.3x75.jpg",
+  "recadrage": [
+   0.12,
+   0.03,
+   0.72,
+   0.82
+  ]
  },
  "arri-fujinon-alura": {
   "recherche": [],

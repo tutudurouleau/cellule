@@ -167,7 +167,12 @@ def pages_trouvees(recherche):
 
 def auteur(info):
     """L'auteur déclaré ou, à défaut, le compte qui a versé le fichier."""
-    declare = texte(info.get("extmetadata", {}), "Artist", 80)
+    declare = texte(info.get("extmetadata", {}), "Artist", 200)
+    # « When reusing, please credit me as author: Untel, http://… » : le nom seul.
+    consigne = re.search(r"credit(?: me)? as(?: author)?\s*:\s*(.+)", declare, re.IGNORECASE)
+    if consigne:
+        declare = consigne.group(1)
+    declare = re.sub(r"https?://\S+", "", declare).strip(" ,;")[:80]
     if re.match(r"unknown", declare, re.IGNORECASE):
         return "auteur inconnu"
     return declare or info.get("user", "")

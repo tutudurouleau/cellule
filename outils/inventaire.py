@@ -12,6 +12,7 @@ Lit outils/inventaire.json : {"racines": [...], "profondeur": n}.
 Écrit outils/inventaire-commons.tsv : catégorie, fichier.
 """
 
+import hashlib
 import json
 import os
 import re
@@ -47,8 +48,17 @@ def membres(categorie):
 
 
 def main():
-    with open(REGLAGES, encoding="utf-8") as f:
-        reglages = json.load(f)
+    with open(REGLAGES, "rb") as f:
+        brut = f.read()
+    # Parcourir 9 000 fichiers prend plusieurs minutes : on ne recommence que
+    # si la liste des catégories a changé depuis le dernier inventaire.
+    empreinte = "# " + hashlib.sha256(brut).hexdigest()
+    if os.path.exists(SORTIE):
+        with open(SORTIE, encoding="utf-8") as f:
+            if f.readline().strip() == empreinte:
+                print("Inventaire à jour.")
+                return
+    reglages = json.loads(brut)
     profondeur = reglages.get("profondeur", 3)
     a_voir = [(c, 0) for c in reglages["racines"]]
     vues, fichiers = set(), []
@@ -70,6 +80,7 @@ def main():
     for categorie, titre in fichiers:
         uniques.setdefault(titre, categorie)
     with open(SORTIE, "w", encoding="utf-8") as f:
+        f.write(empreinte + "\n")
         for titre, categorie in sorted(uniques.items(), key=lambda x: (x[1], x[0])):
             f.write(f"{categorie}\t{titre}\n")
     print(f"{len(vues)} catégories, {len(uniques)} fichiers")
