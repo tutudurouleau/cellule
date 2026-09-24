@@ -4,6 +4,7 @@
 
 package fr.cellule.app.ecrans
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -39,6 +40,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import fr.cellule.app.Corps
@@ -198,12 +202,25 @@ private fun EntreeCatalogue(m: Materiel, surClic: () -> Unit) {
             .padding(vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(
-            m.silhouette.image(),
-            contentDescription = null,
-            tint = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.size(width = 36.dp, height = 24.dp)
-        )
+        val photo = photoDe(m, Photos.VIGNETTE)
+        Box(
+            Modifier
+                .size(width = 56.dp, height = 40.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .background(if (photo != null) MaterialTheme.colorScheme.surfaceVariant else Color.Transparent),
+            contentAlignment = Alignment.Center
+        ) {
+            if (photo != null) {
+                Image(photo, contentDescription = null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize())
+            } else {
+                Icon(
+                    m.silhouette.image(),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.size(width = 36.dp, height = 24.dp)
+                )
+            }
+        }
         Spacer(Modifier.width(12.dp))
         Column(Modifier.weight(1f)) {
             Text(
@@ -257,6 +274,23 @@ private fun FeuilleFiche(m: Materiel, onFermer: () -> Unit) {
                 .padding(bottom = Gouttiere)
         ) {
             /* La fiche récap : ce qu'on retient d'un coup d'œil. */
+            val photo = photoDe(m, Photos.PLEINE)
+            val credit = Photos.credit(LocalContext.current, m)
+            if (photo != null && credit != null) {
+                Image(
+                    photo,
+                    contentDescription = m.nomComplet,
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(220.dp)
+                        .clip(RoundedCornerShape(RayonControle))
+                        .background(MaterialTheme.colorScheme.surfaceVariant)
+                )
+                Spacer(Modifier.height(4.dp))
+                Text(credit.mention, style = Detail, maxLines = 2, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Spacer(Modifier.height(Interligne))
+            }
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
                     m.silhouette.image(),
@@ -395,14 +429,38 @@ private fun Quiz(etat: EtatQuiz, surOuvrir: (Materiel) -> Unit) {
 private fun CarteQuestion(q: Question, etat: EtatQuiz, surOuvrir: (Materiel) -> Unit) {
     val choisi = etat.choisi
     val repondu = choisi != null
+    /* « Qui suis-je ? » se joue sur la photo ; « Quel film ? » la garde pour
+       après la réponse, sinon l'image répondrait à la place de la mémoire. */
+    val photo = photoDe(q.reponse, Photos.PLEINE)
+    val credit = Photos.credit(LocalContext.current, q.reponse)
+    val montrerPhoto = photo != null && (q.genre == GenreQuestion.QUI_SUIS_JE || repondu)
     Carte {
-        Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-            Icon(
-                q.reponse.silhouette.image(),
+        if (montrerPhoto && photo != null) {
+            Image(
+                photo,
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(width = 144.dp, height = 96.dp)
+                contentScale = ContentScale.Fit,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
+                    .clip(RoundedCornerShape(RayonControle))
+                    .background(MaterialTheme.colorScheme.surfaceVariant)
             )
+            /* Le crédit n'apparaît qu'une fois répondu : l'auteur est parfois
+               le fabricant lui-même, ce qui soufflerait la réponse. */
+            if (repondu && credit != null) {
+                Spacer(Modifier.height(4.dp))
+                Text(credit.mention, style = Detail, maxLines = 2, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+        } else {
+            Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                Icon(
+                    q.reponse.silhouette.image(),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(width = 144.dp, height = 96.dp)
+                )
+            }
         }
         Spacer(Modifier.height(8.dp))
         Etiquette(
