@@ -1,7 +1,62 @@
 {
  "recherche": [
-  "Baltar lens",
-  "Bausch Lomb Baltar"
+  "intitle:Baltar",
+  "Bausch Lomb Baltar cine lens"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:2003-Baltar eleccions municipais.png",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "http://gl.wikipedia.org/wiki/User:Alyssalover",
+   "description": "Resultado das eleccións municipais de 2003 no concello cuxo nome está presente na denominación da foto",
+   "taille": "420x453",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/2003-Baltar_eleccions_municipais.png/250px-2003-Baltar_eleccions_municipais.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.png"
+  },
+  {
+   "titre": "File:Baltar, Province of Ourense, Spain - panoramio (1).jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Mauro Fernandes",
+   "description": "Baltar, Province of Ourense, Spain",
+   "taille": "5760x3840",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Baltar%2C_Province_of_Ourense%2C_Spain_-_panoramio_%281%29.jpg/250px-Baltar%2C_Province_of_Ourense%2C_Spain_-_panoramio_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Baltar, Province of Ourense, Spain - panoramio (10).jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Mauro Fernandes",
+   "description": "Baltar, Province of Ourense, Spain",
+   "taille": "5760x3840",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Baltar%2C_Province_of_Ourense%2C_Spain_-_panoramio_%2810%29.jpg/250px-Baltar%2C_Province_of_Ourense%2C_Spain_-_panoramio_%2810%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:Baltar, Province of Ourense, Spain - panoramio (12).jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Mauro Fernandes",
+   "description": "Baltar, Province of Ourense, Spain",
+   "taille": "3840x5760",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Baltar%2C_Province_of_Ourense%2C_Spain_-_panoramio_%2812%29.jpg/250px-Baltar%2C_Province_of_Ourense%2C_Spain_-_panoramio_%2812%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  },
+  {
+   "titre": "File:Baltar Cruceiro 64.JPG",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "GFreihalter",
+   "description": "Cruceiro (Flurkreuz) in Baltar in der spanischen Provinz Ourense (Galicien)",
+   "taille": "2177x3246",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Baltar_Cruceiro_64.JPG/250px-Baltar_Cruceiro_64.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "4.jpg"
+  },
+  {
+   "titre": "File:Baltar Cruceiro 65.JPG",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "GFreihalter",
+   "description": "Cruceiro (Flurkreuz) in Baltar in der spanischen Provinz Ourense (Galicien)",
+   "taille": "2009x2990",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Baltar_Cruceiro_65.JPG/250px-Baltar_Cruceiro_65.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "5.jpg"
+  }
+ ]
 }

@@ -1,7 +1,7 @@
 {
  "recherche": [
-  "Panavision Primo 70",
-  "Panavision Sphero 65"
+  "intitle:\"Primo 70\"",
+  "intitle:Panavision intitle:Sphero"
  ],
  "candidates": []
 }

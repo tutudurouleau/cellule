@@ -1,44 +1,7 @@
 {
  "recherche": [
-  "Zeiss Ultra Prime",
-  "Ultra Prime lens"
+  "intitle:\"Ultra Prime\"",
+  "intitle:Zeiss intitle:UltraPrime"
  ],
- "candidates": [
-  {
-   "titre": "File:Rokinon 14mm f 2.8 Lens (46090937791).jpg",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "Tony Webster from Minneapolis, Minnesota, United States",
-   "description": "The Rokinon (Samyang) 14mm f/2.8 manual focus lens for Sony.",
-   "taille": "6988x4870",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Rokinon_14mm_f_2.8_Lens_%2846090937791%29.jpg/250px-Rokinon_14mm_f_2.8_Lens_%2846090937791%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "0.jpg"
-  },
-  {
-   "titre": "File:Sony NEX-5N with 16 + ultra wide converter x0.75.JPG",
-   "licence": "CC BY-SA 3.0",
-   "auteur": "Bourgeois.A",
-   "description": "Sony NEX-5N with 16 mm + ultra wide converter x0.75.",
-   "taille": "4152x2644",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Sony_NEX-5N_with_16_%2B_ultra_wide_converter_x0.75.JPG/250px-Sony_NEX-5N_with_16_%2B_ultra_wide_converter_x0.75.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "1.jpg"
-  },
-  {
-   "titre": "File:Samyang XP 10mm f3.5.jpg",
-   "licence": "CC BY-SA 4.0",
-   "auteur": "Verbcatcher",
-   "description": "Samyang XP 10mm f3.5 lens, for Canon full-frame DSLR cameras. An ultra wide angle rectilinear lens, one of the widest available.",
-   "taille": "4160x6240",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Samyang_XP_10mm_f3.5.jpg/250px-Samyang_XP_10mm_f3.5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "2.jpg"
-  },
-  {
-   "titre": "File:Capturing the ultra high definition Universe (potw1413a).jpg",
-   "licence": "CC BY 4.0",
-   "auteur": "ESO/B.Tafreshi ( twanight.org )",
-   "description": "This photo, taken at ESO's Paranal Observatory, is the first photograph from the ESO Ultra HD Expedition — a pioneering journey currently being undertaken by four world-renowned videographers and ESO ",
-   "taille": "3648x3648",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Capturing_the_ultra_high_definition_Universe_%28potw1413a%29.jpg/250px-Capturing_the_ultra_high_definition_Universe_%28potw1413a%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "3.jpg"
-  }
- ]
+ "candidates": []
 }

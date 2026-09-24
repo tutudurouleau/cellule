@@ -1,6 +1,7 @@
 {
  "recherche": [
-  "ARRI Signature Prime"
+  "intitle:\"Signature Prime\"",
+  "ARRI Signature Prime lens"
  ],
  "candidates": []
 }

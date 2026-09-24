@@ -1,17 +1,7 @@
 {
  "recherche": [
-  "Cooke S4",
-  "Cooke S4/i lens"
+  "intitle:Cooke intitle:S4",
+  "Cooke Optics S4 lens"
  ],
- "candidates": [
-  {
-   "titre": "File:Wotton under Edge, War Memorial, Gloucestershire.jpg",
-   "licence": "CC BY-SA 4.0",
-   "auteur": "Memorialman",
-   "description": "This memorial commemorates the fallen of both World War from then town and those who have a connection with Wotton and surrounds.",
-   "taille": "1200x1600",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Wotton_under_Edge%2C_War_Memorial%2C_Gloucestershire.jpg/250px-Wotton_under_Edge%2C_War_Memorial%2C_Gloucestershire.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "0.jpg"
-  }
- ]
+ "candidates": []
 }

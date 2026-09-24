@@ -1,17 +1,7 @@
 {
  "recherche": [
-  "Zeiss Super Speed lens",
-  "Zeiss Superspeed"
+  "intitle:Zeiss intitle:\"Super Speed\"",
+  "intitle:Zeiss intitle:Superspeed"
  ],
- "candidates": [
-  {
-   "titre": "File:The Axe Historique in Paris - view from Jardin des Tuileries.jpg",
-   "licence": "CC BY-SA 3.0",
-   "auteur": "Ximeg",
-   "description": "The Axe Historique in Paris - view from Jardin des Tuileries .",
-   "taille": "5564x3576",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/The_Axe_Historique_in_Paris_-_view_from_Jardin_des_Tuileries.jpg/250px-The_Axe_Historique_in_Paris_-_view_from_Jardin_des_Tuileries.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "0.jpg"
-  }
- ]
+ "candidates": []
 }

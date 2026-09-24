@@ -1,7 +1,7 @@
 {
  "recherche": [
-  "LOMO anamorphic lens",
-  "LOMO round front"
+  "intitle:LOMO intitle:anamorphic",
+  "intitle:LOMO intitle:OKS"
  ],
  "candidates": []
 }

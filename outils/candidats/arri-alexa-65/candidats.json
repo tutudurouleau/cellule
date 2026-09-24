@@ -1,43 +1,7 @@
 {
  "recherche": [
-  "Alexa 65 camera"
+  "intitle:\"Alexa 65\"",
+  "ARRI Alexa 65 large format camera"
  ],
- "candidates": [
-  {
-   "titre": "File:Alexa von Health for Future moderiert Klima after Work (52338043227).jpg",
-   "licence": "CC BY 2.0",
-   "auteur": "Stefan Müller (climate stuff, 1.5 Mio views) from Germany",
-   "description": "Alexa von Health for Future moderiert Klima after Work, Klimaministerium, Berlin, 02.09.22",
-   "taille": "1920x1280",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Alexa_von_Health_for_Future_moderiert_Klima_after_Work_%2852338043227%29.jpg/250px-Alexa_von_Health_for_Future_moderiert_Klima_after_Work_%2852338043227%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "0.jpg"
-  },
-  {
-   "titre": "File:Alexa Bonilla Rodríguez con su pieza ¿Cómo habitar la ruptura? 01.jpg",
-   "licence": "CC BY-SA 4.0",
-   "auteur": "Luisalvaz",
-   "description": "Alexa Bonilla Rodríguez, de la colectiva \"Abordando la Piel\", con su pieza ¿Cómo habitar la ruptura? , durante la inauguración de la exposición \"Apoyo a la producción artística dirigida a mujeres prof",
-   "taille": "4592x3448",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Alexa_Bonilla_Rodr%C3%ADguez_con_su_pieza_%C2%BFC%C3%B3mo_habitar_la_ruptura%3F_01.jpg/250px-Alexa_Bonilla_Rodr%C3%ADguez_con_su_pieza_%C2%BFC%C3%B3mo_habitar_la_ruptura%3F_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "1.jpg"
-  },
-  {
-   "titre": "File:Alexa Bonilla Rodríguez con su pieza ¿Cómo habitar la ruptura? 02.jpg",
-   "licence": "CC BY-SA 4.0",
-   "auteur": "Luisalvaz",
-   "description": "Alexa Bonilla Rodríguez, de la colectiva \"Abordando la Piel\", con su pieza ¿Cómo habitar la ruptura? , durante la inauguración de la exposición \"Apoyo a la producción artística dirigida a mujeres prof",
-   "taille": "3448x4592",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Alexa_Bonilla_Rodr%C3%ADguez_con_su_pieza_%C2%BFC%C3%B3mo_habitar_la_ruptura%3F_02.jpg/250px-Alexa_Bonilla_Rodr%C3%ADguez_con_su_pieza_%C2%BFC%C3%B3mo_habitar_la_ruptura%3F_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "2.jpg"
-  },
-  {
-   "titre": "File:Polvo fino y suave, exposición convocada por Francisco Rangel 65.jpg",
-   "licence": "CC BY-SA 4.0",
-   "auteur": "Luisalvaz",
-   "description": "Polvo fino y suave, exposición convocada por Francisco Rangel, en el Museo de Arte Conteporáneo 'Número 8', por haber sido galardonado en la 10a Bienal de Dibujo y Pintura Enrique Guzmán. En la exposi",
-   "taille": "4592x3448",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Polvo_fino_y_suave%2C_exposici%C3%B3n_convocada_por_Francisco_Rangel_65.jpg/250px-Polvo_fino_y_suave%2C_exposici%C3%B3n_convocada_por_Francisco_Rangel_65.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "3.jpg"
-  }
- ]
+ "candidates": []
 }

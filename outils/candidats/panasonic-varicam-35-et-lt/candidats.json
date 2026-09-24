@@ -1,7 +1,26 @@
 {
  "recherche": [
-  "Panasonic VariCam LT",
-  "Panasonic VariCam 35"
+  "intitle:VariCam",
+  "Panasonic VariCam cinema camera"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Panasonic Varicam, Ottobrunn (P1046251).jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Matti Blume",
+   "description": "Panasonic Varicam AK-SHB800 or AK-SHB810",
+   "taille": "4618x3694",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Panasonic_Varicam%2C_Ottobrunn_%28P1046251%29.jpg/250px-Panasonic_Varicam%2C_Ottobrunn_%28P1046251%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:The relief of Archedemos in Vari Cave - Hobhouse John Cam Lord Broughton - 1813.jpg",
+   "licence": "Public domain",
+   "auteur": "John Hobhouse, 1st Baron Broughton",
+   "description": "The relief of Archedemos in Vari Cave - Hobhouse John Cam Lord Broughton - 1813",
+   "taille": "752x800",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/The_relief_of_Archedemos_in_Vari_Cave_-_Hobhouse_John_Cam_Lord_Broughton_-_1813.jpg/250px-The_relief_of_Archedemos_in_Vari_Cave_-_Hobhouse_John_Cam_Lord_Broughton_-_1813.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  }
+ ]
 }

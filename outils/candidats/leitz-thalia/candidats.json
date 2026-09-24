@@ -1,6 +1,7 @@
 {
  "recherche": [
-  "Leitz Thalia"
+  "intitle:Leitz intitle:Thalia",
+  "Leitz Cine lens"
  ],
  "candidates": []
 }

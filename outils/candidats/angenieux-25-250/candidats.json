@@ -1,7 +1,62 @@
 {
  "recherche": [
-  "Angenieux 25-250",
-  "Angénieux 10x25 zoom"
+  "intitle:Angenieux intitle:zoom",
+  "intitle:Angénieux"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Angenieux lenses (370712244).jpg",
+   "licence": "CC BY 2.0",
+   "auteur": "fdecomite",
+   "description": "Angenieux lenses",
+   "taille": "2048x1532",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Angenieux_lenses_%28370712244%29.jpg/250px-Angenieux_lenses_%28370712244%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:500px photo (33866953).jpeg",
+   "licence": "CC BY 3.0",
+   "auteur": "[1]",
+   "description": "500px provided description: []",
+   "taille": "2048x1536",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/500px_photo_%2833866953%29.jpeg/250px-500px_photo_%2833866953%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Angenieux 28-70 F 2.6 AF.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Lexaovo",
+   "description": "Angenieux objectif rare",
+   "taille": "2848x4288",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Angenieux_28-70_F_2.6_AF.jpg/250px-Angenieux_28-70_F_2.6_AF.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:Angenieux Optimo Ultra 12X.jpg",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "Angry-Monky Photography",
+   "description": "Angenieux Optimo Ultra 12X",
+   "taille": "6720x4480",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Angenieux_Optimo_Ultra_12X.jpg/250px-Angenieux_Optimo_Ultra_12X.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  },
+  {
+   "titre": "File:Angenieux Logo.png",
+   "licence": "Public domain",
+   "auteur": "Unknown author Unknown author ( Studio QOOQ )",
+   "description": "Logo of Angénieux",
+   "taille": "4030x1068",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Angenieux_Logo.png/250px-Angenieux_Logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "4.png"
+  },
+  {
+   "titre": "File:Camex with Angenieux lenses (370712483).jpg",
+   "licence": "CC BY 2.0",
+   "auteur": "fdecomite",
+   "description": "Camex with Angenieux lenses",
+   "taille": "2048x1532",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Camex_with_Angenieux_lenses_%28370712483%29.jpg/250px-Camex_with_Angenieux_lenses_%28370712483%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "5.jpg"
+  }
+ ]
 }

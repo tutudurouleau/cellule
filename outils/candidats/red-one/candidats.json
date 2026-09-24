@@ -1,44 +1,26 @@
 {
  "recherche": [
-  "RED One camera",
-  "Red One digital cinema"
+  "intitle:\"RED One\" intitle:camera",
+  "intitle:\"Red One\" cinema camera"
  ],
  "candidates": [
   {
-   "titre": "File:Red Fox drinking from a lake in Gennevilliers, France.jpg",
-   "licence": "CC BY 4.0",
-   "auteur": "Alexis Lours",
-   "description": "A female red fox (Vulpes vulpes) drinking from a lake.",
-   "taille": "6291x4194",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Red_Fox_drinking_from_a_lake_in_Gennevilliers%2C_France.jpg/250px-Red_Fox_drinking_from_a_lake_in_Gennevilliers%2C_France.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "titre": "File:Red One MX.jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Seanpanderson",
+   "description": "Red One MX camera",
+   "taille": "1024x687",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Red_One_MX.jpg/250px-Red_One_MX.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
    "fichier": "0.jpg"
   },
   {
-   "titre": "File:Red-headed weaver (Anaplectes rubriceps leuconotus) male.jpg",
-   "licence": "CC BY-SA 4.0",
-   "auteur": "Charles J. Sharp",
-   "description": "Red-headed weaver ( Anaplectes rubriceps leuconotos ) male building nest, Soysambu Conservancy, Kenya",
-   "taille": "2606x2606",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Red-headed_weaver_%28Anaplectes_rubriceps_leuconotus%29_male.jpg/250px-Red-headed_weaver_%28Anaplectes_rubriceps_leuconotus%29_male.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "titre": "File:Red One Kamera.jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "catseye",
+   "description": "Red One Kamera auf der IBC 2007",
+   "taille": "804x852",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Red_One_Kamera.jpg/250px-Red_One_Kamera.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
    "fichier": "1.jpg"
-  },
-  {
-   "titre": "File:Red-billed oxpecker (Buphagus erythrorhynchus) on impala (Aepyceros melampus).jpg",
-   "licence": "CC BY-SA 4.0",
-   "auteur": "Charles J. Sharp",
-   "description": "Red-billed oxpecker ( Buphagus erythrorhynchus ) on female impala ( Aepyceros melampus ), Chobe National Park, Botswana",
-   "taille": "4388x2925",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Red-billed_oxpecker_%28Buphagus_erythrorhynchus%29_on_impala_%28Aepyceros_melampus%29.jpg/250px-Red-billed_oxpecker_%28Buphagus_erythrorhynchus%29_on_impala_%28Aepyceros_melampus%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "2.jpg"
-  },
-  {
-   "titre": "File:Red fishing huts in Rågårdsdal.jpg",
-   "licence": "CC BY-SA 4.0",
-   "auteur": "W.carter",
-   "description": "Two Falu red fishing huts and a motorboat by the cliff in Rågårdsdal, Lysekil Municipality, Sweden. A big oak ( Quercus robur ) fills up most of the lower part of the crevasse. Photo taken while it wa",
-   "taille": "5142x3428",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Red_fishing_huts_in_R%C3%A5g%C3%A5rdsdal.jpg/250px-Red_fishing_huts_in_R%C3%A5g%C3%A5rdsdal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "3.jpg"
   }
  ]
 }

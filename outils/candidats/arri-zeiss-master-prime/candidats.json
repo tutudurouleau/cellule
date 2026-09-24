@@ -1,44 +1,26 @@
 {
  "recherche": [
-  "Zeiss Master Prime",
-  "Master Prime lens"
+  "intitle:\"Master Prime\"",
+  "intitle:Zeiss intitle:MasterPrime"
  ],
  "candidates": [
   {
-   "titre": "File:Apparecchio fotografico stereoscopico, a soffietti, a pellicola in rullo 45x107mm - Museo scienza tecnologia Milano 05852.jpg",
-   "licence": "CC BY-SA 4.0",
-   "auteur": "Ernemann (progettista/ costruttore)",
-   "description": "Apparecchio fotografico orizzontale in metallo e legno, di forma parallelepipeda, con bordi arrotondati Azionando il dispositivo di apertura posto superiormente si apre lo sportello frontale al quale ",
-   "taille": "1280x853",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Apparecchio_fotografico_stereoscopico%2C_a_soffietti%2C_a_pellicola_in_rullo_45x107mm_-_Museo_scienza_tecnologia_Milano_05852.jpg/250px-Apparecchio_fotografico_stereoscopico%2C_a_soffietti%2C_a_pellicola_in_rullo_45x107mm_-_Museo_scienza_tecnologia_Milano_05852.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "0.jpg"
+   "titre": "File:Master Prime Language.png",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Master Prime Language",
+   "description": "Master Prime Language",
+   "taille": "200x100",
+   "vignette": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Master_Prime_Language.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "fichier": "0.png"
   },
   {
-   "titre": "File:Apparecchio fotografico stereoscopico, a soffietti, a pellicola in rullo 45x107mm - Museo scienza tecnologia Milano 05852 01.jpg",
-   "licence": "CC BY-SA 4.0",
-   "auteur": "Ernemann (progettista/ costruttore)",
-   "description": "Apparecchio fotografico orizzontale in metallo e legno, di forma parallelepipeda, con bordi arrotondati Azionando il dispositivo di apertura posto superiormente si apre lo sportello frontale al quale ",
-   "taille": "1280x853",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Apparecchio_fotografico_stereoscopico%2C_a_soffietti%2C_a_pellicola_in_rullo_45x107mm_-_Museo_scienza_tecnologia_Milano_05852_01.jpg/250px-Apparecchio_fotografico_stereoscopico%2C_a_soffietti%2C_a_pellicola_in_rullo_45x107mm_-_Museo_scienza_tecnologia_Milano_05852_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "titre": "File:Freefly Alta 8 + Arri Alexa Mini + Master Prime 25mm lens.jpg",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "Ville Hyvönen",
+   "description": "Flying Freefly Systems Alta 8 + Arri Alexa Mini + Master Prime 25mm lens with Markku Rytinki and Flatlight Films",
+   "taille": "5760x3240",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Freefly_Alta_8_%2B_Arri_Alexa_Mini_%2B_Master_Prime_25mm_lens.jpg/250px-Freefly_Alta_8_%2B_Arri_Alexa_Mini_%2B_Master_Prime_25mm_lens.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
    "fichier": "1.jpg"
-  },
-  {
-   "titre": "File:MASTER Lens (asfmastercalibration-loiacono-04242025-2645).jpg",
-   "licence": "Public domain",
-   "auteur": "NASA/Milan Loiacono",
-   "description": "A view looking up into the input optics of the MODIS/ASTER Airborne Simulator (MASTER) spectrometer, co-developed by NASA’s Ames Research Center and NASA’s Jet Propulsion Laboratory.",
-   "taille": "5525x3683",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/MASTER_Lens_%28asfmastercalibration-loiacono-04242025-2645%29.jpg/250px-MASTER_Lens_%28asfmastercalibration-loiacono-04242025-2645%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "2.jpg"
-  },
-  {
-   "titre": "File:MASTER Lens (asfmastercalibration-loiacono-04242025-2638).jpg",
-   "licence": "Public domain",
-   "auteur": "NASA/Milan Loiacono",
-   "description": "A view looking up into the input optics of the MODIS/ASTER Airborne Simulator (MASTER) spectrometer, co-developed by NASA’s Ames Research Center and NASA’s Jet Propulsion Laboratory.",
-   "taille": "6000x4000",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/MASTER_Lens_%28asfmastercalibration-loiacono-04242025-2638%29.jpg/250px-MASTER_Lens_%28asfmastercalibration-loiacono-04242025-2638%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "3.jpg"
   }
  ]
 }

@@ -1,7 +1,35 @@
 {
  "recherche": [
-  "Blackmagic URSA Mini Pro",
-  "URSA Mini Pro 12K"
+  "intitle:URSA intitle:Blackmagic",
+  "intitle:\"URSA Mini\""
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Blackmagic-URSA-mini-on-a-tripod.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Hidalgo944",
+   "description": "Blackmagic URSA mini videocamera with a Canon EF lens, attached viewfinder and monitor, on a tripod",
+   "taille": "960x1280",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Blackmagic-URSA-mini-on-a-tripod.jpg/250px-Blackmagic-URSA-mini-on-a-tripod.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Blackmagic URSA Cine 12K LF 20250726122053.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "TurnOnTheNight",
+   "description": "Blackmagic URSA Cine 12K LF",
+   "taille": "6000x4000",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Blackmagic_URSA_Cine_12K_LF_20250726122053.jpg/250px-Blackmagic_URSA_Cine_12K_LF_20250726122053.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Blackmagic URSA Cine Immersive Camera.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "TaurusEmerald",
+   "description": "A Blackmagic URSA Cine immersive camera.",
+   "taille": "3035x2576",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Blackmagic_URSA_Cine_Immersive_Camera.jpg/250px-Blackmagic_URSA_Cine_Immersive_Camera.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  }
+ ]
 }

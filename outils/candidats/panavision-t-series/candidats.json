@@ -1,43 +1,7 @@
 {
  "recherche": [
-  "Panavision T series lens"
+  "intitle:Panavision intitle:\"T Series\"",
+  "intitle:Panavision intitle:anamorphic"
  ],
- "candidates": [
-  {
-   "titre": "File:Valtra T Series tractor.jpg",
-   "licence": "CC0",
-   "auteur": "Valtra Oy Ab",
-   "description": "Fourth generation Valtra T Series tractor was launched in 2014.",
-   "taille": "3000x2000",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Valtra_T_Series_tractor.jpg/250px-Valtra_T_Series_tractor.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "0.jpg"
-  },
-  {
-   "titre": "File:T Series LOGO.jpg",
-   "licence": "Public domain",
-   "auteur": "T-Series",
-   "description": "TSERIES",
-   "taille": "327x313",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/T_Series_LOGO.jpg/250px-T_Series_LOGO.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "1.jpg"
-  },
-  {
-   "titre": "File:TTC Line 2 T series Train interior 2022.jpg",
-   "licence": "CC BY 4.0",
-   "auteur": "Canmenwalker",
-   "description": "T series (Toronto subway) car interiors",
-   "taille": "4032x3024",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/TTC_Line_2_T_series_Train_interior_2022.jpg/250px-TTC_Line_2_T_series_Train_interior_2022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "2.jpg"
-  },
-  {
-   "titre": "File:Hammond T100 series Organ, St Martin's church, Withcall (geography.org.uk 3225114 821173ee).jpg",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "J.Hannan-Briggs",
-   "description": "TF2884 : Electric Organ, St Martin's church, Withcall near to Withcall, Lincolnshire, Great Britain Possibly one of the Hammond T series. The church was built in 1882 by Sir Arthur Blomfield, the foun",
-   "taille": "3088x2056",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Hammond_T100_series_Organ%2C_St_Martin%27s_church%2C_Withcall_%28geography.org.uk_3225114_821173ee%29.jpg/250px-Hammond_T100_series_Organ%2C_St_Martin%27s_church%2C_Withcall_%28geography.org.uk_3225114_821173ee%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "3.jpg"
-  }
- ]
+ "candidates": []
 }

@@ -1,7 +1,7 @@
 {
  "recherche": [
-  "Cooke Speed Panchro",
-  "Speed Panchro lens"
+  "intitle:\"Speed Panchro\"",
+  "intitle:Cooke intitle:Panchro"
  ],
  "candidates": []
 }
