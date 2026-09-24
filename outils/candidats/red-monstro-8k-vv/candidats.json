@@ -1,0 +1,28 @@
+{
+ "recherche": [],
+ "openverse": [
+  "RED Monstro",
+  "RED DSMC2 camera"
+ ],
+ "complet": true,
+ "candidates": [
+  {
+   "titre": "openverse:6213dd95-0a69-4fe3-9b50-c4dba1a765fc",
+   "licence": "CC BY 2.0",
+   "auteur": "andronicusmax",
+   "description": "'Destructor' (Flickr)",
+   "taille": "970x1024",
+   "vignette": "https://live.staticflickr.com/7633/27447253034_a16409b278_b.jpg",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "openverse:50943e92-2ebe-40b5-ba90-b879ddb86422",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "RobinGoodfellow_(m)",
+   "description": "Red Ranger Monstro on Prehistoric Planet (Flickr)",
+   "taille": "750x1024",
+   "vignette": "https://live.staticflickr.com/65535/52171705025_ae81510c9b_b.jpg",
+   "fichier": "1.jpg"
+  }
+ ]
+}

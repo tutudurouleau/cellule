@@ -1,0 +1,37 @@
+{
+ "recherche": [],
+ "openverse": [
+  "Canon K35 lens",
+  "Canon K-35"
+ ],
+ "complet": true,
+ "candidates": [
+  {
+   "titre": "openverse:70f79b8c-3004-4d7b-97dd-35b64d718563",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "Alpat",
+   "description": "Cannon AE-1 1976 (Flickr)",
+   "taille": "500x375",
+   "vignette": "https://live.staticflickr.com/7917/46253882494_d3ddedf7d0.jpg",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "openverse:cfea875f-f990-47d8-8ee2-c3aa6bfe6773",
+   "licence": "CC BY 2.0",
+   "auteur": "jamesboyes",
+   "description": "Lewes 1 C&K Basildon 1 27 08 2017-35.jpg (Flickr)",
+   "taille": "1024x925",
+   "vignette": "https://live.staticflickr.com/4334/36729861582_78cfe8255a_b.jpg",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "openverse:59bcadbd-1e33-43cc-9581-504a8f479a6c",
+   "licence": "domaine public",
+   "auteur": "horizon_productions_sfl",
+   "description": "M6_20200505_2 (Flickr)",
+   "taille": "1024x683",
+   "vignette": "https://live.staticflickr.com/65535/54127158735_5ebfa5bceb_b.jpg",
+   "fichier": "2.jpg"
+  }
+ ]
+}

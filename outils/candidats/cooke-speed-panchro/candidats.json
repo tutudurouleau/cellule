@@ -1,0 +1,64 @@
+{
+ "recherche": [],
+ "openverse": [
+  "Cooke Speed Panchro",
+  "Speed Panchro lens"
+ ],
+ "complet": true,
+ "candidates": [
+  {
+   "titre": "openverse:ad7fa1ae-2285-4ec4-b027-11ba72bf8c14",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "猜猜 Guess TSAI",
+   "description": "雨天櫻 (Flickr)",
+   "taille": "1024x702",
+   "vignette": "https://live.staticflickr.com/1518/25754110925_7e5e235040_b.jpg",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "openverse:81e2337c-4ff0-40b1-94c2-adf765bc7240",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "猜猜 Guess TSAI",
+   "description": "雨天櫻 (Flickr)",
+   "taille": "1024x702",
+   "vignette": "https://live.staticflickr.com/1680/25659032041_713af6d74f_b.jpg",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "openverse:8704a93c-0062-46b9-8149-a4059f5a1853",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "猜猜 Guess TSAI",
+   "description": "雨天櫻 (Flickr)",
+   "taille": "1024x702",
+   "vignette": "https://live.staticflickr.com/1692/25659038091_44b795944f_b.jpg",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "openverse:349f20c2-29ee-4845-a8c1-94e24e2a1e45",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "yamada*",
+   "description": "Vinca major (Flickr)",
+   "taille": "730x1024",
+   "vignette": "https://live.staticflickr.com/2012/2479102056_ebce895a7a_b.jpg",
+   "fichier": "3.jpg"
+  },
+  {
+   "titre": "openverse:cab834c2-0b1c-43e8-83e1-1f045b16b5d1",
+   "licence": "CC BY 2.0",
+   "auteur": "CANNIK",
+   "description": "L1001305.jpg (Flickr)",
+   "taille": "1024x681",
+   "vignette": "https://live.staticflickr.com/2929/14463231365_922551361a_b.jpg",
+   "fichier": "4.jpg"
+  },
+  {
+   "titre": "openverse:dd28e4bd-c6ae-4e80-bd00-fb5c1f8f2447",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "yamada*",
+   "description": "Linaria (Flickr)",
+   "taille": "1024x726",
+   "vignette": "https://live.staticflickr.com/1238/1119200188_d2bce8b99b_b.jpg",
+   "fichier": "5.jpg"
+  }
+ ]
+}

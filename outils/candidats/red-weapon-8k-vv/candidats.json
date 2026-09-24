@@ -1,0 +1,64 @@
+{
+ "recherche": [],
+ "openverse": [
+  "RED Weapon",
+  "RED Weapon Helium"
+ ],
+ "complet": true,
+ "candidates": [
+  {
+   "titre": "openverse:6740a190-e020-4549-8be5-2d86a724c981",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "zakwitnij",
+   "description": "Opressed bacteria (Flickr)",
+   "taille": "768x1024",
+   "vignette": "https://live.staticflickr.com/71/159830128_571dd5fb74_b.jpg",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "openverse:1f3ea4d8-8dc2-4e4a-87db-f007268645d8",
+   "licence": "CC BY 2.0",
+   "auteur": "psiaki",
+   "description": "X-wing (Flickr)",
+   "taille": "915x1024",
+   "vignette": "https://live.staticflickr.com/5300/5520399713_9949d52476_b.jpg",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "openverse:163e80b3-8f3b-4441-9168-66f40fde43d7",
+   "licence": "CC BY 2.0",
+   "auteur": "Knowles Gallery",
+   "description": "Gun Smoke Red (Flickr)",
+   "taille": "1000x677",
+   "vignette": "https://live.staticflickr.com/4028/4656786235_c7de711993_b.jpg",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "openverse:a9235715-2252-4d9d-adc3-f58e5f3dc153",
+   "licence": "CC BY 2.0",
+   "auteur": "DVIDSHUB",
+   "description": "Red Lion soldiers fire M-777s at FOB Al Masaak [Image 4 of 26] (Flickr)",
+   "taille": "1024x678",
+   "vignette": "https://live.staticflickr.com/8282/7845162016_83e0ef1c73_b.jpg",
+   "fichier": "3.jpg"
+  },
+  {
+   "titre": "openverse:b3920e24-f7e3-4e0b-82ae-7fe8ed412d6f",
+   "licence": "CC BY 2.0",
+   "auteur": "zombieite",
+   "description": "Exercise your rights (Flickr)",
+   "taille": "1024x768",
+   "vignette": "https://live.staticflickr.com/3085/2504488110_f941e05a3e_b.jpg",
+   "fichier": "4.jpg"
+  },
+  {
+   "titre": "openverse:c975a1cb-34a0-45cb-857a-a8ac17ae8563",
+   "licence": "CC BY 2.0",
+   "auteur": "brian.ch",
+   "description": "GR16 R4 Carbine (M4 RIS) Assault Rifle (Flickr)",
+   "taille": "1024x683",
+   "vignette": "https://live.staticflickr.com/3173/3598148339_7a7c14322d_b.jpg",
+   "fichier": "5.jpg"
+  }
+ ]
+}
