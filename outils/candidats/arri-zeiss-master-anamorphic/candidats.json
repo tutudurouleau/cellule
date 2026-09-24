@@ -1,66 +1,9 @@
 {
  "fichiers": [],
- "recherche": [
-  "Master Anamorphic lens"
- ],
+ "recherche": [],
  "openverse": [
-  "titre:Master Anamorphic"
+  "\"Master Anamorphic\""
  ],
  "complet": true,
- "candidates": [
-  {
-   "titre": "openverse:b583d421-c0b1-4e87-8815-03bfc1770d46",
-   "licence": "CC BY 2.0",
-   "auteur": "@Peta_de_Aztlan",
-   "description": "Master-Bruce-Lee (Flickr)",
-   "taille": "1024x1024",
-   "vignette": "https://live.staticflickr.com/3414/3519424024_a505cf4960_b.jpg",
-   "fichier": "0.jpg"
-  },
-  {
-   "titre": "openverse:6830c444-98b0-48ac-9fcf-dbe1ee6d9ac9",
-   "licence": "CC BY 2.0",
-   "auteur": "DVIDSHUB",
-   "description": "US, Japan shooters master camouflage, stealth [Image 4 of 7] (Flickr)",
-   "taille": "1024x683",
-   "vignette": "https://live.staticflickr.com/8166/7894530928_1e25e1a504_b.jpg",
-   "fichier": "1.jpg"
-  },
-  {
-   "titre": "openverse:76190878-e1c5-4aea-b4e9-d3de7cd14c23",
-   "licence": "CC BY 2.0",
-   "auteur": "jurvetson",
-   "description": "Google Master Plan (frame 4) (Flickr)",
-   "taille": "1024x568",
-   "vignette": "https://live.staticflickr.com/16/21468111_c0eb995e30_b.jpg",
-   "fichier": "2.jpg"
-  },
-  {
-   "titre": "openverse:5b7417d7-c05b-4b03-887d-7a714c6eed52",
-   "licence": "CC BY 2.0",
-   "auteur": "Manitoba Historical Maps",
-   "description": "Downtown Winnipeg Conceptual Master Plan - Phase One Boundary (1967) (Flickr)",
-   "taille": "1024x810",
-   "vignette": "https://live.staticflickr.com/3105/2808499535_edda81cfa6_b.jpg",
-   "fichier": "3.jpg"
-  },
-  {
-   "titre": "openverse:648299bc-5ea2-463c-82dc-5dd5ae584eeb",
-   "licence": "CC BY 2.0",
-   "auteur": "kevinpoh",
-   "description": "Tai Chi Master (Flickr)",
-   "taille": "768x1024",
-   "vignette": "https://live.staticflickr.com/3410/3650866967_9b61a918e7_b.jpg",
-   "fichier": "4.jpg"
-  },
-  {
-   "titre": "openverse:b996f9b4-af5b-44f8-beb5-2b3901051455",
-   "licence": "CC BY 2.0",
-   "auteur": "brightcd",
-   "description": "Master Bedroom (Flickr)",
-   "taille": "1024x683",
-   "vignette": "https://live.staticflickr.com/6183/6050427981_85a212629f_b.jpg",
-   "fichier": "5.jpg"
-  }
- ]
+ "candidates": []
 }

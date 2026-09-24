@@ -2,63 +2,8 @@
  "fichiers": [],
  "recherche": [],
  "openverse": [
-  "titre:Signature Prime"
+  "\"Signature Prime\""
  ],
  "complet": true,
- "candidates": [
-  {
-   "titre": "openverse:1bffd4e2-ae77-44c4-919d-3ba140a8ef76",
-   "licence": "CC BY 2.0",
-   "auteur": "Arctic Frontiers",
-   "description": "AF 2015 Mr Sam Tan, Minister of State in the Prime Minister's Office and the Ministry of Culture, Community and Youth, Singapore (Flickr)",
-   "taille": "1024x684",
-   "vignette": "https://live.staticflickr.com/7495/16128803438_30ea684b26_b.jpg",
-   "fichier": "0.jpg"
-  },
-  {
-   "titre": "openverse:4ed080fd-011e-42eb-a6ff-82d65c4566d0",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "j-dub1980(THANK YOU FOR 100k+ Views)",
-   "description": "Canis Major (prime focus) (Flickr)",
-   "taille": "948x531",
-   "vignette": "https://live.staticflickr.com/8508/8383509610_e70e238175_b.jpg",
-   "fichier": "1.jpg"
-  },
-  {
-   "titre": "openverse:561b7269-4b7e-4f4d-97d4-eef75a61c3b4",
-   "licence": "CC0",
-   "auteur": "President Of Ukraine",
-   "description": "The President of Ukraine met with the British Prime Minister in Kyiv. (Flickr)",
-   "taille": "1024x683",
-   "vignette": "https://live.staticflickr.com/65535/52510378789_6bc15dc741_b.jpg",
-   "fichier": "2.jpg"
-  },
-  {
-   "titre": "openverse:0c3abfef-5033-4d03-8875-8956b712c87d",
-   "licence": "domaine public",
-   "auteur": "Umm, Who?",
-   "description": "LEGO® Metroid Prime 3: Rundas Battle! (Flickr)",
-   "taille": "853x1024",
-   "vignette": "https://live.staticflickr.com/1667/25446514933_5c01a7ffa6_b.jpg",
-   "fichier": "3.jpg"
-  },
-  {
-   "titre": "openverse:8cd68952-a65a-4513-9a04-3b2a061a0ea8",
-   "licence": "CC BY 2.0",
-   "auteur": "Viernest",
-   "description": "Light Painting Graffiti Signature (Flickr)",
-   "taille": "1024x687",
-   "vignette": "https://live.staticflickr.com/3144/2577269720_4114f39e39_b.jpg",
-   "fichier": "4.jpg"
-  },
-  {
-   "titre": "openverse:e7346475-0029-4fc0-9824-343f1f06abe6",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "jiazi",
-   "description": "Optimus Prime vs. Megatron (HDR) (Flickr)",
-   "taille": "1024x683",
-   "vignette": "https://live.staticflickr.com/1170/1061447777_dce9d31bf1_b.jpg",
-   "fichier": "5.jpg"
-  }
- ]
+ "candidates": []
 }

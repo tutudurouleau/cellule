@@ -1,103 +1,28 @@
 {
  "fichiers": [],
- "recherche": [
-  "Ultra Panavision 70"
- ],
+ "recherche": [],
  "openverse": [
-  "titre:Ultra Panavision",
-  "titre:Hateful Eight 70mm camera"
+  "\"Ultra Panavision\""
  ],
  "complet": true,
  "candidates": [
   {
-   "titre": "File:Cuadrigas de Ben Hur (1959).jpg",
-   "licence": "Public domain",
-   "auteur": "Metro-Goldwyn-Mayer",
-   "description": "Cuadrigas de Ben Hur (1959)",
-   "taille": "1920x696",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Cuadrigas_de_Ben_Hur_%281959%29.jpg/250px-Cuadrigas_de_Ben_Hur_%281959%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "titre": "openverse:4df60047-2687-4b51-ad41-ec0f1cd6b8e4",
+   "licence": "CC BY 2.0",
+   "auteur": "KMK Photo",
+   "description": "Mandy (Flickr)",
+   "taille": "1024x371",
+   "vignette": "https://live.staticflickr.com/4423/36554338751_1e1a66d035_b.jpg",
    "fichier": "0.jpg"
   },
   {
-   "titre": "File:Anamorphic lens illustration without stretching 20050227040828.jpg",
-   "licence": "CC BY-SA 3.0",
-   "auteur": "Wapcaplet , uploaded by Andreas -horn- Hornig",
-   "description": "Illustration of en:anamorphic widescreen lens. Without an anamorphic lens, the available film area is not used completely; some of the film surface is wasted on the black bars.",
-   "taille": "825x500",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Anamorphic_lens_illustration_without_stretching_20050227040828.jpg/250px-Anamorphic_lens_illustration_without_stretching_20050227040828.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "titre": "openverse:c8a47231-8002-47d6-a6cc-daa1a0d00a5b",
+   "licence": "CC BY 2.0",
+   "auteur": "smaedli",
+   "description": "Night at Strong Water (2.76:1 anamorphic) (Flickr)",
+   "taille": "1024x537",
+   "vignette": "https://live.staticflickr.com/65535/53549602478_95dfe55f4d_b.jpg",
    "fichier": "1.jpg"
-  },
-  {
-   "titre": "File:Ben hur 1959 poster.jpg",
-   "licence": "Public domain",
-   "auteur": "Reynold Brown",
-   "description": "Ben-Hur (1959) film poster.",
-   "taille": "1977x3000",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Ben_hur_1959_poster.jpg/250px-Ben_hur_1959_poster.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "2.jpg"
-  },
-  {
-   "titre": "File:Telephonoscope.jpg",
-   "licence": "Public domain",
-   "auteur": "George du Maurier",
-   "description": "Early television/videophone concept, a forecast (almanac) for 1879, posted in the December 9th, 1878 issue of Punch. Illustration description Punch Magazine cartoon print: Edison's Telephonoscope (tra",
-   "taille": "1186x850",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Telephonoscope.jpg/250px-Telephonoscope.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "3.jpg"
-  },
-  {
-   "titre": "openverse:094f627e-d11d-45e2-984b-9e49fd4a44fa",
-   "licence": "CC BY 2.0",
-   "auteur": "NASA Goddard Photo and Video",
-   "description": "SDO's Ultra-high Definition View of 2012 Venus Transit - 171 Angstrom (nasa)",
-   "taille": "1024x1024",
-   "vignette": "https://live.staticflickr.com/8154/7343985882_dca692bbda_b.jpg",
-   "fichier": "4.jpg"
-  },
-  {
-   "titre": "openverse:fd2c6006-1f54-4814-9a6d-c76f7f36e908",
-   "licence": "CC BY 2.0",
-   "auteur": "NASA Goddard Photo and Video",
-   "description": "SDO's Ultra-high Definition View of 2012 Venus Transit - 171 Angstrom (nasa)",
-   "taille": "1024x1024",
-   "vignette": "https://live.staticflickr.com/8149/7158560211_a06963fe61_b.jpg",
-   "fichier": "5.jpg"
-  },
-  {
-   "titre": "openverse:8e76965a-25ad-4583-954d-e4b457b44868",
-   "licence": "CC BY 2.0",
-   "auteur": "NASA Goddard Photo and Video",
-   "description": "SDO's Ultra-high Definition View of 2012 Venus Transit - HMI Instrument (nasa)",
-   "taille": "1024x576",
-   "vignette": "https://live.staticflickr.com/7240/7343993088_65d9404e87_b.jpg",
-   "fichier": "6.jpg"
-  },
-  {
-   "titre": "openverse:17261a6a-5d40-489b-8791-f007d13a2232",
-   "licence": "CC BY 2.0",
-   "auteur": "NASA Goddard Photo and Video",
-   "description": "SDO's Ultra-high Definition View of 2012 Venus Transit - 304 Angstrom (nasa)",
-   "taille": "1024x576",
-   "vignette": "https://live.staticflickr.com/8163/7343989318_0054344c3e_b.jpg",
-   "fichier": "7.jpg"
-  },
-  {
-   "titre": "openverse:7b198599-41c6-4a26-acce-0b7fb42413b3",
-   "licence": "CC BY 2.0",
-   "auteur": "NASA Goddard Photo and Video",
-   "description": "SDO's Ultra-high Definition View of 2012 Venus Transit - 304 Angstrom (nasa)",
-   "taille": "1024x1024",
-   "vignette": "https://live.staticflickr.com/7212/7343989574_f3c9d9dfc4_b.jpg",
-   "fichier": "8.jpg"
-  },
-  {
-   "titre": "openverse:b78c0f3b-a740-496f-9db0-af7750acc730",
-   "licence": "CC BY 2.0",
-   "auteur": "webtreats",
-   "description": "Free Social Media Networking Icons - Ultra Glossy Silver Buttons (Flickr)",
-   "taille": "1006x560",
-   "vignette": "https://live.staticflickr.com/2345/5813422740_ff907c01ca_b.jpg",
-   "fichier": "9.jpg"
   }
  ]
 }

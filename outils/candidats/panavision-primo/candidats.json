@@ -2,63 +2,8 @@
  "fichiers": [],
  "recherche": [],
  "openverse": [
-  "titre:Panavision Primo"
+  "\"Panavision Primo\""
  ],
  "complet": true,
- "candidates": [
-  {
-   "titre": "openverse:9491f041-000c-4fe2-bcbc-2703e94a37e3",
-   "licence": "CC BY 2.0",
-   "auteur": "Calgary Reviews",
-   "description": "Calgary Mckenzie Towne Panago Primo Shrimp Pizza (Flickr)",
-   "taille": "1024x768",
-   "vignette": "https://live.staticflickr.com/4115/4825089117_fede108957_b.jpg",
-   "fichier": "0.jpg"
-  },
-  {
-   "titre": "openverse:ee872efd-e7ac-46f1-a9a3-7eaf889a3f5c",
-   "licence": "domaine public",
-   "auteur": "Progetto AMMP",
-   "description": "Schizzo di Beethoven del primo lied di Claerchen nell'Egmont (Flickr)",
-   "taille": "1024x725",
-   "vignette": "https://live.staticflickr.com/791/41321541522_83809093ba_b.jpg",
-   "fichier": "1.jpg"
-  },
-  {
-   "titre": "openverse:0cef837c-18bd-4237-9b25-41a77c6559aa",
-   "licence": "domaine public",
-   "auteur": "www.brevestoriadelcinema.org",
-   "description": "Il primo film dei Fratelli Skladanowsky (Flickr)",
-   "taille": "206x500",
-   "vignette": "https://live.staticflickr.com/7304/12507643583_8de1875449.jpg",
-   "fichier": "2.jpg"
-  },
-  {
-   "titre": "openverse:3935b3ad-239a-4863-81c0-b321104f3ccf",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "_Andrish_",
-   "description": "angela al primo sole (Flickr)",
-   "taille": "768x1024",
-   "vignette": "https://live.staticflickr.com/65535/3837954263_c6010a16f7_b.jpg",
-   "fichier": "3.jpg"
-  },
-  {
-   "titre": "openverse:54d85cda-5bb0-41a6-a87f-edba9cf8a7d9",
-   "licence": "CC BY 2.0",
-   "auteur": "cristina.sanvito",
-   "description": "primo raccolto (Flickr)",
-   "taille": "1024x618",
-   "vignette": "https://live.staticflickr.com/8298/7790012900_d34fca7691_b.jpg",
-   "fichier": "4.jpg"
-  },
-  {
-   "titre": "openverse:39fa4d0b-b029-4aab-a2c3-e3c342dfec71",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "giopuo",
-   "description": "Il primo bacio di Primavera (Flickr)",
-   "taille": "1024x881",
-   "vignette": "https://live.staticflickr.com/190/504292734_06093d21ed_b.jpg",
-   "fichier": "5.jpg"
-  }
- ]
+ "candidates": []
 }

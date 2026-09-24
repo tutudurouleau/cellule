@@ -2,64 +2,8 @@
  "fichiers": [],
  "recherche": [],
  "openverse": [
-  "titre:Canon K35",
-  "titre:Canon K-35"
+  "\"Canon K35\""
  ],
  "complet": true,
- "candidates": [
-  {
-   "titre": "openverse:633b100d-cf01-4508-aea0-1e523499e3a5",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "Dave Dugdale",
-   "description": "GH4 w/Speedbooster vs Canon 5D Mark III Same Distance (Flickr)",
-   "taille": "1024x576",
-   "vignette": "https://live.staticflickr.com/3725/14111726677_467ee027f7_b.jpg",
-   "fichier": "0.jpg"
-  },
-  {
-   "titre": "openverse:2a84d8c2-7ba3-43b5-8ec4-ca570da9daf9",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "eirikso",
-   "description": "Test - Canon Powershot S50 (Flickr)",
-   "taille": "1024x768",
-   "vignette": "https://live.staticflickr.com/3591/3625698853_cc6542988e_b.jpg",
-   "fichier": "1.jpg"
-  },
-  {
-   "titre": "openverse:470aa8e4-7d39-4ce9-976e-e999a2bca285",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "mark sebastian",
-   "description": "Canon EOS 5D for SALE (Flickr)",
-   "taille": "1024x683",
-   "vignette": "https://live.staticflickr.com/3460/3861158128_09ddf8ac85_b.jpg",
-   "fichier": "2.jpg"
-  },
-  {
-   "titre": "openverse:7b9d30d7-a7b3-4afc-a4f6-fbf800035fa4",
-   "licence": "CC BY 2.0",
-   "auteur": "s58y",
-   "description": "Canon FD 50mm f/1.4 S.S.C. Lens (Flickr)",
-   "taille": "1024x1024",
-   "vignette": "https://live.staticflickr.com/3042/5778074077_43b5e612a0_b.jpg",
-   "fichier": "3.jpg"
-  },
-  {
-   "titre": "openverse:24a3724e-50dd-4779-90f0-a8a2a1edfdaa",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "eirikso",
-   "description": "Test - Canon 5D MkII (Flickr)",
-   "taille": "1024x683",
-   "vignette": "https://live.staticflickr.com/3638/3625858429_2b2dea1231_b.jpg",
-   "fichier": "4.jpg"
-  },
-  {
-   "titre": "openverse:d34e6ba7-9e4f-4745-bcaf-af292b7332b7",
-   "licence": "CC0",
-   "auteur": "iezalel7williams",
-   "description": "Golden Water - IMG_4239 canon EOS 700D (Flickr)",
-   "taille": "1024x683",
-   "vignette": "https://live.staticflickr.com/65535/52206222908_43d9065791_b.jpg",
-   "fichier": "5.jpg"
-  }
- ]
+ "candidates": []
 }

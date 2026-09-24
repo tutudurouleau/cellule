@@ -2,64 +2,8 @@
  "fichiers": [],
  "recherche": [],
  "openverse": [
-  "titre:Leitz Thalia",
-  "titre:Leica Thalia"
+  "\"Leitz Thalia\""
  ],
  "complet": true,
- "candidates": [
-  {
-   "titre": "openverse:eb71d9a6-b0ed-4a92-a980-69b078007a5c",
-   "licence": "domaine public",
-   "auteur": "Swallowtail Garden Seeds",
-   "description": "Wallflower. Erysimum × cheiri syn. Cheiranthus cheiri. Flora and Thalia; or, Gems of flowers and poetry- being an alphabetical arrangement of flowers, with appropriate poetical illustrations, embellis",
-   "taille": "596x1024",
-   "vignette": "https://live.staticflickr.com/3852/14739634062_06e8146783_b.jpg",
-   "fichier": "0.jpg"
-  },
-  {
-   "titre": "openverse:7c16edfe-d2c4-42a0-85d5-b37d172fdf93",
-   "licence": "CC BY 2.0",
-   "auteur": "*嘟嘟嘟*",
-   "description": "Leitz Summaron 35/3.5 vs Summicron 35/2 (III) vs Summicron 50/2 (V) Part-II (Flickr)",
-   "taille": "1024x686",
-   "vignette": "https://live.staticflickr.com/3160/2315110315_cb008661a5_b.jpg",
-   "fichier": "1.jpg"
-  },
-  {
-   "titre": "openverse:8cf1001f-8d15-4a91-993f-f2c8b068905a",
-   "licence": "domaine public",
-   "auteur": "Swallowtail Garden Seeds",
-   "description": "Uva-ursi, bear berry. Arctostaphylos uva-ursi. Flora and Thalia; or, Gems of flowers and poetry- being an alphabetical arrangement of flowers, with appropriate poetical illustrations, embellished with",
-   "taille": "596x1024",
-   "vignette": "https://live.staticflickr.com/3836/14553259580_3c56679b32_b.jpg",
-   "fichier": "2.jpg"
-  },
-  {
-   "titre": "openverse:c2694fbc-1e86-4d33-86e4-a753c3654b69",
-   "licence": "CC BY 2.0",
-   "auteur": "Clemson",
-   "description": "Leica M6 + Leitz Summicron-M 50mm 1:2 (Flickr)",
-   "taille": "1024x768",
-   "vignette": "https://live.staticflickr.com/3250/2301050876_4070e71504_b.jpg",
-   "fichier": "3.jpg"
-  },
-  {
-   "titre": "openverse:6d57d4b2-2110-4317-93df-dddc9d8a7fba",
-   "licence": "domaine public",
-   "auteur": "Swallowtail Garden Seeds",
-   "description": "Tree primrose, evening primrose. Oenothera sp. Flora and Thalia; or, Gems of flowers and poetry- being an alphabetical arrangement of flowers, with appropriate poetical illustrations, embellished with",
-   "taille": "596x1024",
-   "vignette": "https://live.staticflickr.com/2903/14759777463_96da11abab_b.jpg",
-   "fichier": "4.jpg"
-  },
-  {
-   "titre": "openverse:abefe7ab-af70-4739-9491-5d43c98d029d",
-   "licence": "domaine public",
-   "auteur": "Swallowtail Garden Seeds",
-   "description": "Three-coloured violet. Viola tricolor. Flora and Thalia; or, Gems of flowers and poetry- being an alphabetical arrangement of flowers, with appropriate poetical illustrations, embellished with coloure",
-   "taille": "596x1024",
-   "vignette": "https://live.staticflickr.com/5560/14759786133_79f467d2d8_b.jpg",
-   "fichier": "5.jpg"
-  }
- ]
+ "candidates": []
 }

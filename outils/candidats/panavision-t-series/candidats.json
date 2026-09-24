@@ -2,63 +2,8 @@
  "fichiers": [],
  "recherche": [],
  "openverse": [
-  "titre:Panavision T series"
+  "\"Panavision T Series\""
  ],
  "complet": true,
- "candidates": [
-  {
-   "titre": "openverse:c5f64254-4457-4665-beb6-d65c85a88c88",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "boltron-",
-   "description": "Planet Baseball at AT&T Park when the Giants got Swept by the A's for the Bay Bridge Series final on Father's Day (Flickr)",
-   "taille": "1024x673",
-   "vignette": "https://live.staticflickr.com/3074/2586544994_95c468e4a0_b.jpg",
-   "fichier": "0.jpg"
-  },
-  {
-   "titre": "openverse:12890b53-5a21-439f-9725-0ecd50847481",
-   "licence": "CC BY 2.0",
-   "auteur": "Nick Kenrick..",
-   "description": "India series (Flickr)",
-   "taille": "677x1024",
-   "vignette": "https://live.staticflickr.com/3914/14388947657_b87d68ab56_b.jpg",
-   "fichier": "1.jpg"
-  },
-  {
-   "titre": "openverse:22c5b093-761d-4f99-ad33-dc81c8470340",
-   "licence": "CC BY 2.0",
-   "auteur": "spisharam",
-   "description": "vibrant!! kettukazhcha കെട്ടുകാഴ്ച്ച a series of shots... (Flickr)",
-   "taille": "1024x766",
-   "vignette": "https://live.staticflickr.com/3104/2379365130_4046205ce0_b.jpg",
-   "fichier": "2.jpg"
-  },
-  {
-   "titre": "openverse:1704ff61-78c7-40e4-90c0-9d938da0f67b",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "Eva Rinaldi Celebrity Photographer",
-   "description": "T-Pain (Flickr)",
-   "taille": "1000x667",
-   "vignette": "https://live.staticflickr.com/7208/7079745395_b05f0cb5e5_b.jpg",
-   "fichier": "3.jpg"
-  },
-  {
-   "titre": "openverse:17f13539-7360-4d99-971f-6f00e3b37af9",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "Eva Rinaldi Celebrity Photographer",
-   "description": "T-Pain (Flickr)",
-   "taille": "1000x667",
-   "vignette": "https://live.staticflickr.com/7101/6933673256_d2471e04a1_b.jpg",
-   "fichier": "4.jpg"
-  },
-  {
-   "titre": "openverse:38618633-ac22-4b66-be7c-ae1d54f84cb0",
-   "licence": "CC BY 2.0",
-   "auteur": "Dave Catchpole",
-   "description": "BT ArtBox - T for Telephone (Flickr)",
-   "taille": "1024x683",
-   "vignette": "https://live.staticflickr.com/8283/7611247646_d66bbc25a7_b.jpg",
-   "fichier": "5.jpg"
-  }
- ]
+ "candidates": []
 }

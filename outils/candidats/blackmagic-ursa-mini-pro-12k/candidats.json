@@ -2,64 +2,8 @@
  "fichiers": [],
  "recherche": [],
  "openverse": [
-  "titre:URSA Mini Pro 12K",
-  "titre:URSA Mini Pro"
+  "\"URSA Mini Pro\""
  ],
  "complet": true,
- "candidates": [
-  {
-   "titre": "openverse:bb5a3772-ccd8-4232-9629-dbd7cc5f44ae",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "Peter Hellberg",
-   "description": "MacBook Pro 13' and the new Mac mini Server (Flickr)",
-   "taille": "1024x1024",
-   "vignette": "https://live.staticflickr.com/1233/4721506269_6aa6743e3d_b.jpg",
-   "fichier": "0.jpg"
-  },
-  {
-   "titre": "openverse:18956f25-bf79-4524-aaaa-a4b74a1d4db3",
-   "licence": "CC BY 2.0",
-   "auteur": "Wiltsplus",
-   "description": "Utility Warehouse Minis (Flickr)",
-   "taille": "1024x768",
-   "vignette": "https://live.staticflickr.com/5096/5586073235_54e0675b59_b.jpg",
-   "fichier": "1.jpg"
-  },
-  {
-   "titre": "openverse:ae93d224-a2bf-413a-8431-28986dd5ec90",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "El Coleccionista de Instantes",
-   "description": "10º Islas Canarias Ocean & Earth Pro by Gran Canaria en la playa de El Confital (Flickr)",
-   "taille": "1024x683",
-   "vignette": "https://live.staticflickr.com/6159/6180677499_f0c44797e0_b.jpg",
-   "fichier": "2.jpg"
-  },
-  {
-   "titre": "openverse:e027ac61-ee27-4035-b7cf-4c643d4ed1be",
-   "licence": "CC BY 2.0",
-   "auteur": "blakespot",
-   "description": "the new 17' MacBook Pro (Flickr)",
-   "taille": "1024x680",
-   "vignette": "https://live.staticflickr.com/3456/3176558461_393ce2a6a5_b.jpg",
-   "fichier": "3.jpg"
-  },
-  {
-   "titre": "openverse:7b6daa88-ef40-4fdc-8f61-b00ac5571090",
-   "licence": "CC BY 2.0",
-   "auteur": "girlingearstudio",
-   "description": "Seedling in a toilet paper roll repurposed as a mini planting pot (Flickr)",
-   "taille": "1024x768",
-   "vignette": "https://live.staticflickr.com/2792/5713582601_5676717b3a_b.jpg",
-   "fichier": "4.jpg"
-  },
-  {
-   "titre": "openverse:57c31064-36a9-4d40-bef5-a181d261eb74",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "squeaks2569",
-   "description": "'Mini Stack' Interchange of Interstate 10, Loop 202, and State Route 51 at Night (2) (Flickr)",
-   "taille": "1024x733",
-   "vignette": "https://live.staticflickr.com/8044/8114399667_e43e1c2f8d_b.jpg",
-   "fichier": "5.jpg"
-  }
- ]
+ "candidates": []
 }

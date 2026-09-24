@@ -2,63 +2,18 @@
  "fichiers": [],
  "recherche": [],
  "openverse": [
-  "titre:Cooke S7"
+  "\"Cooke S7\""
  ],
  "complet": true,
  "candidates": [
   {
-   "titre": "openverse:2115905e-bb4c-4aae-ac42-804419dd99f1",
+   "titre": "openverse:f739c52c-5d15-4e9e-a233-bcde14ed5757",
    "licence": "CC BY 2.0",
-   "auteur": "Stewart",
-   "description": "Add wine and cook under medium heat for 45 minutes to 1 hour (Flickr)",
-   "taille": "1024x681",
-   "vignette": "https://live.staticflickr.com/45/125383170_e45681a0e1_b.jpg",
+   "auteur": "Angry-Monkey Phototgraphy",
+   "description": "Air Drop Box (Flickr)",
+   "taille": "1024x683",
+   "vignette": "https://live.staticflickr.com/65535/49897854957_2cba6f9887_b.jpg",
    "fichier": "0.jpg"
-  },
-  {
-   "titre": "openverse:96e524e3-4e99-44a8-bd2b-7d2922ff03ed",
-   "licence": "CC BY 2.0",
-   "auteur": "In Memoriam: PhillipC",
-   "description": "Cold front approaching Cook Strait, New Zealand, 26 December 2007 (Flickr)",
-   "taille": "1024x685",
-   "vignette": "https://live.staticflickr.com/2325/2137612510_ff37fac28e_b.jpg",
-   "fichier": "1.jpg"
-  },
-  {
-   "titre": "openverse:4923a1bb-7830-466e-9462-39f9d58e8cc7",
-   "licence": "domaine public",
-   "auteur": "lisby1",
-   "description": "Elizabeth Cooke, daughter of Anthony Cooke, tutor to Edward VI, sister of Mildred Cook, Lady Burghley, and Anne Cooke, Lady Bacon (Flickr)",
-   "taille": "174x240",
-   "vignette": "https://live.staticflickr.com/3454/3787573821_dcc8a32847_m.jpg",
-   "fichier": "2.jpg"
-  },
-  {
-   "titre": "openverse:7f325cc5-b4c4-455d-8daf-b2485d62fec0",
-   "licence": "CC BY 2.0",
-   "auteur": "Seattle Municipal Archives",
-   "description": "Edison School cooking class, 1955 (Flickr)",
-   "taille": "1024x823",
-   "vignette": "https://live.staticflickr.com/3774/12838646183_67f09f39a7_b.jpg",
-   "fichier": "3.jpg"
-  },
-  {
-   "titre": "openverse:28c8794d-1d42-432f-a47a-c18377e56377",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "sludgegulper",
-   "description": "Cook of Westcliff-on-Sea Bedford SB5 - Duple Firefly FMG985B, 1978 (Flickr)",
-   "taille": "1024x662",
-   "vignette": "https://live.staticflickr.com/3264/3130445492_86f561d64a_b.jpg",
-   "fichier": "4.jpg"
-  },
-  {
-   "titre": "openverse:d1c79f85-1b67-4824-abf0-7c7e53450325",
-   "licence": "CC BY 2.0",
-   "auteur": "amira_a",
-   "description": "Three cooks and the iphone (Flickr)",
-   "taille": "1024x968",
-   "vignette": "https://live.staticflickr.com/774/21704385349_76e186e425_b.jpg",
-   "fichier": "5.jpg"
   }
  ]
 }

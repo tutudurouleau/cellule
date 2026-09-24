@@ -2,63 +2,8 @@
  "fichiers": [],
  "recherche": [],
  "openverse": [
-  "titre:Alexa 65"
+  "\"Alexa 65\""
  ],
  "complet": true,
- "candidates": [
-  {
-   "titre": "openverse:2150c7b4-ffcd-46a5-a980-b66339226246",
-   "licence": "domaine public",
-   "auteur": "Apollo Image Gallery",
-   "description": "AS14-65-9214 (nasa)",
-   "taille": "1024x1024",
-   "vignette": "https://live.staticflickr.com/5670/21496703049_3fef337048_b.jpg",
-   "fichier": "0.jpg"
-  },
-  {
-   "titre": "openverse:2ef8ce65-c2a3-48b2-a483-b87978de0d24",
-   "licence": "CC BY 2.0",
-   "auteur": "joergermeister",
-   "description": "Pimp My Desktop Part 65 (Flickr)",
-   "taille": "1024x574",
-   "vignette": "https://live.staticflickr.com/567/21723002291_102478fb84_b.jpg",
-   "fichier": "1.jpg"
-  },
-  {
-   "titre": "openverse:3be2223d-22d0-4785-993a-bcba6f298696",
-   "licence": "CC BY 2.0",
-   "auteur": "CthulhuWho1 (Will Hart)",
-   "description": "A_23 College Hill - H. P. Lovecraft's Final Home - The Samuel B. Mumford House (1825) - 65 Prospect Street - Looking South-South-West (from the Meeting Street side) (Flickr)",
-   "taille": "1024x680",
-   "vignette": "https://live.staticflickr.com/2594/3831297244_aa2505b700_b.jpg",
-   "fichier": "2.jpg"
-  },
-  {
-   "titre": "openverse:d8d43aaf-8617-402e-99ee-7b6997969a4a",
-   "licence": "CC BY 2.0",
-   "auteur": "COD Newsroom",
-   "description": "College of DuPage 2014 Commencement Ceremony 65 (Flickr)",
-   "taille": "1024x735",
-   "vignette": "https://live.staticflickr.com/2937/14222252894_16e2958be6_b.jpg",
-   "fichier": "3.jpg"
-  },
-  {
-   "titre": "openverse:94153446-a538-4b76-b0f5-9c666ab70803",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "Eric Fischer",
-   "description": "Locals and Tourists #65 (GTWA #95): Baltimore (Flickr)",
-   "taille": "1024x1024",
-   "vignette": "https://live.staticflickr.com/4089/4989139406_88a69f05d6_b.jpg",
-   "fichier": "4.jpg"
-  },
-  {
-   "titre": "openverse:c54de872-fcae-4a33-87ce-ee204f672195",
-   "licence": "domaine public",
-   "auteur": "Apollo Image Gallery",
-   "description": "AS14-65-9211 (nasa)",
-   "taille": "1024x1024",
-   "vignette": "https://live.staticflickr.com/743/21692728531_bd8980bfd8_b.jpg",
-   "fichier": "5.jpg"
-  }
- ]
+ "candidates": []
 }

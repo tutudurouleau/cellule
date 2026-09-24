@@ -2,64 +2,8 @@
  "fichiers": [],
  "recherche": [],
  "openverse": [
-  "titre:Zeiss Super Speed",
-  "titre:Superspeed"
+  "\"Zeiss Super Speed\""
  ],
  "complet": true,
- "candidates": [
-  {
-   "titre": "openverse:7274ca40-a62c-47fc-9775-e053b563bedc",
-   "licence": "CC BY 2.0",
-   "auteur": "EarthDayPictures",
-   "description": "GRAND ACHIEVEMENT OF sasrai-Movement [Nature never bother super power or poorer - demand absolute Care] (Flickr)",
-   "taille": "954x470",
-   "vignette": "https://live.staticflickr.com/2828/8843606643_f672d927d0_b.jpg",
-   "fichier": "0.jpg"
-  },
-  {
-   "titre": "openverse:48c61694-6c83-4672-9f7d-4ff6ef654de8",
-   "licence": "CC BY 2.0",
-   "auteur": "Alang7™",
-   "description": "Logo Scania SUPER By Alang7™ (Flickr)",
-   "taille": "1024x320",
-   "vignette": "https://live.staticflickr.com/7392/12243597504_7e950272a2_b.jpg",
-   "fichier": "1.jpg"
-  },
-  {
-   "titre": "openverse:f90fda32-0503-4892-8683-fdaca7af9cb6",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "Astro_Alex",
-   "description": "Super Typhoon Trami | Supertaifun Trami (Flickr)",
-   "taille": "1024x683",
-   "vignette": "https://live.staticflickr.com/1906/44010311895_3253565676_b.jpg",
-   "fichier": "2.jpg"
-  },
-  {
-   "titre": "openverse:87662320-19c0-45d1-b793-19aaf29ad05b",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "SoulRiser",
-   "description": "Super/Blood Moon 2015 (Flickr)",
-   "taille": "1024x787",
-   "vignette": "https://live.staticflickr.com/576/21819996056_4595c74a52_b.jpg",
-   "fichier": "3.jpg"
-  },
-  {
-   "titre": "openverse:84f45baf-b9f8-49b3-be83-2e9e63f48385",
-   "licence": "CC BY 2.0",
-   "auteur": "Tea, two sugars",
-   "description": "Experiments with slow shutter speeds and lights-022 (Flickr)",
-   "taille": "500x375",
-   "vignette": "https://live.staticflickr.com/3190/2800700207_780ba7b51a.jpg",
-   "fichier": "4.jpg"
-  },
-  {
-   "titre": "openverse:2ee03e4a-a8bc-43d7-8b8d-e11d040f035b",
-   "licence": "CC BY 2.0",
-   "auteur": "NASA Goddard Photo and Video",
-   "description": "NASA Satellite Captures Super Bowl Cities - Phoenix [annotated] (nasa)",
-   "taille": "1024x744",
-   "vignette": "https://live.staticflickr.com/8605/16379053856_aa5fe591fd_b.jpg",
-   "fichier": "5.jpg"
-  }
- ]
+ "candidates": []
 }

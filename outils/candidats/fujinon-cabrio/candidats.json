@@ -1,76 +1,19 @@
 {
  "fichiers": [],
- "recherche": [
-  "Fujinon Cabrio"
- ],
+ "recherche": [],
  "openverse": [
-  "titre:Fujinon Cabrio",
-  "titre:Cabrio lens"
+  "\"Fujinon Cabrio\""
  ],
  "complet": true,
  "candidates": [
   {
-   "titre": "File:President Trump Speaks with Military Service Personnel on Christmas Day (50773967692).jpg",
-   "licence": "Public domain",
-   "auteur": "The White House from Washington, DC",
-   "description": "President Donald J. Trump speaks with military service personnel on duty around the world Friday, Dec. 25, 2020, during a Christmas Day video teleconference call at Mar-a-Lago in Palm Beach, Fla. (Off",
-   "taille": "3000x2000",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/President_Trump_Speaks_with_Military_Service_Personnel_on_Christmas_Day_%2850773967692%29.jpg/250px-President_Trump_Speaks_with_Military_Service_Personnel_on_Christmas_Day_%2850773967692%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "titre": "openverse:59f6ba58-16f3-49cf-b83c-c71925378fbd",
+   "licence": "CC BY 2.0",
+   "auteur": "Kitmondo.com",
+   "description": "Fujinon Cabrio (Flickr)",
+   "taille": "500x375",
+   "vignette": "https://live.staticflickr.com/8649/15360415344_5640581028.jpg",
    "fichier": "0.jpg"
-  },
-  {
-   "titre": "openverse:a39c8757-72be-47f6-9e0b-e2d7bd99f2b7",
-   "licence": "CC BY 2.0",
-   "auteur": "Henry Söderlund",
-   "description": "Fujifilm Fujinon XF 56mm f/1.2 R APD (Flickr)",
-   "taille": "1024x683",
-   "vignette": "https://live.staticflickr.com/7515/16331743211_8795e2101e_b.jpg",
-   "fichier": "1.jpg"
-  },
-  {
-   "titre": "openverse:14c5a779-012c-4a70-8120-c2c7559327a0",
-   "licence": "CC BY 2.0",
-   "auteur": "efanphotography v2",
-   "description": "FUJIFILM FUJI GF670 Professional Film RF Camera + EBC FUJINON 80m FUJIFILM PRO 400H (Flickr)",
-   "taille": "1024x835",
-   "vignette": "https://live.staticflickr.com/6221/6286118188_6ed85bbbe3_b.jpg",
-   "fichier": "2.jpg"
-  },
-  {
-   "titre": "openverse:d0eee384-548a-42f4-a2e1-1013b9db8c68",
-   "licence": "CC BY 2.0",
-   "auteur": "Janitors",
-   "description": "Fuji X-E1 Fujinon XF 35mm f/1.4 R (Flickr)",
-   "taille": "1024x577",
-   "vignette": "https://live.staticflickr.com/8215/8386691738_55d33b1886_b.jpg",
-   "fichier": "3.jpg"
-  },
-  {
-   "titre": "openverse:a9879673-5860-4bf5-bb54-2e012cf83c74",
-   "licence": "CC BY 2.0",
-   "auteur": "Janitors",
-   "description": "Fujifilm X-T30 + Fujinon 16mm F2.8 lens (Flickr)",
-   "taille": "1024x683",
-   "vignette": "https://live.staticflickr.com/7925/47460314042_645111c4bf_b.jpg",
-   "fichier": "4.jpg"
-  },
-  {
-   "titre": "openverse:6200d177-e19e-450a-a16c-84b514da5485",
-   "licence": "CC BY 2.0",
-   "auteur": "efanphotography v2",
-   "description": "FUJIFILM FUJI GF670 Professional Film RF Camera + EBC FUJINON 80m (Flickr)",
-   "taille": "500x400",
-   "vignette": "https://live.staticflickr.com/6218/6322450832_852059f8f6.jpg",
-   "fichier": "5.jpg"
-  },
-  {
-   "titre": "openverse:12d55a38-2d4c-4b09-b004-e0ba9fa10c54",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "Zokyo Labs",
-   "description": "Private Collection - Fuji G617 Professional 6x17 120 Panoramic Camera with 105mm f8 Fujinon lens (Flickr)",
-   "taille": "1024x811",
-   "vignette": "https://live.staticflickr.com/1179/5116353477_8722a50937_b.jpg",
-   "fichier": "6.jpg"
   }
  ]
 }

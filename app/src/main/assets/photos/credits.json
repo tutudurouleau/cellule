@@ -15,6 +15,14 @@
   "source": "https://commons.wikimedia.org/wiki/File:Angenieux_Optimo_Ultra_12X.jpg",
   "plateforme": "Wikimedia Commons"
  },
+ "apple-iphone": {
+  "fichier": "apple-iphone.jpg",
+  "titre": "File:Deep Purple iPhone 14 Pro Max back photo.jpg",
+  "auteur": "Nishino Asuka",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Deep_Purple_iPhone_14_Pro_Max_back_photo.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
  "arri-alexa-35": {
   "fichier": "arri-alexa-35.jpg",
   "titre": "File:Alexa 35 (1).jpg",
@@ -79,6 +87,30 @@
   "source": "https://commons.wikimedia.org/wiki/File:Arriflex_16SR-3_(2).jpg",
   "plateforme": "Wikimedia Commons"
  },
+ "arriflex-35-bl": {
+  "fichier": "arriflex-35-bl.jpg",
+  "titre": "File:Arri 35 BL.jpg",
+  "auteur": "Runner1616",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Arri_35_BL.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "arriflex-35-ii-et-iic": {
+  "fichier": "arriflex-35-ii-et-iic.jpg",
+  "titre": "File:Arriflex - 35mm Movie Camera - Kolkata 2012-10-09 1594.JPG",
+  "auteur": "Biswarup Ganguly",
+  "licence": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Arriflex_-_35mm_Movie_Camera_-_Kolkata_2012-10-09_1594.JPG",
+  "plateforme": "Wikimedia Commons"
+ },
+ "arriflex-416": {
+  "fichier": "arriflex-416.jpg",
+  "titre": "File:Arriflex 416 Plus HS Camera.jpg",
+  "auteur": "TaurusEmerald",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Arriflex_416_Plus_HS_Camera.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
  "arriflex-435": {
   "fichier": "arriflex-435.jpg",
   "titre": "File:Arriflex 435 ES.jpg",
@@ -101,6 +133,14 @@
   "auteur": "PODZO DI BORGO",
   "licence": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:Cam%C3%A9ra_Auricon_Pro_600.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "beaulieu-4008": {
+  "fichier": "beaulieu-4008.jpg",
+  "titre": "File:Beaulieu Reglomatic 4008 ZM II Movie Camera, 8mm - DPLA - ab964265c9d8637fb06f23e32f7edf8c (page 1).jpg",
+  "auteur": "Beaulieu",
+  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Beaulieu_Reglomatic_4008_ZM_II_Movie_Camera,_8mm_-_DPLA_-_ab964265c9d8637fb06f23e32f7edf8c_(page_1).jpg",
   "plateforme": "Wikimedia Commons"
  },
  "blackmagic-pocket-4k-et-6k": {
@@ -135,6 +175,22 @@
   "source": "https://commons.wikimedia.org/wiki/File:Canon_C_300.JPG",
   "plateforme": "Wikimedia Commons"
  },
+ "canon-xl1-et-xl1s": {
+  "fichier": "canon-xl1-et-xl1s.jpg",
+  "titre": "File:Canon XL-1 3 CCD Digital Video Camcorder PAL Mini DV.jpg",
+  "auteur": "Free Photo Fun",
+  "licence": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Canon_XL-1_3_CCD_Digital_Video_Camcorder_PAL_Mini_DV.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "debrie-parvo": {
+  "fichier": "debrie-parvo.jpg",
+  "titre": "File:Parvo 0678.jpg",
+  "auteur": "Runner1616",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Parvo_0678.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
  "dji-ronin-4d": {
   "fichier": "dji-ronin-4d.jpg",
   "titre": "File:DJI RONIN 4D和DJI TRANSMISSION.jpg",
@@ -151,12 +207,52 @@
   "source": "https://commons.wikimedia.org/wiki/File:Cameflex.jpg",
   "plateforme": "Wikimedia Commons"
  },
+ "eclair-npr": {
+  "fichier": "eclair-npr.jpg",
+  "titre": "File:Curtis Choy with a 16mm Éclair NPR - Fresno, 1976.jpg",
+  "auteur": "Nancy Wong",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Curtis_Choy_with_a_16mm_%C3%89clair_NPR_-_Fresno,_1976.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "fujinon-premier-hk": {
+  "fichier": "fujinon-premier-hk.jpg",
+  "titre": "File:Fujinon HK5.3x75.jpg",
+  "auteur": "When reusing, please credit me as author: Adam Kliczek, http://memoriesstay.com ",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Fujinon_HK5.3x75.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "fujinon-premista": {
+  "fichier": "fujinon-premista.jpg",
+  "titre": "File:FUJINON Premista 28-100mm T2.9 20250517141029.jpg",
+  "auteur": "TurnOnTheNight",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:FUJINON_Premista_28-100mm_T2.9_20250517141029.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "gopro-hero": {
+  "fichier": "gopro-hero.jpg",
+  "titre": "File:Cyclisme & GoPro - GoPro Hero 4 (01).JPG",
+  "auteur": "Jérémy-Günther-Heinz Jähnick",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Cyclisme_%26_GoPro_-_GoPro_Hero_4_(01).JPG",
+  "plateforme": "Wikimedia Commons"
+ },
  "imax-15-70": {
   "fichier": "imax-15-70.jpg",
   "titre": "File:IMAX camera 1.jpg",
   "auteur": "Atlant",
   "licence": "CC BY 2.5",
   "source": "https://commons.wikimedia.org/wiki/File:IMAX_camera_1.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "leica-r-rehousses": {
+  "fichier": "leica-r-rehousses.jpg",
+  "titre": "File:Leica-p1030810.jpg",
+  "auteur": "Rama",
+  "licence": "CC BY-SA 2.0 fr",
+  "source": "https://commons.wikimedia.org/wiki/File:Leica-p1030810.jpg",
   "plateforme": "Wikimedia Commons"
  },
  "mitchell-bnc": {
@@ -205,6 +301,22 @@
   "auteur": "Major Eleven",
   "licence": "CC BY-SA 3.0",
   "source": "https://commons.wikimedia.org/wiki/File:Panaflex_Platinum_profil_handheld.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "panavision-system-65": {
+  "fichier": "panavision-system-65.jpg",
+  "titre": "File:Panavision Camera System 65.jpg",
+  "auteur": "Karolina Plotnicka",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Panavision_Camera_System_65.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "paramount-vistavision": {
+  "fichier": "paramount-vistavision.jpg",
+  "titre": "File:Debbie Reynolds Auction - Mitchell VistaVision Model V-V 35mm motion picture camera circa 1953-54.jpg",
+  "auteur": "Doug Kline from Los Angeles, CA, USA",
+  "licence": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Debbie_Reynolds_Auction_-_Mitchell_VistaVision_Model_V-V_35mm_motion_picture_camera_circa_1953-54.jpg",
   "plateforme": "Wikimedia Commons"
  },
  "red-epic-mx-dragon": {
@@ -309,6 +421,14 @@
   "auteur": "TaurusEmerald",
   "licence": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:Z_Cam_E2_with_Kondor_Blue_Kofi_Capture_Cup_Rig.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "zeiss-planar-50mm-f-0-7": {
+  "fichier": "zeiss-planar-50mm-f-0-7.jpg",
+  "titre": "File:Zeiss Planar 50mm F0.7 lens attached to camera..jpg",
+  "auteur": "Gbentinck",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Zeiss_Planar_50mm_F0.7_lens_attached_to_camera..jpg",
   "plateforme": "Wikimedia Commons"
  },
  "zeiss-supreme-prime": {

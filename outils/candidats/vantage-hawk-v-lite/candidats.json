@@ -2,64 +2,8 @@
  "fichiers": [],
  "recherche": [],
  "openverse": [
-  "titre:Hawk anamorphic",
-  "titre:Vantage Hawk"
+  "\"Hawk anamorphic\""
  ],
  "complet": true,
- "candidates": [
-  {
-   "titre": "openverse:420b9da5-5554-46db-88a3-5b32fdf8b2f7",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "wikiphotographer",
-   "description": "Red-shouldered hawk [Explored] (Flickr)",
-   "taille": "683x1024",
-   "vignette": "https://live.staticflickr.com/5567/14980332135_b8370b89bd_b.jpg",
-   "fichier": "0.jpg"
-  },
-  {
-   "titre": "openverse:77d8df04-78d2-4260-b0fe-2ffe9ed58a00",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "stanzebla",
-   "description": "Hummingbird hawk-moth (Flickr)",
-   "taille": "987x1024",
-   "vignette": "https://live.staticflickr.com/65535/52442201341_10ac48ac39_b.jpg",
-   "fichier": "1.jpg"
-  },
-  {
-   "titre": "openverse:e79c21a1-0aee-4ee4-a0c7-0bc36e417748",
-   "licence": "CC BY 2.0",
-   "auteur": "Charles Patrick Ewing",
-   "description": "Red-Shouldered Hawk (Flickr)",
-   "taille": "1024x683",
-   "vignette": "https://live.staticflickr.com/3823/32780126592_2d5f7da0e0_b.jpg",
-   "fichier": "2.jpg"
-  },
-  {
-   "titre": "openverse:e25862d7-da63-4744-97a0-f3455d62d9af",
-   "licence": "CC BY-SA 2.0",
-   "auteur": "Aztlek",
-   "description": "The hawk and its prey (Flickr)",
-   "taille": "1024x679",
-   "vignette": "https://live.staticflickr.com/2805/10681624865_c5d6318874_b.jpg",
-   "fichier": "3.jpg"
-  },
-  {
-   "titre": "openverse:fea13e20-7b59-4cf9-b758-c0f12dd15a25",
-   "licence": "CC BY 2.0",
-   "auteur": "ideowl",
-   "description": "Tony Hawk christens the Ann Arbor Skate Park (Flickr)",
-   "taille": "1024x836",
-   "vignette": "https://live.staticflickr.com/3916/14495965473_e6b059a472_b.jpg",
-   "fichier": "4.jpg"
-  },
-  {
-   "titre": "openverse:1e7c3406-6488-4bca-b536-84ae96f04805",
-   "licence": "CC BY 2.0",
-   "auteur": "A.Davey",
-   "description": "Galapagos Hawk (Flickr)",
-   "taille": "1024x662",
-   "vignette": "https://live.staticflickr.com/2644/4146737203_832b11b2d0_b.jpg",
-   "fichier": "5.jpg"
-  }
- ]
+ "candidates": []
 }
