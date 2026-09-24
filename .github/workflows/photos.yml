@@ -1,8 +1,9 @@
 name: Photos
 
-# Les photos du matériel viennent de Wikimedia Commons, que seules les
-# machines de GitHub peuvent joindre. Modifier outils/photos.json relance la
-# recherche ; le résultat est versé dans le dépôt par un commit automatique.
+# Les photos du matériel viennent de Wikimedia Commons et d'Openverse (photos
+# Flickr sous licence libre), que seules les machines de GitHub peuvent
+# joindre. Modifier outils/photos.json relance la recherche ; le résultat est
+# versé dans le dépôt par un commit automatique.
 # (Un commit poussé avec le jeton d'Actions ne relance aucun workflow :
 # pas de boucle.)
 on:
@@ -18,12 +19,18 @@ concurrency:
 
 jobs:
   photos:
-    name: Photos Wikimedia Commons
+    name: Photos libres (Commons, Openverse)
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Pillow ramène les photos à la taille utile, quelle que soit leur source.
+      - name: Installer Pillow
+        run: pip install pillow
       - name: Chercher et télécharger
         run: python3 outils/photos.py
       - name: Verser dans le dépôt
@@ -36,6 +43,6 @@ jobs:
             echo "Rien de nouveau."
             exit 0
           fi
-          git commit -m "Photos : mise à jour depuis Wikimedia Commons"
+          git commit -m "Photos : mise à jour depuis Commons et Openverse"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin "HEAD:${GITHUB_REF_NAME}"

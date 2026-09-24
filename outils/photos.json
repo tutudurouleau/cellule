@@ -13,11 +13,11 @@
   "choix": "File:ARRI AMIRA Camera.jpg"
  },
  "arri-alexa-65": {
-  "recherche": [
-   "ALEXA 65",
-   "Arri Alexa 65"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "ARRI Alexa 65",
+   "Alexa 65 camera"
+  ]
  },
  "arri-alexa-mini": {
   "recherche": [
@@ -27,11 +27,11 @@
   "choix": "File:Alexa Mini.jpg"
  },
  "arri-alexa-lf": {
-  "recherche": [
-   "intitle:\"Alexa LF\"",
-   "ARRI ALEXA LF camera"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "ARRI Alexa LF",
+   "Alexa LF camera"
+  ]
  },
  "arri-alexa-mini-lf": {
   "recherche": [
@@ -86,25 +86,25 @@
   "choix": "File:Red EPIC camera.jpg"
  },
  "red-weapon-8k-vv": {
-  "recherche": [
-   "RED Weapon 8K",
-   "RED DSMC2 Weapon"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "RED Weapon",
+   "RED Weapon Helium"
+  ]
  },
  "red-monstro-8k-vv": {
-  "recherche": [
-   "intitle:Monstro",
-   "intitle:RED intitle:DSMC2"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "RED Monstro",
+   "RED DSMC2 camera"
+  ]
  },
  "red-komodo-et-komodo-x": {
-  "recherche": [
-   "RED Komodo 6K",
-   "Komodo 6K camera"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "RED Komodo",
+   "RED Komodo 6K"
+  ]
  },
  "red-v-raptor": {
   "recherche": [
@@ -169,12 +169,11 @@
   "choix": "File:Canon C 300.JPG"
  },
  "canon-eos-c300-mark-ii-et-mark-iii": {
-  "recherche": [
-   "Canon EOS C300 Mark II",
-   "C300 MkII",
+  "recherche": [],
+  "openverse": [
+   "Canon C300 Mark II",
    "Canon C300 Mark III"
-  ],
-  "aucune": true
+  ]
  },
  "blackmagic-pocket-4k-et-6k": {
   "recherche": [
@@ -184,11 +183,11 @@
   "choix": "File:BMPCC 6K.jpg"
  },
  "blackmagic-ursa-mini-pro-12k": {
-  "recherche": [
+  "recherche": [],
+  "openverse": [
    "URSA Mini Pro 12K",
    "Blackmagic URSA Mini Pro"
-  ],
-  "aucune": true
+  ]
  },
  "panavision-panaflex": {
   "recherche": [
@@ -218,12 +217,11 @@
   "choix": "File:Panavision Millennium DXL.jpg"
  },
  "panasonic-varicam-35-et-lt": {
-  "recherche": [
-   "Panasonic AU-V35LT1",
-   "VariCam LT camera",
-   "Panasonic VariCam 35 cinema"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Panasonic VariCam LT",
+   "Panasonic VariCam 35"
+  ]
  },
  "z-cam-e2": {
   "recherche": [
@@ -239,11 +237,11 @@
   "choix": "File:DJI RONIN 4D和DJI TRANSMISSION.jpg"
  },
  "silicon-imaging-si-2k": {
-  "recherche": [
-   "intitle:\"SI-2K\"",
-   "intitle:\"Silicon Imaging\""
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "SI-2K camera",
+   "Silicon Imaging SI-2K"
+  ]
  },
  "vision-research-phantom": {
   "recherche": [
@@ -302,32 +300,32 @@
   "choix": "File:Konrad Wickler und Katja Raganelli.jpg"
  },
  "zeiss-super-speed": {
-  "recherche": [
-   "Zeiss Super Speed T1.3",
-   "Zeiss Superspeed cine lens"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Zeiss Super Speed",
+   "Zeiss Superspeed lens"
+  ]
  },
  "arri-zeiss-ultra-prime": {
-  "recherche": [
-   "Zeiss Ultra Prime T1.9",
-   "ARRI Ultra Prime lens"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Zeiss Ultra Prime",
+   "Ultra Prime lens"
+  ]
  },
  "arri-zeiss-master-prime": {
-  "recherche": [
-   "intitle:\"Master Prime\"",
-   "intitle:Zeiss intitle:MasterPrime"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Zeiss Master Prime",
+   "Master Prime lens"
+  ]
  },
  "zeiss-cp-3": {
-  "recherche": [
-   "Zeiss CP.3 lens",
-   "Zeiss Compact Prime CP.3"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Zeiss CP.3",
+   "Zeiss Compact Prime"
+  ]
  },
  "zeiss-supreme-prime": {
   "recherche": [
@@ -336,53 +334,53 @@
   "choix": "File:ARRI-ZEISS의 Supreme prime 렌즈.jpg"
  },
  "arri-signature-prime": {
-  "recherche": [
+  "recherche": [],
+  "openverse": [
    "ARRI Signature Prime",
-   "Signature Primes lenses"
-  ],
-  "aucune": true
+   "Signature Prime lens"
+  ]
  },
  "cooke-speed-panchro": {
-  "recherche": [
-   "intitle:\"Speed Panchro\"",
-   "intitle:Cooke intitle:Panchro"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Cooke Speed Panchro",
+   "Speed Panchro lens"
+  ]
  },
  "cooke-s4-i": {
-  "recherche": [
-   "Cooke S4/i",
-   "Cooke S4 prime lens"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Cooke S4",
+   "Cooke S4/i lens"
+  ]
  },
  "cooke-anamorphic-i": {
-  "recherche": [
-   "intitle:Cooke intitle:anamorphic",
-   "Cooke Optics anamorphic lens"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Cooke anamorphic lens",
+   "Cooke Anamorphic/i"
+  ]
  },
  "cooke-s7-i": {
-  "recherche": [
-   "intitle:Cooke intitle:S7",
-   "Cooke Optics cine lens"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Cooke S7/i",
+   "Cooke S7 lens"
+  ]
  },
  "cooke-panchro-i-classic": {
-  "recherche": [
-   "intitle:Cooke intitle:Panchro",
-   "Cooke Optics lens"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Cooke Panchro Classic",
+   "Cooke Panchro/i"
+  ]
  },
  "angenieux-25-250": {
-  "recherche": [
-   "intitle:Angenieux intitle:zoom",
-   "intitle:Angénieux"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Angenieux 25-250",
+   "Angénieux 25-250 zoom"
+  ]
  },
  "angenieux-optimo-24-290": {
   "recherche": [
@@ -392,88 +390,91 @@
   "choix": "File:Angenieux Optimo Ultra 12X.jpg"
  },
  "angenieux-ez-1-et-ez-2": {
-  "recherche": [
-   "intitle:Angenieux intitle:EZ",
-   "intitle:Angénieux intitle:EZ"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Angenieux EZ-1",
+   "Angenieux EZ-2",
+   "Angenieux EZ zoom"
+  ]
  },
  "leitz-summilux-c-et-summicron-c": {
-  "recherche": [
-   "intitle:\"Summilux-C\"",
-   "intitle:\"Summicron-C\""
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Leica Summilux-C",
+   "Summilux-C cine lens",
+   "Summicron-C cine lens"
+  ]
  },
  "leitz-thalia": {
-  "recherche": [
-   "intitle:Leitz intitle:Thalia",
-   "Leitz Cine lens"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Leitz Thalia",
+   "Leica Thalia lens"
+  ]
  },
  "panavision-c-series": {
-  "recherche": [
-   "intitle:Panavision intitle:anamorphic",
-   "intitle:Panavision intitle:lens"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Panavision C Series anamorphic",
+   "Panavision anamorphic lens"
+  ]
  },
  "panavision-primo": {
-  "recherche": [
-   "intitle:Panavision intitle:Primo",
-   "intitle:Panavision intitle:lens"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Panavision Primo lens",
+   "Panavision Primo"
+  ]
  },
  "panavision-primo-70-et-sphero-65": {
-  "recherche": [
-   "intitle:\"Primo 70\"",
-   "intitle:Panavision intitle:Sphero"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Panavision Primo 70",
+   "Panavision Sphero 65"
+  ]
  },
  "panavision-t-series": {
-  "recherche": [
-   "intitle:Panavision intitle:\"T Series\"",
-   "intitle:Panavision intitle:anamorphic"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Panavision T Series anamorphic",
+   "Panavision T-Series"
+  ]
  },
  "kowa-cine-prominar-anamorphiques": {
-  "recherche": [
-   "intitle:Kowa intitle:anamorphic",
-   "intitle:Kowa intitle:Prominar"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Kowa anamorphic",
+   "Kowa Cine Prominar anamorphic"
+  ]
  },
  "lomo-square-front-et-round-front": {
-  "recherche": [
-   "intitle:LOMO intitle:anamorphic",
-   "intitle:LOMO intitle:OKS"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "LOMO anamorphic",
+   "LOMO round front",
+   "LOMO square front"
+  ]
  },
  "vantage-hawk-v-lite": {
-  "recherche": [
-   "intitle:Hawk intitle:anamorphic",
-   "intitle:Vantage intitle:Hawk"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Hawk anamorphic lens",
+   "Vantage Hawk V-Lite"
+  ]
  },
  "bausch-lomb-baltar": {
-  "recherche": [
-   "intitle:Baltar",
-   "Bausch Lomb Baltar cine lens"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Bausch Lomb Baltar",
+   "Baltar lens"
+  ]
  },
  "canon-k35": {
-  "recherche": [
-   "Canon K35 cine lens",
-   "Canon K-35 prime"
-  ],
-  "aucune": true
+  "recherche": [],
+  "openverse": [
+   "Canon K35 lens",
+   "Canon K-35"
+  ]
  },
  "nikon-ai-s-rehousses": {
   "recherche": [

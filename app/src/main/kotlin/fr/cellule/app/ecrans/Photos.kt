@@ -19,16 +19,18 @@ data class CreditPhoto(
     val fichier: String,
     val auteur: String,
     val licence: String,
-    val source: String
+    val source: String,
+    val plateforme: String
 ) {
-    val mention: String get() = "Photo : $auteur · $licence · Wikimedia Commons"
+    val mention: String get() = "Photo : $auteur · $licence · $plateforme"
 }
 
 /*
- * Les photos viennent de Wikimedia Commons, sous licence libre, et sont
- * embarquées dans l'APK (dossier assets/photos) : l'application reste
- * entièrement hors ligne. Elles s'affichent dans la fiche et le quiz ; la
- * liste garde les silhouettes dessinées, comme les fiches sans photo.
+ * Les photos viennent de Wikimedia Commons ou de Flickr (trouvées par
+ * Openverse), toujours sous licence libre, et sont embarquées dans l'APK
+ * (dossier assets/photos) : l'application reste entièrement hors ligne.
+ * Elles s'affichent dans la fiche et le quiz ; la liste garde les
+ * silhouettes dessinées, comme les fiches sans photo.
  */
 object Photos {
 
@@ -50,7 +52,8 @@ object Photos {
                 fichier = c.getString("fichier"),
                 auteur = c.optString("auteur").ifBlank { "auteur inconnu" },
                 licence = c.optString("licence"),
-                source = c.optString("source")
+                source = c.optString("source"),
+                plateforme = c.optString("plateforme").ifBlank { "Wikimedia Commons" }
             )
         }
     } catch (e: Exception) {
