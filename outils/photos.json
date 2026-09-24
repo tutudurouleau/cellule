@@ -27,11 +27,8 @@
   "choix": "File:Alexa Mini.jpg"
  },
  "arri-alexa-lf": {
-  "fichiers": [
-   "File:ARRI LF SYSTEM 장비들.jpg"
-  ],
   "recherche": [],
-  "apercu": 1280
+  "aucune": true
  },
  "arri-alexa-mini-lf": {
   "recherche": [
@@ -338,11 +335,8 @@
   "choix": "File:ARRI-ZEISS의 Supreme prime 렌즈.jpg"
  },
  "arri-signature-prime": {
-  "fichiers": [
-   "File:ARRI LF SYSTEM 장비들.jpg"
-  ],
   "recherche": [],
-  "apercu": 1280
+  "aucune": true
  },
  "cooke-speed-panchro": {
   "recherche": [],
