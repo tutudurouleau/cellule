@@ -27,12 +27,12 @@ data class CreditPhoto(
 /*
  * Les photos viennent de Wikimedia Commons, sous licence libre, et sont
  * embarquées dans l'APK (dossier assets/photos) : l'application reste
- * entièrement hors ligne. Une fiche sans photo garde sa silhouette dessinée.
+ * entièrement hors ligne. Elles s'affichent dans la fiche et le quiz ; la
+ * liste garde les silhouettes dessinées, comme les fiches sans photo.
  */
 object Photos {
 
-    /** Largeurs de décodage, en pixels : vignette de liste, photo de fiche. */
-    const val VIGNETTE = 240
+    /** Largeur de décodage, en pixels, d'une photo de fiche ou de quiz. */
     const val PLEINE = 1080
 
     @Volatile
@@ -58,14 +58,14 @@ object Photos {
     }
 
     /* Une photo de 960 px pèse près de 4 Mo une fois décodée : on garde les
-       vignettes et les dernières photos ouvertes, pas tout le catalogue. */
+       dernières photos ouvertes, pas tout le catalogue. */
     private val cache = object : LruCache<String, ImageBitmap>(32 * 1024 * 1024) {
         override fun sizeOf(key: String, value: ImageBitmap) = value.width * value.height * 4
     }
 
     fun enCache(m: Materiel, largeur: Int): ImageBitmap? = cache.get("${m.identifiant}@$largeur")
 
-    /** Décode la photo en sous-échantillonnant : une vignette n'a pas besoin de 960 px. */
+    /** Décode la photo, sous-échantillonnée si elle dépasse la largeur demandée. */
     fun charger(contexte: Context, m: Materiel, largeur: Int): ImageBitmap? {
         val cle = "${m.identifiant}@$largeur"
         cache.get(cle)?.let { return it }
