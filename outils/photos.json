@@ -85,14 +85,16 @@
  },
  "red-weapon-8k-vv": {
   "recherche": [],
-  "openverse": [
-   "\"RED Weapon\""
-  ]
+  "choix": "File:Wooden Camera Zip Box Pro.jpg"
  },
  "red-monstro-8k-vv": {
-  "recherche": [],
+  "recherche": [
+   "RED DSMC2 camera",
+   "RED Ranger camera"
+  ],
   "openverse": [
-   "\"RED Monstro\""
+   "\"DSMC2\"",
+   "\"RED Ranger\""
   ]
  },
  "red-komodo-et-komodo-x": {
@@ -352,7 +354,8 @@
   "recherche": [],
   "openverse": [
    "\"Cooke S7\""
-  ]
+  ],
+  "choix": "openverse:f739c52c-5d15-4e9e-a233-bcde14ed5757"
  },
  "cooke-panchro-i-classic": {
   "recherche": [],
@@ -622,7 +625,8 @@
   "recherche": [],
   "openverse": [
    "\"Fujinon Cabrio\""
-  ]
+  ],
+  "choix": "openverse:59f6ba58-16f3-49cf-b83c-c71925378fbd"
  },
  "fujinon-premista": {
   "fichiers": [
