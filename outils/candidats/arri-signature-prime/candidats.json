@@ -1,7 +1,62 @@
 {
  "recherche": [
-  "intitle:\"Signature Prime\"",
-  "ARRI Signature Prime lens"
+  "ARRI Signature Prime",
+  "Signature Primes lenses"
  ],
- "candidates": []
+ "candidates": [
+  {
+   "titre": "File:Microlensing Black Hole (2022-001).png",
+   "licence": "Public domain",
+   "auteur": "SCIENCE: NASA, ESA, Kailash Sahu (STScI) IMAGE PROCESSING: Joseph DePasquale (ST",
+   "description": "The star-filled sky in this Hubble Space Telescope photo is located in the direction of the Galactic center. The brightness of stars are monitored to see if any change in apparent brightness is made b",
+   "taille": "1666x1332",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Microlensing_Black_Hole_%282022-001%29.png/250px-Microlensing_Black_Hole_%282022-001%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.png"
+  },
+  {
+   "titre": "File:Microlensing Black Hole (2022-001).tiff",
+   "licence": "Public domain",
+   "auteur": "SCIENCE: NASA, ESA, Kailash Sahu (STScI) IMAGE PROCESSING: Joseph DePasquale (ST",
+   "description": "The star-filled sky in this Hubble Space Telescope photo is located in the direction of the Galactic center. The brightness of stars are monitored to see if any change in apparent brightness is made b",
+   "taille": "1666x1332",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Microlensing_Black_Hole_%282022-001%29.tiff/lossy-page1-250px-Microlensing_Black_Hole_%282022-001%29.tiff.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Abell S1063 galaxy cluster (weic2610c).tiff",
+   "licence": "CC BY 4.0",
+   "auteur": "NASA, ESA, CSA, V. Kokorev (University of Texas at Austin), A. Pagan (STScI)",
+   "description": "The little red dot that would come to be known as GLIMPSE-17775 was fortunately included in the NASA/ESA/CSA James Webb Space Telescope’s field of view as it was observing this galaxy cluster Abell S1",
+   "taille": "4199x4199",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Abell_S1063_galaxy_cluster_%28weic2610c%29.tiff/lossy-page1-250px-Abell_S1063_galaxy_cluster_%28weic2610c%29.tiff.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:Euclid’s new image of galaxy cluster Abell 2390 ESA497230.jpg",
+   "licence": "CC BY-SA 3.0 igo",
+   "auteur": "European Space Agency",
+   "description": "This image is released as part of the Early Release Observations from ESA’s Euclid space mission. All data from these initial observations are made public on 23 May 2024 – including a handful of unpre",
+   "taille": "8200x8200",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Euclid%E2%80%99s_new_image_of_galaxy_cluster_Abell_2390_ESA497230.jpg/250px-Euclid%E2%80%99s_new_image_of_galaxy_cluster_Abell_2390_ESA497230.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  },
+  {
+   "titre": "File:Euclid’s new image of galaxy cluster Abell 2390 ESA497230.tiff",
+   "licence": "CC BY-SA 3.0 igo",
+   "auteur": "European Space Agency",
+   "description": "This image is released as part of the Early Release Observations from ESA’s Euclid space mission. All data from these initial observations are made public on 23 May 2024 – including a handful of unpre",
+   "taille": "8200x8200",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Euclid%E2%80%99s_new_image_of_galaxy_cluster_Abell_2390_ESA497230.tiff/lossless-page1-250px-Euclid%E2%80%99s_new_image_of_galaxy_cluster_Abell_2390_ESA497230.tiff.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "4.png"
+  },
+  {
+   "titre": "File:GLIMPSE-17775 in Abell S1063 (NIRCam image annotated) (weic2610a).tiff",
+   "licence": "CC BY 4.0",
+   "auteur": "NASA, ESA, CSA, V. Kokorev (University of Texas at Austin), A. Pagan (STScI)",
+   "description": "The little red dot that would come to be known as GLIMPSE-17775 was fortunately included in the NASA/ESA/CSA James Webb Space Telescope’s field of view as it was observing galaxy cluster Abell S1063 f",
+   "taille": "4199x4199",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/GLIMPSE-17775_in_Abell_S1063_%28NIRCam_image_annotated%29_%28weic2610a%29.tiff/lossy-page1-250px-GLIMPSE-17775_in_Abell_S1063_%28NIRCam_image_annotated%29_%28weic2610a%29.tiff.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "5.jpg"
+  }
+ ]
 }

@@ -1,18 +1,9 @@
 {
  "recherche": [
-  "intitle:\"RED Weapon\"",
-  "intitle:\"Red Weapon\" camera"
+  "RED Weapon 8K",
+  "RED DSMC2 Weapon"
  ],
  "candidates": [
-  {
-   "titre": "File:Red Weapon.jpg",
-   "licence": "CC BY-SA 4.0",
-   "auteur": "Jacobdman",
-   "description": "For card game",
-   "taille": "1053x753",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Red_Weapon.jpg/250px-Red_Weapon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "0.jpg"
-  },
   {
    "titre": "File:Red Weapon Helium 8K Full Frame Image.jpg",
    "licence": "CC BY-SA 4.0",
@@ -20,7 +11,7 @@
    "description": "Red Weapon Helium 35.4 Megapixel CMOS 8K Image Sensor Full Frame Image with 6K, 4K, 3K, HD and Instagram® native resolution frame overlays. Captured with Canon FD 135mm f. 1:2.8 lens. Post processing ",
    "taille": "8192x4320",
    "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Red_Weapon_Helium_8K_Full_Frame_Image.jpg/250px-Red_Weapon_Helium_8K_Full_Frame_Image.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "1.jpg"
+   "fichier": "0.jpg"
   }
  ]
 }

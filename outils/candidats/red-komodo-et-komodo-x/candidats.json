@@ -1,17 +1,7 @@
 {
  "recherche": [
-  "intitle:RED intitle:Komodo intitle:camera",
-  "intitle:\"RED Komodo\""
+  "RED Komodo 6K",
+  "Komodo 6K camera"
  ],
- "candidates": [
-  {
-   "titre": "File:Starfish red komodo.jpg",
-   "licence": "CC BY-SA 3.0",
-   "auteur": "Nhobgood Nick Hobgood",
-   "description": "Large red starfish Gomophia gomophia from Komodo National Park",
-   "taille": "1680x1260",
-   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Starfish_red_komodo.jpg/250px-Starfish_red_komodo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "fichier": "0.jpg"
-  }
- ]
+ "candidates": []
 }
