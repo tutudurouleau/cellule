@@ -37,7 +37,8 @@ CREDITS = os.path.join(PHOTOS, "credits.json")
 API = "https://commons.wikimedia.org/w/api.php"
 AGENT = "CelluleApp/1.0 (https://github.com/tutudurouleau/cellule)"
 LIBRE = re.compile(r"^(cc0|public domain|pd\b|pd-|cc by(-sa)? \d)", re.IGNORECASE)
-NOMBRE_DE_CANDIDATES = 4
+NOMBRE_DE_CANDIDATES = 6
+FICHIERS_PAR_CATEGORIE = 4
 LARGEUR_VIGNETTE = 250   # tailles standard de Commons : d'autres sont refusées
 LARGEUR_PHOTO = 960
 
@@ -86,6 +87,37 @@ def extension(url):
 FORMATS = ("jpg", "png", "webp")  # Android décode les trois
 
 
+INFOS_IMAGE = dict(prop="imageinfo", iiprop="url|extmetadata|size|mime|user")
+
+
+def pages_trouvees(recherche):
+    """Les fichiers des catégories dont le nom répond à la recherche, puis ceux
+    de la recherche plein texte. Les catégories de Commons (« Category:Cooke
+    S4/i », etc.) sont bien plus sûres que le texte libre, qui ramène des
+    avions S7 pour un objectif Cooke S7."""
+    pages = []
+    categories = api(list="search", srsearch=recherche, srnamespace="14", srlimit="2")
+    for categorie in categories.get("query", {}).get("search", []):
+        membres = api(
+            generator="categorymembers", gcmtitle=categorie["title"], gcmtype="file",
+            gcmlimit=str(FICHIERS_PAR_CATEGORIE), iiurlwidth=str(LARGEUR_VIGNETTE), **INFOS_IMAGE,
+        )
+        trouves = membres.get("query", {}).get("pages", [])
+        print(f"  {categorie['title']} : {len(trouves)} fichier(s)")
+        pages += trouves
+    reponse = api(
+        generator="search", gsrsearch=f"{recherche} filetype:bitmap",
+        gsrnamespace="6", gsrlimit="10", iiurlwidth=str(LARGEUR_VIGNETTE), **INFOS_IMAGE,
+    )
+    pages += sorted(reponse.get("query", {}).get("pages", []), key=lambda p: p.get("index", 0))
+    return pages
+
+
+def auteur(info):
+    """L'auteur déclaré ou, à défaut, le compte qui a versé le fichier."""
+    return texte(info.get("extmetadata", {}), "Artist", 80) or info.get("user", "")
+
+
 def chercher_candidates(ident, recherches):
     dossier = os.path.join(CANDIDATS, ident)
     index = os.path.join(dossier, "candidats.json")
@@ -98,13 +130,7 @@ def chercher_candidates(ident, recherches):
 
     vus, retenues = set(), []
     for recherche in recherches:
-        reponse = api(
-            generator="search", gsrsearch=f"{recherche} filetype:bitmap",
-            gsrnamespace="6", gsrlimit="10",
-            prop="imageinfo", iiprop="url|extmetadata|size|mime",
-            iiurlwidth=str(LARGEUR_VIGNETTE),
-        )
-        pages = sorted(reponse.get("query", {}).get("pages", []), key=lambda p: p.get("index", 0))
+        pages = pages_trouvees(recherche)
         rejets = {"licence": 0, "format": 0}
         for page in pages:
             titre = page["title"]
@@ -128,7 +154,7 @@ def chercher_candidates(ident, recherches):
             retenues.append({
                 "titre": titre,
                 "licence": licence,
-                "auteur": texte(meta, "Artist", 80),
+                "auteur": auteur(info),
                 "description": texte(meta, "ImageDescription", 200),
                 "taille": f"{info.get('width')}x{info.get('height')}",
                 "vignette": info["thumburl"],
@@ -153,7 +179,7 @@ def chercher_candidates(ident, recherches):
 
 
 def telecharger_photo(ident, titre, credits):
-    reponse = api(titles=titre, prop="imageinfo", iiprop="url|extmetadata|mime", iiurlwidth=str(LARGEUR_PHOTO))
+    reponse = api(titles=titre, iiurlwidth=str(LARGEUR_PHOTO), **INFOS_IMAGE)
     page = reponse["query"]["pages"][0]
     info = (page.get("imageinfo") or [{}])[0]
     licence = licence_libre(info)
@@ -170,11 +196,10 @@ def telecharger_photo(ident, titre, credits):
         with open(os.path.join(PHOTOS, fichier), "wb") as f:
             f.write(lire(url))
         print(f"{ident} : photo téléchargée")
-    meta = info.get("extmetadata", {})
     credits[ident] = {
         "fichier": fichier,
         "titre": titre,
-        "auteur": texte(meta, "Artist", 80) or "auteur inconnu",
+        "auteur": auteur(info) or "auteur inconnu",
         "licence": licence,
         "source": info.get("descriptionurl", ""),
     }

@@ -3,405 +3,452 @@
   "recherche": [
    "Arri Alexa camera",
    "Alexa XT camera"
-  ]
+  ],
+  "choix": "File:Arri Alexa camera.jpg"
  },
  "arri-amira": {
   "recherche": [
    "Arri Amira"
-  ]
+  ],
+  "choix": "File:ARRI AMIRA Camera.jpg"
  },
  "arri-alexa-65": {
   "recherche": [
-   "Alexa 65 camera"
+   "intitle:\"Alexa 65\"",
+   "ARRI Alexa 65 large format camera"
   ]
  },
  "arri-alexa-mini": {
   "recherche": [
    "Arri Alexa Mini",
    "Alexa Mini camera"
-  ]
+  ],
+  "choix": "File:Alexa Mini.jpg"
  },
  "arri-alexa-lf": {
   "recherche": [
-   "Alexa LF camera"
+   "intitle:\"Alexa LF\"",
+   "ARRI ALEXA LF camera"
   ]
  },
  "arri-alexa-mini-lf": {
   "recherche": [
    "Alexa Mini LF"
-  ]
+  ],
+  "choix": "File:Alexa Mini LF.jpg"
  },
  "arri-alexa-35": {
   "recherche": [
    "Alexa 35 camera"
-  ]
+  ],
+  "choix": "File:Alexa 35 (1).jpg"
  },
  "arriflex-16sr": {
   "recherche": [
    "Arriflex 16SR",
    "Arriflex 16 SR"
-  ]
+  ],
+  "choix": "File:Arriflex 16SR-3 (2).jpg"
  },
  "arriflex-535": {
   "recherche": [
    "Arriflex 535"
-  ]
+  ],
+  "choix": "File:Ramachandra Babu.jpg"
  },
  "arriflex-435": {
   "recherche": [
    "Arriflex 435"
-  ]
+  ],
+  "choix": "File:Arriflex 435 ES.jpg"
  },
  "arricam-st-lt": {
   "recherche": [
    "Arricam",
    "Arricam LT"
-  ]
+  ],
+  "choix": "File:Venant Mambumina Imhotep on an ARRICAM camera.jpg"
  },
  "red-one": {
   "recherche": [
-   "RED One camera",
-   "Red One digital cinema"
+   "intitle:\"RED One\" intitle:camera",
+   "intitle:\"Red One\" cinema camera"
   ]
  },
  "red-epic-mx-dragon": {
   "recherche": [
    "RED Epic camera",
    "Red Epic Dragon"
-  ]
+  ],
+  "choix": "File:Red EPIC camera.jpg"
  },
  "red-weapon-8k-vv": {
   "recherche": [
-   "RED Weapon camera"
+   "intitle:\"RED Weapon\"",
+   "intitle:\"Red Weapon\" camera"
   ]
  },
  "red-monstro-8k-vv": {
   "recherche": [
-   "RED Monstro",
-   "RED DSMC2 camera"
+   "intitle:Monstro",
+   "intitle:RED intitle:DSMC2"
   ]
  },
  "red-komodo-et-komodo-x": {
   "recherche": [
-   "RED Komodo"
+   "intitle:RED intitle:Komodo intitle:camera",
+   "intitle:\"RED Komodo\""
   ]
  },
  "red-v-raptor": {
   "recherche": [
    "RED V-Raptor",
    "V-Raptor camera"
-  ]
+  ],
+  "choix": "File:RED V-RAPTOR 8K VV with LAOWA Ultima 25-600mm T4 20250726111025.jpg"
  },
  "sony-hdw-f900": {
   "recherche": [
    "Sony HDW-F900",
    "Sony F900 CineAlta"
-  ]
+  ],
+  "choix": "File:Sony HDW-F900 of ETTV at Shiow Meei Industrial booth 20201101.jpg"
  },
  "sony-f65": {
   "recherche": [
    "Sony F65",
    "Sony F65 CineAlta"
-  ]
+  ],
+  "choix": "File:Sony CineAlta F65 20110412a.jpg"
  },
  "sony-f55-et-f5": {
   "recherche": [
    "Sony PMW-F55",
    "Sony F55 camera"
-  ]
+  ],
+  "choix": "File:2013 Sony CineAlta 4K cam 2013 CP+.jpg"
  },
  "sony-venice-et-venice-2": {
   "recherche": [
-   "Sony Venice camera",
-   "Sony Venice 2"
+   "intitle:Sony intitle:Venice intitle:CineAlta",
+   "intitle:\"Sony Venice\""
   ]
  },
  "sony-burano": {
   "recherche": [
    "Sony Burano"
-  ]
+  ],
+  "choix": "File:Sony CineAlta BURANO with Sony FE 50-150mm F2 GM 20250726125041.jpg"
  },
  "sony-fx9-fx6-et-fx3": {
   "recherche": [
    "Sony FX6 camera",
    "Sony FX9",
    "Sony FX3"
-  ]
+  ],
+  "choix": "File:Sony Cinema line FX6.jpg"
  },
  "canon-eos-5d-mark-ii": {
   "recherche": [
-   "Canon EOS 5D Mark II"
+   "intitle:\"5D Mark II\"",
+   "intitle:\"EOS 5D Mark II\""
   ]
  },
  "canon-eos-c300": {
   "recherche": [
    "Canon EOS C300"
-  ]
+  ],
+  "choix": "File:Canon C 300.JPG"
  },
  "canon-eos-c300-mark-ii-et-mark-iii": {
   "recherche": [
-   "Canon EOS C300 Mark II",
-   "Canon C300 Mark III"
+   "intitle:C300 intitle:\"Mark II\"",
+   "intitle:C300 intitle:\"Mark III\""
   ]
  },
  "blackmagic-pocket-4k-et-6k": {
   "recherche": [
    "Blackmagic Pocket Cinema Camera 4K",
    "Blackmagic Pocket Cinema Camera 6K"
-  ]
+  ],
+  "choix": "File:BMPCC 6K.jpg"
  },
  "blackmagic-ursa-mini-pro-12k": {
   "recherche": [
-   "Blackmagic URSA Mini Pro",
-   "URSA Mini Pro 12K"
+   "intitle:URSA intitle:Blackmagic",
+   "intitle:\"URSA Mini\""
   ]
  },
  "panavision-panaflex": {
   "recherche": [
-   "Panaflex camera",
-   "Panavision Panaflex"
+   "intitle:Panaflex",
+   "Panavision Panaflex film camera"
   ]
  },
  "panavision-genesis": {
   "recherche": [
    "Panavision Genesis camera"
-  ]
+  ],
+  "choix": "File:Marc Weigert testing the Panavision Genesis camera.jpg"
  },
  "panavision-millennium-xl2": {
   "recherche": [
    "Panavision Millennium XL2",
    "Panavision Millennium XL"
-  ]
+  ],
+  "choix": "File:Eli Arenson on set with the Panavision Millennium XL2.jpg"
  },
  "panavision-millennium-dxl2": {
   "recherche": [
    "Panavision DXL2",
    "Panavision Millennium DXL"
-  ]
+  ],
+  "choix": "File:Panavision Millennium DXL.jpg"
  },
  "panasonic-varicam-35-et-lt": {
   "recherche": [
-   "Panasonic VariCam LT",
-   "Panasonic VariCam 35"
+   "intitle:VariCam",
+   "Panasonic VariCam cinema camera"
   ]
  },
  "z-cam-e2": {
   "recherche": [
    "Z CAM E2",
    "Z Cam camera"
-  ]
+  ],
+  "choix": "File:Z Cam E2 with Kondor Blue Kofi Capture Cup Rig.jpg"
  },
  "dji-ronin-4d": {
   "recherche": [
    "DJI Ronin 4D"
-  ]
+  ],
+  "choix": "File:DJI RONIN 4D和DJI TRANSMISSION.jpg"
  },
  "silicon-imaging-si-2k": {
   "recherche": [
-   "Silicon Imaging SI-2K",
-   "SI-2K camera"
+   "intitle:\"SI-2K\"",
+   "intitle:\"Silicon Imaging\""
   ]
  },
  "vision-research-phantom": {
   "recherche": [
    "Phantom Flex camera",
    "Phantom high-speed camera"
-  ]
+  ],
+  "choix": "File:Phantom v12.1.jpg"
  },
  "technicolor-trois-bandes": {
   "recherche": [
    "Technicolor three-strip camera",
    "Technicolor camera"
-  ]
+  ],
+  "choix": "File:3-strip Technicolor camera.jpg"
  },
  "mitchell-bnc": {
   "recherche": [
    "Mitchell BNC camera",
    "Mitchell BNC"
-  ]
+  ],
+  "choix": "File:Viseur MITCHELL BNC années 30 à 60.jpg"
  },
  "bolex-h16": {
   "recherche": [
    "Bolex H16",
    "Bolex H16 Reflex"
-  ]
+  ],
+  "choix": "File:Bolex H16, 1935.jpg"
  },
  "eclair-cameflex": {
   "recherche": [
    "Eclair Cameflex",
    "Caméflex"
-  ]
+  ],
+  "choix": "File:Cameflex.jpg"
  },
  "auricon-pro-600": {
   "recherche": [
    "Auricon Pro-600",
    "Auricon camera"
-  ]
+  ],
+  "choix": "File:Caméra Auricon Pro 600.jpg"
  },
  "imax-15-70": {
   "recherche": [
    "IMAX camera",
    "IMAX film camera"
-  ]
+  ],
+  "choix": "File:IMAX camera 1.jpg"
  },
  "aaton-xtr": {
   "recherche": [
    "Aaton XTR",
    "Aaton camera"
-  ]
+  ],
+  "choix": "File:Konrad Wickler und Katja Raganelli.jpg"
  },
  "zeiss-super-speed": {
   "recherche": [
-   "Zeiss Super Speed lens",
-   "Zeiss Superspeed"
+   "intitle:Zeiss intitle:\"Super Speed\"",
+   "intitle:Zeiss intitle:Superspeed"
   ]
  },
  "arri-zeiss-ultra-prime": {
   "recherche": [
-   "Zeiss Ultra Prime",
-   "Ultra Prime lens"
+   "intitle:\"Ultra Prime\"",
+   "intitle:Zeiss intitle:UltraPrime"
   ]
  },
  "arri-zeiss-master-prime": {
   "recherche": [
-   "Zeiss Master Prime",
-   "Master Prime lens"
+   "intitle:\"Master Prime\"",
+   "intitle:Zeiss intitle:MasterPrime"
   ]
  },
  "zeiss-cp-3": {
   "recherche": [
-   "Zeiss CP.3",
-   "Zeiss Compact Prime"
+   "intitle:Zeiss intitle:\"CP.3\"",
+   "intitle:Zeiss intitle:\"Compact Prime\""
   ]
  },
  "zeiss-supreme-prime": {
   "recherche": [
    "Zeiss Supreme Prime"
-  ]
+  ],
+  "choix": "File:ARRI-ZEISS의 Supreme prime 렌즈.jpg"
  },
  "arri-signature-prime": {
   "recherche": [
-   "ARRI Signature Prime"
+   "intitle:\"Signature Prime\"",
+   "ARRI Signature Prime lens"
   ]
  },
  "cooke-speed-panchro": {
   "recherche": [
-   "Cooke Speed Panchro",
-   "Speed Panchro lens"
+   "intitle:\"Speed Panchro\"",
+   "intitle:Cooke intitle:Panchro"
   ]
  },
  "cooke-s4-i": {
   "recherche": [
-   "Cooke S4",
-   "Cooke S4/i lens"
+   "intitle:Cooke intitle:S4",
+   "Cooke Optics S4 lens"
   ]
  },
  "cooke-anamorphic-i": {
   "recherche": [
-   "Cooke anamorphic lens"
+   "intitle:Cooke intitle:anamorphic",
+   "Cooke Optics anamorphic lens"
   ]
  },
  "cooke-s7-i": {
   "recherche": [
-   "Cooke S7"
+   "intitle:Cooke intitle:S7",
+   "Cooke Optics cine lens"
   ]
  },
  "cooke-panchro-i-classic": {
   "recherche": [
-   "Cooke Panchro Classic"
+   "intitle:Cooke intitle:Panchro",
+   "Cooke Optics lens"
   ]
  },
  "angenieux-25-250": {
   "recherche": [
-   "Angenieux 25-250",
-   "Angénieux 10x25 zoom"
+   "intitle:Angenieux intitle:zoom",
+   "intitle:Angénieux"
   ]
  },
  "angenieux-optimo-24-290": {
   "recherche": [
    "Angenieux Optimo 24-290",
    "Angenieux Optimo"
-  ]
+  ],
+  "choix": "File:Angenieux Optimo Ultra 12X.jpg"
  },
  "angenieux-ez-1-et-ez-2": {
   "recherche": [
-   "Angenieux EZ-1",
-   "Angenieux EZ zoom"
+   "intitle:Angenieux intitle:EZ",
+   "intitle:Angénieux intitle:EZ"
   ]
  },
  "leitz-summilux-c-et-summicron-c": {
   "recherche": [
-   "Summilux-C",
-   "Leica Summilux-C lens"
+   "intitle:\"Summilux-C\"",
+   "intitle:\"Summicron-C\""
   ]
  },
  "leitz-thalia": {
   "recherche": [
-   "Leitz Thalia"
+   "intitle:Leitz intitle:Thalia",
+   "Leitz Cine lens"
   ]
  },
  "panavision-c-series": {
   "recherche": [
-   "Panavision C series anamorphic",
-   "Panavision anamorphic lens"
+   "intitle:Panavision intitle:anamorphic",
+   "intitle:Panavision intitle:lens"
   ]
  },
  "panavision-primo": {
   "recherche": [
-   "Panavision Primo lens"
+   "intitle:Panavision intitle:Primo",
+   "intitle:Panavision intitle:lens"
   ]
  },
  "panavision-primo-70-et-sphero-65": {
   "recherche": [
-   "Panavision Primo 70",
-   "Panavision Sphero 65"
+   "intitle:\"Primo 70\"",
+   "intitle:Panavision intitle:Sphero"
   ]
  },
  "panavision-t-series": {
   "recherche": [
-   "Panavision T series lens"
+   "intitle:Panavision intitle:\"T Series\"",
+   "intitle:Panavision intitle:anamorphic"
   ]
  },
  "kowa-cine-prominar-anamorphiques": {
   "recherche": [
-   "Kowa anamorphic",
-   "Kowa Prominar anamorphic"
+   "intitle:Kowa intitle:anamorphic",
+   "intitle:Kowa intitle:Prominar"
   ]
  },
  "lomo-square-front-et-round-front": {
   "recherche": [
-   "LOMO anamorphic lens",
-   "LOMO round front"
+   "intitle:LOMO intitle:anamorphic",
+   "intitle:LOMO intitle:OKS"
   ]
  },
  "vantage-hawk-v-lite": {
   "recherche": [
-   "Hawk anamorphic lens",
-   "Vantage Hawk"
+   "intitle:Hawk intitle:anamorphic",
+   "intitle:Vantage intitle:Hawk"
   ]
  },
  "bausch-lomb-baltar": {
   "recherche": [
-   "Baltar lens",
-   "Bausch Lomb Baltar"
+   "intitle:Baltar",
+   "Bausch Lomb Baltar cine lens"
   ]
  },
  "canon-k35": {
   "recherche": [
-   "Canon K35",
-   "Canon K-35 lens"
+   "intitle:Canon intitle:K35",
+   "intitle:Canon intitle:\"K-35\""
   ]
  },
  "nikon-ai-s-rehousses": {
   "recherche": [
    "Nikkor AI-S lens",
    "Nikon Ai-s Nikkor"
-  ]
+  ],
+  "choix": "File:Nikon AI-s Nikkor 105mm f1.8.jpg"
  },
  "sigma-cine-ff-high-speed": {
   "recherche": [
    "Sigma cine lens",
    "Sigma FF High Speed Prime"
-  ]
+  ],
+  "choix": "File:Duclos Lenses Sigma Cine 40mm.jpg"
  }
 }
