@@ -1,5 +1,7 @@
 package fr.cellule.app.ecrans
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -23,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import fr.cellule.app.ChiffreEnorme
 import fr.cellule.app.Corps
@@ -53,6 +56,46 @@ fun EcranJournal(depot: DepotJournal, reglages: Reglages, etat: EtatApplication)
     var note by remember { mutableStateOf("") }
     var message by remember { mutableStateOf("") }
     var toutVoir by remember { mutableStateOf(false) }
+    var effacementDemande by remember { mutableStateOf(false) }
+    var messageSauvegarde by remember { mutableStateOf("") }
+    var sauvegardeEchouee by remember { mutableStateOf(false) }
+
+    /* Le fichier est écrit ou lu là où l'utilisateur le choisit, par le
+       sélecteur de fichiers d'Android : aucune permission de stockage. */
+    val contexte = LocalContext.current
+    val exporter = rememberLauncherForActivityResult(
+        ActivityResultContracts.CreateDocument("application/json")
+    ) { uri ->
+        if (uri == null) return@rememberLauncherForActivityResult
+        try {
+            contexte.contentResolver.openOutputStream(uri)?.use {
+                it.write(depot.versSauvegarde().toByteArray(Charsets.UTF_8))
+            } ?: error("fichier inaccessible")
+            messageSauvegarde = "Carnet sauvegardé : ${depot.entrees.size} vue(s)."
+            sauvegardeEchouee = false
+        } catch (e: Exception) {
+            messageSauvegarde = "La sauvegarde n'a pas pu être écrite."
+            sauvegardeEchouee = true
+        }
+    }
+    val restaurer = rememberLauncherForActivityResult(
+        ActivityResultContracts.OpenDocument()
+    ) { uri ->
+        if (uri == null) return@rememberLauncherForActivityResult
+        try {
+            val texte = contexte.contentResolver.openInputStream(uri)?.use {
+                it.readBytes().toString(Charsets.UTF_8)
+            } ?: error("fichier inaccessible")
+            val ajoutees = depot.importer(texte)
+            messageSauvegarde = if (ajoutees == 0) "Rien de nouveau : ces vues sont déjà dans le carnet."
+            else "$ajoutees vue(s) restaurée(s)."
+            sauvegardeEchouee = false
+            vue = Statistiques.vueSuivante(depot.entrees, pellicule)
+        } catch (e: Exception) {
+            messageSauvegarde = "Ce fichier n'est pas une sauvegarde du carnet."
+            sauvegardeEchouee = true
+        }
+    }
 
     val entrees = depot.entrees
 
@@ -221,9 +264,36 @@ fun EcranJournal(depot: DepotJournal, reglages: Reglages, etat: EtatApplication)
                             toutVoir = !toutVoir
                         }
                     }
-                    BoutonPlat("Tout effacer") { depot.vider() }
+                    /* Deux temps, comme pour une vue seule : un effacement
+                       complet ne doit jamais tenir à un effleurement. */
+                    BoutonPlat(if (effacementDemande) "Confirmer l'effacement" else "Tout effacer") {
+                        if (effacementDemande) {
+                            depot.vider()
+                            effacementDemande = false
+                        } else effacementDemande = true
+                    }
                 }
             }
+        }
+
+        /* ── La sauvegarde ────────────────────────────────────────────── */
+        Carte(
+            titre = "Sauvegarde",
+            sousTitre = "Un fichier à ranger où tu veux — Drive, Téléchargements, un mail à toi-même. Restaurer ajoute les vues qui manquent, sans rien écraser ni dédoubler."
+        ) {
+            LigneBoutons {
+                BoutonPlat(
+                    "Sauvegarder",
+                    accent = true,
+                    actif = entrees.isNotEmpty(),
+                    modifier = Modifier.weight(1f)
+                ) { exporter.launch("carnet-cellule-${LocalDate.now()}.json") }
+                BoutonPlat("Restaurer", modifier = Modifier.weight(1f)) {
+                    restaurer.launch(arrayOf("application/json", "text/*", "application/octet-stream"))
+                }
+            }
+            Spacer(Modifier.height(Interligne))
+            BandeauEtat(messageSauvegarde, alerte = sauvegardeEchouee)
         }
     }
 }

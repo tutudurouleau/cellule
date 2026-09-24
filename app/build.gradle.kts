@@ -6,19 +6,48 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose") version "2.1.0"
 }
 
+/* Numéro de la compilation GitHub : il croît à chaque envoi, et Android
+   n'accepte une mise à jour que si le numéro de version ne recule pas.
+   Renommer le workflow le remettrait à zéro — ne pas le faire. */
+val numeroDeCompilation = System.getenv("GITHUB_RUN_NUMBER")?.toIntOrNull() ?: 1
+
 android {
     namespace = "fr.cellule.app"
     compileSdk = 35
+
+    /*
+     * Une clé de signature fixe, versionnée avec le code.
+     *
+     * Sans elle, chaque machine de compilation invente sa propre clé de
+     * débogage : deux APK successifs n'ont jamais la même signature, Android
+     * refuse de poser l'un sur l'autre, et il faut désinstaller — ce qui
+     * efface le carnet. Avec elle, chaque nouvel APK s'installe par-dessus
+     * le précédent et les données restent.
+     *
+     * Elle ne protège rien : elle n'a pas à être secrète pour une application
+     * installée à la main hors du Play Store.
+     */
+    signingConfigs {
+        create("cellule") {
+            storeFile = file("signature/cellule.jks")
+            storePassword = "cellule-debug"
+            keyAlias = "cellule"
+            keyPassword = "cellule-debug"
+        }
+    }
 
     defaultConfig {
         applicationId = "fr.cellule.app"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = numeroDeCompilation
+        versionName = "1.$numeroDeCompilation"
     }
 
     buildTypes {
+        debug {
+            signingConfig = signingConfigs.getByName("cellule")
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")

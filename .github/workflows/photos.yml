@@ -1,0 +1,41 @@
+name: Photos
+
+# Les photos du matériel viennent de Wikimedia Commons, que seules les
+# machines de GitHub peuvent joindre. Modifier outils/photos.json relance la
+# recherche ; le résultat est versé dans le dépôt par un commit automatique.
+# (Un commit poussé avec le jeton d'Actions ne relance aucun workflow :
+# pas de boucle.)
+on:
+  push:
+    paths:
+      - "outils/photos.json"
+      - "outils/photos.py"
+  workflow_dispatch:
+
+concurrency:
+  group: photos-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  photos:
+    name: Photos Wikimedia Commons
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Chercher et télécharger
+        run: python3 outils/photos.py
+      - name: Verser dans le dépôt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p outils/candidats
+          git add -A outils app/src/main/assets/photos
+          if git diff --cached --quiet; then
+            echo "Rien de nouveau."
+            exit 0
+          fi
+          git commit -m "Photos : mise à jour depuis Wikimedia Commons"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

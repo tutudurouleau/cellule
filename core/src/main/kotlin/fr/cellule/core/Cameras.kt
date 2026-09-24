@@ -72,6 +72,10 @@ sealed interface Materiel {
     val nomComplet: String
         get() = if (nom.startsWith(fabricant, ignoreCase = true)) nom else "$fabricant $nom"
     val libelleAnnee: String get() = if (anneeApprox) "vers $annee" else annee.toString()
+
+    /** Identifiant stable, sans accents ni espaces — « arri-alexa-mini ». Nomme les photos. */
+    val identifiant: String
+        get() = sansAccents(nomComplet).replace(Regex("[^a-z0-9]+"), "-").trim('-')
 }
 
 data class Camera(

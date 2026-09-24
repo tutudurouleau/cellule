@@ -1,0 +1,407 @@
+{
+ "arri-alexa-classic-xt-sxt": {
+  "recherche": [
+   "Arri Alexa camera",
+   "Alexa XT camera"
+  ]
+ },
+ "arri-amira": {
+  "recherche": [
+   "Arri Amira"
+  ]
+ },
+ "arri-alexa-65": {
+  "recherche": [
+   "Alexa 65 camera"
+  ]
+ },
+ "arri-alexa-mini": {
+  "recherche": [
+   "Arri Alexa Mini",
+   "Alexa Mini camera"
+  ]
+ },
+ "arri-alexa-lf": {
+  "recherche": [
+   "Alexa LF camera"
+  ]
+ },
+ "arri-alexa-mini-lf": {
+  "recherche": [
+   "Alexa Mini LF"
+  ]
+ },
+ "arri-alexa-35": {
+  "recherche": [
+   "Alexa 35 camera"
+  ]
+ },
+ "arriflex-16sr": {
+  "recherche": [
+   "Arriflex 16SR",
+   "Arriflex 16 SR"
+  ]
+ },
+ "arriflex-535": {
+  "recherche": [
+   "Arriflex 535"
+  ]
+ },
+ "arriflex-435": {
+  "recherche": [
+   "Arriflex 435"
+  ]
+ },
+ "arricam-st-lt": {
+  "recherche": [
+   "Arricam",
+   "Arricam LT"
+  ]
+ },
+ "red-one": {
+  "recherche": [
+   "RED One camera",
+   "Red One digital cinema"
+  ]
+ },
+ "red-epic-mx-dragon": {
+  "recherche": [
+   "RED Epic camera",
+   "Red Epic Dragon"
+  ]
+ },
+ "red-weapon-8k-vv": {
+  "recherche": [
+   "RED Weapon camera"
+  ]
+ },
+ "red-monstro-8k-vv": {
+  "recherche": [
+   "RED Monstro",
+   "RED DSMC2 camera"
+  ]
+ },
+ "red-komodo-et-komodo-x": {
+  "recherche": [
+   "RED Komodo"
+  ]
+ },
+ "red-v-raptor": {
+  "recherche": [
+   "RED V-Raptor",
+   "V-Raptor camera"
+  ]
+ },
+ "sony-hdw-f900": {
+  "recherche": [
+   "Sony HDW-F900",
+   "Sony F900 CineAlta"
+  ]
+ },
+ "sony-f65": {
+  "recherche": [
+   "Sony F65",
+   "Sony F65 CineAlta"
+  ]
+ },
+ "sony-f55-et-f5": {
+  "recherche": [
+   "Sony PMW-F55",
+   "Sony F55 camera"
+  ]
+ },
+ "sony-venice-et-venice-2": {
+  "recherche": [
+   "Sony Venice camera",
+   "Sony Venice 2"
+  ]
+ },
+ "sony-burano": {
+  "recherche": [
+   "Sony Burano"
+  ]
+ },
+ "sony-fx9-fx6-et-fx3": {
+  "recherche": [
+   "Sony FX6 camera",
+   "Sony FX9",
+   "Sony FX3"
+  ]
+ },
+ "canon-eos-5d-mark-ii": {
+  "recherche": [
+   "Canon EOS 5D Mark II"
+  ]
+ },
+ "canon-eos-c300": {
+  "recherche": [
+   "Canon EOS C300"
+  ]
+ },
+ "canon-eos-c300-mark-ii-et-mark-iii": {
+  "recherche": [
+   "Canon EOS C300 Mark II",
+   "Canon C300 Mark III"
+  ]
+ },
+ "blackmagic-pocket-4k-et-6k": {
+  "recherche": [
+   "Blackmagic Pocket Cinema Camera 4K",
+   "Blackmagic Pocket Cinema Camera 6K"
+  ]
+ },
+ "blackmagic-ursa-mini-pro-12k": {
+  "recherche": [
+   "Blackmagic URSA Mini Pro",
+   "URSA Mini Pro 12K"
+  ]
+ },
+ "panavision-panaflex": {
+  "recherche": [
+   "Panaflex camera",
+   "Panavision Panaflex"
+  ]
+ },
+ "panavision-genesis": {
+  "recherche": [
+   "Panavision Genesis camera"
+  ]
+ },
+ "panavision-millennium-xl2": {
+  "recherche": [
+   "Panavision Millennium XL2",
+   "Panavision Millennium XL"
+  ]
+ },
+ "panavision-millennium-dxl2": {
+  "recherche": [
+   "Panavision DXL2",
+   "Panavision Millennium DXL"
+  ]
+ },
+ "panasonic-varicam-35-et-lt": {
+  "recherche": [
+   "Panasonic VariCam LT",
+   "Panasonic VariCam 35"
+  ]
+ },
+ "z-cam-e2": {
+  "recherche": [
+   "Z CAM E2",
+   "Z Cam camera"
+  ]
+ },
+ "dji-ronin-4d": {
+  "recherche": [
+   "DJI Ronin 4D"
+  ]
+ },
+ "silicon-imaging-si-2k": {
+  "recherche": [
+   "Silicon Imaging SI-2K",
+   "SI-2K camera"
+  ]
+ },
+ "vision-research-phantom": {
+  "recherche": [
+   "Phantom Flex camera",
+   "Phantom high-speed camera"
+  ]
+ },
+ "technicolor-trois-bandes": {
+  "recherche": [
+   "Technicolor three-strip camera",
+   "Technicolor camera"
+  ]
+ },
+ "mitchell-bnc": {
+  "recherche": [
+   "Mitchell BNC camera",
+   "Mitchell BNC"
+  ]
+ },
+ "bolex-h16": {
+  "recherche": [
+   "Bolex H16",
+   "Bolex H16 Reflex"
+  ]
+ },
+ "eclair-cameflex": {
+  "recherche": [
+   "Eclair Cameflex",
+   "Caméflex"
+  ]
+ },
+ "auricon-pro-600": {
+  "recherche": [
+   "Auricon Pro-600",
+   "Auricon camera"
+  ]
+ },
+ "imax-15-70": {
+  "recherche": [
+   "IMAX camera",
+   "IMAX film camera"
+  ]
+ },
+ "aaton-xtr": {
+  "recherche": [
+   "Aaton XTR",
+   "Aaton camera"
+  ]
+ },
+ "zeiss-super-speed": {
+  "recherche": [
+   "Zeiss Super Speed lens",
+   "Zeiss Superspeed"
+  ]
+ },
+ "arri-zeiss-ultra-prime": {
+  "recherche": [
+   "Zeiss Ultra Prime",
+   "Ultra Prime lens"
+  ]
+ },
+ "arri-zeiss-master-prime": {
+  "recherche": [
+   "Zeiss Master Prime",
+   "Master Prime lens"
+  ]
+ },
+ "zeiss-cp-3": {
+  "recherche": [
+   "Zeiss CP.3",
+   "Zeiss Compact Prime"
+  ]
+ },
+ "zeiss-supreme-prime": {
+  "recherche": [
+   "Zeiss Supreme Prime"
+  ]
+ },
+ "arri-signature-prime": {
+  "recherche": [
+   "ARRI Signature Prime"
+  ]
+ },
+ "cooke-speed-panchro": {
+  "recherche": [
+   "Cooke Speed Panchro",
+   "Speed Panchro lens"
+  ]
+ },
+ "cooke-s4-i": {
+  "recherche": [
+   "Cooke S4",
+   "Cooke S4/i lens"
+  ]
+ },
+ "cooke-anamorphic-i": {
+  "recherche": [
+   "Cooke anamorphic lens"
+  ]
+ },
+ "cooke-s7-i": {
+  "recherche": [
+   "Cooke S7"
+  ]
+ },
+ "cooke-panchro-i-classic": {
+  "recherche": [
+   "Cooke Panchro Classic"
+  ]
+ },
+ "angenieux-25-250": {
+  "recherche": [
+   "Angenieux 25-250",
+   "Angénieux 10x25 zoom"
+  ]
+ },
+ "angenieux-optimo-24-290": {
+  "recherche": [
+   "Angenieux Optimo 24-290",
+   "Angenieux Optimo"
+  ]
+ },
+ "angenieux-ez-1-et-ez-2": {
+  "recherche": [
+   "Angenieux EZ-1",
+   "Angenieux EZ zoom"
+  ]
+ },
+ "leitz-summilux-c-et-summicron-c": {
+  "recherche": [
+   "Summilux-C",
+   "Leica Summilux-C lens"
+  ]
+ },
+ "leitz-thalia": {
+  "recherche": [
+   "Leitz Thalia"
+  ]
+ },
+ "panavision-c-series": {
+  "recherche": [
+   "Panavision C series anamorphic",
+   "Panavision anamorphic lens"
+  ]
+ },
+ "panavision-primo": {
+  "recherche": [
+   "Panavision Primo lens"
+  ]
+ },
+ "panavision-primo-70-et-sphero-65": {
+  "recherche": [
+   "Panavision Primo 70",
+   "Panavision Sphero 65"
+  ]
+ },
+ "panavision-t-series": {
+  "recherche": [
+   "Panavision T series lens"
+  ]
+ },
+ "kowa-cine-prominar-anamorphiques": {
+  "recherche": [
+   "Kowa anamorphic",
+   "Kowa Prominar anamorphic"
+  ]
+ },
+ "lomo-square-front-et-round-front": {
+  "recherche": [
+   "LOMO anamorphic lens",
+   "LOMO round front"
+  ]
+ },
+ "vantage-hawk-v-lite": {
+  "recherche": [
+   "Hawk anamorphic lens",
+   "Vantage Hawk"
+  ]
+ },
+ "bausch-lomb-baltar": {
+  "recherche": [
+   "Baltar lens",
+   "Bausch Lomb Baltar"
+  ]
+ },
+ "canon-k35": {
+  "recherche": [
+   "Canon K35",
+   "Canon K-35 lens"
+  ]
+ },
+ "nikon-ai-s-rehousses": {
+  "recherche": [
+   "Nikkor AI-S lens",
+   "Nikon Ai-s Nikkor"
+  ]
+ },
+ "sigma-cine-ff-high-speed": {
+  "recherche": [
+   "Sigma cine lens",
+   "Sigma FF High Speed Prime"
+  ]
+ }
+}

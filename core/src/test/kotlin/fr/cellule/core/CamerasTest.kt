@@ -163,3 +163,39 @@ class QuizMaterielTest {
         )
     }
 }
+
+class PhotosMaterielTest {
+
+    /* Les tests tournent depuis le dossier du module core. */
+    private val liste = java.io.File("../outils/photos.json")
+    private val credits = java.io.File("../app/src/main/assets/photos/credits.json")
+
+    private fun cles(texte: String): Set<String> =
+        Regex("^\\s*\"([a-z0-9-]+)\"\\s*:\\s*\\{", RegexOption.MULTILINE)
+            .findAll(texte).map { it.groupValues[1] }.toSet()
+
+    @Test
+    fun `les identifiants sont stables et lisibles`() {
+        assertEquals("arri-alexa-mini", CATALOGUE_CAMERAS.first { it.nom == "ALEXA Mini" }.identifiant)
+        assertEquals("eclair-cameflex", CATALOGUE_CAMERAS.first { it.nom == "Caméflex" }.identifiant)
+        assertEquals("bausch-lomb-baltar", CATALOGUE_OBJECTIFS.first { it.nom == "Baltar" }.identifiant)
+        assertEquals(CATALOGUE_MATERIEL.size, CATALOGUE_MATERIEL.map { it.identifiant }.toSet().size)
+    }
+
+    @Test
+    fun `la liste des photos couvre exactement le catalogue`() {
+        assertTrue(liste.exists(), "outils/photos.json manquant")
+        assertEquals(CATALOGUE_MATERIEL.map { it.identifiant }.toSet(), cles(liste.readText()))
+    }
+
+    @Test
+    fun `chaque photo creditee existe et appartient au catalogue`() {
+        if (!credits.exists()) return
+        val texte = credits.readText()
+        val connus = CATALOGUE_MATERIEL.map { it.identifiant }.toSet()
+        cles(texte).forEach { assertTrue(it in connus, "photo sans fiche : $it") }
+        Regex("\"fichier\"\\s*:\\s*\"([^\"]+)\"").findAll(texte).forEach {
+            assertTrue(java.io.File(credits.parentFile, it.groupValues[1]).exists(), "photo manquante : ${it.groupValues[1]}")
+        }
+    }
+}

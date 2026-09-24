@@ -160,3 +160,39 @@ class JournalTest {
         assertEquals("Sous-bois", Statistiques.typeSuggere(15.0, OBSTACLES.first { it.id == "sousbois" }))
     }
 }
+
+class SauvegardeCarnetTest {
+
+    @Test
+    fun `le json se retrouve dans les preferences d'android`() {
+        val xml = """
+            <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+            <map>
+                <string name="pellicule">Tri-X 400</string>
+                <string name="journal">[{&quot;id&quot;:1,&quot;sujet&quot;:&quot;Port &amp; phare&quot;,&quot;note&quot;:&quot;l&apos;&#233;t&#xE9; &amp;quot;&quot;}]</string>
+                <int name="iso" value="400" />
+            </map>
+        """.trimIndent()
+        assertEquals(
+            """[{"id":1,"sujet":"Port & phare","note":"l'été &quot;"}]""",
+            SauvegardeCarnet.extraireDesPreferences(xml)
+        )
+    }
+
+    @Test
+    fun `pas de carnet dans les preferences`() {
+        assertEquals(null, SauvegardeCarnet.extraireDesPreferences("<map><int name=\"iso\" value=\"400\" /></map>"))
+    }
+
+    @Test
+    fun `restaurer n'ecrase ni ne dedouble`() {
+        val a = EntreeJournal(10, "2026-09-01", sujet = "a")
+        val b = EntreeJournal(20, "2026-09-02", sujet = "b")
+        val bModifiee = b.copy(sujet = "autre")
+        val c = EntreeJournal(15, "2026-09-03", sujet = "c")
+        val fusion = SauvegardeCarnet.fusionner(listOf(a, b), listOf(bModifiee, c, c))
+        assertEquals(listOf(10L, 15L, 20L), fusion.map { it.identifiant })
+        assertEquals("b", fusion.first { it.identifiant == 20L }.sujet)
+        assertEquals(fusion, SauvegardeCarnet.fusionner(fusion, listOf(a, b, c)))
+    }
+}

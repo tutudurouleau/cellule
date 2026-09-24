@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.compose.runtime.mutableStateOf
 import fr.cellule.core.EntreeJournal
+import fr.cellule.core.SauvegardeCarnet
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.reflect.KProperty
@@ -125,9 +126,43 @@ class DepotJournal(contexte: Context) {
 
     private fun guillemets(t: String) = "\"" + t.replace("\"", "\"\"") + "\""
 
+    /**
+     * Le carnet entier, dans un fichier qu'on range où l'on veut (Drive,
+     * Téléchargements, un mail à soi-même) : de quoi changer de téléphone.
+     */
+    fun versSauvegarde(): String = JSONObject()
+        .put("format", SauvegardeCarnet.FORMAT)
+        .put("version", 1)
+        .put("entrees", enJson(etat.value))
+        .toString(2)
+
+    /**
+     * Relit une sauvegarde — ou, faute de mieux, le fichier de préférences
+     * d'une ancienne installation — et ajoute les vues qui manquent.
+     * Renvoie le nombre de vues ajoutées ; lève une exception si le fichier
+     * n'est pas un carnet.
+     */
+    fun importer(texte: String): Int {
+        val brut = texte.trim().removePrefix("\uFEFF")
+        val json = if (brut.startsWith("<")) {
+            SauvegardeCarnet.extraireDesPreferences(brut)
+                ?: throw IllegalArgumentException("aucun carnet dans ce fichier")
+        } else brut
+        val tableau = if (json.trimStart().startsWith("[")) JSONArray(json)
+        else JSONObject(json).getJSONArray("entrees")
+        val avant = etat.value.size
+        etat.value = SauvegardeCarnet.fusionner(etat.value, lire(tableau))
+        sauver()
+        return etat.value.size - avant
+    }
+
     private fun charger(): List<EntreeJournal> = try {
-        val brut = prefs.getString("journal", "[]") ?: "[]"
-        val tableau = JSONArray(brut)
+        lire(JSONArray(prefs.getString("journal", "[]") ?: "[]"))
+    } catch (e: Exception) {
+        emptyList()
+    }
+
+    private fun lire(tableau: JSONArray): List<EntreeJournal> =
         (0 until tableau.length()).map { i ->
             val o = tableau.getJSONObject(i)
             EntreeJournal(
@@ -144,13 +179,14 @@ class DepotJournal(contexte: Context) {
                 note = o.optString("note", "")
             )
         }
-    } catch (e: Exception) {
-        emptyList()
-    }
 
     private fun sauver() {
+        prefs.edit().putString("journal", enJson(etat.value).toString()).apply()
+    }
+
+    private fun enJson(entrees: List<EntreeJournal>): JSONArray {
         val tableau = JSONArray()
-        etat.value.forEach { e ->
+        entrees.forEach { e ->
             val o = JSONObject()
                 .put("id", e.identifiant)
                 .put("date", e.date)
@@ -165,6 +201,6 @@ class DepotJournal(contexte: Context) {
             e.mesure?.let { o.put("mesure", it) }
             tableau.put(o)
         }
-        prefs.edit().putString("journal", tableau.toString()).apply()
+        return tableau
     }
 }

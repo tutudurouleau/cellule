@@ -167,3 +167,44 @@ object Statistiques {
         return ((dernier ?: 0) + 1).toString()
     }
 }
+
+/**
+ * La sauvegarde du carnet : ce qui permet de changer de téléphone, ou de
+ * réinstaller, sans perdre ses notes.
+ */
+object SauvegardeCarnet {
+
+    const val FORMAT = "cellule-carnet"
+
+    /**
+     * Le carnet tel qu'Android le range dans les préférences de l'application :
+     * un fichier XML dont la chaîne « journal » contient le JSON, échappé.
+     * C'est ce qu'on récupère d'une ancienne installation, par exemple avec
+     * `adb shell run-as fr.cellule.app cat shared_prefs/cellule.xml`.
+     */
+    fun extraireDesPreferences(xml: String): String? {
+        val motif = Regex("<string\\s+name=\"journal\"\\s*>(.*?)</string>", RegexOption.DOT_MATCHES_ALL)
+        return motif.find(xml)?.groupValues?.get(1)?.let(::desechapper)
+    }
+
+    private fun desechapper(texte: String): String = texte
+        .replace("&quot;", "\"")
+        .replace("&apos;", "'")
+        .replace("&lt;", "<")
+        .replace("&gt;", ">")
+        .replace(Regex("&#x([0-9a-fA-F]+);")) { String(Character.toChars(it.groupValues[1].toInt(16))) }
+        .replace(Regex("&#(\\d+);")) { String(Character.toChars(it.groupValues[1].toInt())) }
+        /* En dernier : « &amp;quot; » doit redevenir « &quot; », pas « " ». */
+        .replace("&amp;", "&")
+
+    /**
+     * Ajoute ce qui manque, sans jamais écraser ni dédoubler : une vue déjà
+     * présente (même identifiant) est ignorée. Restaurer deux fois la même
+     * sauvegarde ne change donc rien.
+     */
+    fun fusionner(existant: List<EntreeJournal>, importees: List<EntreeJournal>): List<EntreeJournal> {
+        val connus = existant.map { it.identifiant }.toMutableSet()
+        val nouvelles = importees.filter { connus.add(it.identifiant) }
+        return (existant + nouvelles).sortedBy { it.identifiant }
+    }
+}
