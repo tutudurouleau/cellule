@@ -224,6 +224,7 @@ private fun Application() {
     val pronostics = remember { DepotPronostics(contexte) }
     val labo = remember { DepotLabo(contexte) }
     val tirages = remember { DepotTirages(contexte) }
+    val quiz = remember { DepotQuiz(contexte) }
     val etat = remember { EtatApplication() }
     /* Un chrono labo en cours ramène au Labo, par exemple depuis sa notification. */
     var onglet by remember { mutableStateOf(if (Minuteur.enCours) Onglet.LABO else Onglet.MESURER) }
@@ -283,7 +284,7 @@ private fun Application() {
                             Onglet.MESURER -> EcranMesurer(reglages, etat)
                             Onglet.ESTIMER -> EcranEstimer(reglages, etat)
                             Onglet.FOCALES -> EcranFocales()
-                            Onglet.CAMERAS -> EcranCameras()
+                            Onglet.CAMERAS -> EcranCameras(quiz)
                             Onglet.CARNET -> EcranJournal(depot, reglages, etat, labo, tirages, pronostics)
                             Onglet.LABO -> EcranLabo(pronostics, etat, labo, tirages)
                             Onglet.TABLES -> EcranTables()

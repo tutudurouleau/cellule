@@ -3,15 +3,20 @@ package fr.cellule.app
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.compose.runtime.mutableStateOf
+import fr.cellule.core.ARevoir
+import fr.cellule.core.BilanQuiz
 import fr.cellule.core.Calculateur
 import fr.cellule.core.CarnetLabo
 import fr.cellule.core.CarnetTirage
 import fr.cellule.core.Correction
 import fr.cellule.core.DeveloppementNote
 import fr.cellule.core.EntreeJournal
+import fr.cellule.core.Materiel
+import fr.cellule.core.Niveau
 import fr.cellule.core.Pronostic
 import fr.cellule.core.Resultat
 import fr.cellule.core.SauvegardeCarnet
+import fr.cellule.core.ScoreMarque
 import fr.cellule.core.TirageNote
 import org.json.JSONArray
 import org.json.JSONObject
@@ -467,5 +472,53 @@ class DepotTirages(contexte: Context) {
 
     private fun sauver() {
         prefs.edit().putString("tirages", enJson().toString()).apply()
+    }
+}
+
+/**
+ * Ce que le quiz Caméras retient d'une séance à l'autre : les fiches ratées
+ * à revoir, la réussite par marque, le niveau et la plus longue série.
+ */
+class DepotQuiz(contexte: Context) {
+
+    private val prefs: SharedPreferences =
+        contexte.getSharedPreferences("cellule", Context.MODE_PRIVATE)
+
+    private val revoir = mutableStateOf(chargerRevoir())
+    private val bilanEtat = mutableStateOf(chargerBilan())
+
+    val aRevoir: ARevoir get() = revoir.value
+    val bilan: BilanQuiz get() = bilanEtat.value
+
+    var niveau by TextePref(prefs, "quiz_niveau", Niveau.DECOUVERTE.name)
+    var record by EntierPref(prefs, "quiz_record", 0)
+
+    /** Une réponse à une question sur une fiche (qui suis-je, quel film). */
+    fun noter(m: Materiel, juste: Boolean) {
+        revoir.value = revoir.value.apres(m.identifiant, juste)
+        bilanEtat.value = bilanEtat.value.apres(m, juste)
+        prefs.edit()
+            .putString("quiz_a_revoir", JSONObject(revoir.value.compte).toString())
+            .putString("quiz_marques", JSONObject().apply {
+                bilanEtat.value.parMarque.values.forEach { put(it.marque, JSONArray().put(it.justes).put(it.posees)) }
+            }.toString())
+            .apply()
+    }
+
+    private fun chargerRevoir(): ARevoir = try {
+        val o = JSONObject(prefs.getString("quiz_a_revoir", "{}") ?: "{}")
+        ARevoir(o.keys().asSequence().associateWith { o.getInt(it) })
+    } catch (e: Exception) {
+        ARevoir()
+    }
+
+    private fun chargerBilan(): BilanQuiz = try {
+        val o = JSONObject(prefs.getString("quiz_marques", "{}") ?: "{}")
+        BilanQuiz(o.keys().asSequence().associateWith {
+            val a = o.getJSONArray(it)
+            ScoreMarque(it, a.getInt(0), a.getInt(1))
+        })
+    } catch (e: Exception) {
+        BilanQuiz()
     }
 }
