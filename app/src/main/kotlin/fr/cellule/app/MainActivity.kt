@@ -44,6 +44,7 @@ import androidx.compose.ui.graphics.vector.PathData
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import fr.cellule.app.chrono.Minuteur
 import fr.cellule.app.ecrans.EcranCameras
 import fr.cellule.app.ecrans.EcranEstimer
 import fr.cellule.app.ecrans.EcranFocales
@@ -183,7 +184,8 @@ private fun Application() {
     val depot = remember { DepotJournal(contexte) }
     val pronostics = remember { DepotPronostics(contexte) }
     val etat = remember { EtatApplication() }
-    var onglet by remember { mutableStateOf(Onglet.MESURER) }
+    /* Un chrono labo en cours ramène au Labo, par exemple depuis sa notification. */
+    var onglet by remember { mutableStateOf(if (Minuteur.enCours) Onglet.LABO else Onglet.MESURER) }
 
     Box(Modifier.fillMaxSize()) {
 

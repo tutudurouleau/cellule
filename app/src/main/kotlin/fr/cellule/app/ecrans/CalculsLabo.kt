@@ -78,7 +78,7 @@ private fun pose(secondes: Double): String = when {
 /* ── Temps et température ─────────────────────────────────────────────────── */
 
 @Composable
-fun CalculTemperature(pronostics: DepotPronostics) {
+fun CalculTemperature(pronostics: DepotPronostics, versChrono: (Double) -> Unit) {
     var compensation by remember { mutableStateOf<Compensation>(RegleIlford) }
     var base by remember { mutableStateOf("6:00") }
     var temperature by remember { mutableStateOf(23f) }
@@ -120,12 +120,12 @@ fun CalculTemperature(pronostics: DepotPronostics) {
         contexte = "${t20?.let { temps(it) } ?: ""} à 20 °C → ${fmt(t, 1)} °C",
         pronostics = pronostics
     ) {
-        ExplicationTemperature(compensation, t20 ?: return@Pari, t)
+        ExplicationTemperature(compensation, t20 ?: return@Pari, t, versChrono)
     }
 }
 
 @Composable
-private fun ExplicationTemperature(c: Compensation, t20: Double, t: Double) {
+private fun ExplicationTemperature(c: Compensation, t20: Double, t: Double, versChrono: (Double) -> Unit) {
     val resultat = t20 * c.facteur(t)
     val aPlat = t20 * (1 - c.tauxParDegre * (t - 20))
     val max = t20 * c.facteur(16.0) / 60
@@ -193,13 +193,17 @@ private fun ExplicationTemperature(c: Compensation, t20: Double, t: Double) {
             }
             else -> LigneSource(c.source)
         }
+        Spacer(Modifier.height(6.dp))
+        BoutonPlat("Régler le chrono sur ${temps(resultat)}", modifier = Modifier.fillMaxWidth()) {
+            versChrono((resultat / 5).roundToInt() * 5.0)
+        }
     }
 }
 
 /* ── Push et pull ─────────────────────────────────────────────────────────── */
 
 @Composable
-fun CalculPush(pronostics: DepotPronostics) {
+fun CalculPush(pronostics: DepotPronostics, versChrono: (Double) -> Unit) {
     var film by remember { mutableStateOf(Push.FILMS.first()) }
     val tables = Push.TABLES.filter { it.film == film }
     var table by remember(film) { mutableStateOf(tables.first()) }
@@ -224,7 +228,7 @@ fun CalculPush(pronostics: DepotPronostics) {
     }
 
     if (ei == table.iso) {
-        ExplicationPush(table, ei)
+        ExplicationPush(table, ei, versChrono)
         return
     }
     Pari(
@@ -238,12 +242,12 @@ fun CalculPush(pronostics: DepotPronostics) {
         contexte = "${table.intitule} · EI $ei",
         pronostics = pronostics
     ) {
-        ExplicationPush(table, ei)
+        ExplicationPush(table, ei, versChrono)
     }
 }
 
 @Composable
-private fun ExplicationPush(table: TablePush, ei: Int) {
+private fun ExplicationPush(table: TablePush, ei: Int, versChrono: (Double) -> Unit) {
     val minutes = table.minutes.getValue(ei)
     val d = table.diaphs(ei)
     val memeFilm = Push.TABLES.filter { it.film == table.film }
@@ -301,6 +305,10 @@ private fun ExplicationPush(table: TablePush, ei: Int) {
             )
         }
         LigneSource(table.source)
+        Spacer(Modifier.height(6.dp))
+        BoutonPlat("Régler le chrono sur ${temps(minutes * 60)}", modifier = Modifier.fillMaxWidth()) {
+            versChrono(minutes * 60)
+        }
     }
 }
 

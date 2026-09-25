@@ -30,6 +30,7 @@ import fr.cellule.app.Gouttiere
 import fr.cellule.app.Interligne
 import fr.cellule.app.TitreCarte
 import fr.cellule.app.ZoneNavFlottante
+import fr.cellule.app.chrono.Minuteur
 import fr.cellule.core.Calculateur
 import fr.cellule.core.Echelle
 import fr.cellule.core.EntrainementLabo
@@ -46,6 +47,7 @@ import kotlin.random.Random
 
 private enum class ModeLabo(val libelle: String) {
     CALCULER("Calculer"),
+    CHRONO("Chrono"),
     ENTRAINER("S'entraîner")
 }
 
@@ -82,13 +84,20 @@ private class EtatEntrainement {
 /**
  * Le Labo : développer ses films, tirer ses épreuves — et comprendre pourquoi
  * les chiffres sont ce qu'ils sont. Chaque calculateur demande d'abord ton
- * estimation ; chaque chiffre renvoie à la fiche du fabricant.
+ * estimation ; chaque chiffre renvoie à la fiche du fabricant. Le chrono
+ * enchaîne les bains, écran éteint.
  */
 @Composable
 fun EcranLabo(pronostics: DepotPronostics) {
-    var mode by remember { mutableStateOf(ModeLabo.CALCULER) }
+    /* Un chrono en cours ramène directement à lui. */
+    var mode by remember { mutableStateOf(if (Minuteur.enCours) ModeLabo.CHRONO else ModeLabo.CALCULER) }
     var calculateur by remember { mutableStateOf(Calculateur.TEMPERATURE) }
     val entrainement = remember { EtatEntrainement() }
+    val chrono = remember { EtatChrono() }
+    val versChrono: (Double) -> Unit = { secondes ->
+        chrono.reglerRevelateur(secondes)
+        mode = ModeLabo.CHRONO
+    }
 
     Column(Modifier.fillMaxSize()) {
         Box(Modifier.fillMaxWidth().padding(horizontal = Gouttiere, vertical = 6.dp)) {
@@ -113,14 +122,15 @@ fun EcranLabo(pronostics: DepotPronostics) {
                     ) { calculateur = it }
                     Spacer(Modifier.height(4.dp))
                     when (calculateur) {
-                        Calculateur.TEMPERATURE -> CalculTemperature(pronostics)
-                        Calculateur.PUSH_PULL -> CalculPush(pronostics)
+                        Calculateur.TEMPERATURE -> CalculTemperature(pronostics, versChrono)
+                        Calculateur.PUSH_PULL -> CalculPush(pronostics, versChrono)
                         Calculateur.RECIPROCITE -> CalculReciprocite(pronostics)
                         Calculateur.DILUTION -> CalculDilution(pronostics)
                         Calculateur.TIRAGE -> CalculTirage(pronostics)
                     }
                     CarteProgression(pronostics.liste.filter { it.calculateur == calculateur })
                 }
+                ModeLabo.CHRONO -> EcranChrono(chrono)
                 ModeLabo.ENTRAINER -> Entrainement(entrainement)
             }
         }
