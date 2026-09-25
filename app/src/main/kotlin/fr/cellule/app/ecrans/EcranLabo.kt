@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import fr.cellule.app.ChiffreGrand
 import fr.cellule.app.Corps
 import fr.cellule.app.DepotPronostics
+import fr.cellule.app.EtatApplication
 import fr.cellule.app.Detail
 import fr.cellule.app.Gouttiere
 import fr.cellule.app.Interligne
@@ -32,6 +33,7 @@ import fr.cellule.app.TitreCarte
 import fr.cellule.app.ZoneNavFlottante
 import fr.cellule.app.chrono.Minuteur
 import fr.cellule.core.Calculateur
+import fr.cellule.core.DeveloppementNote
 import fr.cellule.core.Echelle
 import fr.cellule.core.EntrainementLabo
 import fr.cellule.core.Exercice
@@ -48,7 +50,8 @@ import kotlin.random.Random
 private enum class ModeLabo(val libelle: String) {
     CALCULER("Calculer"),
     CHRONO("Chrono"),
-    ENTRAINER("S'entraîner")
+    FICHES("Fiches"),
+    ENTRAINER("Quiz")
 }
 
 /*
@@ -88,7 +91,7 @@ private class EtatEntrainement {
  * enchaîne les bains, écran éteint.
  */
 @Composable
-fun EcranLabo(pronostics: DepotPronostics) {
+fun EcranLabo(pronostics: DepotPronostics, etatApplication: EtatApplication) {
     /* Un chrono en cours ramène directement à lui. */
     var mode by remember { mutableStateOf(if (Minuteur.enCours) ModeLabo.CHRONO else ModeLabo.CALCULER) }
     var calculateur by remember { mutableStateOf(Calculateur.TEMPERATURE) }
@@ -98,6 +101,8 @@ fun EcranLabo(pronostics: DepotPronostics) {
         chrono.reglerRevelateur(secondes)
         mode = ModeLabo.CHRONO
     }
+    /* Même geste que « verser au carnet » depuis Estimer : le carnet reprend la proposition. */
+    val versCarnet: (DeveloppementNote) -> Unit = { etatApplication.developpementPropose = it }
 
     Column(Modifier.fillMaxSize()) {
         Box(Modifier.fillMaxWidth().padding(horizontal = Gouttiere, vertical = 6.dp)) {
@@ -122,15 +127,16 @@ fun EcranLabo(pronostics: DepotPronostics) {
                     ) { calculateur = it }
                     Spacer(Modifier.height(4.dp))
                     when (calculateur) {
-                        Calculateur.TEMPERATURE -> CalculTemperature(pronostics, versChrono)
-                        Calculateur.PUSH_PULL -> CalculPush(pronostics, versChrono)
+                        Calculateur.TEMPERATURE -> CalculTemperature(pronostics, versChrono, versCarnet)
+                        Calculateur.PUSH_PULL -> CalculPush(pronostics, versChrono, versCarnet)
                         Calculateur.RECIPROCITE -> CalculReciprocite(pronostics)
                         Calculateur.DILUTION -> CalculDilution(pronostics)
                         Calculateur.TIRAGE -> CalculTirage(pronostics)
                     }
                     CarteProgression(pronostics.liste.filter { it.calculateur == calculateur })
                 }
-                ModeLabo.CHRONO -> EcranChrono(chrono)
+                ModeLabo.CHRONO -> EcranChrono(chrono, versCarnet)
+                ModeLabo.FICHES -> EcranFiches()
                 ModeLabo.ENTRAINER -> Entrainement(entrainement)
             }
         }
@@ -152,6 +158,7 @@ private class EtatPari {
  * pari recommence.
  *
  * [lire] et [afficher] travaillent dans l'unité de [calcule] (secondes, mL).
+ * La révélation reçoit l'estimation, pour la verser au carnet avec le calcul.
  */
 @Composable
 fun Pari(
@@ -164,7 +171,7 @@ fun Pari(
     afficher: (Double) -> String,
     contexte: String,
     pronostics: DepotPronostics,
-    revelation: @Composable () -> Unit
+    revelation: @Composable (estime: Double?) -> Unit
 ) {
     val etat = remember(cle) { EtatPari() }
     if (calcule == null) return
@@ -226,7 +233,7 @@ fun Pari(
             etat.estime = null
         }
     }
-    revelation()
+    revelation(estime)
 }
 
 /** La source d'un chiffre, qu'on peut ouvrir pour aller vérifier soi-même. */

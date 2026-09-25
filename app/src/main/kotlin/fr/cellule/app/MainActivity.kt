@@ -52,6 +52,7 @@ import fr.cellule.app.ecrans.EcranJournal
 import fr.cellule.app.ecrans.EcranLabo
 import fr.cellule.app.ecrans.EcranMesurer
 import fr.cellule.app.ecrans.EcranTables
+import fr.cellule.core.DeveloppementNote
 import fr.cellule.core.TYPES_DE_SCENE
 
 /** Ce que les écrans se passent entre eux. */
@@ -64,6 +65,9 @@ class EtatApplication {
 
     /** Le couple retenu au moment de la mesure, pour le noter avec la vue. */
     var dernierReglage by mutableStateOf("")
+
+    /** Un développement préparé par le Labo, à reprendre dans le carnet. */
+    var developpementPropose by mutableStateOf<DeveloppementNote?>(null)
 
     var derniereEstimation by mutableStateOf<Double?>(null)
     var dernierTypeScene by mutableStateOf(TYPES_DE_SCENE.first())
@@ -183,6 +187,7 @@ private fun Application() {
     val reglages = remember { Reglages(contexte) }
     val depot = remember { DepotJournal(contexte) }
     val pronostics = remember { DepotPronostics(contexte) }
+    val labo = remember { DepotLabo(contexte) }
     val etat = remember { EtatApplication() }
     /* Un chrono labo en cours ramène au Labo, par exemple depuis sa notification. */
     var onglet by remember { mutableStateOf(if (Minuteur.enCours) Onglet.LABO else Onglet.MESURER) }
@@ -201,8 +206,8 @@ private fun Application() {
                     Onglet.ESTIMER -> EcranEstimer(reglages, etat)
                     Onglet.FOCALES -> EcranFocales()
                     Onglet.CAMERAS -> EcranCameras()
-                    Onglet.CARNET -> EcranJournal(depot, reglages, etat)
-                    Onglet.LABO -> EcranLabo(pronostics)
+                    Onglet.CARNET -> EcranJournal(depot, reglages, etat, labo, pronostics)
+                    Onglet.LABO -> EcranLabo(pronostics, etat)
                     Onglet.TABLES -> EcranTables()
                 }
             }

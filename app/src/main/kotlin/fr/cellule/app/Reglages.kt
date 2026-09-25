@@ -4,8 +4,11 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.compose.runtime.mutableStateOf
 import fr.cellule.core.Calculateur
+import fr.cellule.core.CarnetLabo
+import fr.cellule.core.DeveloppementNote
 import fr.cellule.core.EntreeJournal
 import fr.cellule.core.Pronostic
+import fr.cellule.core.Resultat
 import fr.cellule.core.SauvegardeCarnet
 import org.json.JSONArray
 import org.json.JSONObject
@@ -131,31 +134,40 @@ class DepotJournal(contexte: Context) {
     /**
      * Le carnet entier, dans un fichier qu'on range où l'on veut (Drive,
      * Téléchargements, un mail à soi-même) : de quoi changer de téléphone.
+     * Version 2 : les développements et les paris du Labo voyagent avec les
+     * vues ; une version antérieure de l'appli relit les vues et ignore le reste.
      */
-    fun versSauvegarde(): String = JSONObject()
+    fun versSauvegarde(labo: DepotLabo, pronostics: DepotPronostics): String = JSONObject()
         .put("format", SauvegardeCarnet.FORMAT)
-        .put("version", 1)
+        .put("version", 2)
         .put("entrees", enJson(etat.value))
+        .put("developpements", labo.enJson())
+        .put("pronostics", pronostics.enJson())
         .toString(2)
 
     /**
      * Relit une sauvegarde — ou, faute de mieux, le fichier de préférences
-     * d'une ancienne installation — et ajoute les vues qui manquent.
-     * Renvoie le nombre de vues ajoutées ; lève une exception si le fichier
-     * n'est pas un carnet.
+     * d'une ancienne installation — et ajoute les vues, les développements et
+     * les paris qui manquent. Renvoie le nombre de vues et de développements
+     * ajoutés ; lève une exception si le fichier n'est pas un carnet.
      */
-    fun importer(texte: String): Int {
+    fun importer(texte: String, labo: DepotLabo, pronostics: DepotPronostics): Int {
         val brut = texte.trim().removePrefix("\uFEFF")
         val json = if (brut.startsWith("<")) {
             SauvegardeCarnet.extraireDesPreferences(brut)
                 ?: throw IllegalArgumentException("aucun carnet dans ce fichier")
         } else brut
-        val tableau = if (json.trimStart().startsWith("[")) JSONArray(json)
-        else JSONObject(json).getJSONArray("entrees")
+        val objet = if (json.trimStart().startsWith("[")) null else JSONObject(json)
+        val tableau = objet?.optJSONArray("entrees") ?: if (objet == null) JSONArray(json) else JSONArray()
+        if (objet != null && !objet.has("entrees") && !objet.has("developpements")) {
+            throw IllegalArgumentException("aucun carnet dans ce fichier")
+        }
         val avant = etat.value.size
         etat.value = SauvegardeCarnet.fusionner(etat.value, lire(tableau))
         sauver()
-        return etat.value.size - avant
+        val ajoutes = objet?.optJSONArray("developpements")?.let { labo.importer(it) } ?: 0
+        objet?.optJSONArray("pronostics")?.let { pronostics.importer(it) }
+        return etat.value.size - avant + ajoutes
     }
 
     private fun charger(): List<EntreeJournal> = try {
@@ -227,7 +239,12 @@ class DepotPronostics(contexte: Context) {
     }
 
     private fun charger(): List<Pronostic> = try {
-        val tableau = JSONArray(prefs.getString("pronostics", "[]") ?: "[]")
+        lire(JSONArray(prefs.getString("pronostics", "[]") ?: "[]"))
+    } catch (e: Exception) {
+        emptyList()
+    }
+
+    private fun lire(tableau: JSONArray): List<Pronostic> =
         (0 until tableau.length()).mapNotNull { i ->
             val o = tableau.getJSONObject(i)
             /* Un calculateur renommé ou retiré ne doit pas faire perdre les autres paris. */
@@ -241,11 +258,17 @@ class DepotPronostics(contexte: Context) {
                 contexte = o.optString("contexte", "")
             )
         }
-    } catch (e: Exception) {
-        emptyList()
+
+    /** Ajoute les paris d'une sauvegarde qui ne sont pas déjà là. */
+    fun importer(tableau: JSONArray) {
+        val nouveaux = lire(tableau).filterNot { it in etat.value }
+        if (nouveaux.isNotEmpty()) {
+            etat.value = etat.value + nouveaux
+            sauver()
+        }
     }
 
-    private fun sauver() {
+    fun enJson(): JSONArray {
         val tableau = JSONArray()
         etat.value.forEach { p ->
             tableau.put(
@@ -257,6 +280,99 @@ class DepotPronostics(contexte: Context) {
                     .put("contexte", p.contexte)
             )
         }
-        prefs.edit().putString("pronostics", tableau.toString()).apply()
+        return tableau
+    }
+
+    private fun sauver() {
+        prefs.edit().putString("pronostics", enJson().toString()).apply()
+    }
+}
+
+/**
+ * Le carnet de développement du Labo : un film développé par ligne. Même
+ * logique que le carnet de vues — JSON dans les préférences, champs relus
+ * avec un défaut, fusion sans doublon à la restauration.
+ */
+class DepotLabo(contexte: Context) {
+
+    private val prefs: SharedPreferences =
+        contexte.getSharedPreferences("cellule", Context.MODE_PRIVATE)
+
+    private val etat = mutableStateOf(charger())
+
+    val notes: List<DeveloppementNote> get() = etat.value
+
+    fun ajouter(n: DeveloppementNote) {
+        etat.value = etat.value + n
+        sauver()
+    }
+
+    fun supprimer(identifiant: Long) {
+        etat.value = etat.value.filterNot { it.identifiant == identifiant }
+        sauver()
+    }
+
+    /** Renvoie le nombre de développements ajoutés. */
+    fun importer(tableau: JSONArray): Int {
+        val avant = etat.value.size
+        etat.value = CarnetLabo.fusionner(etat.value, lire(tableau))
+        sauver()
+        return etat.value.size - avant
+    }
+
+    private fun charger(): List<DeveloppementNote> = try {
+        lire(JSONArray(prefs.getString("developpements", "[]") ?: "[]"))
+    } catch (e: Exception) {
+        emptyList()
+    }
+
+    private fun JSONObject.reel(cle: String): Double? = if (has(cle) && !isNull(cle)) optDouble(cle) else null
+
+    private fun lire(tableau: JSONArray): List<DeveloppementNote> =
+        (0 until tableau.length()).map { i ->
+            val o = tableau.getJSONObject(i)
+            DeveloppementNote(
+                identifiant = o.optLong("id", i.toLong()),
+                date = o.optString("date", ""),
+                film = o.optString("film", ""),
+                ei = if (o.has("ei") && !o.isNull("ei")) o.optInt("ei") else null,
+                revelateur = o.optString("revelateur", ""),
+                dilution = o.optString("dilution", ""),
+                temperature = o.reel("temperature"),
+                tempsCalcule = o.reel("tempsCalcule"),
+                estimation = o.reel("estimation"),
+                tempsDonne = o.reel("tempsDonne"),
+                cuve = o.optString("cuve", ""),
+                agitation = o.optString("agitation", ""),
+                resultat = runCatching { Resultat.valueOf(o.getString("resultat")) }.getOrNull(),
+                notes = o.optString("notes", "")
+            )
+        }
+
+    fun enJson(): JSONArray {
+        val tableau = JSONArray()
+        etat.value.forEach { n ->
+            val o = JSONObject()
+                .put("id", n.identifiant)
+                .put("date", n.date)
+                .put("film", n.film)
+                .put("revelateur", n.revelateur)
+                .put("dilution", n.dilution)
+                .put("cuve", n.cuve)
+                .put("agitation", n.agitation)
+                .put("notes", n.notes)
+            n.ei?.let { o.put("ei", it) }
+            n.temperature?.let { o.put("temperature", it) }
+            n.tempsCalcule?.let { o.put("tempsCalcule", it) }
+            n.estimation?.let { o.put("estimation", it) }
+            n.tempsDonne?.let { o.put("tempsDonne", it) }
+            n.resultat?.let { o.put("resultat", it.name) }
+            tableau.put(o)
+        }
+        return tableau
+    }
+
+    private fun sauver() {
+        prefs.edit().putString("developpements", enJson().toString()).apply()
     }
 }

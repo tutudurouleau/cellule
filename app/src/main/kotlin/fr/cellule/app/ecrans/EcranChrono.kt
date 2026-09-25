@@ -47,6 +47,7 @@ import fr.cellule.app.chrono.ServiceChrono
 import fr.cellule.core.Agitation
 import fr.cellule.core.Agitations
 import fr.cellule.core.Chrono
+import fr.cellule.core.DeveloppementNote
 import fr.cellule.core.Duree
 import fr.cellule.core.Position
 import fr.cellule.core.SequenceLabo
@@ -97,8 +98,8 @@ private fun nomAgitation(a: Agitation?): String =
     AGITATIONS.firstOrNull { it.second == a }?.first ?: "Personnalisée"
 
 @Composable
-fun EcranChrono(etat: EtatChrono) {
-    if (Minuteur.enCours) ChronoEnCours() else Preparation(etat)
+fun EcranChrono(etat: EtatChrono, versCarnet: (DeveloppementNote) -> Unit) {
+    if (Minuteur.enCours) ChronoEnCours(versCarnet) else Preparation(etat)
 }
 
 /* ── Préparer ─────────────────────────────────────────────────────────────── */
@@ -194,7 +195,7 @@ private fun ChampSecondes(intitule: String, valeur: Double, modifier: Modifier, 
 /* ── En cours ─────────────────────────────────────────────────────────────── */
 
 @Composable
-private fun ChronoEnCours() {
+private fun ChronoEnCours(versCarnet: (DeveloppementNote) -> Unit) {
     val s = Minuteur.sequence ?: return
     val contexte = LocalContext.current
     var maintenant by remember { mutableStateOf(SystemClock.elapsedRealtime()) }
@@ -246,6 +247,19 @@ private fun ChronoEnCours() {
             LigneBoutons {
                 BoutonPlat(if (Minuteur.pause == null) "Pause" else "Reprendre", modifier = Modifier.weight(1f)) { pause() }
                 BoutonPlat("Bain suivant", modifier = Modifier.weight(1f)) { suivant() }
+            }
+            Spacer(Modifier.height(Interligne))
+        }
+        if (p.fini && s.nom != Sequences.PAPIER.nom) {
+            BoutonPlat("Verser ce développement au carnet", modifier = Modifier.fillMaxWidth()) {
+                val revelateur = s.etapes.first()
+                versCarnet(
+                    DeveloppementNote(
+                        identifiant = 0, date = "",
+                        tempsDonne = revelateur.duree,
+                        agitation = revelateur.agitation?.libelle.orEmpty()
+                    )
+                )
             }
             Spacer(Modifier.height(Interligne))
         }

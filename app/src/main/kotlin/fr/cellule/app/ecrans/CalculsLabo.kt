@@ -30,6 +30,7 @@ import fr.cellule.app.Interligne
 import fr.cellule.core.BandeEssai
 import fr.cellule.core.Calculateur
 import fr.cellule.core.Compensation
+import fr.cellule.core.DeveloppementNote
 import fr.cellule.core.Dilution
 import fr.cellule.core.DilutionPubliee
 import fr.cellule.core.DilutionsPubliees
@@ -78,7 +79,7 @@ private fun pose(secondes: Double): String = when {
 /* ── Temps et température ─────────────────────────────────────────────────── */
 
 @Composable
-fun CalculTemperature(pronostics: DepotPronostics, versChrono: (Double) -> Unit) {
+fun CalculTemperature(pronostics: DepotPronostics, versChrono: (Double) -> Unit, versCarnet: (DeveloppementNote) -> Unit) {
     var compensation by remember { mutableStateOf<Compensation>(RegleIlford) }
     var base by remember { mutableStateOf("6:00") }
     var temperature by remember { mutableStateOf(23f) }
@@ -119,13 +120,28 @@ fun CalculTemperature(pronostics: DepotPronostics, versChrono: (Double) -> Unit)
         afficher = ::temps,
         contexte = "${t20?.let { temps(it) } ?: ""} à 20 °C → ${fmt(t, 1)} °C",
         pronostics = pronostics
-    ) {
-        ExplicationTemperature(compensation, t20 ?: return@Pari, t, versChrono)
+    ) { estime ->
+        ExplicationTemperature(compensation, t20 ?: return@Pari, t, versChrono) { resultat ->
+            val table = compensation as? TableTemperature
+            versCarnet(
+                DeveloppementNote(
+                    identifiant = 0, date = "",
+                    film = table?.film.orEmpty(),
+                    revelateur = table?.revelateur.orEmpty(),
+                    temperature = t,
+                    tempsCalcule = resultat,
+                    estimation = estime
+                )
+            )
+        }
     }
 }
 
 @Composable
-private fun ExplicationTemperature(c: Compensation, t20: Double, t: Double, versChrono: (Double) -> Unit) {
+private fun ExplicationTemperature(
+    c: Compensation, t20: Double, t: Double,
+    versChrono: (Double) -> Unit, versCarnet: (Double) -> Unit
+) {
     val resultat = t20 * c.facteur(t)
     val aPlat = t20 * (1 - c.tauxParDegre * (t - 20))
     val max = t20 * c.facteur(16.0) / 60
@@ -194,8 +210,9 @@ private fun ExplicationTemperature(c: Compensation, t20: Double, t: Double, vers
             else -> LigneSource(c.source)
         }
         Spacer(Modifier.height(6.dp))
-        BoutonPlat("Régler le chrono sur ${temps(resultat)}", modifier = Modifier.fillMaxWidth()) {
-            versChrono((resultat / 5).roundToInt() * 5.0)
+        LigneBoutons {
+            BoutonPlat("Chrono", modifier = Modifier.weight(1f)) { versChrono((resultat / 5).roundToInt() * 5.0) }
+            BoutonPlat("Verser au carnet", modifier = Modifier.weight(1f)) { versCarnet(resultat) }
         }
     }
 }
@@ -203,7 +220,7 @@ private fun ExplicationTemperature(c: Compensation, t20: Double, t: Double, vers
 /* ── Push et pull ─────────────────────────────────────────────────────────── */
 
 @Composable
-fun CalculPush(pronostics: DepotPronostics, versChrono: (Double) -> Unit) {
+fun CalculPush(pronostics: DepotPronostics, versChrono: (Double) -> Unit, versCarnet: (DeveloppementNote) -> Unit) {
     var film by remember { mutableStateOf(Push.FILMS.first()) }
     val tables = Push.TABLES.filter { it.film == film }
     var table by remember(film) { mutableStateOf(tables.first()) }
@@ -227,8 +244,17 @@ fun CalculPush(pronostics: DepotPronostics, versChrono: (Double) -> Unit) {
         )
     }
 
+    val verser = { estime: Double? ->
+        versCarnet(
+            DeveloppementNote(
+                identifiant = 0, date = "",
+                film = table.film, ei = ei, revelateur = table.revelateur, temperature = 20.0,
+                tempsCalcule = table.minutes[ei]?.let { it * 60 }, estimation = estime
+            )
+        )
+    }
     if (ei == table.iso) {
-        ExplicationPush(table, ei, versChrono)
+        ExplicationPush(table, ei, versChrono) { verser(null) }
         return
     }
     Pari(
@@ -241,13 +267,13 @@ fun CalculPush(pronostics: DepotPronostics, versChrono: (Double) -> Unit) {
         afficher = ::temps,
         contexte = "${table.intitule} · EI $ei",
         pronostics = pronostics
-    ) {
-        ExplicationPush(table, ei, versChrono)
+    ) { estime ->
+        ExplicationPush(table, ei, versChrono) { verser(estime) }
     }
 }
 
 @Composable
-private fun ExplicationPush(table: TablePush, ei: Int, versChrono: (Double) -> Unit) {
+private fun ExplicationPush(table: TablePush, ei: Int, versChrono: (Double) -> Unit, versCarnet: () -> Unit) {
     val minutes = table.minutes.getValue(ei)
     val d = table.diaphs(ei)
     val memeFilm = Push.TABLES.filter { it.film == table.film }
@@ -306,8 +332,9 @@ private fun ExplicationPush(table: TablePush, ei: Int, versChrono: (Double) -> U
         }
         LigneSource(table.source)
         Spacer(Modifier.height(6.dp))
-        BoutonPlat("Régler le chrono sur ${temps(minutes * 60)}", modifier = Modifier.fillMaxWidth()) {
-            versChrono(minutes * 60)
+        LigneBoutons {
+            BoutonPlat("Chrono", modifier = Modifier.weight(1f)) { versChrono(minutes * 60) }
+            BoutonPlat("Verser au carnet", modifier = Modifier.weight(1f)) { versCarnet() }
         }
     }
 }

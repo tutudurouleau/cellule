@@ -30,8 +30,11 @@ import androidx.compose.ui.unit.dp
 import fr.cellule.app.ChiffreEnorme
 import fr.cellule.app.Corps
 import fr.cellule.app.DepotJournal
+import fr.cellule.app.DepotLabo
+import fr.cellule.app.DepotPronostics
 import fr.cellule.app.Detail
 import fr.cellule.app.EtatApplication
+import fr.cellule.app.Gouttiere
 import fr.cellule.app.Interligne
 import fr.cellule.app.Reglages
 import fr.cellule.app.ZoneNavFlottante
@@ -43,8 +46,13 @@ import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
+private enum class ModeCarnet(val libelle: String) { VUES("Vues"), DEVELOPPEMENTS("Développements") }
+
 @Composable
-fun EcranJournal(depot: DepotJournal, reglages: Reglages, etat: EtatApplication) {
+fun EcranJournal(depot: DepotJournal, reglages: Reglages, etat: EtatApplication, labo: DepotLabo, pronostics: DepotPronostics) {
+
+    /* Un développement préparé par le Labo ouvre directement sa page. */
+    var mode by remember { mutableStateOf(if (etat.developpementPropose != null) ModeCarnet.DEVELOPPEMENTS else ModeCarnet.VUES) }
 
     var pellicule by remember { mutableStateOf(reglages.pellicule) }
     var vue by remember { mutableStateOf("") }
@@ -69,9 +77,9 @@ fun EcranJournal(depot: DepotJournal, reglages: Reglages, etat: EtatApplication)
         if (uri == null) return@rememberLauncherForActivityResult
         try {
             contexte.contentResolver.openOutputStream(uri)?.use {
-                it.write(depot.versSauvegarde().toByteArray(Charsets.UTF_8))
+                it.write(depot.versSauvegarde(labo, pronostics).toByteArray(Charsets.UTF_8))
             } ?: error("fichier inaccessible")
-            messageSauvegarde = "Carnet sauvegardé : ${depot.entrees.size} vue(s)."
+            messageSauvegarde = "Carnet sauvegardé : ${depot.entrees.size} vue(s), ${labo.notes.size} développement(s)."
             sauvegardeEchouee = false
         } catch (e: Exception) {
             messageSauvegarde = "La sauvegarde n'a pas pu être écrite."
@@ -86,9 +94,9 @@ fun EcranJournal(depot: DepotJournal, reglages: Reglages, etat: EtatApplication)
             val texte = contexte.contentResolver.openInputStream(uri)?.use {
                 it.readBytes().toString(Charsets.UTF_8)
             } ?: error("fichier inaccessible")
-            val ajoutees = depot.importer(texte)
-            messageSauvegarde = if (ajoutees == 0) "Rien de nouveau : ces vues sont déjà dans le carnet."
-            else "$ajoutees vue(s) restaurée(s)."
+            val ajoutees = depot.importer(texte, labo, pronostics)
+            messageSauvegarde = if (ajoutees == 0) "Rien de nouveau : tout est déjà dans le carnet."
+            else "$ajoutees vue(s) ou développement(s) restauré(s)."
             sauvegardeEchouee = false
             vue = Statistiques.vueSuivante(depot.entrees, pellicule)
         } catch (e: Exception) {
@@ -129,148 +137,154 @@ fun EcranJournal(depot: DepotJournal, reglages: Reglages, etat: EtatApplication)
         Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(bottom = ZoneNavFlottante)
     ) {
 
-        Spacer(Modifier.height(Interligne))
+        Box(Modifier.fillMaxWidth().padding(horizontal = Gouttiere, vertical = 6.dp)) {
+            ChoixSegmente(ModeCarnet.entries.toList(), mode, { it.libelle }) { mode = it }
+        }
 
-        /* ── Noter une vue ────────────────────────────────────────────── */
-        Carte(
-            titre = "Noter une vue",
-            sousTitre = "Le sujet et le numéro de vue sont ce qui raccroche la note au négatif, une fois la planche-contact sortie. L'EV annoncé n'est utile que si tu fais l'exercice."
-        ) {
-            LigneBoutons {
-                Deroulant(
-                    "Pellicule", PELLICULES.map { it.nom }, pellicule, { it },
-                    modifier = Modifier.weight(2f)
-                ) {
-                    pellicule = it
-                    reglages.pellicule = it
-                    PELLICULES.firstOrNull { p -> p.nom == it }?.let { p -> reglages.iso = p.iso }
-                    vue = Statistiques.vueSuivante(entrees, it)
+        if (mode == ModeCarnet.DEVELOPPEMENTS) CarnetDeveloppements(labo, etat)
+        else {
+
+            /* ── Noter une vue ────────────────────────────────────────────── */
+            Carte(
+                titre = "Noter une vue",
+                sousTitre = "Le sujet et le numéro de vue sont ce qui raccroche la note au négatif, une fois la planche-contact sortie. L'EV annoncé n'est utile que si tu fais l'exercice."
+            ) {
+                LigneBoutons {
+                    Deroulant(
+                        "Pellicule", PELLICULES.map { it.nom }, pellicule, { it },
+                        modifier = Modifier.weight(2f)
+                    ) {
+                        pellicule = it
+                        reglages.pellicule = it
+                        PELLICULES.firstOrNull { p -> p.nom == it }?.let { p -> reglages.iso = p.iso }
+                        vue = Statistiques.vueSuivante(entrees, it)
+                    }
+                    Champ(vue, "Vue", Modifier.weight(1f)) { vue = it }
                 }
-                Champ(vue, "Vue", Modifier.weight(1f)) { vue = it }
-            }
-            Spacer(Modifier.height(Interligne))
-            Champ(sujet, "Sujet", Modifier.fillMaxWidth(), indication = "la Restonica au soleil rasant") {
-                sujet = it
-            }
-            Spacer(Modifier.height(Interligne))
-            LigneBoutons {
-                Deroulant("Scène", TYPES_DE_SCENE, type, { it }, Modifier.weight(1.4f)) { type = it }
-                Champ(reglage, "Réglage", Modifier.weight(1f), indication = "f/8 · 1/500") { reglage = it }
-            }
-            Spacer(Modifier.height(Interligne))
-            LigneBoutons {
-                Champ(annonce, "EV annoncé", Modifier.weight(1f)) { annonce = it }
-                Champ(mesure, "EV mesuré", Modifier.weight(1f)) { mesure = it }
-            }
-            Spacer(Modifier.height(Interligne))
-            Champ(note, "Notes", Modifier.fillMaxWidth(), surUneLigne = false,
-                indication = "filtre jaune, développement +1, à retirer") { note = it }
+                Spacer(Modifier.height(Interligne))
+                Champ(sujet, "Sujet", Modifier.fillMaxWidth(), indication = "la Restonica au soleil rasant") {
+                    sujet = it
+                }
+                Spacer(Modifier.height(Interligne))
+                LigneBoutons {
+                    Deroulant("Scène", TYPES_DE_SCENE, type, { it }, Modifier.weight(1.4f)) { type = it }
+                    Champ(reglage, "Réglage", Modifier.weight(1f), indication = "f/8 · 1/500") { reglage = it }
+                }
+                Spacer(Modifier.height(Interligne))
+                LigneBoutons {
+                    Champ(annonce, "EV annoncé", Modifier.weight(1f)) { annonce = it }
+                    Champ(mesure, "EV mesuré", Modifier.weight(1f)) { mesure = it }
+                }
+                Spacer(Modifier.height(Interligne))
+                Champ(note, "Notes", Modifier.fillMaxWidth(), surUneLigne = false,
+                    indication = "filtre jaune, développement +1, à retirer") { note = it }
 
-            Spacer(Modifier.height(Interligne + 2.dp))
-            LigneBoutons {
-                BoutonPlat("Enregistrer la vue", accent = true, modifier = Modifier.weight(1f)) {
-                    val a = annonce.replace(',', '.').toDoubleOrNull()
-                    val m = mesure.replace(',', '.').toDoubleOrNull()
-                    if (sujet.isBlank() && a == null && m == null && note.isBlank()) {
-                        message = "Rien à enregistrer : donne au moins un sujet, une note ou une mesure."
-                    } else {
-                        depot.ajouter(
-                            EntreeJournal(
-                                identifiant = System.currentTimeMillis(),
-                                date = LocalDate.now().toString(),
-                                heure = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")),
-                                pellicule = pellicule,
-                                vue = vue.trim(),
-                                sujet = sujet.trim(),
-                                typeScene = type,
-                                annonce = a,
-                                mesure = m,
-                                reglage = reglage.trim(),
-                                note = note.trim()
+                Spacer(Modifier.height(Interligne + 2.dp))
+                LigneBoutons {
+                    BoutonPlat("Enregistrer la vue", accent = true, modifier = Modifier.weight(1f)) {
+                        val a = annonce.replace(',', '.').toDoubleOrNull()
+                        val m = mesure.replace(',', '.').toDoubleOrNull()
+                        if (sujet.isBlank() && a == null && m == null && note.isBlank()) {
+                            message = "Rien à enregistrer : donne au moins un sujet, une note ou une mesure."
+                        } else {
+                            depot.ajouter(
+                                EntreeJournal(
+                                    identifiant = System.currentTimeMillis(),
+                                    date = LocalDate.now().toString(),
+                                    heure = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")),
+                                    pellicule = pellicule,
+                                    vue = vue.trim(),
+                                    sujet = sujet.trim(),
+                                    typeScene = type,
+                                    annonce = a,
+                                    mesure = m,
+                                    reglage = reglage.trim(),
+                                    note = note.trim()
+                                )
                             )
-                        )
-                        val ecart = if (a != null && m != null) a - m else null
-                        message = when {
-                            ecart == null -> "Vue $vue enregistrée."
-                            kotlin.math.abs(ecart) < 0.3 -> "Vue $vue — écart ${signe(ecart)} diaph. Bien vu."
-                            ecart > 0 -> "Vue $vue — écart ${signe(ecart)}. Tu as cru qu'il faisait plus clair qu'il ne faisait."
-                            else -> "Vue $vue — écart ${signe(ecart)}. Tu as cru qu'il faisait plus sombre qu'il ne faisait."
+                            val ecart = if (a != null && m != null) a - m else null
+                            message = when {
+                                ecart == null -> "Vue $vue enregistrée."
+                                kotlin.math.abs(ecart) < 0.3 -> "Vue $vue — écart ${signe(ecart)} diaph. Bien vu."
+                                ecart > 0 -> "Vue $vue — écart ${signe(ecart)}. Tu as cru qu'il faisait plus clair qu'il ne faisait."
+                                else -> "Vue $vue — écart ${signe(ecart)}. Tu as cru qu'il faisait plus sombre qu'il ne faisait."
+                            }
+                            sujet = ""; annonce = ""; mesure = ""; note = ""; reglage = ""
+                            vue = Statistiques.vueSuivante(depot.entrees, pellicule)
                         }
-                        sujet = ""; annonce = ""; mesure = ""; note = ""; reglage = ""
-                        vue = Statistiques.vueSuivante(depot.entrees, pellicule)
+                    }
+                }
+                Spacer(Modifier.height(Interligne))
+                BandeauEtat(message, alerte = message.startsWith("Rien"))
+            }
+
+            /* ── Le biais ─────────────────────────────────────────────────── */
+            Carte(
+                titre = "Ton biais",
+                sousTitre = "Écart = annoncé − mesuré. Positif : tu crois qu'il fait plus clair qu'il ne fait, et tu sous-exposes."
+            ) {
+                Row(Modifier.fillMaxWidth().height(64.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Column(Modifier.weight(1f)) {
+                        Text(
+                            bilan?.let { signe(it.biais) } ?: "—",
+                            style = ChiffreEnorme,
+                            color = if (bilan == null) MaterialTheme.colorScheme.outline
+                            else MaterialTheme.colorScheme.onSurface
+                        )
+                    }
+                    Column(Modifier.weight(1.5f)) {
+                        Text(
+                            bilan?.verdict ?: "aucune vue annoncée puis mesurée",
+                            style = Corps,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+                if (bilan != null) {
+                    Separateur()
+                    Ligne("Vues comptées", "${bilan.nombre}", if (bilan.nombre < 10) "encore un peu court" else "échantillon utile")
+                    Ligne("Erreur absolue moyenne", fmt(bilan.erreurAbsolue) + " diaph")
+                    Ligne("Dans ±½ diaph", "${Math.round(bilan.partDansDemiDiaph * 100)} %", "objectif : 70 %")
+                    Ligne("Dans ±1 diaph", "${Math.round(bilan.partDansUnDiaph * 100)} %", "objectif : 95 %")
+
+                    val parType = Statistiques.parType(entrees)
+                    if (parType.size > 1) {
+                        Separateur()
+                        Etiquette("Où ton œil se trompe")
+                        Spacer(Modifier.height(4.dp))
+                        parType.forEach { (nom, b) ->
+                            Ligne(nom, signe(b.biais), "${b.nombre} vues · ${b.verdict}")
+                        }
                     }
                 }
             }
-            Spacer(Modifier.height(Interligne))
-            BandeauEtat(message, alerte = message.startsWith("Rien"))
-        }
 
-        /* ── Le biais ─────────────────────────────────────────────────── */
-        Carte(
-            titre = "Ton biais",
-            sousTitre = "Écart = annoncé − mesuré. Positif : tu crois qu'il fait plus clair qu'il ne fait, et tu sous-exposes."
-        ) {
-            Row(Modifier.fillMaxWidth().height(64.dp), verticalAlignment = Alignment.CenterVertically) {
-                Column(Modifier.weight(1f)) {
+            /* ── Le carnet ────────────────────────────────────────────────── */
+            Carte(titre = "Le carnet", sousTitre = "${entrees.size} vue" + (if (entrees.size > 1) "s" else "") + " notée" + (if (entrees.size > 1) "s" else "")) {
+                if (entrees.isEmpty()) {
                     Text(
-                        bilan?.let { signe(it.biais) } ?: "—",
-                        style = ChiffreEnorme,
-                        color = if (bilan == null) MaterialTheme.colorScheme.outline
-                        else MaterialTheme.colorScheme.onSurface
-                    )
-                }
-                Column(Modifier.weight(1.5f)) {
-                    Text(
-                        bilan?.verdict ?: "aucune vue annoncée puis mesurée",
+                        "Rien encore. Note une vue et elle apparaîtra ici, la plus récente en haut.",
                         style = Corps,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
-                }
-            }
-            if (bilan != null) {
-                Separateur()
-                Ligne("Vues comptées", "${bilan.nombre}", if (bilan.nombre < 10) "encore un peu court" else "échantillon utile")
-                Ligne("Erreur absolue moyenne", fmt(bilan.erreurAbsolue) + " diaph")
-                Ligne("Dans ±½ diaph", "${Math.round(bilan.partDansDemiDiaph * 100)} %", "objectif : 70 %")
-                Ligne("Dans ±1 diaph", "${Math.round(bilan.partDansUnDiaph * 100)} %", "objectif : 95 %")
-
-                val parType = Statistiques.parType(entrees)
-                if (parType.size > 1) {
-                    Separateur()
-                    Etiquette("Où ton œil se trompe")
-                    Spacer(Modifier.height(4.dp))
-                    parType.forEach { (nom, b) ->
-                        Ligne(nom, signe(b.biais), "${b.nombre} vues · ${b.verdict}")
-                    }
-                }
-            }
-        }
-
-        /* ── Le carnet ────────────────────────────────────────────────── */
-        Carte(titre = "Le carnet", sousTitre = "${entrees.size} vue" + (if (entrees.size > 1) "s" else "") + " notée" + (if (entrees.size > 1) "s" else "")) {
-            if (entrees.isEmpty()) {
-                Text(
-                    "Rien encore. Note une vue et elle apparaîtra ici, la plus récente en haut.",
-                    style = Corps,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            } else {
-                val visibles = if (toutVoir) entrees.reversed() else entrees.reversed().take(8)
-                visibles.forEach { e -> LigneCarnet(e) { depot.supprimer(e.identifiant) } }
-                Spacer(Modifier.height(Interligne))
-                LigneBoutons {
-                    if (entrees.size > 8) {
-                        BoutonPlat(if (toutVoir) "Réduire" else "Tout voir (${entrees.size})") {
-                            toutVoir = !toutVoir
+                } else {
+                    val visibles = if (toutVoir) entrees.reversed() else entrees.reversed().take(8)
+                    visibles.forEach { e -> LigneCarnet(e) { depot.supprimer(e.identifiant) } }
+                    Spacer(Modifier.height(Interligne))
+                    LigneBoutons {
+                        if (entrees.size > 8) {
+                            BoutonPlat(if (toutVoir) "Réduire" else "Tout voir (${entrees.size})") {
+                                toutVoir = !toutVoir
+                            }
                         }
-                    }
-                    /* Deux temps, comme pour une vue seule : un effacement
-                       complet ne doit jamais tenir à un effleurement. */
-                    BoutonPlat(if (effacementDemande) "Confirmer l'effacement" else "Tout effacer") {
-                        if (effacementDemande) {
-                            depot.vider()
-                            effacementDemande = false
-                        } else effacementDemande = true
+                        /* Deux temps, comme pour une vue seule : un effacement
+                           complet ne doit jamais tenir à un effleurement. */
+                        BoutonPlat(if (effacementDemande) "Confirmer l'effacement" else "Tout effacer") {
+                            if (effacementDemande) {
+                                depot.vider()
+                                effacementDemande = false
+                            } else effacementDemande = true
+                        }
                     }
                 }
             }
@@ -279,13 +293,13 @@ fun EcranJournal(depot: DepotJournal, reglages: Reglages, etat: EtatApplication)
         /* ── La sauvegarde ────────────────────────────────────────────── */
         Carte(
             titre = "Sauvegarde",
-            sousTitre = "Un fichier à ranger où tu veux — Drive, Téléchargements, un mail à toi-même. Restaurer ajoute les vues qui manquent, sans rien écraser ni dédoubler."
+            sousTitre = "Un fichier à ranger où tu veux — Drive, Téléchargements, un mail à toi-même. Il garde les vues, les développements et les paris du Labo. Restaurer ajoute ce qui manque, sans rien écraser ni dédoubler."
         ) {
             LigneBoutons {
                 BoutonPlat(
                     "Sauvegarder",
                     accent = true,
-                    actif = entrees.isNotEmpty(),
+                    actif = entrees.isNotEmpty() || labo.notes.isNotEmpty() || pronostics.liste.isNotEmpty(),
                     modifier = Modifier.weight(1f)
                 ) { exporter.launch("carnet-cellule-${LocalDate.now()}.json") }
                 BoutonPlat("Restaurer", modifier = Modifier.weight(1f)) {
