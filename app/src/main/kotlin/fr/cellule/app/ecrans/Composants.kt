@@ -224,7 +224,7 @@ fun <T> ChoixSegmente(
         options.forEach { option ->
             val actif = option == selection
             val fond by animateColorAsState(
-                if (actif) MaterialTheme.colorScheme.primaryContainer else Color.Transparent,
+                if (actif) MaterialTheme.colorScheme.primary else Color.Transparent,
                 label = "fond"
             )
             Box(
@@ -239,7 +239,7 @@ fun <T> ChoixSegmente(
                     libelle(option),
                     style = Corps,
                     maxLines = 1,
-                    color = if (actif) MaterialTheme.colorScheme.onPrimaryContainer
+                    color = if (actif) MaterialTheme.colorScheme.onPrimary
                     else MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }

@@ -3,6 +3,17 @@ package fr.cellule.app
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.offset
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.lerp
+import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -208,7 +219,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 private fun Application() {
     val contexte = LocalContext.current
-    val reglages = remember { Reglages(contexte) }
+    val reglages = remember { Reglages(contexte).also { Typo.cellule = it.police != "systeme" } }
     val depot = remember { DepotJournal(contexte) }
     val pronostics = remember { DepotPronostics(contexte) }
     val labo = remember { DepotLabo(contexte) }
@@ -217,6 +228,31 @@ private fun Application() {
     /* Un chrono labo en cours ramène au Labo, par exemple depuis sa notification. */
     var onglet by remember { mutableStateOf(if (Minuteur.enCours) Onglet.LABO else Onglet.MESURER) }
     var parametres by remember { mutableStateOf(false) }
+    LaunchedEffect(reglages.police) { Typo.cellule = reglages.police != "systeme" }
+
+    /* L'en-tête se replie quand on fait défiler vers le bas, se déplie quand
+       on remonte : il prend d'abord ce que le défilement lui cède. */
+    val densite = LocalDensity.current
+    val repliMax = with(densite) { ReplieEnTete.toPx() }
+    var repli by remember { mutableFloatStateOf(0f) }
+    LaunchedEffect(onglet) { repli = 0f }
+    val connexion = remember(repliMax) {
+        object : NestedScrollConnection {
+            override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
+                if (available.y >= 0f) return Offset.Zero
+                val avant = repli
+                repli = (repli - available.y).coerceAtMost(repliMax)
+                return Offset(0f, avant - repli)
+            }
+
+            override fun onPostScroll(consumed: Offset, available: Offset, source: NestedScrollSource): Offset {
+                if (available.y <= 0f) return Offset.Zero
+                val avant = repli
+                repli = (repli - available.y).coerceAtLeast(0f)
+                return Offset(0f, avant - repli)
+            }
+        }
+    }
 
     /* Par défaut l'appli suit le téléphone ; les paramètres peuvent l'imposer. */
     val sombre = when (reglages.apparence) {
@@ -240,9 +276,9 @@ private fun Application() {
                     /* Les écrans caméra n'ont pas d'en-tête : chaque pixel du haut de
                        l'écran leur revient, comme dans un vrai viseur. */
                     if (!onglet.plein) {
-                        EnTeteEcran(onglet.titre, onglet.sousTitre, onglet.icone) { parametres = true }
+                        EnTeteEcran(onglet.titre, onglet.sousTitre, onglet.icone, repli / repliMax) { parametres = true }
                     }
-                    Box(Modifier.weight(1f)) {
+                    Box(Modifier.weight(1f).nestedScroll(connexion)) {
                         when (onglet) {
                             Onglet.MESURER -> EcranMesurer(reglages, etat)
                             Onglet.ESTIMER -> EcranEstimer(reglages, etat)
@@ -262,38 +298,69 @@ private fun Application() {
     }
 }
 
+/** Ce que l'en-tête perd en se repliant. */
+private val ReplieEnTete = 46.dp
+
 /**
- * L'en-tête des écrans qui ne sont pas plein cadre : l'icône de l'onglet dans
- * sa teinte, le titre, et l'accès discret aux paramètres.
+ * Le grand en-tête des écrans qui ne sont pas plein cadre : un bandeau dans
+ * la teinte de l'onglet, son icône en filigrane, le titre en grand. Il se
+ * replie en une ligne quand on descend dans la page ([repli] de 0 à 1), sans
+ * animation propre : il suit le doigt.
  */
 @Composable
-private fun EnTeteEcran(titre: String, sousTitre: String, icone: ImageVector, ouvrirParametres: () -> Unit) {
-    Row(
+private fun EnTeteEcran(titre: String, sousTitre: String, icone: ImageVector, repli: Float, ouvrirParametres: () -> Unit) {
+    val f = repli.coerceIn(0f, 1f)
+    Box(
         Modifier
             .fillMaxWidth()
-            .statusBarsPadding()
-            .padding(start = Gouttiere, end = 6.dp, top = 14.dp, bottom = 8.dp),
-        verticalAlignment = Alignment.CenterVertically
+            .clip(RoundedCornerShape(bottomStart = RayonCarte, bottomEnd = RayonCarte))
+            .background(MaterialTheme.colorScheme.primaryContainer)
     ) {
-        Box(
+        /* L'icône de l'onglet, en très grand et presque effacée. */
+        Icon(
+            icone,
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.14f * (1f - f)),
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .offset(x = 26.dp, y = 10.dp)
+                .size(150.dp)
+        )
+        Column(
             Modifier
-                .size(44.dp)
-                .background(MaterialTheme.colorScheme.primaryContainer, RoundedCornerShape(14.dp)),
-            contentAlignment = Alignment.Center
+                .fillMaxWidth()
+                .statusBarsPadding()
+                .padding(start = Gouttiere, end = 4.dp, top = 6.dp, bottom = lerp(16.dp, 8.dp, f))
         ) {
-            Icon(icone, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(24.dp))
-        }
-        Column(Modifier.weight(1f).padding(start = 12.dp)) {
-            Text(titre, style = TitreEcran, color = MaterialTheme.colorScheme.onSurface)
-            Text(sousTitre, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        }
-        Box(
-            Modifier
-                .clip(RoundedCornerShape(50))
-                .clickable { ouvrirParametres() }
-                .padding(12.dp)
-        ) {
-            Icon(IconeReglages, contentDescription = "Paramètres", tint = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.size(22.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Box(
+                    Modifier
+                        .size(38.dp)
+                        .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.16f), RoundedCornerShape(12.dp)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(icone, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(22.dp))
+                }
+                Text(
+                    titre,
+                    style = TitreEcran.copy(fontSize = lerp(32.sp, 22.sp, f), lineHeight = lerp(36.sp, 26.sp, f)),
+                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                    maxLines = 1,
+                    modifier = Modifier.weight(1f).padding(start = 12.dp)
+                )
+                Box(
+                    Modifier
+                        .clip(RoundedCornerShape(50))
+                        .clickable { ouvrirParametres() }
+                        .padding(12.dp)
+                ) {
+                    Icon(IconeReglages, contentDescription = "Paramètres", tint = MaterialTheme.colorScheme.onPrimaryContainer, modifier = Modifier.size(22.dp))
+                }
+            }
+            /* Le sous-titre s'efface et laisse sa place en se repliant. */
+            Box(Modifier.height(lerp(24.dp, 0.dp, f)).padding(start = 50.dp).alpha(1f - f)) {
+                Text(sousTitre, style = Detail, color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.75f), maxLines = 1)
+            }
         }
     }
 }
@@ -330,6 +397,20 @@ private fun FeuilleParametres(reglages: Reglages, fermer: () -> Unit) {
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Spacer(Modifier.height(Interligne * 2))
+            Etiquette("Police")
+            Spacer(Modifier.height(6.dp))
+            ChoixSegmente(
+                options = listOf("cellule", "systeme"),
+                selection = reglages.police,
+                libelle = { if (it == "systeme") "Du téléphone" else "Cellule" }
+            ) { reglages.police = it }
+            Spacer(Modifier.height(6.dp))
+            Text(
+                "« Cellule » dessine titres et chiffres en Space Grotesk ; le texte courant garde la police du téléphone.",
+                style = Detail,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(Modifier.height(Interligne * 2))
             val version = remember {
                 runCatching { contexte.packageManager.getPackageInfo(contexte.packageName, 0).versionName }.getOrNull() ?: "?"
             }
@@ -360,9 +441,10 @@ private fun BoxScope.NavigationFlottante(onglet: Onglet, surChoix: (Onglet) -> U
             .navigationBarsPadding()
             .padding(bottom = 14.dp)
             .background(
-                MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.97f),
+                MaterialTheme.colorScheme.surfaceContainerHighest.copy(alpha = 0.98f),
                 RoundedCornerShape(50)
             )
+            .border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(50))
             .padding(6.dp),
         horizontalArrangement = Arrangement.spacedBy(2.dp)
     ) {
@@ -379,7 +461,7 @@ private fun RowScope.OngletFlottant(onglet: Onglet, actif: Boolean, avecEtiquett
     Row(
         Modifier
             .clip(RoundedCornerShape(50))
-            .background(if (actif) MaterialTheme.colorScheme.primaryContainer else Color.Transparent)
+            .background(if (actif) MaterialTheme.colorScheme.primary else Color.Transparent)
             .clickable { surClic() }
             .padding(horizontal = if (actif && avecEtiquette) 14.dp else 11.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -387,14 +469,14 @@ private fun RowScope.OngletFlottant(onglet: Onglet, actif: Boolean, avecEtiquett
         Icon(
             onglet.icone,
             contentDescription = onglet.titre,
-            tint = if (actif) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
+            tint = if (actif) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.size(22.dp)
         )
         AnimatedVisibility(visible = actif && avecEtiquette, enter = fadeIn(), exit = fadeOut()) {
             Text(
                 onglet.titre,
-                style = Corps,
-                color = MaterialTheme.colorScheme.primary,
+                style = TitreCarte.copy(fontSize = 14.sp),
+                color = MaterialTheme.colorScheme.onPrimary,
                 modifier = Modifier.padding(start = 8.dp)
             )
         }

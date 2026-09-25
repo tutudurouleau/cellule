@@ -8,6 +8,12 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.lerp
+import androidx.compose.ui.text.ExperimentalTextApi
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -112,9 +118,13 @@ enum class Teinte(val sombre: Accent, val clair: Accent) {
 }
 
 /**
- * Le thème de l'appli, dans la teinte de l'onglet ouvert. Le passage d'une
- * teinte à l'autre se fait en un fondu bref : une seule animation, au moment
- * du changement, jamais en continu.
+ * Le thème de l'appli, dans la teinte de l'onglet ouvert.
+ *
+ * La teinte ne s'arrête pas à l'accent : elle imprègne aussi le fond et les
+ * surfaces, comme un papier légèrement coloré (en clair) ou un noir teinté
+ * (en sombre). Assez pour qu'on sache où l'on est, jamais au point de gêner
+ * la lecture. Le passage d'une teinte à l'autre se fait en un fondu bref :
+ * une seule animation, au moment du changement, jamais en continu.
  */
 @Composable
 fun CelluleTheme(sombre: Boolean = isSystemInDarkTheme(), teinte: Teinte = Teinte.AMBRE, contenu: @Composable () -> Unit) {
@@ -125,16 +135,48 @@ fun CelluleTheme(sombre: Boolean = isSystemInDarkTheme(), teinte: Teinte = Teint
     val surCouleur by animateColorAsState(a.surCouleur, duree, label = "surAccent")
     val fond by animateColorAsState(a.fond, duree, label = "fondAccent")
     val surFond by animateColorAsState(a.surFond, duree, label = "surFondAccent")
+    /* Dosage de la teinte dans chaque couche : le fond plus que les cartes. */
+    fun teinter(c: Color, part: Float) = lerp(c, couleur, part)
+    val (pFond, pCarte, pVariante) = if (sombre) Triple(0.075f, 0.05f, 0.09f) else Triple(0.085f, 0.02f, 0.10f)
     MaterialTheme(
         colorScheme = base.copy(
             primary = couleur,
             onPrimary = surCouleur,
             primaryContainer = fond,
-            onPrimaryContainer = surFond
+            onPrimaryContainer = surFond,
+            background = teinter(base.background, pFond),
+            surface = teinter(base.surface, pCarte),
+            surfaceContainer = teinter(base.surfaceContainer, pCarte),
+            surfaceContainerHigh = teinter(base.surfaceContainerHigh, pVariante),
+            surfaceContainerHighest = teinter(base.surfaceContainerHighest, pVariante),
+            surfaceVariant = teinter(base.surfaceVariant, pVariante),
+            outlineVariant = teinter(base.outlineVariant, pVariante)
         ),
         content = contenu
     )
 }
+
+/*
+ * La police de Cellule : Space Grotesk (SIL Open Font License, texte dans
+ * assets/licences), pour les titres, les étiquettes et les chiffres — le
+ * texte courant reste dans la police du téléphone, la plus lisible. Les
+ * Paramètres permettent de revenir partout à la police du téléphone.
+ */
+object Typo {
+    var cellule by mutableStateOf(true)
+}
+
+@OptIn(ExperimentalTextApi::class)
+private val SpaceGrotesk = FontFamily(
+    Font(R.font.space_grotesk, FontWeight.Light),
+    Font(R.font.space_grotesk, FontWeight.Normal),
+    Font(R.font.space_grotesk, FontWeight.Medium),
+    Font(R.font.space_grotesk, FontWeight.SemiBold),
+    Font(R.font.space_grotesk, FontWeight.Bold)
+)
+
+/** La famille des titres et des chiffres, selon le choix des Paramètres. */
+private fun affiche(): FontFamily = if (Typo.cellule) SpaceGrotesk else FontFamily.Default
 
 /*
  * Chiffres à chasse fixe partout — « tnum ».
@@ -145,39 +187,50 @@ fun CelluleTheme(sombre: Boolean = isSystemInDarkTheme(), teinte: Teinte = Teint
  */
 private const val CHASSE_FIXE = "tnum"
 
-val ChiffreHero = TextStyle(
-    fontSize = 68.sp, lineHeight = 68.sp,
-    fontWeight = FontWeight.Medium, letterSpacing = (-2.6).sp,
-    fontFeatureSettings = CHASSE_FIXE
-)
+val ChiffreHero: TextStyle
+    get() = TextStyle(
+        fontFamily = affiche(),
+        fontSize = 68.sp, lineHeight = 68.sp,
+        fontWeight = FontWeight.Medium, letterSpacing = (-2.6).sp,
+        fontFeatureSettings = CHASSE_FIXE
+    )
 
-val ChiffreEnorme = TextStyle(
-    fontSize = 48.sp, lineHeight = 50.sp,
-    fontWeight = FontWeight.Medium, letterSpacing = (-1.5).sp,
-    fontFeatureSettings = CHASSE_FIXE
-)
+val ChiffreEnorme: TextStyle
+    get() = TextStyle(
+        fontFamily = affiche(),
+        fontSize = 48.sp, lineHeight = 50.sp,
+        fontWeight = FontWeight.Medium, letterSpacing = (-1.5).sp,
+        fontFeatureSettings = CHASSE_FIXE
+    )
 
-val ChiffreGrand = TextStyle(
-    fontSize = 27.sp, lineHeight = 31.sp,
-    fontWeight = FontWeight.SemiBold, letterSpacing = (-0.6).sp,
-    fontFeatureSettings = CHASSE_FIXE
-)
+val ChiffreGrand: TextStyle
+    get() = TextStyle(
+        fontFamily = affiche(),
+        fontSize = 28.sp, lineHeight = 32.sp,
+        fontWeight = FontWeight.SemiBold, letterSpacing = (-0.6).sp,
+        fontFeatureSettings = CHASSE_FIXE
+    )
 
-val TitreEcran = TextStyle(
-    fontSize = 26.sp, lineHeight = 30.sp,
-    fontWeight = FontWeight.Bold, letterSpacing = (-0.7).sp
-)
+val TitreEcran: TextStyle
+    get() = TextStyle(
+        fontFamily = affiche(),
+        fontSize = 26.sp, lineHeight = 30.sp,
+        fontWeight = FontWeight.Bold, letterSpacing = (-0.7).sp
+    )
 
-val TitreCarte = TextStyle(fontSize = 15.5.sp, lineHeight = 20.sp, fontWeight = FontWeight.SemiBold)
+val TitreCarte: TextStyle
+    get() = TextStyle(fontFamily = affiche(), fontSize = 16.sp, lineHeight = 21.sp, fontWeight = FontWeight.SemiBold)
 
 val Corps = TextStyle(fontSize = 14.sp, lineHeight = 20.sp, fontFeatureSettings = CHASSE_FIXE)
 
 val Detail = TextStyle(fontSize = 12.5.sp, lineHeight = 17.sp, fontFeatureSettings = CHASSE_FIXE)
 
-val StyleEtiquette = TextStyle(
-    fontSize = 10.5.sp, lineHeight = 14.sp,
-    fontWeight = FontWeight.Bold, letterSpacing = 1.1.sp
-)
+val StyleEtiquette: TextStyle
+    get() = TextStyle(
+        fontFamily = affiche(),
+        fontSize = 10.5.sp, lineHeight = 14.sp,
+        fontWeight = FontWeight.Bold, letterSpacing = 1.1.sp
+    )
 
 /* Un seul rythme, une seule famille de rayons — poussée vers le « squircle »
    plutôt que le rectangle à coins légèrement arrondis d'il y a dix ans. */

@@ -48,6 +48,9 @@ class Reglages(contexte: Context) {
     /** « systeme », « clair » ou « sombre » : par défaut, l'appli suit le téléphone. */
     var apparence by TextePref(prefs, "apparence", "systeme")
 
+    /** « cellule » (Space Grotesk pour les titres et les chiffres) ou « systeme ». */
+    var police by TextePref(prefs, "police", "cellule")
+
     var latitude by ReelPref(prefs, "latitude", 42.30)
     var longitude by ReelPref(prefs, "longitude", 9.15)
     var fuseau by ReelPref(prefs, "fuseau", 2.0)
