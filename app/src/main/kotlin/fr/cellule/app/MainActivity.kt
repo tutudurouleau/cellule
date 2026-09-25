@@ -83,7 +83,7 @@ class EtatApplication {
  * dernier, plus que n'importe quelle couleur, qui donne à une application son
  * air d'avoir dix ans. Des glyphes au trait, même épaisseur, même esprit.
  */
-private fun icone(nom: String, trace: androidx.compose.ui.graphics.vector.PathBuilder.() -> Unit): ImageVector =
+internal fun icone(nom: String, trace: androidx.compose.ui.graphics.vector.PathBuilder.() -> Unit): ImageVector =
     ImageVector.Builder(name = nom, defaultWidth = 24.dp, defaultHeight = 24.dp, viewportWidth = 24f, viewportHeight = 24f)
         .apply {
             addPath(
@@ -212,7 +212,7 @@ private fun Application() {
                     Onglet.FOCALES -> EcranFocales()
                     Onglet.CAMERAS -> EcranCameras()
                     Onglet.CARNET -> EcranJournal(depot, reglages, etat, labo, tirages, pronostics)
-                    Onglet.LABO -> EcranLabo(pronostics, etat)
+                    Onglet.LABO -> EcranLabo(pronostics, etat, labo, tirages)
                     Onglet.TABLES -> EcranTables()
                 }
             }

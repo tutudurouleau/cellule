@@ -1,12 +1,15 @@
 package fr.cellule.app.ecrans
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -14,6 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import fr.cellule.app.Corps
@@ -23,32 +27,71 @@ import fr.cellule.core.Duree
 import fr.cellule.core.FicheLabo
 import fr.cellule.core.FichesLabo
 import fr.cellule.core.GenreFiche
+import fr.cellule.core.Marque
+import fr.cellule.core.RechercheFiches
 import fr.cellule.core.TempsPublie
 
 /**
  * Les fiches produits : ce que chaque fabricant dit de son film, de son
- * révélateur, de ses bains — et d'où il le dit. Une fiche se déplie d'un
- * appui ; ce qui n'a pas pu être relu à la source est annoncé comme tel.
+ * révélateur, de ses bains — et d'où il le dit. On cherche par mot ou par
+ * marque ; une fiche se déplie d'un appui ; ce qui n'a pas pu être relu à la
+ * source est annoncé comme tel, jusque sur la fiche fermée.
  */
 @Composable
 fun EcranFiches() {
-    var genre by remember { mutableStateOf(GenreFiche.FILM) }
+    var recherche by remember { mutableStateOf("") }
+    var marque by remember { mutableStateOf<Marque?>(null) }
     var ouverte by remember { mutableStateOf<String?>(null) }
 
-    Box(Modifier.fillMaxWidth().padding(horizontal = Gouttiere, vertical = 2.dp)) {
-        ChoixSegmente(GenreFiche.entries.toList(), genre, { if (it == GenreFiche.BAIN) "Bains" else it.libelle }) {
-            genre = it
+    Column(Modifier.fillMaxWidth().padding(horizontal = Gouttiere, vertical = 2.dp)) {
+        Champ(recherche, "Chercher", Modifier.fillMaxWidth(), indication = "HP5, fixateur, 1+4…") { recherche = it }
+        Spacer(Modifier.height(8.dp))
+        /* Par marque : qui développe en HP5 Plus, ID-11 et ILFOSTOP voit sa chaîne ensemble. */
+        ChoixSegmente(listOf<Marque?>(null) + Marque.entries, marque, { it?.libelle ?: "Toutes" }) {
+            marque = it
             ouverte = null
         }
     }
-    FichesLabo.parGenre(genre).forEach { f ->
-        CarteFiche(f, ouverte == f.nom) { ouverte = if (ouverte == f.nom) null else f.nom }
+    val trouvees = RechercheFiches.chercher(recherche, marque)
+    if (trouvees.isEmpty()) {
+        Carte(sousTitre = "Aucune fiche ne correspond. Peut-être n'a-t-elle pas encore été relue : voir la liste plus bas.") {}
     }
+    GenreFiche.entries.forEach { g ->
+        val liste = trouvees.filter { it.genre == g }
+        if (liste.isNotEmpty()) {
+            Etiquette(
+                "${g.libelle} · ${liste.size}",
+                modifier = Modifier.padding(start = Gouttiere + 6.dp, top = 12.dp, bottom = 2.dp)
+            )
+            liste.forEach { f ->
+                CarteFiche(f, ouverte == f.nom) { ouverte = if (ouverte == f.nom) null else f.nom }
+            }
+        }
+    }
+    CarteARelire()
+}
+
+/**
+ * Ce que le Labo refuse d'inventer : chaque fiche manquante, cochée le jour
+ * où sa source officielle aura été relue.
+ */
+@Composable
+private fun CarteARelire() {
     Carte(
-        titre = "Encore à relire",
+        titre = "Encore à relire · ${FichesLabo.A_RELIRE.size}",
         sousTitre = "Ces fiches n'ont pas pu être relues chez leur fabricant. Plutôt qu'un chiffre recopié d'ailleurs, le Labo les laisse vides pour l'instant."
     ) {
-        FichesLabo.A_RELIRE.forEach { Ligne(it, "") }
+        FichesLabo.A_RELIRE.forEach { ligne ->
+            Row(Modifier.fillMaxWidth().padding(vertical = 5.dp)) {
+                Text("○", style = Corps, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.width(22.dp))
+                Text(ligne, style = Corps, color = MaterialTheme.colorScheme.onSurface)
+            }
+        }
+        Spacer(Modifier.height(6.dp))
+        Text(
+            "Chacune rejoindra le Labo une fois sa fiche officielle relue — avec sa source, comme les autres.",
+            style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
     }
 }
 
@@ -61,7 +104,20 @@ private fun CarteFiche(f: FicheLabo, ouverte: Boolean, surAppui: () -> Unit) {
     ) {
         Text(f.resume, style = Corps, color = MaterialTheme.colorScheme.onSurface)
         if (!ouverte) {
-            Text("Toucher pour ouvrir la fiche", style = Detail, color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(top = 6.dp))
+            Row(Modifier.fillMaxWidth().padding(top = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                Text("Toucher pour ouvrir", style = Detail, color = MaterialTheme.colorScheme.primary, modifier = Modifier.weight(1f))
+                /* Une fiche incomplète le dit avant même d'être ouverte. */
+                if (f.lacune.isNotBlank()) {
+                    Text(
+                        "fiche partielle",
+                        style = Detail,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier
+                            .background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(50))
+                            .padding(horizontal = 10.dp, vertical = 4.dp)
+                    )
+                }
+            }
             return@Carte
         }
         Spacer(Modifier.height(6.dp))
