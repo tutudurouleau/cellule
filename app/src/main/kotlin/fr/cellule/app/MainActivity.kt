@@ -2,6 +2,15 @@ package fr.cellule.app
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.runtime.LaunchedEffect
+import fr.cellule.app.ecrans.ChoixSegmente
+import fr.cellule.app.ecrans.Etiquette
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.AnimatedVisibility
@@ -155,14 +164,34 @@ private val IconeTables = icone("tables") {
     moveTo(15f, 5f); lineTo(15f, 19f)
 }
 
-private enum class Onglet(val titre: String, val sousTitre: String, val icone: ImageVector, val plein: Boolean) {
-    MESURER("Mesurer", "posemètre réfléchi et incident", IconeMesurer, true),
-    ESTIMER("Estimer", "la chaîne de facteurs, sans cellule", IconeEstimer, false),
-    FOCALES("Focales", "apprendre à voir les angles de champ", IconeFocales, true),
-    CAMERAS("Caméras", "fiches et quiz du matériel de tournage", IconeCameras, false),
-    CARNET("Carnet", "ce que tu as photographié, et ton biais", IconeCarnet, false),
-    LABO("Labo", "développer, tirer, et comprendre pourquoi", IconeLabo, false),
-    TABLES("Tables", "les repères à retenir", IconeTables, false)
+/** Trois réglettes : les paramètres. */
+private val IconeReglages = icone("reglages") {
+    moveTo(4f, 6f); lineTo(20f, 6f)
+    moveTo(4f, 12f); lineTo(20f, 12f)
+    moveTo(4f, 18f); lineTo(20f, 18f)
+    moveTo(9f, 4f); lineTo(9f, 8f)
+    moveTo(15f, 10f); lineTo(15f, 14f)
+    moveTo(7f, 16f); lineTo(7f, 20f)
+}
+
+/*
+ * Dans l'ordre du geste : on mesure, on estime, on cadre, on note, on
+ * développe, on vérifie — et le matériel de cinéma ferme la marche.
+ */
+private enum class Onglet(
+    val titre: String,
+    val sousTitre: String,
+    val icone: ImageVector,
+    val plein: Boolean,
+    val teinte: Teinte
+) {
+    MESURER("Mesurer", "posemètre réfléchi et incident", IconeMesurer, true, Teinte.AMBRE),
+    ESTIMER("Estimer", "la chaîne de facteurs, sans cellule", IconeEstimer, false, Teinte.OR),
+    FOCALES("Focales", "apprendre à voir les angles de champ", IconeFocales, true, Teinte.VERT_EAU),
+    CARNET("Carnet", "ce que tu as photographié, et ton biais", IconeCarnet, false, Teinte.ENCRE),
+    LABO("Labo", "développer, tirer, et comprendre pourquoi", IconeLabo, false, Teinte.INACTINIQUE),
+    TABLES("Tables", "les repères à retenir", IconeTables, false, Teinte.GRIS_CHAUD),
+    CAMERAS("Caméras", "fiches et quiz du matériel de tournage", IconeCameras, false, Teinte.CUIVRE)
 }
 
 class MainActivity : ComponentActivity() {
@@ -172,16 +201,7 @@ class MainActivity : ComponentActivity() {
            profitent pour un viseur réellement plein écran, les autres gèrent
            leur propre respiration en haut via statusBarsPadding(). */
         enableEdgeToEdge()
-        setContent {
-            CelluleTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Application()
-                }
-            }
-        }
+        setContent { Application() }
     }
 }
 
@@ -196,43 +216,125 @@ private fun Application() {
     val etat = remember { EtatApplication() }
     /* Un chrono labo en cours ramène au Labo, par exemple depuis sa notification. */
     var onglet by remember { mutableStateOf(if (Minuteur.enCours) Onglet.LABO else Onglet.MESURER) }
+    var parametres by remember { mutableStateOf(false) }
 
-    Box(Modifier.fillMaxSize()) {
+    /* Par défaut l'appli suit le téléphone ; les paramètres peuvent l'imposer. */
+    val sombre = when (reglages.apparence) {
+        "clair" -> false
+        "sombre" -> true
+        else -> isSystemInDarkTheme()
+    }
+    /* Les icônes de la barre d'état suivent le thème de l'appli, pas celui du téléphone. */
+    val activite = contexte as? ComponentActivity
+    LaunchedEffect(sombre) {
+        val style = if (sombre) SystemBarStyle.dark(android.graphics.Color.TRANSPARENT)
+        else SystemBarStyle.light(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT)
+        activite?.enableEdgeToEdge(statusBarStyle = style, navigationBarStyle = style)
+    }
 
-        Column(Modifier.fillMaxSize()) {
-            /* Les écrans caméra n'ont pas d'en-tête : chaque pixel du haut de
-               l'écran leur revient, comme dans un vrai viseur. */
-            if (!onglet.plein) {
-                EnTeteEcran(onglet.titre, onglet.sousTitre)
-            }
-            Box(Modifier.weight(1f)) {
-                when (onglet) {
-                    Onglet.MESURER -> EcranMesurer(reglages, etat)
-                    Onglet.ESTIMER -> EcranEstimer(reglages, etat)
-                    Onglet.FOCALES -> EcranFocales()
-                    Onglet.CAMERAS -> EcranCameras()
-                    Onglet.CARNET -> EcranJournal(depot, reglages, etat, labo, tirages, pronostics)
-                    Onglet.LABO -> EcranLabo(pronostics, etat, labo, tirages)
-                    Onglet.TABLES -> EcranTables()
+    CelluleTheme(sombre = sombre, teinte = onglet.teinte) {
+        Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+            Box(Modifier.fillMaxSize()) {
+
+                Column(Modifier.fillMaxSize()) {
+                    /* Les écrans caméra n'ont pas d'en-tête : chaque pixel du haut de
+                       l'écran leur revient, comme dans un vrai viseur. */
+                    if (!onglet.plein) {
+                        EnTeteEcran(onglet.titre, onglet.sousTitre, onglet.icone) { parametres = true }
+                    }
+                    Box(Modifier.weight(1f)) {
+                        when (onglet) {
+                            Onglet.MESURER -> EcranMesurer(reglages, etat)
+                            Onglet.ESTIMER -> EcranEstimer(reglages, etat)
+                            Onglet.FOCALES -> EcranFocales()
+                            Onglet.CAMERAS -> EcranCameras()
+                            Onglet.CARNET -> EcranJournal(depot, reglages, etat, labo, tirages, pronostics)
+                            Onglet.LABO -> EcranLabo(pronostics, etat, labo, tirages)
+                            Onglet.TABLES -> EcranTables()
+                        }
+                    }
                 }
-            }
-        }
 
-        NavigationFlottante(onglet = onglet, surChoix = { onglet = it })
+                NavigationFlottante(onglet = onglet, surChoix = { onglet = it })
+            }
+            if (parametres) FeuilleParametres(reglages) { parametres = false }
+        }
     }
 }
 
-/** L'en-tête des écrans qui ne sont pas plein cadre. */
+/**
+ * L'en-tête des écrans qui ne sont pas plein cadre : l'icône de l'onglet dans
+ * sa teinte, le titre, et l'accès discret aux paramètres.
+ */
 @Composable
-private fun EnTeteEcran(titre: String, sousTitre: String) {
-    Column(
+private fun EnTeteEcran(titre: String, sousTitre: String, icone: ImageVector, ouvrirParametres: () -> Unit) {
+    Row(
         Modifier
             .fillMaxWidth()
             .statusBarsPadding()
-            .padding(start = Gouttiere, end = Gouttiere, top = 14.dp, bottom = 8.dp)
+            .padding(start = Gouttiere, end = 6.dp, top = 14.dp, bottom = 8.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(titre, style = TitreEcran, color = MaterialTheme.colorScheme.onSurface)
-        Text(sousTitre, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Box(
+            Modifier
+                .size(44.dp)
+                .background(MaterialTheme.colorScheme.primaryContainer, RoundedCornerShape(14.dp)),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(icone, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(24.dp))
+        }
+        Column(Modifier.weight(1f).padding(start = 12.dp)) {
+            Text(titre, style = TitreEcran, color = MaterialTheme.colorScheme.onSurface)
+            Text(sousTitre, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+        Box(
+            Modifier
+                .clip(RoundedCornerShape(50))
+                .clickable { ouvrirParametres() }
+                .padding(12.dp)
+        ) {
+            Icon(IconeReglages, contentDescription = "Paramètres", tint = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.size(22.dp))
+        }
+    }
+}
+
+/** Les paramètres : l'apparence, et la version installée. */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun FeuilleParametres(reglages: Reglages, fermer: () -> Unit) {
+    val contexte = LocalContext.current
+    ModalBottomSheet(
+        onDismissRequest = fermer,
+        containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
+    ) {
+        Column(Modifier.fillMaxWidth().padding(start = Gouttiere, end = Gouttiere, bottom = Gouttiere * 2)) {
+            Text("Paramètres", style = TitreEcran, color = MaterialTheme.colorScheme.onSurface)
+            Spacer(Modifier.height(Interligne * 2))
+            Etiquette("Apparence")
+            Spacer(Modifier.height(6.dp))
+            ChoixSegmente(
+                options = listOf("systeme", "clair", "sombre"),
+                selection = reglages.apparence,
+                libelle = {
+                    when (it) {
+                        "clair" -> "Clair"
+                        "sombre" -> "Sombre"
+                        else -> "Système"
+                    }
+                }
+            ) { reglages.apparence = it }
+            Spacer(Modifier.height(6.dp))
+            Text(
+                "« Système » suit le réglage du téléphone. Au soleil, le clair se lit mieux ; en chambre noire, le sombre éblouit moins.",
+                style = Detail,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(Modifier.height(Interligne * 2))
+            val version = remember {
+                runCatching { contexte.packageManager.getPackageInfo(contexte.packageName, 0).versionName }.getOrNull() ?: "?"
+            }
+            Text("Cellule $version", style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
     }
 }
 

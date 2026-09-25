@@ -493,7 +493,18 @@ private fun CarteCouleur() {
 @Composable
 private fun QuestionDuTheme(c: Calculateur) {
     val etat = remember(c) { EtatEntrainement(c.theme) }
-    CarteExercice(etat, entete = "Pour t'entraîner : une question de tête")
+    /* Repliée par défaut : l'écran du calcul reste léger, la question est là si on la veut. */
+    var ouverte by remember(c) { mutableStateOf(false) }
+    if (ouverte) {
+        CarteExercice(etat, entete = "Pour t'entraîner : une question de tête")
+    } else {
+        Carte(modifier = Modifier.clickable { ouverte = true }) {
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                Text("Une question de tête sur ce thème", style = Corps, color = MaterialTheme.colorScheme.primary, modifier = Modifier.weight(1f))
+                Text("↓", style = Corps, color = MaterialTheme.colorScheme.primary)
+            }
+        }
+    }
 }
 
 /* ── Le pari : annoncer avant de voir ─────────────────────────────────────── */

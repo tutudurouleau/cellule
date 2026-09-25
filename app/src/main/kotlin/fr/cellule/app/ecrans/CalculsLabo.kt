@@ -177,40 +177,42 @@ private fun ExplicationTemperature(
         if (c is TableTemperature && resultat < Temperatures.MINIMUM_UNIFORME * 60) {
             BandeauEtat("Kodak : en cuve, moins de 5 min risquent un développement irrégulier.", alerte = true)
         }
-        Paragraphe(
-            "Le révélateur est une réaction chimique : chaque degré gagné l'accélère d'un même facteur. " +
-                "Le temps se divise donc, degré après degré, par le même nombre — il ne perd pas le même nombre de secondes. " +
-                "D'où une courbe, raide à froid et plus douce à chaud."
-        )
-        Paragraphe(
-            "Appliqué à plat, le même taux donnerait ${temps(aPlat)} au lieu de ${temps(resultat)}. " +
-                "Près de 20 °C, la différence est faible ; elle grandit à mesure qu'on s'en éloigne."
-        )
-        when (c) {
-            RegleIlford -> {
-                Paragraphe(
-                    "Ilford écrit « 10 % par degré ». Ses propres exemples — 6 min à 20 °C deviennent 4½ min à 23 °C et 9 min à 16 °C — " +
-                        "montrent que les 10 % se composent : additionnés, ils donneraient 4 min 12 et 8 min 24."
-                )
-                LigneSource(c.source)
-                val d = Temperatures.DELTA_3200_ID11
-                Paragraphe(
-                    "La règle reste un repère : quand une table existe, elle prime. La Delta 3200 en ID-11 à EI 3200 passe de 10½ min à 20 °C " +
-                        "à 9 min à 24 °C, là où la règle donnerait ${temps(d.t20 * 60 * RegleIlford.facteur(24.0))}."
-                )
-                LigneSource(d.source)
-            }
-            is TableTemperature -> {
-                val pur = Temperatures.TABLES.firstOrNull { it.film == c.film && it.revelateur == c.revelateur.removeSuffix(" 1+1") }
-                if (pur != null && pur != c) {
+        Depliable {
+            Paragraphe(
+                "Le révélateur est une réaction chimique : chaque degré gagné l'accélère d'un même facteur. " +
+                    "Le temps se divise donc, degré après degré, par le même nombre — il ne perd pas le même nombre de secondes. " +
+                    "D'où une courbe, raide à froid et plus douce à chaud."
+            )
+            Paragraphe(
+                "Appliqué à plat, le même taux donnerait ${temps(aPlat)} au lieu de ${temps(resultat)}. " +
+                    "Près de 20 °C, la différence est faible ; elle grandit à mesure qu'on s'en éloigne."
+            )
+            when (c) {
+                RegleIlford -> {
                     Paragraphe(
-                        "Dilué, le révélateur craint moins la température : ${pourcent(c.tauxParDegre)} par degré ici, " +
-                            "contre ${pourcent(pur.tauxParDegre)} pour le ${pur.revelateur} pur dans la même fiche."
+                        "Ilford écrit « 10 % par degré ». Ses propres exemples — 6 min à 20 °C deviennent 4½ min à 23 °C et 9 min à 16 °C — " +
+                            "montrent que les 10 % se composent : additionnés, ils donneraient 4 min 12 et 8 min 24."
                     )
+                    LigneSource(c.source)
+                    val d = Temperatures.DELTA_3200_ID11
+                    Paragraphe(
+                        "La règle reste un repère : quand une table existe, elle prime. La Delta 3200 en ID-11 à EI 3200 passe de 10½ min à 20 °C " +
+                            "à 9 min à 24 °C, là où la règle donnerait ${temps(d.t20 * 60 * RegleIlford.facteur(24.0))}."
+                    )
+                    LigneSource(d.source)
                 }
-                LigneSource(c.source)
+                is TableTemperature -> {
+                    val pur = Temperatures.TABLES.firstOrNull { it.film == c.film && it.revelateur == c.revelateur.removeSuffix(" 1+1") }
+                    if (pur != null && pur != c) {
+                        Paragraphe(
+                            "Dilué, le révélateur craint moins la température : ${pourcent(c.tauxParDegre)} par degré ici, " +
+                                "contre ${pourcent(pur.tauxParDegre)} pour le ${pur.revelateur} pur dans la même fiche."
+                        )
+                    }
+                    LigneSource(c.source)
+                }
+                else -> LigneSource(c.source)
             }
-            else -> LigneSource(c.source)
         }
         Spacer(Modifier.height(6.dp))
         LigneBoutons {
@@ -303,37 +305,39 @@ private fun ExplicationPush(table: TablePush, ei: Int, versChrono: (Double) -> U
             style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
         )
         Spacer(Modifier.height(6.dp))
-        if (d > 0) {
-            Paragraphe(
-                "Sous-exposer, c'est inscrire moins de lumière partout. Prolonger le développement fait surtout monter les zones " +
-                    "qui en ont reçu — tons moyens et hautes lumières — bien plus que les ombres, où presque rien ne s'est inscrit. " +
-                    "Le contraste monte, le grain aussi ; le détail absent des ombres ne revient pas."
-            )
-        } else if (d < 0) {
-            Paragraphe(
-                "Surexposer puis développer moins : les ombres gagnent de la matière, les hautes lumières sont retenues, " +
-                    "le contraste baisse et le grain reste fin."
-            )
+        Depliable {
+            if (d > 0) {
+                Paragraphe(
+                    "Sous-exposer, c'est inscrire moins de lumière partout. Prolonger le développement fait surtout monter les zones " +
+                        "qui en ont reçu — tons moyens et hautes lumières — bien plus que les ombres, où presque rien ne s'est inscrit. " +
+                        "Le contraste monte, le grain aussi ; le détail absent des ombres ne revient pas."
+                )
+            } else if (d < 0) {
+                Paragraphe(
+                    "Surexposer puis développer moins : les ombres gagnent de la matière, les hautes lumières sont retenues, " +
+                        "le contraste baisse et le grain reste fin."
+                )
+            }
+            val facteurs = memeFilm.mapNotNull { it.facteur(ei) }
+            if (d != 0.0 && facteurs.size > 1) {
+                Paragraphe(
+                    "Pas de facteur universel : pour ${table.film} à EI $ei, selon le révélateur, le fabricant multiplie le temps " +
+                        "par ${facteur(facteurs.min())} à ${facteur(facteurs.max())}. Seule la table fait foi."
+                )
+            }
+            if (table.source == Sources.KODAK_TRIX || table.source == Sources.KODAK_D76) {
+                Paragraphe(
+                    "Kodak : un diaph de sous-exposition se développe au temps normal, la latitude du film l'encaisse (légère perte dans les ombres). " +
+                        "À deux diaphs, il faut pousser : contraste et grain augmentent, les ombres perdent encore du détail."
+                )
+            } else if (table.source == Sources.ILFORD_HP5) {
+                Paragraphe(
+                    "Ilford : la HP5 Plus donne ses meilleurs résultats à EI 400, et une bonne qualité d'image jusqu'à EI 3200 avec un développement prolongé. " +
+                        "Cette plage repose sur une évaluation pratique, pas sur la sensibilité ISO normalisée."
+                )
+            }
+            LigneSource(table.source)
         }
-        val facteurs = memeFilm.mapNotNull { it.facteur(ei) }
-        if (d != 0.0 && facteurs.size > 1) {
-            Paragraphe(
-                "Pas de facteur universel : pour ${table.film} à EI $ei, selon le révélateur, le fabricant multiplie le temps " +
-                    "par ${facteur(facteurs.min())} à ${facteur(facteurs.max())}. Seule la table fait foi."
-            )
-        }
-        if (table.source == Sources.KODAK_TRIX || table.source == Sources.KODAK_D76) {
-            Paragraphe(
-                "Kodak : un diaph de sous-exposition se développe au temps normal, la latitude du film l'encaisse (légère perte dans les ombres). " +
-                    "À deux diaphs, il faut pousser : contraste et grain augmentent, les ombres perdent encore du détail."
-            )
-        } else if (table.source == Sources.ILFORD_HP5) {
-            Paragraphe(
-                "Ilford : la HP5 Plus donne ses meilleurs résultats à EI 400, et une bonne qualité d'image jusqu'à EI 3200 avec un développement prolongé. " +
-                    "Cette plage repose sur une évaluation pratique, pas sur la sensibilité ISO normalisée."
-            )
-        }
-        LigneSource(table.source)
         Spacer(Modifier.height(6.dp))
         LigneBoutons {
             BoutonPlat("Chrono", modifier = Modifier.weight(1f)) { versChrono(minutes * 60) }
@@ -405,30 +409,32 @@ private fun ExplicationReciprocite(film: Reciprocite, mesure: Double) {
             style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
         )
         Spacer(Modifier.height(6.dp))
-        Paragraphe(
-            "Pour qu'un grain d'argent devienne développable, plusieurs photons doivent l'atteindre en peu de temps. " +
-                "Sous une lumière faible, ils arrivent trop espacés et une partie de leur effet se perd. " +
-                "La perte grandit avec la durée : la correction croît plus vite que la pose."
-        )
-        when (film) {
-            is LoiIlford -> Paragraphe(
-                "Ilford résume sa courbe par une formule : pose à donner = pose mesurée ^ ${film.exposant.toString().replace('.', ',')}. " +
-                    "Rien à corriger jusqu'à ${if (film.seuil < 1) "½ s" else "1 s"}."
-            )
-            else -> Paragraphe(
-                "Kodak publie trois points — 1 s → 2 s, 10 s → 50 s, 100 s → 1200 s — et renvoie à ses graphiques entre eux : " +
-                    "des droites en échelles logarithmiques, que suit ce calcul. Il raccourcit aussi le développement, de 10 à 30 %. " +
-                    "Au-delà de 100 s, la fiche ne dit rien."
-            )
-        }
-        val autres = Reciprocites.LISTE.filter { it != film }.mapNotNull { r -> r.corrige(mesure)?.let { r.film to it } }
-        if (autres.isNotEmpty() && mesure >= 2) {
+        Depliable {
             Paragraphe(
-                "Chaque film a sa courbe : pour ${pose(mesure)} mesurées, " +
-                    autres.joinToString(", ") { (nom, c) -> "$nom demande ${pose(c)}" } + "."
+                "Pour qu'un grain d'argent devienne développable, plusieurs photons doivent l'atteindre en peu de temps. " +
+                    "Sous une lumière faible, ils arrivent trop espacés et une partie de leur effet se perd. " +
+                    "La perte grandit avec la durée : la correction croît plus vite que la pose."
             )
+            when (film) {
+                is LoiIlford -> Paragraphe(
+                    "Ilford résume sa courbe par une formule : pose à donner = pose mesurée ^ ${film.exposant.toString().replace('.', ',')}. " +
+                        "Rien à corriger jusqu'à ${if (film.seuil < 1) "½ s" else "1 s"}."
+                )
+                else -> Paragraphe(
+                    "Kodak publie trois points — 1 s → 2 s, 10 s → 50 s, 100 s → 1200 s — et renvoie à ses graphiques entre eux : " +
+                        "des droites en échelles logarithmiques, que suit ce calcul. Il raccourcit aussi le développement, de 10 à 30 %. " +
+                        "Au-delà de 100 s, la fiche ne dit rien."
+                )
+            }
+            val autres = Reciprocites.LISTE.filter { it != film }.mapNotNull { r -> r.corrige(mesure)?.let { r.film to it } }
+            if (autres.isNotEmpty() && mesure >= 2) {
+                Paragraphe(
+                    "Chaque film a sa courbe : pour ${pose(mesure)} mesurées, " +
+                        autres.joinToString(", ") { (nom, c) -> "$nom demande ${pose(c)}" } + "."
+                )
+            }
+            LigneSource(film.source)
         }
-        LigneSource(film.source)
     }
 }
 
@@ -500,24 +506,26 @@ private fun ExplicationDilution(d: Dilution, volume: Double, produit: DilutionPu
         Spacer(Modifier.height(6.dp))
         BarreParts(parts)
         Spacer(Modifier.height(6.dp))
-        Paragraphe(
-            "« ${d.libelle} » se lit : une part de concentré pour ${nombre(d.partsEau)} parts d'eau, soit ${nombre(parts)} parts. " +
-                "Chacune vaut ${fmt(volume, 0)} ÷ ${nombre(parts)} = ${fmt(volume / parts, 1)} mL — le concentré fait ${fmt(100 / parts, 1)} % de la solution."
-        )
-        if (d.partsEau >= 1) {
-            val faux = volume / d.partsEau
+        Depliable {
             Paragraphe(
-                "L'erreur classique divise par ${nombre(d.partsEau)} au lieu de ${nombre(parts)} : ${fmt(faux, 1)} mL, " +
-                    "soit ${(((faux / c) - 1) * 100).roundToInt()} % de concentré en trop — un révélateur plus actif que prévu."
+                "« ${d.libelle} » se lit : une part de concentré pour ${nombre(d.partsEau)} parts d'eau, soit ${nombre(parts)} parts. " +
+                    "Chacune vaut ${fmt(volume, 0)} ÷ ${nombre(parts)} = ${fmt(volume / parts, 1)} mL — le concentré fait ${fmt(100 / parts, 1)} % de la solution."
             )
-        }
-        Paragraphe(
-            "Mesure le concentré avec soin, à la seringue ou à l'éprouvette fine : c'est lui qui fixe l'activité du bain. " +
-                "Quelques mL d'erreur sur l'eau ne comptent pas ; sur un petit volume de concentré, ils font vite 10 ou 20 %."
-        )
-        produit?.let {
-            if (it.note.isNotBlank()) Paragraphe(it.note)
-            LigneSource(it.source)
+            if (d.partsEau >= 1) {
+                val faux = volume / d.partsEau
+                Paragraphe(
+                    "L'erreur classique divise par ${nombre(d.partsEau)} au lieu de ${nombre(parts)} : ${fmt(faux, 1)} mL, " +
+                        "soit ${(((faux / c) - 1) * 100).roundToInt()} % de concentré en trop — un révélateur plus actif que prévu."
+                )
+            }
+            Paragraphe(
+                "Mesure le concentré avec soin, à la seringue ou à l'éprouvette fine : c'est lui qui fixe l'activité du bain. " +
+                    "Quelques mL d'erreur sur l'eau ne comptent pas ; sur un petit volume de concentré, ils font vite 10 ou 20 %."
+            )
+            produit?.let {
+                if (it.note.isNotBlank()) Paragraphe(it.note)
+                LigneSource(it.source)
+            }
         }
     }
 }
@@ -643,17 +651,19 @@ private fun ExplicationCorrection(base: Double, delta: Double, pas: Double, vers
             )
         }
         Spacer(Modifier.height(6.dp))
-        Paragraphe(
-            "Un diaph double la lumière, donc le temps : un tiers le multiplie par 1,26, un demi par 1,41. " +
-                "Compter en diaphs rend une correction indépendante du temps de base : « +⅓ dans le ciel » vaut sur un tirage de 8 s comme de 40 s."
-        )
-        Paragraphe(
-            if (delta > 0) "Brûler de ${libelleCorrection(delta).removePrefix("+")} diaph, c'est donner à la zone ${pose(total)} en tout : " +
-                "elle a déjà reçu la base, il reste ${pose(total - base)} à ajouter."
-            else "Masquer de ${libelleCorrection(-delta).removePrefix("+")} diaph, c'est ne donner à la zone que ${pose(total)} : " +
-                "tu la caches pendant ${pose(base - total)} de la base."
-        )
-        Paragraphe("Même règle à l'agrandisseur qu'à la prise de vue : fermer l'objectif d'un diaph double le temps.")
+        Depliable {
+            Paragraphe(
+                "Un diaph double la lumière, donc le temps : un tiers le multiplie par 1,26, un demi par 1,41. " +
+                    "Compter en diaphs rend une correction indépendante du temps de base : « +⅓ dans le ciel » vaut sur un tirage de 8 s comme de 40 s."
+            )
+            Paragraphe(
+                if (delta > 0) "Brûler de ${libelleCorrection(delta).removePrefix("+")} diaph, c'est donner à la zone ${pose(total)} en tout : " +
+                    "elle a déjà reçu la base, il reste ${pose(total - base)} à ajouter."
+                else "Masquer de ${libelleCorrection(-delta).removePrefix("+")} diaph, c'est ne donner à la zone que ${pose(total)} : " +
+                    "tu la caches pendant ${pose(base - total)} de la base."
+            )
+            Paragraphe("Même règle à l'agrandisseur qu'à la prise de vue : fermer l'objectif d'un diaph double le temps.")
+        }
         Spacer(Modifier.height(6.dp))
         BoutonPlat("Verser au carnet de tirage", modifier = Modifier.fillMaxWidth()) { versTirage() }
     }
@@ -717,11 +727,13 @@ private fun ExplicationBande(premier: Double, pas: Double, nombre: Int) {
             )
         }
         Spacer(Modifier.height(6.dp))
-        Paragraphe(
-            "La densité du papier suit le logarithme de la lumière reçue. Des bandes à ${pose(premier)}, ${pose(2 * premier)}, ${pose(3 * premier)}… " +
-                "sautent d'un diaph entier au début puis ne gagnent plus qu'un tiers à la fin : les premières se distinguent mal des suivantes, " +
-                "les dernières se confondent. À pas constant en diaphs, chaque bande ajoute la même quantité de gris."
-        )
+        Depliable {
+            Paragraphe(
+                "La densité du papier suit le logarithme de la lumière reçue. Des bandes à ${pose(premier)}, ${pose(2 * premier)}, ${pose(3 * premier)}… " +
+                    "sautent d'un diaph entier au début puis ne gagnent plus qu'un tiers à la fin : les premières se distinguent mal des suivantes, " +
+                    "les dernières se confondent. À pas constant en diaphs, chaque bande ajoute la même quantité de gris."
+            )
+        }
     }
 }
 

@@ -1,10 +1,13 @@
 package fr.cellule.app
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -14,63 +17,123 @@ import androidx.compose.ui.unit.sp
 /*
  * Un instrument, pas une application décorative.
  *
- * Fonds profonds, surfaces empilées par contraste de ton plutôt que bordées,
- * un seul accent ambre — celui d'une aiguille de cellule. Les écrans
- * caméra (Mesurer, Focales) sont bord à bord : le viseur occupe tout
- * l'écran, l'information flotte par-dessus dans un panneau translucide.
+ * Deux matières : en sombre, un noir chaud de chambre noire ; en clair, un
+ * papier crème, lisible en plein soleil sur un écran LCD. Les surfaces
+ * s'empilent par contraste de ton, bordées d'un filet à peine visible.
+ *
+ * Chaque onglet a sa teinte — l'ambre de l'aiguille pour Mesurer, le rouge
+ * inactinique pour le Labo… — qui colore l'en-tête, la pilule de navigation
+ * et les chiffres. Le reste de la palette ne bouge pas : on reconnaît où
+ * l'on est sans que l'appli change de visage.
+ *
+ * Ni flou ni animation permanente : sur un téléphone de milieu de gamme, le
+ * graphisme ne doit rien coûter à la batterie.
  */
 
 private val Sombre = darkColorScheme(
-    primary = Color(0xFFF0A93F),
-    onPrimary = Color(0xFF241703),
-    primaryContainer = Color(0xFF43300F),
-    onPrimaryContainer = Color(0xFFFFCE86),
-    secondary = Color(0xFF6FA8C8),
-    onSecondary = Color(0xFF0B1B24),
-    secondaryContainer = Color(0xFF1B3140),
-    onSecondaryContainer = Color(0xFFB6DCF0),
-    background = Color(0xFF0A0A09),
-    onBackground = Color(0xFFF4F1EA),
-    surface = Color(0xFF141413),
-    onSurface = Color(0xFFF4F1EA),
-    surfaceVariant = Color(0xFF232320),
-    onSurfaceVariant = Color(0xFFA6A093),
-    surfaceContainer = Color(0xFF1A1A18),
-    surfaceContainerHigh = Color(0xFF232320),
-    surfaceContainerHighest = Color(0xFF2C2C28),
-    outline = Color(0xFF3A3934),
-    outlineVariant = Color(0xFF232320),
+    background = Color(0xFF0D0C0B),
+    onBackground = Color(0xFFF3EEE6),
+    surface = Color(0xFF151412),
+    onSurface = Color(0xFFF3EEE6),
+    surfaceVariant = Color(0xFF26231F),
+    onSurfaceVariant = Color(0xFFA9A194),
+    surfaceContainer = Color(0xFF1A1816),
+    surfaceContainerHigh = Color(0xFF24211D),
+    surfaceContainerHighest = Color(0xFF2E2A25),
+    outline = Color(0xFF3D3831),
+    outlineVariant = Color(0xFF2A2622),
+    secondary = Color(0xFF8FB3E8),
+    onSecondary = Color(0xFF0B1A30),
+    secondaryContainer = Color(0xFF1D2E4A),
+    onSecondaryContainer = Color(0xFFC9DBF7),
     error = Color(0xFFEF9068),
     onError = Color(0xFF2A1206)
 )
 
 private val Clair = lightColorScheme(
-    primary = Color(0xFF8F4A05),
-    onPrimary = Color.White,
-    primaryContainer = Color(0xFFFBE7CD),
-    onPrimaryContainer = Color(0xFF6B3703),
-    secondary = Color(0xFF2E6483),
+    background = Color(0xFFF4F0E8),
+    onBackground = Color(0xFF1A1714),
+    surface = Color(0xFFFBF8F3),
+    onSurface = Color(0xFF1A1714),
+    surfaceVariant = Color(0xFFEBE5DA),
+    onSurfaceVariant = Color(0xFF6E665A),
+    surfaceContainer = Color(0xFFFFFDF9),
+    surfaceContainerHigh = Color(0xFFEEE8DE),
+    surfaceContainerHighest = Color(0xFFE5DED1),
+    outline = Color(0xFFD4CBBD),
+    outlineVariant = Color(0xFFE6DFD3),
+    secondary = Color(0xFF2F5597),
     onSecondary = Color.White,
-    secondaryContainer = Color(0xFFD8ECF7),
-    onSecondaryContainer = Color(0xFF1B4A64),
-    background = Color(0xFFF7F5F1),
-    onBackground = Color(0xFF15140F),
-    surface = Color(0xFFFFFFFF),
-    onSurface = Color(0xFF15140F),
-    surfaceVariant = Color(0xFFEFEBE3),
-    onSurfaceVariant = Color(0xFF6B665C),
-    surfaceContainer = Color(0xFFFBF9F6),
-    surfaceContainerHigh = Color(0xFFF1EDE6),
-    surfaceContainerHighest = Color(0xFFE9E4DA),
-    outline = Color(0xFFD5CFC4),
-    outlineVariant = Color(0xFFE9E4DA),
+    secondaryContainer = Color(0xFFDCE6F8),
+    onSecondaryContainer = Color(0xFF1D3E75),
     error = Color(0xFF9A3B12),
     onError = Color.White
 )
 
+/** L'accent d'un onglet : sa couleur, le texte posé dessus, son fond doux et le texte posé sur ce fond. */
+class Accent(val couleur: Color, val surCouleur: Color, val fond: Color, val surFond: Color)
+
+enum class Teinte(val sombre: Accent, val clair: Accent) {
+    /** L'aiguille de la cellule. */
+    AMBRE(
+        Accent(Color(0xFFF0A93F), Color(0xFF241703), Color(0xFF43300F), Color(0xFFFFCE86)),
+        Accent(Color(0xFF8F4A05), Color.White, Color(0xFFFBE7CD), Color(0xFF6B3703))
+    ),
+    /** Le soleil qu'on estime sans instrument. */
+    OR(
+        Accent(Color(0xFFE8C766), Color(0xFF221B04), Color(0xFF3D3310), Color(0xFFF5E3A5)),
+        Accent(Color(0xFF7A5E00), Color.White, Color(0xFFF6ECC6), Color(0xFF5A4500))
+    ),
+    /** Le verre du viseur. */
+    VERT_EAU(
+        Accent(Color(0xFF7CCBB5), Color(0xFF062019), Color(0xFF173A31), Color(0xFFB8EADB)),
+        Accent(Color(0xFF1F6B58), Color.White, Color(0xFFD2EFE6), Color(0xFF11503F))
+    ),
+    /** L'encre du carnet. */
+    ENCRE(
+        Accent(Color(0xFF8FB3E8), Color(0xFF0B1A30), Color(0xFF1D2E4A), Color(0xFFC9DBF7)),
+        Accent(Color(0xFF2F5597), Color.White, Color(0xFFDCE6F8), Color(0xFF1D3E75))
+    ),
+    /** La lumière inactinique de la chambre noire. */
+    INACTINIQUE(
+        Accent(Color(0xFFE8705E), Color(0xFF2B0A05), Color(0xFF4A1A13), Color(0xFFFFC0B4)),
+        Accent(Color(0xFFA33A28), Color.White, Color(0xFFF8DDD7), Color(0xFF7A2718))
+    ),
+    /** Le papier des tables de référence. */
+    GRIS_CHAUD(
+        Accent(Color(0xFFC9BBA5), Color(0xFF221D15), Color(0xFF38322A), Color(0xFFE8DECF)),
+        Accent(Color(0xFF5E5446), Color.White, Color(0xFFECE5DA), Color(0xFF453C30))
+    ),
+    /** Le laiton du matériel de tournage. */
+    CUIVRE(
+        Accent(Color(0xFFDE9A6B), Color(0xFF2A1508), Color(0xFF45291A), Color(0xFFF8CFB2)),
+        Accent(Color(0xFF94502A), Color.White, Color(0xFFF6E0D2), Color(0xFF6E3517))
+    )
+}
+
+/**
+ * Le thème de l'appli, dans la teinte de l'onglet ouvert. Le passage d'une
+ * teinte à l'autre se fait en un fondu bref : une seule animation, au moment
+ * du changement, jamais en continu.
+ */
 @Composable
-fun CelluleTheme(sombre: Boolean = isSystemInDarkTheme(), contenu: @Composable () -> Unit) {
-    MaterialTheme(colorScheme = if (sombre) Sombre else Clair, content = contenu)
+fun CelluleTheme(sombre: Boolean = isSystemInDarkTheme(), teinte: Teinte = Teinte.AMBRE, contenu: @Composable () -> Unit) {
+    val base = if (sombre) Sombre else Clair
+    val a = if (sombre) teinte.sombre else teinte.clair
+    val duree = tween<Color>(durationMillis = 260)
+    val couleur by animateColorAsState(a.couleur, duree, label = "accent")
+    val surCouleur by animateColorAsState(a.surCouleur, duree, label = "surAccent")
+    val fond by animateColorAsState(a.fond, duree, label = "fondAccent")
+    val surFond by animateColorAsState(a.surFond, duree, label = "surFondAccent")
+    MaterialTheme(
+        colorScheme = base.copy(
+            primary = couleur,
+            onPrimary = surCouleur,
+            primaryContainer = fond,
+            onPrimaryContainer = surFond
+        ),
+        content = contenu
+    )
 }
 
 /*
@@ -95,14 +158,14 @@ val ChiffreEnorme = TextStyle(
 )
 
 val ChiffreGrand = TextStyle(
-    fontSize = 24.sp, lineHeight = 28.sp,
-    fontWeight = FontWeight.Medium, letterSpacing = (-0.4).sp,
+    fontSize = 27.sp, lineHeight = 31.sp,
+    fontWeight = FontWeight.SemiBold, letterSpacing = (-0.6).sp,
     fontFeatureSettings = CHASSE_FIXE
 )
 
 val TitreEcran = TextStyle(
-    fontSize = 24.sp, lineHeight = 28.sp,
-    fontWeight = FontWeight.SemiBold, letterSpacing = (-0.5).sp
+    fontSize = 26.sp, lineHeight = 30.sp,
+    fontWeight = FontWeight.Bold, letterSpacing = (-0.7).sp
 )
 
 val TitreCarte = TextStyle(fontSize = 15.5.sp, lineHeight = 20.sp, fontWeight = FontWeight.SemiBold)

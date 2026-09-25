@@ -5,8 +5,11 @@
 
 package fr.cellule.app.ecrans
 
+import androidx.compose.ui.draw.clip
+import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -119,6 +122,9 @@ fun Carte(
             .fillMaxWidth()
             .padding(horizontal = Gouttiere, vertical = 5.dp)
             .background(MaterialTheme.colorScheme.surfaceContainer, RoundedCornerShape(RayonCarte))
+            /* Un filet d'un pixel à peine visible : la carte se détache du fond
+               sans ombre, qui coûterait à chaque image. */
+            .border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(RayonCarte))
             .padding(horizontal = Gouttiere, vertical = Gouttiere + 2.dp)
     ) {
         if (titre != null) {
@@ -507,5 +513,28 @@ fun PanneauFlottant(modifier: Modifier = Modifier, contenu: @Composable ColumnSc
     ) {
         Poignee()
         Column(Modifier.fillMaxWidth().padding(horizontal = Gouttiere + 2.dp), content = contenu)
+    }
+}
+
+/**
+ * L'essentiel d'abord, le détail sur demande : un « Comprendre » qu'on ouvre
+ * quand on veut le pourquoi — explications, sources, tableaux.
+ */
+@Composable
+fun Depliable(titre: String = "Comprendre", ouvertAuDepart: Boolean = false, contenu: @Composable ColumnScope.() -> Unit) {
+    var ouvert by remember { mutableStateOf(ouvertAuDepart) }
+    Column(Modifier.fillMaxWidth().animateContentSize()) {
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(RayonControle))
+                .clickable { ouvert = !ouvert }
+                .padding(vertical = 10.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(titre, style = Corps, color = MaterialTheme.colorScheme.primary, modifier = Modifier.weight(1f))
+            Text(if (ouvert) "↑" else "↓", style = Corps, color = MaterialTheme.colorScheme.primary)
+        }
+        if (ouvert) Column(content = contenu)
     }
 }
