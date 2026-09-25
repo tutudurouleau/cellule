@@ -27,42 +27,52 @@ import fr.cellule.core.Duree
 import fr.cellule.core.FicheLabo
 import fr.cellule.core.FichesLabo
 import fr.cellule.core.GenreFiche
-import fr.cellule.core.Marque
 import fr.cellule.core.RechercheFiches
 import fr.cellule.core.TempsPublie
+import fr.cellule.core.TypeFiche
 
 /**
  * Les fiches produits : ce que chaque fabricant dit de son film, de son
- * révélateur, de ses bains — et d'où il le dit. On cherche par mot ou par
- * marque ; une fiche se déplie d'un appui ; ce qui n'a pas pu être relu à la
- * source est annoncé comme tel, jusque sur la fiche fermée.
+ * révélateur, de ses bains — et d'où il le dit. On les range par type de
+ * produit (films par sensibilité, révélateurs en poudre ou liquides, arrêt,
+ * fixateurs, lavage) ; la marque reste écrite sur chaque fiche et se cherche.
+ * Une fiche se déplie d'un appui ; ce qui n'a pas pu être relu à la source
+ * est annoncé comme tel, jusque sur la fiche fermée.
  */
 @Composable
 fun EcranFiches() {
     var recherche by remember { mutableStateOf("") }
-    var marque by remember { mutableStateOf<Marque?>(null) }
+    var genre by remember { mutableStateOf<GenreFiche?>(null) }
     var ouverte by remember { mutableStateOf<String?>(null) }
 
     Column(Modifier.fillMaxWidth().padding(horizontal = Gouttiere, vertical = 2.dp)) {
-        Champ(recherche, "Chercher", Modifier.fillMaxWidth(), indication = "HP5, fixateur, 1+4…") { recherche = it }
+        Champ(recherche, "Chercher", Modifier.fillMaxWidth(), indication = "HP5, liquide, fixateur, Kodak…") { recherche = it }
         Spacer(Modifier.height(8.dp))
-        /* Par marque : qui développe en HP5 Plus, ID-11 et ILFOSTOP voit sa chaîne ensemble. */
-        ChoixSegmente(listOf<Marque?>(null) + Marque.entries, marque, { it?.libelle ?: "Toutes" }) {
-            marque = it
+        ChoixSegmente(listOf<GenreFiche?>(null) + GenreFiche.entries, genre, {
+            when (it) {
+                null -> "Tout"
+                GenreFiche.FILM -> "Films"
+                GenreFiche.REVELATEUR -> "Révélateurs"
+                GenreFiche.BAIN -> "Bains"
+            }
+        }) {
+            genre = it
             ouverte = null
         }
     }
-    val trouvees = RechercheFiches.chercher(recherche, marque)
+    val trouvees = RechercheFiches.chercher(recherche, genre)
     if (trouvees.isEmpty()) {
         Carte(sousTitre = "Aucune fiche ne correspond. Peut-être n'a-t-elle pas encore été relue : voir la liste plus bas.") {}
     }
-    GenreFiche.entries.forEach { g ->
-        val liste = trouvees.filter { it.genre == g }
+    TypeFiche.entries.forEach { t ->
+        val liste = trouvees.filter { RechercheFiches.type(it) == t }
         if (liste.isNotEmpty()) {
-            Etiquette(
-                "${g.libelle} · ${liste.size}",
-                modifier = Modifier.padding(start = Gouttiere + 6.dp, top = 12.dp, bottom = 2.dp)
-            )
+            Column(Modifier.padding(start = Gouttiere + 6.dp, end = Gouttiere, top = 14.dp, bottom = 2.dp)) {
+                Etiquette("${t.libelle} · ${liste.size}", accent = true)
+                if (t.detail.isNotBlank()) {
+                    Text(t.detail, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+            }
             liste.forEach { f ->
                 CarteFiche(f, ouverte == f.nom) { ouverte = if (ouverte == f.nom) null else f.nom }
             }
