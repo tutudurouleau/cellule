@@ -2,17 +2,44 @@
 # « Fiches fabricants »). Une adresse par ligne ; ce qui suit # est ignoré.
 # Chaque chiffre du Labo renvoie à l'une de ces fiches.
 
-# Pages de téléchargement, pour trouver les PDF
-https://www.ilfordphoto.com/technical-downloads/
-https://www.ilfordphoto.com/technical-data/
-https://imaging.kodakalaris.com/photographers/film
-https://kodak.photosys.com/
-https://www.foma.cz/en/fomapan-400
-https://www.foma.cz/en/fomapan-100
-https://www.adox.de/Photo/
+# ── Kodak Alaris : films
+https://business.kodakmoments.com/sites/default/files/files/resources/f4017_TriX.pdf    # TRI-X 320 et 400, F-4017
+https://business.kodakmoments.com/sites/default/files/files/resources/f4016_TMax_100.pdf  # T-MAX 100, F-4016
+https://kodakprofessional.com/photographers/film/black-white                               # pour trouver T-MAX 400 et P3200
+# ── Kodak Alaris : chimie
+https://imaging.kodakalaris.com/sites/prod/files/files/resources/j78.pdf                   # D-76, J-78
+https://business.kodakmoments.com/sites/default/files/wysiwyg/pro/chemistry/j24.pdf        # HC-110, J-24
+https://business.kodakmoments.com/sites/default/files/wysiwyg/pro/chemistry/J-109_Feb_2018.pdf  # XTOL, J-109
+https://business.kodakmoments.com/sites/default/files/wysiwyg/pro/chemistry/z131.pdf       # C-41, Z-131
+https://business.kodakmoments.com/sites/default/files/wysiwyg/pro/chemistry/z130.pdf       # RA-4, Z-130
+https://kodak.photosys.com/                                                                # chimie Kodak actuelle (Dektol)
 
-# Premières fiches connues
+# ── Ilford (HARMAN technology) : films
 https://www.ilfordphoto.com/amfile/file/download/file/1903/product/691/   # HP5 PLUS
+https://www.ilfordphoto.com/amfile/file/download/file/575/product/546/    # FP4 PLUS (2025 ?)
+https://www.ilfordphoto.com/amfile/file/download/file/1919/product/690/   # FP4 PLUS 2018
+https://www.ilfordphoto.com/amfile/file/download/file/3/product/680/      # DELTA 100
+https://www.ilfordphoto.com/amfile/file/download/file/1915/product/684/   # DELTA 400
+https://www.ilfordphoto.com/amfile/file/download/file/1913/product/682/   # DELTA 3200 ?
+https://www.ilfordphoto.com/amfile/file/download/file/1905/product/699/   # PAN F PLUS
+# ── Ilford : chimie
 https://www.ilfordphoto.com/amfile/file/download/file/1829/product/551/   # PERCEPTOL, ID-11, MICROPHEN
-https://imaging.kodakalaris.com/sites/prod/files/files/resources/j78.pdf  # D-76 (J-78)
-https://business.kodakmoments.com/sites/default/files/files/resources/f4017_TriX.pdf  # TRI-X (F-4017)
+https://www.ilfordphoto.com/wp/wp-content/uploads/2024/09/Ilfosol3-Sept2024.pdf  # ILFOSOL 3
+https://www.ilfordphoto.com/amfile/file/download/file/1950/product/1727/  # ILFOTEC DD-X ?
+https://www.ilfordphoto.com/amfile/file/download/file/1828/product/730/   # révélateurs papier
+https://www.ilfordphoto.com/amfile/file/download/file/1833/product/711/   # RAPID FIXER
+https://www.ilfordphoto.com/amfile/file/download/file/1865/product/669/   # ILFOSTOP, ILFOTOL, WASHAID
+# ── Ilford : papiers
+https://www.ilfordphoto.com/wp/wp-content/uploads/2021/01/MULTIGRADE-IV-RC-Papers-060619.pdf  # MULTIGRADE RC
+https://www.ilfordphoto.com/amfile/file/download/file/1954/product/1872/  # MULTIGRADE RC DELUXE contre MGIV
+https://www.ilfordphoto.com/amfile/file/download/file/1748/product/735/   # MULTIGRADE FB CLASSIC
+https://www.ilfordphoto.com/amfile/file/download/file/1826/product/1944/  # traitement des papiers RC ?
+https://www.ilfordphoto.com/technical-downloads/                          # pour trouver le reste
+
+# ── Foma
+https://www.foma.cz/en/fomapan-100
+https://www.foma.cz/en/fomapan-200
+https://www.foma.cz/en/fomapan-400
+
+# ── Adox
+https://www.adox.de/adox-film-developer/rodinal-adonal/

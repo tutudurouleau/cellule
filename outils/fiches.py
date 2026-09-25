@@ -10,15 +10,19 @@ avant de recopier le moindre chiffre dans core. Les fiches restent la
 propriété de leurs auteurs : le dépôt ne garde que leur adresse
 (outils/fiches.txt), qui sert aussi de bibliographie au Labo.
 
-Usage : fiches.py URL
+Usage : fiches.py [LISTE]   (outils/fiches.txt par défaut)
   PDF  → texte mis en page (pdftotext -layout), page par page ;
   HTML → liens de la page (pour trouver les PDF), puis son texte.
+Un site qui refuse les robots (Ilford répond 403) est lu dans la copie
+qu'en garde la Wayback Machine : c'est le même PDF, daté par l'archive.
 """
 
 import html.parser
+import os
 import subprocess
 import sys
 import tempfile
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -67,9 +71,19 @@ def telecharger(adresse):
         return reponse.geturl(), reponse.headers.get("Content-Type", ""), reponse.read()
 
 
-def main():
-    adresse = sys.argv[1]
-    finale, type_, corps = telecharger(adresse)
+def lire(adresse):
+    try:
+        return telecharger(adresse)
+    except urllib.error.HTTPError as e:
+        if e.code not in (403, 429, 503):
+            raise
+        print(f"{adresse} : {e.code}, lecture dans la Wayback Machine")
+        # « id_ » demande le fichier tel qu'archivé, sans le bandeau de l'archive.
+        return telecharger(f"https://web.archive.org/web/2026id_/{adresse}")
+
+
+def afficher(adresse):
+    finale, type_, corps = lire(adresse)
     print(f"Adresse : {adresse}")
     if finale != adresse:
         print(f"Redirigée vers : {finale}")
@@ -96,6 +110,22 @@ def main():
             print(f"{texte[:80]:80} {href}")
     print("──────── texte ────────")
     print("\n".join(page.texte))
+
+
+def main():
+    racine = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    liste = sys.argv[1] if len(sys.argv) > 1 else os.path.join(racine, "outils", "fiches.txt")
+    with open(liste, encoding="utf-8") as f:
+        adresses = [l.split("#")[0].split()[0] for l in f if l.split("#")[0].strip()]
+    echecs = 0
+    for adresse in adresses:
+        print(f"\n════════════════ {adresse}")
+        try:
+            afficher(adresse)
+        except Exception as e:  # une fiche en échec ne doit pas bloquer les autres
+            echecs += 1
+            print(f"ÉCHEC {adresse} : {e}")
+    print(f"\n{len(adresses)} adresses, {echecs} échecs")
 
 
 if __name__ == "__main__":
