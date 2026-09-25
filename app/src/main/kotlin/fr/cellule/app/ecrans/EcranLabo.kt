@@ -41,6 +41,7 @@ import fr.cellule.core.Progressions
 import fr.cellule.core.Pronostic
 import fr.cellule.core.Source
 import fr.cellule.core.ThemeLabo
+import fr.cellule.core.TirageNote
 import fr.cellule.core.Verdict
 import fr.cellule.core.libelleDiaphs
 import java.time.LocalDate
@@ -103,6 +104,7 @@ fun EcranLabo(pronostics: DepotPronostics, etatApplication: EtatApplication) {
     }
     /* Même geste que « verser au carnet » depuis Estimer : le carnet reprend la proposition. */
     val versCarnet: (DeveloppementNote) -> Unit = { etatApplication.developpementPropose = it }
+    val versTirage: (TirageNote) -> Unit = { etatApplication.tiragePropose = it }
 
     Column(Modifier.fillMaxSize()) {
         Box(Modifier.fillMaxWidth().padding(horizontal = Gouttiere, vertical = 6.dp)) {
@@ -131,7 +133,7 @@ fun EcranLabo(pronostics: DepotPronostics, etatApplication: EtatApplication) {
                         Calculateur.PUSH_PULL -> CalculPush(pronostics, versChrono, versCarnet)
                         Calculateur.RECIPROCITE -> CalculReciprocite(pronostics)
                         Calculateur.DILUTION -> CalculDilution(pronostics)
-                        Calculateur.TIRAGE -> CalculTirage(pronostics)
+                        Calculateur.TIRAGE -> CalculTirage(pronostics, versTirage)
                     }
                     CarteProgression(pronostics.liste.filter { it.calculateur == calculateur })
                 }

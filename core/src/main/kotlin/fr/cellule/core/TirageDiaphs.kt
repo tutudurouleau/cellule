@@ -47,6 +47,18 @@ object TirageDiaphs {
 }
 
 /**
+ * « +1 ½ », « −⅓ », « +⅔ » : au tirage on compte en demis ou en tiers de
+ * diaph ; un demi arrondi au tiers le plus proche deviendrait faux.
+ */
+fun libelleCorrection(diaphs: Double): String {
+    val demis = diaphs * 2
+    val enDemis = kotlin.math.abs(demis - Math.round(demis)) < 1e-6 && Math.round(demis) % 2 != 0L
+    if (!enDemis) return libelleDiaphs(diaphs)
+    val entier = kotlin.math.abs(diaphs).toInt()
+    return (if (diaphs < 0) "−" else "+") + (if (entier > 0) "$entier ½" else "½")
+}
+
+/**
  * Une bande d'une bande d'essai : son temps total et ce qu'il faut ajouter
  * quand on découvre la bande suivante (méthode du cache qu'on déplace).
  */

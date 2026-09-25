@@ -32,6 +32,7 @@ import fr.cellule.app.Corps
 import fr.cellule.app.DepotJournal
 import fr.cellule.app.DepotLabo
 import fr.cellule.app.DepotPronostics
+import fr.cellule.app.DepotTirages
 import fr.cellule.app.Detail
 import fr.cellule.app.EtatApplication
 import fr.cellule.app.Gouttiere
@@ -46,13 +47,24 @@ import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
-private enum class ModeCarnet(val libelle: String) { VUES("Vues"), DEVELOPPEMENTS("Développements") }
+private enum class ModeCarnet(val libelle: String) { VUES("Vues"), DEVELOPPEMENTS("Films"), TIRAGES("Tirages") }
 
 @Composable
-fun EcranJournal(depot: DepotJournal, reglages: Reglages, etat: EtatApplication, labo: DepotLabo, pronostics: DepotPronostics) {
+fun EcranJournal(
+    depot: DepotJournal, reglages: Reglages, etat: EtatApplication,
+    labo: DepotLabo, tirages: DepotTirages, pronostics: DepotPronostics
+) {
 
-    /* Un développement préparé par le Labo ouvre directement sa page. */
-    var mode by remember { mutableStateOf(if (etat.developpementPropose != null) ModeCarnet.DEVELOPPEMENTS else ModeCarnet.VUES) }
+    /* Un développement ou un tirage préparé par le Labo ouvre directement sa page. */
+    var mode by remember {
+        mutableStateOf(
+            when {
+                etat.developpementPropose != null -> ModeCarnet.DEVELOPPEMENTS
+                etat.tiragePropose != null -> ModeCarnet.TIRAGES
+                else -> ModeCarnet.VUES
+            }
+        )
+    }
 
     var pellicule by remember { mutableStateOf(reglages.pellicule) }
     var vue by remember { mutableStateOf("") }
@@ -77,9 +89,9 @@ fun EcranJournal(depot: DepotJournal, reglages: Reglages, etat: EtatApplication,
         if (uri == null) return@rememberLauncherForActivityResult
         try {
             contexte.contentResolver.openOutputStream(uri)?.use {
-                it.write(depot.versSauvegarde(labo, pronostics).toByteArray(Charsets.UTF_8))
+                it.write(depot.versSauvegarde(labo, tirages, pronostics).toByteArray(Charsets.UTF_8))
             } ?: error("fichier inaccessible")
-            messageSauvegarde = "Carnet sauvegardé : ${depot.entrees.size} vue(s), ${labo.notes.size} développement(s)."
+            messageSauvegarde = "Carnet sauvegardé : ${depot.entrees.size} vue(s), ${labo.notes.size} film(s), ${tirages.tirages.size} tirage(s)."
             sauvegardeEchouee = false
         } catch (e: Exception) {
             messageSauvegarde = "La sauvegarde n'a pas pu être écrite."
@@ -94,9 +106,9 @@ fun EcranJournal(depot: DepotJournal, reglages: Reglages, etat: EtatApplication,
             val texte = contexte.contentResolver.openInputStream(uri)?.use {
                 it.readBytes().toString(Charsets.UTF_8)
             } ?: error("fichier inaccessible")
-            val ajoutees = depot.importer(texte, labo, pronostics)
+            val ajoutees = depot.importer(texte, labo, tirages, pronostics)
             messageSauvegarde = if (ajoutees == 0) "Rien de nouveau : tout est déjà dans le carnet."
-            else "$ajoutees vue(s) ou développement(s) restauré(s)."
+            else "$ajoutees élément(s) restauré(s)."
             sauvegardeEchouee = false
             vue = Statistiques.vueSuivante(depot.entrees, pellicule)
         } catch (e: Exception) {
@@ -142,6 +154,7 @@ fun EcranJournal(depot: DepotJournal, reglages: Reglages, etat: EtatApplication,
         }
 
         if (mode == ModeCarnet.DEVELOPPEMENTS) CarnetDeveloppements(labo, etat)
+        else if (mode == ModeCarnet.TIRAGES) CarnetTirages(tirages, etat)
         else {
 
             /* ── Noter une vue ────────────────────────────────────────────── */
@@ -293,13 +306,13 @@ fun EcranJournal(depot: DepotJournal, reglages: Reglages, etat: EtatApplication,
         /* ── La sauvegarde ────────────────────────────────────────────── */
         Carte(
             titre = "Sauvegarde",
-            sousTitre = "Un fichier à ranger où tu veux — Drive, Téléchargements, un mail à toi-même. Il garde les vues, les développements et les paris du Labo. Restaurer ajoute ce qui manque, sans rien écraser ni dédoubler."
+            sousTitre = "Un fichier à ranger où tu veux — Drive, Téléchargements, un mail à toi-même. Il garde les vues, les films développés, les tirages et les paris du Labo. Restaurer ajoute ce qui manque, sans rien écraser ni dédoubler."
         ) {
             LigneBoutons {
                 BoutonPlat(
                     "Sauvegarder",
                     accent = true,
-                    actif = entrees.isNotEmpty() || labo.notes.isNotEmpty() || pronostics.liste.isNotEmpty(),
+                    actif = entrees.isNotEmpty() || labo.notes.isNotEmpty() || tirages.tirages.isNotEmpty() || pronostics.liste.isNotEmpty(),
                     modifier = Modifier.weight(1f)
                 ) { exporter.launch("carnet-cellule-${LocalDate.now()}.json") }
                 BoutonPlat("Restaurer", modifier = Modifier.weight(1f)) {

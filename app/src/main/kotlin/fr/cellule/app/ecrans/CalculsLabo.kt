@@ -30,6 +30,7 @@ import fr.cellule.app.Interligne
 import fr.cellule.core.BandeEssai
 import fr.cellule.core.Calculateur
 import fr.cellule.core.Compensation
+import fr.cellule.core.Correction
 import fr.cellule.core.DeveloppementNote
 import fr.cellule.core.Dilution
 import fr.cellule.core.DilutionPubliee
@@ -45,6 +46,8 @@ import fr.cellule.core.TablePush
 import fr.cellule.core.TableTemperature
 import fr.cellule.core.Temperatures
 import fr.cellule.core.TirageDiaphs
+import fr.cellule.core.TirageNote
+import fr.cellule.core.libelleCorrection
 import fr.cellule.core.libelleDiaphs
 import kotlin.math.ceil
 import kotlin.math.log10
@@ -558,18 +561,10 @@ private fun libellePas(p: Double): String = when (p) {
     else -> "⅓"
 }
 
-/** « +1 ½ », « −⅓ » : un écart en demis ou en tiers de diaph. */
-private fun libelleEcart(diaphs: Double): String {
-    val demis = diaphs * 2
-    if (abs(demis - demis.roundToInt()) > 1e-6 || demis.roundToInt() % 2 == 0) return libelleDiaphs(diaphs)
-    val entier = kotlin.math.abs(diaphs).toInt()
-    return (if (diaphs < 0) "−" else "+") + (if (entier > 0) "$entier ½" else "½")
-}
-
 private fun abs(x: Double) = kotlin.math.abs(x)
 
 @Composable
-fun CalculTirage(pronostics: DepotPronostics) {
+fun CalculTirage(pronostics: DepotPronostics, versTirage: (TirageNote) -> Unit) {
     var mode by remember { mutableStateOf(ModeTirage.CORRECTION) }
     Column(Modifier.fillMaxWidth()) {
         Carte(
@@ -579,14 +574,14 @@ fun CalculTirage(pronostics: DepotPronostics) {
             ChoixSegmente(ModeTirage.entries.toList(), mode, { it.libelle }) { mode = it }
         }
         when (mode) {
-            ModeTirage.CORRECTION -> Correction(pronostics)
+            ModeTirage.CORRECTION -> CorrectionTirage(pronostics, versTirage)
             ModeTirage.BANDE -> Bande(pronostics)
         }
     }
 }
 
 @Composable
-private fun Correction(pronostics: DepotPronostics) {
+private fun CorrectionTirage(pronostics: DepotPronostics, versTirage: (TirageNote) -> Unit) {
     var saisie by remember { mutableStateOf("10") }
     var pas by remember { mutableStateOf(PAS_TIRAGE.first()) }
     var crans by remember { mutableStateOf(1f) }
@@ -600,7 +595,7 @@ private fun Correction(pronostics: DepotPronostics) {
         Spacer(Modifier.height(4.dp))
         ChoixSegmente(PAS_TIRAGE, pas, { libellePas(it) + " diaph" }) { pas = it; crans = 1f }
         Spacer(Modifier.height(Interligne))
-        Text("Correction : ${libelleEcart(delta).let { if (it == "juste") "aucune" else "$it diaph" }}", style = Corps, color = MaterialTheme.colorScheme.onSurface)
+        Text("Correction : ${libelleCorrection(delta).let { if (it == "juste") "aucune" else "$it diaph" }}", style = Corps, color = MaterialTheme.colorScheme.onSurface)
         val maxCrans = (2 / pas).roundToInt().toFloat()
         Slider(
             value = crans,
@@ -618,15 +613,18 @@ private fun Correction(pronostics: DepotPronostics) {
         indication = "en secondes",
         lire = Duree::lireSecondes,
         afficher = ::pose,
-        contexte = "${base?.let { pose(it) } ?: ""} ${libelleEcart(delta)} diaph",
+        contexte = "${base?.let { pose(it) } ?: ""} ${libelleCorrection(delta)} diaph",
         pronostics = pronostics
     ) {
-        ExplicationCorrection(base ?: return@Pari, delta, pas)
+        val b = base ?: return@Pari
+        ExplicationCorrection(b, delta, pas) {
+            versTirage(TirageNote(0, "", base = b, corrections = listOf(Correction("", delta))))
+        }
     }
 }
 
 @Composable
-private fun ExplicationCorrection(base: Double, delta: Double, pas: Double) {
+private fun ExplicationCorrection(base: Double, delta: Double, pas: Double, versTirage: () -> Unit) {
     val total = TirageDiaphs.temps(base, delta)
     Carte(titre = "La correction en secondes") {
         Ligne("Temps total de la zone", pose(total), accent = true)
@@ -639,7 +637,7 @@ private fun ExplicationCorrection(base: Double, delta: Double, pas: Double) {
         Etiquette("L'échelle autour de ${pose(base)}")
         (-3..3).map { it * pas }.forEach { d ->
             Ligne(
-                if (d == 0.0) "Base" else libelleEcart(d) + " diaph",
+                if (d == 0.0) "Base" else libelleCorrection(d) + " diaph",
                 pose(TirageDiaphs.temps(base, d)),
                 accent = abs(d - delta) < 1e-9
             )
@@ -650,12 +648,14 @@ private fun ExplicationCorrection(base: Double, delta: Double, pas: Double) {
                 "Compter en diaphs rend une correction indépendante du temps de base : « +⅓ dans le ciel » vaut sur un tirage de 8 s comme de 40 s."
         )
         Paragraphe(
-            if (delta > 0) "Brûler de ${libelleEcart(delta).removePrefix("+")} diaph, c'est donner à la zone ${pose(total)} en tout : " +
+            if (delta > 0) "Brûler de ${libelleCorrection(delta).removePrefix("+")} diaph, c'est donner à la zone ${pose(total)} en tout : " +
                 "elle a déjà reçu la base, il reste ${pose(total - base)} à ajouter."
-            else "Masquer de ${libelleEcart(-delta).removePrefix("+")} diaph, c'est ne donner à la zone que ${pose(total)} : " +
+            else "Masquer de ${libelleCorrection(-delta).removePrefix("+")} diaph, c'est ne donner à la zone que ${pose(total)} : " +
                 "tu la caches pendant ${pose(base - total)} de la base."
         )
         Paragraphe("Même règle à l'agrandisseur qu'à la prise de vue : fermer l'objectif d'un diaph double le temps.")
+        Spacer(Modifier.height(6.dp))
+        BoutonPlat("Verser au carnet de tirage", modifier = Modifier.fillMaxWidth()) { versTirage() }
     }
 }
 
@@ -713,7 +713,7 @@ private fun ExplicationBande(premier: Double, pas: Double, nombre: Int) {
             Ligne(
                 "Bande ${b.rang + 1}",
                 if (b.rang == 0) pose(b.ajout) else "+ " + pose(b.ajout),
-                "total ${pose(b.total)} · ${if (b.rang == 0) "base" else libelleEcart(b.diaphs) + " diaph"}"
+                "total ${pose(b.total)} · ${if (b.rang == 0) "base" else libelleCorrection(b.diaphs) + " diaph"}"
             )
         }
         Spacer(Modifier.height(6.dp))
