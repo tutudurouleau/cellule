@@ -49,6 +49,7 @@ import fr.cellule.core.TirageDiaphs
 import fr.cellule.core.TirageNote
 import fr.cellule.core.libelleCorrection
 import fr.cellule.core.libelleDiaphs
+import kotlin.math.abs
 import kotlin.math.ceil
 import kotlin.math.log10
 import kotlin.math.log2
@@ -68,6 +69,9 @@ private fun graduations(max: Double): List<Double> {
 }
 
 private fun pourcent(x: Double): String = "${(x * 100).roundToInt()} %"
+
+/** « 22 » ou « 22,5 » : le degré sans décimale inutile. */
+private fun degres(t: Double): String = if (t % 1.0 == 0.0) t.toInt().toString() else fmt(t, 1)
 
 /** Un temps de développement à 5 s près : la précision au-delà serait fausse. */
 private fun temps(secondes: Double): String = Duree.libelle((secondes / 5).roundToInt() * 5.0)
@@ -151,10 +155,14 @@ private fun ExplicationTemperature(
     Carte(titre = "Pourquoi une courbe", sousTitre = c.intitule) {
         Graphique(
             series = listOf(
-                Serie((0..40).map { 16.0 + it * 0.25 }.map { it to t20 * c.facteur(it) / 60 }, MaterialTheme.colorScheme.primary),
+                Serie(
+                    (0..40).map { 16.0 + it * 0.25 }.map { it to t20 * c.facteur(it) / 60 }, MaterialTheme.colorScheme.primary,
+                    nom = if (c is RegleIlford) "règle Ilford" else "courbe du fabricant", principale = true
+                ),
                 Serie(
                     listOf(16.0, 26.0).map { it to t20 * (1 - c.tauxParDegre * (it - 20)) / 60 },
-                    MaterialTheme.colorScheme.onSurfaceVariant, pointilles = true, epaisseur = 1.5f
+                    MaterialTheme.colorScheme.onSurfaceVariant, pointilles = true, epaisseur = 1.5f,
+                    nom = "même taux à plat"
                 )
             ),
             x = 16.0..26.0,
@@ -162,11 +170,13 @@ private fun ExplicationTemperature(
             graduationsX = listOf(16, 18, 20, 22, 24, 26).map { it.toDouble() to "$it°" },
             graduationsY = graduations(max).drop(1).map { it to fmt(it, if (it % 1 == 0.0) 0 else 1) + "′" },
             reperes = c.reperes.map { (temp, f) -> temp to t20 * f / 60 },
-            curseur = t to resultat / 60
-        )
-        Text(
-            "Trait plein : la courbe du fabricant. Pointillés : le même taux appliqué à plat. Cercles : les points qu'il publie.",
-            style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
+            curseur = t to resultat / 60,
+            titreY = "Temps de développement",
+            titreX = "Température du révélateur",
+            lire = { temp, min -> "${degres(temp)} °C → ${minutesLisibles(min)}" },
+            lireCourt = ::minutesCourtes,
+            lireAutre = { serie, _, min -> "${serie.nom} : ${minutesCourtes(min)}" },
+            pas = 0.5
         )
         Spacer(Modifier.height(6.dp))
         Ligne("Facteur à ${fmt(t, 1)} °C", facteur(c.facteur(t)))
@@ -289,20 +299,50 @@ private fun ExplicationPush(table: TablePush, ei: Int, versChrono: (Double) -> U
         Ligne("Écart d'exposition", if (d == 0.0) "nominal" else libelleDiaphs(d) + " diaph")
         Ligne("Par rapport au temps normal", facteur(minutes / table.normal))
         Spacer(Modifier.height(6.dp))
+        /* L'EI que le doigt lit sur le graphique ; le tableau dessous le suit. */
+        var eiLu by remember(table, ei) { mutableStateOf(ei) }
+        val eiDe = { dx: Double -> indices.minBy { abs(log2(it.toDouble() / table.iso) - dx) } }
         Graphique(
             series = memeFilm.filter { it != table }.map { t ->
-                Serie(t.indices.map { t.diaphs(it) to t.minutes.getValue(it) }, MaterialTheme.colorScheme.outlineVariant, epaisseur = 1.5f)
-            } + Serie(table.indices.map { table.diaphs(it) to table.minutes.getValue(it) }, MaterialTheme.colorScheme.primary),
+                Serie(
+                    t.indices.map { t.diaphs(it) to t.minutes.getValue(it) }, MaterialTheme.colorScheme.outlineVariant,
+                    epaisseur = 1.5f, nom = t.revelateur, legende = false
+                )
+            } + Serie(
+                table.indices.map { table.diaphs(it) to table.minutes.getValue(it) }, MaterialTheme.colorScheme.primary,
+                nom = table.revelateur, principale = true
+            ),
             x = log2(indices.first().toDouble() / table.iso) - 0.3..log2(indices.last().toDouble() / table.iso) + 0.3,
             y = 0.0..graduations(max).last(),
             graduationsX = indices.map { log2(it.toDouble() / table.iso) to "$it" },
             graduationsY = graduations(max).drop(1).map { it to fmt(it, 0) + "′" },
             reperes = table.indices.map { table.diaphs(it) to table.minutes.getValue(it) },
-            curseur = d to minutes
+            curseur = d to minutes,
+            titreY = "Temps à 20 °C",
+            titreX = "Indice d'exposition (EI)",
+            lire = { dx, min -> "EI ${eiDe(dx)} → ${minutesLisibles(min)}" },
+            lireCourt = ::minutesCourtes,
+            lireAutre = { serie, _, min -> "${serie.nom} ${minutesCourtes(min)}" },
+            reperesSeulement = true,
+            surChoix = { eiLu = eiDe(it) }
         )
         Text(
-            "En couleur : ${table.revelateur}. En gris : les autres révélateurs de la même fiche pour ce film.",
+            "En gris : les autres révélateurs de la même fiche pour ce film.",
             style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Spacer(Modifier.height(8.dp))
+        /* Tous les révélateurs publiés à l'EI lu, du plus court au plus long. */
+        val aCetEi = memeFilm.mapNotNull { t -> t.minutes[eiLu]?.let { t to it } }.sortedBy { it.second }
+        Etiquette("${table.film} à EI $eiLu · ${aCetEi.size} révélateur" + if (aCetEi.size > 1) "s" else "")
+        Spacer(Modifier.height(4.dp))
+        Tableau(
+            listOf(Colonne("Révélateur", 1.6f), Colonne("Temps", 0.9f, aDroite = true), Colonne("× normal", 0.8f, aDroite = true)),
+            aCetEi.map { (t, m) ->
+                RangTableau(
+                    listOf(t.revelateur, minutesLisibles(m), facteur(m / t.normal)),
+                    accent = t == table
+                )
+            }
         )
         Spacer(Modifier.height(6.dp))
         Depliable {
@@ -394,18 +434,26 @@ private fun ExplicationReciprocite(film: Reciprocite, mesure: Double, versFiche:
         Ligne("Correction", libelleDiaphs(log2(corrige / mesure)).let { if (it == "juste") "aucune" else "$it diaph" })
         film.developpement(mesure)?.let { Ligne("Développement", it, "Kodak, ligne la plus proche du tableau") }
         Spacer(Modifier.height(6.dp))
+        /* x : log10 de la pose mesurée ; y : diaphs à ajouter. La bulle les retraduit en secondes. */
+        val mesuree = { lx: Double -> Math.pow(10.0, lx) }
         Graphique(
             series = Reciprocites.LISTE.filter { it != film }.map { r ->
-                Serie(courbeReciprocite(r), MaterialTheme.colorScheme.outlineVariant, epaisseur = 1.5f)
-            } + Serie(courbeReciprocite(film), MaterialTheme.colorScheme.primary),
+                Serie(courbeReciprocite(r), MaterialTheme.colorScheme.outlineVariant, epaisseur = 1.5f, nom = r.film, legende = false)
+            } + Serie(courbeReciprocite(film), MaterialTheme.colorScheme.primary, nom = film.film, principale = true),
             x = 0.0..3.0,
             y = 0.0..4.0,
             graduationsX = listOf(0.0 to "1 s", 1.0 to "10 s", 2.0 to "100 s", 3.0 to "1000 s"),
             graduationsY = listOf(1.0, 2.0, 3.0, 4.0).map { it to "+${fmt(it, 0)}" },
-            curseur = if (mesure >= 1) log10(mesure) to log2(corrige / mesure) else null
+            curseur = if (mesure >= 1) log10(mesure) to log2(corrige / mesure) else null,
+            titreY = "Diaphs à ajouter",
+            titreX = "Pose mesurée par la cellule",
+            lire = { lx, dia -> "${pose(mesuree(lx))} mesurées → ${pose(mesuree(lx) * Math.pow(2.0, dia))}" },
+            lireCourt = { dia -> "+" + fmt(dia, 1) },
+            lireAutre = { serie, lx, dia -> "${serie.nom} ${pose(mesuree(lx) * Math.pow(2.0, dia))}" },
+            pas = 0.05
         )
         Text(
-            "Diaphs à ajouter selon la pose mesurée. En couleur : ${film.film} ; en gris : les autres films.",
+            "En gris : les autres films. Chacun a sa courbe : touche le graphique pour comparer leurs poses.",
             style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
         )
         Spacer(Modifier.height(6.dp))

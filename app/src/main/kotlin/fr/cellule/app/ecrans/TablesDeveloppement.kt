@@ -8,10 +8,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import kotlin.math.roundToInt
 import fr.cellule.app.Detail
 import fr.cellule.app.Interligne
 import fr.cellule.app.TitreCarte
 import fr.cellule.core.LigneRevelateur
+import fr.cellule.core.RegleIlford
 import fr.cellule.core.Source
 import fr.cellule.core.Sources
 import fr.cellule.core.TablesLabo
@@ -108,6 +110,31 @@ fun TablesDeveloppement(versFiche: ((String) -> Unit)? = null) {
                 )
             }
         )
+        Spacer(Modifier.height(Interligne))
+        Graphique(
+            series = listOf(
+                Serie(
+                    (0..32).map { 16.0 + it * 0.25 }.map { it to TablesLabo.TEMPS_EXEMPLE * RegleIlford.facteur(it) },
+                    MaterialTheme.colorScheme.primary, nom = "10 % multipliés (règle Ilford)", principale = true
+                ),
+                Serie(
+                    listOf(16.0, 24.0).map { it to TablesLabo.TEMPS_EXEMPLE * RegleIlford.lineaire(it) },
+                    MaterialTheme.colorScheme.onSurfaceVariant, pointilles = true, epaisseur = 1.5f,
+                    nom = "10 % additionnés (faux)"
+                )
+            ),
+            x = 16.0..24.0,
+            y = 0.0..10.0,
+            graduationsX = (16..24 step 2).map { it.toDouble() to "$it°" },
+            graduationsY = listOf(2.0, 4.0, 6.0, 8.0, 10.0).map { it to "${it.toInt()}′" },
+            reperes = TablesLabo.TEMPERATURES_EXEMPLE.sorted().map { it to TablesLabo.TEMPS_EXEMPLE * RegleIlford.facteur(it) },
+            titreY = "Temps pour 6 min à 20 °C",
+            titreX = "Température du révélateur",
+            lire = { t, min -> "${fmt(t, if (t % 1.0 == 0.0) 0 else 1)} °C → ${minutesLisibles(min)}" },
+            lireCourt = ::minutesCourtes,
+            lireAutre = { _, _, min -> "additionnés : ${minutesCourtes(min)}" },
+            pas = 0.5
+        )
         NoteTable(
             "Pour ton propre temps : multiplie-le par le facteur de la ligne. 8 min à 20 °C, révélateur à 22 °C : 8 × 0,83 ≈ 6 min 40. " +
                 "Additionner les 10 % se tromperait d'autant plus qu'on s'éloigne de 20 °C : à 16 °C, 8 min 24 au lieu de 9 min."
@@ -129,6 +156,33 @@ fun TablesDeveloppement(versFiche: ((String) -> Unit)? = null) {
                     accent = it.temperature == 20.0
                 )
             }
+        )
+        Spacer(Modifier.height(Interligne))
+        val kodak = TablesLabo.KODAK_FACE_A_LA_REGLE
+        val t20Kodak = kodak.first { it.temperature == 20.0 }.publie
+        Graphique(
+            series = listOf(
+                Serie(
+                    (0..24).map { 18.0 + it * 0.25 }.map { it to t20Kodak * RegleIlford.facteur(it) },
+                    MaterialTheme.colorScheme.onSurfaceVariant, pointilles = true, epaisseur = 1.5f,
+                    nom = "règle Ilford"
+                ),
+                Serie(
+                    kodak.map { it.temperature to it.publie },
+                    MaterialTheme.colorScheme.primary, nom = "table Kodak", principale = true
+                )
+            ),
+            x = 17.5..24.5,
+            y = 0.0..10.0,
+            graduationsX = listOf(18, 20, 22, 24).map { it.toDouble() to "$it°" },
+            graduationsY = listOf(2.0, 4.0, 6.0, 8.0, 10.0).map { it to "${it.toInt()}′" },
+            reperes = kodak.map { it.temperature to it.publie },
+            titreY = "Tri-X 400 en D-76",
+            titreX = "Température du révélateur",
+            lire = { t, min -> "${fmt(t, 0)} °C → ${minutesLisibles(min)}" },
+            lireCourt = ::minutesCourtes,
+            lireAutre = { serie, _, min -> "${serie.nom} : ${minutesCourtes(min)}" },
+            reperesSeulement = true
         )
         NoteTable(
             "La règle tombe à un quart de minute près. Mais quand une table existe, c'est elle qui fait foi : " +
@@ -175,6 +229,34 @@ fun TablesDeveloppement(versFiche: ((String) -> Unit)? = null) {
                     accent = l.diaphs == 0
                 )
             }
+        )
+        Spacer(Modifier.height(Interligne))
+        val couleurs = listOf(
+            MaterialTheme.colorScheme.onSurface,
+            MaterialTheme.colorScheme.primary,
+            MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        val eis = TablesLabo.PUSH.map { it.ei }
+        Graphique(
+            series = TablesLabo.REVELATEURS_PUSH.mapIndexed { i, (r, d) ->
+                Serie(
+                    TablesLabo.PUSH.mapNotNull { l -> l.minutes[i]?.let { l.diaphs.toDouble() to it } },
+                    couleurs[i],
+                    pointilles = i == 2,
+                    nom = if (d == "stock") r.removePrefix("ILFOTEC ") else "${r.removePrefix("ILFOTEC ")} $d",
+                    principale = i == 1
+                )
+            },
+            x = -0.25..3.25,
+            y = 0.0..22.0,
+            graduationsX = TablesLabo.PUSH.map { it.diaphs.toDouble() to "${it.ei}" },
+            graduationsY = listOf(5.0, 10.0, 15.0, 20.0).map { it to "${it.toInt()}′" },
+            titreY = "HP5 Plus à 20 °C",
+            titreX = "Indice d'exposition (EI)",
+            lire = { dx, min -> "EI ${eis[dx.roundToInt().coerceIn(0, eis.lastIndex)]} → DD-X ${minutesCourtes(min)}" },
+            lireCourt = ::minutesCourtes,
+            lireAutre = { serie, _, min -> "${serie.nom} ${minutesCourtes(min)}" },
+            pas = 1.0
         )
         NoteTable(
             "« +1 » : un diaph de sous-exposition. Pousser fait monter les tons moyens et les hautes lumières, " +
