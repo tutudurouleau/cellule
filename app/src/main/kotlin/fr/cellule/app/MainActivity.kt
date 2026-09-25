@@ -48,6 +48,7 @@ import fr.cellule.app.ecrans.EcranCameras
 import fr.cellule.app.ecrans.EcranEstimer
 import fr.cellule.app.ecrans.EcranFocales
 import fr.cellule.app.ecrans.EcranJournal
+import fr.cellule.app.ecrans.EcranLabo
 import fr.cellule.app.ecrans.EcranMesurer
 import fr.cellule.app.ecrans.EcranTables
 import fr.cellule.core.TYPES_DE_SCENE
@@ -71,7 +72,7 @@ class EtatApplication {
 /*
  * Une iconographie dessinée plutôt que le jeu Material par défaut : c'est ce
  * dernier, plus que n'importe quelle couleur, qui donne à une application son
- * air d'avoir dix ans. Cinq glyphes au trait, même épaisseur, même esprit.
+ * air d'avoir dix ans. Des glyphes au trait, même épaisseur, même esprit.
  */
 private fun icone(nom: String, trace: androidx.compose.ui.graphics.vector.PathBuilder.() -> Unit): ImageVector =
     ImageVector.Builder(name = nom, defaultWidth = 24.dp, defaultHeight = 24.dp, viewportWidth = 24f, viewportHeight = 24f)
@@ -130,6 +131,13 @@ private val IconeCarnet = icone("carnet") {
     moveTo(11.3f, 17f); lineTo(14f, 17f)
 }
 
+/** Une fiole d'Erlenmeyer et son niveau de liquide : le labo. */
+private val IconeLabo = icone("labo") {
+    moveTo(9f, 3.5f); lineTo(15f, 3.5f)
+    moveTo(10f, 3.5f); lineTo(10f, 9.5f); lineTo(5f, 20f); lineTo(19f, 20f); lineTo(14f, 9.5f); lineTo(14f, 3.5f)
+    moveTo(7.4f, 15f); lineTo(16.6f, 15f)
+}
+
 /** Une grille : les tables de référence. */
 private val IconeTables = icone("tables") {
     moveTo(4f, 5f); lineTo(20f, 5f); lineTo(20f, 19f); lineTo(4f, 19f); close()
@@ -144,6 +152,7 @@ private enum class Onglet(val titre: String, val sousTitre: String, val icone: I
     FOCALES("Focales", "apprendre à voir les angles de champ", IconeFocales, true),
     CAMERAS("Caméras", "fiches et quiz du matériel de tournage", IconeCameras, false),
     CARNET("Carnet", "ce que tu as photographié, et ton biais", IconeCarnet, false),
+    LABO("Labo", "développer, tirer, et comprendre pourquoi", IconeLabo, false),
     TABLES("Tables", "les repères à retenir", IconeTables, false)
 }
 
@@ -172,6 +181,7 @@ private fun Application() {
     val contexte = LocalContext.current
     val reglages = remember { Reglages(contexte) }
     val depot = remember { DepotJournal(contexte) }
+    val pronostics = remember { DepotPronostics(contexte) }
     val etat = remember { EtatApplication() }
     var onglet by remember { mutableStateOf(Onglet.MESURER) }
 
@@ -190,6 +200,7 @@ private fun Application() {
                     Onglet.FOCALES -> EcranFocales()
                     Onglet.CAMERAS -> EcranCameras()
                     Onglet.CARNET -> EcranJournal(depot, reglages, etat)
+                    Onglet.LABO -> EcranLabo(pronostics)
                     Onglet.TABLES -> EcranTables()
                 }
             }
@@ -241,9 +252,10 @@ private fun BoxScope.NavigationFlottante(onglet: Onglet, surChoix: (Onglet) -> U
             .padding(6.dp),
         horizontalArrangement = Arrangement.spacedBy(2.dp)
     ) {
-        /* Six onglets : sur un écran étroit, l'étiquette de l'onglet actif
-           ferait déborder la pilule ; l'icône en couleur suffit alors. */
-        val avecEtiquette = LocalConfiguration.current.screenWidthDp >= 380
+        /* Sept onglets : sur un écran de moins de 420 dp, l'étiquette de
+           l'onglet actif ferait déborder la pilule ; l'icône en couleur
+           suffit alors. */
+        val avecEtiquette = LocalConfiguration.current.screenWidthDp >= 420
         Onglet.entries.forEach { o -> OngletFlottant(o, o == onglet, avecEtiquette) { surChoix(o) } }
     }
 }

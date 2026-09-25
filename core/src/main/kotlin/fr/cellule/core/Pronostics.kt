@@ -125,6 +125,13 @@ object Duree {
         return t.toDoubleOrNull()?.let { it * 60 }
     }
 
+    /**
+     * Pour une pose ou un temps d'agrandisseur, un nombre nu se lit en
+     * secondes (« 8 » = 8 s) ; « 1:30 » ou « 2 min » restent des minutes.
+     */
+    fun lireSecondes(texte: String): Double? =
+        texte.trim().replace(',', '.').toDoubleOrNull() ?: lire(texte)
+
     /** « 9 min 30 », « 45 s », « 12 min ». */
     fun libelle(secondes: Double): String {
         val total = secondes.roundToInt()

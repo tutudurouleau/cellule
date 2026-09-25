@@ -117,5 +117,9 @@ class PronosticsTest {
         assertEquals("45 s", Duree.libelle(45.0))
         assertEquals("12 min", Duree.libelle(720.0))
         assertEquals("9:05", Duree.chrono(545.0))
+        assertEquals(8.0, Duree.lireSecondes("8"))
+        assertEquals(12.5, Duree.lireSecondes("12,5"))
+        assertEquals(90.0, Duree.lireSecondes("1:30"))
+        assertEquals(120.0, Duree.lireSecondes("2 min"))
     }
 }

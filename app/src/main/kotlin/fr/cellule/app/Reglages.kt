@@ -3,7 +3,9 @@ package fr.cellule.app
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.compose.runtime.mutableStateOf
+import fr.cellule.core.Calculateur
 import fr.cellule.core.EntreeJournal
+import fr.cellule.core.Pronostic
 import fr.cellule.core.SauvegardeCarnet
 import org.json.JSONArray
 import org.json.JSONObject
@@ -202,5 +204,59 @@ class DepotJournal(contexte: Context) {
             tableau.put(o)
         }
         return tableau
+    }
+}
+
+/**
+ * Les paris du Labo : ce que tu avais estimé avant de voir le calcul, et le
+ * calcul lui-même. C'est la trace de ta progression — l'intuition qui, pari
+ * après pari, rejoint le calcul.
+ */
+class DepotPronostics(contexte: Context) {
+
+    private val prefs: SharedPreferences =
+        contexte.getSharedPreferences("cellule", Context.MODE_PRIVATE)
+
+    private val etat = mutableStateOf(charger())
+
+    val liste: List<Pronostic> get() = etat.value
+
+    fun ajouter(p: Pronostic) {
+        etat.value = etat.value + p
+        sauver()
+    }
+
+    private fun charger(): List<Pronostic> = try {
+        val tableau = JSONArray(prefs.getString("pronostics", "[]") ?: "[]")
+        (0 until tableau.length()).mapNotNull { i ->
+            val o = tableau.getJSONObject(i)
+            /* Un calculateur renommé ou retiré ne doit pas faire perdre les autres paris. */
+            val calculateur = runCatching { Calculateur.valueOf(o.getString("calculateur")) }.getOrNull()
+                ?: return@mapNotNull null
+            Pronostic(
+                calculateur = calculateur,
+                date = o.optString("date", ""),
+                estime = o.getDouble("estime"),
+                calcule = o.getDouble("calcule"),
+                contexte = o.optString("contexte", "")
+            )
+        }
+    } catch (e: Exception) {
+        emptyList()
+    }
+
+    private fun sauver() {
+        val tableau = JSONArray()
+        etat.value.forEach { p ->
+            tableau.put(
+                JSONObject()
+                    .put("calculateur", p.calculateur.name)
+                    .put("date", p.date)
+                    .put("estime", p.estime)
+                    .put("calcule", p.calcule)
+                    .put("contexte", p.contexte)
+            )
+        }
+        prefs.edit().putString("pronostics", tableau.toString()).apply()
     }
 }
