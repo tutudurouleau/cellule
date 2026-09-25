@@ -40,10 +40,12 @@ import fr.cellule.core.TypeFiche
  * est annoncé comme tel, jusque sur la fiche fermée.
  */
 @Composable
-fun EcranFiches() {
-    var recherche by remember { mutableStateOf("") }
+fun EcranFiches(ouvrir: String? = null) {
+    /* Venu d'un calcul ou d'une question : la recherche filtre déjà sur ce
+       produit, et sa fiche s'ouvre directement. */
+    var recherche by remember(ouvrir) { mutableStateOf(ouvrir.orEmpty()) }
     var genre by remember { mutableStateOf<GenreFiche?>(null) }
-    var ouverte by remember { mutableStateOf<String?>(null) }
+    var ouverte by remember(ouvrir) { mutableStateOf(ouvrir) }
 
     Column(Modifier.fillMaxWidth().padding(horizontal = Gouttiere, vertical = 2.dp)) {
         Champ(recherche, "Chercher", Modifier.fillMaxWidth(), indication = "HP5, liquide, fixateur, Kodak…") { recherche = it }

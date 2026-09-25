@@ -82,7 +82,7 @@ private fun pose(secondes: Double): String = when {
 /* ── Temps et température ─────────────────────────────────────────────────── */
 
 @Composable
-fun CalculTemperature(pronostics: DepotPronostics, versChrono: (Double) -> Unit, versCarnet: (DeveloppementNote) -> Unit) {
+fun CalculTemperature(pronostics: DepotPronostics, versChrono: (Double) -> Unit, versCarnet: (DeveloppementNote) -> Unit, versFiche: (String) -> Unit) {
     var compensation by remember { mutableStateOf<Compensation>(RegleIlford) }
     var base by remember { mutableStateOf("6:00") }
     var temperature by remember { mutableStateOf(23f) }
@@ -124,7 +124,7 @@ fun CalculTemperature(pronostics: DepotPronostics, versChrono: (Double) -> Unit,
         contexte = "${t20?.let { temps(it) } ?: ""} à 20 °C → ${fmt(t, 1)} °C",
         pronostics = pronostics
     ) { estime ->
-        ExplicationTemperature(compensation, t20 ?: return@Pari, t, versChrono) { resultat ->
+        ExplicationTemperature(compensation, t20 ?: return@Pari, t, versChrono, versFiche) { resultat ->
             val table = compensation as? TableTemperature
             versCarnet(
                 DeveloppementNote(
@@ -143,7 +143,7 @@ fun CalculTemperature(pronostics: DepotPronostics, versChrono: (Double) -> Unit,
 @Composable
 private fun ExplicationTemperature(
     c: Compensation, t20: Double, t: Double,
-    versChrono: (Double) -> Unit, versCarnet: (Double) -> Unit
+    versChrono: (Double) -> Unit, versFiche: (String) -> Unit, versCarnet: (Double) -> Unit
 ) {
     val resultat = t20 * c.facteur(t)
     val aPlat = t20 * (1 - c.tauxParDegre * (t - 20))
@@ -193,13 +193,13 @@ private fun ExplicationTemperature(
                         "Ilford écrit « 10 % par degré ». Ses propres exemples — 6 min à 20 °C deviennent 4½ min à 23 °C et 9 min à 16 °C — " +
                             "montrent que les 10 % se composent : additionnés, ils donneraient 4 min 12 et 8 min 24."
                     )
-                    LigneSource(c.source)
+                    LigneSourceEtFiche(c.source, "ID-11", versFiche)
                     val d = Temperatures.DELTA_3200_ID11
                     Paragraphe(
                         "La règle reste un repère : quand une table existe, elle prime. La Delta 3200 en ID-11 à EI 3200 passe de 10½ min à 20 °C " +
                             "à 9 min à 24 °C, là où la règle donnerait ${temps(d.t20 * 60 * RegleIlford.facteur(24.0))}."
                     )
-                    LigneSource(d.source)
+                    LigneSourceEtFiche(d.source, "Ilford Delta 3200", versFiche)
                 }
                 is TableTemperature -> {
                     val pur = Temperatures.TABLES.firstOrNull { it.film == c.film && it.revelateur == c.revelateur.removeSuffix(" 1+1") }
@@ -209,7 +209,7 @@ private fun ExplicationTemperature(
                                 "contre ${pourcent(pur.tauxParDegre)} pour le ${pur.revelateur} pur dans la même fiche."
                         )
                     }
-                    LigneSource(c.source)
+                    LigneSourceEtFiche(c.source, c.revelateur, versFiche)
                 }
                 else -> LigneSource(c.source)
             }
@@ -225,7 +225,7 @@ private fun ExplicationTemperature(
 /* ── Push et pull ─────────────────────────────────────────────────────────── */
 
 @Composable
-fun CalculPush(pronostics: DepotPronostics, versChrono: (Double) -> Unit, versCarnet: (DeveloppementNote) -> Unit) {
+fun CalculPush(pronostics: DepotPronostics, versChrono: (Double) -> Unit, versCarnet: (DeveloppementNote) -> Unit, versFiche: (String) -> Unit) {
     var film by remember { mutableStateOf(Push.FILMS.first()) }
     val tables = Push.TABLES.filter { it.film == film }
     var table by remember(film) { mutableStateOf(tables.first()) }
@@ -259,7 +259,7 @@ fun CalculPush(pronostics: DepotPronostics, versChrono: (Double) -> Unit, versCa
         )
     }
     if (ei == table.iso) {
-        ExplicationPush(table, ei, versChrono) { verser(null) }
+        ExplicationPush(table, ei, versChrono, versFiche) { verser(null) }
         return
     }
     Pari(
@@ -273,12 +273,12 @@ fun CalculPush(pronostics: DepotPronostics, versChrono: (Double) -> Unit, versCa
         contexte = "${table.intitule} · EI $ei",
         pronostics = pronostics
     ) { estime ->
-        ExplicationPush(table, ei, versChrono) { verser(estime) }
+        ExplicationPush(table, ei, versChrono, versFiche) { verser(estime) }
     }
 }
 
 @Composable
-private fun ExplicationPush(table: TablePush, ei: Int, versChrono: (Double) -> Unit, versCarnet: () -> Unit) {
+private fun ExplicationPush(table: TablePush, ei: Int, versChrono: (Double) -> Unit, versFiche: (String) -> Unit, versCarnet: () -> Unit) {
     val minutes = table.minutes.getValue(ei)
     val d = table.diaphs(ei)
     val memeFilm = Push.TABLES.filter { it.film == table.film }
@@ -336,7 +336,7 @@ private fun ExplicationPush(table: TablePush, ei: Int, versChrono: (Double) -> U
                         "Cette plage repose sur une évaluation pratique, pas sur la sensibilité ISO normalisée."
                 )
             }
-            LigneSource(table.source)
+            LigneSourceEtFiche(table.source, table.revelateur, versFiche)
         }
         Spacer(Modifier.height(6.dp))
         LigneBoutons {
@@ -349,7 +349,7 @@ private fun ExplicationPush(table: TablePush, ei: Int, versChrono: (Double) -> U
 /* ── Réciprocité ──────────────────────────────────────────────────────────── */
 
 @Composable
-fun CalculReciprocite(pronostics: DepotPronostics) {
+fun CalculReciprocite(pronostics: DepotPronostics, versFiche: (String) -> Unit) {
     var film by remember { mutableStateOf(Reciprocites.LISTE.first()) }
     var saisie by remember { mutableStateOf("10") }
     val mesure = Duree.lireSecondes(saisie)?.takeIf { it > 0 }
@@ -367,7 +367,7 @@ fun CalculReciprocite(pronostics: DepotPronostics) {
     if (mesure != null && corrige == null) {
         Carte {
             BandeauEtat("La fiche s'arrête à ${pose(film.maximum ?: 0.0)} : au-delà, rien n'est publié. Fais un essai.", alerte = true)
-            LigneSource(film.source)
+            LigneSourceEtFiche(film.source, film.film, versFiche)
         }
         return
     }
@@ -382,12 +382,12 @@ fun CalculReciprocite(pronostics: DepotPronostics) {
         contexte = "${film.film} · ${mesure?.let { pose(it) } ?: ""} mesurées",
         pronostics = pronostics
     ) {
-        ExplicationReciprocite(film, mesure ?: return@Pari)
+        ExplicationReciprocite(film, mesure ?: return@Pari, versFiche)
     }
 }
 
 @Composable
-private fun ExplicationReciprocite(film: Reciprocite, mesure: Double) {
+private fun ExplicationReciprocite(film: Reciprocite, mesure: Double, versFiche: (String) -> Unit) {
     val corrige = film.corrige(mesure) ?: return
     Carte(titre = "Pourquoi le film ralentit", sousTitre = film.film) {
         Ligne("Pose à donner", pose(corrige), accent = true)
@@ -433,7 +433,7 @@ private fun ExplicationReciprocite(film: Reciprocite, mesure: Double) {
                         autres.joinToString(", ") { (nom, c) -> "$nom demande ${pose(c)}" } + "."
                 )
             }
-            LigneSource(film.source)
+            LigneSourceEtFiche(film.source, film.film, versFiche)
         }
     }
 }
@@ -447,7 +447,7 @@ private fun courbeReciprocite(r: Reciprocite): List<Pair<Double, Double>> =
 /* ── Dilutions ────────────────────────────────────────────────────────────── */
 
 @Composable
-fun CalculDilution(pronostics: DepotPronostics) {
+fun CalculDilution(pronostics: DepotPronostics, versFiche: (String) -> Unit) {
     var produit by remember { mutableStateOf<DilutionPubliee?>(DilutionsPubliees.LISTE.first()) }
     var saisieDilution by remember { mutableStateOf(DilutionsPubliees.LISTE.first().dilution.libelle) }
     var saisieVolume by remember { mutableStateOf("500") }
@@ -491,12 +491,12 @@ fun CalculDilution(pronostics: DepotPronostics) {
         contexte = "${dilution?.libelle ?: ""} · ${volume?.let { fmt(it, 0) } ?: ""} mL",
         pronostics = pronostics
     ) {
-        ExplicationDilution(dilution ?: return@Pari, volume ?: return@Pari, produit?.takeIf { it.dilution == dilution })
+        ExplicationDilution(dilution ?: return@Pari, volume ?: return@Pari, produit?.takeIf { it.dilution == dilution }, versFiche)
     }
 }
 
 @Composable
-private fun ExplicationDilution(d: Dilution, volume: Double, produit: DilutionPubliee?) {
+private fun ExplicationDilution(d: Dilution, volume: Double, produit: DilutionPubliee?, versFiche: (String) -> Unit) {
     val parts = d.partsTotales
     val c = d.concentre(volume)
     Carte(titre = "Lire « ${d.libelle} »", sousTitre = produit?.let { "${it.produit} · ${it.usage}" }) {
@@ -524,7 +524,7 @@ private fun ExplicationDilution(d: Dilution, volume: Double, produit: DilutionPu
             )
             produit?.let {
                 if (it.note.isNotBlank()) Paragraphe(it.note)
-                LigneSource(it.source)
+                LigneSourceEtFiche(it.source, it.produit, versFiche)
             }
         }
     }

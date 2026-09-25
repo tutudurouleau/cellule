@@ -351,6 +351,27 @@ object FichesLabo {
 
     fun parGenre(g: GenreFiche): List<FicheLabo> = TOUTES.filter { it.genre == g }
 
+    /** Sans accents, sans majuscules, sans la marque en tête. */
+    private fun cleNom(t: String): String {
+        val n = sansAccents(t).lowercase()
+        return listOf("kodak ", "ilford ", "tetenal ").fold(n) { s, prefixe -> s.removePrefix(prefixe) }
+    }
+
+    /**
+     * La fiche que désigne un nom de calculateur ou de table publiée, quel
+     * que soit son habillage : marque en tête, dilution ou variante ajoutée
+     * après (« Kodak D-76 1+1 », « HC-110 dilution B » pointent la même fiche
+     * que « D-76 » ou « HC-110 »). Null si aucune fiche ne correspond : mieux
+     * vaut ne pas proposer de lien que d'en proposer un faux.
+     */
+    fun parNom(nom: String): FicheLabo? {
+        val cible = cleNom(nom)
+        return TOUTES.firstOrNull { f ->
+            val base = cleNom(f.nom)
+            base == cible || cible.startsWith("$base ") || base.startsWith("$cible ")
+        }
+    }
+
     /** Les temps publiés à afficher sur une fiche, du plus usuel au plus poussé. */
     fun temps(f: FicheLabo): List<TempsPublie> = when (f.genre) {
         GenreFiche.FILM -> TempsPublies.pourFilm(f.cleTemps)

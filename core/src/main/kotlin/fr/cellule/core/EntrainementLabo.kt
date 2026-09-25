@@ -27,7 +27,9 @@ data class Exercice(
     val bonne: Int,
     val indices: List<String>,
     val explication: String,
-    val source: Source?
+    val source: Source?,
+    /** Le produit exact dont vient la question, pour ouvrir sa fiche plutôt qu'un lien externe. */
+    val produit: String? = null
 )
 
 object EntrainementLabo {
@@ -50,10 +52,11 @@ object EntrainementLabo {
      */
     private fun melanger(
         theme: ThemeLabo, enonce: String, bonne: String, leurres: List<String>,
-        indices: List<String>, explication: String, source: Source?, alea: Random
+        indices: List<String>, explication: String, source: Source?, alea: Random,
+        produit: String? = null
     ): Exercice {
         val propositions = (listOf(bonne) + leurres.filter { it != bonne }.distinct().take(3)).shuffled(alea)
-        return Exercice(theme, enonce, propositions, propositions.indexOf(bonne), indices, explication, source)
+        return Exercice(theme, enonce, propositions, propositions.indexOf(bonne), indices, explication, source, produit)
     }
 
     /* ── Ordre des bains et durées : questions fixes, toutes sourcées ── */
@@ -154,7 +157,7 @@ object EntrainementLabo {
                     "Une part vaut ${ml(v)} ÷ ${nombreSansZero(n + 1)}."
                 ),
                 "${ml(c)} de concentré et ${ml(v - c)} d'eau. L'erreur classique divise par ${nombreSansZero(n)} au lieu de ${nombreSansZero(n + 1)}. ${d.note}".trim(),
-                d.source, alea
+                d.source, alea, produit = d.produit
             )
         } else {
             val reste = listOf(5.0, 10.0, 15.0, 20.0, 25.0).random(alea)
@@ -168,7 +171,7 @@ object EntrainementLabo {
                     "La solution fait ${nombreSansZero(n + 1)} fois le volume de concentré."
                 ),
                 "${ml(reste)} × ${nombreSansZero(n + 1)} = ${ml(total)}, dont ${ml(total - reste)} d'eau.",
-                d.source, alea
+                d.source, alea, produit = d.produit
             )
         }
     }
@@ -199,7 +202,7 @@ object EntrainementLabo {
                 "${nombreSansZero(abs(t - 20))} degré(s) : ${if (chaud) "divise" else "multiplie"} par 1,1 autant de fois."
             ),
             "${minutes(t20)} × 1,1^${nombreSansZero(20 - t).replace("-", "−")} ≈ ${minutes(bonne)}. C'est l'exemple de la fiche : 6 min à 20 °C font 4½ min à 23 °C et 9 min à 16 °C.",
-            Sources.ILFORD_ID11, alea
+            Sources.ILFORD_ID11, alea, produit = "ID-11"
         )
     }
 
@@ -297,7 +300,7 @@ object EntrainementLabo {
                 voisin?.let { "Le fabricant donne ${minutes(table.minutes.getValue(it))} à EI $it." }
             ),
             "Fiche du fabricant : ${minutes(bonne)} à EI $ei, soit ×${nombreSansZero((bonne / table.normal * 100).roundToInt() / 100.0)} le temps normal. Pousser monte le contraste et le grain ; les ombres sous-exposées, elles, ne reviennent pas.",
-            table.source, alea
+            table.source, alea, produit = table.revelateur
         )
     }
 
@@ -318,7 +321,7 @@ object EntrainementLabo {
             pose(bonne), listOf(pose(mesure), pose(mesure * 2), pose(bonne * 2), pose(mesure * 1.3)),
             listOf("Aux poses longues, le film perd de la sensibilité.", "La correction grandit plus vite que la pose.", regle),
             "${pose(mesure)} mesurées → ${pose(bonne)} à donner, soit ${libelleDiaphs(r.diaphs(mesure)!!)} diaph. ${r.developpement(mesure)?.let { "Kodak conseille aussi : $it." } ?: ""}".trim(),
-            r.source, alea
+            r.source, alea, produit = r.film
         )
     }
 }

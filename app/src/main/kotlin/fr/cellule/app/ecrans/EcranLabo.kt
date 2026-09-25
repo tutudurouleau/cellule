@@ -55,6 +55,7 @@ import fr.cellule.core.Chrono
 import fr.cellule.core.DeveloppementNote
 import fr.cellule.core.DomaineLabo
 import fr.cellule.core.Duree
+import fr.cellule.core.FichesLabo
 import fr.cellule.core.Echelle
 import fr.cellule.core.EntrainementLabo
 import fr.cellule.core.Exercice
@@ -81,6 +82,8 @@ private sealed interface VueLabo {
     data class Calcul(val calculateur: Calculateur) : VueLabo
     data object Chrono : VueLabo
     data object Fiches : VueLabo
+    /** Les Fiches, ouvertes directement sur un produit — depuis un calcul ou une question. */
+    data class Fiche(val nom: String) : VueLabo
     data object Quiz : VueLabo
 }
 
@@ -89,6 +92,7 @@ private fun titre(v: VueLabo): String = when (v) {
     is VueLabo.Calcul -> v.calculateur.libelle
     VueLabo.Chrono -> "Chrono"
     VueLabo.Fiches -> "Fiches produits"
+    is VueLabo.Fiche -> "Fiches produits"
     VueLabo.Quiz -> "Quiz"
 }
 
@@ -147,6 +151,8 @@ fun EcranLabo(
     /* Même geste que « verser au carnet » depuis Estimer : le carnet reprend la proposition. */
     val versCarnet: (DeveloppementNote) -> Unit = { etatApplication.developpementPropose = it }
     val versTirage: (TirageNote) -> Unit = { etatApplication.tiragePropose = it }
+    /* Depuis un calcul ou une question, sauter droit à la fiche qui l'explique. */
+    val versFiche: (String) -> Unit = { nom -> vue = VueLabo.Fiche(nom) }
     /* Le chrono s'ouvre sur l'enchaînement du domaine : bains film ou bains papier. */
     val ouvrirChrono = {
         if (!Minuteur.enCours) {
@@ -190,23 +196,24 @@ fun EcranLabo(
                     )
                     is VueLabo.Calcul -> {
                         when (v.calculateur) {
-                            Calculateur.TEMPERATURE -> CalculTemperature(pronostics, versChrono, versCarnet)
-                            Calculateur.PUSH_PULL -> CalculPush(pronostics, versChrono, versCarnet)
-                            Calculateur.RECIPROCITE -> CalculReciprocite(pronostics)
-                            Calculateur.DILUTION -> CalculDilution(pronostics)
+                            Calculateur.TEMPERATURE -> CalculTemperature(pronostics, versChrono, versCarnet, versFiche)
+                            Calculateur.PUSH_PULL -> CalculPush(pronostics, versChrono, versCarnet, versFiche)
+                            Calculateur.RECIPROCITE -> CalculReciprocite(pronostics, versFiche)
+                            Calculateur.DILUTION -> CalculDilution(pronostics, versFiche)
                             Calculateur.TIRAGE -> CalculTirage(pronostics, versTirage)
                         }
                         CarteProgression(pronostics.liste.filter { it.calculateur == v.calculateur })
-                        QuestionDuTheme(v.calculateur)
+                        QuestionDuTheme(v.calculateur, versFiche)
                     }
                     VueLabo.Chrono -> EcranChrono(chrono, versCarnet)
                     VueLabo.Fiches -> EcranFiches()
+                    is VueLabo.Fiche -> EcranFiches(ouvrir = v.nom)
                     VueLabo.Quiz -> {
                         Carte(
                             sousTitre = "Les calculateurs vérifient ton intuition sur un cas réel. Le quiz entraîne ce qui ne se calcule pas — " +
                                 "l'ordre des bains, les durées des fiches — et le calcul de tête, avec des indices si tu bloques."
                         ) {}
-                        Entrainement(entrainement)
+                        Entrainement(entrainement, versFiche)
                     }
                 }
             }
@@ -491,12 +498,12 @@ private fun CarteCouleur() {
 
 /** Au bas de chaque calculateur, une question de tête sur le même thème. */
 @Composable
-private fun QuestionDuTheme(c: Calculateur) {
+private fun QuestionDuTheme(c: Calculateur, versFiche: (String) -> Unit) {
     val etat = remember(c) { EtatEntrainement(c.theme) }
     /* Repliée par défaut : l'écran du calcul reste léger, la question est là si on la veut. */
     var ouverte by remember(c) { mutableStateOf(false) }
     if (ouverte) {
-        CarteExercice(etat, entete = "Pour t'entraîner : une question de tête")
+        CarteExercice(etat, versFiche, entete = "Pour t'entraîner : une question de tête")
     } else {
         Carte(modifier = Modifier.clickable { ouverte = true }) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
@@ -630,6 +637,28 @@ fun LigneSource(source: Source) {
     )
 }
 
+/**
+ * La source d'un chiffre, et — quand sa fiche existe déjà dans l'appli — un
+ * lien pour l'ouvrir directement : mieux qu'un renvoi vers le site du
+ * fabricant, qui demande une connexion pour redire ce que le Labo sait déjà.
+ */
+@Composable
+fun LigneSourceEtFiche(source: Source, produit: String?, versFiche: (String) -> Unit) {
+    LigneSource(source)
+    val fiche = produit?.let { FichesLabo.parNom(it) }
+    if (fiche != null) {
+        Text(
+            "→ Voir la fiche « ${fiche.nom} »",
+            style = Detail,
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { versFiche(fiche.nom) }
+                .padding(vertical = 6.dp)
+        )
+    }
+}
+
 /** Un paragraphe d'explication, au corps du texte. */
 @Composable
 fun Paragraphe(texte: String) {
@@ -686,7 +715,7 @@ private fun CarteProgression(liste: List<Pronostic>) {
 /* ── S'entraîner ──────────────────────────────────────────────────────────── */
 
 @Composable
-private fun Entrainement(etat: EtatEntrainement) {
+private fun Entrainement(etat: EtatEntrainement, versFiche: (String) -> Unit) {
     Deroulant(
         intitule = "Thème",
         options = listOf<ThemeLabo?>(null) + ThemeLabo.entries,
@@ -696,7 +725,7 @@ private fun Entrainement(etat: EtatEntrainement) {
     ) { etat.theme = it; etat.suivant() }
     Spacer(Modifier.height(4.dp))
 
-    CarteExercice(etat)
+    CarteExercice(etat, versFiche)
 
     if (etat.posees > 0) {
         Carte {
@@ -711,7 +740,7 @@ private fun Entrainement(etat: EtatEntrainement) {
 
 /** Une question : énoncé, indices à la demande, propositions, puis l'explication et sa source. */
 @Composable
-private fun CarteExercice(etat: EtatEntrainement, entete: String? = null) {
+private fun CarteExercice(etat: EtatEntrainement, versFiche: (String) -> Unit, entete: String? = null) {
     val e = etat.exercice ?: return
     val choisi = etat.choisi
     val repondu = choisi != null
@@ -758,7 +787,7 @@ private fun CarteExercice(etat: EtatEntrainement, entete: String? = null) {
             )
             Spacer(Modifier.height(6.dp))
             Paragraphe(e.explication)
-            e.source?.let { LigneSource(it) }
+            e.source?.let { LigneSourceEtFiche(it, e.produit, versFiche) }
             Spacer(Modifier.height(6.dp))
             BoutonPlat("Suivant", accent = true, modifier = Modifier.fillMaxWidth()) { etat.suivant() }
         }

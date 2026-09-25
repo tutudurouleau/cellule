@@ -45,6 +45,21 @@ class AccueilLaboTest {
     }
 
     @Test
+    fun `parNom retrouve la fiche derriere chaque table publiee`() {
+        val noms = buildList {
+            add("ID-11"); add("Ilford Delta 3200")
+            Temperatures.TABLES.forEach { add(it.revelateur) }
+            Push.TABLES.forEach { add(it.revelateur) }
+            Reciprocites.LISTE.forEach { add(it.film) }
+            DilutionsPubliees.LISTE.forEach { add(it.produit) }
+        }.distinct()
+        noms.forEach { assertTrue(FichesLabo.parNom(it) != null, "sans fiche : $it") }
+        assertEquals("D-76", FichesLabo.parNom("Kodak D-76 1+1")?.nom)
+        assertEquals("HC-110", FichesLabo.parNom("HC-110 dilution B")?.nom)
+        assertEquals(null, FichesLabo.parNom("Un produit totalement inconnu"))
+    }
+
+    @Test
     fun `la recherche ignore accents et majuscules`() {
         val fixateurs = RechercheFiches.chercher("FIXATEUR", null).map { it.nom }
         assertTrue("RAPID FIXER" in fixateurs && "KODAK Fixer" in fixateurs, fixateurs.toString())
