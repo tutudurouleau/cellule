@@ -150,7 +150,13 @@ fun CelluleTheme(sombre: Boolean = isSystemInDarkTheme(), teinte: Teinte = Teint
             surfaceContainerHigh = teinter(base.surfaceContainerHigh, pVariante),
             surfaceContainerHighest = teinter(base.surfaceContainerHighest, pVariante),
             surfaceVariant = teinter(base.surfaceVariant, pVariante),
-            outlineVariant = teinter(base.outlineVariant, pVariante)
+            outlineVariant = teinter(base.outlineVariant, pVariante),
+            /* Les rails des curseurs (Slider) prennent cette couleur : dans la
+               teinte de l'onglet plutôt qu'un bleu venu d'ailleurs. */
+            secondary = couleur,
+            onSecondary = surCouleur,
+            secondaryContainer = teinter(base.surfaceContainerHighest, 0.22f),
+            onSecondaryContainer = base.onSurface
         ),
         content = contenu
     )

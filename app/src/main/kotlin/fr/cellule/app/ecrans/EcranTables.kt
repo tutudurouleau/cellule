@@ -1,5 +1,6 @@
 package fr.cellule.app.ecrans
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,8 +11,13 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import fr.cellule.app.Gouttiere
 import fr.cellule.app.Interligne
 import fr.cellule.app.ZoneNavFlottante
 import fr.cellule.core.CIELS
@@ -27,11 +33,22 @@ import fr.cellule.core.coupleDeTable
 import fr.cellule.core.libelleDiaphs
 import fr.cellule.core.libelleOuverture
 
+/** Les tables de l'exposition, et celles du développement. */
+private enum class RayonTables(val libelle: String) { EXPOSITION("Exposition"), DEVELOPPEMENT("Développement") }
+
 @Composable
 fun EcranTables() {
+    var rayon by remember { mutableStateOf(RayonTables.EXPOSITION) }
     Column(
         Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(bottom = ZoneNavFlottante)
     ) {
+        Box(Modifier.fillMaxWidth().padding(horizontal = Gouttiere, vertical = 6.dp)) {
+            ChoixSegmente(RayonTables.entries.toList(), rayon, { it.libelle }) { rayon = it }
+        }
+        if (rayon == RayonTables.DEVELOPPEMENT) {
+            TablesDeveloppement()
+            return@Column
+        }
 
         Carte(
             titre = "La table maîtresse — 100 ISO",

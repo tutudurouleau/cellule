@@ -28,12 +28,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
+import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -271,18 +274,36 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
                     }
                 }
                 if (mode == ModeMesure.SPOT) {
+                    /* En bas de l'image, sous le pouce : la taille du spot se règle
+                       sans lâcher le cadrage. Fond sombre translucide pour rester
+                       lisible sur n'importe quelle scène. */
                     Row(
                         Modifier
-                            .align(Alignment.TopEnd)
-                            .padding(top = 12.dp, end = Gouttiere),
+                            .align(Alignment.BottomCenter)
+                            .fillMaxWidth()
+                            .padding(horizontal = Gouttiere, vertical = 10.dp)
+                            .background(Color.Black.copy(alpha = 0.6f), RoundedCornerShape(50))
+                            .padding(start = 16.dp, end = 10.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
+                        Text("Spot", style = Detail, color = Color.White)
+                        Spacer(Modifier.width(12.dp))
+                        /* Le petit disque, puis le grand : on voit dans quel sens on va. */
+                        Canvas(Modifier.size(10.dp)) { drawCircle(Color.White.copy(alpha = 0.8f), size.minDimension / 4f) }
                         Slider(
                             value = moteur.rayon,
                             onValueChange = { moteur.reglerRayon(it) },
                             valueRange = 0.02f..0.25f,
-                            modifier = Modifier.height(28.dp)
+                            colors = SliderDefaults.colors(
+                                thumbColor = MaterialTheme.colorScheme.primary,
+                                activeTrackColor = MaterialTheme.colorScheme.primary,
+                                inactiveTrackColor = Color.White.copy(alpha = 0.28f),
+                                activeTickColor = Color.Transparent,
+                                inactiveTickColor = Color.Transparent
+                            ),
+                            modifier = Modifier.weight(1f).height(44.dp).padding(horizontal = 6.dp)
                         )
+                        Canvas(Modifier.size(18.dp)) { drawCircle(Color.White.copy(alpha = 0.8f), size.minDimension / 2f, style = Stroke(1.5.dp.toPx())) }
                     }
                 }
             } else if (!avecCamera) {

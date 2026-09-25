@@ -383,7 +383,7 @@ class RangTableau(val cellules: List<String>, val detail: String? = null, val ac
  * légèrement teintée pour que l'œil ne saute pas de rang en travers.
  */
 @Composable
-fun Tableau(colonnes: List<Colonne>, rangs: List<RangTableau>) {
+fun Tableau(colonnes: List<Colonne>, rangs: List<RangTableau>, petit: Boolean = false) {
     val pair = MaterialTheme.colorScheme.surfaceContainerHigh
     val accent = MaterialTheme.colorScheme.primaryContainer
     Column(Modifier.fillMaxWidth()) {
@@ -417,7 +417,7 @@ fun Tableau(colonnes: List<Colonne>, rangs: List<RangTableau>) {
                         val c = colonnes.getOrNull(k) ?: return@forEachIndexed
                         Text(
                             texte,
-                            style = Corps,
+                            style = if (petit && k > 0) Detail else Corps,
                             color = if (rang.accent) MaterialTheme.colorScheme.onPrimaryContainer
                             else if (k == 0) MaterialTheme.colorScheme.onSurface
                             else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.92f),

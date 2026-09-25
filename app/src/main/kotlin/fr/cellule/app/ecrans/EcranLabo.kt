@@ -84,6 +84,8 @@ private sealed interface VueLabo {
     data object Fiches : VueLabo
     /** Les Fiches, ouvertes directement sur un produit — depuis un calcul ou une question. */
     data class Fiche(val nom: String) : VueLabo
+    /** Le développement expliqué en tables. */
+    data object Tables : VueLabo
     data object Quiz : VueLabo
 }
 
@@ -93,6 +95,7 @@ private fun titre(v: VueLabo): String = when (v) {
     VueLabo.Chrono -> "Chrono"
     VueLabo.Fiches -> "Fiches produits"
     is VueLabo.Fiche -> "Fiches produits"
+    VueLabo.Tables -> "Les tables du labo"
     VueLabo.Quiz -> "Quiz"
 }
 
@@ -186,6 +189,7 @@ fun EcranLabo(
                         ouvrirCalcul = { vue = VueLabo.Calcul(it) },
                         ouvrirChrono = ouvrirChrono,
                         ouvrirFiches = { vue = VueLabo.Fiches },
+                        ouvrirTables = { vue = VueLabo.Tables },
                         ouvrirQuiz = { theme ->
                             if (theme != null) {
                                 entrainement.theme = theme
@@ -208,6 +212,7 @@ fun EcranLabo(
                     VueLabo.Chrono -> EcranChrono(chrono, versCarnet)
                     VueLabo.Fiches -> EcranFiches()
                     is VueLabo.Fiche -> EcranFiches(ouvrir = v.nom)
+                    VueLabo.Tables -> TablesDeveloppement(versFiche)
                     VueLabo.Quiz -> {
                         Carte(
                             sousTitre = "Les calculateurs vérifient ton intuition sur un cas réel. Le quiz entraîne ce qui ne se calcule pas — " +
@@ -300,6 +305,7 @@ private fun Accueil(
     ouvrirCalcul: (Calculateur) -> Unit,
     ouvrirChrono: () -> Unit,
     ouvrirFiches: () -> Unit,
+    ouvrirTables: () -> Unit,
     ouvrirQuiz: (ThemeLabo?) -> Unit
 ) {
     /* En chambre noire, c'est l'information qui compte : elle passe devant tout. */
@@ -312,6 +318,7 @@ private fun Accueil(
     val calculs = domaine.calculateurs.map { c -> Tuile(c.libelle, detailCalcul(c), iconeCalcul(c)) { ouvrirCalcul(c) } }
     when (domaine) {
         DomaineLabo.FILM -> {
+            EntreeTables(ouvrirTables)
             FilConducteur(
                 listOf(
                     "Calcule" to "temps, push, dilution",
@@ -350,6 +357,27 @@ private fun Accueil(
             DernierTirage(tirages)
         }
         DomaineLabo.COULEUR -> CarteCouleur()
+    }
+}
+
+/**
+ * La porte d'entrée pour qui débute : avant de calculer, comprendre ce que
+ * les calculs supposent connu.
+ */
+@Composable
+private fun EntreeTables(ouvrir: () -> Unit) {
+    Carte(modifier = Modifier.clickable { ouvrir() }) {
+        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) {
+                Etiquette("Pour comprendre", accent = true)
+                Text("Le développement en six tables", style = TitreCarte, color = MaterialTheme.colorScheme.onSurface)
+                Text(
+                    "Les bains, les mots, les révélateurs, la température, les dilutions, le push.",
+                    style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            Text("›", style = TitreCarte, color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(start = 10.dp))
+        }
     }
 }
 
