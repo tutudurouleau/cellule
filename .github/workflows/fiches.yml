@@ -1,0 +1,41 @@
+name: Fiches fabricants
+
+# Les sites des fabricants ne répondent qu'aux machines de GitHub : chaque
+# adresse de outils/fiches.txt devient un job qui imprime le texte de la
+# fiche dans son journal, à relire avant de recopier un chiffre dans core.
+# Rien n'est versé dans le dépôt.
+on:
+  push:
+    paths:
+      - "outils/fiches.txt"
+      - "outils/fiches.py"
+  workflow_dispatch:
+
+jobs:
+  liste:
+    name: Liste des fiches
+    runs-on: ubuntu-latest
+    outputs:
+      adresses: ${{ steps.liste.outputs.adresses }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: liste
+        run: |
+          adresses=$(sed 's/#.*//' outils/fiches.txt | awk 'NF {print $1}' | jq -R . | jq -sc .)
+          echo "adresses=$adresses" >> "$GITHUB_OUTPUT"
+
+  lire:
+    name: ${{ matrix.adresse }}
+    needs: liste
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        adresse: ${{ fromJson(needs.liste.outputs.adresses) }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Installer pdftotext
+        run: sudo apt-get install -y poppler-utils > /dev/null
+      - name: Lire la fiche
+        run: python3 outils/fiches.py "${{ matrix.adresse }}"

@@ -1,0 +1,18 @@
+# Fiches techniques des fabricants lues par outils/fiches.py (workflow
+# « Fiches fabricants »). Une adresse par ligne ; ce qui suit # est ignoré.
+# Chaque chiffre du Labo renvoie à l'une de ces fiches.
+
+# Pages de téléchargement, pour trouver les PDF
+https://www.ilfordphoto.com/technical-downloads/
+https://www.ilfordphoto.com/technical-data/
+https://imaging.kodakalaris.com/photographers/film
+https://kodak.photosys.com/
+https://www.foma.cz/en/fomapan-400
+https://www.foma.cz/en/fomapan-100
+https://www.adox.de/Photo/
+
+# Premières fiches connues
+https://www.ilfordphoto.com/amfile/file/download/file/1903/product/691/   # HP5 PLUS
+https://www.ilfordphoto.com/amfile/file/download/file/1829/product/551/   # PERCEPTOL, ID-11, MICROPHEN
+https://imaging.kodakalaris.com/sites/prod/files/files/resources/j78.pdf  # D-76 (J-78)
+https://business.kodakmoments.com/sites/default/files/files/resources/f4017_TriX.pdf  # TRI-X (F-4017)
