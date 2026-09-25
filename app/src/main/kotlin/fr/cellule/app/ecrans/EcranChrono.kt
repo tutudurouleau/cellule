@@ -41,6 +41,7 @@ import fr.cellule.app.Gouttiere
 import fr.cellule.app.Interligne
 import fr.cellule.app.RayonCarte
 import fr.cellule.app.RayonControle
+import fr.cellule.app.TitreCarte
 import fr.cellule.app.TitreEcran
 import fr.cellule.app.chrono.Minuteur
 import fr.cellule.app.chrono.ServiceChrono
@@ -231,13 +232,32 @@ private fun ChronoEnCours(versCarnet: (DeveloppementNote) -> Unit) {
 
     Carte {
         Etiquette("Bain ${p.etape + 1} sur ${s.etapes.size} · ${s.nom}")
-        Text(etape.nom, style = TitreEcran, color = MaterialTheme.colorScheme.onSurface)
-        Text(
-            if (p.fini) "Terminé" else Duree.chrono(p.resteEtape),
-            style = ChiffreHero,
-            color = if (p.agite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
-        )
-        BandeauEtat(etatTexte, alerte = p.agite)
+        /* L'anneau se vide à mesure du bain ; les encoches autour sont les agitations. */
+        AnneauChrono(
+            duree = etape.duree,
+            ecoule = if (p.fini) etape.duree else p.dansEtape,
+            creneaux = etape.agitation?.takeIf { !it.enContinu }?.creneaux(etape.duree).orEmpty(),
+            actif = Minuteur.pause == null && !p.fini,
+            modifier = Modifier.align(Alignment.CenterHorizontally).padding(vertical = 6.dp)
+        ) {
+            Text(etape.nom, style = TitreCarte, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(
+                if (p.fini) "Fini" else Duree.chrono(p.resteEtape),
+                style = ChiffreHero,
+                color = if (p.agite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
+            )
+            Text(
+                when {
+                    p.fini -> "séquence terminée"
+                    Minuteur.pause != null -> "en pause"
+                    p.agite -> "agite !"
+                    p.prochaineAgitation != null -> "agitation dans ${ceil(p.prochaineAgitation!!).toInt()} s"
+                    else -> "repos"
+                },
+                style = Corps,
+                color = if (p.agite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
         if (etape.consigne.isNotBlank()) {
             Spacer(Modifier.height(6.dp))
             Text(etape.consigne, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)

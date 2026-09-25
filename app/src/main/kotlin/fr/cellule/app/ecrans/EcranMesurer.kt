@@ -332,6 +332,8 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
                 .animateContentSize()
         ) {
             Row(Modifier.fillMaxWidth().heightIn(min = 68.dp), verticalAlignment = Alignment.CenterVertically) {
+                /* L'aiguille dit l'ordre de grandeur avant même qu'on lise le chiffre. */
+                CadranEV(ev100, Modifier.padding(end = 10.dp))
                 Column(Modifier.weight(1f)) {
                     Row(verticalAlignment = Alignment.Bottom) {
                         Text(

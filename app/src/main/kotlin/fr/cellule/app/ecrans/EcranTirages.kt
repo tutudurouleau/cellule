@@ -160,7 +160,7 @@ fun CarnetTirages(depot: DepotTirages, etat: EtatApplication) {
                 style = Corps, color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         } else {
-            liste.reversed().forEach { t -> LigneTirage(t) { depot.supprimer(t.identifiant) } }
+            Frise(liste.reversed(), jour = { it.date }) { t -> LigneTirage(t) { depot.supprimer(t.identifiant) } }
         }
     }
 }
@@ -179,7 +179,7 @@ private fun LigneTirage(t: TirageNote, surSuppression: () -> Unit) {
             Column(Modifier.weight(1f)) {
                 Text(t.titre, style = Corps, color = MaterialTheme.colorScheme.onSurface)
                 Text(
-                    listOf(t.date, t.papier, t.filtre.let { if (it.isBlank()) "" else "filtre $it" }, t.ouverture, t.format)
+                    listOf(t.papier, t.filtre.let { if (it.isBlank()) "" else "filtre $it" }, t.ouverture, t.format)
                         .filter { it.isNotBlank() }.joinToString(" · "),
                     style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

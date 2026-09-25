@@ -282,7 +282,9 @@ fun EcranJournal(
                     )
                 } else {
                     val visibles = if (toutVoir) entrees.reversed() else entrees.reversed().take(8)
-                    visibles.forEach { e -> LigneCarnet(e) { depot.supprimer(e.identifiant) } }
+                    Frise(visibles, jour = { it.date }, marque = { it.ecart?.let { x -> kotlin.math.abs(x) < 0.3 } ?: false }) { e ->
+                        LigneCarnet(e) { depot.supprimer(e.identifiant) }
+                    }
                     Spacer(Modifier.height(Interligne))
                     LigneBoutons {
                         if (entrees.size > 8) {
@@ -361,7 +363,7 @@ private fun LigneCarnet(e: EntreeJournal, surSuppression: () -> Unit) {
                 val entete = listOfNotNull(
                     e.vue.takeIf { it.isNotBlank() }?.let { "vue $it" },
                     e.pellicule.takeIf { it.isNotBlank() },
-                    e.date + (if (e.heure.isNotBlank()) " · " + e.heure else "")
+                    e.heure.takeIf { it.isNotBlank() }
                 ).joinToString(" · ")
                 Text(entete, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }

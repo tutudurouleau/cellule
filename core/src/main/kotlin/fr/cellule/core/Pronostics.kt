@@ -17,7 +17,13 @@ import kotlin.math.roundToInt
  * même faute que sur 20), en diaphs pour une exposition de tirage — l'unité
  * dans laquelle le papier répond.
  */
-enum class Echelle { RELATIVE, DIAPHS }
+enum class Echelle(val juste: Double, val proche: Double) {
+    RELATIVE(0.05, 0.15),
+    DIAPHS(1.0 / 6, 0.5);
+
+    /** Jusqu'où une réglette d'écart s'étend de part et d'autre du juste. */
+    val portee: Double get() = proche * 2
+}
 
 enum class Calculateur(val libelle: String, val echelle: Echelle) {
     TEMPERATURE("Temps et température", Echelle.RELATIVE),
@@ -65,13 +71,9 @@ enum class Verdict(val libelle: String) {
 
     companion object {
         fun de(ecart: Double, echelle: Echelle): Verdict {
-            val (juste, proche) = when (echelle) {
-                Echelle.RELATIVE -> 0.05 to 0.15
-                Echelle.DIAPHS -> 1.0 / 6 to 0.5
-            }
             return when {
-                abs(ecart) <= juste -> JUSTE
-                abs(ecart) <= proche -> PROCHE
+                abs(ecart) <= echelle.juste -> JUSTE
+                abs(ecart) <= echelle.proche -> PROCHE
                 else -> LOIN
             }
         }

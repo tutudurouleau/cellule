@@ -184,7 +184,9 @@ fun CarnetDeveloppements(labo: DepotLabo, etat: EtatApplication) {
             )
         } else {
             val visibles = if (toutVoir) notesListe.reversed() else notesListe.reversed().take(8)
-            visibles.forEach { n -> LigneDeveloppement(n) { labo.supprimer(n.identifiant) } }
+            Frise(visibles, jour = { it.date }, marque = { it.resultat == Resultat.CORRECT }) { n ->
+                LigneDeveloppement(n) { labo.supprimer(n.identifiant) }
+            }
             if (notesListe.size > 8) {
                 Spacer(Modifier.height(Interligne))
                 BoutonPlat(if (toutVoir) "Réduire" else "Tout voir (${notesListe.size})") { toutVoir = !toutVoir }
@@ -206,14 +208,11 @@ private fun LigneDeveloppement(n: DeveloppementNote, surSuppression: () -> Unit)
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.Top) {
             Column(Modifier.weight(1f)) {
                 Text(n.titre, style = Corps, color = MaterialTheme.colorScheme.onSurface)
-                Text(
-                    listOfNotNull(
-                        n.date,
-                        n.temperature?.let { fmt(it, 1).removeSuffix(",0") + " °C" },
-                        n.cuve.ifBlank { null }
-                    ).joinToString(" · "),
-                    style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+                val entete = listOfNotNull(
+                    n.temperature?.let { fmt(it, 1).removeSuffix(",0") + " °C" },
+                    n.cuve.ifBlank { null }
+                ).joinToString(" · ")
+                if (entete.isNotEmpty()) Text(entete, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             Box(Modifier.clickable { if (confirme) surSuppression() else confirme = true }.padding(start = 10.dp, top = 2.dp)) {
                 Text(

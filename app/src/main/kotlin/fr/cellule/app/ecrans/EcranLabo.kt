@@ -565,32 +565,47 @@ fun Pari(
     }
 
     val estime = etat.estime
-    Carte {
-        Row(Modifier.fillMaxWidth()) {
+    val p = estime?.let { Pronostic(calculateur, "", it, calcule) }
+    /* Le ticket : les deux chiffres face à face, puis le talon — l'écart, et la suite. */
+    Ticket(
+        haut = {
             if (estime != null) {
                 Column(Modifier.weight(1f)) {
                     Etiquette("Ton estimation")
                     Text(afficher(estime), style = ChiffreGrand, color = MaterialTheme.colorScheme.onSurface)
                 }
+                Box(Modifier.width(1.dp).height(52.dp).background(MaterialTheme.colorScheme.outlineVariant))
+                Spacer(Modifier.width(Gouttiere))
             }
-            Column(Modifier.weight(1f)) {
+            Column(Modifier.weight(1f).revelation(delaiMs = 120)) {
                 Etiquette("Le calcul", accent = true)
                 Text(afficher(calcule), style = ChiffreGrand, color = MaterialTheme.colorScheme.primary)
             }
         }
-        if (estime != null) {
-            val p = Pronostic(calculateur, "", estime, calcule)
-            Spacer(Modifier.height(Interligne))
-            BandeauEtat(
-                "Écart ${p.libelleEcart} — ${p.verdict.libelle}. " + when (p.verdict) {
+    ) {
+        if (p != null) {
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    p.verdict.libelle.replaceFirstChar { it.uppercase() },
+                    style = TitreCarte,
+                    color = if (p.verdict == Verdict.LOIN) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.weight(1f)
+                )
+                Text("écart ${p.libelleEcart}", style = Corps, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            Spacer(Modifier.height(8.dp))
+            RegletteEcart(p.ecart, calculateur.echelle, sousLeCalcul = "en dessous", auDessus = "au-dessus")
+            Spacer(Modifier.height(8.dp))
+            Text(
+                when (p.verdict) {
                     Verdict.JUSTE -> "Ça ne se verrait pas."
                     Verdict.PROCHE -> "Ça se verrait, mais se rattrape."
                     Verdict.LOIN -> "Relis le raisonnement ci-dessous."
                 },
-                alerte = p.verdict == Verdict.LOIN
+                style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
             )
+            Spacer(Modifier.height(Interligne))
         }
-        Spacer(Modifier.height(6.dp))
         BoutonPlat("Nouveau pari", modifier = Modifier.fillMaxWidth()) {
             etat.revele = false
             etat.saisie = ""
