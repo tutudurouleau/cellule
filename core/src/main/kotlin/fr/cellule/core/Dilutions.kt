@@ -104,8 +104,15 @@ object DilutionsPubliees {
         ),
         DilutionPubliee("Rodinal", Dilution(25.0), "révélateur film", Sources.ILFORD_HP5),
         DilutionPubliee("Rodinal", Dilution(50.0), "révélateur film", Sources.ILFORD_HP5),
+        DilutionPubliee("Tetenal Ultrafin Plus", Dilution(4.0), "révélateur film", Sources.ILFORD_HP5),
+        DilutionPubliee("Kodak T-MAX Developer", Dilution(4.0), "révélateur film", Sources.ILFORD_HP5),
         DilutionPubliee("ILFOSTOP", Dilution(19.0), "bain d'arrêt, 10 s à 20 °C", Sources.ILFORD_HP5),
         DilutionPubliee("RAPID FIXER", Dilution(4.0), "fixateur film, 2 à 5 min à 20 °C", Sources.ILFORD_HP5),
+        DilutionPubliee("HYPAM", Dilution(4.0), "fixateur film, 2 à 5 min à 20 °C", Sources.ILFORD_HP5),
+        DilutionPubliee(
+            "Kodak POLYMAX T", Dilution(3.0), "fixateur film, 2 à 4 min", Sources.KODAK_TRIX,
+            "Kodak l'écrit « 1:3 » : une part de fixateur pour trois d'eau."
+        ),
         DilutionPubliee(
             "ILFOTOL", Dilution(200.0), "agent mouillant, rinçage final", Sources.ILFORD_HP5,
             "Ilford : 5 mL par litre pour commencer, à ajuster selon l'eau — trop ou trop peu laisse des traces."

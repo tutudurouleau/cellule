@@ -144,6 +144,7 @@ object Temperatures {
         kodakTriX("XTOL 1+1", 10.0, 9.0, 8.5, 8.0, 7.25),
         kodakTriX("HC-110 dilution B", 4.5, 3.75, 3.5, 3.0, 2.5),
         kodakTriX("T-MAX Developer", 6.75, 6.0, 5.75, 5.5, 4.75),
+        kodakTriX("T-MAX RS", 4.75, 4.5, 4.25, 4.0, 3.5),
         kodakD76("Kodak T-MAX 100", "D-76", 10.5, 9.0, 8.0, 7.0, 6.0),
         kodakD76("Kodak T-MAX 100", "D-76 1+1", 14.5, 12.0, 11.0, 10.0, 8.5),
         kodakD76("Kodak T-MAX 400", "D-76", 9.0, 8.0, 7.0, 6.5, 5.5),
@@ -227,11 +228,15 @@ object Push {
         hp5("Kodak D-76", 400 to 7.5, 800 to 9.5, 1600 to 12.5),
         hp5("Kodak XTOL", 400 to 8.0, 800 to 11.0, 1600 to 14.0, 3200 to 19.0),
         hp5("Rodinal 1+25", 400 to 6.0, 800 to 8.0),
+        hp5("Acufine", 400 to 4.5, 800 to 6.5, 1600 to 9.5),
+        hp5("Tetenal Ultrafin Plus 1+4", 400 to 7.0, 800 to 10.0, 1600 to 13.0),
+        hp5("Tetenal Ultrafin SF", 400 to 7.5, 800 to 10.0),
         triX("D-76", 6.75, 9.5, 11.0),
         triX("D-76 1+1", 9.75, 13.25, 16.0),
         triX("XTOL", 7.0, 9.75, 11.5),
         triX("XTOL 1+1", 9.0, 13.25, 15.5),
         triX("HC-110 dilution B", 3.75, 6.0, null),
+        triX("T-MAX RS", 4.5, 7.75, 9.5),
         TablePush(
             "Kodak T-MAX 100", 100, "D-76", Sources.KODAK_D76, "cuve ; EI 200 au temps normal, dit Kodak",
             mapOf(100 to 9.0, 200 to 9.0, 400 to 11.0)

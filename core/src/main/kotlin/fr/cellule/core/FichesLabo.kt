@@ -149,7 +149,10 @@ object FichesLabo {
         FicheLabo(
             "PERCEPTOL", "Ilford (HARMAN technology)", GenreFiche.REVELATEUR,
             "Révélateur en poudre à grain le plus fin — au prix d'un peu de sensibilité.",
-            listOf(Fait("Stock", "grain le plus fin", "HP5 Plus exposée à EI 250 ; 320 en 1+1 et 1+3")),
+            listOf(
+                Fait("Stock", "grain le plus fin", "HP5 Plus exposée à EI 250 ; 320 en 1+1 et 1+3"),
+                Fait("Surexposition accidentelle", "EI 50 à 200", "Ilford donne des temps pour sauver une HP5 exposée trop généreusement : négatifs utilisables, pas de la même qualité")
+            ),
             Sources.ILFORD_HP5
         ),
         FicheLabo(
@@ -193,9 +196,43 @@ object FichesLabo {
         FicheLabo(
             "Rodinal", "Agfa, selon la fiche Ilford", GenreFiche.REVELATEUR,
             "Publié à 1+25 et 1+50 dans la fiche HP5 Plus d'Ilford.",
-            listOf(Fait("Dilutions publiées", "1+25 et 1+50", "dans la fiche HP5 Plus d'Ilford")),
+            listOf(
+                Fait("Dilutions publiées", "1+25 et 1+50", "dans la fiche HP5 Plus d'Ilford"),
+                Fait("À titre indicatif", "selon Ilford", "les temps d'autres marques sont donnés « pour commodité » ; leurs fabricants peuvent changer leurs produits")
+            ),
             Sources.ILFORD_HP5,
             lacune = "La fiche de son fabricant actuel n'a pas pu être relue."
+        ),
+        FicheLabo(
+            "T-MAX RS", "Kodak Alaris", GenreFiche.REVELATEUR,
+            "Révélateur et régénérateur Kodak : des temps courts.",
+            listOf(
+                Fait("Tri-X 400 à 20 °C", "4 min 30", "EI 1600 : 7 min 45 ; EI 3200 : 9 min 30"),
+                Fait("Temps courts", "moins de 5 min", "Kodak prévient qu'en dessous de 5 min, le résultat peut être irrégulier")
+            ),
+            Sources.KODAK_TRIX,
+            lacune = "La fiche du révélateur n'a pas pu être relue : seuls les temps de la fiche Tri-X figurent ici."
+        ),
+        FicheLabo(
+            "Acufine", "selon la fiche Ilford", GenreFiche.REVELATEUR,
+            "Publié pur dans la fiche HP5 Plus d'Ilford, jusqu'à EI 1600.",
+            listOf(Fait("À titre indicatif", "selon Ilford", "temps d'une autre marque, donnés « pour commodité »")),
+            Sources.ILFORD_HP5,
+            lacune = "La fiche de son fabricant n'a pas pu être relue."
+        ),
+        FicheLabo(
+            "Tetenal Ultrafin SF", "Tetenal, selon la fiche Ilford", GenreFiche.REVELATEUR,
+            "Publié pur et en 1+1 dans la fiche HP5 Plus d'Ilford.",
+            listOf(Fait("À titre indicatif", "selon Ilford", "temps d'une autre marque, donnés « pour commodité »")),
+            Sources.ILFORD_HP5,
+            lacune = "La fiche de Tetenal n'a pas pu être relue."
+        ),
+        FicheLabo(
+            "Tetenal Ultrafin Plus", "Tetenal, selon la fiche Ilford", GenreFiche.REVELATEUR,
+            "Publié en 1+4 dans la fiche HP5 Plus d'Ilford, jusqu'à EI 1600.",
+            listOf(Fait("À titre indicatif", "selon Ilford", "temps d'une autre marque, donnés « pour commodité »")),
+            Sources.ILFORD_HP5,
+            lacune = "La fiche de Tetenal n'a pas pu être relue."
         ),
         FicheLabo(
             "T-MAX Developer", "Kodak Alaris", GenreFiche.REVELATEUR,
@@ -230,6 +267,17 @@ object FichesLabo {
             Sources.ILFORD_HP5
         ),
         FicheLabo(
+            "HYPAM", "Ilford (HARMAN technology)", GenreFiche.BAIN,
+            "L'autre fixateur conseillé par Ilford pour ses films, aux mêmes réglages que le RAPID FIXER.",
+            listOf(
+                Fait("Dilution pour film", "1+4"),
+                Fait("Température", "18 à 24 °C"),
+                Fait("Durée à 20 °C", "2 à 5 min"),
+                Fait("Capacité", "24 films 135-36 par litre", "sans régénération")
+            ),
+            Sources.ILFORD_HP5
+        ),
+        FicheLabo(
             "ILFOTOL", "Ilford (HARMAN technology)", GenreFiche.BAIN,
             "Agent mouillant du rinçage final : le film sèche vite et régulièrement.",
             listOf(
@@ -250,16 +298,51 @@ object FichesLabo {
             ),
             Sources.ILFORD_HP5
         ),
+        /* Kodak, fiche Tri-X : tous les bains qui suivent le révélateur, entre 18 et 24 °C. */
         FicheLabo(
-            "Chaîne Kodak après révélateur", "Kodak Alaris", GenreFiche.BAIN,
-            "Les bains qui suivent le révélateur pour la Tri-X, entre 18 et 24 °C.",
+            "KODAK Indicator Stop Bath", "Kodak Alaris", GenreFiche.BAIN,
+            "Bain d'arrêt de Kodak, à indicateur coloré.",
+            listOf(Fait("Durée", "30 s", "avec agitation"), Fait("Température", "18 à 24 °C")),
+            Sources.KODAK_TRIX
+        ),
+        FicheLabo(
+            "KODAK Fixer", "Kodak Alaris", GenreFiche.BAIN,
+            "Le fixateur classique de Kodak : plus lent que les fixateurs rapides.",
+            listOf(Fait("Durée", "5 à 10 min", "avec agitation fréquente"), Fait("Température", "18 à 24 °C")),
+            Sources.KODAK_TRIX
+        ),
+        FicheLabo(
+            "KODAK Rapid Fixer", "Kodak Alaris", GenreFiche.BAIN,
+            "Fixateur rapide de Kodak.",
+            listOf(Fait("Durée", "2 à 4 min", "avec agitation fréquente"), Fait("Température", "18 à 24 °C")),
+            Sources.KODAK_TRIX
+        ),
+        FicheLabo(
+            "KODAFIX", "Kodak Alaris", GenreFiche.BAIN,
+            "Fixateur liquide de Kodak.",
+            listOf(Fait("Durée", "2 à 4 min", "avec agitation fréquente"), Fait("Température", "18 à 24 °C")),
+            Sources.KODAK_TRIX
+        ),
+        FicheLabo(
+            "KODAK POLYMAX T", "Kodak Alaris", GenreFiche.BAIN,
+            "Fixateur Kodak, dilué 1:3 — une part pour trois d'eau.",
+            listOf(Fait("Dilution", "1+3", "écrit « 1:3 » par Kodak"), Fait("Durée", "2 à 4 min", "avec agitation fréquente")),
+            Sources.KODAK_TRIX
+        ),
+        FicheLabo(
+            "KODAK Hypo Clearing Agent", "Kodak Alaris", GenreFiche.BAIN,
+            "Éliminateur d'hyposulfite : il raccourcit le lavage.",
             listOf(
-                Fait("Arrêt", "30 s", "KODAK Indicator Stop Bath, avec agitation"),
-                Fait("Fixage", "KODAK Fixer : 5 à 10 min", "Rapid Fixer, KODAFIX ou POLYMAX T (1+3) : 2 à 4 min"),
-                Fait("Lavage", "20 à 30 min d'eau courante", "ou 30 s de rinçage, 1 à 2 min d'Hypo Clearing Agent, puis 5 min"),
-                Fait("Rinçage final", "PHOTO-FLO 30 s"),
-                Fait("Séchage", "à l'abri de la poussière")
+                Fait("Avant", "30 s de rinçage à l'eau"),
+                Fait("Bain", "1 à 2 min"),
+                Fait("Ensuite", "5 min d'eau courante", "au lieu de 20 à 30 min sans lui")
             ),
+            Sources.KODAK_TRIX
+        ),
+        FicheLabo(
+            "KODAK PHOTO-FLO", "Kodak Alaris", GenreFiche.BAIN,
+            "Agent mouillant du rinçage final.",
+            listOf(Fait("Durée", "30 s"), Fait("Séchage", "à l'abri de la poussière")),
             Sources.KODAK_TRIX
         )
     )
@@ -283,7 +366,8 @@ object FichesLabo {
         "Ilford FP4 Plus, Delta 100, Delta 400, Kentmere",
         "Kodak T-MAX 100 et 400 (fiche F-4016), T-MAX P3200",
         "Foma : Fomapan 100, 200, 400 et leurs révélateurs",
-        "Adox : Rodinal (Adonal)",
+        "Adox : Rodinal (Adonal), et ses temps pour les films Foma",
+        "Fixateurs Foma (Fomafix) et Adox ; ILFORD WASHAID",
         "Kodak XTOL (J-109) et HC-110 (J-24)",
         "Révélateurs papier : Dektol, Ilford Multigrade et PQ Universal, Fomatol"
     )

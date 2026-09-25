@@ -42,7 +42,8 @@ object TempsPublies {
         hp5("MICROPHEN", "stock", 400 to 6.5, 800 to 8.0, 1600 to 11.0, 3200 to 16.0),
         hp5("MICROPHEN", "1+1", 400 to 12.0, 800 to 15.0),
         hp5("MICROPHEN", "1+3", 400 to 23.0),
-        hp5("PERCEPTOL", "stock", 250 to 13.0),
+        // EI 50 à 200 : « surexposition accidentelle seulement », dit Ilford.
+        hp5("PERCEPTOL", "stock", 50 to 9.0, 100 to 9.0, 200 to 11.0, 250 to 13.0),
         hp5("PERCEPTOL", "1+1", 320 to 18.0),
         hp5("PERCEPTOL", "1+3", 320 to 25.0),
         hp5("Rodinal", "1+25", 400 to 6.0, 800 to 8.0),
@@ -54,7 +55,11 @@ object TempsPublies {
         hp5("HC-110", "dilution B", 400 to 5.0, 800 to 7.5, 1600 to 11.0),
         hp5("T-MAX Developer", "1+4", 400 to 6.5, 800 to 8.0, 1600 to 9.5, 3200 to 11.5),
         hp5("XTOL", "stock", 400 to 8.0, 800 to 11.0, 1600 to 14.0, 3200 to 19.0),
-        hp5("XTOL", "1+1", 400 to 12.0, 800 to 17.0)
+        hp5("XTOL", "1+1", 400 to 12.0, 800 to 17.0),
+        hp5("Acufine", "stock", 400 to 4.5, 800 to 6.5, 1600 to 9.5),
+        hp5("Tetenal Ultrafin SF", "stock", 400 to 7.5, 800 to 10.0),
+        hp5("Tetenal Ultrafin SF", "1+1", 400 to 16.0),
+        hp5("Tetenal Ultrafin Plus", "1+4", 400 to 7.0, 800 to 10.0, 1600 to 13.0)
     ).flatten()
 
     /* Ilford Delta 3200, juin 2025 : cuve spirale, à 20 °C puis à 24 °C. */
@@ -99,6 +104,9 @@ object TempsPublies {
 
     private val TRI_X = listOf(
         triX("T-MAX Developer", "", 400, 6.75, 6.0, 5.75, 5.5, 4.75),
+        triX("T-MAX RS", "", 400, 4.75, 4.5, 4.25, 4.0, 3.5),
+        triX("T-MAX RS", "", 1600, 8.5, 7.75, 7.25, 6.75, 6.0),
+        triX("T-MAX RS", "", 3200, null, 9.5, 9.0, 8.25, 7.5),
         triX("HC-110", "dilution B", 400, 4.5, 3.75, 3.5, 3.0, 2.5),
         triX("D-76", "stock", 400, 8.0, 6.75, 6.25, 5.5, 4.75),
         triX("D-76", "1+1", 400, 10.75, 9.75, 9.0, 8.5, 7.75),
