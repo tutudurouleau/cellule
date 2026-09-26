@@ -456,6 +456,8 @@ fun BoutonPlat(
     texte: String,
     actif: Boolean = true,
     accent: Boolean = false,
+    /** La réponse que la personne a choisie, et qui était fausse — distincte des options qu'elle n'a pas touchées. */
+    erreur: Boolean = false,
     modifier: Modifier = Modifier,
     surClic: () -> Unit
 ) {
@@ -463,11 +465,15 @@ fun BoutonPlat(
         modifier
             .background(
                 when {
-                    !actif -> MaterialTheme.colorScheme.surfaceVariant
                     accent -> MaterialTheme.colorScheme.primary
+                    erreur -> MaterialTheme.colorScheme.error.copy(alpha = 0.16f)
                     else -> MaterialTheme.colorScheme.surfaceVariant
                 },
                 RoundedCornerShape(RayonControle)
+            )
+            .then(
+                if (erreur) Modifier.border(1.dp, MaterialTheme.colorScheme.error, RoundedCornerShape(RayonControle))
+                else Modifier
             )
             .clickable(enabled = actif) { surClic() }
             .padding(horizontal = 16.dp, vertical = 12.dp),
@@ -478,8 +484,9 @@ fun BoutonPlat(
             style = Corps,
             maxLines = 1,
             color = when {
-                !actif -> MaterialTheme.colorScheme.outline
                 accent -> MaterialTheme.colorScheme.onPrimary
+                erreur -> MaterialTheme.colorScheme.error
+                !actif -> MaterialTheme.colorScheme.outline
                 else -> MaterialTheme.colorScheme.onSurface
             }
         )

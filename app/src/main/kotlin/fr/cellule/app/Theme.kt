@@ -53,7 +53,9 @@ private val Sombre = darkColorScheme(
     secondaryContainer = Color(0xFF1D2E4A),
     onSecondaryContainer = Color(0xFFC9DBF7),
     error = Color(0xFFEF9068),
-    onError = Color(0xFF2A1206)
+    onError = Color(0xFF2A1206),
+    errorContainer = Color(0xFF3A2118),
+    onErrorContainer = Color(0xFFEF9068)
 )
 
 private val Clair = lightColorScheme(
@@ -73,7 +75,9 @@ private val Clair = lightColorScheme(
     secondaryContainer = Color(0xFFDCE6F8),
     onSecondaryContainer = Color(0xFF1D3E75),
     error = Color(0xFF9A3B12),
-    onError = Color.White
+    onError = Color.White,
+    errorContainer = Color(0xFFF6DFD3),
+    onErrorContainer = Color(0xFF9A3B12)
 )
 
 /** L'accent d'un onglet : sa couleur, le texte posé dessus, son fond doux et le texte posé sur ce fond. */

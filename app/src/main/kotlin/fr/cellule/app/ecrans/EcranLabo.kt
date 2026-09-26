@@ -801,6 +801,7 @@ private fun CarteExercice(etat: EtatEntrainement, versFiche: (String) -> Unit, e
                 c,
                 actif = !repondu || i == e.bonne,
                 accent = repondu && i == e.bonne,
+                erreur = repondu && i == choisi && i != e.bonne,
                 modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
             ) { etat.repondre(i) }
         }
