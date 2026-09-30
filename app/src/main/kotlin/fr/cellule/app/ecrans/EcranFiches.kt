@@ -1,17 +1,28 @@
+/* ModalBottomSheet est encore annoncé expérimental dans cette version de
+   Material3 ; même choix que pour les fiches Caméras. */
+@file:OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class, androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
+
 package fr.cellule.app.ecrans
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -19,33 +30,41 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import fr.cellule.app.Corps
 import fr.cellule.app.Detail
 import fr.cellule.app.Gouttiere
-import fr.cellule.core.Duree
+import fr.cellule.app.Interligne
+import fr.cellule.app.RayonControle
+import fr.cellule.app.TitreCarte
+import fr.cellule.app.TitreEcran
 import fr.cellule.core.FicheLabo
 import fr.cellule.core.FichesLabo
 import fr.cellule.core.GenreFiche
+import fr.cellule.core.GrilleTemps
 import fr.cellule.core.RechercheFiches
-import fr.cellule.core.TempsPublie
+import fr.cellule.core.TablesLabo
+import fr.cellule.core.TempsFiche
 import fr.cellule.core.TypeFiche
 
 /**
  * Les fiches produits : ce que chaque fabricant dit de son film, de son
- * révélateur, de ses bains — et d'où il le dit. On les range par type de
- * produit (films par sensibilité, révélateurs en poudre ou liquides, arrêt,
- * fixateurs, lavage) ; la marque reste écrite sur chaque fiche et se cherche.
- * Une fiche se déplie d'un appui ; ce qui n'a pas pu être relu à la source
- * est annoncé comme tel, jusque sur la fiche fermée.
+ * révélateur, de ses bains — et d'où il le dit.
+ *
+ * La liste reste courte et lisible : une carte par produit, rangée par type.
+ * Toucher une carte ouvre la fiche entière dans un tiroir qui remonte du bas,
+ * comme les fiches Caméras : on y lit tranquillement, on le referme en le
+ * glissant vers le bas — jamais en touchant son contenu par mégarde.
  */
 @Composable
 fun EcranFiches(ouvrir: String? = null) {
-    /* Venu d'un calcul ou d'une question : la recherche filtre déjà sur ce
-       produit, et sa fiche s'ouvre directement. */
-    var recherche by remember(ouvrir) { mutableStateOf(ouvrir.orEmpty()) }
+    var recherche by remember { mutableStateOf("") }
     var genre by remember { mutableStateOf<GenreFiche?>(null) }
-    var ouverte by remember(ouvrir) { mutableStateOf(ouvrir) }
+    /* Venue d'un calcul ou d'une question, la fiche s'ouvre d'emblée. */
+    var ouverte by remember(ouvrir) {
+        mutableStateOf(ouvrir?.let { nom -> FichesLabo.TOUTES.firstOrNull { it.nom == nom } ?: FichesLabo.parNom(nom) })
+    }
 
     Column(Modifier.fillMaxWidth().padding(horizontal = Gouttiere, vertical = 2.dp)) {
         Champ(recherche, "Chercher", Modifier.fillMaxWidth(), indication = "HP5, liquide, fixateur, Kodak…") { recherche = it }
@@ -57,10 +76,7 @@ fun EcranFiches(ouvrir: String? = null) {
                 GenreFiche.REVELATEUR -> "Révélateurs"
                 GenreFiche.BAIN -> "Bains"
             }
-        }) {
-            genre = it
-            ouverte = null
-        }
+        }) { genre = it }
     }
     val trouvees = RechercheFiches.chercher(recherche, genre)
     if (trouvees.isEmpty()) {
@@ -75,12 +91,12 @@ fun EcranFiches(ouvrir: String? = null) {
                     Text(t.detail, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
-            liste.forEach { f ->
-                CarteFiche(f, ouverte == f.nom) { ouverte = if (ouverte == f.nom) null else f.nom }
-            }
+            liste.forEach { f -> CarteFiche(f) { ouverte = f } }
         }
     }
     CarteARelire()
+
+    ouverte?.let { f -> FeuilleFicheLabo(f) { ouverte = null } }
 }
 
 /**
@@ -107,17 +123,23 @@ private fun CarteARelire() {
     }
 }
 
+/** La carte de la liste : de quoi reconnaître le produit, et ce que contient sa fiche. */
 @Composable
-private fun CarteFiche(f: FicheLabo, ouverte: Boolean, surAppui: () -> Unit) {
-    Carte(
-        titre = f.nom,
-        sousTitre = f.fabricant,
-        modifier = Modifier.clickable { surAppui() }
-    ) {
-        Text(f.resume, style = Corps, color = MaterialTheme.colorScheme.onSurface)
-        if (!ouverte) {
+private fun CarteFiche(f: FicheLabo, surAppui: () -> Unit) {
+    Carte(modifier = Modifier.clickable { surAppui() }) {
+        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) {
+                Text(f.nom, style = TitreCarte, color = MaterialTheme.colorScheme.onSurface)
+                Text(f.fabricant, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            Text("›", style = TitreEcran, color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(start = 10.dp))
+        }
+        Spacer(Modifier.height(6.dp))
+        Text(f.resume, style = Corps, maxLines = 2, overflow = TextOverflow.Ellipsis, color = MaterialTheme.colorScheme.onSurface)
+        val contenu = TempsFiche.contenu(f)
+        if (contenu != null || f.lacune.isNotBlank()) {
             Row(Modifier.fillMaxWidth().padding(top = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text("Toucher pour ouvrir", style = Detail, color = MaterialTheme.colorScheme.primary, modifier = Modifier.weight(1f))
+                Text(contenu.orEmpty(), style = Detail, color = MaterialTheme.colorScheme.primary, modifier = Modifier.weight(1f))
                 /* Une fiche incomplète le dit avant même d'être ouverte. */
                 if (f.lacune.isNotBlank()) {
                     Text(
@@ -130,46 +152,146 @@ private fun CarteFiche(f: FicheLabo, ouverte: Boolean, surAppui: () -> Unit) {
                     )
                 }
             }
-            return@Carte
         }
-        Spacer(Modifier.height(6.dp))
-        f.faits.forEach { Ligne(it.intitule, it.valeur, it.detail.ifBlank { null }) }
-        val temps = FichesLabo.temps(f)
-        if (temps.isNotEmpty()) {
-            Separateur()
-            Etiquette("Temps publiés, cuve")
-            Spacer(Modifier.height(4.dp))
-            TableTemps(temps, parFilm = f.genre == GenreFiche.REVELATEUR)
-        }
-        if (f.lacune.isNotBlank()) {
-            Spacer(Modifier.height(6.dp))
-            BandeauEtat(f.lacune, alerte = false)
-        }
-        Spacer(Modifier.height(4.dp))
-        LigneSource(f.source)
-        f.autresSources.forEach { LigneSource(it) }
     }
 }
 
 /**
- * Une ligne par couple et par température ; les indices d'exposition se
- * suivent sur la ligne, du plus lent au plus poussé.
+ * La fiche entière, dans un tiroir : l'identité du produit, ce qui manque,
+ * ce que dit le fabricant, puis les temps publiés en tableaux — un révélateur
+ * (ou un film) à la fois — et les sources.
  */
 @Composable
-private fun TableTemps(temps: List<TempsPublie>, parFilm: Boolean) {
-    temps.groupBy { Triple(if (parFilm) it.film else it.revelateur, it.dilution, it.temperature) }
-        .forEach { (cle, lignes) ->
-            val (nom, dilution, temperature) = cle
-            Column(Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
-                Text(
-                    listOf(nom, if (parFilm) dilution.let { d -> if (d.isBlank()) "" else "· $d" } else dilution)
-                        .filter { it.isNotBlank() }.joinToString(" ") + " · ${fmt(temperature, 0)} °C",
-                    style = Corps, color = MaterialTheme.colorScheme.onSurface
-                )
-                Text(
-                    lignes.sortedBy { it.ei }.joinToString("  ·  ") { "EI ${it.ei} : ${Duree.libelle(it.minutes * 60)}" },
-                    style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+private fun FeuilleFicheLabo(f: FicheLabo, surFermer: () -> Unit) {
+    val etat = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    ModalBottomSheet(
+        onDismissRequest = surFermer,
+        sheetState = etat,
+        /* Un ton sous celui des lignes paires des tableaux, pour qu'elles se voient. */
+        containerColor = MaterialTheme.colorScheme.surfaceContainer,
+        dragHandle = { Poignee() }
+    ) {
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = Gouttiere + 2.dp)
+                .padding(bottom = Gouttiere)
+        ) {
+            Etiquette(RechercheFiches.type(f).libelle, accent = true)
+            Text(f.nom, style = TitreEcran, color = MaterialTheme.colorScheme.onSurface)
+            Text(f.fabricant, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Spacer(Modifier.height(Interligne))
+            Text(f.resume, style = Corps, color = MaterialTheme.colorScheme.onSurface)
+
+            /* Ce qui manque se dit avant le reste, en entier. */
+            if (f.lacune.isNotBlank()) {
+                Spacer(Modifier.height(Interligne))
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(RayonControle))
+                        .padding(horizontal = 14.dp, vertical = 10.dp)
+                ) {
+                    Etiquette("Fiche partielle")
+                    Spacer(Modifier.height(2.dp))
+                    Text(f.lacune, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
             }
+
+            if (f.faits.isNotEmpty()) {
+                Separateur()
+                Etiquette("Ce que dit la fiche")
+                Spacer(Modifier.height(2.dp))
+                f.faits.forEach { Ligne(it.intitule, it.valeur, it.detail.ifBlank { null }) }
+            }
+
+            SectionTemps(f)
+
+            Separateur()
+            LigneSource(f.source)
+            f.autresSources.forEach { LigneSource(it) }
+            Spacer(Modifier.navigationBarsPadding())
         }
+    }
+}
+
+/**
+ * Les temps publiés : on choisit d'abord le révélateur (sur une fiche de
+ * film) ou le film (sur une fiche de révélateur), puis on lit son tableau.
+ */
+@Composable
+private fun SectionTemps(f: FicheLabo) {
+    val choix = remember(f) { TempsFiche.choix(f) }
+    if (choix.isEmpty()) return
+    var choisi by remember(f) { mutableStateOf(choix.first()) }
+    val film = f.genre == GenreFiche.FILM
+
+    Separateur()
+    Etiquette("Temps de développement publiés, en cuve")
+    Spacer(Modifier.height(4.dp))
+    if (choix.size > 1) {
+        Text(
+            if (film) "Choisis le révélateur :" else "Choisis le film :",
+            style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Spacer(Modifier.height(6.dp))
+        FlowRow(
+            Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            choix.forEach { c -> Pastille(c, accent = c == choisi) { choisi = c } }
+        }
+    } else {
+        Text(
+            (if (film) "Avec " else "Pour ") + choisi,
+            style = TitreCarte, color = MaterialTheme.colorScheme.onSurface
+        )
+    }
+
+    val grilles = TempsFiche.grilles(f, choisi)
+    grilles.forEach { g -> TableauTemps(g) }
+    if (grilles.any { g -> g.lignes.any { l -> l.cellules.any { it == null } } }) {
+        Text(
+            "— : le fabricant ne publie pas ce temps.",
+            style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(top = 6.dp)
+        )
+    }
+    /* Les temps d'un révélateur viennent parfois de la fiche du film, pas de la sienne : on le dit. */
+    grilles.map { it.source }.distinct().filter { it != f.source && it !in f.autresSources }.forEach {
+        LigneSource(it)
+    }
+}
+
+/** Un tableau : EI en lignes ; dilutions ou températures en colonnes ; minutes dans les cases. */
+@Composable
+private fun TableauTemps(g: GrilleTemps) {
+    Spacer(Modifier.height(Interligne))
+    if (g.titre != null) {
+        Text("Dilution ${g.titre}", style = TitreCarte, color = MaterialTheme.colorScheme.onSurface)
+    }
+    Text(
+        g.temperature?.let { "À ${fmt(it, 0)} °C · temps en minutes" } ?: "Temps en minutes, selon la température du révélateur",
+        style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
+    )
+    Spacer(Modifier.height(4.dp))
+    Tableau(
+        listOf(Colonne("EI", 0.9f)) + g.colonnes.map { Colonne(it, 1f, aDroite = true) },
+        g.lignes.map { l ->
+            RangTableau(
+                listOf("${l.ei}") + l.cellules.map { m -> m?.let { TablesLabo.minutes(it) } ?: "—" },
+                accent = l.ei == g.eiNominal
+            )
+        },
+        petit = g.colonnes.size > 3
+    )
+    if (g.eiNominal != null && g.lignes.any { it.ei == g.eiNominal }) {
+        Text(
+            "En couleur : la sensibilité nominale du film, EI ${g.eiNominal}.",
+            style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(top = 4.dp)
+        )
+    }
 }
