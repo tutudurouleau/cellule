@@ -86,6 +86,8 @@ private sealed interface VueLabo {
     data class Fiche(val nom: String) : VueLabo
     /** Le développement expliqué en tables. */
     data object Tables : VueLabo
+    /** Les recettes maison : Caffenol, herbes, thiosulfate. */
+    data object Maison : VueLabo
     data object Quiz : VueLabo
 }
 
@@ -96,6 +98,7 @@ private fun titre(v: VueLabo): String = when (v) {
     VueLabo.Fiches -> "Fiches produits"
     is VueLabo.Fiche -> "Fiches produits"
     VueLabo.Tables -> "Les tables du labo"
+    VueLabo.Maison -> "Recettes maison"
     VueLabo.Quiz -> "Quiz"
 }
 
@@ -190,6 +193,7 @@ fun EcranLabo(
                         ouvrirChrono = ouvrirChrono,
                         ouvrirFiches = { vue = VueLabo.Fiches },
                         ouvrirTables = { vue = VueLabo.Tables },
+                        ouvrirMaison = { vue = VueLabo.Maison },
                         ouvrirQuiz = { theme ->
                             if (theme != null) {
                                 entrainement.theme = theme
@@ -213,6 +217,11 @@ fun EcranLabo(
                     VueLabo.Fiches -> EcranFiches()
                     is VueLabo.Fiche -> EcranFiches(ouvrir = v.nom)
                     VueLabo.Tables -> TablesDeveloppement(versFiche)
+                    VueLabo.Maison -> EcranRecettesMaison(labo, versCarnet) { s ->
+                        /* La séance maison se charge au chrono, prête à lancer. */
+                        chrono.charger(s)
+                        vue = VueLabo.Chrono
+                    }
                     VueLabo.Quiz -> {
                         Carte(
                             sousTitre = "Les calculateurs vérifient ton intuition sur un cas réel. Le quiz entraîne ce qui ne se calcule pas — " +
@@ -306,6 +315,7 @@ private fun Accueil(
     ouvrirChrono: () -> Unit,
     ouvrirFiches: () -> Unit,
     ouvrirTables: () -> Unit,
+    ouvrirMaison: () -> Unit,
     ouvrirQuiz: (ThemeLabo?) -> Unit
 ) {
     /* En chambre noire, c'est l'information qui compte : elle passe devant tout. */
@@ -330,6 +340,7 @@ private fun Accueil(
                 calculs + listOf(
                     Tuile("Chrono", "enchaîner les bains", IconeChrono, ouvrirChrono),
                     Tuile("Fiches", "films, révélateurs, bains", IconeFiches, ouvrirFiches),
+                    Tuile("Fait maison", "Caffenol, herbes, thiosulfate", IconeMaison, ouvrirMaison),
                     Tuile("Quiz", "ce qui ne se calcule pas", IconeQuiz) { ouvrirQuiz(null) }
                 )
             )

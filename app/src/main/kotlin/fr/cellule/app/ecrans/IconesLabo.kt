@@ -77,3 +77,12 @@ val IconeQuiz = icone("quiz") {
     lineTo(12f, 12f)
     moveTo(12f, 13.9f); lineTo(12f, 14f)
 }
+
+/** Un bocal et une feuille : les recettes maison. */
+val IconeMaison = icone("maison") {
+    moveTo(7f, 9f); lineTo(7f, 19f); lineTo(17f, 19f); lineTo(17f, 9f); close()
+    moveTo(8.5f, 9f); lineTo(8.5f, 6.5f); lineTo(15.5f, 6.5f); lineTo(15.5f, 9f)
+    moveTo(8f, 4f); lineTo(16f, 4f)
+    moveTo(12f, 17.5f); lineTo(12f, 12.5f)
+    moveTo(12f, 15f); quadTo(9.2f, 14.6f, 9.6f, 11.6f); quadTo(12.2f, 12f, 12f, 15f)
+}

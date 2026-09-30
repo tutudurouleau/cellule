@@ -316,6 +316,9 @@ class DepotLabo(contexte: Context) {
     private val prefs: SharedPreferences =
         contexte.getSharedPreferences("cellule", Context.MODE_PRIVATE)
 
+    /** Test de l'amorce : le temps de clarification du fixateur neuf, en secondes (0 : pas encore mesuré). */
+    var clarificationNeuf by ReelPref(prefs, "labo_clarification_neuf", 0.0)
+
     private val etat = mutableStateOf(charger())
 
     val notes: List<DeveloppementNote> get() = etat.value
