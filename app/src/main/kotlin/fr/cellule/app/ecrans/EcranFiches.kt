@@ -269,8 +269,13 @@ private fun SectionTemps(f: FicheLabo) {
 @Composable
 private fun TableauTemps(g: GrilleTemps) {
     Spacer(Modifier.height(Interligne))
-    if (g.titre != null) {
-        Text("Dilution ${g.titre}", style = TitreCarte, color = MaterialTheme.colorScheme.onSurface)
+    g.titre?.let { t ->
+        val titre = when {
+            t == "stock" -> "Stock (non dilué)"
+            t.startsWith("dilution") -> t.replaceFirstChar { it.uppercase() }
+            else -> "Dilution $t"
+        }
+        Text(titre, style = TitreCarte, color = MaterialTheme.colorScheme.onSurface)
     }
     Text(
         g.temperature?.let { "À ${fmt(it, 0)} °C · temps en minutes" } ?: "Temps en minutes, selon la température du révélateur",
