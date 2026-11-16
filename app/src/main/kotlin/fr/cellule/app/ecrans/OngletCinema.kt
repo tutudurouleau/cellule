@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -131,7 +132,8 @@ fun EcranOngletCinema(reglages: Reglages, etat: EtatApplication, cinema: DepotCi
         EcranMesurer(
             reglages, etat, cinema,
             modeCinema = true,
-            enTete = { EnTeteCinema(reglages, vue, sombre = true, surVue = choisir) }
+            enTete = { EnTeteCinema(reglages, vue, sombre = true, surVue = choisir) },
+            enTeteVertical = { SelecteurVueVertical(vue, choisir) }
         )
         return
     }
@@ -145,6 +147,37 @@ fun EcranOngletCinema(reglages: Reglages, etat: EtatApplication, cinema: DepotCi
             when (vue) {
                 VueCinema.PLANS -> CarnetCinemaEcran(cinema, journal, reglages)
                 else -> PageMateriel(reglages)
+            }
+        }
+    }
+}
+
+/** Le sélecteur en colonne, pour le paysage : trois gélules l'une sous l'autre. */
+@Composable
+private fun SelecteurVueVertical(vue: VueCinema, surVue: (VueCinema) -> Unit) {
+    Column(
+        Modifier
+            .background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(28.dp))
+            .padding(4.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp)
+    ) {
+        VueCinema.entries.forEach { v ->
+            val actif = v == vue
+            Box(
+                Modifier
+                    .width(96.dp)
+                    .clip(RoundedCornerShape(24.dp))
+                    .background(if (actif) MaterialTheme.colorScheme.primary else Color.Transparent)
+                    .clickable { surVue(v) }
+                    .padding(vertical = 16.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    v.libelle,
+                    style = Corps,
+                    maxLines = 1,
+                    color = if (actif) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant
+                )
             }
         }
     }

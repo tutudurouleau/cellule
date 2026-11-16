@@ -140,7 +140,9 @@ fun EcranMesurer(
     /** Vrai dans l'onglet Cinéma : cellule de tournage, cadre et capture de plan. */
     modeCinema: Boolean = false,
     /** Ce que l'onglet Cinéma pose en haut (son sélecteur de vue). */
-    enTete: (@Composable () -> Unit)? = null
+    enTete: (@Composable () -> Unit)? = null,
+    /** Le même sélecteur, en colonne, pour le paysage : il reste visible panneau replié. */
+    enTeteVertical: (@Composable () -> Unit)? = null
 ) {
 
     val contexte = LocalContext.current
@@ -952,11 +954,23 @@ fun EcranMesurer(
                             .navigationBarsPadding()
                             .verticalScroll(rememberScrollState())
                     ) {
-                        /* En paysage, le sélecteur du haut vit dans le panneau : l'image garde toute la hauteur. */
-                        enHaut()
+                        /* En paysage, le sélecteur du haut vit dans le panneau (ou à côté, en
+                           colonne, au cinéma) : l'image garde toute la hauteur. */
+                        if (enTeteVertical == null) enHaut()
+                        else Spacer(Modifier.statusBarsPadding().height(8.dp))
                         panneau(Modifier.fillMaxWidth())
                     }
                 }
+            }
+            if (enTeteVertical != null) {
+                Column(
+                    Modifier
+                        .fillMaxHeight()
+                        .statusBarsPadding()
+                        .navigationBarsPadding()
+                        .padding(horizontal = 8.dp),
+                    verticalArrangement = Arrangement.Center
+                ) { enTeteVertical() }
             }
         }
     } else {
