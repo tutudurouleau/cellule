@@ -307,16 +307,44 @@ class MoteurCamera(private val contexte: Context) {
      */
     fun basculerGel() {
         gele = !gele
+        appliquerOptions()
+    }
+
+    /**
+     * L'aperçu tourne aussi vite que le téléphone le permet (60 images par
+     * seconde au plus) : la cadence de tournage choisie ne sert qu'aux
+     * calculs. Imposée à l'aperçu, elle le faisait saccader dès qu'on bougeait.
+     */
+    private var plageImages: android.util.Range<Int>? = null
+
+    /** La cadence réelle de l'aperçu, quand le téléphone l'a annoncée. */
+    var imagesParSeconde by mutableStateOf<Int?>(null)
+        private set
+
+    private fun choisirPlageImages(cam: Camera) {
+        plageImages = try {
+            Camera2CameraInfo.from(cam.cameraInfo)
+                .getCameraCharacteristic(CameraCharacteristics.CONTROL_AE_AVAILABLE_TARGET_FPS_RANGES)
+                ?.filter { it.upper <= 60 }
+                /* La plus rapide, puis la plus stable : [60, 60] avant [15, 60]. */
+                ?.maxWithOrNull(compareBy<android.util.Range<Int>>({ it.upper }, { it.lower }))
+        } catch (e: Exception) {
+            null
+        }
+        imagesParSeconde = plageImages?.upper
+    }
+
+    /** Verrou d'exposition et cadence de l'aperçu, posés ensemble : chaque envoi remplace le précédent. */
+    private fun appliquerOptions() {
         try {
             camera?.cameraControl?.let { controle ->
-                Camera2CameraControl.from(controle).setCaptureRequestOptions(
-                    CaptureRequestOptions.Builder()
-                        .setCaptureRequestOption(CaptureRequest.CONTROL_AE_LOCK, gele)
-                        .build()
-                )
+                val options = CaptureRequestOptions.Builder()
+                    .setCaptureRequestOption(CaptureRequest.CONTROL_AE_LOCK, gele)
+                plageImages?.let { options.setCaptureRequestOption(CaptureRequest.CONTROL_AE_TARGET_FPS_RANGE, it) }
+                Camera2CameraControl.from(controle).setCaptureRequestOptions(options.build())
             }
         } catch (e: Exception) {
-            /* Le gel logiciel suffit ; le verrou matériel n'est qu'un confort. */
+            /* Le gel logiciel suffit, et le téléphone garde sa cadence : ce ne sont que des conforts. */
         }
     }
 
@@ -388,6 +416,8 @@ class MoteurCamera(private val contexte: Context) {
                 }
                 ouvertureParDefaut = ouvertureDeLOptique(cam) ?: 1.8
                 relevePlanFocal(cam)
+                choisirPlageImages(cam)
+                appliquerOptions()
             } catch (e: Exception) {
                 if (cameraChoisie != null) {
                     /* Certains modules annoncés refusent de s'ouvrir seuls : on

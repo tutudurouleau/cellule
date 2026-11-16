@@ -290,6 +290,13 @@ fun ReglagesViseurCinema(
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
     }
+    Text(
+        (moteur.imagesParSeconde?.let { "Aperçu à $it images par seconde" } ?: "Aperçu à la cadence du téléphone") +
+            " : la cadence de tournage choisie ne sert qu'aux calculs d'exposition, pour que l'image reste fluide quand tu bouges.",
+        style = Detail,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        modifier = Modifier.padding(top = 4.dp)
+    )
     if (moteur.zoomMaximal > moteur.zoomMinimal) {
         Text(
             "Zoom en cours ×" + nombreCourt(moteur.zoomDemande.toDouble(), 1) +
