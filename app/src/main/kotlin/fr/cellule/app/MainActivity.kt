@@ -101,6 +101,9 @@ class EtatApplication {
     var derniereEstimation by mutableStateOf<Double?>(null)
     var dernierTypeScene by mutableStateOf(TYPES_DE_SCENE.first())
     var derniereChaine by mutableStateOf("")
+
+    /** Un viseur en paysage, panneau replié : la barre des onglets s'efface pour laisser l'image entière. */
+    var navMasquee by mutableStateOf(false)
 }
 
 /*
@@ -292,7 +295,7 @@ private fun Application() {
             Box(Modifier.fillMaxSize()) {
 
                 /* En paysage, la pilule de navigation occupe le bord droit : le contenu s'arrête avant. */
-                Column(Modifier.fillMaxSize().padding(end = if (paysage) 66.dp else 0.dp)) {
+                Column(Modifier.fillMaxSize().padding(end = if (paysage && !etat.navMasquee) 66.dp else 0.dp)) {
                     /* Les écrans caméra n'ont pas d'en-tête : chaque pixel du haut de
                        l'écran leur revient, comme dans un vrai viseur. */
                     if (!onglet.plein) {
@@ -312,7 +315,7 @@ private fun Application() {
                     }
                 }
 
-                NavigationFlottante(onglet = onglet, surChoix = { onglet = it })
+                if (!(paysage && etat.navMasquee)) NavigationFlottante(onglet = onglet, surChoix = { onglet = it })
             }
             if (parametres) FeuilleParametres(reglages) { parametres = false }
         }

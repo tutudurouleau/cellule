@@ -452,7 +452,7 @@ fun EcranMesurer(
     }
 
     val paysage = fr.cellule.app.LocalPaysage.current
-    var panneauReplie by remember { mutableStateOf(false) }
+    var panneauReplie by remember { mutableStateOf(true) }
     val enHaut: @Composable () -> Unit = {
         /* ── Mode, en haut ────────────────────────────────────────────── */
         Column(
@@ -862,115 +862,119 @@ fun EcranMesurer(
         }
     }
 
-    /* En paysage, l'image à gauche et le panneau à droite ; debout, l'un sous l'autre.
-       En paysage, le panneau se replie sur le côté : il ne garde alors que
-       l'ouverture, la vitesse et le déclencheur, et l'image prend le reste. */
+    /* En paysage, l'image prend tout l'écran. Par-dessus, une petite colonne
+       translucide : ouverture, vitesse, EV, déclencheur. Une touche déplie le
+       panneau complet en volet latéral, par-dessus l'image, et fait revenir
+       la barre des onglets ; une autre le referme. */
     if (paysage) {
-        Row(Modifier.fillMaxSize().background(Color.Black)) {
-            viseur(Modifier.weight(1f).fillMaxHeight())
-            Row(
-                Modifier
-                    .fillMaxHeight()
-                    .background(
-                        MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.97f),
-                        RoundedCornerShape(topStart = 24.dp, bottomStart = 24.dp)
-                    )
-            ) {
-                /* La poignée de côté : toute la hauteur se touche. */
-                Box(
-                    Modifier
-                        .fillMaxHeight()
-                        .width(26.dp)
-                        .clickable { panneauReplie = !panneauReplie },
-                    contentAlignment = Alignment.Center
-                ) {
-                    Box(
-                        Modifier
-                            .size(width = 4.dp, height = 40.dp)
-                            .background(MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.35f), RoundedCornerShape(50))
-                    )
-                }
-                if (panneauReplie) {
-                    Column(
-                        Modifier
-                            .width(118.dp)
-                            .fillMaxHeight()
-                            .statusBarsPadding()
-                            .navigationBarsPadding()
-                            .padding(end = 10.dp, top = 8.dp, bottom = 8.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.SpaceEvenly
-                    ) {
-                        Text(
-                            when {
-                                !tournage -> couple?.let { libelleOuverture(it.ouverture) } ?: "f/—"
-                                resultatCine == null -> "T—"
-                                resultatCine.horsBague && resultatCine.tExact < 1.0 -> "< T1"
-                                resultatCine.horsBague && resultatCine.tExact > 32.0 -> "> T32"
-                                else -> resultatCine.tProche.libelle
-                            },
-                            style = ChiffreGrand,
-                            maxLines = 1,
-                            color = MaterialTheme.colorScheme.primary
-                        )
-                        Text(
-                            if (tournage) Tournage.libelleTempsPose(reglageCine.tempsPose) else couple?.vitesse?.libelle ?: "—",
-                            style = Corps,
-                            maxLines = 1,
-                            color = MaterialTheme.colorScheme.primary
-                        )
-                        Text(
-                            (if (ev100 != null) fmt(ev100) else "––") + " EV",
-                            style = Detail,
-                            maxLines = 1,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                        if (tournage) {
-                            Box(
-                                Modifier
-                                    .size(64.dp)
-                                    .clip(RoundedCornerShape(50))
-                                    .background(MaterialTheme.colorScheme.primary)
-                                    .clickable(enabled = !captureEnCours && avecCamera && autorisee) { surCapture() },
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Box(
-                                    Modifier
-                                        .size(if (captureEnCours) 18.dp else 26.dp)
-                                        .background(MaterialTheme.colorScheme.onPrimary, RoundedCornerShape(50))
-                                )
-                            }
-                        }
-                        if (avecCamera) {
-                            BoutonPlat(if (moteur.gele) "Libérer" else "Figer", accent = moteur.gele) { moteur.basculerGel() }
-                        }
-                    }
-                } else {
-                    Column(
-                        Modifier
-                            .width(340.dp)
-                            .fillMaxHeight()
-                            .statusBarsPadding()
-                            .navigationBarsPadding()
-                            .verticalScroll(rememberScrollState())
-                    ) {
-                        /* En paysage, le sélecteur du haut vit dans le panneau (ou à côté, en
-                           colonne, au cinéma) : l'image garde toute la hauteur. */
-                        if (enTeteVertical == null) enHaut()
-                        else Spacer(Modifier.statusBarsPadding().height(8.dp))
-                        panneau(Modifier.fillMaxWidth())
-                    }
-                }
-            }
-            if (enTeteVertical != null) {
+        DisposableEffect(panneauReplie) {
+            etat.navMasquee = panneauReplie
+            onDispose { etat.navMasquee = false }
+        }
+        Box(Modifier.fillMaxSize().background(Color.Black)) {
+            viseur(Modifier.fillMaxSize())
+            if (panneauReplie) {
                 Column(
                     Modifier
+                        .align(Alignment.CenterEnd)
+                        .navigationBarsPadding()
+                        .padding(end = 12.dp)
+                        .background(Color.Black.copy(alpha = 0.55f), RoundedCornerShape(28.dp))
+                        .padding(horizontal = 10.dp, vertical = 12.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Text(
+                        when {
+                            !tournage -> couple?.let { libelleOuverture(it.ouverture) } ?: "f/—"
+                            resultatCine == null -> "T—"
+                            resultatCine.horsBague && resultatCine.tExact < 1.0 -> "< T1"
+                            resultatCine.horsBague && resultatCine.tExact > 32.0 -> "> T32"
+                            else -> resultatCine.tProche.libelle
+                        },
+                        style = Corps,
+                        maxLines = 1,
+                        color = Color.White
+                    )
+                    Text(
+                        if (tournage) Tournage.libelleTempsPose(reglageCine.tempsPose) else couple?.vitesse?.libelle ?: "—",
+                        style = Detail,
+                        maxLines = 1,
+                        color = Color.White.copy(alpha = 0.85f)
+                    )
+                    Text(
+                        (if (ev100 != null) fmt(ev100) else "––") + " EV",
+                        style = Detail,
+                        maxLines = 1,
+                        color = Color.White.copy(alpha = 0.7f)
+                    )
+                    if (tournage) {
+                        Box(
+                            Modifier
+                                .size(58.dp)
+                                .clip(RoundedCornerShape(50))
+                                .background(Color.White.copy(alpha = 0.9f))
+                                .clickable(enabled = !captureEnCours && avecCamera && autorisee) { surCapture() }
+                                .padding(5.dp)
+                                .clip(RoundedCornerShape(50))
+                                .background(MaterialTheme.colorScheme.primary)
+                        )
+                    }
+                    if (avecCamera) {
+                        Text(
+                            if (moteur.gele) "Libérer" else "Figer",
+                            style = Detail,
+                            color = if (moteur.gele) MaterialTheme.colorScheme.primary else Color.White,
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(50))
+                                .clickable { moteur.basculerGel() }
+                                .padding(horizontal = 10.dp, vertical = 6.dp)
+                        )
+                    }
+                    Text(
+                        "Plus",
+                        style = Detail,
+                        color = Color.White,
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(50))
+                            .background(Color.White.copy(alpha = 0.16f))
+                            .clickable { panneauReplie = false }
+                            .padding(horizontal = 12.dp, vertical = 6.dp)
+                    )
+                }
+                if (avisCapture.isNotBlank()) {
+                    Text(
+                        avisCapture,
+                        style = Detail,
+                        color = Color.White,
+                        modifier = Modifier
+                            .align(Alignment.BottomCenter)
+                            .navigationBarsPadding()
+                            .padding(12.dp)
+                            .background(Color.Black.copy(alpha = 0.7f), RoundedCornerShape(12.dp))
+                            .padding(horizontal = 12.dp, vertical = 6.dp)
+                    )
+                }
+            } else {
+                Column(
+                    Modifier
+                        .align(Alignment.CenterEnd)
+                        .width(340.dp)
                         .fillMaxHeight()
+                        .background(
+                            MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.96f),
+                            RoundedCornerShape(topStart = 24.dp, bottomStart = 24.dp)
+                        )
                         .statusBarsPadding()
                         .navigationBarsPadding()
-                        .padding(horizontal = 8.dp),
-                    verticalArrangement = Arrangement.Center
-                ) { enTeteVertical() }
+                        .verticalScroll(rememberScrollState())
+                ) {
+                    BoutonPlat("Refermer, voir l'image", modifier = Modifier.fillMaxWidth().padding(start = Gouttiere, end = Gouttiere, top = 8.dp)) {
+                        panneauReplie = true
+                    }
+                    enHaut()
+                    panneau(Modifier.fillMaxWidth())
+                }
             }
         }
     } else {
