@@ -29,6 +29,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import fr.cellule.app.ChiffreEnorme
 import fr.cellule.app.Corps
+import fr.cellule.app.DepotCinema
 import fr.cellule.app.DepotJournal
 import fr.cellule.app.DepotLabo
 import fr.cellule.app.DepotPronostics
@@ -47,12 +48,14 @@ import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
-private enum class ModeCarnet(val libelle: String) { VUES("Vues"), DEVELOPPEMENTS("Films"), TIRAGES("Tirages") }
+private enum class ModeCarnet(val libelle: String) {
+    VUES("Vues"), DEVELOPPEMENTS("Films"), TIRAGES("Tirages"), CINEMA("Cinéma")
+}
 
 @Composable
 fun EcranJournal(
     depot: DepotJournal, reglages: Reglages, etat: EtatApplication,
-    labo: DepotLabo, tirages: DepotTirages, pronostics: DepotPronostics
+    labo: DepotLabo, tirages: DepotTirages, pronostics: DepotPronostics, cinema: DepotCinema
 ) {
 
     /* Un développement ou un tirage préparé par le Labo ouvre directement sa page. */
@@ -89,9 +92,9 @@ fun EcranJournal(
         if (uri == null) return@rememberLauncherForActivityResult
         try {
             contexte.contentResolver.openOutputStream(uri)?.use {
-                it.write(depot.versSauvegarde(labo, tirages, pronostics).toByteArray(Charsets.UTF_8))
+                it.write(depot.versSauvegarde(labo, tirages, pronostics, cinema).toByteArray(Charsets.UTF_8))
             } ?: error("fichier inaccessible")
-            messageSauvegarde = "Carnet sauvegardé : ${depot.entrees.size} vue(s), ${labo.notes.size} film(s), ${tirages.tirages.size} tirage(s)."
+            messageSauvegarde = "Carnet sauvegardé : ${depot.entrees.size} vue(s), ${labo.notes.size} film(s), ${tirages.tirages.size} tirage(s), ${cinema.donnees.projets.size} projet(s), ${cinema.plans.size} plan(s)."
             sauvegardeEchouee = false
         } catch (e: Exception) {
             messageSauvegarde = "La sauvegarde n'a pas pu être écrite."
@@ -106,7 +109,7 @@ fun EcranJournal(
             val texte = contexte.contentResolver.openInputStream(uri)?.use {
                 it.readBytes().toString(Charsets.UTF_8)
             } ?: error("fichier inaccessible")
-            val ajoutees = depot.importer(texte, labo, tirages, pronostics)
+            val ajoutees = depot.importer(texte, labo, tirages, pronostics, cinema)
             messageSauvegarde = if (ajoutees == 0) "Rien de nouveau : tout est déjà dans le carnet."
             else "$ajoutees élément(s) restauré(s)."
             sauvegardeEchouee = false
@@ -155,6 +158,7 @@ fun EcranJournal(
 
         if (mode == ModeCarnet.DEVELOPPEMENTS) CarnetDeveloppements(labo, etat)
         else if (mode == ModeCarnet.TIRAGES) CarnetTirages(tirages, etat)
+        else if (mode == ModeCarnet.CINEMA) CarnetCinemaEcran(cinema, depot, reglages)
         else {
 
             /* ── Noter une vue ────────────────────────────────────────────── */
@@ -308,13 +312,14 @@ fun EcranJournal(
         /* ── La sauvegarde ────────────────────────────────────────────── */
         Carte(
             titre = "Sauvegarde",
-            sousTitre = "Un fichier à ranger où tu veux — Drive, Téléchargements, un mail à toi-même. Il garde les vues, les films développés, les tirages et les paris du Labo. Restaurer ajoute ce qui manque, sans rien écraser ni dédoubler."
+            sousTitre = "Un fichier à ranger où tu veux — Drive, Téléchargements, un mail à toi-même. Il garde les vues, les films développés, les tirages, les paris du Labo, et le carnet Cinéma (projets, jours, plans et leurs relevés). Les photos des plans, elles, restent dans la galerie : sauvegarde-les avec tes photos. Restaurer ajoute ce qui manque, sans rien écraser ni dédoubler."
         ) {
             LigneBoutons {
                 BoutonPlat(
                     "Sauvegarder",
                     accent = true,
-                    actif = entrees.isNotEmpty() || labo.notes.isNotEmpty() || tirages.tirages.isNotEmpty() || pronostics.liste.isNotEmpty(),
+                    actif = entrees.isNotEmpty() || labo.notes.isNotEmpty() || tirages.tirages.isNotEmpty() || pronostics.liste.isNotEmpty() ||
+                        cinema.plans.isNotEmpty() || cinema.donnees.projets.isNotEmpty(),
                     modifier = Modifier.weight(1f)
                 ) { exporter.launch("carnet-cellule-${LocalDate.now()}.json") }
                 BoutonPlat("Restaurer", modifier = Modifier.weight(1f)) {

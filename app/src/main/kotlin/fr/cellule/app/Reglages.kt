@@ -223,12 +223,16 @@ class DepotJournal(contexte: Context) {
      * Le carnet entier, dans un fichier qu'on range où l'on veut (Drive,
      * Téléchargements, un mail à soi-même) : de quoi changer de téléphone.
      * Version 2 : les développements, les tirages et les paris du Labo
-     * voyagent avec les vues ; une version antérieure de l'appli relit les
-     * vues et ignore le reste.
+     * voyagent avec les vues. Version 3 : le carnet Cinéma aussi (projets,
+     * jours, plans, vues liées). Une version antérieure de l'appli relit ce
+     * qu'elle connaît et ignore le reste.
      */
-    fun versSauvegarde(labo: DepotLabo, tirages: DepotTirages, pronostics: DepotPronostics): String = JSONObject()
+    fun versSauvegarde(
+        labo: DepotLabo, tirages: DepotTirages, pronostics: DepotPronostics, cinema: DepotCinema
+    ): String = JSONObject()
         .put("format", SauvegardeCarnet.FORMAT)
-        .put("version", 2)
+        .put("version", 3)
+        .put("cinema", cinema.enJson())
         .put("entrees", enJson(etat.value))
         .put("developpements", labo.enJson())
         .put("tirages", tirages.enJson())
@@ -242,7 +246,9 @@ class DepotJournal(contexte: Context) {
      * développements et de tirages ajoutés ; lève une exception si le fichier
      * n'est pas un carnet.
      */
-    fun importer(texte: String, labo: DepotLabo, tirages: DepotTirages, pronostics: DepotPronostics): Int {
+    fun importer(
+        texte: String, labo: DepotLabo, tirages: DepotTirages, pronostics: DepotPronostics, cinema: DepotCinema
+    ): Int {
         val brut = texte.trim().removePrefix("\uFEFF")
         val json = if (brut.startsWith("<")) {
             SauvegardeCarnet.extraireDesPreferences(brut)
@@ -250,7 +256,9 @@ class DepotJournal(contexte: Context) {
         } else brut
         val objet = if (json.trimStart().startsWith("[")) null else JSONObject(json)
         val tableau = objet?.optJSONArray("entrees") ?: if (objet == null) JSONArray(json) else JSONArray()
-        if (objet != null && !objet.has("entrees") && !objet.has("developpements") && !objet.has("tirages")) {
+        if (objet != null && !objet.has("entrees") && !objet.has("developpements") && !objet.has("tirages") &&
+            !objet.has("cinema")
+        ) {
             throw IllegalArgumentException("aucun carnet dans ce fichier")
         }
         val avant = etat.value.size
@@ -259,7 +267,8 @@ class DepotJournal(contexte: Context) {
         val developpements = objet?.optJSONArray("developpements")?.let { labo.importer(it) } ?: 0
         val nouveauxTirages = objet?.optJSONArray("tirages")?.let { tirages.importer(it) } ?: 0
         objet?.optJSONArray("pronostics")?.let { pronostics.importer(it) }
-        return etat.value.size - avant + developpements + nouveauxTirages
+        val dossiers = objet?.optJSONObject("cinema")?.let { cinema.importer(it) } ?: 0
+        return etat.value.size - avant + developpements + nouveauxTirages + dossiers
     }
 
     private fun charger(): List<EntreeJournal> = try {

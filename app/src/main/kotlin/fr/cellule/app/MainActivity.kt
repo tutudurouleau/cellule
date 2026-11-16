@@ -286,7 +286,7 @@ private fun Application() {
                             Onglet.ESTIMER -> EcranEstimer(reglages, etat)
                             Onglet.FOCALES -> EcranFocales()
                             Onglet.CAMERAS -> EcranCameras(quiz)
-                            Onglet.CARNET -> EcranJournal(depot, reglages, etat, labo, tirages, pronostics)
+                            Onglet.CARNET -> EcranJournal(depot, reglages, etat, labo, tirages, pronostics, cinema)
                             Onglet.LABO -> EcranLabo(pronostics, etat, labo, tirages)
                             Onglet.TABLES -> EcranTables()
                         }

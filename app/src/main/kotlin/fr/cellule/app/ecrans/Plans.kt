@@ -546,6 +546,31 @@ fun FeuillePlan(cinema: DepotCinema, identifiant: Long, avis: String = "", onFer
             }
 
             Separateur()
+            Etiquette("Rangement")
+            Spacer(Modifier.height(6.dp))
+            val dossiers = cinema.donnees
+            val jours: List<Long?> = listOf<Long?>(null) +
+                dossiers.projets.flatMap { p -> dossiers.joursDe(p.identifiant).map { it.identifiant } }
+            if (jours.size == 1) {
+                Text(
+                    "Crée un projet et un jour dans Carnet › Cinéma pour y ranger ce plan.",
+                    style = Detail,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            } else {
+                Deroulant(
+                    "Rangé dans", jours, enregistre.jourId?.takeIf { it in jours },
+                    { id ->
+                        val jour = dossiers.jours.firstOrNull { it.identifiant == id }
+                        if (jour == null) "Non rangé"
+                        else (dossiers.projets.firstOrNull { it.identifiant == jour.projetId }?.nom ?: "Projet") +
+                            " › " + jour.intitule
+                    },
+                    Modifier.fillMaxWidth()
+                ) { cinema.deplacer(identifiant, it) }
+            }
+
+            Separateur()
             Etiquette("Cadre")
             Spacer(Modifier.height(6.dp))
             EditeurCadre(brouillon.cadre) { brouillon = brouillon.copy(cadre = it) }
