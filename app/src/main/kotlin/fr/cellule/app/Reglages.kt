@@ -82,6 +82,20 @@ class Reglages(contexte: Context) {
 
     var zebraHaut by EntierPref(prefs, "zebra_haut", 95)
     var zebraMoyen by EntierPref(prefs, "zebra_moyen", 70)
+
+    /* ── La capture de plan ────────────────────────────────────────────── */
+
+    /** Le cadre de travail (capteur, focale, formats), en JSON (voir [CadreJson]). */
+    var cineCadre by TextePref(prefs, "cine_cadre", "{}")
+
+    /** « SEQUENCE » ou « SIMPLE » : la numérotation proposée aux nouveaux plans. */
+    var cineNumerotation by TextePref(prefs, "cine_numerotation", "SEQUENCE")
+
+    /** Le jour où ranger les nouveaux plans ; 0 : pas de rangement automatique. */
+    var cineJourCourant by TextePref(prefs, "cine_jour_courant", "")
+
+    /** On ne demande la localisation qu'une fois d'office ; après un refus, on n'insiste pas. */
+    var lieuDemande by BooleenPref(prefs, "lieu_demande", false)
 }
 
 /** Les filtres posés devant l'objectif, tels qu'on les garde d'une séance à l'autre. */

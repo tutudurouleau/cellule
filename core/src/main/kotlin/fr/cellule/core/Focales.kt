@@ -137,16 +137,23 @@ val RATIOS_PHOTO = listOf(
     RatioCadre("4:3", 4.0 / 3.0, FamilleRatio.PHOTO, "Compact, Micro 4/3 — le capteur natif de la plupart des téléphones"),
     RatioCadre("3:2", 3.0 / 2.0, FamilleRatio.PHOTO, "24×36 argentique et plein format numérique"),
     RatioCadre("16:9", 16.0 / 9.0, FamilleRatio.PHOTO, "Photo large, mode natif de certains téléphones"),
-    RatioCadre("4:5", 4.0 / 5.0, FamilleRatio.PHOTO, "Portrait — cadrage vertical, réseaux sociaux")
+    RatioCadre("4:5", 4.0 / 5.0, FamilleRatio.PHOTO, "Portrait — cadrage vertical, réseaux sociaux"),
+    RatioCadre("9:16", 9.0 / 16.0, FamilleRatio.PHOTO, "Vertical plein écran — stories, formats courts")
 )
 
 val RATIOS_CINE = listOf(
+    RatioCadre("1.33:1", 4.0 / 3.0, FamilleRatio.CINE, "4:3 — le muet, puis la télévision d'avant le 16:9"),
     RatioCadre("1.37:1", 1.37, FamilleRatio.CINE, "Academy — le standard du 35 mm avant le grand écran"),
+    RatioCadre("1.43:1", 1.43, FamilleRatio.CINE, "IMAX — la pellicule 15 perforations 70 mm"),
     RatioCadre("1.66:1", 1.66, FamilleRatio.CINE, "European widescreen"),
     RatioCadre("1.78:1", 16.0 / 9.0, FamilleRatio.CINE, "16:9 — HD, UHD, streaming"),
     RatioCadre("1.85:1", 1.85, FamilleRatio.CINE, "Flat — le standard américain en salle"),
+    RatioCadre("1.90:1", 1.90, FamilleRatio.CINE, "DCI plein conteneur (4096 × 2160), IMAX numérique"),
+    RatioCadre("2.00:1", 2.0, FamilleRatio.CINE, "Univisium — très présent en série"),
+    RatioCadre("2.20:1", 2.20, FamilleRatio.CINE, "Le 70 mm à cinq perforations"),
     RatioCadre("2.35:1", 2.35, FamilleRatio.CINE, "Scope — le format large d'avant 1970"),
-    RatioCadre("2.39:1", 2.39, FamilleRatio.CINE, "Scope moderne — anamorphique")
+    RatioCadre("2.39:1", 2.39, FamilleRatio.CINE, "Scope moderne — anamorphique"),
+    RatioCadre("2.76:1", 2.76, FamilleRatio.CINE, "Ultra Panavision 70")
 )
 
 val TOUS_LES_RATIOS: List<RatioCadre> = RATIOS_PHOTO + RATIOS_CINE

@@ -3,7 +3,9 @@
 package fr.cellule.app.ecrans
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.view.PreviewView
@@ -46,6 +48,7 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -60,9 +63,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import fr.cellule.app.CadreJson
 import fr.cellule.app.ChiffreEnorme
 import fr.cellule.app.ChiffreGrand
 import fr.cellule.app.Corps
+import fr.cellule.app.DepotCinema
 import fr.cellule.app.Detail
 import fr.cellule.app.EtatApplication
 import fr.cellule.app.Gouttiere
@@ -70,8 +75,17 @@ import fr.cellule.app.Interligne
 import fr.cellule.app.FiltresJson
 import fr.cellule.app.Reglages
 import fr.cellule.app.mesure.CapteurAmbiance
+import fr.cellule.app.mesure.CapteurCap
+import fr.cellule.app.mesure.Localisation
 import fr.cellule.app.mesure.MoteurCamera
+import fr.cellule.app.mesure.declinaisonMagnetique
+import fr.cellule.app.mesure.enLieu
+import fr.cellule.app.mesure.soleilEn
+import fr.cellule.core.Boussole
+import fr.cellule.core.CarnetCinema
+import fr.cellule.core.ExpositionPlan
 import fr.cellule.core.MATIERES
+import fr.cellule.core.Numerotation
 import fr.cellule.core.PELLICULES
 import fr.cellule.core.Photometrie
 import fr.cellule.core.Posemetre
@@ -86,6 +100,11 @@ import fr.cellule.core.conseilLatitude
 import fr.cellule.core.coupleConseille
 import fr.cellule.core.libelleDiaphs
 import fr.cellule.core.libelleOuverture
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 import kotlin.math.min
 
 enum class ModeMesure(val libelle: String) {
@@ -108,7 +127,7 @@ private data class Lecture(
  * détails ne s'affichent qu'à la demande.
  */
 @Composable
-fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
+fun EcranMesurer(reglages: Reglages, etat: EtatApplication, cinema: DepotCinema) {
 
     val contexte = LocalContext.current
     val proprietaire = LocalLifecycleOwner.current
@@ -128,6 +147,9 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
 
     val moteur = remember { MoteurCamera(contexte) }
     val capteur = remember { CapteurAmbiance(contexte) }
+    val cap = remember { CapteurCap(contexte) }
+    val localisation = remember { Localisation(contexte) }
+    val portee = rememberCoroutineScope()
     val vue = remember {
         PreviewView(contexte).apply {
             scaleType = PreviewView.ScaleType.FIT_CENTER
@@ -143,8 +165,15 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
     val avecCamera = mode != ModeMesure.INCIDENT
 
     DisposableEffect(autorisee, avecCamera) {
-        if (autorisee && avecCamera) moteur.demarrer(proprietaire, vue)
-        onDispose { moteur.arreter() }
+        if (autorisee && avecCamera) {
+            moteur.demarrer(proprietaire, vue)
+            /* Le cap et la tenue du téléphone ne servent qu'à la capture de plan. */
+            cap.demarrer()
+        }
+        onDispose {
+            moteur.arreter()
+            cap.arreter()
+        }
     }
     DisposableEffect(mode) {
         if (mode == ModeMesure.INCIDENT) capteur.demarrer()
@@ -231,6 +260,137 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
         Tournage.calculer(it, reglageCine, T_STOPS.getOrNull(reglages.cineTVoulu))
     } else null
 
+    /* ── La capture de plan ────────────────────────────────────────────── */
+    val cadreTravail = remember(reglages.cineCadre) { CadreJson.lireTexte(reglages.cineCadre) }
+    var planOuvert by remember { mutableStateOf<Long?>(null) }
+    var captureEnCours by remember { mutableStateOf(false) }
+    var avisCapture by remember { mutableStateOf("") }
+    var cadreOuvert by remember { mutableStateOf(false) }
+
+    /** Le modèle du prochain plan : rangé dans le jour courant, numéroté à la suite. */
+    fun nouveauPlan(): fr.cellule.core.Plan {
+        val numerotation = runCatching { Numerotation.valueOf(reglages.cineNumerotation) }
+            .getOrDefault(Numerotation.SEQUENCE)
+        val jourId = reglages.cineJourCourant.toLongOrNull()
+            ?.takeIf { id -> cinema.donnees.jours.any { it.identifiant == id } }
+        val precedent = cinema.plans.filter { it.jourId == jourId }.maxByOrNull { it.identifiant }
+        return CarnetCinema.suivant(precedent, numerotation).copy(
+            identifiant = System.currentTimeMillis(),
+            jourId = jourId,
+            cadre = cadreTravail
+        )
+    }
+
+    val faireCapture: () -> Unit = {
+        if (!captureEnCours) {
+            captureEnCours = true
+            avisCapture = ""
+            val tenue = cap.tenue
+            val champ = moteur.champPhoto(tenue.couche)
+            val capMagnetique = cap.capMagnetique
+            val instant = ZonedDateTime.now()
+            val exposition = if (tournage) ExpositionPlan(
+                ev100 = evExposition,
+                tournage = true,
+                cadence = reglageCine.cadence,
+                angle = reglageCine.angle,
+                ei = reglageCine.ei,
+                ouverture = resultatCine?.tProche?.libelle ?: "",
+                tempsPose = Tournage.libelleTempsPose(reglageCine.tempsPose),
+                filtres = resumeFiltres(reglageCine)
+            ) else ExpositionPlan(
+                ev100 = evExposition,
+                tournage = false,
+                ei = reglages.iso,
+                ouverture = couple?.let { libelleOuverture(it.ouverture) } ?: "",
+                tempsPose = couple?.vitesse?.libelle ?: ""
+            )
+            val camera = moteur.libelleCameraActive()
+            moteur.capturer(tenue.rotation) { uri, erreur ->
+                captureEnCours = false
+                val plan = nouveauPlan().copy(
+                    date = instant.toLocalDate().toString(),
+                    heure = instant.format(DateTimeFormatter.ofPattern("HH:mm")),
+                    photo = uri?.toString() ?: "",
+                    rapportPhoto = if (tenue.couche) 4.0 / 3.0 else 3.0 / 4.0,
+                    exposition = exposition,
+                    cap = capMagnetique,
+                    champ = champ,
+                    cameraTelephone = camera
+                )
+                cinema.enregistrer(plan)
+                avisCapture = erreur ?: ""
+                planOuvert = plan.identifiant
+                /* La position arrive quand elle arrive : le plan est déjà noté,
+                   elle le complète — avec le soleil, et le cap ramené au nord vrai. */
+                localisation.obtenir { position ->
+                    if (position != null) {
+                        val lieu = position.enLieu()
+                        cinema.modifier(plan.identifiant) {
+                            it.copy(
+                                lieu = lieu,
+                                soleil = soleilEn(lieu.latitude, lieu.longitude, instant),
+                                cap = capMagnetique?.let { c -> Boussole.normaliser(c + declinaisonMagnetique(lieu)) }
+                            )
+                        }
+                        portee.launch {
+                            val adresse = withContext(Dispatchers.IO) {
+                                localisation.adresse(lieu.latitude, lieu.longitude)
+                            }
+                            if (adresse.isNotBlank()) {
+                                cinema.modifier(plan.identifiant) { it.copy(lieu = it.lieu?.copy(adresse = adresse)) }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    val demandeCapture = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { faireCapture() }
+    val surCapture: () -> Unit = {
+        val manquantes = buildList {
+            /* La localisation n'est proposée d'office qu'une fois : un refus est une réponse. */
+            if (!localisation.autorisee() && !reglages.lieuDemande) {
+                add(Manifest.permission.ACCESS_FINE_LOCATION)
+                add(Manifest.permission.ACCESS_COARSE_LOCATION)
+            }
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q &&
+                ContextCompat.checkSelfPermission(contexte, Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
+                PackageManager.PERMISSION_GRANTED
+            ) add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        }
+        if (manquantes.isNotEmpty()) {
+            reglages.lieuDemande = true
+            demandeCapture.launch(manquantes.toTypedArray())
+        } else faireCapture()
+    }
+    val importeur = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        if (uri != null) {
+            /* Sans cette permission durable, la photo ne se relirait plus au prochain lancement. */
+            runCatching {
+                contexte.contentResolver.takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+            val base = nouveauPlan()
+            portee.launch {
+                val plan = withContext(Dispatchers.IO) {
+                    val lu = PhotosPlans.planDepuisGalerie(contexte, uri, base)
+                    lu.lieu?.let { l ->
+                        val quand = runCatching {
+                            java.time.LocalDateTime.parse(lu.date + "T" + lu.heure + ":00")
+                                .atZone(java.time.ZoneId.systemDefault())
+                        }.getOrNull()
+                        if (quand != null) lu.copy(soleil = soleilEn(l.latitude, l.longitude, quand)) else lu
+                    } ?: lu
+                }
+                cinema.enregistrer(plan)
+                avisCapture = ""
+                planOuvert = plan.identifiant
+            }
+        }
+    }
+
     Column(Modifier.fillMaxSize().background(Color.Black)) {
 
         /* ── Mode, en haut ────────────────────────────────────────────── */
@@ -297,7 +457,11 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
                                 drawCircle(teinte, 2.5f, centre)
                             }
                         }
-                        if (tournage) CalquesTournage(moteur)
+                        if (tournage) {
+                            CadreSurApercu(moteur, cadreTravail, cap.tenue)
+                            CalquesTournage(moteur)
+                        }
+                        BoutonCapture(captureEnCours, surCapture)
                     }
                 }
                 if (mode == ModeMesure.SPOT) {
@@ -463,7 +627,12 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
                     Separateur()
 
                     if (tournage) {
-                        DetailsTournage(reglages, moteur, ev100, reglageCine, resultatCine, avecCamera && autorisee)
+                        DetailsTournage(
+                            reglages, moteur, ev100, reglageCine, resultatCine, avecCamera && autorisee,
+                            cadre = cadreTravail,
+                            surCadre = { cadreOuvert = true },
+                            surImport = { importeur.launch(arrayOf("image/*")) }
+                        )
                     } else {
                         /* Ligne fixes : ce que doit dire l'appareil. */
                         Ligne(
@@ -620,6 +789,9 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
             }
         }
     }
+
+    if (cadreOuvert) FeuilleCadreDeTravail(reglages) { cadreOuvert = false }
+    planOuvert?.let { id -> FeuillePlan(cinema, id, avisCapture) { planOuvert = null } }
 
     /* ── Étalonnage, en feuille plutôt qu'en boîte de dialogue ─────────── */
     if (etalonnageOuvert) {

@@ -3,6 +3,15 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
 
+    <!-- La capture de plan note où elle a été prise. La localisation est
+         facultative : refusée, tout le reste fonctionne, le lieu reste vide. -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Savoir s'il y a du réseau, pour ne chercher une adresse que dans ce cas. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Avant Android 10, ranger une photo dans la galerie exige cette permission. -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+
     <!-- Le chrono labo : un service au premier plan qui bipe et vibre écran
          éteint, et sa notification (compte à rebours, pause, bain suivant). -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
@@ -15,6 +24,9 @@
          l'estimation, le journal et les tables fonctionnent sans eux. -->
     <uses-feature android:name="android.hardware.camera.any" android:required="false" />
     <uses-feature android:name="android.hardware.sensor.light" android:required="false" />
+    <uses-feature android:name="android.hardware.location" android:required="false" />
+    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.compass" android:required="false" />
 
     <application
         android:allowBackup="true"

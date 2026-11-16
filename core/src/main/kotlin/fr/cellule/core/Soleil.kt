@@ -62,6 +62,22 @@ object Soleil {
     }
 
     /**
+     * Azimut du soleil, en degrés depuis le nord géographique, dans le sens
+     * des aiguilles d'une montre : 90° à l'est, 180° au sud, 270° à l'ouest.
+     */
+    fun azimut(latitudeNord: Double, jourDeLAnnee: Int, tempsSolaire: Double): Double {
+        val dec = rad(declinaison(jourDeLAnnee))
+        val lat = rad(latitudeNord)
+        val angleHoraire = rad(15 * (tempsSolaire - 12))
+        /* Compté depuis le sud vers l'ouest, puis ramené au nord. */
+        val depuisLeSud = kotlin.math.atan2(
+            sin(angleHoraire),
+            cos(angleHoraire) * sin(lat) - kotlin.math.tan(dec) * cos(lat)
+        )
+        return ((deg(depuisLeSud) + 180) % 360 + 360) % 360
+    }
+
+    /**
      * Hauteur du soleil déduite de l'ombre portée — le goniomètre qu'on a
      * toujours sur soi. [rapport] est la longueur de l'ombre divisée par la
      * hauteur de l'objet qui la projette.

@@ -1,5 +1,6 @@
 package fr.cellule.app.mesure
 
+import android.content.ContentValues
 import android.content.Context
 import android.hardware.camera2.CameraCaptureSession
 import android.graphics.Bitmap
@@ -8,9 +9,13 @@ import android.hardware.camera2.CameraMetadata
 import android.hardware.camera2.CaptureRequest
 import android.hardware.camera2.CaptureResult
 import android.hardware.camera2.TotalCaptureResult
+import android.net.Uri
+import android.os.Build
+import android.os.Environment
 import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
+import android.provider.MediaStore
 import androidx.camera.camera2.interop.Camera2CameraControl
 import androidx.camera.camera2.interop.Camera2CameraInfo
 import androidx.camera.camera2.interop.Camera2Interop
@@ -19,6 +24,8 @@ import androidx.camera.camera2.interop.ExperimentalCamera2Interop
 import androidx.camera.core.Camera
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.ImageCapture
+import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.core.resolutionselector.AspectRatioStrategy
@@ -42,6 +49,10 @@ import fr.cellule.core.OutilsImage
 import fr.cellule.core.Reperes
 import fr.cellule.core.ResultatSpot
 import fr.cellule.core.SeuilsZebras
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -352,8 +363,23 @@ class MoteurCamera(private val contexte: Context) {
                         .build()
                 } else CameraSelector.DEFAULT_BACK_CAMERA
 
+                /* La photo pleine définition du plan. Certains téléphones
+                   anciens ne tiennent pas trois flux à la fois : on garde alors
+                   la mesure, et la capture dira qu'elle n'est pas possible. */
+                val capture = ImageCapture.Builder()
+                    .setResolutionSelector(selecteur)
+                    .setCaptureMode(ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY)
+                    .build()
+
                 provider.unbindAll()
-                val cam = provider.bindToLifecycle(proprietaire, choix, apercu, analyse)
+                val cam = try {
+                    provider.bindToLifecycle(proprietaire, choix, apercu, analyse, capture)
+                        .also { captureImage = capture }
+                } catch (e: IllegalArgumentException) {
+                    captureImage = null
+                    provider.unbindAll()
+                    provider.bindToLifecycle(proprietaire, choix, apercu, analyse)
+                }
                 camera = cam
                 cameraActive = try {
                     Camera2CameraInfo.from(cam.cameraInfo).cameraId
@@ -383,10 +409,83 @@ class MoteurCamera(private val contexte: Context) {
             /* rien à faire : on s'arrête de toute façon */
         }
         camera = null
+        captureImage = null
         executeur?.shutdown()
         executeur = null
         dernierProprietaire = null
         derniereVue = null
+    }
+
+    private var captureImage: ImageCapture? = null
+
+    /** Le champ de la photo qu'on prendrait maintenant, selon que le téléphone est couché ou debout. */
+    fun champPhoto(couche: Boolean): fr.cellule.core.ChampPhoto? {
+        val e = equivalence ?: return null
+        /* L'équivalence est donnée dans le sens du capteur : son grand côté
+           est la largeur d'une photo couchée, la hauteur d'une photo debout. */
+        return if (couche) fr.cellule.core.ChampPhoto(e.angleHorizontal, e.angleVertical)
+        else fr.cellule.core.ChampPhoto(e.angleVertical, e.angleHorizontal)
+    }
+
+    /** Libellé de la caméra qui tourne, pour le noter avec le plan. */
+    fun libelleCameraActive(): String {
+        val c = cameras.firstOrNull { it.id == cameraActive }
+        val eq = equivalence?.equivalentDiagonal ?: c?.equivalent
+        return listOfNotNull(
+            eq?.let { "équivalent ${Math.round(it)} mm" },
+            equivalence?.let { "focale réelle ${String.format(Locale.FRANCE, "%.2f", it.focaleReelleMm)} mm" },
+            if (zoomDemande != 1f) "zoom ×" + String.format(Locale.FRANCE, "%.1f", zoomDemande) else null
+        ).joinToString(" · ")
+    }
+
+    /**
+     * Prend la photo du plan en pleine définition et la range dans la galerie,
+     * album « Cellule ». [rotationCible] est la tenue du téléphone
+     * (Surface.ROTATION_0, _90 ou _270) : la photo sort dans le bon sens.
+     * Rend l'adresse de la photo, ou la raison de l'échec.
+     */
+    fun capturer(rotationCible: Int, surResultat: (Uri?, String?) -> Unit) {
+        val capture = captureImage
+        if (capture == null) {
+            surResultat(null, "Ce téléphone ne laisse pas prendre la photo pendant la mesure.")
+            return
+        }
+        try {
+            capture.targetRotation = rotationCible
+            val nom = "Cellule_" + SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(Date()) + ".jpg"
+            val valeurs = ContentValues().apply {
+                put(MediaStore.MediaColumns.DISPLAY_NAME, nom)
+                put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + "/Cellule")
+                } else {
+                    @Suppress("DEPRECATION")
+                    val dossier = File(
+                        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Cellule"
+                    )
+                    dossier.mkdirs()
+                    put(MediaStore.MediaColumns.DATA, File(dossier, nom).absolutePath)
+                }
+            }
+            val options = ImageCapture.OutputFileOptions.Builder(
+                contexte.contentResolver, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, valeurs
+            ).build()
+            capture.takePicture(
+                options,
+                ContextCompat.getMainExecutor(contexte),
+                object : ImageCapture.OnImageSavedCallback {
+                    override fun onImageSaved(resultat: ImageCapture.OutputFileResults) {
+                        surResultat(resultat.savedUri, if (resultat.savedUri == null) "La photo est enregistrée, mais la galerie n'a pas rendu son adresse." else null)
+                    }
+
+                    override fun onError(e: ImageCaptureException) {
+                        surResultat(null, "La photo n'a pas pu être enregistrée dans la galerie.")
+                    }
+                }
+            )
+        } catch (e: Exception) {
+            surResultat(null, "La photo n'a pas pu être prise.")
+        }
     }
 
     /**

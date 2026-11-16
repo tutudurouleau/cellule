@@ -48,6 +48,7 @@ import fr.cellule.app.mesure.MoteurCamera
 import fr.cellule.app.mesure.OutilImage
 import fr.cellule.core.ANGLES_OBTURATION
 import fr.cellule.core.CADENCES
+import fr.cellule.core.CadrePlan
 import fr.cellule.core.DENSITES_NEUTRES
 import fr.cellule.core.FamilleFiltre
 import fr.cellule.core.FiltrePose
@@ -81,6 +82,12 @@ fun reglageTournage(reglages: Reglages, filtres: List<FiltrePose>): ReglageTourn
 /** « T4 · 1/48 s · EI 800 » : ce qu'on note au carnet. */
 fun resumeTournage(resultat: ResultatTournage, reglage: ReglageTournage): String =
     resultat.tProche.libelle + " · " + Tournage.libelleTempsPose(resultat.tempsPose) + " · EI " + reglage.ei
+
+/** Les filtres en place, en clair, pour les noter avec un plan. */
+fun resumeFiltres(reglage: ReglageTournage): String = (
+    listOfNotNull(DENSITES_NEUTRES.getOrNull(reglage.ndEnPlace)?.takeIf { it.diaphs > 0 }?.court) +
+        reglage.filtres.map { it.nom + " (−" + nombreCourt(it.perteDiaphs, 2) + " diaph, " + it.mention + ")" }
+    ).joinToString(", ")
 
 /* ── Par-dessus l'aperçu ───────────────────────────────────────────────── */
 
@@ -323,7 +330,10 @@ fun DetailsTournage(
     ev100: Double?,
     reglage: ReglageTournage,
     resultat: ResultatTournage?,
-    avecCamera: Boolean
+    avecCamera: Boolean,
+    cadre: CadrePlan,
+    surCadre: () -> Unit,
+    surImport: () -> Unit
 ) {
     var ajoutFiltre by remember { mutableStateOf(false) }
     val voulu = T_STOPS.getOrNull(reglages.cineTVoulu)
@@ -370,6 +380,28 @@ fun DetailsTournage(
             { it?.libelle ?: "le T mesuré" }, Modifier.weight(1f)
         ) { reglages.cineTVoulu = it?.rang ?: -1 }
     }
+
+    /* ── Le cadre et les plans ─────────────────────────────────────────── */
+    Separateur()
+    Etiquette("Cadre et plans")
+    Spacer(Modifier.height(4.dp))
+    Text(
+        if (cadre.complet) cadre.resume
+        else "Donne la taille utile du capteur et la focale : le cadre de ta caméra se trace sur l'aperçu, et accompagne chaque plan capturé.",
+        style = Detail,
+        color = MaterialTheme.colorScheme.onSurfaceVariant
+    )
+    Spacer(Modifier.height(8.dp))
+    LigneBoutons {
+        BoutonPlat("Régler le cadre", modifier = Modifier.weight(1f), surClic = surCadre)
+        BoutonPlat("Importer une photo", modifier = Modifier.weight(1f), surClic = surImport)
+    }
+    Text(
+        "« Capturer le plan », sur l'aperçu, range la photo dans la galerie (album Cellule) et note l'heure, le lieu, le cap, le soleil, l'exposition et le cadre. Couche le téléphone pour un plan en largeur : le cadre suit.",
+        style = Detail,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        modifier = Modifier.padding(top = 6.dp)
+    )
 
     /* ── Le neutre ─────────────────────────────────────────────────────── */
     Separateur()
