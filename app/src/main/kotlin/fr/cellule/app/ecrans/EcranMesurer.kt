@@ -22,6 +22,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -448,6 +450,7 @@ fun EcranMesurer(
     }
 
     val paysage = fr.cellule.app.LocalPaysage.current
+    var panneauReplie by remember { mutableStateOf(false) }
     val enHaut: @Composable () -> Unit = {
         /* ── Mode, en haut ────────────────────────────────────────────── */
         Column(
@@ -857,21 +860,104 @@ fun EcranMesurer(
         }
     }
 
-    /* En paysage, l'image à gauche et le panneau à droite ; debout, l'un sous l'autre. */
+    /* En paysage, l'image à gauche et le panneau à droite ; debout, l'un sous l'autre.
+       En paysage, le panneau se replie sur le côté : il ne garde alors que
+       l'ouverture, la vitesse et le déclencheur, et l'image prend le reste. */
     if (paysage) {
         Row(Modifier.fillMaxSize().background(Color.Black)) {
-            Column(Modifier.weight(1f).fillMaxHeight()) {
-                enHaut()
-                viseur(Modifier.weight(1f).fillMaxWidth())
-            }
-            panneau(
+            viseur(Modifier.weight(1f).fillMaxHeight())
+            Row(
                 Modifier
-                    .width(340.dp)
                     .fillMaxHeight()
-                    .statusBarsPadding()
-                    .navigationBarsPadding()
-                    .verticalScroll(rememberScrollState())
-            )
+                    .background(
+                        MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.97f),
+                        RoundedCornerShape(topStart = 24.dp, bottomStart = 24.dp)
+                    )
+            ) {
+                /* La poignée de côté : toute la hauteur se touche. */
+                Box(
+                    Modifier
+                        .fillMaxHeight()
+                        .width(26.dp)
+                        .clickable { panneauReplie = !panneauReplie },
+                    contentAlignment = Alignment.Center
+                ) {
+                    Box(
+                        Modifier
+                            .size(width = 4.dp, height = 40.dp)
+                            .background(MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.35f), RoundedCornerShape(50))
+                    )
+                }
+                if (panneauReplie) {
+                    Column(
+                        Modifier
+                            .width(118.dp)
+                            .fillMaxHeight()
+                            .statusBarsPadding()
+                            .navigationBarsPadding()
+                            .padding(end = 10.dp, top = 8.dp, bottom = 8.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        Text(
+                            when {
+                                !tournage -> couple?.let { libelleOuverture(it.ouverture) } ?: "f/—"
+                                resultatCine == null -> "T—"
+                                resultatCine.horsBague && resultatCine.tExact < 1.0 -> "< T1"
+                                resultatCine.horsBague && resultatCine.tExact > 32.0 -> "> T32"
+                                else -> resultatCine.tProche.libelle
+                            },
+                            style = ChiffreGrand,
+                            maxLines = 1,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                        Text(
+                            if (tournage) Tournage.libelleTempsPose(reglageCine.tempsPose) else couple?.vitesse?.libelle ?: "—",
+                            style = Corps,
+                            maxLines = 1,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                        Text(
+                            (if (ev100 != null) fmt(ev100) else "––") + " EV",
+                            style = Detail,
+                            maxLines = 1,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        if (tournage) {
+                            Box(
+                                Modifier
+                                    .size(64.dp)
+                                    .clip(RoundedCornerShape(50))
+                                    .background(MaterialTheme.colorScheme.primary)
+                                    .clickable(enabled = !captureEnCours && avecCamera && autorisee) { surCapture() },
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Box(
+                                    Modifier
+                                        .size(if (captureEnCours) 18.dp else 26.dp)
+                                        .background(MaterialTheme.colorScheme.onPrimary, RoundedCornerShape(50))
+                                )
+                            }
+                        }
+                        if (avecCamera) {
+                            BoutonPlat(if (moteur.gele) "Libérer" else "Figer", accent = moteur.gele) { moteur.basculerGel() }
+                        }
+                    }
+                } else {
+                    Column(
+                        Modifier
+                            .width(340.dp)
+                            .fillMaxHeight()
+                            .statusBarsPadding()
+                            .navigationBarsPadding()
+                            .verticalScroll(rememberScrollState())
+                    ) {
+                        /* En paysage, le sélecteur du haut vit dans le panneau : l'image garde toute la hauteur. */
+                        enHaut()
+                        panneau(Modifier.fillMaxWidth())
+                    }
+                }
+            }
         }
     } else {
         Column(Modifier.fillMaxSize().background(Color.Black)) {

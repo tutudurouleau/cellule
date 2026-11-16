@@ -27,6 +27,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.zIndex
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -217,6 +218,9 @@ fun BoxScope.BarreFocale(reglages: Reglages, surMateriel: () -> Unit) {
     Column(
         Modifier
             .align(Alignment.TopEnd)
+            /* Au-dessus de l'aperçu, même quand celui-ci est agrandi. */
+            .zIndex(2f)
+            .then(if (fr.cellule.app.LocalPaysage.current) Modifier.statusBarsPadding() else Modifier)
             .padding(10.dp),
         horizontalAlignment = Alignment.End
     ) {
