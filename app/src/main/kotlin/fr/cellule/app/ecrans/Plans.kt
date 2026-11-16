@@ -396,7 +396,8 @@ fun EditeurCadre(cadre: CadrePlan, surChangement: (CadrePlan) -> Unit) {
                 capteurHauteurMm = Tournage.lireNombre(hauteur),
                 focaleMm = Tournage.lireNombre(focale),
                 desanamorphose = desanamorphose,
-                formats = formats
+                formats = formats,
+                objectif = cadre.objectif
             )
         )
     }

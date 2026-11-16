@@ -127,14 +127,23 @@ private data class Lecture(
  * détails ne s'affichent qu'à la demande.
  */
 @Composable
-fun EcranMesurer(reglages: Reglages, etat: EtatApplication, cinema: DepotCinema) {
+fun EcranMesurer(
+    reglages: Reglages,
+    etat: EtatApplication,
+    cinema: DepotCinema,
+    /** Vrai dans l'onglet Cinéma : cellule de tournage, cadre et capture de plan. */
+    modeCinema: Boolean = false,
+    /** Ce que l'onglet Cinéma pose en haut (son sélecteur de vue). */
+    enTete: (@Composable () -> Unit)? = null
+) {
 
     val contexte = LocalContext.current
     val proprietaire = LocalLifecycleOwner.current
 
     var mode by remember { mutableStateOf(ModeMesure.SPOT) }
-    /* Photo ou tournage : la mesure est la même, c'est ce qu'on en tire qui change. */
-    val tournage = reglages.modeTournage
+    /* Photo ou tournage : la mesure est la même, c'est ce qu'on en tire qui change.
+       Le tournage vit dans son propre onglet, Cinéma. */
+    val tournage = modeCinema
     var autorisee by remember {
         mutableStateOf(
             ContextCompat.checkSelfPermission(contexte, Manifest.permission.CAMERA) ==
@@ -400,13 +409,10 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication, cinema: DepotCinema)
                 .statusBarsPadding()
                 .padding(horizontal = Gouttiere, vertical = 8.dp)
         ) {
-            ChoixSegmente(
-                options = listOf(false, true),
-                selection = tournage,
-                libelle = { if (it) "Tournage" else "Photo" },
-                surChoix = { reglages.modeTournage = it }
-            )
-            Spacer(Modifier.height(6.dp))
+            if (enTete != null) {
+                enTete()
+                Spacer(Modifier.height(4.dp))
+            }
             ChoixSegmente(
                 options = ModeMesure.entries.toList(),
                 selection = mode,
@@ -461,9 +467,10 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication, cinema: DepotCinema)
                             CadreSurApercu(moteur, cadreTravail, cap.tenue)
                             CalquesTournage(moteur)
                         }
-                        BoutonCapture(captureEnCours, surCapture)
+                        if (tournage) BoutonCapture(captureEnCours, surCapture)
                     }
                 }
+                if (tournage) BarreFocale(reglages) { reglages.cineVue = VueCinema.MATERIEL.name }
                 if (mode == ModeMesure.SPOT) {
                     /* En bas de l'image, sous le pouce : la taille du spot se règle
                        sans lâcher le cadrage. Fond sombre translucide pour rester

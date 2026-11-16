@@ -49,7 +49,7 @@ import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
 private enum class ModeCarnet(val libelle: String) {
-    VUES("Vues"), DEVELOPPEMENTS("Films"), TIRAGES("Tirages"), CINEMA("Cinéma")
+    VUES("Vues"), DEVELOPPEMENTS("Films"), TIRAGES("Tirages")
 }
 
 @Composable
@@ -158,7 +158,6 @@ fun EcranJournal(
 
         if (mode == ModeCarnet.DEVELOPPEMENTS) CarnetDeveloppements(labo, etat)
         else if (mode == ModeCarnet.TIRAGES) CarnetTirages(tirages, etat)
-        else if (mode == ModeCarnet.CINEMA) CarnetCinemaEcran(cinema, depot, reglages)
         else {
 
             /* ── Noter une vue ────────────────────────────────────────────── */

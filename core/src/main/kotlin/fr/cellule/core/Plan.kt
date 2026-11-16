@@ -70,7 +70,9 @@ data class CadrePlan(
     /** Facteur de désanamorphose : 1 pour une optique sphérique. */
     val desanamorphose: Double = 1.0,
     /** Noms des formats à tracer (voir [TOUS_LES_RATIOS]). */
-    val formats: List<String> = emptyList()
+    val formats: List<String> = emptyList(),
+    /** La série d'objectifs, si on l'a choisie dans le catalogue. */
+    val objectif: String = ""
 ) {
     val complet: Boolean
         get() = (capteurLargeurMm ?: 0.0) > 0 && (capteurHauteurMm ?: 0.0) > 0 && (focaleMm ?: 0.0) > 0
@@ -78,6 +80,7 @@ data class CadrePlan(
     val resume: String
         get() = listOfNotNull(
             capteurNom.takeIf { it.isNotBlank() },
+            objectif.takeIf { it.isNotBlank() },
             if (capteurLargeurMm != null && capteurHauteurMm != null)
                 nombreCourt(capteurLargeurMm, 2) + " × " + nombreCourt(capteurHauteurMm, 2) + " mm" else null,
             focaleMm?.let { nombreCourt(it, 1) + " mm" },

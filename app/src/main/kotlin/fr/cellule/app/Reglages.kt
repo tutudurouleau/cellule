@@ -94,6 +94,21 @@ class Reglages(contexte: Context) {
     /** Le jour où ranger les nouveaux plans ; 0 : pas de rangement automatique. */
     var cineJourCourant by TextePref(prefs, "cine_jour_courant", "")
 
+    /* ── Le matériel de l'onglet Cinéma ─────────────────────────────────── */
+
+    /** « NUMERIQUE » ou « PELLICULE ». */
+    var cineSupport by TextePref(prefs, "cine_support", "NUMERIQUE")
+    var cinePellicule by TextePref(prefs, "cine_pellicule", "")
+    var cineTungstene by BooleenPref(prefs, "cine_tungstene", false)
+    var cineFormatPellicule by TextePref(prefs, "cine_format_pellicule", "")
+    /** Le [Camera.nom] de la caméra du catalogue ; vide : aucune. */
+    var cineCamera by TextePref(prefs, "cine_camera", "")
+    var cineModeCapteur by TextePref(prefs, "cine_mode_capteur", "")
+    /** Le [Objectif.nomComplet] de la série ; vide : aucune. */
+    var cineObjectif by TextePref(prefs, "cine_objectif", "")
+    /** La vue ouverte dans l'onglet Cinéma. */
+    var cineVue by TextePref(prefs, "cine_vue", "VISEUR")
+
     /** On ne demande la localisation qu'une fois d'office ; après un refus, on n'insiste pas. */
     var lieuDemande by BooleenPref(prefs, "lieu_demande", false)
 }

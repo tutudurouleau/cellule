@@ -33,7 +33,8 @@ object CadreJson {
             capteurHauteurMm = o.reel("hauteur"),
             focaleMm = o.reel("focale"),
             desanamorphose = o.optDouble("desanamorphose", 1.0),
-            formats = (0 until formats.length()).map { formats.optString(it) }.filter { it.isNotBlank() }
+            formats = (0 until formats.length()).map { formats.optString(it) }.filter { it.isNotBlank() },
+            objectif = o.optString("objectif", "")
         )
     }
 
@@ -48,6 +49,7 @@ object CadreJson {
             .put("capteur", c.capteurNom)
             .put("desanamorphose", c.desanamorphose)
             .put("formats", JSONArray(c.formats))
+            .put("objectif", c.objectif)
         c.capteurLargeurMm?.let { o.put("largeur", it) }
         c.capteurHauteurMm?.let { o.put("hauteur", it) }
         c.focaleMm?.let { o.put("focale", it) }

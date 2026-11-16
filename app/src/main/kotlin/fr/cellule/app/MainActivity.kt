@@ -56,6 +56,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
@@ -71,6 +72,7 @@ import fr.cellule.app.ecrans.EcranFocales
 import fr.cellule.app.ecrans.EcranJournal
 import fr.cellule.app.ecrans.EcranLabo
 import fr.cellule.app.ecrans.EcranMesurer
+import fr.cellule.app.ecrans.EcranOngletCinema
 import fr.cellule.app.ecrans.EcranTables
 import fr.cellule.core.DeveloppementNote
 import fr.cellule.core.TirageNote
@@ -151,6 +153,14 @@ private val IconeCameras = icone("cameras") {
     moveTo(16f, 14f); lineTo(21f, 11.5f); lineTo(21f, 20f); lineTo(16f, 17.5f); close()
 }
 
+/** Un clap : l'onglet Cinéma. */
+private val IconeCinema = icone("cinema") {
+    moveTo(4f, 10f); lineTo(20f, 10f); lineTo(20f, 20f); lineTo(4f, 20f); close()
+    moveTo(4f, 10f); lineTo(3.3f, 6.3f); lineTo(18.8f, 3.6f); lineTo(19.5f, 7.4f); lineTo(4f, 10f)
+    moveTo(8.4f, 5.4f); lineTo(10.2f, 8.9f)
+    moveTo(13.4f, 4.5f); lineTo(15.2f, 8.1f)
+}
+
 /** Un carnet : reliure et lignes. */
 private val IconeCarnet = icone("carnet") {
     moveTo(5f, 4f); lineTo(19f, 4f); lineTo(19f, 20f); lineTo(5f, 20f); close()
@@ -202,7 +212,8 @@ private enum class Onglet(
     CARNET("Carnet", "ce que tu as photographié, et ton biais", IconeCarnet, false, Teinte.ENCRE),
     LABO("Labo", "développer, tirer, et comprendre pourquoi", IconeLabo, false, Teinte.INACTINIQUE),
     TABLES("Tables", "les repères à retenir", IconeTables, false, Teinte.GRIS_CHAUD),
-    CAMERAS("Caméras", "fiches et quiz du matériel de tournage", IconeCameras, false, Teinte.CUIVRE)
+    CAMERAS("Caméras", "fiches et quiz du matériel de tournage", IconeCameras, false, Teinte.CUIVRE),
+    CINEMA("Cinéma", "tournage, plans et matériel", IconeCinema, true, Teinte.TALLY)
 }
 
 class MainActivity : ComponentActivity() {
@@ -289,6 +300,7 @@ private fun Application() {
                             Onglet.CARNET -> EcranJournal(depot, reglages, etat, labo, tirages, pronostics, cinema)
                             Onglet.LABO -> EcranLabo(pronostics, etat, labo, tirages)
                             Onglet.TABLES -> EcranTables()
+                            Onglet.CINEMA -> EcranOngletCinema(reglages, etat, cinema, depot)
                         }
                     }
                 }
@@ -450,22 +462,66 @@ private fun BoxScope.NavigationFlottante(onglet: Onglet, surChoix: (Onglet) -> U
             .padding(6.dp),
         horizontalArrangement = Arrangement.spacedBy(2.dp)
     ) {
-        /* Sept onglets : sur un écran de moins de 420 dp, l'étiquette de
+        /* Huit onglets : sur un écran de moins de 420 dp, l'étiquette de
            l'onglet actif ferait déborder la pilule ; l'icône en couleur
-           suffit alors. */
-        val avecEtiquette = LocalConfiguration.current.screenWidthDp >= 420
-        Onglet.entries.forEach { o -> OngletFlottant(o, o == onglet, avecEtiquette) { surChoix(o) } }
+           suffit alors, et les onglets se resserrent un peu. */
+        val largeur = LocalConfiguration.current.screenWidthDp
+        val avecEtiquette = largeur >= 460
+        val serre = largeur < 420
+        Onglet.entries.filter { it != Onglet.CINEMA }.forEach { o ->
+            OngletFlottant(o, o == onglet, avecEtiquette, serre) { surChoix(o) }
+        }
+        /* Cinéma, à part : un univers entier, séparé de la photo par un filet,
+           et toujours dans sa teinte, même quand il n'est pas ouvert. */
+        Box(
+            Modifier
+                .padding(horizontal = 3.dp)
+                .size(width = 1.dp, height = 30.dp)
+                .align(Alignment.CenterVertically)
+                .background(MaterialTheme.colorScheme.outlineVariant)
+        )
+        OngletCinemaFlottant(onglet == Onglet.CINEMA, avecEtiquette, serre) { surChoix(Onglet.CINEMA) }
     }
 }
 
 @Composable
-private fun RowScope.OngletFlottant(onglet: Onglet, actif: Boolean, avecEtiquette: Boolean, surClic: () -> Unit) {
+private fun RowScope.OngletCinemaFlottant(actif: Boolean, avecEtiquette: Boolean, serre: Boolean, surClic: () -> Unit) {
+    /* Le rouge du voyant de tournage, quel que soit l'onglet ouvert. */
+    val teinte = if (MaterialTheme.colorScheme.background.luminance() < 0.5f) Teinte.TALLY.sombre else Teinte.TALLY.clair
+    val etiquette = avecEtiquette || (actif && !serre)
+    Row(
+        Modifier
+            .clip(RoundedCornerShape(50))
+            .background(if (actif) teinte.couleur else teinte.fond)
+            .clickable { surClic() }
+            .padding(horizontal = if (etiquette) 14.dp else if (serre) 10.dp else 12.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            IconeCinema,
+            contentDescription = "Cinéma",
+            tint = if (actif) teinte.surCouleur else teinte.couleur,
+            modifier = Modifier.size(22.dp)
+        )
+        if (etiquette) {
+            Text(
+                "Ciné",
+                style = TitreCarte.copy(fontSize = 14.sp),
+                color = if (actif) teinte.surCouleur else teinte.couleur,
+                modifier = Modifier.padding(start = 6.dp)
+            )
+        }
+    }
+}
+
+@Composable
+private fun RowScope.OngletFlottant(onglet: Onglet, actif: Boolean, avecEtiquette: Boolean, serre: Boolean, surClic: () -> Unit) {
     Row(
         Modifier
             .clip(RoundedCornerShape(50))
             .background(if (actif) MaterialTheme.colorScheme.primary else Color.Transparent)
             .clickable { surClic() }
-            .padding(horizontal = if (actif && avecEtiquette) 14.dp else 11.dp, vertical = 12.dp),
+            .padding(horizontal = if (actif && avecEtiquette) 14.dp else if (serre) 8.dp else 11.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(

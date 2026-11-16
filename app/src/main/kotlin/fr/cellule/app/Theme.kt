@@ -114,6 +114,11 @@ enum class Teinte(val sombre: Accent, val clair: Accent) {
         Accent(Color(0xFFC9BBA5), Color(0xFF221D15), Color(0xFF38322A), Color(0xFFE8DECF)),
         Accent(Color(0xFF5E5446), Color.White, Color(0xFFECE5DA), Color(0xFF453C30))
     ),
+    /** Le rouge du voyant de tournage. */
+    TALLY(
+        Accent(Color(0xFFF07A8A), Color(0xFF2E0710), Color(0xFF4D1822), Color(0xFFFFC2CB)),
+        Accent(Color(0xFFB0283F), Color.White, Color(0xFFF9DDE2), Color(0xFF7F1A2D))
+    ),
     /** Le laiton du matériel de tournage. */
     CUIVRE(
         Accent(Color(0xFFDE9A6B), Color(0xFF2A1508), Color(0xFF45291A), Color(0xFFF8CFB2)),
