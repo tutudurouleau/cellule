@@ -2,12 +2,15 @@ package fr.cellule.app.mesure
 
 import android.content.Context
 import android.hardware.camera2.CameraCaptureSession
+import android.graphics.Bitmap
 import android.hardware.camera2.CameraCharacteristics
+import android.hardware.camera2.CameraMetadata
 import android.hardware.camera2.CaptureRequest
 import android.hardware.camera2.CaptureResult
 import android.hardware.camera2.TotalCaptureResult
 import android.os.Handler
 import android.os.Looper
+import android.os.SystemClock
 import androidx.camera.camera2.interop.Camera2CameraControl
 import androidx.camera.camera2.interop.Camera2CameraInfo
 import androidx.camera.camera2.interop.Camera2Interop
@@ -25,15 +28,20 @@ import androidx.camera.view.PreviewView
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
 import android.graphics.Rect
+import fr.cellule.core.Cadre
 import fr.cellule.core.DecodeurLuma
 import fr.cellule.core.Equivalence
 import fr.cellule.core.ExpositionCamera
 import fr.cellule.core.Focales
+import fr.cellule.core.OutilsImage
 import fr.cellule.core.Reperes
 import fr.cellule.core.ResultatSpot
+import fr.cellule.core.SeuilsZebras
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -62,6 +70,28 @@ data class Diagnostic(
     val cibleCapteurY: Float,
     val echantillons: Int
 )
+
+/**
+ * Une caméra arrière du téléphone, telle que le système l'expose à l'appli.
+ * [equivalent] est sa focale ramenée au 24×36 (diagonale), quand le téléphone
+ * publie la taille de son capteur.
+ */
+data class CameraTelephone(
+    val id: String,
+    val focaleMm: Double,
+    val equivalent: Double?
+) {
+    val libelle: String
+        get() = if (equivalent != null) "${Math.round(equivalent)} mm" else "caméra $id"
+}
+
+/** Les outils d'analyse d'image : chacun ne tourne que si on l'a allumé. */
+enum class OutilImage(val libelle: String) {
+    FAUX_CONTRASTE("Faux contraste"),
+    ZEBRAS("Zébras"),
+    HISTOGRAMME("Histogramme"),
+    FORME_ONDE("Forme d'onde")
+}
 
 @OptIn(ExperimentalCamera2Interop::class)
 class MoteurCamera(private val contexte: Context) {
@@ -165,6 +195,82 @@ class MoteurCamera(private val contexte: Context) {
             decodeur = DecodeurLuma(plageVideo = valeur)
         }
 
+    /* ── Les caméras du téléphone ──────────────────────────────────────── */
+
+    /** Les caméras arrière que le téléphone expose, de la plus large à la plus longue. */
+    var cameras by mutableStateOf<List<CameraTelephone>>(emptyList())
+        private set
+
+    /** Celle qui tourne en ce moment. */
+    var cameraActive by mutableStateOf<String?>(null)
+        private set
+
+    /** Dit pourquoi une caméra choisie n'a pas pu s'ouvrir. */
+    var avisCamera by mutableStateOf("")
+        private set
+
+    private var cameraChoisie: String? = null
+    private var dernierProprietaire: LifecycleOwner? = null
+    private var derniereVue: PreviewView? = null
+
+    /** Passe sur une autre caméra du téléphone (ultra grand-angle, téléobjectif…). */
+    fun choisirCamera(id: String) {
+        if (id == cameraActive) return
+        cameraChoisie = id
+        avisCamera = ""
+        relancer()
+    }
+
+    private fun relancer() {
+        val p = dernierProprietaire ?: return
+        val v = derniereVue ?: return
+        exposition = null
+        spot = null
+        equivalence = null
+        aeStable = false
+        if (gele) gele = false
+        demarrer(p, v)
+    }
+
+    /* ── Les outils d'image ────────────────────────────────────────────── */
+
+    /** Les outils allumés. Vide : aucune analyse supplémentaire n'a lieu. */
+    var outils by mutableStateOf<Set<OutilImage>>(emptySet())
+        private set
+
+    @Volatile
+    private var outilsActifs: Set<OutilImage> = emptySet()
+
+    @Volatile
+    var seuilsZebras: SeuilsZebras = SeuilsZebras()
+
+    /** Faux contraste et zébras, à dessiner par-dessus l'aperçu. */
+    var calque by mutableStateOf<ImageBitmap?>(null)
+        private set
+
+    var histogramme by mutableStateOf<IntArray?>(null)
+        private set
+
+    /** La forme d'onde, déjà rendue en image. */
+    var onde by mutableStateOf<ImageBitmap?>(null)
+        private set
+
+    private var dernierOutil = 0L
+
+    fun basculerOutil(outil: OutilImage) {
+        regleOutils(if (outil in outils) outils - outil else outils + outil)
+    }
+
+    fun eteindreOutils() = regleOutils(emptySet())
+
+    private fun regleOutils(nouveaux: Set<OutilImage>) {
+        outils = nouveaux
+        outilsActifs = nouveaux
+        if (OutilImage.FAUX_CONTRASTE !in nouveaux && OutilImage.ZEBRAS !in nouveaux) calque = null
+        if (OutilImage.HISTOGRAMME !in nouveaux) histogramme = null
+        if (OutilImage.FORME_ONDE !in nouveaux) onde = null
+    }
+
     private var decodeur = DecodeurLuma(plageVideo = true)
     private val principal = Handler(Looper.getMainLooper())
     private var executeur: ExecutorService? = null
@@ -205,6 +311,8 @@ class MoteurCamera(private val contexte: Context) {
 
     fun demarrer(proprietaire: LifecycleOwner, vue: PreviewView) {
         erreur = null
+        dernierProprietaire = proprietaire
+        derniereVue = vue
         val executeurLocal = executeur ?: Executors.newSingleThreadExecutor().also { executeur = it }
         val futur = ProcessCameraProvider.getInstance(contexte)
         futur.addListener({
@@ -228,15 +336,42 @@ class MoteurCamera(private val contexte: Context) {
                     .build()
                 analyse.setAnalyzer(executeurLocal) { image -> analyser(image) }
 
+                if (cameras.isEmpty()) cameras = recenser(provider)
+                val voulue = cameraChoisie
+                val choix = if (voulue != null && cameras.any { it.id == voulue }) {
+                    CameraSelector.Builder()
+                        .addCameraFilter { infos ->
+                            infos.filter { info ->
+                                try {
+                                    Camera2CameraInfo.from(info).cameraId == voulue
+                                } catch (e: Exception) {
+                                    false
+                                }
+                            }
+                        }
+                        .build()
+                } else CameraSelector.DEFAULT_BACK_CAMERA
+
                 provider.unbindAll()
-                val cam = provider.bindToLifecycle(
-                    proprietaire, CameraSelector.DEFAULT_BACK_CAMERA, apercu, analyse
-                )
+                val cam = provider.bindToLifecycle(proprietaire, choix, apercu, analyse)
                 camera = cam
-                ouvertureParDefaut = ouvertureDeLOptique(cam) ?: ouvertureParDefaut
+                cameraActive = try {
+                    Camera2CameraInfo.from(cam.cameraInfo).cameraId
+                } catch (e: Exception) {
+                    null
+                }
+                ouvertureParDefaut = ouvertureDeLOptique(cam) ?: 1.8
                 relevePlanFocal(cam)
             } catch (e: Exception) {
-                erreur = "Caméra indisponible : ${e.message ?: e.javaClass.simpleName}"
+                if (cameraChoisie != null) {
+                    /* Certains modules annoncés refusent de s'ouvrir seuls : on
+                       le dit, et on revient à la caméra principale. */
+                    cameraChoisie = null
+                    avisCamera = "Cette caméra refuse de s'ouvrir seule sur ce téléphone : retour à la principale."
+                    demarrer(proprietaire, vue)
+                } else {
+                    erreur = "Caméra indisponible : ${e.message ?: e.javaClass.simpleName}"
+                }
             }
         }, ContextCompat.getMainExecutor(contexte))
     }
@@ -250,7 +385,33 @@ class MoteurCamera(private val contexte: Context) {
         camera = null
         executeur?.shutdown()
         executeur = null
+        dernierProprietaire = null
+        derniereVue = null
     }
+
+    /**
+     * Les caméras arrière visibles par l'appli. Beaucoup de téléphones cachent
+     * leurs modules secondaires aux applications tierces : on ne montre que ce
+     * que le système veut bien exposer.
+     */
+    private fun recenser(provider: ProcessCameraProvider): List<CameraTelephone> =
+        provider.availableCameraInfos.mapNotNull { info ->
+            try {
+                val c2 = Camera2CameraInfo.from(info)
+                val face = c2.getCameraCharacteristic(CameraCharacteristics.LENS_FACING)
+                if (face != CameraMetadata.LENS_FACING_BACK) return@mapNotNull null
+                val focale = c2.getCameraCharacteristic(CameraCharacteristics.LENS_INFO_AVAILABLE_FOCAL_LENGTHS)
+                    ?.firstOrNull()?.toDouble() ?: return@mapNotNull null
+                val taille = c2.getCameraCharacteristic(CameraCharacteristics.SENSOR_INFO_PHYSICAL_SIZE)
+                val equivalent = if (taille != null && taille.width > 0f && taille.height > 0f && focale > 0.0) {
+                    Focales.equivalence(Cadre(taille.width.toDouble(), taille.height.toDouble()), focale)
+                        .equivalentDiagonal
+                } else null
+                CameraTelephone(c2.cameraId, focale, equivalent)
+            } catch (e: Exception) {
+                null
+            }
+        }.sortedBy { it.equivalent ?: it.focaleMm }
 
     /** Taille physique du capteur et débattement de zoom : invariants de l'appareil. */
     private fun relevePlanFocal(cam: Camera) {
@@ -399,10 +560,68 @@ class MoteurCamera(private val contexte: Context) {
                     diagnostic = diag
                 }
             }
+            analyserOutils(octets, image.width, image.height, plan.rowStride, plan.pixelStride, rotation)
         } catch (e: Exception) {
             /* Une image ratée n'est pas une panne : la suivante arrive. */
         } finally {
             image.close()
         }
+    }
+
+    /**
+     * Faux contraste, zébras, histogramme, forme d'onde. Rien ne se calcule
+     * tant qu'aucun outil n'est allumé, et jamais plus de huit fois par
+     * seconde : c'est assez pour l'œil, et ça ménage la batterie.
+     */
+    private fun analyserOutils(
+        octets: ByteArray, largeur: Int, hauteur: Int, pasDeLigne: Int, pasDePixel: Int, rotation: Int
+    ) {
+        val actifs = outilsActifs
+        if (actifs.isEmpty()) return
+        val maintenant = SystemClock.elapsedRealtime()
+        if (maintenant - dernierOutil < 125) return
+        dernierOutil = maintenant
+
+        val grille = OutilsImage.grille(
+            octets, largeur, hauteur, pasDeLigne, pasDePixel, rotation, plageVideo, grandCote = 160
+        )
+        var nouveauCalque: ImageBitmap? = null
+        if (OutilImage.FAUX_CONTRASTE in actifs || OutilImage.ZEBRAS in actifs) {
+            val couleurs = if (OutilImage.FAUX_CONTRASTE in actifs) OutilsImage.fauxContraste(grille)
+            else IntArray(grille.largeur * grille.hauteur)
+            if (OutilImage.ZEBRAS in actifs) {
+                val rayures = OutilsImage.zebras(grille, seuilsZebras)
+                for (i in rayures.indices) if (rayures[i] != OutilsImage.TRANSPARENT) couleurs[i] = rayures[i]
+            }
+            nouveauCalque = Bitmap.createBitmap(couleurs, grille.largeur, grille.hauteur, Bitmap.Config.ARGB_8888)
+                .asImageBitmap()
+        }
+        val nouvelHistogramme =
+            if (OutilImage.HISTOGRAMME in actifs) OutilsImage.histogramme(grille, CLASSES_HISTOGRAMME) else null
+        var nouvelleOnde: ImageBitmap? = null
+        if (OutilImage.FORME_ONDE in actifs) {
+            val comptes = OutilsImage.formeDOnde(grille, COLONNES_ONDE, NIVEAUX_ONDE)
+            /* Une colonne de l'image tombe sur quelques niveaux : dès qu'un
+               niveau rassemble un huitième de la colonne, il est pleinement lumineux. */
+            val plein = maxOf(1, grille.hauteur * grille.largeur / COLONNES_ONDE / 8)
+            val pixels = IntArray(comptes.size) { i ->
+                val alpha = (comptes[i] * 255 / plein).coerceIn(0, 255)
+                (alpha shl 24) or 0x00F3EEE6
+            }
+            nouvelleOnde = Bitmap.createBitmap(pixels, COLONNES_ONDE, NIVEAUX_ONDE, Bitmap.Config.ARGB_8888)
+                .asImageBitmap()
+        }
+        principal.post {
+            val encore = outils
+            if (OutilImage.FAUX_CONTRASTE in encore || OutilImage.ZEBRAS in encore) calque = nouveauCalque
+            if (OutilImage.HISTOGRAMME in encore) histogramme = nouvelHistogramme
+            if (OutilImage.FORME_ONDE in encore) onde = nouvelleOnde
+        }
+    }
+
+    companion object {
+        const val CLASSES_HISTOGRAMME = 64
+        const val COLONNES_ONDE = 96
+        const val NIVEAUX_ONDE = 51
     }
 }

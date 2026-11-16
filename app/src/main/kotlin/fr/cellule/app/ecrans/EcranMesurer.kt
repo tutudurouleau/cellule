@@ -41,6 +41,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -66,6 +67,7 @@ import fr.cellule.app.Detail
 import fr.cellule.app.EtatApplication
 import fr.cellule.app.Gouttiere
 import fr.cellule.app.Interligne
+import fr.cellule.app.FiltresJson
 import fr.cellule.app.Reglages
 import fr.cellule.app.mesure.CapteurAmbiance
 import fr.cellule.app.mesure.MoteurCamera
@@ -74,7 +76,10 @@ import fr.cellule.core.PELLICULES
 import fr.cellule.core.Photometrie
 import fr.cellule.core.Posemetre
 import fr.cellule.core.SENSIBILITES
+import fr.cellule.core.SeuilsZebras
 import fr.cellule.core.Situations
+import fr.cellule.core.T_STOPS
+import fr.cellule.core.Tournage
 import fr.cellule.core.ZONES
 import fr.cellule.core.Zones
 import fr.cellule.core.conseilLatitude
@@ -109,6 +114,8 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
     val proprietaire = LocalLifecycleOwner.current
 
     var mode by remember { mutableStateOf(ModeMesure.SPOT) }
+    /* Photo ou tournage : la mesure est la même, c'est ce qu'on en tire qui change. */
+    val tournage = reglages.modeTournage
     var autorisee by remember {
         mutableStateOf(
             ContextCompat.checkSelfPermission(contexte, Manifest.permission.CAMERA) ==
@@ -142,6 +149,12 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
     DisposableEffect(mode) {
         if (mode == ModeMesure.INCIDENT) capteur.demarrer()
         onDispose { capteur.arreter() }
+    }
+    /* Les outils d'image n'existent qu'en tournage, caméra allumée : en
+       sortir les éteint. */
+    LaunchedEffect(tournage, avecCamera) {
+        if (!tournage || !avecCamera) moteur.eteindreOutils()
+        moteur.seuilsZebras = SeuilsZebras(reglages.zebraHaut, reglages.zebraMoyen)
     }
 
     val exposition = moteur.exposition
@@ -212,15 +225,28 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
         coupleConseille(it + Photometrie.decalageIso(reglages.iso), vitesseVoulue)
     }
 
+    val filtresCine = remember(reglages.cineFiltres) { FiltresJson.lire(reglages.cineFiltres) }
+    val reglageCine = reglageTournage(reglages, filtresCine)
+    val resultatCine = if (tournage) evExposition?.let {
+        Tournage.calculer(it, reglageCine, T_STOPS.getOrNull(reglages.cineTVoulu))
+    } else null
+
     Column(Modifier.fillMaxSize().background(Color.Black)) {
 
         /* ── Mode, en haut ────────────────────────────────────────────── */
-        Box(
+        Column(
             Modifier
                 .fillMaxWidth()
                 .statusBarsPadding()
-                .padding(horizontal = Gouttiere, vertical = 10.dp)
+                .padding(horizontal = Gouttiere, vertical = 8.dp)
         ) {
+            ChoixSegmente(
+                options = listOf(false, true),
+                selection = tournage,
+                libelle = { if (it) "Tournage" else "Photo" },
+                surChoix = { reglages.modeTournage = it }
+            )
+            Spacer(Modifier.height(6.dp))
             ChoixSegmente(
                 options = ModeMesure.entries.toList(),
                 selection = mode,
@@ -271,6 +297,7 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
                                 drawCircle(teinte, 2.5f, centre)
                             }
                         }
+                        if (tournage) CalquesTournage(moteur)
                     }
                 }
                 if (mode == ModeMesure.SPOT) {
@@ -377,7 +404,8 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
-                Column(horizontalAlignment = Alignment.End) {
+                if (tournage) LectureTournage(resultatCine, reglageCine)
+                else Column(horizontalAlignment = Alignment.End) {
                     Text(
                         couple?.let { libelleOuverture(it.ouverture) } ?: "f/—",
                         style = ChiffreGrand,
@@ -408,7 +436,9 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
                 if (ev100 != null) {
                     BoutonPlat("Au carnet", accent = true, modifier = Modifier.weight(1f)) {
                         etat.derniereMesure = ev100
-                        etat.dernierReglage = couple?.let {
+                        etat.dernierReglage = if (tournage) {
+                            resultatCine?.let { resumeTournage(it, reglageCine) } ?: ""
+                        } else couple?.let {
                             "${libelleOuverture(it.ouverture)} · ${it.vitesse.libelle}"
                         } ?: ""
                     }
@@ -432,152 +462,156 @@ fun EcranMesurer(reglages: Reglages, etat: EtatApplication) {
                 ) {
                     Separateur()
 
-                    /* Ligne fixes : ce que doit dire l'appareil. */
-                    Ligne(
-                        "Niveau",
-                        ev100?.let { fmtLux(Photometrie.lux(it)) } ?: "—",
-                        ev100?.let { Situations.nom(it) } ?: " "
-                    )
-                    Ligne(
-                        "Diaph exact",
-                        couple?.let { libelleOuverture(it.ouvertureExacte) } ?: "—",
-                        couple?.let { "l'arrondi au diaph plein coûte ${libelleDiaphs(it.ecartDiaphs)}" } ?: " "
-                    )
-                    Ligne(
-                        "L'appareil expose à",
-                        exposition?.let { "${libelleOuverture(it.ouverture)} · ${it.iso} ISO" } ?: "—",
-                        exposition?.let {
-                            fmt(it.tempsPoseSec * 1000, 2) + " ms" +
-                                if (reglages.etalonnage != 0.0) "  ·  étalonnage ${signe(reglages.etalonnage, 2)}" else ""
-                        } ?: " "
-                    )
+                    if (tournage) {
+                        DetailsTournage(reglages, moteur, ev100, reglageCine, resultatCine, avecCamera && autorisee)
+                    } else {
+                        /* Ligne fixes : ce que doit dire l'appareil. */
+                        Ligne(
+                            "Niveau",
+                            ev100?.let { fmtLux(Photometrie.lux(it)) } ?: "—",
+                            ev100?.let { Situations.nom(it) } ?: " "
+                        )
+                        Ligne(
+                            "Diaph exact",
+                            couple?.let { libelleOuverture(it.ouvertureExacte) } ?: "—",
+                            couple?.let { "l'arrondi au diaph plein coûte ${libelleDiaphs(it.ecartDiaphs)}" } ?: " "
+                        )
+                        Ligne(
+                            "L'appareil expose à",
+                            exposition?.let { "${libelleOuverture(it.ouverture)} · ${it.iso} ISO" } ?: "—",
+                            exposition?.let {
+                                fmt(it.tempsPoseSec * 1000, 2) + " ms" +
+                                    if (reglages.etalonnage != 0.0) "  ·  étalonnage ${signe(reglages.etalonnage, 2)}" else ""
+                            } ?: " "
+                        )
 
-                    if (avecCamera) {
-                        Separateur()
-                        Etiquette("Pellicule")
-                        Spacer(Modifier.height(8.dp))
-                        LigneBoutons {
-                            Deroulant("Chargée", PELLICULES, pellicule, { it.nom }, Modifier.weight(1.6f)) {
-                                reglages.pellicule = it.nom
-                                reglages.iso = it.iso
-                            }
-                            Deroulant("Exposée à", SENSIBILITES, reglages.iso, { "$it ISO" }, Modifier.weight(1f)) {
-                                reglages.iso = it
-                            }
-                        }
-                        Spacer(Modifier.height(8.dp))
-                        Deroulant(
-                            "Vitesse de référence",
-                            listOf(0.0, 1 / 1000.0, 1 / 500.0, 1 / 250.0, 1 / 125.0, 1 / 60.0, 1 / 50.0, 1 / 30.0),
-                            reglages.vitesseReference,
-                            {
-                                when (it) {
-                                    0.0 -> "1/ISO"
-                                    1 / 50.0 -> "1/50 ciné"
-                                    else -> "1/" + Math.round(1 / it)
+                        if (avecCamera) {
+                            Separateur()
+                            Etiquette("Pellicule")
+                            Spacer(Modifier.height(8.dp))
+                            LigneBoutons {
+                                Deroulant("Chargée", PELLICULES, pellicule, { it.nom }, Modifier.weight(1.6f)) {
+                                    reglages.pellicule = it.nom
+                                    reglages.iso = it.iso
                                 }
-                            },
-                            Modifier.fillMaxWidth()
-                        ) { reglages.vitesseReference = it }
-                        Spacer(Modifier.height(8.dp))
-                        Text(
-                            conseilLatitude(pellicule.type),
-                            style = Detail,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                        BoutonPlat("Étalonner", modifier = Modifier.padding(top = 10.dp)) {
-                            etalonnageOuvert = true
-                        }
-                    }
-
-                    if (ev100 != null) {
-                        Separateur()
-                        Etiquette("Zones")
-                        Spacer(Modifier.height(4.dp))
-                        Text(
-                            "Place l'ombre la plus sombre où tu veux encore de la matière en zone III.",
-                            style = Detail,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                        Spacer(Modifier.height(8.dp))
-                        if (ancre != null) {
-                            val zoneCourante = 5 + (ev100 - ancre)
-                            val z = Zones.zoneLaPlusProche(zoneCourante)
-                            Ligne("Lecture en cours", "zone ${z.chiffre}", z.rendu, accent = true)
-                        }
-                        if (evRetenu != null) {
-                            Ligne("Exposition retenue", "EV " + fmt(evRetenu!!), "tout s'y rapporte")
-                        }
-                        Spacer(Modifier.height(8.dp))
-                        LigneBoutons {
-                            Deroulant("Placer en", ZONES, ZONES[5], { "zone " + it.chiffre }, Modifier.weight(1f)) {
-                                evRetenu = Zones.expositionPourPlacer(ev100, it)
+                                Deroulant("Exposée à", SENSIBILITES, reglages.iso, { "$it ISO" }, Modifier.weight(1f)) {
+                                    reglages.iso = it
+                                }
                             }
-                            if (evRetenu != null) BoutonPlat("Libérer") { evRetenu = null }
-                        }
-                        Spacer(Modifier.height(8.dp))
-                        LigneBoutons {
-                            BoutonPlat("Mémoriser", modifier = Modifier.weight(1f)) {
-                                memoires = memoires + Memoire("Lecture ${memoires.size + 1}", ev100)
-                            }
-                            if (memoires.isNotEmpty()) BoutonPlat("Effacer") { memoires = emptyList() }
-                        }
-                        memoires.forEach { m ->
-                            val z = if (ancre != null) 5 + (m.ev - ancre) else Double.NaN
-                            Ligne(
-                                m.etiquette, "EV " + fmt(m.ev),
-                                if (z.isNaN()) null else "zone ${Zones.zoneLaPlusProche(z).chiffre}"
-                            )
-                        }
-                        if (memoires.size >= 2) {
-                            val amplitude = memoires.maxOf { it.ev } - memoires.minOf { it.ev }
-                            Text(
-                                "Amplitude : ${fmt(amplitude)} diaphs. " + when {
-                                    amplitude <= 5 -> "Tout tient, même en inversible."
-                                    amplitude <= 9 -> "Le négatif encaisse sans broncher."
-                                    else -> "Au-delà de la plage du support : tu choisis ce que tu sacrifies."
+                            Spacer(Modifier.height(8.dp))
+                            Deroulant(
+                                "Vitesse de référence",
+                                listOf(0.0, 1 / 1000.0, 1 / 500.0, 1 / 250.0, 1 / 125.0, 1 / 60.0, 1 / 50.0, 1 / 30.0),
+                                reglages.vitesseReference,
+                                {
+                                    when (it) {
+                                        0.0 -> "1/ISO"
+                                        1 / 50.0 -> "1/50 ciné"
+                                        else -> "1/" + Math.round(1 / it)
+                                    }
                                 },
+                                Modifier.fillMaxWidth()
+                            ) { reglages.vitesseReference = it }
+                            Spacer(Modifier.height(8.dp))
+                            Text(
+                                conseilLatitude(pellicule.type),
                                 style = Detail,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
-                        }
-                    }
-
-                    if (avecCamera && autorisee) {
-                        Separateur()
-                        Row(
-                            Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Etiquette("Diagnostic")
-                            BoutonPlat(if (diagnosticVisible) "Masquer" else "Afficher") {
-                                diagnosticVisible = !diagnosticVisible
+                            BoutonPlat("Étalonner", modifier = Modifier.padding(top = 10.dp)) {
+                                etalonnageOuvert = true
                             }
                         }
-                        if (diagnosticVisible) {
+
+                        if (ev100 != null) {
+                            Separateur()
+                            Etiquette("Zones")
+                            Spacer(Modifier.height(4.dp))
+                            Text(
+                                "Place l'ombre la plus sombre où tu veux encore de la matière en zone III.",
+                                style = Detail,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
                             Spacer(Modifier.height(8.dp))
-                            val d = moteur.diagnostic
-                            if (d == null) {
-                                Text("Aucune image analysée pour l'instant.", style = Detail)
-                            } else {
-                                Ligne("Image analysée", "${d.largeur} × ${d.hauteur}", "rotation ${d.rotation}°")
-                                Ligne("Pas de ligne / pixel", "${d.pasDeLigne} / ${d.pasDePixel}", "${d.octets} octets reçus")
+                            if (ancre != null) {
+                                val zoneCourante = 5 + (ev100 - ancre)
+                                val z = Zones.zoneLaPlusProche(zoneCourante)
+                                Ligne("Lecture en cours", "zone ${z.chiffre}", z.rendu, accent = true)
+                            }
+                            if (evRetenu != null) {
+                                Ligne("Exposition retenue", "EV " + fmt(evRetenu!!), "tout s'y rapporte")
+                            }
+                            Spacer(Modifier.height(8.dp))
+                            LigneBoutons {
+                                Deroulant("Placer en", ZONES, ZONES[5], { "zone " + it.chiffre }, Modifier.weight(1f)) {
+                                    evRetenu = Zones.expositionPourPlacer(ev100, it)
+                                }
+                                if (evRetenu != null) BoutonPlat("Libérer") { evRetenu = null }
+                            }
+                            Spacer(Modifier.height(8.dp))
+                            LigneBoutons {
+                                BoutonPlat("Mémoriser", modifier = Modifier.weight(1f)) {
+                                    memoires = memoires + Memoire("Lecture ${memoires.size + 1}", ev100)
+                                }
+                                if (memoires.isNotEmpty()) BoutonPlat("Effacer") { memoires = emptyList() }
+                            }
+                            memoires.forEach { m ->
+                                val z = if (ancre != null) 5 + (m.ev - ancre) else Double.NaN
                                 Ligne(
-                                    "Visée à l'écran",
-                                    "${fmt(moteur.cibleU.toDouble(), 2)} · ${fmt(moteur.cibleV.toDouble(), 2)}",
-                                    "sur le capteur : ${fmt(d.cibleCapteurX.toDouble(), 2)} · ${fmt(d.cibleCapteurY.toDouble(), 2)}"
+                                    m.etiquette, "EV " + fmt(m.ev),
+                                    if (z.isNaN()) null else "zone ${Zones.zoneLaPlusProche(z).chiffre}"
                                 )
-                                Ligne(
-                                    "Échantillons du disque", "${d.echantillons}",
-                                    spot?.let {
-                                        "moyenne linéaire ${fmt(it.moyenneLineaire, 4)} · " +
-                                            "cramés ${Math.round(it.fractionCramee * 100)} % · " +
-                                            "bouchés ${Math.round(it.fractionBouchee * 100)} %"
-                                    }
+                            }
+                            if (memoires.size >= 2) {
+                                val amplitude = memoires.maxOf { it.ev } - memoires.minOf { it.ev }
+                                Text(
+                                    "Amplitude : ${fmt(amplitude)} diaphs. " + when {
+                                        amplitude <= 5 -> "Tout tient, même en inversible."
+                                        amplitude <= 9 -> "Le négatif encaisse sans broncher."
+                                        else -> "Au-delà de la plage du support : tu choisis ce que tu sacrifies."
+                                    },
+                                    style = Detail,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
-                                Ligne("Proportions de l'aperçu", fmt(moteur.rapportApercu.toDouble(), 3))
-                                Ligne("Exposition automatique", if (moteur.aeStable) "calée" else "en recherche")
+                            }
+                        }
+
+                        if (avecCamera && autorisee) {
+                            Separateur()
+                            Row(
+                                Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Etiquette("Diagnostic")
+                                BoutonPlat(if (diagnosticVisible) "Masquer" else "Afficher") {
+                                    diagnosticVisible = !diagnosticVisible
+                                }
+                            }
+                            if (diagnosticVisible) {
+                                Spacer(Modifier.height(8.dp))
+                                val d = moteur.diagnostic
+                                if (d == null) {
+                                    Text("Aucune image analysée pour l'instant.", style = Detail)
+                                } else {
+                                    Ligne("Image analysée", "${d.largeur} × ${d.hauteur}", "rotation ${d.rotation}°")
+                                    Ligne("Pas de ligne / pixel", "${d.pasDeLigne} / ${d.pasDePixel}", "${d.octets} octets reçus")
+                                    Ligne(
+                                        "Visée à l'écran",
+                                        "${fmt(moteur.cibleU.toDouble(), 2)} · ${fmt(moteur.cibleV.toDouble(), 2)}",
+                                        "sur le capteur : ${fmt(d.cibleCapteurX.toDouble(), 2)} · ${fmt(d.cibleCapteurY.toDouble(), 2)}"
+                                    )
+                                    Ligne(
+                                        "Échantillons du disque", "${d.echantillons}",
+                                        spot?.let {
+                                            "moyenne linéaire ${fmt(it.moyenneLineaire, 4)} · " +
+                                                "cramés ${Math.round(it.fractionCramee * 100)} % · " +
+                                                "bouchés ${Math.round(it.fractionBouchee * 100)} %"
+                                        }
+                                    )
+                                    Ligne("Proportions de l'aperçu", fmt(moteur.rapportApercu.toDouble(), 3))
+                                    Ligne("Exposition automatique", if (moteur.aeStable) "calée" else "en recherche")
+                                }
                             }
                         }
                     }

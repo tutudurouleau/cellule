@@ -11,8 +11,11 @@ import fr.cellule.core.CarnetTirage
 import fr.cellule.core.Correction
 import fr.cellule.core.DeveloppementNote
 import fr.cellule.core.EntreeJournal
+import fr.cellule.core.FamilleFiltre
+import fr.cellule.core.FiltrePose
 import fr.cellule.core.Materiel
 import fr.cellule.core.Niveau
+import fr.cellule.core.OriginePerte
 import fr.cellule.core.Pronostic
 import fr.cellule.core.Resultat
 import fr.cellule.core.SauvegardeCarnet
@@ -59,6 +62,63 @@ class Reglages(contexte: Context) {
     var latitude by ReelPref(prefs, "latitude", 42.30)
     var longitude by ReelPref(prefs, "longitude", 9.15)
     var fuseau by ReelPref(prefs, "fuseau", 2.0)
+
+    /* ── La cellule de tournage : les derniers choix reviennent tels quels. ── */
+
+    /** Le sélecteur Photo | Tournage de l'onglet Mesurer. */
+    var modeTournage by BooleenPref(prefs, "cine_mode", false)
+    var cineCadence by ReelPref(prefs, "cine_cadence", 24.0)
+    var cineAngle by ReelPref(prefs, "cine_angle", 180.0)
+    var cineEi by EntierPref(prefs, "cine_ei", 800)
+
+    /** Le neutre déjà en place, en diaphs. */
+    var cineNd by EntierPref(prefs, "cine_nd", 0)
+
+    /** Rang du T-stop voulu dans T_STOPS ; −1 : pas d'ouverture imposée. */
+    var cineTVoulu by EntierPref(prefs, "cine_t_voulu", -1)
+
+    /** Les autres filtres en place, en JSON (voir [FiltresJson]). */
+    var cineFiltres by TextePref(prefs, "cine_filtres", "[]")
+
+    var zebraHaut by EntierPref(prefs, "zebra_haut", 95)
+    var zebraMoyen by EntierPref(prefs, "zebra_moyen", 70)
+}
+
+/** Les filtres posés devant l'objectif, tels qu'on les garde d'une séance à l'autre. */
+object FiltresJson {
+
+    fun lire(texte: String): List<FiltrePose> = try {
+        val tableau = JSONArray(texte)
+        (0 until tableau.length()).map { i ->
+            val o = tableau.getJSONObject(i)
+            FiltrePose(
+                nom = o.optString("nom", ""),
+                famille = runCatching { FamilleFiltre.valueOf(o.optString("famille")) }.getOrDefault(FamilleFiltre.AUTRE),
+                perteDiaphs = o.optDouble("perte", 0.0),
+                origine = runCatching { OriginePerte.valueOf(o.optString("origine")) }.getOrDefault(OriginePerte.SAISIE),
+                source = o.optString("source", "")
+            )
+        }
+    } catch (e: Exception) {
+        emptyList()
+    }
+
+    fun ecrire(filtres: List<FiltrePose>): String = enJson(filtres).toString()
+
+    fun enJson(filtres: List<FiltrePose>): JSONArray {
+        val tableau = JSONArray()
+        filtres.forEach { f ->
+            tableau.put(
+                JSONObject()
+                    .put("nom", f.nom)
+                    .put("famille", f.famille.name)
+                    .put("perte", f.perteDiaphs)
+                    .put("origine", f.origine.name)
+                    .put("source", f.source)
+            )
+        }
+        return tableau
+    }
 }
 
 class BooleenPref(private val p: SharedPreferences, private val cle: String, defaut: Boolean) {
