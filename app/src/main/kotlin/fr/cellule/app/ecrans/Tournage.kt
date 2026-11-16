@@ -174,6 +174,8 @@ fun LectureTournage(resultat: ResultatTournage?, reglage: ReglageTournage) {
         Text(
             when {
                 resultat == null -> "T—"
+                resultat.horsBague && resultat.tExact < 1.0 -> "< T1"
+                resultat.horsBague && resultat.tExact > 32.0 -> "> T32"
                 resultat.horsBague -> "T" + nombreCourt(resultat.tExact, 1)
                 else -> resultat.tProche.libelle
             },

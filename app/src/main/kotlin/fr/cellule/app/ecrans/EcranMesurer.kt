@@ -614,11 +614,16 @@ fun EcranMesurer(
                             modifier = Modifier.padding(bottom = 9.dp)
                         )
                     }
+                    /* Au cinéma, l'état tient sur cette ligne, de hauteur fixe : un
+                       message qui apparaît ne doit jamais faire bouger le viseur. */
+                    val etatCine = if (tournage) avisCapture.ifBlank { lecture.etat } else ""
                     Text(
-                        lecture.provenance,
+                        if (etatCine.isNotBlank()) lecture.provenance + " · " + etatCine else lecture.provenance,
                         style = Detail,
                         maxLines = 1,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
+                        color = if (tournage && (avisCapture.isNotBlank() || (lecture.alerte && etatCine.isNotBlank())))
+                            MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
                 if (tournage) LectureTournage(resultatCine, reglageCine)
@@ -641,8 +646,7 @@ fun EcranMesurer(
                 }
             }
 
-            val avis = if (tournage) avisCapture.ifBlank { lecture.etat } else lecture.etat
-            if (!tournage || avis.isNotBlank()) BandeauEtat(avis, lecture.alerte || (tournage && avisCapture.isNotBlank()))
+            if (!tournage) BandeauEtat(lecture.etat, lecture.alerte)
             Spacer(Modifier.height(4.dp))
 
             LigneBoutons {
