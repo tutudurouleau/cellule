@@ -153,7 +153,8 @@ fun EcranOngletCinema(reglages: Reglages, etat: EtatApplication, cinema: DepotCi
 @Composable
 private fun EnTeteCinema(reglages: Reglages, vue: VueCinema, sombre: Boolean, surVue: (VueCinema) -> Unit) {
     ChoixSegmente(VueCinema.entries.toList(), vue, { it.libelle }) { surVue(it) }
-    Text(
+    /* Dans le viseur, la place est à l'image : le résumé passe dans les détails. */
+    if (!sombre) Text(
         resumeMateriel(reglages),
         style = Detail,
         maxLines = 1,
@@ -189,74 +190,153 @@ private fun PastilleViseur(texte: String, actif: Boolean, surClic: () -> Unit) {
 }
 
 /**
- * En haut du viseur de tournage : on choisit la focale, ou directement
- * l'angle de champ voulu — Cellule en déduit la focale pour le capteur du
- * cadre de travail. Le cadre tracé sur l'image suit aussitôt.
+ * En haut du viseur de tournage, une seule pastille : « 50 mm · 39° ».
+ * Touchée, elle déplie les focales — ou les angles de champ, dont Cellule
+ * déduit la focale pour le capteur du cadre de travail — puis se replie dès
+ * qu'on a choisi. Le cadre (ou le recadrage) suit aussitôt.
  */
 @Composable
 fun BoxScope.BarreFocale(reglages: Reglages, surMateriel: () -> Unit) {
     val cadre = remember(reglages.cineCadre) { cadreDe(reglages) }
+    var ouverte by remember { mutableStateOf(false) }
     var parAngle by remember { mutableStateOf(false) }
     val largeur = cadre.capteurLargeurMm?.takeIf { it > 0 }?.let { it * cadre.desanamorphose }
     val hauteur = cadre.capteurHauteurMm?.takeIf { it > 0 }
     val focale = cadre.focaleMm
+    val choisir: (Double) -> Unit = { f ->
+        ecrireCadre(reglages, cadre.copy(focaleMm = f))
+        ouverte = false
+    }
+
+    val resume = when {
+        largeur == null || hauteur == null -> "Capteur ?"
+        focale == null -> "Focale ?"
+        else -> nombreCourt(focale, 1) + " mm · " + nombreCourt(Focales.angleDeChamp(largeur, focale), 0) + "°"
+    }
 
     Column(
         Modifier
-            .align(Alignment.TopCenter)
-            .fillMaxWidth()
-            .padding(horizontal = 10.dp, vertical = 8.dp)
-            .background(Color.Black.copy(alpha = 0.6f), RoundedCornerShape(18.dp))
-            .padding(horizontal = 8.dp, vertical = 6.dp)
+            .align(Alignment.TopEnd)
+            .padding(10.dp),
+        horizontalAlignment = Alignment.End
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            PastilleViseur(if (parAngle) "Angle" else "Focale", actif = false) { parAngle = !parAngle }
-            Spacer(Modifier.padding(start = 6.dp))
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            PastilleViseur(resume, actif = ouverte) {
+                if (largeur == null || hauteur == null) surMateriel() else ouverte = !ouverte
+            }
+            if (ouverte) {
+                PastilleViseur(if (parAngle) "par l'angle" else "par la focale", actif = false) { parAngle = !parAngle }
+            }
+        }
+        if (ouverte && largeur != null) {
+            Spacer(Modifier.height(6.dp))
             Row(
-                Modifier.weight(1f).horizontalScroll(rememberScrollState()),
+                Modifier
+                    .background(Color.Black.copy(alpha = 0.6f), RoundedCornerShape(50))
+                    .horizontalScroll(rememberScrollState())
+                    .padding(5.dp),
                 horizontalArrangement = Arrangement.spacedBy(5.dp)
             ) {
                 if (!parAngle) {
                     focalesProposees(reglages).forEach { f ->
-                        PastilleViseur(nombreCourt(f, 1), actif = focale != null && abs(focale - f) < 0.05) {
-                            ecrireCadre(reglages, cadre.copy(focaleMm = f))
-                        }
-                    }
-                } else if (largeur != null) {
-                    val angleActuel = focale?.let { Focales.angleDeChamp(largeur, it) }
-                    MaterielCine.ANGLES_COURANTS.forEach { a ->
-                        PastilleViseur(
-                            nombreCourt(a, 0) + "°",
-                            actif = angleActuel != null && abs(angleActuel - a) < 0.5
-                        ) {
-                            val f = MaterielCine.focalePourAngle(largeur, a)
-                            if (!f.isNaN()) ecrireCadre(reglages, cadre.copy(focaleMm = Math.round(f * 10) / 10.0))
-                        }
+                        PastilleViseur(nombreCourt(f, 1), actif = focale != null && abs(focale - f) < 0.05) { choisir(f) }
                     }
                 } else {
-                    PastilleViseur("Choisis d'abord ton capteur", actif = false, surClic = surMateriel)
+                    val angleActuel = focale?.let { Focales.angleDeChamp(largeur, it) }
+                    MaterielCine.ANGLES_COURANTS.forEach { a ->
+                        PastilleViseur(nombreCourt(a, 0) + "°", actif = angleActuel != null && abs(angleActuel - a) < 0.5) {
+                            val f = MaterielCine.focalePourAngle(largeur, a)
+                            if (!f.isNaN()) choisir(Math.round(f * 10) / 10.0)
+                        }
+                    }
                 }
             }
         }
-        val ligne = when {
-            largeur == null || hauteur == null -> "Taille du capteur inconnue : choisis la caméra ou la pellicule dans Matériel."
-            focale == null -> "Choisis une focale ou un angle de champ."
-            else -> nombreCourt(focale, 1) + " mm · champ " +
-                nombreCourt(Focales.angleDeChamp(largeur, focale), 0) + "° × " +
-                nombreCourt(Focales.angleDeChamp(hauteur, focale), 0) + "°" +
-                (if (cadre.desanamorphose != 1.0) " (désanamorphosé ×" + nombreCourt(cadre.desanamorphose, 1) + ")" else "")
+    }
+}
+
+/**
+ * Le haut des détails du viseur Cinéma : ce qu'on règle en premier — la
+ * caméra du téléphone, le mode de mesure, recadré ou repérage, le matériel.
+ */
+@Composable
+fun ReglagesViseurCinema(
+    reglages: Reglages,
+    moteur: fr.cellule.app.mesure.MoteurCamera,
+    mode: ModeMesure,
+    surMode: (ModeMesure) -> Unit
+) {
+    Etiquette("Caméra du téléphone")
+    Spacer(Modifier.height(6.dp))
+    val cameras = moteur.cameras
+    if (cameras.size > 1) {
+        Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            cameras.forEach { c ->
+                Pastille(c.libelle, accent = c.id == moteur.cameraActive) { moteur.choisirCamera(c.id) }
+            }
         }
         Text(
-            ligne,
+            "Focales équivalentes 24×36 de chaque module, d'après ce que le téléphone déclare. En mode recadré, Cellule zoome d'elle-même : choisis le module dont la focale est juste en dessous de celle que tu simules.",
             style = Detail,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-            color = Color.White.copy(alpha = 0.85f),
-            modifier = Modifier
-                .padding(start = 4.dp, top = 5.dp)
-                .then(if (largeur == null) Modifier.clickable { surMateriel() } else Modifier)
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(top = 6.dp)
+        )
+    } else {
+        Text(
+            "Ce téléphone ne montre qu'une caméra arrière aux applications" +
+                (cameras.firstOrNull()?.equivalent?.let { " (équivalent ${Math.round(it)} mm)" } ?: "") +
+                ". Ses autres modules, s'il en a, restent réservés à son appli photo : Cellule ne peut pas les ouvrir.",
+            style = Detail,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
         )
     }
+    if (moteur.zoomMaximal > moteur.zoomMinimal) {
+        Text(
+            "Zoom en cours ×" + nombreCourt(moteur.zoomDemande.toDouble(), 1) +
+                " (de ×" + nombreCourt(moteur.zoomMinimal.toDouble(), 1) + " à ×" + nombreCourt(moteur.zoomMaximal.toDouble(), 1) + ")",
+            style = Detail,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(top = 4.dp)
+        )
+    }
+    if (moteur.avisCamera.isNotBlank()) {
+        Text(moteur.avisCamera, style = Detail, color = MaterialTheme.colorScheme.error, modifier = Modifier.padding(top = 6.dp))
+    }
+
+    Separateur()
+    Etiquette("Image")
+    Spacer(Modifier.height(6.dp))
+    ChoixSegmente(listOf(true, false), reglages.cineRecadre, { if (it) "Recadré à la focale" else "Repérage (image entière)" }) {
+        reglages.cineRecadre = it
+    }
+    Text(
+        if (reglages.cineRecadre) "Le viseur ne montre que ce que voit ta caméra avec cette focale, et la photo rangée dans la galerie est recadrée pareil. Au-delà du zoom du téléphone, l'image perd en netteté."
+        else "Le viseur montre toute l'image du téléphone, le cadre de ta caméra tracé dessus ; la photo garde l'image entière.",
+        style = Detail,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        modifier = Modifier.padding(top = 6.dp)
+    )
+
+    Separateur()
+    Etiquette("Mesure")
+    Spacer(Modifier.height(6.dp))
+    ChoixSegmente(ModeMesure.entries.toList(), mode, { it.libelle }, surMode)
+    if (mode == ModeMesure.SPOT) {
+        Spacer(Modifier.height(4.dp))
+        Text("Taille du spot", style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        androidx.compose.material3.Slider(
+            value = moteur.rayon,
+            onValueChange = { moteur.reglerRayon(it) },
+            valueRange = 0.02f..0.25f
+        )
+    }
+
+    Separateur()
+    Etiquette("Matériel")
+    Spacer(Modifier.height(4.dp))
+    Text(resumeMateriel(reglages), style = Corps, color = MaterialTheme.colorScheme.onSurface)
+    BoutonPlat("Changer le matériel", modifier = Modifier.padding(top = 6.dp)) { reglages.cineVue = VueCinema.MATERIEL.name }
+    Separateur()
 }
 
 /* ── Le matériel ───────────────────────────────────────────────────────── */

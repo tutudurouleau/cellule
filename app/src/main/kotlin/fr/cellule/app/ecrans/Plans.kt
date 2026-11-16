@@ -115,6 +115,58 @@ object PhotosPlans {
         0
     }
 
+    /**
+     * Recadre une photo de la galerie, à sa place : ne reste que [r] (en
+     * fractions de l'image remise droite). Lue par morceau, réduite au besoin
+     * à 4096 pixels de grand côté : jamais l'image entière en mémoire.
+     * Rend les proportions de la photo recadrée, ou null si rien n'a changé.
+     */
+    fun recadrer(contexte: Context, adresse: String, r: fr.cellule.core.RectCadre): Double? {
+        if (adresse.isBlank()) return null
+        if (r.largeur >= 0.995 && r.hauteur >= 0.995) return null
+        return try {
+            val uri = Uri.parse(adresse)
+            val degres = rotationExif(contexte, uri)
+            val bornes = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+            contexte.contentResolver.openInputStream(uri)?.use { BitmapFactory.decodeStream(it, null, bornes) }
+            val lb = bornes.outWidth
+            val hb = bornes.outHeight
+            if (lb <= 0 || hb <= 0) return null
+            val couchee = degres % 180 == 90
+            val ld = if (couchee) hb else lb
+            val hd = if (couchee) lb else hb
+            val x0 = (r.gauche * ld).toInt().coerceIn(0, ld - 1)
+            val x1 = (r.droite * ld).toInt().coerceIn(x0 + 1, ld)
+            val y0 = (r.haut * hd).toInt().coerceIn(0, hd - 1)
+            val y1 = (r.bas * hd).toInt().coerceIn(y0 + 1, hd)
+            /* Du repère de l'image droite à celui des pixels enregistrés. */
+            val brut = when (degres) {
+                90 -> android.graphics.Rect(y0, hb - x1, y1, hb - x0)
+                180 -> android.graphics.Rect(lb - x1, hb - y1, lb - x0, hb - y0)
+                270 -> android.graphics.Rect(lb - y1, x0, lb - y0, x1)
+                else -> android.graphics.Rect(x0, y0, x1, y1)
+            }
+            var echantillon = 1
+            while (maxOf(brut.width(), brut.height()) / echantillon > 4096) echantillon *= 2
+            val morceau = contexte.contentResolver.openInputStream(uri)?.use { flux ->
+                @Suppress("DEPRECATION")
+                android.graphics.BitmapRegionDecoder.newInstance(flux, false)
+                    ?.decodeRegion(brut, BitmapFactory.Options().apply { inSampleSize = echantillon })
+            } ?: return null
+            val droit = if (degres == 0) morceau else Bitmap.createBitmap(
+                morceau, 0, 0, morceau.width, morceau.height, Matrix().apply { postRotate(degres.toFloat()) }, true
+            )
+            contexte.contentResolver.openOutputStream(uri, "wt")?.use { droit.compress(Bitmap.CompressFormat.JPEG, 93, it) }
+                ?: return null
+            cache.evictAll()
+            droit.width.toDouble() / droit.height.toDouble()
+        } catch (e: Exception) {
+            null
+        } catch (e: OutOfMemoryError) {
+            null
+        }
+    }
+
     /** La photo, son grand côté ramené à [grandCote] pixels au plus ; null si elle est introuvable. */
     fun charger(contexte: Context, adresse: String, grandCote: Int): Bitmap? {
         if (adresse.isBlank()) return null
@@ -218,7 +270,13 @@ val COULEURS_FORMATS = listOf(
  * elle y est droite (une photo affichée), 90 ou 270 quand le téléphone est
  * couché et que l'aperçu, lui, reste dans le sens de l'écran.
  */
-fun DrawScope.dessinerCadres(trace: TraceCadre, rotation: Int = 0, taillePolice: Float = 28f) {
+fun DrawScope.dessinerCadres(
+    trace: TraceCadre,
+    rotation: Int = 0,
+    taillePolice: Float = 28f,
+    /** Opacité du noir hors du cadre : 1 pour ne voir que le cadre. */
+    masque: Float = 0.5f
+) {
     val l = size.width
     val h = size.height
     fun surface(r: RectCadre): Rect = when (rotation) {
@@ -229,12 +287,12 @@ fun DrawScope.dessinerCadres(trace: TraceCadre, rotation: Int = 0, taillePolice:
 
     val capteur = surface(trace.capteur)
     /* Hors du capteur : assombri, pour que l'œil aille au cadre. */
-    val cache = Color.Black.copy(alpha = 0.5f)
+    val cache = Color.Black.copy(alpha = masque)
     if (capteur.top > 0f) drawRect(cache, Offset(0f, 0f), Size(l, capteur.top))
     if (capteur.bottom < h) drawRect(cache, Offset(0f, capteur.bottom), Size(l, h - capteur.bottom))
     if (capteur.left > 0f) drawRect(cache, Offset(0f, capteur.top), Size(capteur.left, capteur.height))
     if (capteur.right < l) drawRect(cache, Offset(capteur.right, capteur.top), Size(l - capteur.right, capteur.height))
-    drawRect(Color.White, capteur.topLeft, capteur.size, style = Stroke(width = 2f))
+    if (masque < 1f) drawRect(Color.White, capteur.topLeft, capteur.size, style = Stroke(width = 2f))
 
     val pinceau = Paint().apply {
         isAntiAlias = true
@@ -263,7 +321,7 @@ fun DrawScope.dessinerCadres(trace: TraceCadre, rotation: Int = 0, taillePolice:
 
 /** Le cadre de travail, dessiné en direct sur l'aperçu de la caméra. */
 @Composable
-fun BoxScope.CadreSurApercu(moteur: MoteurCamera, cadre: CadrePlan, tenue: Tenue) {
+fun BoxScope.CadreSurApercu(moteur: MoteurCamera, cadre: CadrePlan, tenue: Tenue, recadre: Boolean = false) {
     if (!cadre.complet) return
     val champ = moteur.champPhoto(tenue.couche) ?: return
     val trace = Cadreur.tracer(champ, cadre) ?: return
@@ -285,7 +343,7 @@ fun BoxScope.CadreSurApercu(moteur: MoteurCamera, cadre: CadrePlan, tenue: Tenue
             Tenue.COUCHE_DROITE -> 270
             Tenue.DEBOUT -> 0
         }
-        Canvas(Modifier.fillMaxSize()) { dessinerCadres(trace, rotation, 11.dp.toPx()) }
+        Canvas(Modifier.fillMaxSize()) { dessinerCadres(trace, rotation, 11.dp.toPx(), if (recadre) 1f else 0.5f) }
     }
 }
 

@@ -110,6 +110,8 @@ class Reglages(contexte: Context) {
     var cineModeCapteur by TextePref(prefs, "cine_mode_capteur", "")
     /** Le [Objectif.nomComplet] de la série ; vide : aucune. */
     var cineObjectif by TextePref(prefs, "cine_objectif", "")
+    /** Vrai : le viseur et la photo ne montrent que le cadre de la focale. Faux : repérage, image entière et cadres. */
+    var cineRecadre by BooleenPref(prefs, "cine_recadre", true)
     /** La vue ouverte dans l'onglet Cinéma. */
     var cineVue by TextePref(prefs, "cine_vue", "VISEUR")
 

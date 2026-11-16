@@ -397,7 +397,7 @@ fun DetailsTournage(
         BoutonPlat("Importer une photo", modifier = Modifier.weight(1f), surClic = surImport)
     }
     Text(
-        "« Capturer le plan », sur l'aperçu, range la photo dans la galerie (album Cellule) et note l'heure, le lieu, le cap, le soleil, l'exposition et le cadre. Couche le téléphone pour un plan en largeur : le cadre suit.",
+        "« Capturer » range la photo dans la galerie (album Cellule) — recadrée à la focale, ou entière en repérage — et note l'heure, le lieu, le cap, le soleil, l'exposition et le cadre. Couche le téléphone pour un plan en largeur : le cadre suit.",
         style = Detail,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
         modifier = Modifier.padding(top = 6.dp)
@@ -537,40 +537,6 @@ fun DetailsTournage(
             Spacer(Modifier.height(6.dp))
         }
 
-        /* ── Les caméras du téléphone ──────────────────────────────────── */
-        Separateur()
-        Etiquette("Caméra du téléphone")
-        Spacer(Modifier.height(6.dp))
-        val cameras = moteur.cameras
-        if (cameras.size > 1) {
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                cameras.take(5).forEach { c ->
-                    Pastille(c.libelle, accent = c.id == moteur.cameraActive) { moteur.choisirCamera(c.id) }
-                }
-            }
-            Text(
-                "Focales équivalentes 24×36, calculées d'après ce que le téléphone déclare de ses capteurs.",
-                style = Detail,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(top = 6.dp)
-            )
-        } else {
-            Text(
-                "Ce téléphone n'expose qu'une caméra arrière aux applications" +
-                    (cameras.firstOrNull()?.equivalent?.let { " (équivalent ${Math.round(it)} mm)" } ?: "") +
-                    ". Si ses autres modules existent, le système les garde pour son appli photo.",
-                style = Detail,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        }
-        if (moteur.avisCamera.isNotBlank()) {
-            Text(
-                moteur.avisCamera,
-                style = Detail,
-                color = MaterialTheme.colorScheme.error,
-                modifier = Modifier.padding(top = 6.dp)
-            )
-        }
     }
 
     if (ajoutFiltre) {

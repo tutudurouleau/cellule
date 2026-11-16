@@ -146,6 +146,19 @@ object Cadreur {
      * se projette à plat sur le capteur. Si la caméra voit plus large que le
      * téléphone, on le dit — on ne dessine pas un cadre faux.
      */
+    /**
+     * La part de la photo qu'occupe la zone utile de la caméra, en largeur et
+     * en hauteur, sans plafond : au-delà de 1, la caméra voit plus large.
+     */
+    fun fractions(photo: ChampPhoto, cadre: CadrePlan): Pair<Double, Double>? {
+        if (!cadre.complet) return null
+        val tx = demiTangente(photo.horizontal)
+        val ty = demiTangente(photo.vertical)
+        if (tx <= 0 || ty <= 0 || tx.isNaN() || ty.isNaN()) return null
+        val f = cadre.focaleMm!!
+        return (cadre.capteurLargeurMm!! * cadre.desanamorphose / (2 * f)) / tx to (cadre.capteurHauteurMm!! / (2 * f)) / ty
+    }
+
     fun tracer(photo: ChampPhoto, cadre: CadrePlan): TraceCadre? {
         if (!cadre.complet) return null
         val l = cadre.capteurLargeurMm!! * cadre.desanamorphose

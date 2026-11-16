@@ -102,6 +102,9 @@ import fr.cellule.core.libelleDiaphs
 import fr.cellule.core.libelleOuverture
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import fr.cellule.core.Cadreur
+import kotlinx.coroutines.delay
+import androidx.compose.ui.graphics.graphicsLayer
 import kotlinx.coroutines.withContext
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -276,6 +279,35 @@ fun EcranMesurer(
     var avisCapture by remember { mutableStateOf("") }
     var cadreOuvert by remember { mutableStateOf(false) }
 
+    /* ── Recadré à la focale ───────────────────────────────────────────
+       Le zoom de la caméra du téléphone resserre l'image jusqu'à ce que le
+       cadre de la caméra simulée la remplisse ; au-delà de son zoom maximal,
+       l'aperçu s'agrandit encore à l'écran (moins net). Le noir masque le
+       reste : on ne voit que l'image de la focale. */
+    val recadre = tournage && reglages.cineRecadre && cadreTravail.complet && avecCamera
+    val fractionsCadre = if (recadre) moteur.champPhoto(cap.tenue.couche)?.let { Cadreur.fractions(it, cadreTravail) } else null
+    val agrandissement = fractionsCadre?.let { (l, h) ->
+        val m = maxOf(l, h)
+        if (m <= 0.0 || m > 1.0) 1f else (1.0 / m).toFloat().coerceIn(1f, 4f)
+    } ?: 1f
+    LaunchedEffect(recadre, cadreTravail, moteur.cameraActive, cap.tenue.couche) {
+        if (!recadre) {
+            if (moteur.zoomDemande != 1f) moteur.reglerZoom(1f.coerceIn(moteur.zoomMinimal, moteur.zoomMaximal))
+            return@LaunchedEffect
+        }
+        /* Deux ou trois retouches : le champ mesuré suit le zoom avec un temps de retard. */
+        repeat(4) {
+            delay(450)
+            val champ = moteur.champPhoto(cap.tenue.couche) ?: return@repeat
+            val (l, h) = Cadreur.fractions(champ, cadreTravail) ?: return@repeat
+            val m = maxOf(l, h)
+            if (m <= 0.0) return@repeat
+            val vise = (moteur.zoomDemande / m).toFloat().coerceIn(moteur.zoomMinimal, moteur.zoomMaximal)
+            if (kotlin.math.abs(vise - moteur.zoomDemande) > 0.02f) moteur.reglerZoom(vise)
+        }
+    }
+
+
     /** Le modèle du prochain plan : rangé dans le jour courant, numéroté à la suite. */
     fun nouveauPlan(): fr.cellule.core.Plan {
         val numerotation = runCatching { Numerotation.valueOf(reglages.cineNumerotation) }
@@ -315,16 +347,25 @@ fun EcranMesurer(
                 tempsPose = couple?.vitesse?.libelle ?: ""
             )
             val camera = moteur.libelleCameraActive()
-            moteur.capturer(tenue.rotation) { uri, erreur ->
+            /* Recadré : la photo ne garde que le cadre de la focale, et son champ devient celui de la caméra simulée. */
+            val traceCapture = if (recadre) champ?.let { Cadreur.tracer(it, cadreTravail) }?.takeIf { !it.tropLarge } else null
+            moteur.capturer(tenue.rotation) { uri, erreurPrise ->
+              portee.launch {
+                val rapportRecadre = if (uri != null && traceCapture != null) withContext(Dispatchers.IO) {
+                    PhotosPlans.recadrer(contexte, uri.toString(), traceCapture.capteur)
+                } else null
                 captureEnCours = false
+                val erreur = erreurPrise
+                    ?: if (traceCapture != null && uri != null && rapportRecadre == null) "La photo est gardée entière : le recadrage a échoué." else null
                 val plan = nouveauPlan().copy(
                     date = instant.toLocalDate().toString(),
                     heure = instant.format(DateTimeFormatter.ofPattern("HH:mm")),
                     photo = uri?.toString() ?: "",
-                    rapportPhoto = if (tenue.couche) 4.0 / 3.0 else 3.0 / 4.0,
+                    rapportPhoto = rapportRecadre ?: if (tenue.couche) 4.0 / 3.0 else 3.0 / 4.0,
                     exposition = exposition,
                     cap = capMagnetique,
-                    champ = champ,
+                    champ = if (rapportRecadre != null && traceCapture != null)
+                        fr.cellule.core.ChampPhoto(traceCapture.champHorizontal, traceCapture.champVertical) else champ,
                     cameraTelephone = camera
                 )
                 cinema.enregistrer(plan)
@@ -352,6 +393,7 @@ fun EcranMesurer(
                         }
                     }
                 }
+              }
             }
         }
     }
@@ -413,7 +455,8 @@ fun EcranMesurer(
                 enTete()
                 Spacer(Modifier.height(4.dp))
             }
-            ChoixSegmente(
+            /* Au cinéma, le mode de mesure passe dans les détails : l'image d'abord. */
+            if (!tournage) ChoixSegmente(
                 options = ModeMesure.entries.toList(),
                 selection = mode,
                 libelle = { it.libelle },
@@ -439,7 +482,11 @@ fun EcranMesurer(
                        elle le dépassait et l'image débordait par-dessus le sélecteur.
                        Sans fillMaxSize, les contraintes restent lâches et aspectRatio
                        choisit de lui-même le côté limitant. */
-                    Box(Modifier.aspectRatio(moteur.rapportApercu)) {
+                    Box(
+                        Modifier
+                            .aspectRatio(moteur.rapportApercu)
+                            .graphicsLayer { scaleX = agrandissement; scaleY = agrandissement }
+                    ) {
                         AndroidView(
                             factory = { vue },
                             modifier = Modifier
@@ -464,14 +511,13 @@ fun EcranMesurer(
                             }
                         }
                         if (tournage) {
-                            CadreSurApercu(moteur, cadreTravail, cap.tenue)
+                            CadreSurApercu(moteur, cadreTravail, cap.tenue, recadre = reglages.cineRecadre)
                             CalquesTournage(moteur)
                         }
-                        if (tournage) BoutonCapture(captureEnCours, surCapture)
                     }
                 }
                 if (tournage) BarreFocale(reglages) { reglages.cineVue = VueCinema.MATERIEL.name }
-                if (mode == ModeMesure.SPOT) {
+                if (mode == ModeMesure.SPOT && !tournage) {
                     /* En bas de l'image, sous le pouce : la taille du spot se règle
                        sans lâcher le cadrage. Fond sombre translucide pour rester
                        lisible sur n'importe quelle scène. */
@@ -552,7 +598,7 @@ fun EcranMesurer(
         ) {
             Row(Modifier.fillMaxWidth().heightIn(min = 68.dp), verticalAlignment = Alignment.CenterVertically) {
                 /* L'aiguille dit l'ordre de grandeur avant même qu'on lise le chiffre. */
-                CadranEV(ev100, Modifier.padding(end = 10.dp))
+                if (!tournage) CadranEV(ev100, Modifier.padding(end = 10.dp))
                 Column(Modifier.weight(1f)) {
                     Row(verticalAlignment = Alignment.Bottom) {
                         Text(
@@ -595,7 +641,8 @@ fun EcranMesurer(
                 }
             }
 
-            BandeauEtat(lecture.etat, lecture.alerte)
+            val avis = if (tournage) avisCapture.ifBlank { lecture.etat } else lecture.etat
+            if (!tournage || avis.isNotBlank()) BandeauEtat(avis, lecture.alerte || (tournage && avisCapture.isNotBlank()))
             Spacer(Modifier.height(4.dp))
 
             LigneBoutons {
@@ -604,7 +651,14 @@ fun EcranMesurer(
                         moteur.basculerGel()
                     }
                 }
-                if (ev100 != null) {
+                if (tournage) {
+                    BoutonPlat(
+                        if (captureEnCours) "Capture…" else "Capturer",
+                        actif = !captureEnCours && avecCamera && autorisee,
+                        accent = true,
+                        modifier = Modifier.weight(1f)
+                    ) { if (!captureEnCours && avecCamera && autorisee) surCapture() }
+                } else if (ev100 != null) {
                     BoutonPlat("Au carnet", accent = true, modifier = Modifier.weight(1f)) {
                         etat.derniereMesure = ev100
                         etat.dernierReglage = if (tournage) {
@@ -634,6 +688,7 @@ fun EcranMesurer(
                     Separateur()
 
                     if (tournage) {
+                        ReglagesViseurCinema(reglages, moteur, mode) { mode = it }
                         DetailsTournage(
                             reglages, moteur, ev100, reglageCine, resultatCine, avecCamera && autorisee,
                             cadre = cadreTravail,
