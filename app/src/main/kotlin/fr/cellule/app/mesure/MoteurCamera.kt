@@ -586,6 +586,9 @@ class MoteurCamera(private val contexte: Context) {
         0.0
     }
 
+    @Volatile
+    private var derniereLecture = 0L
+
     private val rappelCapture = object : CameraCaptureSession.CaptureCallback() {
         override fun onCaptureCompleted(
             session: CameraCaptureSession,
@@ -593,6 +596,12 @@ class MoteurCamera(private val contexte: Context) {
             result: TotalCaptureResult
         ) {
             if (gele) return
+            /* L'aperçu peut tourner à 60 images par seconde : les chiffres,
+               eux, n'ont pas besoin de changer plus de dix fois par seconde,
+               et chaque mise à jour redessine l'écran. */
+            val maintenant = SystemClock.elapsedRealtime()
+            if (maintenant - derniereLecture < 100) return
+            derniereLecture = maintenant
             val temps = result.get(CaptureResult.SENSOR_EXPOSURE_TIME) ?: return
             val sensibilite = result.get(CaptureResult.SENSOR_SENSITIVITY) ?: return
             val ouverture = result.get(CaptureResult.LENS_APERTURE)?.toDouble() ?: ouvertureParDefaut
