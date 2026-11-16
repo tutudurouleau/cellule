@@ -32,6 +32,7 @@ import fr.cellule.app.ZoneNavFlottante
 import fr.cellule.core.CIELS
 import fr.cellule.core.Estimateur
 import fr.cellule.core.LIEUX
+import fr.cellule.core.Lieu
 import fr.cellule.core.Modele
 import fr.cellule.core.OBSTACLES
 import fr.cellule.core.Photometrie
@@ -94,9 +95,7 @@ fun EcranEstimer(reglages: Reglages, etat: EtatApplication) {
     var modele by remember { mutableStateOf(Modele.PHYSIQUE) }
     var parCalcul by remember { mutableStateOf(true) }
 
-    var lieu by remember {
-        mutableStateOf(LIEUX.minByOrNull { kotlin.math.abs(it.latitude - reglages.latitude) } ?: LIEUX[0])
-    }
+    val lieu = Lieu(nomLieu(reglages), reglages.latitude, reglages.longitude)
     var mois by remember { mutableStateOf(LocalDate.now().monthValue) }
     val maintenant = remember { LocalTime.now() }
     var heure by remember { mutableStateOf(maintenant.hour + maintenant.minute / 60f) }
@@ -198,14 +197,9 @@ fun EcranEstimer(reglages: Reglages, etat: EtatApplication) {
             )
             Spacer(Modifier.height(6.dp))
             if (parCalcul) {
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Deroulant("", LIEUX, lieu, { it.nom }) {
-                        lieu = it
-                        reglages.latitude = it.latitude
-                        reglages.longitude = it.longitude
-                    }
-                    Deroulant("", (1..12).toList(), mois, { moisNom(it) }) { mois = it }
-                }
+                SelecteurLieu(reglages)
+                Spacer(Modifier.height(6.dp))
+                Deroulant("Mois", (1..12).toList(), mois, { moisNom(it) }) { mois = it }
                 Spacer(Modifier.height(6.dp))
                 Text(
                     "Heure légale : " + String.format("%02dh%02d", heure.toInt(), ((heure % 1) * 60).toInt()),

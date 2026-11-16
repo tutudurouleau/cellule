@@ -62,6 +62,10 @@ class Reglages(contexte: Context) {
     var latitude by ReelPref(prefs, "latitude", 42.30)
     var longitude by ReelPref(prefs, "longitude", 9.15)
     var fuseau by ReelPref(prefs, "fuseau", 2.0)
+    /** Le nom du lieu choisi dans Estimer ; vide : celui de la liste le plus proche. */
+    var lieuNom by TextePref(prefs, "lieu_nom", "")
+    /** Les lieux récents, en JSON. */
+    var lieuxRecents by TextePref(prefs, "lieux_recents", "[]")
 
     /* ── La cellule de tournage : les derniers choix reviennent tels quels. ── */
 
