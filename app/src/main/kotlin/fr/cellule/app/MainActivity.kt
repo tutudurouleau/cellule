@@ -78,6 +78,9 @@ import fr.cellule.core.DeveloppementNote
 import fr.cellule.core.TirageNote
 import fr.cellule.core.TYPES_DE_SCENE
 
+/** Vrai quand l'écran est plus large que haut : les écrans s'y réorganisent. */
+val LocalPaysage = androidx.compose.runtime.staticCompositionLocalOf { false }
+
 /** Ce que les écrans se passent entre eux. */
 class EtatApplication {
     /** Estimation à verser dans la case « annoncé » du carnet. */
@@ -281,11 +284,15 @@ private fun Application() {
         activite?.enableEdgeToEdge(statusBarStyle = style, navigationBarStyle = style)
     }
 
+    val configuration = LocalConfiguration.current
+    val paysage = configuration.screenWidthDp > configuration.screenHeightDp
+    androidx.compose.runtime.CompositionLocalProvider(LocalPaysage provides paysage) {
     CelluleTheme(sombre = sombre, teinte = onglet.teinte) {
         Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             Box(Modifier.fillMaxSize()) {
 
-                Column(Modifier.fillMaxSize()) {
+                /* En paysage, la pilule de navigation occupe le bord droit : le contenu s'arrête avant. */
+                Column(Modifier.fillMaxSize().padding(end = if (paysage) 66.dp else 0.dp)) {
                     /* Les écrans caméra n'ont pas d'en-tête : chaque pixel du haut de
                        l'écran leur revient, comme dans un vrai viseur. */
                     if (!onglet.plein) {
@@ -309,6 +316,7 @@ private fun Application() {
             }
             if (parametres) FeuilleParametres(reglages) { parametres = false }
         }
+    }
     }
 }
 
@@ -448,6 +456,35 @@ private fun FeuilleParametres(reglages: Reglages, fermer: () -> Unit) {
  */
 @Composable
 private fun BoxScope.NavigationFlottante(onglet: Onglet, surChoix: (Onglet) -> Unit) {
+    if (LocalPaysage.current) {
+        /* En paysage, la pilule se dresse sur le bord droit : la hauteur manque, pas la largeur. */
+        Column(
+            Modifier
+                .align(Alignment.CenterEnd)
+                .navigationBarsPadding()
+                .padding(end = 10.dp)
+                .background(
+                    MaterialTheme.colorScheme.surfaceContainerHighest.copy(alpha = 0.98f),
+                    RoundedCornerShape(50)
+                )
+                .border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(50))
+                .padding(5.dp),
+            verticalArrangement = Arrangement.spacedBy(1.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Onglet.entries.filter { it != Onglet.CINEMA }.forEach { o ->
+                OngletFlottant(o, o == onglet, avecEtiquette = false, serre = true) { surChoix(o) }
+            }
+            Box(
+                Modifier
+                    .padding(vertical = 3.dp)
+                    .size(width = 26.dp, height = 1.dp)
+                    .background(MaterialTheme.colorScheme.outlineVariant)
+            )
+            OngletCinemaFlottant(onglet == Onglet.CINEMA, avecEtiquette = false, serre = true) { surChoix(Onglet.CINEMA) }
+        }
+        return
+    }
     Row(
         Modifier
             .align(Alignment.BottomCenter)
@@ -485,7 +522,7 @@ private fun BoxScope.NavigationFlottante(onglet: Onglet, surChoix: (Onglet) -> U
 }
 
 @Composable
-private fun RowScope.OngletCinemaFlottant(actif: Boolean, avecEtiquette: Boolean, serre: Boolean, surClic: () -> Unit) {
+private fun OngletCinemaFlottant(actif: Boolean, avecEtiquette: Boolean, serre: Boolean, surClic: () -> Unit) {
     /* Le rouge du voyant de tournage, quel que soit l'onglet ouvert. */
     val teinte = if (MaterialTheme.colorScheme.background.luminance() < 0.5f) Teinte.TALLY.sombre else Teinte.TALLY.clair
     val etiquette = avecEtiquette || (actif && !serre)
@@ -494,7 +531,7 @@ private fun RowScope.OngletCinemaFlottant(actif: Boolean, avecEtiquette: Boolean
             .clip(RoundedCornerShape(50))
             .background(if (actif) teinte.couleur else teinte.fond)
             .clickable { surClic() }
-            .padding(horizontal = if (etiquette) 14.dp else if (serre) 10.dp else 12.dp, vertical = 12.dp),
+            .padding(horizontal = if (etiquette) 14.dp else if (serre) 10.dp else 12.dp, vertical = if (LocalPaysage.current) 8.dp else 12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
@@ -515,13 +552,13 @@ private fun RowScope.OngletCinemaFlottant(actif: Boolean, avecEtiquette: Boolean
 }
 
 @Composable
-private fun RowScope.OngletFlottant(onglet: Onglet, actif: Boolean, avecEtiquette: Boolean, serre: Boolean, surClic: () -> Unit) {
+private fun OngletFlottant(onglet: Onglet, actif: Boolean, avecEtiquette: Boolean, serre: Boolean, surClic: () -> Unit) {
     Row(
         Modifier
             .clip(RoundedCornerShape(50))
             .background(if (actif) MaterialTheme.colorScheme.primary else Color.Transparent)
             .clickable { surClic() }
-            .padding(horizontal = if (actif && avecEtiquette) 14.dp else if (serre) 8.dp else 11.dp, vertical = 12.dp),
+            .padding(horizontal = if (actif && avecEtiquette) 14.dp else if (serre) 8.dp else 11.dp, vertical = if (LocalPaysage.current) 8.dp else 12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(

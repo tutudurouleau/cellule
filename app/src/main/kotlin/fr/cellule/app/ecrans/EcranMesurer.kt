@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -176,7 +177,11 @@ fun EcranMesurer(
     SideEffect { moteur.plageVideo = reglages.plageVideo }
     val avecCamera = mode != ModeMesure.INCIDENT
 
-    DisposableEffect(autorisee, avecCamera) {
+    /* Tourner l'écran relance la caméra : l'analyse et la photo reprennent
+       alors le sens de l'affichage, et le spot reste sous le doigt. */
+    val orientationEcran = androidx.compose.ui.platform.LocalConfiguration.current.orientation
+    val rotationEcran = androidx.compose.ui.platform.LocalView.current.display?.rotation ?: 0
+    DisposableEffect(autorisee, avecCamera, orientationEcran) {
         if (autorisee && avecCamera) {
             moteur.demarrer(proprietaire, vue)
             /* Le cap et la tenue du téléphone ne servent qu'à la capture de plan. */
@@ -442,8 +447,8 @@ fun EcranMesurer(
         }
     }
 
-    Column(Modifier.fillMaxSize().background(Color.Black)) {
-
+    val paysage = fr.cellule.app.LocalPaysage.current
+    val enHaut: @Composable () -> Unit = {
         /* ── Mode, en haut ────────────────────────────────────────────── */
         Column(
             Modifier
@@ -463,14 +468,15 @@ fun EcranMesurer(
                 surChoix = { mode = it }
             )
         }
-
+    }
+    val viseur: @Composable (Modifier) -> Unit = { m ->
         /* ── Le viseur ──────────────────────────────────────────────────
            Il occupe tout ce qu'il reste une fois le sélecteur du haut et
            le panneau du bas posés : jamais recouvert, jamais chevauché.
            Le cadre réellement mesuré garde exactement les proportions du
            capteur (moteur.rapportApercu), ce qui garantit que le point
            touché tombe sur le pixel visé. */
-        Box(Modifier.weight(1f).fillMaxWidth().clipToBounds()) {
+        Box(m.clipToBounds()) {
             if (avecCamera && autorisee) {
                 Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     /* Surtout pas de fillMaxSize() avant aspectRatio() : il fige la
@@ -511,7 +517,7 @@ fun EcranMesurer(
                             }
                         }
                         if (tournage) {
-                            CadreSurApercu(moteur, cadreTravail, cap.tenue, recadre = reglages.cineRecadre)
+                            CadreSurApercu(moteur, cadreTravail, cap.tenue, recadre = reglages.cineRecadre, rotationEcran = rotationEcran)
                             CalquesTournage(moteur)
                         }
                     }
@@ -587,15 +593,10 @@ fun EcranMesurer(
                 }
             }
         }
-
+    }
+    val panneau: @Composable (Modifier) -> Unit = { m ->
         /* ── Le panneau flottant du bas ───────────────────────────────── */
-        PanneauFlottant(
-            Modifier
-                .fillMaxWidth()
-                .navigationBarsPadding()
-                .padding(bottom = 92.dp)
-                .animateContentSize()
-        ) {
+        PanneauFlottant(m.animateContentSize()) {
             Row(Modifier.fillMaxWidth().heightIn(min = 68.dp), verticalAlignment = Alignment.CenterVertically) {
                 /* L'aiguille dit l'ordre de grandeur avant même qu'on lise le chiffre. */
                 if (!tournage) CadranEV(ev100, Modifier.padding(end = 10.dp))
@@ -853,6 +854,30 @@ fun EcranMesurer(
                     Spacer(Modifier.height(6.dp))
                 }
             }
+        }
+    }
+
+    /* En paysage, l'image à gauche et le panneau à droite ; debout, l'un sous l'autre. */
+    if (paysage) {
+        Row(Modifier.fillMaxSize().background(Color.Black)) {
+            Column(Modifier.weight(1f).fillMaxHeight()) {
+                enHaut()
+                viseur(Modifier.weight(1f).fillMaxWidth())
+            }
+            panneau(
+                Modifier
+                    .width(340.dp)
+                    .fillMaxHeight()
+                    .statusBarsPadding()
+                    .navigationBarsPadding()
+                    .verticalScroll(rememberScrollState())
+            )
+        }
+    } else {
+        Column(Modifier.fillMaxSize().background(Color.Black)) {
+            enHaut()
+            viseur(Modifier.weight(1f).fillMaxWidth())
+            panneau(Modifier.fillMaxWidth().navigationBarsPadding().padding(bottom = 92.dp))
         }
     }
 

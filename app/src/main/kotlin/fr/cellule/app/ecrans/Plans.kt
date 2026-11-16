@@ -321,7 +321,14 @@ fun DrawScope.dessinerCadres(
 
 /** Le cadre de travail, dessiné en direct sur l'aperçu de la caméra. */
 @Composable
-fun BoxScope.CadreSurApercu(moteur: MoteurCamera, cadre: CadrePlan, tenue: Tenue, recadre: Boolean = false) {
+fun BoxScope.CadreSurApercu(
+    moteur: MoteurCamera,
+    cadre: CadrePlan,
+    tenue: Tenue,
+    recadre: Boolean = false,
+    /** La rotation de l'interface (Surface.ROTATION_…) : en paysage, l'aperçu est déjà couché. */
+    rotationEcran: Int = 0
+) {
     if (!cadre.complet) return
     val champ = moteur.champPhoto(tenue.couche) ?: return
     val trace = Cadreur.tracer(champ, cadre) ?: return
@@ -338,10 +345,21 @@ fun BoxScope.CadreSurApercu(moteur: MoteurCamera, cadre: CadrePlan, tenue: Tenue
                 .padding(12.dp)
         )
     } else {
-        val rotation = when (tenue) {
+        val degresTenue = when (tenue) {
             Tenue.COUCHE_GAUCHE -> 90
             Tenue.COUCHE_DROITE -> 270
             Tenue.DEBOUT -> 0
+        }
+        val degresEcran = when (rotationEcran) {
+            android.view.Surface.ROTATION_90 -> 90
+            android.view.Surface.ROTATION_180 -> 180
+            android.view.Surface.ROTATION_270 -> 270
+            else -> 0
+        }
+        val rotation = when ((degresTenue - degresEcran + 360) % 360) {
+            90 -> 90
+            270 -> 270
+            else -> 0
         }
         Canvas(Modifier.fillMaxSize()) { dessinerCadres(trace, rotation, 11.dp.toPx(), if (recadre) 1f else 0.5f) }
     }
