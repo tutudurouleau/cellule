@@ -127,17 +127,9 @@ private fun SuppressionEnDeuxTemps(libelle: String, surSuppression: () -> Unit) 
     }
 }
 
-/**
- * Le carnet « Cinéma » : Projet › Jour de tournage ou de repérage › Plans.
- * [exporter] reçoit un titre et les plans à mettre en PDF (un jour, ou un projet entier).
- */
+/** Le carnet « Cinéma » : Projet › Jour de tournage ou de repérage › Plans. */
 @Composable
-fun CarnetCinemaEcran(
-    cinema: DepotCinema,
-    journal: DepotJournal,
-    reglages: Reglages,
-    exporter: ((titre: String, sousTitre: String, plans: List<Plan>, jours: List<JourCinema>) -> Unit)? = null
-) {
+fun CarnetCinemaEcran(cinema: DepotCinema, journal: DepotJournal, reglages: Reglages) {
     var projetOuvert by remember { mutableStateOf<Long?>(null) }
     var jourOuvert by remember { mutableStateOf<Long?>(null) }
     var planOuvert by remember { mutableStateOf<Long?>(null) }
@@ -145,6 +137,23 @@ fun CarnetCinemaEcran(
     val donnees = cinema.donnees
     val projet = donnees.projets.firstOrNull { it.identifiant == projetOuvert }
     val jour = donnees.jours.firstOrNull { it.identifiant == jourOuvert && it.projetId == projet?.identifiant }
+
+    /* Le dossier PDF d'un jour ou d'un projet ; celui du projet cite aussi ses vues photo. */
+    val exporteur = rememberExporteurPdf(cinema)
+    val exporter: (String, String, List<Plan>, List<JourCinema>) -> Unit = { titre, sousTitre, plans, jours ->
+        val vues = if (jour == null && projet != null) {
+            val liees = donnees.vuesDe(projet.identifiant).toSet()
+            journal.entrees.filter { it.identifiant in liees }.map { e ->
+                listOf(e.sujet.ifBlank { "Vue sans sujet" }, e.resume, e.date).filter { it.isNotBlank() }.joinToString(" · ")
+            }
+        } else emptyList()
+        exporteur.dossier(titre, sousTitre, plans, jours, vues)
+    }
+    if (exporteur.message.isNotBlank()) {
+        Box(Modifier.fillMaxWidth().padding(horizontal = fr.cellule.app.Gouttiere, vertical = 4.dp)) {
+            BandeauEtat(exporteur.message, alerte = exporteur.echec)
+        }
+    }
 
     when {
         projet == null -> ListeProjets(cinema, surProjet = { projetOuvert = it; jourOuvert = null }, surPlan = { planOuvert = it })

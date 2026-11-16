@@ -39,6 +39,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -60,6 +61,7 @@ import fr.cellule.app.CadreJson
 import fr.cellule.app.ChiffreGrand
 import fr.cellule.app.Corps
 import fr.cellule.app.DepotCinema
+import fr.cellule.app.ExportPdf
 import fr.cellule.app.Detail
 import fr.cellule.app.Gouttiere
 import fr.cellule.app.Interligne
@@ -80,7 +82,9 @@ import fr.cellule.core.RectCadre
 import fr.cellule.core.Tournage
 import fr.cellule.core.TraceCadre
 import fr.cellule.core.nombreCourt
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.time.LocalDate
 import java.time.LocalTime
@@ -474,6 +478,62 @@ fun FeuilleCadreDeTravail(reglages: Reglages, onFermer: () -> Unit) {
     }
 }
 
+/* ── L'export en PDF ───────────────────────────────────────────────────── */
+
+/**
+ * Fabrique un PDF hors du fil principal, puis ouvre le partage d'Android.
+ * Tout se passe sur le téléphone ; le réseau n'ajoute que la mini-carte.
+ */
+class ExporteurPdf(
+    private val contexte: Context,
+    private val portee: CoroutineScope,
+    private val cinema: DepotCinema
+) {
+    var enCours by mutableStateOf(false)
+        private set
+    var message by mutableStateOf("")
+        private set
+    var echec by mutableStateOf(false)
+        private set
+
+    fun plan(plan: Plan) = lancer { ExportPdf.planSeul(contexte, plan, cinema.donnees) }
+
+    fun dossier(
+        titre: String, sousTitre: String, plans: List<Plan>,
+        jours: List<fr.cellule.core.JourCinema>, vues: List<String> = emptyList()
+    ) = lancer { ExportPdf.dossier(contexte, titre, sousTitre, plans, jours, vues) }
+
+    private fun lancer(fabrique: () -> java.io.File) {
+        if (enCours) return
+        enCours = true
+        echec = false
+        message = "Fabrication du PDF…"
+        portee.launch {
+            val pdf = withContext(Dispatchers.IO) { runCatching(fabrique).getOrNull() }
+            enCours = false
+            if (pdf == null) {
+                message = "Le PDF n'a pas pu être fabriqué."
+                echec = true
+            } else {
+                message = ""
+                try {
+                    ExportPdf.partager(contexte, pdf)
+                } catch (e: Exception) {
+                    message = "Aucune appli n'a pu recevoir le PDF."
+                    echec = true
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun rememberExporteurPdf(cinema: DepotCinema): ExporteurPdf {
+    val contexte = LocalContext.current
+    val portee = rememberCoroutineScope()
+    return remember(cinema) { ExporteurPdf(contexte, portee, cinema) }
+}
+
 /* ── La fiche d'un plan ────────────────────────────────────────────────── */
 
 /**
@@ -490,6 +550,7 @@ fun FeuillePlan(cinema: DepotCinema, identifiant: Long, avis: String = "", onFer
     }
     var brouillon by remember(identifiant) { mutableStateOf(enregistre) }
     var suppression by remember { mutableStateOf(false) }
+    val exporteur = rememberExporteurPdf(cinema)
 
     /* Les relevés arrivent parfois après l'ouverture de la fiche (la position
        met quelques secondes) : on les reprend toujours de la version enregistrée. */
@@ -632,6 +693,26 @@ fun FeuillePlan(cinema: DepotCinema, identifiant: Long, avis: String = "", onFer
             ) { brouillon = brouillon.copy(notes = it) }
 
             Spacer(Modifier.height(Interligne + 4.dp))
+            BoutonPlat(
+                if (exporteur.enCours) "Fabrication du PDF…" else "PDF du plan",
+                actif = !exporteur.enCours,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                /* Le PDF montre le plan tel qu'on le voit ici : on range d'abord les retouches. */
+                ranger()
+                cinema.plan(identifiant)?.let { exporteur.plan(it) }
+            }
+            if (exporteur.message.isNotBlank() && !exporteur.enCours) {
+                Spacer(Modifier.height(6.dp))
+                BandeauEtat(exporteur.message, alerte = exporteur.echec)
+            }
+            Text(
+                "Fabriqué sur le téléphone, sans réseau. La mini-carte n'y figure que s'il y a du réseau à ce moment-là.",
+                style = Detail,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = 6.dp)
+            )
+            Spacer(Modifier.height(Interligne))
             LigneBoutons {
                 BoutonPlat(if (suppression) "Confirmer" else "Supprimer", erreur = suppression) {
                     if (suppression) {

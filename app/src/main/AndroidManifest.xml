@@ -9,6 +9,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- Savoir s'il y a du réseau, pour ne chercher une adresse que dans ce cas. -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Le réseau ne sert qu'à deux conforts : la carte OpenStreetMap et la
+         mini-carte des PDF. Sans lui, l'appli fonctionne en entier. -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- Avant Android 10, ranger une photo dans la galerie exige cette permission. -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
 
@@ -48,6 +51,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Le partage des PDF de plans : le fichier est prêté, le temps du
+             partage, à l'appli que l'utilisateur choisit. -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.partage"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/chemins_partage" />
+        </provider>
 
         <service
             android:name=".chrono.ServiceChrono"
