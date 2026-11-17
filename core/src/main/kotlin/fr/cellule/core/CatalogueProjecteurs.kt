@@ -53,6 +53,93 @@ val PROJECTEURS_CATALOGUE: List<Projecteur> = listOf(
         source = "amaran, photométrie du 200d S"
     ),
     Projecteur(
+        "cat-aputure-600c-pro-hyper", "LS 600c Pro · Hyper-Reflector", "Aputure", FamilleProjecteur.LED_PONCTUELLE,
+        temperatureK = 5600,
+        mesures = listOf(m(false, 3.0, 5020.0)),
+        source = "Aputure, photométrie du LS 600c Pro à 5600 K (couleur réglable de 2300 à 10 000 K ; sans accessoire : 1 937 lux à 3 m)"
+    ),
+    Projecteur(
+        "cat-aputure-nova-p600c", "Nova P600c", "Aputure", FamilleProjecteur.PANNEAU_LED,
+        temperatureK = 5600,
+        mesures = listOf(m(false, 3.0, 2167.0)),
+        source = "Aputure, photométrie du Nova P600c à 5600 K (couleur réglable)"
+    ),
+    Projecteur(
+        "cat-aputure-nova-p300c", "Nova P300c", "Aputure", FamilleProjecteur.PANNEAU_LED,
+        temperatureK = 4300, angleFlood = 120.0,
+        mesures = listOf(m(false, 3.0, 1000.0)),
+        source = "Aputure, photométrie du Nova P300c à 4300 K (pas de valeur publiée à 5600 K) ; faisceau 120° annoncé"
+    ),
+    Projecteur(
+        "cat-amaran-100d-hyper", "amaran 100d · Hyper-Reflector", "Aputure", FamilleProjecteur.LED_PONCTUELLE,
+        puissanceW = 100.0, temperatureK = 5600, angleFlood = 55.0,
+        mesures = listOf(m(false, 1.0, 39500.0)),
+        source = "Fiche amaran 100d (nu : 4 300 lux à 1 m)"
+    ),
+    Projecteur(
+        "cat-amaran-100d-s-hyper", "amaran 100d S · Hyper-Reflector", "Aputure", FamilleProjecteur.LED_PONCTUELLE,
+        temperatureK = 5600,
+        mesures = listOf(m(false, 1.0, 34600.0)),
+        source = "amaran, photométrie du 100d S"
+    ),
+    Projecteur(
+        "cat-amaran-300c-hyper", "amaran 300c · Hyper-Reflector", "Aputure", FamilleProjecteur.LED_PONCTUELLE,
+        temperatureK = 5600,
+        mesures = listOf(m(false, 1.0, 26580.0)),
+        source = "amaran, fiche du 300c à 5600 K (sans réflecteur : 9 370 lux à 1 m ; couleur réglable)"
+    ),
+    Projecteur(
+        "cat-godox-sl150-ii", "SL150W II · réflecteur", "Godox", FamilleProjecteur.LED_PONCTUELLE,
+        temperatureK = 5600,
+        mesures = listOf(m(false, 1.0, 58000.0)),
+        source = "à relire : valeur relayée par les distributeurs",
+        relu = false
+    ),
+    Projecteur(
+        "cat-godox-vl300-ii", "VL300 II · réflecteur standard", "Godox", FamilleProjecteur.LED_PONCTUELLE,
+        temperatureK = 5600,
+        mesures = listOf(m(false, 1.0, 90000.0)),
+        source = "à relire : 90 000 lux à 1 m chez la plupart des distributeurs, 77 000 chez un autre (nu : 11 600)",
+        relu = false
+    ),
+    Projecteur(
+        "cat-nanlite-forza-60-ii", "Forza 60 II · réflecteur", "Nanlite", FamilleProjecteur.LED_PONCTUELLE,
+        temperatureK = 5600,
+        mesures = listOf(m(false, 1.0, 17620.0)),
+        source = "à relire : valeur annoncée par Nanlite au lancement ; les distributeurs varient selon la génération",
+        relu = false
+    ),
+    Projecteur(
+        "cat-nanlite-forza-300-55", "Forza 300 · réflecteur 55°", "Nanlite", FamilleProjecteur.LED_PONCTUELLE,
+        temperatureK = 5600, angleFlood = 55.0,
+        mesures = listOf(m(false, 1.0, 43060.0)),
+        source = "à relire : valeur relayée par les distributeurs",
+        relu = false
+    ),
+    Projecteur(
+        "cat-astera-titan", "Titan Tube", "Astera", FamilleProjecteur.TUBE_LED,
+        mesures = listOf(m(false, 3.0, 87.0)),
+        source = "Astera, photométrie relayée par Panavision (même valeur à 3200 et 5600 K)"
+    ),
+    Projecteur(
+        "cat-astera-helios", "Helios Tube", "Astera", FamilleProjecteur.TUBE_LED,
+        temperatureK = 3200,
+        mesures = listOf(m(false, 1.0, 360.0)),
+        source = "Astera, fiche technique du Helios Tube (393 lux à 4000 K)"
+    ),
+    Projecteur(
+        "cat-litepanels-gemini-2x1", "Gemini 2x1 Soft", "Litepanels", FamilleProjecteur.PANNEAU_LED,
+        temperatureK = 6000, angleFlood = 110.0,
+        mesures = listOf(m(false, 1.0, 9713.0)),
+        source = "Litepanels, photométrie relayée par les distributeurs (à 6000 K) ; panneau proche : la loi en 1/d² surestime au loin"
+    ),
+    Projecteur(
+        "cat-kinoflo-celeb-450", "Celeb 450", "Kino Flo", FamilleProjecteur.PANNEAU_LED,
+        mesures = listOf(m(false, 1.0, 4860.0)),
+        source = "à relire : valeur relayée par les distributeurs, sans température de couleur indiquée (1 420 lux à 2 m)",
+        relu = false
+    ),
+    Projecteur(
         "cat-nanlite-forza-500", "Forza 500 · réflecteur 55°", "Nanlite", FamilleProjecteur.LED_PONCTUELLE,
         temperatureK = 5600, angleFlood = 55.0,
         mesures = listOf(m(false, 3.0, 6257.0)),

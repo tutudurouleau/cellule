@@ -438,6 +438,7 @@ private fun PageMateriel(reglages: Reglages) {
     if (pellicule) CartePellicule(reglages) else CarteNumerique(reglages) { cadreOuvert = true }
     CarteObjectifs(reglages)
     CarteMonMateriel()
+    CarteProjecteurs(reglages)
 
     val cadre = remember(reglages.cineCadre) { cadreDe(reglages) }
     Carte(
@@ -506,7 +507,17 @@ private fun CartePellicule(reglages: Reglages) {
             reglages.cineModeCapteur = ""
             reporterSupport(reglages)
         }
+        BoutonFiche(cameraChoisie(reglages)?.takeIf { it in cameras }, "Fiche de la caméra")
     }
+}
+
+/** Ouvre la fiche du catalogue du matériel choisi, s'il en a une. */
+@Composable
+private fun BoutonFiche(m: fr.cellule.core.Materiel?, libelle: String) {
+    if (m == null) return
+    var ouverte by remember { mutableStateOf(false) }
+    BoutonPlat(libelle, modifier = Modifier.padding(top = 6.dp)) { ouverte = true }
+    if (ouverte) FeuilleFiche(m) { ouverte = false }
 }
 
 @Composable
@@ -574,6 +585,7 @@ private fun CarteNumerique(reglages: Reglages, ouvrirCadre: () -> Unit) {
                 Spacer(Modifier.height(4.dp))
                 Text("Fiche : capteur ${it.valeur}", style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
+            BoutonFiche(camera, "Fiche de la caméra")
         }
     }
 }
@@ -626,6 +638,7 @@ private fun CarteObjectifs(reglages: Reglages) {
             Ligne("Ouverture", objectif.ouverture)
             Ligne("Couverture", objectif.couverture)
             Ligne("Monture", objectif.monture)
+            BoutonFiche(objectif, "Fiche de la série")
             if (objectif.silhouette == Silhouette.ANAMORPHIQUE) {
                 Text(
                     "Série anamorphique : règle le facteur de désanamorphose de la série (×1,3, ×1,5, ×1,8 ou ×2) dans le cadre de travail, d'après la fiche du fabricant.",

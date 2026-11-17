@@ -213,7 +213,7 @@ private fun EntreeCatalogue(m: Materiel, surClic: () -> Unit) {
 /* ── La fiche ─────────────────────────────────────────────────────────── */
 
 @Composable
-private fun FeuilleFiche(m: Materiel, onFermer: () -> Unit) {
+internal fun FeuilleFiche(m: Materiel, onFermer: () -> Unit) {
     val etat = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     val feminin = m.genre == GenreMateriel.CAMERA
     ModalBottomSheet(

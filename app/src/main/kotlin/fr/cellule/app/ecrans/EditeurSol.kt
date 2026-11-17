@@ -376,7 +376,7 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
                         )
                     } else {
                         ReglagesElement(
-                            e, plan, metres,
+                            e, plan, metres, reglages,
                             surChangement = { plan = plan.remplacer(it) },
                             surPositionSuivante = {
                                 val (dx, dy) = Sol.direction(e.rotation)
@@ -445,6 +445,7 @@ private fun ColumnScope.ReglagesElement(
     e: ElementSol,
     plan: PlanSol,
     metres: Boolean,
+    reglages: Reglages,
     surChangement: (ElementSol) -> Unit,
     surPositionSuivante: () -> Unit,
     surDupliquer: () -> Unit,
@@ -506,6 +507,11 @@ private fun ColumnScope.ReglagesElement(
             }, Modifier.fillMaxWidth()) { surChangement(e.copy(projecteur = it)) }
             Spacer(Modifier.height(6.dp))
             val choisi = MonMateriel.projecteur(e.projecteur)
+            if (choisi != null) {
+                var fiche by remember(cle) { mutableStateOf(false) }
+                BoutonPlat("Fiche du projecteur", modifier = Modifier.padding(bottom = 6.dp)) { fiche = true }
+                if (fiche) FeuilleFicheProjecteur(choisi, reglages) { fiche = false }
+            }
             if (choisi == null) {
                 LigneBoutons {
                     ChampReel(e.luxReference, "Lux", cle, Modifier.weight(1f)) { surChangement(e.copy(luxReference = it)) }

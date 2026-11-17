@@ -177,7 +177,7 @@ private const val DIRECTE = ""
 
 /** Choix de la source et de son éclairement de référence. */
 @Composable
-private fun ColumnScope.ChoixSource(source: SaisieSource, u: UnitesLumiere) {
+private fun ColumnScope.ChoixSource(source: SaisieSource, u: UnitesLumiere, reglages: Reglages) {
     val cles = listOf(DIRECTE) + MonMateriel.tousLesProjecteurs.map { it.identifiant }
     Deroulant("Source", cles, source.cle.takeIf { it in cles } ?: DIRECTE, { c ->
         if (c == DIRECTE) "Saisie directe" else MonMateriel.projecteur(c)?.let { MonMateriel.libelle(it) } ?: ""
@@ -222,6 +222,9 @@ private fun ColumnScope.ChoixSource(source: SaisieSource, u: UnitesLumiere) {
             if (!p.relu) "à relire" else null
         ).joinToString(" · ")
     )
+    var fiche by remember { mutableStateOf(false) }
+    BoutonPlat("Fiche du projecteur", modifier = Modifier.padding(top = 4.dp)) { fiche = true }
+    if (fiche) FeuilleFicheProjecteur(p, reglages) { fiche = false }
 }
 
 /** Distance (directe ou par les hauteurs), angle d'arrivée et pertes. */
@@ -271,7 +274,7 @@ private fun ChampNul(texte: String): Double = texte.trim().replace(',', '.').toD
 private fun OutilProjecteur(reglages: Reglages, source: SaisieSource, u: UnitesLumiere) {
     val reglage = reglageTournage(reglages, FiltresJson.lire(reglages.cineFiltres))
     Carte(titre = "Combien j'ai ici ?", sousTitre = "L'éclairement au sujet, et l'ouverture qu'il donne avec le réglage de ta caméra.") {
-        ChoixSource(source, u)
+        ChoixSource(source, u, reglages)
         Spacer(Modifier.height(Interligne))
         PositionSource(source, u, avecDistance = true)
     }
@@ -314,7 +317,7 @@ private fun OutilPlacer(reglages: Reglages, source: SaisieSource, u: UnitesLumie
     var tVoulu by remember { mutableStateOf(T_STOPS.minByOrNull { abs(it.exact - 2.8) } ?: T_STOPS.first()) }
     var largeur by remember { mutableStateOf("2") }
     Carte(titre = "Où le placer ?", sousTitre = "La distance pour tenir l'ouverture voulue, ou pour couvrir une largeur.") {
-        ChoixSource(source, u)
+        ChoixSource(source, u, reglages)
         Spacer(Modifier.height(Interligne))
         PositionSource(source, u, avecDistance = false)
         Spacer(Modifier.height(Interligne))
