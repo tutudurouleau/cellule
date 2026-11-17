@@ -48,7 +48,11 @@ enum class Silhouette(val genre: GenreMateriel) {
     PROJ_PANNEAU(GenreMateriel.PROJECTEUR),
     PROJ_TUBE(GenreMateriel.PROJECTEUR),
     PROJ_FRESNEL(GenreMateriel.PROJECTEUR),
-    PROJ_HMI(GenreMateriel.PROJECTEUR)
+    PROJ_HMI(GenreMateriel.PROJECTEUR),
+    PROJ_OUVERT(GenreMateriel.PROJECTEUR),
+    PROJ_DECOUPE(GenreMateriel.PROJECTEUR),
+    PROJ_BALLON(GenreMateriel.PROJECTEUR),
+    PROJ_PRATIQUE(GenreMateriel.PROJECTEUR)
 }
 
 enum class Disponibilite(val libelle: String) {

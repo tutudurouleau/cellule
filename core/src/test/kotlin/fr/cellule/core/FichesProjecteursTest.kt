@@ -22,7 +22,6 @@ class FichesProjecteursTest {
                 m.commentLUtiliser, m.atouts, m.limites, m.aRetenir
             ).forEach { assertTrue(it.isNotBlank(), "${m.nomComplet} : champ vide") }
             assertTrue(m.chiffresCles.size >= 2, "${m.nomComplet} : pas assez de chiffres clés")
-            assertTrue(m.configurations.isNotEmpty(), "${m.nomComplet} : aucune photométrie liée")
             assertTrue(m.annee in 1950..2026, "${m.nomComplet} : ${m.annee}")
         }
     }
@@ -46,9 +45,18 @@ class FichesProjecteursTest {
     }
 
     @Test
-    fun `les etageres ne sont pas vides`() {
+    fun `les etageres ne sont pas vides et le rayon est large`() {
         ETAGERES_PROJECTEURS.forEach { assertTrue(it.entrees.isNotEmpty(), it.titre) }
-        assertTrue(CATALOGUE_FICHES_PROJECTEURS.size >= 15)
+        assertTrue(CATALOGUE_FICHES_PROJECTEURS.size >= 60, "${CATALOGUE_FICHES_PROJECTEURS.size} fiches")
+        val avecPhotometrie = CATALOGUE_FICHES_PROJECTEURS.count { it.configurations.isNotEmpty() }
+        assertTrue(avecPhotometrie * 4 >= CATALOGUE_FICHES_PROJECTEURS.size * 3, "$avecPhotometrie fiches avec photométrie")
+    }
+
+    @Test
+    fun `une fiche sans photometrie dit pourquoi ou donne des reperes`() {
+        CATALOGUE_FICHES_PROJECTEURS.filter { it.configurations.isEmpty() }.forEach { f ->
+            assertTrue(f.chiffresCles.size >= 3, "${f.nomComplet} : pas assez de repères")
+        }
     }
 
     @Test

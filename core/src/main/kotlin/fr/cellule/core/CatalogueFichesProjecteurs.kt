@@ -8,11 +8,19 @@ package fr.cellule.core
  * pas été recoupée : « vers ».
  */
 
-val ETAGERES_PROJECTEURS: List<Etagere<FicheProjecteur>> = listOf(
-    Etagere("LED ponctuelles", ledPonctuelles()),
-    Etagere("Panneaux et tubes LED", panneauxEtTubes()),
-    Etagere("HMI et tungstène", hmiEtTungstene())
-)
+val ETAGERES_PROJECTEURS: List<Etagere<FicheProjecteur>> by lazy {
+    val panneauxEtTubes = panneauxEtTubes()
+    val hmiEtTungstene = hmiEtTungstene()
+    listOf(
+        Etagere("LED ponctuelles", ledPonctuelles() + ledPonctuellesSuite()),
+        Etagere("Fresnels LED, découpes et petites optiques", fresnelsEtDecoupes()),
+        Etagere("Panneaux LED et fluorescents", panneauxEtTubes.filter { it.silhouette != Silhouette.PROJ_TUBE } + panneauxSuite()),
+        Etagere("Tubes, barres et petites sources", panneauxEtTubes.filter { it.silhouette == Silhouette.PROJ_TUBE } + tubesSuite()),
+        Etagere("Ambiances : spacelights et ballons", ambiances()),
+        Etagere("HMI", hmiEtTungstene.filter { it.silhouette == Silhouette.PROJ_HMI } + hmiSuite()),
+        Etagere("Tungstène", hmiEtTungstene.filter { it.silhouette != Silhouette.PROJ_HMI } + tungsteneSuite())
+    )
+}
 
 val CATALOGUE_FICHES_PROJECTEURS: List<FicheProjecteur> by lazy { ETAGERES_PROJECTEURS.flatMap { it.entrees } }
 
@@ -117,16 +125,16 @@ private fun ledPonctuelles(): List<FicheProjecteur> = listOf(
             "300c" vaut "26 580 lux à 1 m (5600 K)",
             "Monture" vaut "Bowens"
         ),
-        histoire = "amaran est la marque d'entrée de gamme d'Aputure. Ses têtes ponctuelles 100d et 200d, puis leurs versions « S », et les modèles couleur comme le 300c, ont apporté la monture Bowens et la LED ponctuelle aux petits budgets.",
-        ficheTechnique = "Avec leur Hyper-Reflector : 100d, 39 500 lux à 1 m (nu : 4 300) ; 100d S, 34 600 ; 200d, 65 000 lux à 1 m (55°), 6 100 à 3 m ; 200d S, 55 800 lux à 1 m (26°) ; 300c, 26 580 lux à 1 m à 5600 K (nu : 9 370), couleur réglable.",
+        histoire = "amaran est la marque d'entrée de gamme d'Aputure. Ses têtes ponctuelles 100d et 200d, puis leurs versions « S », et les modèles couleur comme le 150c et le 300c, ont apporté la monture Bowens et la LED ponctuelle aux petits budgets.",
+        ficheTechnique = "Avec leur Hyper-Reflector : 100d, 39 500 lux à 1 m (nu : 4 300) ; 100d S, 34 600 ; 200d, 65 000 lux à 1 m (55°), 6 100 à 3 m ; 200d S, 55 800 lux à 1 m (26°) ; 150c, 15 610 lux à 1 m à 5600 K (≈ 63°) ; 300c, 26 580 lux à 1 m à 5600 K (nu : 9 370) — le 150c et le 300c sont réglables en couleur.",
         commentLUtiliser = "En face dans une boîte à lumière pour les entretiens, en contre, en débouchage. Le 300c pour les effets de couleur et les raccords de température.",
         atouts = "Le prix, le poids, et la compatibilité avec tous les accessoires Bowens.",
         limites = "Moins de puissance et de finition que les Light Storm ; à pleine puissance, la ventilation s'entend.",
         aRetenir = "Pour apprendre à éclairer, deux amaran et un grand cadre de diffusion font déjà un vrai plateau.",
-        configurations = listOf("cat-amaran-100d-hyper", "cat-amaran-100d-s-hyper", "cat-amaran-200d-hyper", "cat-amaran-200d-s-hyper", "cat-amaran-300c-hyper")
+        configurations = listOf("cat-amaran-100d-hyper", "cat-amaran-100d-s-hyper", "cat-amaran-150c-hyper", "cat-amaran-200d-hyper", "cat-amaran-200d-s-hyper", "cat-amaran-300c-hyper")
     ),
     FicheProjecteur(
-        nom = "Forza",
+        nom = "Forza 60, 300 et 500",
         fabricant = "Nanlite",
         annee = 2020,
         anneeApprox = true,

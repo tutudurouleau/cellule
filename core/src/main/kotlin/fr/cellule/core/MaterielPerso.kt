@@ -34,6 +34,9 @@ enum class FamilleProjecteur(val libelle: String) {
     OUVERT_TUNGSTENE("Ouvert tungstène (mandarine, blonde)"),
     HMI("HMI"),
     FLUO("Fluorescent"),
+    FRESNEL_LED("Fresnel LED"),
+    DECOUPE("Découpe"),
+    AMBIANCE("Ambiance (spacelight, ballon)"),
     AUTRE("Autre")
 }
 

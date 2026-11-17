@@ -257,6 +257,45 @@ private val ProjHmi = dessin("proj-hmi") {
     moveTo(6f, 15f); lineTo(3f, 15f); lineTo(3f, 31f); lineTo(30f, 31f); lineTo(30f, 27f); lineTo(33f, 27f)
 }
 
+/* Projecteur ouvert (mandarine, blonde) : petit boîtier, réflecteur court, volets écartés. */
+private val ProjOuvert = dessin("proj-ouvert") {
+    rectangle(11f, 10f, 21f, 20f)
+    moveTo(13f, 10f); lineTo(13f, 7f); lineTo(19f, 7f); lineTo(19f, 10f)
+    moveTo(21f, 8f); lineTo(27f, 6f); lineTo(27f, 24f); lineTo(21f, 22f)
+    trait(27f, 6f, 34f, 2f); trait(27f, 24f, 34f, 28f)
+    trait(16f, 20f, 16f, 29f); trait(16f, 29f, 11f, 31f); trait(16f, 29f, 21f, 31f)
+}
+
+/* Découpe : réflecteur ellipsoïdal à l'arrière, long tube d'objectif, couteaux. */
+private val ProjDecoupe = dessin("proj-decoupe") {
+    cercle(13f, 14f, 6f)
+    rectangle(19f, 11f, 38f, 17f)
+    rectangle(38f, 10f, 41f, 18f)
+    trait(23f, 8.5f, 23f, 11f); trait(23f, 17f, 23f, 19.5f)
+    trait(27f, 8.5f, 27f, 11f); trait(27f, 17f, 27f, 19.5f)
+    moveTo(10f, 22f); lineTo(30f, 22f)
+    trait(20f, 22f, 20f, 29f); trait(20f, 29f, 15f, 31f); trait(20f, 29f, 25f, 31f)
+}
+
+/* Ballon éclairant sur son mât, et sa lueur. */
+private val ProjBallon = dessin("proj-ballon") {
+    cercle(24f, 10f, 8f)
+    trait(24f, 18f, 24f, 29f); trait(24f, 29f, 19f, 31f); trait(24f, 29f, 29f, 31f)
+    trait(11f, 10f, 14f, 10f); trait(34f, 10f, 37f, 10f)
+    trait(14f, 2f, 16f, 4f); trait(34f, 2f, 32f, 4f)
+    trait(14f, 18f, 16f, 16f); trait(34f, 18f, 32f, 16f)
+}
+
+/* Ampoule de décor : globe, culot fileté, rayons. */
+private val ProjPratique = dessin("proj-pratique") {
+    cercle(24f, 12f, 8f)
+    rectangle(20.5f, 19.5f, 27.5f, 26f)
+    trait(20.5f, 22f, 27.5f, 22f); trait(20.5f, 24f, 27.5f, 24f)
+    trait(22.5f, 26f, 25.5f, 28f)
+    trait(11f, 12f, 14f, 12f); trait(34f, 12f, 37f, 12f)
+    trait(15f, 3f, 17f, 5f); trait(33f, 3f, 31f, 5f)
+}
+
 fun Silhouette.image(): ImageVector = when (this) {
     Silhouette.STUDIO -> Studio
     Silhouette.COMPACTE -> Compacte
@@ -277,4 +316,8 @@ fun Silhouette.image(): ImageVector = when (this) {
     Silhouette.PROJ_TUBE -> ProjTube
     Silhouette.PROJ_FRESNEL -> ProjFresnel
     Silhouette.PROJ_HMI -> ProjHmi
+    Silhouette.PROJ_OUVERT -> ProjOuvert
+    Silhouette.PROJ_DECOUPE -> ProjDecoupe
+    Silhouette.PROJ_BALLON -> ProjBallon
+    Silhouette.PROJ_PRATIQUE -> ProjPratique
 }

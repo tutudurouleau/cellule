@@ -15,7 +15,9 @@ package fr.cellule.core
 
 private fun m(spot: Boolean, d: Double, lux: Double) = MesureProjecteur(spot, d, lux)
 
-val PROJECTEURS_CATALOGUE: List<Projecteur> = listOf(
+val PROJECTEURS_CATALOGUE: List<Projecteur> by lazy { PREMIER_RELEVE + SECOND_RELEVE }
+
+private val PREMIER_RELEVE: List<Projecteur> = listOf(
     Projecteur(
         "cat-aputure-600d-pro-hyper", "LS 600d Pro · Hyper-Reflector", "Aputure", FamilleProjecteur.LED_PONCTUELLE,
         puissanceW = 720.0, temperatureK = 5600, angleFlood = 55.0,
