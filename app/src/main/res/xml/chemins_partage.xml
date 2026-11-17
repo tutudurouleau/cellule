@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Ce que l'appli accepte de partager : les PDF qu'elle vient de fabriquer,
-     rangés dans son cache. Rien d'autre n'est exposé. -->
+<!-- Ce que l'appli accepte de partager : les PDF et les images de plans au sol
+     qu'elle vient de fabriquer, rangés dans son cache. Rien d'autre n'est exposé. -->
 <paths>
     <cache-path name="pdf" path="pdf/" />
+    <cache-path name="images" path="images/" />
 </paths>

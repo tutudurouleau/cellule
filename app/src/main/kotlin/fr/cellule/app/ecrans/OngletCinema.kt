@@ -162,7 +162,7 @@ fun EcranOngletCinema(reglages: Reglages, etat: EtatApplication, cinema: DepotCi
         ) {
             when (vue) {
                 VueCinema.PLANS -> CarnetCinemaEcran(cinema, journal, reglages)
-                VueCinema.LUMIERE -> PageLumiere(reglages)
+                VueCinema.LUMIERE -> PageLumiere(reglages, cinema)
                 else -> PageMateriel(reglages)
             }
         }

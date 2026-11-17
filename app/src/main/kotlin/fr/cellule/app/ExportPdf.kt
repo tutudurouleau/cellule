@@ -13,6 +13,7 @@ import android.text.StaticLayout
 import android.text.TextPaint
 import androidx.core.content.FileProvider
 import fr.cellule.app.ecrans.PhotosPlans
+import fr.cellule.app.sol.ImageSol
 import fr.cellule.app.mesure.TuilesOsm
 import fr.cellule.app.mesure.reseauDisponible
 import fr.cellule.core.Boussole
@@ -21,6 +22,7 @@ import fr.cellule.core.CarnetCinema
 import fr.cellule.core.CarnetCinemaDonnees
 import fr.cellule.core.JourCinema
 import fr.cellule.core.Plan
+import fr.cellule.core.PlanSol
 import fr.cellule.core.Tuiles
 import fr.cellule.core.nombreCourt
 import java.io.File
@@ -364,8 +366,44 @@ object ExportPdf {
             val enTete = listOfNotNull(titre.takeIf { it.isNotBlank() }, plan.jourId?.let { nomDuJour[it] }).joinToString(" › ")
             pagePlan(contexte, r, plan, enTete, 1000, avecCarte)
         }
+
+        /* ── Les plans au sol des jours du dossier ─────────────────────── */
+        PlansSol.plans.filter { s -> jours.any { it.identifiant == s.jourId } }.forEach { s ->
+            val enTete = listOfNotNull(titre.takeIf { it.isNotBlank() }, s.jourId?.let { nomDuJour[it] }).joinToString(" › ")
+            pagePlanSol(contexte, r, s, enTete, metres = true)
+        }
         r.fermer()
         val sortie = fichier(contexte, "Dossier $titre $sousTitre")
+        sortie.outputStream().use { document.writeTo(it) }
+        document.close()
+        return sortie
+    }
+
+    /* ── Plans au sol ───────────────────────────────────────────────────── */
+
+    private fun pagePlanSol(contexte: Context, r: Redaction, plan: PlanSol, enTete: String, metres: Boolean) {
+        r.nouvellePage()
+        if (enTete.isNotBlank()) r.texte(enTete, pinceau(8.5f, GRIS), apres = 4f)
+        r.texte("PLAN AU SOL", pinceau(8.5f, ACCENT, gras = true), apres = 2f)
+        r.texte(plan.nom, pinceau(18f, ENCRE, gras = true), apres = 8f)
+        val image = ImageSol.rendre(contexte, plan, 1800, 1300, metres, plan.nom, enTete)
+        val h = UTILE * image.height / image.width
+        r.toile.drawBitmap(image, null, RectF(MARGE, r.y, MARGE + UTILE, r.y + h), Paint(Paint.FILTER_BITMAP_FLAG))
+        image.recycle()
+        r.y += h + 12f
+        ImageSol.infos(plan).forEach { (intitule, valeur) ->
+            if (r.reste() < 30f) r.nouvellePage()
+            r.ligne(intitule, valeur)
+        }
+    }
+
+    /** Le PDF d'un plan au sol seul. Bloquant : à appeler hors du fil principal. */
+    fun planSol(contexte: Context, plan: PlanSol, enTete: String, metres: Boolean): File {
+        val document = PdfDocument()
+        val r = Redaction(document, "Cellule — plan au sol")
+        pagePlanSol(contexte, r, plan, enTete, metres)
+        r.fermer()
+        val sortie = fichier(contexte, "Plan au sol " + plan.nom)
         sortie.outputStream().use { document.writeTo(it) }
         document.close()
         return sortie

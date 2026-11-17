@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import fr.cellule.app.CadreJson
 import fr.cellule.app.Corps
+import fr.cellule.app.DepotCinema
 import fr.cellule.app.Detail
 import fr.cellule.app.FiltresJson
 import fr.cellule.app.Gouttiere
@@ -63,6 +64,7 @@ import kotlin.math.tan
  */
 
 enum class OutilLumiere(val libelle: String) {
+    PLAN_SOL("Plan au sol"),
     PROJECTEUR("Combien j'ai"),
     PLACER("Où le placer"),
     RAPPORTS("Rapports"),
@@ -127,7 +129,7 @@ private class SaisieSource {
 }
 
 @Composable
-fun PageLumiere(reglages: Reglages) {
+fun PageLumiere(reglages: Reglages, cinema: DepotCinema) {
     val outil = runCatching { OutilLumiere.valueOf(reglages.lumiereOutil) }.getOrDefault(OutilLumiere.PROJECTEUR)
     val u = UnitesLumiere(reglages.lumiereMetres, reglages.lumiereLux)
     val source = remember { SaisieSource() }
@@ -156,6 +158,7 @@ fun PageLumiere(reglages: Reglages) {
     }
 
     when (outil) {
+        OutilLumiere.PLAN_SOL -> ListePlansSol(reglages, cinema, null, tous = true)
         OutilLumiere.PROJECTEUR -> OutilProjecteur(reglages, source, u)
         OutilLumiere.PLACER -> OutilPlacer(reglages, source, u)
         OutilLumiere.RAPPORTS -> OutilRapports(u)

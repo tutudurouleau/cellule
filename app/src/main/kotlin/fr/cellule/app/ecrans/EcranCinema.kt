@@ -398,6 +398,8 @@ private fun PageJour(
         }
     }
 
+    ListePlansSol(reglages, cinema, jour.identifiant, tous = false)
+
     Carte(titre = "Le jour") {
         ChoixSegmente(TypeJour.entries.toList(), jour.type, { it.libelle }) { cinema.modifierJour(jour.copy(type = it)) }
         Spacer(Modifier.height(Interligne))
