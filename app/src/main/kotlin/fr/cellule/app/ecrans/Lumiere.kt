@@ -178,10 +178,9 @@ private const val DIRECTE = ""
 /** Choix de la source et de son éclairement de référence. */
 @Composable
 private fun ColumnScope.ChoixSource(source: SaisieSource, u: UnitesLumiere) {
-    val avecMesure = MonMateriel.projecteurs
-    val cles = listOf(DIRECTE) + avecMesure.map { it.identifiant }
+    val cles = listOf(DIRECTE) + MonMateriel.tousLesProjecteurs.map { it.identifiant }
     Deroulant("Source", cles, source.cle.takeIf { it in cles } ?: DIRECTE, { c ->
-        if (c == DIRECTE) "Saisie directe" else "★ " + (MonMateriel.projecteur(c)?.nomComplet ?: "")
+        if (c == DIRECTE) "Saisie directe" else MonMateriel.projecteur(c)?.let { MonMateriel.libelle(it) } ?: ""
     }, Modifier.fillMaxWidth()) { source.cle = it }
     Spacer(Modifier.height(6.dp))
     val p = source.projecteur()
@@ -219,7 +218,8 @@ private fun ColumnScope.ChoixSource(source: SaisieSource, u: UnitesLumiere) {
         listOfNotNull(
             if (m.spot) "serré" else "ouvert",
             p.angle(m.spot)?.let { "faisceau " + n(it, 0) + "°" },
-            p.source
+            p.source,
+            if (!p.relu) "à relire" else null
         ).joinToString(" · ")
     )
 }
@@ -442,16 +442,23 @@ private fun OutilCouleur() {
             ChoixSegmente(listOf("Lee", "Rosco"), marque, { it }) { marque = it }
             Spacer(Modifier.height(6.dp))
             Mireds.combinaisons(s, d, marque).forEach { k ->
+                val pertes = k.gelatines.map { it.perteDiaphs }
+                val perte = if (pertes.all { it != null }) pertes.sumOf { it!! } else null
+                val aRelire = k.gelatines.any { !it.relue }
                 Ligne(
                     k.gelatines.joinToString(" + ") { it.reference + " " + it.nom },
                     n(k.kelvinsObtenus, 0) + " K",
-                    (if (k.mireds > 0) "+" else "") + n(k.mireds, 0) + " mireds · reste " + (if (k.residuel > 0) "+" else "") + n(k.residuel, 0)
+                    listOfNotNull(
+                        (if (k.mireds > 0) "+" else "") + n(k.mireds, 0) + " mireds · reste " + (if (k.residuel > 0) "+" else "") + n(k.residuel, 0),
+                        perte?.let { "coûte " + n(it, 1) + " diaph" } ?: "perte : voir la fiche",
+                        if (aRelire) "valeur à relire" else null
+                    ).joinToString(" · ")
                 )
             }
             Text(
-                "Valeurs de décalage à relire sur les fiches Lee et Rosco. Chaque gélatine coûte aussi de la lumière : sa transmission est sur sa fiche.",
+                "Décalages et transmissions relevés sur les fiches Lee et Rosco et chez leurs distributeurs ; « à relire » quand la valeur n'a pas été retrouvée.",
                 style = Detail,
-                color = MaterialTheme.colorScheme.error,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(top = 6.dp)
             )
         }
@@ -582,11 +589,11 @@ private fun OutilElectricite(reglages: Reglages) {
         Spacer(Modifier.height(6.dp))
         Deroulant("Circuit", circuits, circuit, { it.nom + " · " + n(it.puissance / 1000, 1) + " kVA" }, Modifier.fillMaxWidth()) { circuitNom = it.nom }
         Spacer(Modifier.height(Interligne))
-        val avecPuissance = MonMateriel.projecteurs.filter { it.puissanceW != null }
+        val avecPuissance = MonMateriel.tousLesProjecteurs.filter { it.puissanceW != null }
         if (avecPuissance.isNotEmpty()) {
             Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 avecPuissance.forEach { p ->
-                    Pastille("★ " + p.nom + " · " + n(p.puissanceW!!, 0) + " W") { charges.add(Charge(p.nomComplet, p.puissanceW!!, 1)) }
+                    Pastille(MonMateriel.libelle(p) + " · " + n(p.puissanceW!!, 0) + " W") { charges.add(Charge(p.nomComplet, p.puissanceW!!, 1)) }
                 }
             }
             Spacer(Modifier.height(6.dp))

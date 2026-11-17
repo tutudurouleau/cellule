@@ -8,6 +8,7 @@ import androidx.compose.runtime.setValue
 import fr.cellule.core.CameraPerso
 import fr.cellule.core.FamilleProjecteur
 import fr.cellule.core.MesureProjecteur
+import fr.cellule.core.PROJECTEURS_CATALOGUE
 import fr.cellule.core.Projecteur
 import fr.cellule.core.SeriePerso
 import fr.cellule.core.ZoneUtile
@@ -61,7 +62,14 @@ object MonMateriel {
 
     fun camera(cle: String): CameraPerso? = cameras.firstOrNull { cle(it) == cle }
     fun serie(cle: String): SeriePerso? = series.firstOrNull { cle(it) == cle }
-    fun projecteur(identifiant: String): Projecteur? = projecteurs.firstOrNull { it.identifiant == identifiant }
+    /** Un projecteur à soi, ou du catalogue. */
+    fun projecteur(identifiant: String): Projecteur? =
+        projecteurs.firstOrNull { it.identifiant == identifiant } ?: PROJECTEURS_CATALOGUE.firstOrNull { it.identifiant == identifiant }
+
+    /** Tous les projecteurs qu'on peut choisir : les siens d'abord, puis le catalogue. */
+    val tousLesProjecteurs: List<Projecteur> get() = projecteurs + PROJECTEURS_CATALOGUE
+
+    fun libelle(p: Projecteur): String = (if (p.perso) "★ " else "") + p.nomComplet
 
     fun enregistrer(c: CameraPerso) {
         cameras = if (cameras.any { it.identifiant == c.identifiant }) cameras.map { if (it.identifiant == c.identifiant) c else it } else cameras + c

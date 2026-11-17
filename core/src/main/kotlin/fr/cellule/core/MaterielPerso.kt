@@ -58,7 +58,9 @@ data class Projecteur(
     val mesures: List<MesureProjecteur> = emptyList(),
     val source: String = "",
     val perso: Boolean = false,
-    val notes: String = ""
+    val notes: String = "",
+    /** Faux quand les sources publiées se contredisent : l'appli affiche « à relire ». */
+    val relu: Boolean = true
 ) {
     val nomComplet: String
         get() = if (fabricant.isBlank() || nom.startsWith(fabricant, ignoreCase = true)) nom else "$fabricant $nom"

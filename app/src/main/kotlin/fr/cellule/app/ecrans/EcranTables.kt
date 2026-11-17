@@ -34,7 +34,7 @@ import fr.cellule.core.libelleDiaphs
 import fr.cellule.core.libelleOuverture
 
 /** Les tables de l'exposition, et celles du développement. */
-private enum class RayonTables(val libelle: String) { EXPOSITION("Exposition"), DEVELOPPEMENT("Développement") }
+private enum class RayonTables(val libelle: String) { EXPOSITION("Exposition"), DEVELOPPEMENT("Développement"), FORMULES("Formules") }
 
 @Composable
 fun EcranTables() {
@@ -47,6 +47,10 @@ fun EcranTables() {
         }
         if (rayon == RayonTables.DEVELOPPEMENT) {
             TablesDeveloppement()
+            return@Column
+        }
+        if (rayon == RayonTables.FORMULES) {
+            TablesFormules()
             return@Column
         }
 

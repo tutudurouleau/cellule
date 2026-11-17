@@ -495,9 +495,9 @@ private fun ColumnScope.ReglagesElement(
             ChampLongueur(e.hauteur, "Hauteur du visage", metres, cle, Modifier.fillMaxWidth()) { surChangement(e.copy(hauteur = it)) }
         }
         TypeElement.PROJECTEUR -> {
-            val cles = listOf("") + MonMateriel.projecteurs.map { it.identifiant }
+            val cles = listOf("") + MonMateriel.tousLesProjecteurs.map { it.identifiant }
             Deroulant("Projecteur", cles, e.projecteur.takeIf { it in cles } ?: "", { c ->
-                if (c.isBlank()) "Saisie directe" else "★ " + (MonMateriel.projecteur(c)?.nomComplet ?: "")
+                if (c.isBlank()) "Saisie directe" else MonMateriel.projecteur(c)?.let { MonMateriel.libelle(it) } ?: ""
             }, Modifier.fillMaxWidth()) { surChangement(e.copy(projecteur = it)) }
             Spacer(Modifier.height(6.dp))
             val choisi = MonMateriel.projecteur(e.projecteur)

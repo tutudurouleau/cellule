@@ -59,7 +59,9 @@ data class ZoneUtile(
     val nom: String,
     val largeurMm: Double,
     val hauteurMm: Double,
-    val source: String
+    val source: String,
+    /** Faux tant que la valeur n'a pas été retrouvée sur une fiche publiée : l'appli affiche « à relire ». */
+    val relue: Boolean = true
 ) {
     val ratio: Double get() = largeurMm / hauteurMm
     val dimensions: String get() = nombreCourt(largeurMm, 2) + " × " + nombreCourt(hauteurMm, 2) + " mm"
@@ -75,8 +77,8 @@ val FORMATS_PELLICULE: List<ZoneUtile> = listOf(
     ZoneUtile("35 mm 2 perfs (Techniscope)", 22.05, 9.47, ASC),
     ZoneUtile("Super 16", 12.52, 7.41, ASC),
     ZoneUtile("16 mm standard", 10.26, 7.49, ASC),
-    ZoneUtile("65 mm 5 perfs", 52.48, 23.01, ASC),
-    ZoneUtile("Super 8", 5.79, 4.01, "Kodak, dimensions de la fenêtre Super 8")
+    ZoneUtile("65 mm 5 perfs", 52.15, 23.07, "Kodak, « Film Format Choices »"),
+    ZoneUtile("Super 8", 5.79, 4.01, "Kodak, « Film Format Choices »")
 )
 
 /** Les modes de capteur d'une caméra du catalogue (clé : son [Camera.nom]). */
@@ -84,6 +86,8 @@ data class ModesCamera(val camera: String, val modes: List<ZoneUtile>)
 
 private const val ARRI = "ARRI, fiche technique"
 private const val ARRI_ALEV3 = "ARRI, fiche technique (capteur ALEV III)"
+private const val ARRI_UHD = "ARRI : 3840 × 2160 photosites de 8,25 µm"
+private const val A_RELIRE = "valeur courante, pas encore retrouvée sur la fiche du fabricant"
 
 val MODES_CAPTEUR: List<ModesCamera> = listOf(
     ModesCamera(
@@ -105,14 +109,14 @@ val MODES_CAPTEUR: List<ModesCamera> = listOf(
     ModesCamera(
         "ALEXA LF", listOf(
             ZoneUtile("Open Gate 4,5K", 36.70, 25.54, ARRI),
-            ZoneUtile("16:9 UHD", 31.68, 17.82, ARRI),
+            ZoneUtile("16:9 UHD", 31.68, 17.82, ARRI_UHD),
             ZoneUtile("2,39:1 4,5K", 36.70, 15.31, ARRI)
         )
     ),
     ModesCamera(
         "ALEXA Mini LF", listOf(
             ZoneUtile("Open Gate 4,5K", 36.70, 25.54, ARRI),
-            ZoneUtile("16:9 UHD", 31.68, 17.82, ARRI),
+            ZoneUtile("16:9 UHD", 31.68, 17.82, ARRI_UHD),
             ZoneUtile("2,39:1 4,5K", 36.70, 15.31, ARRI)
         )
     ),
@@ -124,14 +128,14 @@ val MODES_CAPTEUR: List<ModesCamera> = listOf(
     ),
     ModesCamera("MONSTRO 8K VV", listOf(ZoneUtile("8K VV plein capteur", 40.96, 21.60, "RED, fiche technique"))),
     ModesCamera("V-RAPTOR", listOf(ZoneUtile("8K VV plein capteur", 40.96, 21.60, "RED, fiche technique"))),
-    ModesCamera("KOMODO (et Komodo-X)", listOf(ZoneUtile("6K 17:9", 27.03, 14.26, "RED, fiche technique"))),
-    ModesCamera("VENICE et VENICE 2", listOf(ZoneUtile("6K 3:2 plein format (VENICE)", 35.9, 24.0, "Sony, fiche technique"))),
+    ModesCamera("KOMODO (et Komodo-X)", listOf(ZoneUtile("6K 17:9", 27.03, 14.26, A_RELIRE, relue = false))),
+    ModesCamera("VENICE et VENICE 2", listOf(ZoneUtile("6K 3:2 plein format (VENICE)", 35.9, 24.0, A_RELIRE, relue = false))),
     ModesCamera("EOS 5D Mark II", listOf(ZoneUtile("Plein capteur 3:2", 36.0, 24.0, "Canon, fiche technique"))),
-    ModesCamera("EOS C300", listOf(ZoneUtile("Super 35 utile", 24.6, 13.8, "Canon, fiche technique"))),
+    ModesCamera("EOS C300", listOf(ZoneUtile("Super 35 utile", 24.6, 13.8, A_RELIRE, relue = false))),
     ModesCamera(
         "Pocket 4K et 6K", listOf(
-            ZoneUtile("Pocket 4K, 4K DCI", 18.96, 10.00, "Blackmagic Design, fiche technique"),
-            ZoneUtile("Pocket 6K, 6K", 23.10, 12.99, "Blackmagic Design, fiche technique")
+            ZoneUtile("Pocket 4K, 4K DCI", 18.96, 10.00, A_RELIRE, relue = false),
+            ZoneUtile("Pocket 6K, 6K", 23.10, 12.99, A_RELIRE, relue = false)
         )
     ),
     ModesCamera("URSA Mini Pro 12K", listOf(ZoneUtile("12K 17:9", 27.03, 14.25, "Blackmagic Design, fiche technique")))

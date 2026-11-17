@@ -132,37 +132,45 @@ data class Gelatine(
     /** Fraction de la correction pleine : 1, 1/2, 1/4, 1/8. */
     val fraction: String = "",
     val source: String,
-    val relue: Boolean = false
+    /** Le décalage a été retrouvé sur une fiche publiée (fabricant ou distributeur). */
+    val relue: Boolean = false,
+    /** Part de la lumière transmise (0 à 1), quand elle est publiée. */
+    val transmission: Double? = null
 ) {
     val libelle: String get() = "$marque $reference $nom"
+
+    /** Ce que la gélatine coûte, en diaphs, quand sa transmission est publiée. */
+    val perteDiaphs: Double? get() = transmission?.let { -log2(it) }
 }
 
-private const val LEE = "Lee Filters, décalage en mireds publié"
-private const val ROSCO = "Rosco Cinegel, décalage en mireds publié"
+private const val LEE = "Lee Filters, fiche du filtre et distributeurs"
+private const val ROSCO = "Rosco Cinegel, fiche du filtre et distributeurs"
+private const val LEE_A_RELIRE = "Lee Filters — valeur courante, pas retrouvée sur la fiche"
+private const val ROSCO_A_RELIRE = "Rosco — valeur courante, pas retrouvée sur la fiche"
 
 val GELATINES: List<Gelatine> = listOf(
-    Gelatine("Lee", "204", "Full CT Orange", FamilleGelatine.VERS_CHAUD, 159.0, "1", LEE),
-    Gelatine("Lee", "205", "1/2 CT Orange", FamilleGelatine.VERS_CHAUD, 109.0, "1/2", LEE),
-    Gelatine("Lee", "206", "1/4 CT Orange", FamilleGelatine.VERS_CHAUD, 64.0, "1/4", LEE),
-    Gelatine("Lee", "223", "1/8 CT Orange", FamilleGelatine.VERS_CHAUD, 26.0, "1/8", LEE),
-    Gelatine("Lee", "201", "Full CT Blue", FamilleGelatine.VERS_FROID, -137.0, "1", LEE),
-    Gelatine("Lee", "202", "1/2 CT Blue", FamilleGelatine.VERS_FROID, -78.0, "1/2", LEE),
-    Gelatine("Lee", "203", "1/4 CT Blue", FamilleGelatine.VERS_FROID, -35.0, "1/4", LEE),
-    Gelatine("Lee", "218", "1/8 CT Blue", FamilleGelatine.VERS_FROID, -12.0, "1/8", LEE),
+    Gelatine("Lee", "204", "Full CT Orange", FamilleGelatine.VERS_CHAUD, 159.0, "1", LEE, relue = true, transmission = 0.554),
+    Gelatine("Lee", "205", "1/2 CT Orange", FamilleGelatine.VERS_CHAUD, 109.0, "1/2", LEE, relue = true),
+    Gelatine("Lee", "206", "1/4 CT Orange", FamilleGelatine.VERS_CHAUD, 64.0, "1/4", LEE, relue = true),
+    Gelatine("Lee", "223", "1/8 CT Orange", FamilleGelatine.VERS_CHAUD, 26.0, "1/8", LEE, relue = true),
+    Gelatine("Lee", "201", "Full CT Blue", FamilleGelatine.VERS_FROID, -137.0, "1", LEE, relue = true, transmission = 0.34),
+    Gelatine("Lee", "202", "1/2 CT Blue", FamilleGelatine.VERS_FROID, -78.0, "1/2", LEE, relue = true),
+    Gelatine("Lee", "203", "1/4 CT Blue", FamilleGelatine.VERS_FROID, -35.0, "1/4", LEE_A_RELIRE),
+    Gelatine("Lee", "218", "1/8 CT Blue", FamilleGelatine.VERS_FROID, -12.0, "1/8", LEE_A_RELIRE),
     Gelatine("Lee", "244", "Plus Green", FamilleGelatine.PLUS_VERT, null, "1", "Lee Filters"),
     Gelatine("Lee", "245", "1/2 Plus Green", FamilleGelatine.PLUS_VERT, null, "1/2", "Lee Filters"),
     Gelatine("Lee", "246", "1/4 Plus Green", FamilleGelatine.PLUS_VERT, null, "1/4", "Lee Filters"),
     Gelatine("Lee", "247", "Minus Green", FamilleGelatine.MOINS_VERT, null, "1", "Lee Filters"),
     Gelatine("Lee", "248", "1/2 Minus Green", FamilleGelatine.MOINS_VERT, null, "1/2", "Lee Filters"),
     Gelatine("Lee", "249", "1/4 Minus Green", FamilleGelatine.MOINS_VERT, null, "1/4", "Lee Filters"),
-    Gelatine("Rosco", "3407", "Full CTO", FamilleGelatine.VERS_CHAUD, 167.0, "1", ROSCO),
-    Gelatine("Rosco", "3408", "1/2 CTO", FamilleGelatine.VERS_CHAUD, 81.0, "1/2", ROSCO),
-    Gelatine("Rosco", "3409", "1/4 CTO", FamilleGelatine.VERS_CHAUD, 42.0, "1/4", ROSCO),
-    Gelatine("Rosco", "3410", "1/8 CTO", FamilleGelatine.VERS_CHAUD, 20.0, "1/8", ROSCO),
-    Gelatine("Rosco", "3202", "Full CTB", FamilleGelatine.VERS_FROID, -131.0, "1", ROSCO),
-    Gelatine("Rosco", "3204", "1/2 CTB", FamilleGelatine.VERS_FROID, -68.0, "1/2", ROSCO),
-    Gelatine("Rosco", "3208", "1/4 CTB", FamilleGelatine.VERS_FROID, -30.0, "1/4", ROSCO),
-    Gelatine("Rosco", "3216", "1/8 CTB", FamilleGelatine.VERS_FROID, -12.0, "1/8", ROSCO),
+    Gelatine("Rosco", "3407", "Full CTO", FamilleGelatine.VERS_CHAUD, 167.0, "1", ROSCO, relue = true, transmission = 0.47),
+    Gelatine("Rosco", "3408", "1/2 CTO", FamilleGelatine.VERS_CHAUD, 81.0, "1/2", ROSCO, relue = true, transmission = 0.73),
+    Gelatine("Rosco", "3409", "1/4 CTO", FamilleGelatine.VERS_CHAUD, 42.0, "1/4", ROSCO, relue = true, transmission = 0.81),
+    Gelatine("Rosco", "3410", "1/8 CTO", FamilleGelatine.VERS_CHAUD, 20.0, "1/8", ROSCO, relue = true, transmission = 0.92),
+    Gelatine("Rosco", "3202", "Full CTB", FamilleGelatine.VERS_FROID, -131.0, "1", ROSCO, relue = true, transmission = 0.36),
+    Gelatine("Rosco", "3204", "1/2 CTB", FamilleGelatine.VERS_FROID, -68.0, "1/2", ROSCO, relue = true, transmission = 0.52),
+    Gelatine("Rosco", "3208", "1/4 CTB", FamilleGelatine.VERS_FROID, -30.0, "1/4", ROSCO_A_RELIRE),
+    Gelatine("Rosco", "3216", "1/8 CTB", FamilleGelatine.VERS_FROID, -12.0, "1/8", ROSCO_A_RELIRE),
     Gelatine("Rosco", "3304", "Tough Plusgreen", FamilleGelatine.PLUS_VERT, null, "1", "Rosco Cinegel"),
     Gelatine("Rosco", "3315", "1/2 Tough Plusgreen", FamilleGelatine.PLUS_VERT, null, "1/2", "Rosco Cinegel"),
     Gelatine("Rosco", "3316", "1/4 Tough Plusgreen", FamilleGelatine.PLUS_VERT, null, "1/4", "Rosco Cinegel"),
