@@ -112,6 +112,19 @@ class Reglages(contexte: Context) {
     var cineObjectif by TextePref(prefs, "cine_objectif", "")
     /** Vrai : le viseur et la photo ne montrent que le cadre de la focale. Faux : repérage, image entière et cadres. */
     var cineRecadre by BooleenPref(prefs, "cine_recadre", true)
+    /* ── La Lumière ─────────────────────────────────────────────────────── */
+
+    var lumiereOutil by TextePref(prefs, "lumiere_outil", "PROJECTEUR")
+    /** Vrai : mètres ; faux : pieds. */
+    var lumiereMetres by BooleenPref(prefs, "lumiere_metres", true)
+    /** Vrai : lux ; faux : foot-candles. */
+    var lumiereLux by BooleenPref(prefs, "lumiere_lux", true)
+    var lumiereRegion by TextePref(prefs, "lumiere_region", "EUROPE")
+    /** Fréquence du secteur, 50 ou 60 Hz. */
+    var cineSecteur by ReelPref(prefs, "cine_secteur", 50.0)
+    /** Avertir dans le viseur quand cadence et obturateur risquent le battement. */
+    var cineAlerteScintillement by BooleenPref(prefs, "cine_alerte_scintillement", true)
+
     /** La vue ouverte dans l'onglet Cinéma. */
     var cineVue by TextePref(prefs, "cine_vue", "VISEUR")
 

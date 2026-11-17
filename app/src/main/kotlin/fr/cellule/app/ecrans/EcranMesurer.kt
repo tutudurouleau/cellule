@@ -106,6 +106,9 @@ import fr.cellule.core.libelleOuverture
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import fr.cellule.core.Cadreur
+import fr.cellule.core.nombreCourt
+import fr.cellule.core.VerdictScintillement
+import fr.cellule.core.Scintillement
 import kotlinx.coroutines.delay
 import androidx.compose.ui.graphics.graphicsLayer
 import kotlinx.coroutines.withContext
@@ -622,13 +625,16 @@ fun EcranMesurer(
                     }
                     /* Au cinéma, l'état tient sur cette ligne, de hauteur fixe : un
                        message qui apparaît ne doit jamais faire bouger le viseur. */
-                    val etatCine = if (tournage) avisCapture.ifBlank { lecture.etat } else ""
+                    val alerteBattement = if (tournage && reglages.cineAlerteScintillement &&
+                        Scintillement.verdict(reglageCine.cadence, reglageCine.angle, reglages.cineSecteur) == VerdictScintillement.RISQUE
+                    ) "battement possible sur secteur ${nombreCourt(reglages.cineSecteur, 0)} Hz" else ""
+                    val etatCine = if (tournage) avisCapture.ifBlank { lecture.etat.ifBlank { alerteBattement } } else ""
                     Text(
                         if (etatCine.isNotBlank()) lecture.provenance + " · " + etatCine else lecture.provenance,
                         style = Detail,
                         maxLines = 1,
                         overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
-                        color = if (tournage && (avisCapture.isNotBlank() || (lecture.alerte && etatCine.isNotBlank())))
+                        color = if (tournage && (avisCapture.isNotBlank() || (lecture.alerte && etatCine.isNotBlank()) || (alerteBattement.isNotBlank() && etatCine == alerteBattement)))
                             MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }

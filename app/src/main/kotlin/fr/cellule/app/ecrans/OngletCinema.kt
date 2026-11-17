@@ -68,7 +68,7 @@ import kotlin.math.abs
  * caméra, objectifs) qui règle le cadre du viseur.
  */
 
-enum class VueCinema(val libelle: String) { VISEUR("Viseur"), PLANS("Plans"), MATERIEL("Matériel") }
+enum class VueCinema(val libelle: String) { VISEUR("Viseur"), PLANS("Plans"), LUMIERE("Lumière"), MATERIEL("Matériel") }
 
 private const val AUCUNE = "Aucune"
 
@@ -162,6 +162,7 @@ fun EcranOngletCinema(reglages: Reglages, etat: EtatApplication, cinema: DepotCi
         ) {
             when (vue) {
                 VueCinema.PLANS -> CarnetCinemaEcran(cinema, journal, reglages)
+                VueCinema.LUMIERE -> PageLumiere(reglages)
                 else -> PageMateriel(reglages)
             }
         }
