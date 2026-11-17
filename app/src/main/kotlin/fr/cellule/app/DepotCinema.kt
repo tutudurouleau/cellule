@@ -70,6 +70,11 @@ class DepotCinema(contexte: Context) {
 
     private val etat = mutableStateOf(charger())
 
+    init {
+        /* Le matériel à soi voyage avec le carnet Cinéma. */
+        MonMateriel.charger(contexte)
+    }
+
     val donnees: CarnetCinemaDonnees get() = etat.value
     val plans: List<Plan> get() = etat.value.plans
 
@@ -125,8 +130,9 @@ class DepotCinema(contexte: Context) {
         val avant = etat.value
         val apres = CarnetCinema.fusionner(avant, lire(objet))
         poser(apres)
+        val materiel = objet.optJSONObject("materiel")?.let { MonMateriel.importer(it) } ?: 0
         return (apres.projets.size - avant.projets.size) + (apres.jours.size - avant.jours.size) +
-            (apres.plans.size - avant.plans.size)
+            (apres.plans.size - avant.plans.size) + materiel
     }
 
     private fun charger(): CarnetCinemaDonnees = try {
@@ -270,5 +276,6 @@ class DepotCinema(contexte: Context) {
         val liens = JSONArray()
         d.liens.forEach { liens.put(JSONObject().put("vue", it.vueId).put("projet", it.projetId)) }
         return JSONObject().put("projets", projets).put("jours", jours).put("plans", plans).put("liens", liens)
+            .put("materiel", MonMateriel.enJson())
     }
 }

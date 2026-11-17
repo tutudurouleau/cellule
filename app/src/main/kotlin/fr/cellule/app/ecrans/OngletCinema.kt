@@ -41,6 +41,9 @@ import fr.cellule.app.EtatApplication
 import fr.cellule.app.Gouttiere
 import fr.cellule.app.Interligne
 import fr.cellule.app.Reglages
+import fr.cellule.core.SeriePerso
+import fr.cellule.core.CameraPerso
+import fr.cellule.app.MonMateriel
 import fr.cellule.app.ZoneNavFlottante
 import fr.cellule.core.CATALOGUE_CAMERAS
 import fr.cellule.core.CATALOGUE_OBJECTIFS
@@ -80,18 +83,29 @@ fun pelliculeChoisie(reglages: Reglages): PelliculeCine? = PELLICULES_CINE.first
 fun formatChoisi(reglages: Reglages): ZoneUtile? = FORMATS_PELLICULE.firstOrNull { it.nom == reglages.cineFormatPellicule }
 fun cameraChoisie(reglages: Reglages): Camera? = CATALOGUE_CAMERAS.firstOrNull { it.nom == reglages.cineCamera }
 fun objectifChoisi(reglages: Reglages): Objectif? = CATALOGUE_OBJECTIFS.firstOrNull { it.nomComplet == reglages.cineObjectif }
+
+/* Le matériel à soi se choisit par une clé « perso:… », le catalogue par son nom. */
+fun cameraPersoChoisie(reglages: Reglages): CameraPerso? = MonMateriel.camera(reglages.cineCamera)
+fun seriePersoChoisie(reglages: Reglages): SeriePerso? = MonMateriel.serie(reglages.cineObjectif)
+fun nomCameraChoisie(reglages: Reglages): String? = cameraPersoChoisie(reglages)?.nom ?: cameraChoisie(reglages)?.nomComplet
+fun nomObjectifChoisi(reglages: Reglages): String? = seriePersoChoisie(reglages)?.nom ?: objectifChoisi(reglages)?.nomComplet
+
+/** Les modes de capteur de la caméra choisie : les siens, ou ceux relus chez le fabricant. */
+private fun modesCameraChoisie(reglages: Reglages): List<ZoneUtile> =
+    cameraPersoChoisie(reglages)?.modes ?: MaterielCine.modesDe(reglages.cineCamera)
+
 private fun modeChoisi(reglages: Reglages): ZoneUtile? =
-    MaterielCine.modesDe(reglages.cineCamera).firstOrNull { it.nom == reglages.cineModeCapteur }
+    modesCameraChoisie(reglages).firstOrNull { it.nom == reglages.cineModeCapteur }
 
 /** Le nom du « capteur » noté avec les plans : pellicule et fenêtre, ou caméra et mode. */
 private fun nomSupport(reglages: Reglages): String = if (reglages.cineSupport == "PELLICULE") {
     listOfNotNull(
         pelliculeChoisie(reglages)?.let { p -> p.nom + (if (p.codes.isNotBlank()) " " + p.codes else "") },
         formatChoisi(reglages)?.nom,
-        cameraChoisie(reglages)?.nomComplet
+        nomCameraChoisie(reglages)
     ).joinToString(" · ")
 } else {
-    listOfNotNull(cameraChoisie(reglages)?.nomComplet, modeChoisi(reglages)?.nom).joinToString(" — ")
+    listOfNotNull(nomCameraChoisie(reglages), modeChoisi(reglages)?.nom).joinToString(" — ")
 }
 
 /** Reporte le choix de matériel dans le cadre de travail : nom, et taille utile quand elle est publiée. */
@@ -120,7 +134,9 @@ fun resumeMateriel(reglages: Reglages): String {
 
 /** Les focales qu'on propose au viseur : celles de la série choisie, sinon des focales courantes. */
 private fun focalesProposees(reglages: Reglages): List<Double> =
-    objectifChoisi(reglages)?.let { MaterielCine.lireFocales(it.focales).choix } ?: MaterielCine.FOCALES_COURANTES
+    seriePersoChoisie(reglages)?.focales?.takeIf { it.isNotEmpty() }
+        ?: objectifChoisi(reglages)?.let { MaterielCine.lireFocales(it.focales).choix }
+        ?: MaterielCine.FOCALES_COURANTES
 
 /** L'onglet entier. */
 @Composable
@@ -420,6 +436,7 @@ private fun PageMateriel(reglages: Reglages) {
 
     if (pellicule) CartePellicule(reglages) else CarteNumerique(reglages) { cadreOuvert = true }
     CarteObjectifs(reglages)
+    CarteMonMateriel()
 
     val cadre = remember(reglages.cineCadre) { cadreDe(reglages) }
     Carte(
@@ -476,9 +493,13 @@ private fun CartePellicule(reglages: Reglages) {
         }
         Spacer(Modifier.height(Interligne + 2.dp))
         val cameras = camerasPellicule()
-        val camera = cameraChoisie(reglages)?.takeIf { it in cameras }
-        Deroulant("Caméra (facultatif)", listOf(AUCUNE) + cameras.map { it.nom }, camera?.nom ?: AUCUNE, { n ->
-            if (n == AUCUNE) "Aucune caméra" else cameras.first { it.nom == n }.nomComplet
+        val cles = listOf(AUCUNE) + MonMateriel.cameras.map { MonMateriel.cle(it) } + cameras.map { it.nom }
+        Deroulant("Caméra (facultatif)", cles, reglages.cineCamera.takeIf { it in cles } ?: AUCUNE, { n ->
+            when {
+                n == AUCUNE -> "Aucune caméra"
+                n.startsWith(MonMateriel.PREFIXE) -> "★ " + (MonMateriel.camera(n)?.nom ?: "")
+                else -> cameras.first { it.nom == n }.nomComplet
+            }
         }, Modifier.fillMaxWidth()) { nom ->
             reglages.cineCamera = if (nom == AUCUNE) "" else nom
             reglages.cineModeCapteur = ""
@@ -491,17 +512,42 @@ private fun CartePellicule(reglages: Reglages) {
 private fun CarteNumerique(reglages: Reglages, ouvrirCadre: () -> Unit) {
     val cameras = camerasNumeriques()
     val camera = cameraChoisie(reglages)?.takeIf { it in cameras }
-    val modes = camera?.let { MaterielCine.modesDe(it.nom) } ?: emptyList()
+    val perso = cameraPersoChoisie(reglages)
+    val modes = modesCameraChoisie(reglages)
     val mode = modeChoisi(reglages)
-    Carte(titre = "Caméra", sousTitre = "Facultatif : sans caméra, tu saisis la taille du capteur à la main dans le cadre de travail.") {
-        Deroulant("Caméra du catalogue", listOf(AUCUNE) + cameras.map { it.nom }, camera?.nom ?: AUCUNE, { n ->
-            if (n == AUCUNE) "Aucune caméra" else cameras.first { it.nom == n }.let { c ->
-                c.nomComplet + if (MaterielCine.modesDe(c.nom).isEmpty()) "  (capteur à saisir)" else ""
+    val cles = listOf(AUCUNE) + MonMateriel.cameras.map { MonMateriel.cle(it) } + cameras.map { it.nom }
+    Carte(titre = "Caméra", sousTitre = "Facultatif : sans caméra, tu saisis la taille du capteur à la main dans le cadre de travail. ★ : ton matériel.") {
+        Deroulant("Caméra", cles, reglages.cineCamera.takeIf { it in cles } ?: AUCUNE, { n ->
+            when {
+                n == AUCUNE -> "Aucune caméra"
+                n.startsWith(MonMateriel.PREFIXE) -> "★ " + (MonMateriel.camera(n)?.nom ?: "")
+                else -> cameras.first { it.nom == n }.let { c ->
+                    c.nomComplet + if (MaterielCine.modesDe(c.nom).isEmpty()) "  (capteur à saisir)" else ""
+                }
             }
         }, Modifier.fillMaxWidth()) { nom ->
             reglages.cineCamera = if (nom == AUCUNE) "" else nom
-            reglages.cineModeCapteur = MaterielCine.modesDe(reglages.cineCamera).firstOrNull()?.nom ?: ""
+            reglages.cineModeCapteur = modesCameraChoisie(reglages).firstOrNull()?.nom ?: ""
             reporterSupport(reglages)
+        }
+        if (perso != null && modes.isEmpty()) {
+            Spacer(Modifier.height(Interligne))
+            Text(
+                "Ta caméra n'a pas encore de mode de capteur : ajoute-le dans « Mon matériel », plus bas.",
+                style = Detail,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+        if (perso != null && modes.isNotEmpty()) {
+            Spacer(Modifier.height(Interligne))
+            Deroulant("Mode de capteur", modes.map { it.nom }, mode?.nom ?: modes.first().nom, { it }, Modifier.fillMaxWidth()) { nom ->
+                reglages.cineModeCapteur = nom
+                reporterSupport(reglages)
+            }
+            (mode ?: modes.first()).let {
+                Spacer(Modifier.height(6.dp))
+                Ligne("Zone utile", it.dimensions, it.source, accent = true)
+            }
         }
         if (camera != null) {
             Spacer(Modifier.height(Interligne))
@@ -534,17 +580,43 @@ private fun CarteNumerique(reglages: Reglages, ouvrirCadre: () -> Unit) {
 @Composable
 private fun CarteObjectifs(reglages: Reglages) {
     val objectif = objectifChoisi(reglages)
-    val noms = CATALOGUE_OBJECTIFS.map { it.nomComplet }
-    Carte(titre = "Objectifs", sousTitre = "Facultatif : la série choisie donne les focales proposées en haut du viseur.") {
-        Deroulant("Série d'objectifs", listOf(AUCUNE) + noms, objectif?.nomComplet ?: AUCUNE, {
-            if (it == AUCUNE) "Aucune série (focales courantes)" else it
+    val seriePerso = seriePersoChoisie(reglages)
+    val cles = listOf(AUCUNE) + MonMateriel.series.map { MonMateriel.cle(it) } + CATALOGUE_OBJECTIFS.map { it.nomComplet }
+    Carte(titre = "Objectifs", sousTitre = "Facultatif : la série choisie donne les focales proposées en haut du viseur. ★ : ton matériel.") {
+        Deroulant("Série d'objectifs", cles, reglages.cineObjectif.takeIf { it in cles } ?: AUCUNE, {
+            when {
+                it == AUCUNE -> "Aucune série (focales courantes)"
+                it.startsWith(MonMateriel.PREFIXE) -> "★ " + (MonMateriel.serie(it)?.nom ?: "")
+                else -> it
+            }
         }, Modifier.fillMaxWidth()) { nom ->
             reglages.cineObjectif = if (nom == AUCUNE) "" else nom
             val c = cadreDe(reglages)
             val choix = focalesProposees(reglages)
             /* Une focale hors de la série est ramenée à la plus proche qu'elle propose. */
             val focale = c.focaleMm?.let { f -> choix.minByOrNull { abs(it - f) } }
-            ecrireCadre(reglages, c.copy(objectif = if (nom == AUCUNE) "" else nom, focaleMm = focale ?: c.focaleMm))
+            val sienne = seriePersoChoisie(reglages)
+            ecrireCadre(
+                reglages,
+                c.copy(
+                    objectif = if (nom == AUCUNE) "" else nomObjectifChoisi(reglages) ?: "",
+                    focaleMm = focale ?: c.focaleMm,
+                    /* Sa série anamorphique : le facteur saisi passe au cadre. */
+                    desanamorphose = sienne?.desanamorphose ?: c.desanamorphose
+                )
+            )
+        }
+        if (seriePerso != null) {
+            Spacer(Modifier.height(6.dp))
+            Ligne(
+                "Focales",
+                seriePerso.focales.takeIf { it.isNotEmpty() }?.joinToString(", ") { nombreCourt(it, 1) }?.let { "$it mm" } ?: "aucune saisie",
+                MonMateriel.SAISI
+            )
+            seriePerso.tMax?.let { Ligne("Ouverture", "T" + nombreCourt(it, 1), MonMateriel.SAISI) }
+            if (seriePerso.desanamorphose != 1.0) {
+                Ligne("Désanamorphose", "×" + nombreCourt(seriePerso.desanamorphose, 1), "reportée dans le cadre de travail")
+            }
         }
         if (objectif != null) {
             val serie = MaterielCine.lireFocales(objectif.focales)
