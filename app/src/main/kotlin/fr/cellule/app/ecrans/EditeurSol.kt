@@ -79,6 +79,9 @@ import fr.cellule.app.mesure.Localisation
 import fr.cellule.app.mesure.TuilesOsm
 import fr.cellule.app.mesure.declinaisonMagnetique
 import fr.cellule.app.sol.DessinCote
+import androidx.compose.foundation.layout.aspectRatio
+import fr.cellule.core.MaterielCine
+import fr.cellule.app.sol.DessinVueCamera
 import fr.cellule.app.sol.DessinSol
 import fr.cellule.app.sol.ImageSol
 import fr.cellule.app.sol.OptionsDessin
@@ -118,7 +121,7 @@ import kotlin.math.sin
  * les réglages de l'élément touché.
  */
 
-private enum class FeuilleSol { OPTIONS, LUMIERE, COTE, EXPORT }
+private enum class FeuilleSol { OPTIONS, LUMIERE, COTE, CAMERA, EXPORT }
 
 /** L'élément sous le doigt, s'il y en a un — les gens et les machines avant le décor. */
 private fun toucher(plan: PlanSol, vue: VueSol, px: Float, py: Float): ElementSol? {
@@ -241,6 +244,7 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
                 ) {
                     Pastille("Réglages du plan") { feuille = FeuilleSol.OPTIONS }
                     Pastille("Lumière au sujet") { feuille = FeuilleSol.LUMIERE }
+                    Pastille("Vue caméra", accent = true) { feuille = FeuilleSol.CAMERA }
                     Pastille("Vue de côté") { feuille = FeuilleSol.COTE }
                     Pastille("Exporter") { feuille = FeuilleSol.EXPORT }
                     Pastille("Tout voir") {
@@ -408,6 +412,7 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
             }) { feuille = null }
             FeuilleSol.LUMIERE -> FeuilleLumiereSol(plan, reglages) { feuille = null }
             FeuilleSol.COTE -> FeuilleCoteSol(plan, reglages) { feuille = null }
+            FeuilleSol.CAMERA -> FeuilleVueCamera(plan, reglages, { plan = plan.remplacer(it) }) { feuille = null }
             FeuilleSol.EXPORT -> FeuilleExportSol(plan, cinema, metres) { feuille = null }
             null -> {}
         }
@@ -756,6 +761,85 @@ private fun FeuilleLumiereSol(plan: PlanSol, reglages: Reglages, onFermer: () ->
             style = Detail,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(top = 6.dp)
+        )
+    }
+}
+
+/**
+ * Ce que voit la caméra : le plan en perspective, avec les réglages qui
+ * changent l'image à portée de doigt — hauteur, inclinaison, focale.
+ */
+@Composable
+private fun FeuilleVueCamera(plan: PlanSol, reglages: Reglages, surChangement: (ElementSol) -> Unit, onFermer: () -> Unit) {
+    val cameras = plan.elements.filter { it.type == TypeElement.CAMERA }
+    var cameraId by remember { mutableStateOf(cameras.firstOrNull()?.identifiant) }
+    val densite = LocalDensity.current
+    val taillePolice = with(densite) { 15.sp.toPx() }
+    FeuilleSolBase("Vue caméra", onFermer) {
+        if (cameras.isEmpty()) {
+            Text("Pose d'abord une caméra sur le plan.", style = Corps, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            return@FeuilleSolBase
+        }
+        Deroulant("Caméra", cameras.map { it.identifiant }, cameraId ?: cameras.first().identifiant, { id ->
+            cameras.first { it.identifiant == id }.let { it.libelle + (it.plans.takeIf { p -> p.isNotBlank() }?.let { p -> " · plans $p" } ?: "") }
+        }, Modifier.fillMaxWidth()) { cameraId = it }
+        Spacer(Modifier.height(Interligne))
+        val camera = cameras.firstOrNull { it.identifiant == cameraId } ?: cameras.first()
+        val rapport = run {
+            val l = camera.capteurLargeurMm
+            val h = camera.capteurHauteurMm
+            if (l != null && h != null && h > 0) (l * camera.desanamorphose / h).toFloat().coerceIn(0.5f, 3f) else 1.78f
+        }
+        Canvas(
+            Modifier
+                .fillMaxWidth()
+                .aspectRatio(rapport)
+                .background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(8.dp))
+        ) {
+            drawIntoCanvas { toile ->
+                DessinVueCamera.dessiner(
+                    toile.nativeCanvas, plan, camera, size.width.toInt(), size.height.toInt(),
+                    OptionsDessin(texte = taillePolice, metres = reglages.lumiereMetres, projecteurs = { MonMateriel.projecteur(it) })
+                )
+            }
+        }
+        Spacer(Modifier.height(Interligne))
+        val hc = camera.hauteur ?: Sol.HAUTEUR_CAMERA
+        Text("Hauteur de l'objectif : " + nombreCourt(hc, 2) + " m", style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Slider(value = hc.toFloat(), onValueChange = { surChangement(camera.copy(hauteur = (it * 20).roundToInt() / 20.0)) }, valueRange = 0.1f..5f)
+        Text("Inclinaison : " + nombreCourt(camera.inclinaison, 0) + "°" + if (camera.inclinaison < 0) " (plongée)" else if (camera.inclinaison > 0) " (contre-plongée)" else "", style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Slider(value = camera.inclinaison.toFloat(), onValueChange = { surChangement(camera.copy(inclinaison = it.roundToInt().toDouble())) }, valueRange = -60f..60f)
+        Text("Orientation : " + nombreCourt(camera.rotation, 0) + "°", style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Slider(value = camera.rotation.toFloat(), onValueChange = { surChangement(camera.copy(rotation = it.roundToInt().toDouble())) }, valueRange = 0f..359f)
+        Spacer(Modifier.height(6.dp))
+        Etiquette("Focale")
+        Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(top = 6.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            MaterielCine.FOCALES_COURANTES.filter { it in 10.0..200.0 }.forEach { f ->
+                Pastille(nombreCourt(f, 0), accent = camera.focaleMm == f) { surChangement(camera.copy(focaleMm = f)) }
+            }
+        }
+        val sujets = plan.elements.filter { it.type == TypeElement.COMEDIEN }
+        if (sujets.isNotEmpty()) {
+            Spacer(Modifier.height(Interligne))
+            Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                sujets.forEach { s ->
+                    Pastille("Viser " + s.libelle) {
+                        val hs = s.hauteur ?: Sol.HAUTEUR_VISAGE
+                        surChangement(
+                            camera.copy(
+                                rotation = Sol.rotationVers(camera.x, camera.y, s.x, s.y),
+                                inclinaison = Math.round(Sol.inclinaisonVers(camera, hc, s, hs)).toDouble()
+                            )
+                        )
+                    }
+                }
+            }
+        }
+        Text(
+            "Une maquette en perspective, calculée depuis le plan : position, hauteur, orientation, inclinaison, focale et capteur de la caméra. Les hauteurs non saisies prennent des valeurs de décor courantes (murs 2,5 m, meubles 0,75 m) ; les comédiens se teintent de la lumière qui les touche.",
+            style = Detail,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(top = 8.dp)
         )
     }
 }

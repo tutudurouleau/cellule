@@ -32,6 +32,16 @@ object ImageSol {
         return DessinSol.image(plan, largeur, hauteur, titre, sousTitre, options)
     }
 
+    /** La vue caméra d'une caméra du plan, en image. */
+    fun vueCamera(plan: PlanSol, camera: fr.cellule.core.ElementSol, largeur: Int, hauteur: Int): Bitmap {
+        val image = Bitmap.createBitmap(largeur, hauteur, Bitmap.Config.ARGB_8888)
+        DessinVueCamera.dessiner(
+            android.graphics.Canvas(image), plan, camera, largeur, hauteur,
+            OptionsDessin(texte = largeur / 40f, projecteurs = { MonMateriel.projecteur(it) })
+        )
+        return image
+    }
+
     /** Ce qu'on lit sur le plan, en lignes « intitulé : valeur ». */
     fun infos(plan: PlanSol): List<Pair<String, String>> {
         val lignes = mutableListOf<Pair<String, String>>()

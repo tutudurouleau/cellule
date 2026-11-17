@@ -395,6 +395,19 @@ object ExportPdf {
             if (r.reste() < 30f) r.nouvellePage()
             r.ligne(intitule, valeur)
         }
+
+        /* Ce que voit chaque caméra du plan, en perspective. */
+        val cameras = plan.elements.filter { it.type == fr.cellule.core.TypeElement.CAMERA && fr.cellule.core.CameraVirtuelle.depuis(it) != null }
+        cameras.take(6).forEach { cam ->
+            val rapport = ((cam.capteurLargeurMm ?: 1.78) * cam.desanamorphose / (cam.capteurHauteurMm ?: 1.0)).coerceIn(0.5, 3.0)
+            val hauteurImage = (UTILE / rapport).toFloat()
+            if (r.reste() < hauteurImage + 40f) r.nouvellePage()
+            r.rubrique("Vue caméra " + cam.libelle)
+            val vue = ImageSol.vueCamera(plan, cam, 1400, (1400 / rapport).toInt())
+            r.toile.drawBitmap(vue, null, RectF(MARGE, r.y, MARGE + UTILE, r.y + hauteurImage), Paint(Paint.FILTER_BITMAP_FLAG))
+            vue.recycle()
+            r.y += hauteurImage + 8f
+        }
     }
 
     /** Le PDF d'un plan au sol seul. Bloquant : à appeler hors du fil principal. */
