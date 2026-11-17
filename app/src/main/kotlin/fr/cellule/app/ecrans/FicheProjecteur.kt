@@ -33,6 +33,7 @@ import fr.cellule.core.PROJECTEURS_CATALOGUE
 import fr.cellule.core.Projecteur
 import fr.cellule.core.Tournage
 import fr.cellule.core.Unites
+import fr.cellule.core.ficheDuProjecteur
 import fr.cellule.core.nombreCourt
 
 /*
@@ -45,7 +46,10 @@ private fun n(x: Double, d: Int = 0) = nombreCourt(x, d)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FeuilleFicheProjecteur(p: Projecteur, reglages: Reglages, onFermer: () -> Unit) {
+fun FeuilleFicheProjecteur(p: Projecteur, reglages: Reglages, grandeFiche: Boolean = true, onFermer: () -> Unit) {
+    /* La grande fiche (histoire, usage, atouts) de la famille, si on n'en vient pas déjà. */
+    val famille = if (grandeFiche && !p.perso) ficheDuProjecteur(p.identifiant) else null
+    var lireFamille by remember { mutableStateOf(false) }
     val metres = reglages.lumiereMetres
     val enLux = reglages.lumiereLux
     val reglage = reglageTournage(reglages, FiltresJson.lire(reglages.cineFiltres))
@@ -75,6 +79,9 @@ fun FeuilleFicheProjecteur(p: Projecteur, reglages: Reglages, onFermer: () -> Un
                 style = Detail,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
+            if (famille != null) {
+                BoutonPlat("Grande fiche : " + famille.nomComplet, modifier = Modifier.padding(top = 6.dp)) { lireFamille = true }
+            }
             if (!p.relu) {
                 Spacer(Modifier.height(6.dp))
                 BandeauEtat("À relire : les sources publiées se contredisent ou ne sont pas celles du fabricant.", alerte = true)
@@ -140,6 +147,7 @@ fun FeuilleFicheProjecteur(p: Projecteur, reglages: Reglages, onFermer: () -> Un
             Text(p.source.ifBlank { "—" }, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }
+    if (lireFamille && famille != null) FeuilleFiche(famille) { lireFamille = false }
 }
 
 /** Le catalogue des projecteurs, par fabricant, avec leurs fiches. */

@@ -50,6 +50,7 @@ import fr.cellule.app.Detail
 import fr.cellule.app.Gouttiere
 import fr.cellule.app.Interligne
 import fr.cellule.app.RayonControle
+import fr.cellule.app.Reglages
 import fr.cellule.app.TitreCarte
 import fr.cellule.app.TitreEcran
 import fr.cellule.app.ZoneNavFlottante
@@ -58,11 +59,17 @@ import fr.cellule.core.CATALOGUE_MATERIEL
 import fr.cellule.core.CATALOGUE_OBJECTIFS
 import fr.cellule.core.ETAGERES_CAMERAS
 import fr.cellule.core.ETAGERES_OBJECTIFS
+import fr.cellule.core.ETAGERES_PROJECTEURS
+import fr.cellule.core.FicheProjecteur
 import fr.cellule.core.GenreMateriel
 import fr.cellule.core.Materiel
 import fr.cellule.core.Objectif
+import fr.cellule.core.PROJECTEURS_CATALOGUE
 import fr.cellule.core.Paire
+import fr.cellule.core.Projecteur
+import fr.cellule.core.Unites
 import fr.cellule.core.chercherMateriel
+import fr.cellule.core.nombreCourt
 
 private enum class ModeCameras(val libelle: String) {
     APPRENDRE("Apprendre"), QUIZ("Quiz")
@@ -86,11 +93,12 @@ private class EtatCatalogue {
 }
 
 /**
- * Caméras et objectifs de cinéma : un catalogue de fiches pour apprendre à
- * quoi sert chaque outil, et un quiz pour vérifier qu'on les reconnaît.
+ * Caméras, objectifs et projecteurs de cinéma : un catalogue de fiches pour
+ * apprendre à quoi sert chaque outil, et un quiz pour vérifier qu'on
+ * reconnaît les caméras et les objectifs.
  */
 @Composable
-fun EcranCameras(depot: DepotQuiz) {
+fun EcranCameras(depot: DepotQuiz, reglages: Reglages) {
     var mode by remember { mutableStateOf(ModeCameras.APPRENDRE) }
     var fiche by remember { mutableStateOf<Materiel?>(null) }
     val catalogue = remember { EtatCatalogue() }
@@ -111,14 +119,18 @@ fun EcranCameras(depot: DepotQuiz) {
         }
     }
 
-    fiche?.let { m -> FeuilleFiche(m, onFermer = { fiche = null }) }
+    fiche?.let { m -> FeuilleFiche(m, reglages, onFermer = { fiche = null }) }
 }
 
 /* ── Apprendre ────────────────────────────────────────────────────────── */
 
 @Composable
 private fun Catalogue(etat: EtatCatalogue, surOuvrir: (Materiel) -> Unit) {
-    val etageres = if (etat.genre == GenreMateriel.CAMERA) ETAGERES_CAMERAS else ETAGERES_OBJECTIFS
+    val etageres = when (etat.genre) {
+        GenreMateriel.CAMERA -> ETAGERES_CAMERAS
+        GenreMateriel.OBJECTIF -> ETAGERES_OBJECTIFS
+        GenreMateriel.PROJECTEUR -> ETAGERES_PROJECTEURS
+    }
     val visibles = remember(etat.genre, etat.recherche) {
         etageres
             .map { it.titre to chercherMateriel(etat.recherche, it.entrees) }
@@ -134,14 +146,21 @@ private fun Catalogue(etat: EtatCatalogue, surOuvrir: (Materiel) -> Unit) {
                 ChoixSegmente(
                     options = GenreMateriel.entries.toList(),
                     selection = etat.genre,
-                    libelle = { if (it == GenreMateriel.CAMERA) "Caméras" else "Objectifs" },
+                    libelle = {
+                        when (it) {
+                            GenreMateriel.CAMERA -> "Caméras"
+                            GenreMateriel.OBJECTIF -> "Objectifs"
+                            GenreMateriel.PROJECTEUR -> "Projecteurs"
+                        }
+                    },
                     surChoix = { etat.genre = it }
                 )
                 Spacer(Modifier.height(8.dp))
                 Champ(
                     valeur = etat.recherche,
                     intitule = "Chercher",
-                    indication = "un nom, une marque, un film, un chef opérateur…",
+                    indication = if (etat.genre == GenreMateriel.PROJECTEUR) "un nom, une marque, une famille…"
+                    else "un nom, une marque, un film, un chef opérateur…",
                     modifier = Modifier.fillMaxWidth()
                 ) { etat.recherche = it }
                 Spacer(Modifier.height(4.dp))
@@ -212,8 +231,13 @@ private fun EntreeCatalogue(m: Materiel, surClic: () -> Unit) {
 
 /* ── La fiche ─────────────────────────────────────────────────────────── */
 
+/**
+ * La grande fiche. Avec [reglages], les configurations d'un projecteur
+ * ouvrent leur fiche photométrique ; sans, elles restent en lecture (c'est
+ * le cas quand on vient justement de cette fiche-là).
+ */
 @Composable
-internal fun FeuilleFiche(m: Materiel, onFermer: () -> Unit) {
+internal fun FeuilleFiche(m: Materiel, reglages: Reglages? = null, onFermer: () -> Unit) {
     val etat = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     val feminin = m.genre == GenreMateriel.CAMERA
     ModalBottomSheet(
@@ -280,10 +304,14 @@ internal fun FeuilleFiche(m: Materiel, onFermer: () -> Unit) {
             Section(if (feminin) "Ce qu'elle sait faire" else "Ce qu'il sait faire", m.atouts)
             Section("Ses limites", m.limites)
 
-            Separateur()
-            Etiquette("Au générique")
-            Spacer(Modifier.height(4.dp))
-            m.films.forEach { f -> Ligne(f.titre, "", f.artisan.ifBlank { null }) }
+            if (m is FicheProjecteur) Photometrie(m, reglages)
+
+            if (m.films.isNotEmpty()) {
+                Separateur()
+                Etiquette("Au générique")
+                Spacer(Modifier.height(4.dp))
+                m.films.forEach { f -> Ligne(f.titre, "", f.artisan.ifBlank { null }) }
+            }
 
             Spacer(Modifier.height(Interligne))
             Column(
@@ -299,6 +327,59 @@ internal fun FeuilleFiche(m: Materiel, onFermer: () -> Unit) {
             Spacer(Modifier.navigationBarsPadding())
         }
     }
+}
+
+/* Les configurations publiées de la famille : une ligne par réflecteur ou
+   par modèle, la première valeur du fabricant, et la fiche photométrique
+   (tableau aux distances, tache, diaph) d'un toucher. */
+@Composable
+private fun Photometrie(f: FicheProjecteur, reglages: Reglages?) {
+    val configs = f.configurations.mapNotNull { id -> PROJECTEURS_CATALOGUE.firstOrNull { it.identifiant == id } }
+    if (configs.isEmpty()) return
+    var ouvert by remember { mutableStateOf<Projecteur?>(null) }
+    val enLux = reglages?.lumiereLux ?: true
+    val metres = reglages?.lumiereMetres ?: true
+    fun n(x: Double, d: Int = 0) = nombreCourt(x, d)
+    Separateur()
+    Etiquette("Photométrie publiée")
+    Spacer(Modifier.height(4.dp))
+    configs.forEach { p ->
+        val m = p.mesure(true) ?: p.mesure(false)
+        val valeur = m?.let {
+            (if (enLux) n(it.lux) + " lux" else n(Unites.fc(it.lux), 1) + " fc") + " à " +
+                (if (metres) n(it.distanceM, 1) + " m" else n(Unites.pieds(it.distanceM), 1) + " ft")
+        } ?: "—"
+        val detail = listOfNotNull(
+            p.angle(m?.spot ?: false)?.let { "faisceau " + n(it) + "°" },
+            p.temperatureK?.let { "$it K" },
+            if (!p.relu) "à relire" else null
+        ).joinToString(" · ").ifBlank { null }
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(RayonControle))
+                .then(if (reglages != null) Modifier.clickable { ouvert = p } else Modifier),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(Modifier.weight(1f)) { Ligne(p.nom, valeur, detail) }
+            if (reglages != null) {
+                Text(
+                    "›",
+                    style = Corps,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(start = 8.dp)
+                )
+            }
+        }
+    }
+    if (reglages != null) {
+        Text(
+            "Touche une ligne pour le tableau aux distances, la tache et le diaph au réglage du Matériel.",
+            style = Detail,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+    }
+    if (reglages != null) ouvert?.let { FeuilleFicheProjecteur(it, reglages, grandeFiche = false) { ouvert = null } }
 }
 
 @Composable

@@ -20,7 +20,8 @@ data class ReferenceFilm(val titre: String, val artisan: String = "")
 
 enum class GenreMateriel(val libelle: String, val question: String) {
     CAMERA("Caméra", "Quelle caméra"),
-    OBJECTIF("Objectif", "Quel objectif")
+    OBJECTIF("Objectif", "Quel objectif"),
+    PROJECTEUR("Projecteur", "Quel projecteur")
 }
 
 /**
@@ -42,7 +43,12 @@ enum class Silhouette(val genre: GenreMateriel) {
     FIXE(GenreMateriel.OBJECTIF),
     ZOOM(GenreMateriel.OBJECTIF),
     ANAMORPHIQUE(GenreMateriel.OBJECTIF),
-    ANCIENNE(GenreMateriel.OBJECTIF)
+    ANCIENNE(GenreMateriel.OBJECTIF),
+    PROJ_PONCTUEL(GenreMateriel.PROJECTEUR),
+    PROJ_PANNEAU(GenreMateriel.PROJECTEUR),
+    PROJ_TUBE(GenreMateriel.PROJECTEUR),
+    PROJ_FRESNEL(GenreMateriel.PROJECTEUR),
+    PROJ_HMI(GenreMateriel.PROJECTEUR)
 }
 
 enum class Disponibilite(val libelle: String) {
@@ -129,6 +135,32 @@ data class Objectif(
             Paire("Couverture", couverture),
             Paire("Monture", monture)
         )
+}
+
+/**
+ * Un projecteur (ou une famille de projecteurs) de cinéma, en fiche
+ * complète. [configurations] renvoie aux entrées photométriques du
+ * catalogue ([PROJECTEURS_CATALOGUE]) : une par réflecteur ou par modèle.
+ */
+data class FicheProjecteur(
+    override val nom: String,
+    override val fabricant: String,
+    override val annee: Int,
+    override val categorie: String,
+    override val silhouette: Silhouette,
+    override val punchline: String,
+    override val chiffresCles: List<Paire>,
+    override val histoire: String,
+    override val ficheTechnique: String,
+    override val commentLUtiliser: String,
+    override val atouts: String,
+    override val limites: String,
+    override val aRetenir: String,
+    override val films: List<ReferenceFilm> = emptyList(),
+    override val anneeApprox: Boolean = false,
+    val configurations: List<String> = emptyList()
+) : Materiel {
+    override val genre: GenreMateriel get() = GenreMateriel.PROJECTEUR
 }
 
 /** Un rayon du catalogue : une marque, une époque, une famille. */

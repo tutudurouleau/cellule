@@ -206,6 +206,57 @@ private val Ancienne = dessin("ancienne") {
     rectangle(30f, 12f, 33f, 20f)
 }
 
+/* Tête LED ponctuelle : boîtier ventilé, réflecteur évasé, lyre et pied. */
+private val ProjPonctuel = dessin("proj-ponctuel") {
+    rectangle(9f, 9f, 21f, 20f)
+    trait(12f, 9f, 12f, 20f); trait(15f, 9f, 15f, 20f)
+    moveTo(21f, 11f); lineTo(33f, 5f); lineTo(33f, 24f); lineTo(21f, 18f)
+    moveTo(15f, 20f); lineTo(15f, 24f)
+    trait(15f, 24f, 15f, 29f); trait(15f, 29f, 10f, 31f); trait(15f, 29f, 20f, 31f)
+    trait(36f, 11f, 41f, 9f); trait(36f, 14.5f, 42f, 14.5f); trait(36f, 18f, 41f, 20f)
+}
+
+/* Panneau LED : grande face diffusante, lyre, pied. */
+private val ProjPanneau = dessin("proj-panneau") {
+    rectangle(9f, 3f, 39f, 21f)
+    rectangle(11.5f, 5.5f, 36.5f, 18.5f)
+    moveTo(9f, 12f); lineTo(6f, 12f); lineTo(6f, 24f); lineTo(42f, 24f); lineTo(42f, 12f); lineTo(39f, 12f)
+    trait(24f, 24f, 24f, 29f); trait(24f, 29f, 19f, 31f); trait(24f, 29f, 29f, 31f)
+}
+
+/* Tube LED sur batterie : long cylindre segmenté, embouts. */
+private val ProjTube = dessin("proj-tube") {
+    rectangle(6f, 13f, 42f, 19f)
+    rectangle(3f, 12f, 6f, 20f)
+    rectangle(42f, 12f, 45f, 20f)
+    trait(15f, 13f, 15f, 19f); trait(24f, 13f, 24f, 19f); trait(33f, 13f, 33f, 19f)
+    trait(10f, 8f, 10f, 10f); trait(24f, 7f, 24f, 10f); trait(38f, 8f, 38f, 10f)
+    trait(10f, 22f, 10f, 24f); trait(24f, 22f, 24f, 25f); trait(38f, 22f, 38f, 24f)
+}
+
+/* Fresnel : boîtier à ailettes, lentille à échelons, volets, lyre et pied. */
+private val ProjFresnel = dessin("proj-fresnel") {
+    rectangle(9f, 9f, 28f, 21f)
+    trait(13f, 6f, 13f, 9f); trait(17f, 6f, 17f, 9f); trait(21f, 6f, 21f, 9f)
+    rectangle(28f, 8f, 31f, 22f)
+    trait(29.5f, 10f, 29.5f, 20f)
+    trait(31f, 8f, 37f, 4f); trait(31f, 22f, 37f, 26f)
+    moveTo(18f, 21f); lineTo(18f, 25f)
+    trait(18f, 25f, 18f, 29f); trait(18f, 29f, 13f, 31f); trait(18f, 29f, 23f, 31f)
+}
+
+/* HMI à réflecteur : arrière court, grande parabole, ballast au sol et son câble. */
+private val ProjHmi = dessin("proj-hmi") {
+    rectangle(6f, 11f, 13f, 19f)
+    moveTo(13f, 9f); lineTo(26f, 4f); lineTo(26f, 26f); lineTo(13f, 21f); close()
+    trait(26f, 4f, 26f, 26f)
+    moveTo(16f, 22f); lineTo(16f, 29f)
+    trait(16f, 29f, 11f, 31f); trait(16f, 29f, 21f, 31f)
+    rectangle(33f, 24f, 45f, 30f)
+    trait(36f, 27f, 42f, 27f)
+    moveTo(6f, 15f); lineTo(3f, 15f); lineTo(3f, 31f); lineTo(30f, 31f); lineTo(30f, 27f); lineTo(33f, 27f)
+}
+
 fun Silhouette.image(): ImageVector = when (this) {
     Silhouette.STUDIO -> Studio
     Silhouette.COMPACTE -> Compacte
@@ -221,4 +272,9 @@ fun Silhouette.image(): ImageVector = when (this) {
     Silhouette.ZOOM -> Zoom
     Silhouette.ANAMORPHIQUE -> Anamorphique
     Silhouette.ANCIENNE -> Ancienne
+    Silhouette.PROJ_PONCTUEL -> ProjPonctuel
+    Silhouette.PROJ_PANNEAU -> ProjPanneau
+    Silhouette.PROJ_TUBE -> ProjTube
+    Silhouette.PROJ_FRESNEL -> ProjFresnel
+    Silhouette.PROJ_HMI -> ProjHmi
 }

@@ -45,7 +45,10 @@ class CatalogueMaterielTest {
         CATALOGUE_MATERIEL.forEach { m ->
             assertEquals(m.genre, m.silhouette.genre, "${m.nomComplet} : silhouette ${m.silhouette}")
         }
-        val utilisees = CATALOGUE_MATERIEL.map { it.silhouette }.toSet()
+        CATALOGUE_FICHES_PROJECTEURS.forEach { m ->
+            assertEquals(m.genre, m.silhouette.genre, "${m.nomComplet} : silhouette ${m.silhouette}")
+        }
+        val utilisees = (CATALOGUE_MATERIEL + CATALOGUE_FICHES_PROJECTEURS).map { it.silhouette }.toSet()
         assertEquals(Silhouette.entries.toSet(), utilisees)
     }
 
