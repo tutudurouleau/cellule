@@ -1,5 +1,7 @@
 package fr.cellule.app.ecrans
 
+import fr.cellule.app.Aiguillage
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -39,6 +41,9 @@ private enum class RayonTables(val libelle: String) { EXPOSITION("Exposition"), 
 @Composable
 fun EcranTables() {
     var rayon by remember { mutableStateOf(RayonTables.EXPOSITION) }
+    LaunchedEffect(Aiguillage.cible) {
+        Aiguillage.prendre("TABLES")?.let { c -> RayonTables.entries.firstOrNull { it.name == c }?.let { rayon = it } }
+    }
     Column(
         Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(bottom = ZoneNavFlottante)
     ) {

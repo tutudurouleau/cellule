@@ -128,6 +128,10 @@ class Reglages(contexte: Context) {
     /** La vue ouverte dans l'onglet Cinéma. */
     var cineVue by TextePref(prefs, "cine_vue", "VISEUR")
 
+    /** Les pages gardées dans la barre du bas, et les dernières ouvertes (identifiants séparés par des virgules). */
+    var navEpingles by TextePref(prefs, "nav_epingles", "mesurer,estimer,carnet-vues,cine-viseur")
+    var navRecents by TextePref(prefs, "nav_recents", "")
+
     /** On ne demande la localisation qu'une fois d'office ; après un refus, on n'insiste pas. */
     var lieuDemande by BooleenPref(prefs, "lieu_demande", false)
 }

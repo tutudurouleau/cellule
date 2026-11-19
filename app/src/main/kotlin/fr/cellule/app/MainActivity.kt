@@ -1,6 +1,19 @@
 package fr.cellule.app
 
 import android.os.Bundle
+import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.ui.text.style.TextOverflow
+import fr.cellule.app.ecrans.Champ
+import fr.cellule.app.ecrans.Pastille
+import fr.cellule.core.sansAccents
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.compose.foundation.border
@@ -247,6 +260,30 @@ private fun Application() {
     /* Un chrono labo en cours ramène au Labo, par exemple depuis sa notification. */
     var onglet by remember { mutableStateOf(if (Minuteur.enCours) Onglet.LABO else Onglet.MESURER) }
     var parametres by remember { mutableStateOf(false) }
+    /* Le lanceur : toutes les destinations de l'appli sur un seul écran. */
+    var lanceur by remember { mutableStateOf(false) }
+    var courante by remember { mutableStateOf(if (Minuteur.enCours) "labo" else "mesurer") }
+    val epingles = reglages.navEpingles.split(',').mapNotNull { destination(it.trim()) }.distinct().take(4)
+    val recents = reglages.navRecents.split(',').mapNotNull { destination(it.trim()) }
+    /* Où l'on est : dans Cinéma, la vue et l'outil ouverts le disent ; ailleurs, la dernière destination choisie. */
+    val ici: Destination? = if (onglet == Onglet.CINEMA) {
+        DESTINATIONS.firstOrNull { it.onglet == Onglet.CINEMA && it.cineVue == reglages.cineVue && (it.outil == null || it.outil == reglages.lumiereOutil) }
+    } else {
+        destination(courante)?.takeIf { it.onglet == onglet } ?: DESTINATIONS.firstOrNull { it.onglet == onglet }
+    }
+    val aller: (Destination) -> Unit = { d ->
+        d.cineVue?.let { reglages.cineVue = it }
+        d.outil?.let { reglages.lumiereOutil = it }
+        if (d.sous.isNotBlank()) Aiguillage.cible = d.sous
+        onglet = d.onglet
+        courante = d.id
+        reglages.navRecents = (listOf(d.id) + recents.map { it.id }.filter { it != d.id }).take(5).joinToString(",")
+        lanceur = false
+    }
+    val epingler: (Destination) -> Unit = { d ->
+        val ids = epingles.map { it.id }
+        reglages.navEpingles = (if (d.id in ids) ids - d.id else (ids + d.id).takeLast(4)).joinToString(",")
+    }
     LaunchedEffect(reglages.police) { Typo.cellule = reglages.police != "systeme" }
 
     /* L'en-tête se replie quand on fait défiler vers le bas, se déplie quand
@@ -295,7 +332,7 @@ private fun Application() {
             Box(Modifier.fillMaxSize()) {
 
                 /* En paysage, la pilule de navigation occupe le bord droit : le contenu s'arrête avant. */
-                Column(Modifier.fillMaxSize().padding(end = if (paysage && !etat.navMasquee) 66.dp else 0.dp)) {
+                Column(Modifier.fillMaxSize().padding(end = if (paysage && !etat.navMasquee) 76.dp else 0.dp)) {
                     /* Les écrans caméra n'ont pas d'en-tête : chaque pixel du haut de
                        l'écran leur revient, comme dans un vrai viseur. */
                     if (!onglet.plein) {
@@ -315,7 +352,20 @@ private fun Application() {
                     }
                 }
 
-                if (!(paysage && etat.navMasquee)) NavigationFlottante(onglet = onglet, surChoix = { onglet = it })
+                if (!(paysage && etat.navMasquee) && !lanceur) {
+                    NavigationFlottante(epingles, ici, surTout = { lanceur = true }, surChoix = aller)
+                }
+                if (lanceur) {
+                    Lanceur(
+                        epingles = epingles.map { it.id }, recents = recents, ici = ici?.id,
+                        surChoix = aller, surEpingle = epingler,
+                        surParametres = {
+                            lanceur = false
+                            parametres = true
+                        },
+                        fermer = { lanceur = false }
+                    )
+                }
             }
             if (parametres) FeuilleParametres(reglages) { parametres = false }
         }
@@ -458,125 +508,305 @@ private fun FeuilleParametres(reglages: Reglages, fermer: () -> Unit) {
  * uniquement à l'intérieur d'un Box.
  */
 @Composable
-private fun BoxScope.NavigationFlottante(onglet: Onglet, surChoix: (Onglet) -> Unit) {
-    if (LocalPaysage.current) {
-        /* En paysage, la pilule se dresse sur le bord droit : la hauteur manque, pas la largeur. */
+private fun BoxScope.NavigationFlottante(
+    epingles: List<Destination>,
+    ici: Destination?,
+    surTout: () -> Unit,
+    surChoix: (Destination) -> Unit
+) {
+    val paysage = LocalPaysage.current
+    val forme = RoundedCornerShape(26.dp)
+    val fond = Modifier
+        .background(MaterialTheme.colorScheme.surfaceContainerHighest.copy(alpha = 0.98f), forme)
+        .border(1.dp, MaterialTheme.colorScheme.outlineVariant, forme)
+        .padding(5.dp)
+    /* Hors de la barre, le bouton « Tout » dit où l'on est : on ne se perd jamais. */
+    val horsBarre = ici != null && epingles.none { it.id == ici.id }
+    val contenu: @Composable () -> Unit = {
+        ElementBarre(
+            IconeTout,
+            if (horsBarre) ici?.court ?: "Tout" else "Tout",
+            fond = if (horsBarre) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primaryContainer,
+            encre = if (horsBarre) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onPrimaryContainer,
+            surClic = surTout
+        )
+        epingles.forEach { d ->
+            val actif = d.id == ici?.id
+            /* Le cinéma garde le rouge du voyant de tournage, quel que soit l'écran ouvert. */
+            val tally = if (MaterialTheme.colorScheme.background.luminance() < 0.5f) Teinte.TALLY.sombre else Teinte.TALLY.clair
+            val cine = d.onglet == Onglet.CINEMA
+            ElementBarre(
+                d.onglet.icone,
+                d.court,
+                fond = when {
+                    actif && cine -> tally.couleur
+                    actif -> MaterialTheme.colorScheme.primary
+                    else -> Color.Transparent
+                },
+                encre = when {
+                    actif && cine -> tally.surCouleur
+                    actif -> MaterialTheme.colorScheme.onPrimary
+                    cine -> tally.couleur
+                    else -> MaterialTheme.colorScheme.onSurfaceVariant
+                },
+                surClic = { surChoix(d) }
+            )
+        }
+    }
+    if (paysage) {
+        /* En paysage, la barre se dresse sur le bord droit : la hauteur manque, pas la largeur. */
         Column(
-            Modifier
-                .align(Alignment.CenterEnd)
-                .navigationBarsPadding()
-                .padding(end = 10.dp)
-                .background(
-                    MaterialTheme.colorScheme.surfaceContainerHighest.copy(alpha = 0.98f),
-                    RoundedCornerShape(50)
-                )
-                .border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(50))
-                .padding(5.dp),
+            Modifier.align(Alignment.CenterEnd).navigationBarsPadding().padding(end = 8.dp).then(fond),
             verticalArrangement = Arrangement.spacedBy(1.dp),
             horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Onglet.entries.filter { it != Onglet.CINEMA }.forEach { o ->
-                OngletFlottant(o, o == onglet, avecEtiquette = false, serre = true) { surChoix(o) }
+        ) { contenu() }
+    } else {
+        Row(
+            Modifier.align(Alignment.BottomCenter).wrapContentWidth().navigationBarsPadding().padding(bottom = 12.dp).then(fond),
+            horizontalArrangement = Arrangement.spacedBy(2.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) { contenu() }
+    }
+}
+
+/** Un élément de la barre : son icône et, toujours, son nom dessous. */
+@Composable
+private fun ElementBarre(icone: ImageVector, texte: String, fond: Color, encre: Color, surClic: () -> Unit) {
+    Column(
+        Modifier
+            .clip(RoundedCornerShape(21.dp))
+            .background(fond)
+            .clickable { surClic() }
+            .widthIn(min = 56.dp)
+            .padding(horizontal = 6.dp, vertical = if (LocalPaysage.current) 4.dp else 7.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Icon(icone, contentDescription = null, tint = encre, modifier = Modifier.size(22.dp))
+        Text(texte, style = Detail.copy(fontSize = 10.sp, lineHeight = 12.sp), color = encre, maxLines = 1, overflow = TextOverflow.Ellipsis)
+    }
+}
+
+/* ── Le lanceur ────────────────────────────────────────────────────────── */
+
+/**
+ * Un écran demande à un autre d'ouvrir une de ses pages : « TABLES:FORMULES ».
+ * L'écran visé la prend en s'affichant, et elle disparaît.
+ */
+object Aiguillage {
+    var cible by mutableStateOf("")
+
+    fun prendre(ecran: String): String? {
+        val c = cible
+        if (!c.startsWith("$ecran:")) return null
+        cible = ""
+        return c.substringAfter(':')
+    }
+}
+
+private enum class Univers(val titre: String) {
+    TERRAIN("Photo · sur le terrain"),
+    APRES("Photo · après la prise"),
+    CINEMA("Cinéma · tournage"),
+    LUMIERE("Cinéma · lumière"),
+    SAVOIR("Apprendre et retrouver")
+}
+
+/** Une page de l'appli où l'on peut aller d'un toucher, où qu'elle soit rangée. */
+private data class Destination(
+    val id: String,
+    val onglet: Onglet,
+    val univers: Univers,
+    val titre: String,
+    /** Son nom dans la barre du bas : neuf lettres au plus. */
+    val court: String,
+    val detail: String,
+    /** Ce qu'on taperait pour la chercher. */
+    val mots: String = "",
+    /** La page à ouvrir dans l'écran, par l'[Aiguillage]. */
+    val sous: String = "",
+    val cineVue: String? = null,
+    val outil: String? = null
+)
+
+private fun lumiere(id: String, outil: String, titre: String, court: String, detail: String, mots: String) =
+    Destination(id, Onglet.CINEMA, Univers.LUMIERE, titre, court, detail, mots, cineVue = "LUMIERE", outil = outil)
+
+private val DESTINATIONS: List<Destination> by lazy {
+    listOf(
+        Destination("mesurer", Onglet.MESURER, Univers.TERRAIN, "Mesurer", "Mesurer", "Le posemètre : réfléchi, spot, incident.", "cellule lumiere exposition ev spot incident posemetre"),
+        Destination("estimer", Onglet.ESTIMER, Univers.TERRAIN, "Estimer", "Estimer", "Trouver l'exposition sans cellule, facteur par facteur.", "sunny 16 soleil f/16 exposition sans cellule"),
+        Destination("focales", Onglet.FOCALES, Univers.TERRAIN, "Focales", "Focales", "Voir les angles de champ, s'entraîner à cadrer.", "angle de champ cadre objectif exercice reconnaitre"),
+
+        Destination("carnet-vues", Onglet.CARNET, Univers.APRES, "Carnet · vues", "Carnet", "Ce que tu as photographié, et ton biais.", "journal notes photos pellicule", sous = "CARNET:VUES"),
+        Destination("carnet-films", Onglet.CARNET, Univers.APRES, "Carnet · films", "Films", "Tes développements notés.", "developpement pellicule revelateur", sous = "CARNET:DEVELOPPEMENTS"),
+        Destination("carnet-tirages", Onglet.CARNET, Univers.APRES, "Carnet · tirages", "Tirages", "Tes tirages notés.", "papier agrandisseur tirage", sous = "CARNET:TIRAGES"),
+        Destination("labo", Onglet.LABO, Univers.APRES, "Labo", "Labo", "Développer, tirer, le chrono, et comprendre pourquoi.", "chrono minuteur revelateur fixateur dilution temperature tirage bande d'essai"),
+
+        Destination("cine-viseur", Onglet.CINEMA, Univers.CINEMA, "Viseur", "Viseur", "Le cadre à ta focale, l'exposition, capturer un plan.", "camera cadre focale capturer reperage tournage", cineVue = "VISEUR"),
+        Destination("cine-plans", Onglet.CINEMA, Univers.CINEMA, "Plans", "Plans", "Les jours de tournage, les plans, le PDF.", "jour scene plan pdf decoupage carnet de tournage", cineVue = "PLANS"),
+        Destination("cine-materiel", Onglet.CINEMA, Univers.CINEMA, "Matériel", "Matériel", "Pellicule ou caméra, objectifs, et ton propre matériel.", "camera capteur pellicule objectif serie mon materiel projecteurs", cineVue = "MATERIEL"),
+
+        lumiere("lum-plan", "PLAN_SOL", "Plan au sol", "Plan sol", "Le décor vu de dessus : caméras, comédiens, projecteurs, soleil.", "plan de feu implantation carte vue camera 3d deplacer projecteur"),
+        lumiere("lum-combien", "PROJECTEUR", "Combien j'ai", "Lux", "Les lux et le diaph qu'un projecteur donne à une distance.", "lux eclairement distance diaph projecteur footcandle"),
+        lumiere("lum-placer", "PLACER", "Où le placer", "Placer", "La distance pour un diaph, ou pour couvrir une largeur.", "distance reculer avancer couvrir faisceau plan au sol"),
+        lumiere("lum-rapports", "RAPPORTS", "Rapports", "Rapports", "Face, débouchage, contre : contraste et ambiance.", "contraste ratio key fill ambiance high key low key"),
+        lumiere("lum-couleur", "COULEUR", "Couleur", "Couleur", "Kelvins, mireds et gélatines de correction.", "mired kelvin cto ctb gelatine temperature de couleur lee rosco"),
+        lumiere("lum-champ", "CHAMP", "Champ", "Champ", "Ce que couvre une focale, hyperfocale, profondeur de champ.", "profondeur de champ hyperfocale angle largeur nettete"),
+        lumiere("lum-elec", "ELECTRICITE", "Électricité", "Élec", "Ampères, circuits, groupe électrogène.", "ampere watt disjoncteur prise circuit groupe kva triphase"),
+        lumiere("lum-scint", "SCINTILLEMENT", "Scintillement", "Scintill.", "Les cadences et les angles sûrs sous le secteur.", "flicker obturateur 50 hz 60 hz hmi cadence ralenti"),
+        lumiere("lum-conv", "CONVERSIONS", "Conversions", "Convers.", "Lux et footcandles, mètres et pieds, densités, diaphs.", "footcandle pieds nd densite transmission t-stop"),
+
+        Destination("fiches-cameras", Onglet.CAMERAS, Univers.SAVOIR, "Fiches caméras", "Caméras", "L'histoire et l'usage de chaque caméra.", "arri alexa red sony panavision camera catalogue", sous = "CAMERAS:CAMERA"),
+        Destination("fiches-objectifs", Onglet.CAMERAS, Univers.SAVOIR, "Fiches objectifs", "Objectifs", "Les grandes séries d'optiques de cinéma.", "cooke zeiss angenieux anamorphique optique serie", sous = "CAMERAS:OBJECTIF"),
+        Destination("fiches-projecteurs", Onglet.CAMERAS, Univers.SAVOIR, "Fiches projecteurs", "Projos", "63 projecteurs, avec leur photométrie.", "aputure skypanel hmi fresnel led tube lumiere projo", sous = "CAMERAS:PROJECTEUR"),
+        Destination("quiz", Onglet.CAMERAS, Univers.SAVOIR, "Quiz", "Quiz", "Reconnaître caméras et objectifs.", "jeu question reviser entrainement", sous = "CAMERAS:QUIZ"),
+        Destination("tables-exposition", Onglet.TABLES, Univers.SAVOIR, "Tables · exposition", "Tables", "Les repères d'exposition à retenir.", "ev iso vitesse diaph reciprocite", sous = "TABLES:EXPOSITION"),
+        Destination("tables-developpement", Onglet.TABLES, Univers.SAVOIR, "Tables · développement", "Dév.", "Temps, températures, dilutions.", "revelateur temps temperature dilution pousse", sous = "TABLES:DEVELOPPEMENT"),
+        Destination("tables-formules", Onglet.TABLES, Univers.SAVOIR, "Tables · formules", "Formules", "Toutes les formules que l'appli utilise.", "formule calcul loi carre inverse mired gelatines", sous = "TABLES:FORMULES")
+    )
+}
+
+private fun destination(id: String): Destination? = DESTINATIONS.firstOrNull { it.id == id }
+
+/** Quatre cases : tout ce que l'appli contient. */
+private val IconeTout = icone("tout") {
+    moveTo(4.5f, 4.5f); lineTo(10f, 4.5f); lineTo(10f, 10f); lineTo(4.5f, 10f); close()
+    moveTo(14f, 4.5f); lineTo(19.5f, 4.5f); lineTo(19.5f, 10f); lineTo(14f, 10f); close()
+    moveTo(4.5f, 14f); lineTo(10f, 14f); lineTo(10f, 19.5f); lineTo(4.5f, 19.5f); close()
+    moveTo(14f, 14f); lineTo(19.5f, 14f); lineTo(19.5f, 19.5f); lineTo(14f, 19.5f); close()
+}
+
+/**
+ * Tout ce que l'appli sait faire, sur un seul écran : on cherche, ou on
+ * touche. Chaque page s'ouvre directement, même rangée trois menus plus bas,
+ * et une étoile la garde dans la barre.
+ */
+@Composable
+private fun Lanceur(
+    epingles: List<String>,
+    recents: List<Destination>,
+    ici: String?,
+    surChoix: (Destination) -> Unit,
+    surEpingle: (Destination) -> Unit,
+    surParametres: () -> Unit,
+    fermer: () -> Unit
+) {
+    BackHandler(onBack = fermer)
+    var recherche by remember { mutableStateOf("") }
+    val mots = sansAccents(recherche).split(' ').filter { it.isNotBlank() }
+    val trouvees = DESTINATIONS.filter { d ->
+        val botte = sansAccents(d.titre + " " + d.detail + " " + d.mots + " " + d.univers.titre)
+        mots.all { it in botte }
+    }
+    val colonnes = if (LocalPaysage.current) 4 else 2
+    Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+        Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().padding(horizontal = Gouttiere)) {
+            Row(Modifier.fillMaxWidth().padding(top = 10.dp, bottom = 6.dp), verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    "Où veux-tu aller ?",
+                    style = TitreEcran.copy(fontSize = 26.sp, lineHeight = 30.sp),
+                    color = MaterialTheme.colorScheme.onBackground,
+                    maxLines = 1,
+                    modifier = Modifier.weight(1f)
+                )
+                Box(Modifier.clip(RoundedCornerShape(50)).clickable { surParametres() }.padding(10.dp)) {
+                    Icon(IconeReglages, contentDescription = "Paramètres", tint = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.size(22.dp))
+                }
+                Text(
+                    "✕",
+                    style = TitreCarte.copy(fontSize = 20.sp),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.clip(RoundedCornerShape(50)).clickable { fermer() }.padding(horizontal = 12.dp, vertical = 8.dp)
+                )
             }
-            Box(
-                Modifier
-                    .padding(vertical = 3.dp)
-                    .size(width = 26.dp, height = 1.dp)
-                    .background(MaterialTheme.colorScheme.outlineVariant)
-            )
-            OngletCinemaFlottant(onglet == Onglet.CINEMA, avecEtiquette = false, serre = true) { surChoix(Onglet.CINEMA) }
-        }
-        return
-    }
-    Row(
-        Modifier
-            .align(Alignment.BottomCenter)
-            .wrapContentWidth()
-            .navigationBarsPadding()
-            .padding(bottom = 14.dp)
-            .background(
-                MaterialTheme.colorScheme.surfaceContainerHighest.copy(alpha = 0.98f),
-                RoundedCornerShape(50)
-            )
-            .border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(50))
-            .padding(6.dp),
-        horizontalArrangement = Arrangement.spacedBy(2.dp)
-    ) {
-        /* Huit onglets : sur un écran de moins de 420 dp, l'étiquette de
-           l'onglet actif ferait déborder la pilule ; l'icône en couleur
-           suffit alors, et les onglets se resserrent un peu. */
-        val largeur = LocalConfiguration.current.screenWidthDp
-        val avecEtiquette = largeur >= 460
-        val serre = largeur < 420
-        Onglet.entries.filter { it != Onglet.CINEMA }.forEach { o ->
-            OngletFlottant(o, o == onglet, avecEtiquette, serre) { surChoix(o) }
-        }
-        /* Cinéma, à part : un univers entier, séparé de la photo par un filet,
-           et toujours dans sa teinte, même quand il n'est pas ouvert. */
-        Box(
-            Modifier
-                .padding(horizontal = 3.dp)
-                .size(width = 1.dp, height = 30.dp)
-                .align(Alignment.CenterVertically)
-                .background(MaterialTheme.colorScheme.outlineVariant)
-        )
-        OngletCinemaFlottant(onglet == Onglet.CINEMA, avecEtiquette, serre) { surChoix(Onglet.CINEMA) }
-    }
-}
-
-@Composable
-private fun OngletCinemaFlottant(actif: Boolean, avecEtiquette: Boolean, serre: Boolean, surClic: () -> Unit) {
-    /* Le rouge du voyant de tournage, quel que soit l'onglet ouvert. */
-    val teinte = if (MaterialTheme.colorScheme.background.luminance() < 0.5f) Teinte.TALLY.sombre else Teinte.TALLY.clair
-    val etiquette = avecEtiquette || (actif && !serre)
-    Row(
-        Modifier
-            .clip(RoundedCornerShape(50))
-            .background(if (actif) teinte.couleur else teinte.fond)
-            .clickable { surClic() }
-            .padding(horizontal = if (etiquette) 14.dp else if (serre) 10.dp else 12.dp, vertical = if (LocalPaysage.current) 8.dp else 12.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Icon(
-            IconeCinema,
-            contentDescription = "Cinéma",
-            tint = if (actif) teinte.surCouleur else teinte.couleur,
-            modifier = Modifier.size(22.dp)
-        )
-        if (etiquette) {
-            Text(
-                "Ciné",
-                style = TitreCarte.copy(fontSize = 14.sp),
-                color = if (actif) teinte.surCouleur else teinte.couleur,
-                modifier = Modifier.padding(start = 6.dp)
-            )
+            Champ(recherche, "Chercher", Modifier.fillMaxWidth(), indication = "mired, ampères, plan au sol, quiz, tirage…") { recherche = it }
+            LazyColumn(
+                Modifier.fillMaxSize(),
+                contentPadding = PaddingValues(top = 10.dp, bottom = 28.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                if (mots.isEmpty() && recents.isNotEmpty()) {
+                    item(key = "recents") {
+                        Etiquette("Récents")
+                        Row(
+                            Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(top = 6.dp),
+                            horizontalArrangement = Arrangement.spacedBy(6.dp)
+                        ) {
+                            recents.forEach { d -> Pastille(d.titre, accent = d.id == ici) { surChoix(d) } }
+                        }
+                    }
+                }
+                Univers.entries.forEach { u ->
+                    val pages = trouvees.filter { it.univers == u }
+                    if (pages.isNotEmpty()) {
+                        item(key = u.name) { Etiquette(u.titre, modifier = Modifier.padding(top = 8.dp), accent = true) }
+                        items(pages.chunked(colonnes), key = { it.first().id }) { rangee ->
+                            Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                rangee.forEach { d ->
+                                    Tuile(
+                                        d, actif = d.id == ici, epinglee = d.id in epingles,
+                                        modifier = Modifier.weight(1f).fillMaxHeight(),
+                                        surClic = { surChoix(d) }, surEpingle = { surEpingle(d) }
+                                    )
+                                }
+                                repeat(colonnes - rangee.size) { Spacer(Modifier.weight(1f)) }
+                            }
+                        }
+                    }
+                }
+                if (trouvees.isEmpty()) {
+                    item(key = "rien") {
+                        Text("Rien ne correspond à « ${recherche.trim()} ».", style = Corps, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
+                }
+                item(key = "aide") {
+                    Text(
+                        "L'étoile garde une page dans la barre du bas (quatre au plus : la plus ancienne laisse sa place). Le bouton « Tout » te ramène ici.",
+                        style = Detail,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(top = 6.dp)
+                    )
+                }
+            }
         }
     }
 }
 
 @Composable
-private fun OngletFlottant(onglet: Onglet, actif: Boolean, avecEtiquette: Boolean, serre: Boolean, surClic: () -> Unit) {
-    Row(
-        Modifier
-            .clip(RoundedCornerShape(50))
-            .background(if (actif) MaterialTheme.colorScheme.primary else Color.Transparent)
+private fun Tuile(d: Destination, actif: Boolean, epinglee: Boolean, modifier: Modifier, surClic: () -> Unit, surEpingle: () -> Unit) {
+    val fond = if (actif) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainerHigh
+    val encre = if (actif) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface
+    Column(
+        modifier
+            .clip(RoundedCornerShape(RayonCarte))
+            .background(fond)
             .clickable { surClic() }
-            .padding(horizontal = if (actif && avecEtiquette) 14.dp else if (serre) 8.dp else 11.dp, vertical = if (LocalPaysage.current) 8.dp else 12.dp),
-        verticalAlignment = Alignment.CenterVertically
+            .padding(start = 12.dp, end = 2.dp, top = 4.dp, bottom = 12.dp)
     ) {
-        Icon(
-            onglet.icone,
-            contentDescription = onglet.titre,
-            tint = if (actif) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.size(22.dp)
-        )
-        AnimatedVisibility(visible = actif && avecEtiquette, enter = fadeIn(), exit = fadeOut()) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(d.onglet.icone, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(18.dp))
             Text(
-                onglet.titre,
-                style = TitreCarte.copy(fontSize = 14.sp),
-                color = MaterialTheme.colorScheme.onPrimary,
-                modifier = Modifier.padding(start = 8.dp)
+                d.titre,
+                style = TitreCarte.copy(fontSize = 15.sp),
+                color = encre,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.weight(1f).padding(start = 8.dp)
+            )
+            Text(
+                if (epinglee) "★" else "☆",
+                style = TitreCarte.copy(fontSize = 18.sp),
+                color = if (epinglee) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
+                modifier = Modifier.clip(RoundedCornerShape(50)).clickable { surEpingle() }.padding(horizontal = 10.dp, vertical = 8.dp)
             )
         }
+        Text(
+            d.detail,
+            style = Detail,
+            color = if (actif) encre.copy(alpha = 0.8f) else MaterialTheme.colorScheme.onSurfaceVariant,
+            maxLines = 3,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.padding(end = 10.dp)
+        )
     }
 }

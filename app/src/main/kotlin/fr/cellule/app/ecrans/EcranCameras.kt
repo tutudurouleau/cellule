@@ -4,6 +4,8 @@
 
 package fr.cellule.app.ecrans
 
+import fr.cellule.app.Aiguillage
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -103,6 +105,18 @@ fun EcranCameras(depot: DepotQuiz, reglages: Reglages) {
     var fiche by remember { mutableStateOf<Materiel?>(null) }
     val catalogue = remember { EtatCatalogue() }
     val quiz = remember { EtatQuiz(depot) }
+    LaunchedEffect(Aiguillage.cible) {
+        Aiguillage.prendre("CAMERAS")?.let { c ->
+            if (c == "QUIZ") {
+                mode = ModeCameras.QUIZ
+            } else {
+                GenreMateriel.entries.firstOrNull { it.name == c }?.let {
+                    mode = ModeCameras.APPRENDRE
+                    catalogue.genre = it
+                }
+            }
+        }
+    }
 
     Column(Modifier.fillMaxSize()) {
         Box(Modifier.fillMaxWidth().padding(horizontal = Gouttiere, vertical = 6.dp)) {

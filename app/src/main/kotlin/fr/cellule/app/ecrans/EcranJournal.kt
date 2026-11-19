@@ -1,5 +1,6 @@
 package fr.cellule.app.ecrans
 
+import fr.cellule.app.Aiguillage
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
@@ -67,6 +68,9 @@ fun EcranJournal(
                 else -> ModeCarnet.VUES
             }
         )
+    }
+    LaunchedEffect(Aiguillage.cible) {
+        Aiguillage.prendre("CARNET")?.let { c -> ModeCarnet.entries.firstOrNull { it.name == c }?.let { mode = it } }
     }
 
     var pellicule by remember { mutableStateOf(reglages.pellicule) }
