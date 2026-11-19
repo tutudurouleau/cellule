@@ -66,7 +66,9 @@ data class OptionsDessin(
     val tuile: ((Int, Int, Int) -> Bitmap?)? = null,
     val projecteurs: (String) -> Projecteur? = { null },
     val legende: Boolean = true,
-    val boussole: Boolean = true
+    val boussole: Boolean = true,
+    /** La place proposée pour un projecteur (même identifiant), dessinée en fantôme. */
+    val fantome: ElementSol? = null
 )
 
 object Couleurs {
@@ -155,6 +157,7 @@ object DessinSol {
             plan.elements.filter { it.type == t }.forEach { element(c, it, vue, o) }
         }
         plan.elements.forEach { etiquette(c, it, vue, o) }
+        o.fantome?.let { f -> plan.element(f.identifiant)?.let { fantome(c, it, f, vue, o) } }
         o.selection?.let { id -> plan.element(id)?.let { selection(c, it, vue) } }
 
         if (o.boussole) boussole(c, plan, largeur, vue, o)
@@ -249,6 +252,20 @@ object DessinSol {
     }
 
     /* ── Éléments ──────────────────────────────────────────────────────── */
+
+    /** La nouvelle place d'un projecteur : un trait pointillé depuis l'ancienne, et le projecteur en transparence. */
+    private fun fantome(c: Canvas, avant: ElementSol, apres: ElementSol, vue: VueSol, o: OptionsDessin) {
+        val couleur = Couleurs.de(apres.type)
+        c.drawLine(
+            vue.sx(avant.x), vue.sy(avant.y), vue.sx(apres.x), vue.sy(apres.y),
+            trait(couleur, 2.4f).apply { pathEffect = DashPathEffect(floatArrayOf(12f, 9f), 0f) }
+        )
+        c.saveLayerAlpha(null, 120)
+        faisceau(c, apres, vue, o)
+        element(c, apres, vue, o)
+        c.restore()
+        c.drawCircle(vue.sx(apres.x), vue.sy(apres.y), 0.32f * vue.echelle, trait(couleur, 2f).apply { pathEffect = DashPathEffect(floatArrayOf(8f, 6f), 0f) })
+    }
 
     private fun element(c: Canvas, e: ElementSol, vue: VueSol, o: OptionsDessin) {
         val k = vue.echelle

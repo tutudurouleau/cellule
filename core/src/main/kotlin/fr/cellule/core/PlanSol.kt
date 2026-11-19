@@ -101,6 +101,8 @@ data class PlanSol(
     val longitude: Double? = null,
     /** Le fond de carte OpenStreetMap (extérieur), quand il y a du réseau. */
     val carte: Boolean = false,
+    /** La hauteur sous plafond (ou la plus haute accroche possible), en mètres ; null : pas de limite. */
+    val plafond: Double? = null,
     val notes: String = ""
 ) {
     fun element(id: Long): ElementSol? = elements.firstOrNull { it.identifiant == id }

@@ -84,6 +84,7 @@ object PlansSol {
             latitude = o.reel("lat"),
             longitude = o.reel("lon"),
             carte = o.optBoolean("carte", false),
+            plafond = o.reel("plafond"),
             notes = o.optString("notes", "")
         )
     }
@@ -149,6 +150,7 @@ object PlansSol {
             p.jourId?.let { o.put("jour", it) }
             p.latitude?.let { o.put("lat", it) }
             p.longitude?.let { o.put("lon", it) }
+            p.plafond?.let { o.put("plafond", it) }
             a.put(o)
         }
         return a

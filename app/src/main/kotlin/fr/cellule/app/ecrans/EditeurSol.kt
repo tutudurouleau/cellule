@@ -201,6 +201,10 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
         onFermer()
     }
     var selection by remember { mutableStateOf<Long?>(null) }
+    /* Le projecteur qu'on déplace par le calcul, le sujet de départ, et sa place proposée. */
+    var deplacer by remember { mutableStateOf<Long?>(null) }
+    var sujetDeplacement by remember { mutableStateOf<Long?>(null) }
+    var fantome by remember { mutableStateOf<ElementSol?>(null) }
     var vue by remember { mutableStateOf<VueSol?>(null) }
     var taille by remember { mutableStateOf(IntSize.Zero) }
     var feuille by remember { mutableStateOf<FeuilleSol?>(null) }
@@ -336,7 +340,8 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
                                     texte = taillePolice,
                                     metres = metres,
                                     tuile = if (plan.carte) { z, x, y -> TuilesOsm.enMemoire(z, x, y) } else null,
-                                    projecteurs = { MonMateriel.projecteur(it) }
+                                    projecteurs = { MonMateriel.projecteur(it) },
+                                    fantome = fantome
                                 )
                             )
                         }
@@ -347,13 +352,26 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
                 Column(
                     Modifier
                         .fillMaxWidth()
-                        .heightIn(max = 320.dp)
+                        .heightIn(max = if (deplacer != null) 400.dp else 320.dp)
                         .background(MaterialTheme.colorScheme.surfaceContainerHigh, RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
                         .verticalScroll(rememberScrollState())
                         .padding(horizontal = Gouttiere, vertical = 10.dp)
                 ) {
                     val e = selection?.let { plan.element(it) }
-                    if (e == null) {
+                    val aDeplacer = deplacer?.let { plan.element(it) }?.takeIf { it.type == TypeElement.PROJECTEUR }
+                    if (aDeplacer != null) {
+                        BlocDeplacerProjecteur(
+                            plan, aDeplacer, reglages,
+                            sujetInitial = sujetDeplacement,
+                            surPlafond = { plan = plan.copy(plafond = it) },
+                            surApercu = { fantome = it },
+                            surAppliquer = { plan = plan.remplacer(it) },
+                            surFermer = {
+                                deplacer = null
+                                fantome = null
+                            }
+                        )
+                    } else if (e == null) {
                         Etiquette("Ajouter")
                         Spacer(Modifier.height(6.dp))
                         Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -398,6 +416,10 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
                                 plan = plan.sans(e.identifiant)
                                 selection = null
                             },
+                            surDeplacer = {
+                                sujetDeplacement = null
+                                deplacer = e.identifiant
+                            },
                             surFini = { selection = null }
                         )
                     }
@@ -410,7 +432,12 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
                 PlansSol.supprimer(plan.identifiant)
                 onFermer()
             }) { feuille = null }
-            FeuilleSol.LUMIERE -> FeuilleLumiereSol(plan, reglages) { feuille = null }
+            FeuilleSol.LUMIERE -> FeuilleLumiereSol(plan, reglages, surAjuster = { projo, sujet ->
+                feuille = null
+                selection = projo
+                sujetDeplacement = sujet
+                deplacer = projo
+            }) { feuille = null }
             FeuilleSol.COTE -> FeuilleCoteSol(plan, reglages) { feuille = null }
             FeuilleSol.CAMERA -> FeuilleVueCamera(plan, reglages, { plan = plan.remplacer(it) }) { feuille = null }
             FeuilleSol.EXPORT -> FeuilleExportSol(plan, cinema, metres) { feuille = null }
@@ -423,7 +450,7 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
 
 /** Un champ de longueur, affiché en mètres ou en pieds, rendu en mètres. */
 @Composable
-private fun ChampLongueur(valeur: Double?, intitule: String, metres: Boolean, cle: Any, modifier: Modifier, surValeur: (Double?) -> Unit) {
+internal fun ChampLongueur(valeur: Double?, intitule: String, metres: Boolean, cle: Any, modifier: Modifier, surValeur: (Double?) -> Unit) {
     var t by remember(cle, metres) { mutableStateOf(valeur?.let { nombreCourt(if (metres) it else Unites.pieds(it), 2) } ?: "") }
     Champ(t, intitule + if (metres) " (m)" else " (ft)", modifier) {
         t = it
@@ -450,6 +477,7 @@ private fun ColumnScope.ReglagesElement(
     surPositionSuivante: () -> Unit,
     surDupliquer: () -> Unit,
     surSupprimer: () -> Unit,
+    surDeplacer: () -> Unit,
     surFini: () -> Unit
 ) {
     val cle = e.identifiant
@@ -526,6 +554,8 @@ private fun ColumnScope.ReglagesElement(
                 ChampLongueur(e.hauteur, "Hauteur", metres, cle, Modifier.weight(1f)) { surChangement(e.copy(hauteur = it)) }
                 ChampReel(e.pertesDiaphs, "Pertes (diaphs)", cle, Modifier.weight(1f)) { surChangement(e.copy(pertesDiaphs = it ?: 0.0)) }
             }
+            Spacer(Modifier.height(6.dp))
+            BoutonPlat("Reculer, viser des lux, un diaph ou un rapport…", accent = true, modifier = Modifier.fillMaxWidth(), surClic = surDeplacer)
         }
         TypeElement.REPERE -> {}
         else -> {
@@ -715,7 +745,7 @@ private fun FeuilleOptionsSol(
 }
 
 @Composable
-private fun FeuilleLumiereSol(plan: PlanSol, reglages: Reglages, onFermer: () -> Unit) {
+private fun FeuilleLumiereSol(plan: PlanSol, reglages: Reglages, surAjuster: (Long, Long) -> Unit, onFermer: () -> Unit) {
     val sujets = plan.elements.filter { it.type == TypeElement.COMEDIEN }
     var sujetId by remember { mutableStateOf(sujets.firstOrNull()?.identifiant) }
     val metres = reglages.lumiereMetres
@@ -760,6 +790,17 @@ private fun FeuilleLumiereSol(plan: PlanSol, reglages: Reglages, onFermer: () ->
             val face = apports.filter { it.position == "face" }.mapNotNull { it.lux }.sortedDescending()
             if (face.size >= 2 && face[1] > 0) {
                 Ligne("Face / débouchage", nombreCourt(face[0] / face[1], 1) + " : 1", "les deux plus fortes sources de face")
+            }
+        }
+        Separateur()
+        Etiquette("Ajuster un projecteur sur ce sujet")
+        Row(
+            Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(top = 6.dp),
+            horizontalArrangement = Arrangement.spacedBy(6.dp)
+        ) {
+            apports.forEach { a ->
+                val nom = a.projecteur.nom.ifBlank { MonMateriel.projecteur(a.projecteur.projecteur)?.nomComplet ?: "Projecteur" }
+                Pastille("$nom ›") { surAjuster(a.projecteur.identifiant, sujet.identifiant) }
             }
         }
         Text(

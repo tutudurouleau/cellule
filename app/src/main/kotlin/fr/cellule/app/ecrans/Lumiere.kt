@@ -349,6 +349,7 @@ private fun OutilPlacer(reglages: Reglages, source: SaisieSource, u: UnitesLumie
             Text("Donne l'angle du faisceau pour savoir où il couvre cette largeur.", style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }
+    CarteDeplacerSurPlan(reglages)
 }
 
 /* ── Rapports et ambiances ─────────────────────────────────────────────── */
