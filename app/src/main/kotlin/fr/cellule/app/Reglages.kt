@@ -132,6 +132,9 @@ class Reglages(contexte: Context) {
     var navEpingles by TextePref(prefs, "nav_epingles", "mesurer,estimer,carnet-vues,cine-viseur")
     var navRecents by TextePref(prefs, "nav_recents", "")
 
+    /** Les exercices de formules réussis et posés, par thème : « LUMIERE=12/15;OPTIQUE=3/4 ». */
+    var quizFormules by TextePref(prefs, "quiz_formules", "")
+
     /** On ne demande la localisation qu'une fois d'office ; après un refus, on n'insiste pas. */
     var lieuDemande by BooleenPref(prefs, "lieu_demande", false)
 }

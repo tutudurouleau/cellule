@@ -85,6 +85,7 @@ internal val DESTINATIONS: List<Destination> by lazy {
         Destination("carnet-vues", Onglet.CARNET, Univers.APRES, "Carnet · vues", "Carnet", "Ce que tu as photographié, et ton biais.", "journal notes photos pellicule", sous = "CARNET:VUES"),
         Destination("carnet-films", Onglet.CARNET, Univers.APRES, "Carnet · films", "Films", "Tes développements notés.", "developpement pellicule revelateur", sous = "CARNET:DEVELOPPEMENTS"),
         Destination("carnet-tirages", Onglet.CARNET, Univers.APRES, "Carnet · tirages", "Tirages", "Tes tirages notés.", "papier agrandisseur tirage", sous = "CARNET:TIRAGES"),
+        Destination("labo-quiz", Onglet.LABO, Univers.APRES, "Quiz du labo", "Quiz labo", "Bains, dilutions, push, réciprocité, diaphs de tête.", "quiz labo entrainement question bains revelateur", sous = "LABO:QUIZ"),
         Destination("labo", Onglet.LABO, Univers.APRES, "Labo", "Labo", "Développer, tirer, le chrono, et comprendre pourquoi.", "chrono minuteur revelateur fixateur dilution temperature tirage bande d'essai"),
 
         /* Le sommaire Cinéma, puis ses quatre pages dans l'ordre de ses cartes. */
@@ -107,6 +108,7 @@ internal val DESTINATIONS: List<Destination> by lazy {
         lumiere("lum-elec", "ELECTRICITE", PLATEAU, IconeElectricite, "Électricité", "Élec", "Ampères, circuits, groupe électrogène.", "ampere watt disjoncteur prise circuit groupe kva triphase"),
         lumiere("lum-scint", "SCINTILLEMENT", PLATEAU, IconeScintillement, "Scintillement", "Scintill.", "Les cadences et les angles sûrs sous le secteur.", "flicker obturateur 50 hz 60 hz hmi cadence ralenti"),
 
+        Destination("reviser", Onglet.REVISER, Univers.SAVOIR, "Réviser", "Réviser", "Tous les quiz : formules du BTS, matériel, labo, focales.", "quiz exercices formules reviser entrainement examen concours bts"),
         Destination("fiches-cameras", Onglet.CAMERAS, Univers.SAVOIR, "Fiches caméras", "Caméras", "L'histoire et l'usage de chaque caméra.", "arri alexa red sony panavision camera catalogue", sous = "CAMERAS:CAMERA"),
         Destination("fiches-objectifs", Onglet.CAMERAS, Univers.SAVOIR, "Fiches objectifs", "Objectifs", "Les grandes séries d'optiques de cinéma.", "cooke zeiss angenieux anamorphique optique serie", sous = "CAMERAS:OBJECTIF"),
         Destination("fiches-projecteurs", Onglet.CAMERAS, Univers.SAVOIR, "Fiches projecteurs", "Projos", "63 projecteurs, avec leur photométrie.", "aputure skypanel hmi fresnel led tube lumiere projo", sous = "CAMERAS:PROJECTEUR"),
@@ -136,6 +138,14 @@ internal fun chemin(id: String): List<Destination> {
 }
 
 /* ── Les icônes des sommaires, dans le trait des onglets ────────────────── */
+
+/** Un point d'interrogation dans un cercle : réviser. */
+internal val IconeReviser = icone("reviser") {
+    moveTo(3.5f, 12f); arcTo(8.5f, 8.5f, 0f, true, true, 20.5f, 12f); arcTo(8.5f, 8.5f, 0f, true, true, 3.5f, 12f); close()
+    moveTo(9.6f, 9.6f); arcTo(2.5f, 2.5f, 0f, true, true, 13.4f, 11.6f)
+    lineTo(12f, 12.8f); lineTo(12f, 14f)
+    moveTo(12f, 16.8f); lineTo(12f, 16.9f)
+}
 
 /** Un cadre 16:9 et sa croix de centre : le viseur. */
 internal val IconeViseur = icone("viseur") {

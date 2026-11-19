@@ -119,6 +119,11 @@ enum class Teinte(val sombre: Accent, val clair: Accent) {
         Accent(Color(0xFFF07A8A), Color(0xFF2E0710), Color(0xFF4D1822), Color(0xFFFFC2CB)),
         Accent(Color(0xFFB0283F), Color.White, Color(0xFFF9DDE2), Color(0xFF7F1A2D))
     ),
+    /** La lavande du surligneur : réviser. */
+    LAVANDE(
+        Accent(Color(0xFFB9A6F0), Color(0xFF1C1236), Color(0xFF2E2547), Color(0xFFDCD2FA)),
+        Accent(Color(0xFF5B47A8), Color.White, Color(0xFFE6E0F8), Color(0xFF3F2F82))
+    ),
     /** Le laiton du matériel de tournage. */
     CUIVRE(
         Accent(Color(0xFFDE9A6B), Color(0xFF2A1508), Color(0xFF45291A), Color(0xFFF8CFB2)),

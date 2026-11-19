@@ -88,6 +88,7 @@ import fr.cellule.app.ecrans.EcranLabo
 import fr.cellule.app.ecrans.EcranMesurer
 import fr.cellule.app.ecrans.EcranOngletCinema
 import fr.cellule.app.ecrans.EcranTables
+import fr.cellule.app.ecrans.EcranReviser
 import fr.cellule.core.DeveloppementNote
 import fr.cellule.core.TirageNote
 import fr.cellule.core.TYPES_DE_SCENE
@@ -232,6 +233,7 @@ internal enum class Onglet(
     CARNET("Carnet", "ce que tu as photographié, et ton biais", IconeCarnet, false, Teinte.ENCRE),
     LABO("Labo", "développer, tirer, et comprendre pourquoi", IconeLabo, false, Teinte.INACTINIQUE),
     TABLES("Tables", "les repères à retenir", IconeTables, false, Teinte.GRIS_CHAUD),
+    REVISER("Réviser", "quiz et exercices pour tout retenir", IconeReviser, false, Teinte.LAVANDE),
     CAMERAS("Caméras", "fiches et quiz du matériel de tournage", IconeCameras, false, Teinte.CUIVRE),
     CINEMA("Cinéma", "tournage, plans et matériel", IconeCinema, true, Teinte.TALLY)
 }
@@ -348,6 +350,7 @@ private fun Application() {
                             Onglet.CARNET -> EcranJournal(depot, reglages, etat, labo, tirages, pronostics, cinema)
                             Onglet.LABO -> EcranLabo(pronostics, etat, labo, tirages)
                             Onglet.TABLES -> EcranTables()
+                            Onglet.REVISER -> EcranReviser(reglages) { id -> destination(id)?.let(aller) }
                             Onglet.CINEMA -> EcranOngletCinema(reglages, etat, cinema, depot) { parametres = true }
                         }
                     }

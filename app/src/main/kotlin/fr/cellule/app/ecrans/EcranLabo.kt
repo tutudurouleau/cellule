@@ -25,6 +25,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import fr.cellule.app.Aiguillage
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
@@ -170,6 +171,10 @@ fun EcranLabo(
     }
 
     BackHandler(enabled = vue != VueLabo.Accueil) { vue = VueLabo.Accueil }
+    /* Depuis Réviser ou le lanceur : « LABO:QUIZ » ouvre directement le quiz. */
+    LaunchedEffect(Aiguillage.cible) {
+        if (Aiguillage.prendre("LABO") == "QUIZ") vue = VueLabo.Quiz
+    }
 
     Column(Modifier.fillMaxSize()) {
         if (vue != VueLabo.Accueil) {

@@ -6,6 +6,17 @@ d'origine ni tout le dépôt.
 
 ---
 
+## Où on en est
+
+- **Étapes 1 et 2 faites**, validées par l'utilisateur (branche `claude/adoring-lamport-yln7ao`).
+  Il aime le sommaire Cinéma : « beaucoup plus lisible ».
+- **En plus, à sa demande : l'onglet « Réviser »** (`ecrans/EcranReviser.kt`). Il regroupe tous les
+  quiz. Les exercices sur les formules (`core/.../QuizFormules.kt`, 7 thèmes, 53 types de
+  questions) vivent ici. Les quiz Caméras, Labo (`LABO:QUIZ`) et Focales s'ouvrent chez eux.
+  Il prépare le concours de Louis-Lumière : les exercices doivent rester courts et faisables
+  dans l'appli.
+- **Prochaine étape : la 3** (plan au sol pro, §7).
+
 ## 0. À lire d'abord : économiser les crédits
 
 - **Ne relis pas tout le dépôt.** La carte des fichiers (§3) dit où est chaque chose. N'ouvre
