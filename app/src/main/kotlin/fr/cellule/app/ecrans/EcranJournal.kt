@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -152,13 +153,14 @@ fun EcranJournal(
 
     val bilan = Statistiques.bilan(entrees)
 
+    /* Les onglets restent en haut ; la page repart du haut à chaque onglet. */
+    val defilement = rememberScrollState()
+    LaunchedEffect(mode) { defilement.scrollTo(0) }
+    Column(Modifier.fillMaxSize()) {
+    Onglets(ModeCarnet.entries.toList(), mode, { it.libelle }) { mode = it }
     Column(
-        Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(bottom = ZoneNavFlottante)
+        Modifier.fillMaxWidth().weight(1f).verticalScroll(defilement).padding(bottom = ZoneNavFlottante)
     ) {
-
-        Box(Modifier.fillMaxWidth().padding(horizontal = Gouttiere, vertical = 6.dp)) {
-            ChoixSegmente(ModeCarnet.entries.toList(), mode, { it.libelle }) { mode = it }
-        }
 
         if (mode == ModeCarnet.DEVELOPPEMENTS) CarnetDeveloppements(labo, etat)
         else if (mode == ModeCarnet.TIRAGES) CarnetTirages(tirages, etat)
@@ -343,6 +345,7 @@ fun EcranJournal(
                 modifier = Modifier.padding(top = Interligne)
             )
         }
+    }
     }
 }
 

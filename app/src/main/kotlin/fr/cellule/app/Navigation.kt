@@ -87,16 +87,16 @@ internal val DESTINATIONS: List<Destination> by lazy {
         Destination("carnet-tirages", Onglet.CARNET, Univers.APRES, "Carnet · tirages", "Tirages", "Tes tirages notés.", "papier agrandisseur tirage", sous = "CARNET:TIRAGES"),
         Destination("labo", Onglet.LABO, Univers.APRES, "Labo", "Labo", "Développer, tirer, le chrono, et comprendre pourquoi.", "chrono minuteur revelateur fixateur dilution temperature tirage bande d'essai"),
 
-        /* Le sommaire Cinéma n'a pas encore d'écran : il porte le fil d'Ariane, et rejoindra le lanceur avec son écran. */
-        Destination("cinema", Onglet.CINEMA, Univers.CINEMA, "Cinéma", "Cinéma", "Le viseur, les plans, la lumière et le matériel.", "tournage", dansLanceur = false),
-        Destination("cine-viseur", Onglet.CINEMA, Univers.CINEMA, "Viseur", "Viseur", "Le cadre à ta focale, l'exposition, capturer un plan.", "camera cadre focale capturer reperage tournage", cineVue = "VISEUR", parent = "cinema"),
-        Destination("cine-plans", Onglet.CINEMA, Univers.CINEMA, "Plans", "Plans", "Les jours de tournage, les plans, le PDF.", "jour scene plan pdf decoupage carnet de tournage", cineVue = "PLANS", parent = "cinema"),
-        Destination("cine-materiel", Onglet.CINEMA, Univers.CINEMA, "Matériel", "Matériel", "Pellicule ou caméra, objectifs, et ton propre matériel.", "camera capteur pellicule objectif serie mon materiel projecteurs", cineVue = "MATERIEL", parent = "cinema"),
+        /* Le sommaire Cinéma, puis ses quatre pages dans l'ordre de ses cartes. */
+        Destination("cinema", Onglet.CINEMA, Univers.CINEMA, "Cinéma", "Cinéma", "Le viseur, les plans, la lumière et le matériel.", "tournage sommaire accueil", cineVue = "ACCUEIL"),
+        Destination("cine-viseur", Onglet.CINEMA, Univers.CINEMA, "Viseur", "Viseur", "Le cadre à ta focale, l'exposition, capturer un plan.", "camera cadre focale capturer reperage tournage", cineVue = "VISEUR", parent = "cinema", icone = IconeViseur),
+        Destination("cine-plans", Onglet.CINEMA, Univers.CINEMA, "Plans", "Plans", "Les jours de tournage, les plans, le PDF.", "jour scene plan pdf decoupage carnet de tournage", cineVue = "PLANS", parent = "cinema", icone = IconePlans),
 
         Destination(
             "lumiere", Onglet.CINEMA, Univers.LUMIERE, "Lumière", "Lumière", "Les outils du plateau : placer, doser, corriger la lumière.",
             "eclairage outils plateau sommaire", cineVue = "LUMIERE", outil = OUTIL_SOMMAIRE, parent = "cinema", icone = IconeLumiere
         ),
+        Destination("cine-materiel", Onglet.CINEMA, Univers.CINEMA, "Matériel", "Matériel", "Pellicule ou caméra, objectifs, et ton propre matériel.", "camera capteur pellicule objectif serie mon materiel projecteurs", cineVue = "MATERIEL", parent = "cinema", icone = IconeMateriel),
         lumiere("lum-plan", "PLAN_SOL", PLACER, IconePlanSol, "Plan au sol", "Plan sol", "Le décor vu de dessus : caméras, comédiens, projecteurs, soleil.", "plan de feu implantation carte vue camera 3d deplacer projecteur"),
         lumiere("lum-combien", "PROJECTEUR", PLACER, IconeProjecteur, "Combien j'ai", "Lux", "Les lux et le diaph qu'un projecteur donne à une distance.", "lux eclairement distance diaph projecteur footcandle"),
         lumiere("lum-placer", "PLACER", PLACER, IconePlacer, "Où le placer", "Placer", "La distance pour un diaph, ou pour couvrir une largeur.", "distance reculer avancer couvrir faisceau plan au sol"),
@@ -135,7 +135,32 @@ internal fun chemin(id: String): List<Destination> {
     return r.toList()
 }
 
-/* ── Les icônes des outils Lumière, dans le trait des onglets ──────────── */
+/* ── Les icônes des sommaires, dans le trait des onglets ────────────────── */
+
+/** Un cadre 16:9 et sa croix de centre : le viseur. */
+internal val IconeViseur = icone("viseur") {
+    moveTo(3f, 6f); lineTo(21f, 6f); lineTo(21f, 18f); lineTo(3f, 18f); close()
+    moveTo(12f, 10f); lineTo(12f, 14f)
+    moveTo(10f, 12f); lineTo(14f, 12f)
+}
+
+/** Deux vignettes et leurs notes : le découpage en plans. */
+internal val IconePlans = icone("plans") {
+    moveTo(3.5f, 4f); lineTo(11f, 4f); lineTo(11f, 10f); lineTo(3.5f, 10f); close()
+    moveTo(13.5f, 5.5f); lineTo(20.5f, 5.5f)
+    moveTo(13.5f, 8.5f); lineTo(18.5f, 8.5f)
+    moveTo(3.5f, 14f); lineTo(11f, 14f); lineTo(11f, 20f); lineTo(3.5f, 20f); close()
+    moveTo(13.5f, 15.5f); lineTo(20.5f, 15.5f)
+    moveTo(13.5f, 18.5f); lineTo(18.5f, 18.5f)
+}
+
+/** Un objectif de profil, ses bagues et sa lentille frontale : le matériel. */
+internal val IconeMateriel = icone("materiel") {
+    moveTo(4f, 8f); lineTo(13f, 8f); lineTo(13f, 16f); lineTo(4f, 16f); close()
+    moveTo(13f, 6.5f); lineTo(20f, 5f); lineTo(20f, 19f); lineTo(13f, 17.5f); close()
+    moveTo(7f, 8f); lineTo(7f, 16f)
+    moveTo(10f, 8f); lineTo(10f, 16f)
+}
 
 /** Une ampoule : la lumière. */
 internal val IconeLumiere = icone("lumiere") {

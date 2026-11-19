@@ -5,6 +5,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -44,12 +45,14 @@ fun EcranTables() {
     LaunchedEffect(Aiguillage.cible) {
         Aiguillage.prendre("TABLES")?.let { c -> RayonTables.entries.firstOrNull { it.name == c }?.let { rayon = it } }
     }
+    /* Les onglets restent en haut ; la page repart du haut à chaque onglet. */
+    val defilement = rememberScrollState()
+    LaunchedEffect(rayon) { defilement.scrollTo(0) }
+    Column(Modifier.fillMaxSize()) {
+    Onglets(RayonTables.entries.toList(), rayon, { it.libelle }) { rayon = it }
     Column(
-        Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(bottom = ZoneNavFlottante)
+        Modifier.fillMaxWidth().weight(1f).verticalScroll(defilement).padding(bottom = ZoneNavFlottante)
     ) {
-        Box(Modifier.fillMaxWidth().padding(horizontal = Gouttiere, vertical = 6.dp)) {
-            ChoixSegmente(RayonTables.entries.toList(), rayon, { it.libelle }) { rayon = it }
-        }
         if (rayon == RayonTables.DEVELOPPEMENT) {
             TablesDeveloppement()
             return@Column
@@ -197,5 +200,6 @@ fun EcranTables() {
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
+    }
     }
 }

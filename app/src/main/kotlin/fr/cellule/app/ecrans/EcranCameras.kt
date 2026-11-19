@@ -5,6 +5,9 @@
 package fr.cellule.app.ecrans
 
 import fr.cellule.app.Aiguillage
+import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.lazy.rememberLazyListState
+import fr.cellule.app.RayonCarte
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -73,10 +76,6 @@ import fr.cellule.core.Unites
 import fr.cellule.core.chercherMateriel
 import fr.cellule.core.nombreCourt
 
-private enum class ModeCameras(val libelle: String) {
-    APPRENDRE("Apprendre"), QUIZ("Quiz")
-}
-
 internal enum class Rayon(val libelle: String) {
     CAMERAS("Caméras"), OBJECTIFS("Objectifs"), TOUT("Les deux");
 
@@ -87,8 +86,8 @@ internal enum class Rayon(val libelle: String) {
     }
 }
 
-/* L'état vit au niveau de l'écran : passer d'« Apprendre » à « Quiz » pour
-   vérifier une fiche ne doit faire perdre ni la question ni le score. */
+/* L'état vit au niveau de l'écran : ouvrir le quiz puis revenir au catalogue
+   ne doit faire perdre ni la recherche, ni la question, ni le score. */
 private class EtatCatalogue {
     var genre by mutableStateOf(GenreMateriel.CAMERA)
     var recherche by mutableStateOf("")
@@ -96,40 +95,58 @@ private class EtatCatalogue {
 
 /**
  * Caméras, objectifs et projecteurs de cinéma : un catalogue de fiches pour
- * apprendre à quoi sert chaque outil, et un quiz pour vérifier qu'on
- * reconnaît les caméras et les objectifs.
+ * apprendre à quoi sert chaque outil, en trois onglets, et un quiz à part,
+ * ouvert depuis le haut du catalogue, pour vérifier qu'on reconnaît les
+ * caméras et les objectifs.
  */
 @Composable
 fun EcranCameras(depot: DepotQuiz, reglages: Reglages) {
-    var mode by remember { mutableStateOf(ModeCameras.APPRENDRE) }
+    var quizOuvert by remember { mutableStateOf(false) }
     var fiche by remember { mutableStateOf<Materiel?>(null) }
     val catalogue = remember { EtatCatalogue() }
     val quiz = remember { EtatQuiz(depot) }
     LaunchedEffect(Aiguillage.cible) {
         Aiguillage.prendre("CAMERAS")?.let { c ->
             if (c == "QUIZ") {
-                mode = ModeCameras.QUIZ
+                quizOuvert = true
             } else {
                 GenreMateriel.entries.firstOrNull { it.name == c }?.let {
-                    mode = ModeCameras.APPRENDRE
+                    quizOuvert = false
                     catalogue.genre = it
                 }
             }
         }
     }
+    /* Le retour du téléphone ramène du quiz au catalogue. */
+    BackHandler(enabled = quizOuvert) { quizOuvert = false }
 
     Column(Modifier.fillMaxSize()) {
-        Box(Modifier.fillMaxWidth().padding(horizontal = Gouttiere, vertical = 6.dp)) {
-            ChoixSegmente(
-                options = ModeCameras.entries.toList(),
-                selection = mode,
-                libelle = { it.libelle },
-                surChoix = { mode = it }
+        if (quizOuvert) {
+            FilAriane(
+                chemin = listOf(Miette("Fiches") { quizOuvert = false }),
+                titre = "Quiz",
+                phrase = "Reconnaître caméras et objectifs, à ton niveau.",
+                retour = { quizOuvert = false }
             )
-        }
-        when (mode) {
-            ModeCameras.APPRENDRE -> Catalogue(catalogue, surOuvrir = { fiche = it })
-            ModeCameras.QUIZ -> Quiz(quiz, depot, surOuvrir = { fiche = it })
+            Box(Modifier.fillMaxWidth().weight(1f)) {
+                Quiz(quiz, depot, surOuvrir = { fiche = it })
+            }
+        } else {
+            Onglets(
+                options = GenreMateriel.entries.toList(),
+                selection = catalogue.genre,
+                libelle = {
+                    when (it) {
+                        GenreMateriel.CAMERA -> "Caméras"
+                        GenreMateriel.OBJECTIF -> "Objectifs"
+                        GenreMateriel.PROJECTEUR -> "Projecteurs"
+                    }
+                },
+                surChoix = { catalogue.genre = it }
+            )
+            Box(Modifier.fillMaxWidth().weight(1f)) {
+                Catalogue(catalogue, ouvrirQuiz = { quizOuvert = true }, surOuvrir = { fiche = it })
+            }
         }
     }
 
@@ -139,7 +156,7 @@ fun EcranCameras(depot: DepotQuiz, reglages: Reglages) {
 /* ── Apprendre ────────────────────────────────────────────────────────── */
 
 @Composable
-private fun Catalogue(etat: EtatCatalogue, surOuvrir: (Materiel) -> Unit) {
+private fun Catalogue(etat: EtatCatalogue, ouvrirQuiz: () -> Unit, surOuvrir: (Materiel) -> Unit) {
     val etageres = when (etat.genre) {
         GenreMateriel.CAMERA -> ETAGERES_CAMERAS
         GenreMateriel.OBJECTIF -> ETAGERES_OBJECTIFS
@@ -151,25 +168,18 @@ private fun Catalogue(etat: EtatCatalogue, surOuvrir: (Materiel) -> Unit) {
             .filter { it.second.isNotEmpty() }
     }
 
+    /* Chaque onglet repart du haut de sa liste. */
+    val liste = rememberLazyListState()
+    LaunchedEffect(etat.genre) { liste.scrollToItem(0) }
     LazyColumn(
         Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(bottom = ZoneNavFlottante)
+        state = liste,
+        contentPadding = PaddingValues(top = 6.dp, bottom = ZoneNavFlottante)
     ) {
-        item {
+        item(key = "quiz") { EntreeQuiz(ouvrirQuiz) }
+        item(key = "recherche") {
             Column(Modifier.padding(horizontal = Gouttiere)) {
-                ChoixSegmente(
-                    options = GenreMateriel.entries.toList(),
-                    selection = etat.genre,
-                    libelle = {
-                        when (it) {
-                            GenreMateriel.CAMERA -> "Caméras"
-                            GenreMateriel.OBJECTIF -> "Objectifs"
-                            GenreMateriel.PROJECTEUR -> "Projecteurs"
-                        }
-                    },
-                    surChoix = { etat.genre = it }
-                )
-                Spacer(Modifier.height(8.dp))
+                Spacer(Modifier.height(4.dp))
                 Champ(
                     valeur = etat.recherche,
                     intitule = "Chercher",
@@ -190,6 +200,31 @@ private fun Catalogue(etat: EtatCatalogue, surOuvrir: (Materiel) -> Unit) {
                 entrees.forEach { m -> EntreeCatalogue(m) { surOuvrir(m) } }
             }
         }
+    }
+}
+
+/** La porte du quiz, en haut du catalogue. */
+@Composable
+private fun EntreeQuiz(ouvrir: () -> Unit) {
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .padding(horizontal = Gouttiere, vertical = 4.dp)
+            .clip(RoundedCornerShape(RayonCarte))
+            .background(MaterialTheme.colorScheme.primaryContainer)
+            .clickable { ouvrir() }
+            .padding(horizontal = Gouttiere, vertical = 14.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Column(Modifier.weight(1f)) {
+            Text("Tester tes connaissances", style = TitreCarte, color = MaterialTheme.colorScheme.onPrimaryContainer)
+            Text(
+                "Le quiz : reconnaître caméras et objectifs, à ton niveau.",
+                style = Detail,
+                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
+            )
+        }
+        Text("›", style = TitreCarte, color = MaterialTheme.colorScheme.onPrimaryContainer, modifier = Modifier.padding(start = 10.dp))
     }
 }
 

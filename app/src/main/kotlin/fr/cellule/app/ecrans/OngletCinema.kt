@@ -22,6 +22,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.activity.compose.BackHandler
+import fr.cellule.app.IconeLumiere
+import fr.cellule.app.destination
+import fr.cellule.app.enfants
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -70,7 +74,7 @@ import kotlin.math.abs
  * caméra, objectifs) qui règle le cadre du viseur.
  */
 
-enum class VueCinema(val libelle: String) { VISEUR("Viseur"), PLANS("Plans"), LUMIERE("Lumière"), MATERIEL("Matériel") }
+enum class VueCinema(val libelle: String) { ACCUEIL("Cinéma"), VISEUR("Viseur"), PLANS("Plans"), LUMIERE("Lumière"), MATERIEL("Matériel") }
 
 private const val AUCUNE = "Aucune"
 
@@ -140,7 +144,7 @@ private fun focalesProposees(reglages: Reglages): List<Double> =
         ?: objectifChoisi(reglages)?.let { MaterielCine.lireFocales(it.focales).choix }
         ?: MaterielCine.FOCALES_COURANTES
 
-/** L'onglet entier. */
+/** L'onglet entier : son sommaire, et les quatre pages qu'il range. */
 @Composable
 fun EcranOngletCinema(
     reglages: Reglages,
@@ -149,89 +153,117 @@ fun EcranOngletCinema(
     journal: DepotJournal,
     ouvrirParametres: () -> Unit = {}
 ) {
-    val vue = runCatching { VueCinema.valueOf(reglages.cineVue) }.getOrDefault(VueCinema.VISEUR)
+    val vue = runCatching { VueCinema.valueOf(reglages.cineVue) }.getOrDefault(VueCinema.ACCUEIL)
     val choisir: (VueCinema) -> Unit = {
         /* « Lumière » ouvre son sommaire ; le lanceur, lui, ouvre directement chaque outil. */
         if (it == VueCinema.LUMIERE) reglages.lumiereOutil = OUTIL_SOMMAIRE
         reglages.cineVue = it.name
     }
+    val versAccueil: () -> Unit = { reglages.cineVue = VueCinema.ACCUEIL.name }
+
+    /* Le retour du téléphone remonte d'un niveau, jusqu'au sommaire. Dans un
+       outil Lumière, c'est PageLumiere qui ramène d'abord à son propre sommaire. */
+    val outilOuvert = OutilLumiere.entries.any { it.name == reglages.lumiereOutil }
+    BackHandler(enabled = vue != VueCinema.ACCUEIL && !(vue == VueCinema.LUMIERE && outilOuvert), onBack = versAccueil)
 
     if (vue == VueCinema.VISEUR) {
+        /* Plein cadre : à la place d'un en-tête, une pastille discrète qui ramène au sommaire. */
         EcranMesurer(
             reglages, etat, cinema,
             modeCinema = true,
-            enTete = { EnTeteCinema(reglages, vue, sombre = true, surVue = choisir) },
-            enTeteVertical = { SelecteurVueVertical(vue, choisir) }
+            enTete = { PastilleRetour("Cinéma", versAccueil) },
+            enTeteVertical = { PastilleRetour("Cinéma", versAccueil) }
         )
         return
     }
     /* Chaque vue, chaque outil Lumière repart du haut de la page. */
     val defilement = rememberScrollState()
     LaunchedEffect(vue, reglages.lumiereOutil) { defilement.scrollTo(0) }
-    Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
-        Column(Modifier.fillMaxWidth().statusBarsPadding().padding(horizontal = Gouttiere, vertical = 8.dp)) {
-            EnTeteCinema(reglages, vue, sombre = false, surVue = choisir)
-        }
+    Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background).statusBarsPadding()) {
         Column(
-            Modifier.fillMaxWidth().weight(1f).verticalScroll(defilement).padding(bottom = ZoneNavFlottante)
+            Modifier.fillMaxWidth().weight(1f).verticalScroll(defilement).padding(top = 4.dp, bottom = ZoneNavFlottante)
         ) {
             when (vue) {
-                VueCinema.PLANS -> CarnetCinemaEcran(cinema, journal, reglages)
-                VueCinema.LUMIERE -> PageLumiere(reglages, cinema, ouvrirParametres)
-                else -> PageMateriel(reglages)
+                VueCinema.ACCUEIL -> SommaireCinema(reglages, cinema, choisir)
+                VueCinema.PLANS -> {
+                    EnTetePageCinema("cine-plans", versAccueil)
+                    CarnetCinemaEcran(cinema, journal, reglages)
+                }
+                VueCinema.LUMIERE -> PageLumiere(reglages, cinema, ouvrirParametres, versAccueil)
+                else -> {
+                    EnTetePageCinema("cine-materiel", versAccueil)
+                    PageMateriel(reglages)
+                }
             }
         }
     }
 }
 
-/** Le sélecteur en colonne, pour le paysage : trois gélules l'une sous l'autre. */
+/** Le haut d'une page de Cinéma : « ‹ Cinéma », son titre et à quoi elle sert. */
 @Composable
-private fun SelecteurVueVertical(vue: VueCinema, surVue: (VueCinema) -> Unit) {
-    Column(
-        Modifier
-            .background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(28.dp))
-            .padding(4.dp),
-        verticalArrangement = Arrangement.spacedBy(4.dp)
-    ) {
-        VueCinema.entries.forEach { v ->
-            val actif = v == vue
-            Box(
-                Modifier
-                    .width(96.dp)
-                    .clip(RoundedCornerShape(24.dp))
-                    .background(if (actif) MaterialTheme.colorScheme.primary else Color.Transparent)
-                    .clickable { surVue(v) }
-                    .padding(vertical = 16.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    v.libelle,
-                    style = Corps,
-                    maxLines = 1,
-                    color = if (actif) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-        }
-    }
-}
-
-/** Le sélecteur Viseur | Plans | Matériel, et le matériel en cours sur une ligne (touche : Matériel). */
-@Composable
-private fun EnTeteCinema(reglages: Reglages, vue: VueCinema, sombre: Boolean, surVue: (VueCinema) -> Unit) {
-    ChoixSegmente(VueCinema.entries.toList(), vue, { it.libelle }) { surVue(it) }
-    /* Dans le viseur, la place est à l'image : le résumé passe dans les détails. */
-    if (!sombre) Text(
-        resumeMateriel(reglages),
-        style = Detail,
-        maxLines = 1,
-        overflow = TextOverflow.Ellipsis,
-        color = if (sombre) Color.White.copy(alpha = 0.8f) else MaterialTheme.colorScheme.onSurfaceVariant,
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(8.dp))
-            .clickable { surVue(VueCinema.MATERIEL) }
-            .padding(horizontal = 6.dp, vertical = 6.dp)
+private fun EnTetePageCinema(id: String, versAccueil: () -> Unit) {
+    val d = destination(id)
+    FilAriane(
+        chemin = listOf(Miette(destination("cinema")?.titre ?: "Cinéma", versAccueil)),
+        titre = d?.titre ?: "",
+        phrase = d?.detail,
+        retour = versAccueil
     )
+}
+
+/** Le sommaire Cinéma : quatre cartes, chacune avec ce qu'elle contient en ce moment. */
+@Composable
+private fun SommaireCinema(reglages: Reglages, cinema: DepotCinema, ouvrir: (VueCinema) -> Unit) {
+    val ici = destination("cinema")
+    FilAriane(chemin = emptyList(), titre = ici?.titre ?: "Cinéma", phrase = ici?.detail)
+    val colonnes = if (fr.cellule.app.LocalPaysage.current) 4 else 2
+    GrilleSommaire(enfants("cinema"), colonnes) { d, m ->
+        CarteSommaire(
+            d.titre, d.detail, d.icone ?: IconeLumiere, modifier = m,
+            resume = when (d.id) {
+                "cine-viseur" -> resumeMateriel(reglages)
+                "cine-plans" -> resumePlans(cinema, reglages)
+                "lumiere" -> "${enfants("lumiere").size} outils, en trois groupes"
+                "cine-materiel" -> resumeSupport(reglages)
+                else -> null
+            }
+        ) { VueCinema.entries.firstOrNull { it.name == d.cineVue }?.let(ouvrir) }
+    }
+}
+
+private fun compter(n: Int, mot: String): String = if (n <= 1) "$n $mot" else "$n ${mot}s"
+
+/** Le jour où vont les nouveaux plans s'il y en a un, sinon le compte des plans et des jours. */
+private fun resumePlans(cinema: DepotCinema, reglages: Reglages): String {
+    val d = cinema.donnees
+    val jour = reglages.cineJourCourant.toLongOrNull()?.let { id -> d.jours.firstOrNull { it.identifiant == id } }
+    return when {
+        jour != null -> "Jour en cours : ${jour.intitule} · ${compter(d.plansDe(jour.identifiant).size, "plan")}"
+        d.plans.isEmpty() && d.jours.isEmpty() -> "Aucun plan pour l'instant"
+        else -> compter(d.plans.size, "plan") + " · " + compter(d.jours.size, "jour")
+    }
+}
+
+/** Caméra ou pellicule, objectif, sensibilité. */
+private fun resumeSupport(reglages: Reglages): String = listOfNotNull(
+    if (reglages.cineSupport == "PELLICULE") "Pellicule" else "Numérique",
+    nomSupport(reglages).ifBlank { null },
+    nomObjectifChoisi(reglages),
+    "EI ${reglages.cineEi}"
+).joinToString(" · ")
+
+/** « ‹ Cinéma » en haut à gauche du viseur : translucide, petite, lisible sur n'importe quelle image. */
+@Composable
+private fun PastilleRetour(vers: String, surClic: () -> Unit) {
+    Box(
+        Modifier
+            .clip(RoundedCornerShape(50))
+            .background(Color.Black.copy(alpha = 0.45f))
+            .clickable { surClic() }
+            .padding(horizontal = 12.dp, vertical = 7.dp)
+    ) {
+        Text("‹  $vers", style = Corps, maxLines = 1, color = Color.White)
+    }
 }
 
 /* ── Le viseur : focale ou angle, choisis sans quitter le cadre ─────────── */

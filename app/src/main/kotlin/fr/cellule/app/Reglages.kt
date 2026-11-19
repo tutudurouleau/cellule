@@ -126,7 +126,7 @@ class Reglages(contexte: Context) {
     var cineAlerteScintillement by BooleenPref(prefs, "cine_alerte_scintillement", true)
 
     /** La vue ouverte dans l'onglet Cinéma. */
-    var cineVue by TextePref(prefs, "cine_vue", "VISEUR")
+    var cineVue by TextePref(prefs, "cine_vue", "ACCUEIL")
 
     /** Les pages gardées dans la barre du bas, et les dernières ouvertes (identifiants séparés par des virgules). */
     var navEpingles by TextePref(prefs, "nav_epingles", "mesurer,estimer,carnet-vues,cine-viseur")

@@ -645,7 +645,7 @@ fun CarteSommaire(
         Text(detail, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
         if (!resume.isNullOrBlank()) {
             Spacer(Modifier.height(6.dp))
-            Text(resume, style = Detail, color = MaterialTheme.colorScheme.primary, maxLines = 2, overflow = TextOverflow.Ellipsis)
+            Text(resume, style = Detail, color = MaterialTheme.colorScheme.primary, maxLines = 3, overflow = TextOverflow.Ellipsis)
         }
     }
 }

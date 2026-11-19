@@ -141,7 +141,7 @@ private class SaisieSource {
 }
 
 @Composable
-fun PageLumiere(reglages: Reglages, cinema: DepotCinema, ouvrirParametres: () -> Unit = {}) {
+fun PageLumiere(reglages: Reglages, cinema: DepotCinema, ouvrirParametres: () -> Unit = {}, versCinema: () -> Unit = {}) {
     /* Une valeur qui n'est pas un outil (« SOMMAIRE ») ouvre le sommaire. */
     val outil = OutilLumiere.entries.firstOrNull { it.name == reglages.lumiereOutil }
     val u = UnitesLumiere(reglages.lumiereMetres, reglages.lumiereLux)
@@ -152,11 +152,11 @@ fun PageLumiere(reglages: Reglages, cinema: DepotCinema, ouvrirParametres: () ->
     BackHandler(enabled = outil != null, onBack = versSommaire)
 
     if (outil == null) {
-        SommaireLumiere(u, ouvrirParametres) { reglages.lumiereOutil = it }
+        SommaireLumiere(u, ouvrirParametres, versCinema) { reglages.lumiereOutil = it }
     } else {
         val ici = DESTINATIONS.firstOrNull { it.outil == outil.name }
         FilAriane(
-            chemin = miettes(ici?.id ?: "lumiere", versSommaire),
+            chemin = miettes(ici?.id ?: "lumiere", versSommaire, versCinema),
             titre = ici?.titre ?: outil.libelle,
             phrase = ici?.detail,
             retour = versSommaire
@@ -176,18 +176,24 @@ fun PageLumiere(reglages: Reglages, cinema: DepotCinema, ouvrirParametres: () ->
     Spacer(Modifier.height(Interligne))
 }
 
-/**
- * Le fil d'Ariane d'une page Lumière. Seul le sommaire Lumière se touche
- * pour l'instant : celui de Cinéma n'a pas encore d'écran à lui.
- */
-private fun miettes(id: String, versSommaire: () -> Unit): List<Miette> =
-    chemin(id).map { d -> Miette(d.titre, if (d.id == "lumiere") versSommaire else null) }
+/** Le fil d'Ariane d'une page Lumière : chaque morceau mène à son sommaire. */
+private fun miettes(id: String, versSommaire: () -> Unit, versCinema: () -> Unit): List<Miette> =
+    chemin(id).map { d ->
+        Miette(
+            d.titre,
+            when (d.id) {
+                "lumiere" -> versSommaire
+                "cinema" -> versCinema
+                else -> null
+            }
+        )
+    }
 
 /** Les outils du plateau en cartes, rangés par groupe, et les unités en cours. */
 @Composable
-private fun SommaireLumiere(u: UnitesLumiere, ouvrirParametres: () -> Unit, ouvrir: (String) -> Unit) {
+private fun SommaireLumiere(u: UnitesLumiere, ouvrirParametres: () -> Unit, versCinema: () -> Unit, ouvrir: (String) -> Unit) {
     val ici = destination("lumiere")
-    FilAriane(chemin = miettes("lumiere") {}, titre = ici?.titre ?: "Lumière", phrase = ici?.detail)
+    FilAriane(chemin = miettes("lumiere", {}, versCinema), titre = ici?.titre ?: "Lumière", phrase = ici?.detail, retour = versCinema)
 
     /* Les unités se choisissent une fois pour toutes dans les Paramètres : on les rappelle ici. */
     Row(

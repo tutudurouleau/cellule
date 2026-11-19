@@ -1,5 +1,6 @@
 package fr.cellule.app.ecrans
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -137,6 +138,8 @@ fun CarnetCinemaEcran(cinema: DepotCinema, journal: DepotJournal, reglages: Regl
     val donnees = cinema.donnees
     val projet = donnees.projets.firstOrNull { it.identifiant == projetOuvert }
     val jour = donnees.jours.firstOrNull { it.identifiant == jourOuvert && it.projetId == projet?.identifiant }
+    /* Le retour du téléphone remonte d'un niveau : du jour au projet, du projet à la liste. */
+    BackHandler(enabled = projet != null) { if (jour != null) jourOuvert = null else projetOuvert = null }
 
     /* Le dossier PDF d'un jour ou d'un projet ; celui du projet cite aussi ses vues photo. */
     val exporteur = rememberExporteurPdf(cinema)
