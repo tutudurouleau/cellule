@@ -21,6 +21,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,6 +41,7 @@ import fr.cellule.app.Detail
 import fr.cellule.app.EtatApplication
 import fr.cellule.app.Gouttiere
 import fr.cellule.app.Interligne
+import fr.cellule.app.OUTIL_SOMMAIRE
 import fr.cellule.app.Reglages
 import fr.cellule.core.SeriePerso
 import fr.cellule.core.CameraPerso
@@ -140,9 +142,19 @@ private fun focalesProposees(reglages: Reglages): List<Double> =
 
 /** L'onglet entier. */
 @Composable
-fun EcranOngletCinema(reglages: Reglages, etat: EtatApplication, cinema: DepotCinema, journal: DepotJournal) {
+fun EcranOngletCinema(
+    reglages: Reglages,
+    etat: EtatApplication,
+    cinema: DepotCinema,
+    journal: DepotJournal,
+    ouvrirParametres: () -> Unit = {}
+) {
     val vue = runCatching { VueCinema.valueOf(reglages.cineVue) }.getOrDefault(VueCinema.VISEUR)
-    val choisir: (VueCinema) -> Unit = { reglages.cineVue = it.name }
+    val choisir: (VueCinema) -> Unit = {
+        /* « Lumière » ouvre son sommaire ; le lanceur, lui, ouvre directement chaque outil. */
+        if (it == VueCinema.LUMIERE) reglages.lumiereOutil = OUTIL_SOMMAIRE
+        reglages.cineVue = it.name
+    }
 
     if (vue == VueCinema.VISEUR) {
         EcranMesurer(
@@ -153,16 +165,19 @@ fun EcranOngletCinema(reglages: Reglages, etat: EtatApplication, cinema: DepotCi
         )
         return
     }
+    /* Chaque vue, chaque outil Lumière repart du haut de la page. */
+    val defilement = rememberScrollState()
+    LaunchedEffect(vue, reglages.lumiereOutil) { defilement.scrollTo(0) }
     Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
         Column(Modifier.fillMaxWidth().statusBarsPadding().padding(horizontal = Gouttiere, vertical = 8.dp)) {
             EnTeteCinema(reglages, vue, sombre = false, surVue = choisir)
         }
         Column(
-            Modifier.fillMaxWidth().weight(1f).verticalScroll(rememberScrollState()).padding(bottom = ZoneNavFlottante)
+            Modifier.fillMaxWidth().weight(1f).verticalScroll(defilement).padding(bottom = ZoneNavFlottante)
         ) {
             when (vue) {
                 VueCinema.PLANS -> CarnetCinemaEcran(cinema, journal, reglages)
-                VueCinema.LUMIERE -> PageLumiere(reglages, cinema)
+                VueCinema.LUMIERE -> PageLumiere(reglages, cinema, ouvrirParametres)
                 else -> PageMateriel(reglages)
             }
         }

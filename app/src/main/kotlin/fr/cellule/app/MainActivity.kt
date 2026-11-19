@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.text.style.TextOverflow
 import fr.cellule.app.ecrans.Champ
 import fr.cellule.app.ecrans.Pastille
@@ -218,7 +219,7 @@ private val IconeReglages = icone("reglages") {
  * Dans l'ordre du geste : on mesure, on estime, on cadre, on note, on
  * développe, on vérifie — et le matériel de cinéma ferme la marche.
  */
-private enum class Onglet(
+internal enum class Onglet(
     val titre: String,
     val sousTitre: String,
     val icone: ImageVector,
@@ -347,7 +348,7 @@ private fun Application() {
                             Onglet.CARNET -> EcranJournal(depot, reglages, etat, labo, tirages, pronostics, cinema)
                             Onglet.LABO -> EcranLabo(pronostics, etat, labo, tirages)
                             Onglet.TABLES -> EcranTables()
-                            Onglet.CINEMA -> EcranOngletCinema(reglages, etat, cinema, depot)
+                            Onglet.CINEMA -> EcranOngletCinema(reglages, etat, cinema, depot) { parametres = true }
                         }
                     }
                 }
@@ -440,7 +441,7 @@ private fun EnTeteEcran(titre: String, sousTitre: String, icone: ImageVector, re
     }
 }
 
-/** Les paramètres : l'apparence, et la version installée. */
+/** Les paramètres : l'apparence, la police, les unités, et la version installée. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun FeuilleParametres(reglages: Reglages, fermer: () -> Unit) {
@@ -449,7 +450,12 @@ private fun FeuilleParametres(reglages: Reglages, fermer: () -> Unit) {
         onDismissRequest = fermer,
         containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
     ) {
-        Column(Modifier.fillMaxWidth().padding(start = Gouttiere, end = Gouttiere, bottom = Gouttiere * 2)) {
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState())
+                .padding(start = Gouttiere, end = Gouttiere, bottom = Gouttiere * 2)
+        ) {
             Text("Paramètres", style = TitreEcran, color = MaterialTheme.colorScheme.onSurface)
             Spacer(Modifier.height(Interligne * 2))
             Etiquette("Apparence")
@@ -482,6 +488,30 @@ private fun FeuilleParametres(reglages: Reglages, fermer: () -> Unit) {
             Spacer(Modifier.height(6.dp))
             Text(
                 "« Cellule » dessine titres et chiffres en Space Grotesk ; le texte courant garde la police du téléphone.",
+                style = Detail,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(Modifier.height(Interligne * 2))
+            Etiquette("Unités")
+            Spacer(Modifier.height(6.dp))
+            Text("Distances", style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Spacer(Modifier.height(4.dp))
+            ChoixSegmente(
+                options = listOf(true, false),
+                selection = reglages.lumiereMetres,
+                libelle = { if (it) "Mètres" else "Pieds" }
+            ) { reglages.lumiereMetres = it }
+            Spacer(Modifier.height(Interligne))
+            Text("Éclairement", style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Spacer(Modifier.height(4.dp))
+            ChoixSegmente(
+                options = listOf(true, false),
+                selection = reglages.lumiereLux,
+                libelle = { if (it) "Lux" else "Footcandles" }
+            ) { reglages.lumiereLux = it }
+            Spacer(Modifier.height(6.dp))
+            Text(
+                "Pour tous les outils Lumière et le plan au sol. Choisis une fois, tout suit.",
                 style = Detail,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -588,85 +618,7 @@ private fun ElementBarre(icone: ImageVector, texte: String, fond: Color, encre: 
 
 /* ── Le lanceur ────────────────────────────────────────────────────────── */
 
-/**
- * Un écran demande à un autre d'ouvrir une de ses pages : « TABLES:FORMULES ».
- * L'écran visé la prend en s'affichant, et elle disparaît.
- */
-object Aiguillage {
-    var cible by mutableStateOf("")
-
-    fun prendre(ecran: String): String? {
-        val c = cible
-        if (!c.startsWith("$ecran:")) return null
-        cible = ""
-        return c.substringAfter(':')
-    }
-}
-
-private enum class Univers(val titre: String) {
-    TERRAIN("Photo · sur le terrain"),
-    APRES("Photo · après la prise"),
-    CINEMA("Cinéma · tournage"),
-    LUMIERE("Cinéma · lumière"),
-    SAVOIR("Apprendre et retrouver")
-}
-
-/** Une page de l'appli où l'on peut aller d'un toucher, où qu'elle soit rangée. */
-private data class Destination(
-    val id: String,
-    val onglet: Onglet,
-    val univers: Univers,
-    val titre: String,
-    /** Son nom dans la barre du bas : neuf lettres au plus. */
-    val court: String,
-    val detail: String,
-    /** Ce qu'on taperait pour la chercher. */
-    val mots: String = "",
-    /** La page à ouvrir dans l'écran, par l'[Aiguillage]. */
-    val sous: String = "",
-    val cineVue: String? = null,
-    val outil: String? = null
-)
-
-private fun lumiere(id: String, outil: String, titre: String, court: String, detail: String, mots: String) =
-    Destination(id, Onglet.CINEMA, Univers.LUMIERE, titre, court, detail, mots, cineVue = "LUMIERE", outil = outil)
-
-private val DESTINATIONS: List<Destination> by lazy {
-    listOf(
-        Destination("mesurer", Onglet.MESURER, Univers.TERRAIN, "Mesurer", "Mesurer", "Le posemètre : réfléchi, spot, incident.", "cellule lumiere exposition ev spot incident posemetre"),
-        Destination("estimer", Onglet.ESTIMER, Univers.TERRAIN, "Estimer", "Estimer", "Trouver l'exposition sans cellule, facteur par facteur.", "sunny 16 soleil f/16 exposition sans cellule"),
-        Destination("focales", Onglet.FOCALES, Univers.TERRAIN, "Focales", "Focales", "Voir les angles de champ, s'entraîner à cadrer.", "angle de champ cadre objectif exercice reconnaitre"),
-
-        Destination("carnet-vues", Onglet.CARNET, Univers.APRES, "Carnet · vues", "Carnet", "Ce que tu as photographié, et ton biais.", "journal notes photos pellicule", sous = "CARNET:VUES"),
-        Destination("carnet-films", Onglet.CARNET, Univers.APRES, "Carnet · films", "Films", "Tes développements notés.", "developpement pellicule revelateur", sous = "CARNET:DEVELOPPEMENTS"),
-        Destination("carnet-tirages", Onglet.CARNET, Univers.APRES, "Carnet · tirages", "Tirages", "Tes tirages notés.", "papier agrandisseur tirage", sous = "CARNET:TIRAGES"),
-        Destination("labo", Onglet.LABO, Univers.APRES, "Labo", "Labo", "Développer, tirer, le chrono, et comprendre pourquoi.", "chrono minuteur revelateur fixateur dilution temperature tirage bande d'essai"),
-
-        Destination("cine-viseur", Onglet.CINEMA, Univers.CINEMA, "Viseur", "Viseur", "Le cadre à ta focale, l'exposition, capturer un plan.", "camera cadre focale capturer reperage tournage", cineVue = "VISEUR"),
-        Destination("cine-plans", Onglet.CINEMA, Univers.CINEMA, "Plans", "Plans", "Les jours de tournage, les plans, le PDF.", "jour scene plan pdf decoupage carnet de tournage", cineVue = "PLANS"),
-        Destination("cine-materiel", Onglet.CINEMA, Univers.CINEMA, "Matériel", "Matériel", "Pellicule ou caméra, objectifs, et ton propre matériel.", "camera capteur pellicule objectif serie mon materiel projecteurs", cineVue = "MATERIEL"),
-
-        lumiere("lum-plan", "PLAN_SOL", "Plan au sol", "Plan sol", "Le décor vu de dessus : caméras, comédiens, projecteurs, soleil.", "plan de feu implantation carte vue camera 3d deplacer projecteur"),
-        lumiere("lum-combien", "PROJECTEUR", "Combien j'ai", "Lux", "Les lux et le diaph qu'un projecteur donne à une distance.", "lux eclairement distance diaph projecteur footcandle"),
-        lumiere("lum-placer", "PLACER", "Où le placer", "Placer", "La distance pour un diaph, ou pour couvrir une largeur.", "distance reculer avancer couvrir faisceau plan au sol"),
-        lumiere("lum-rapports", "RAPPORTS", "Rapports", "Rapports", "Face, débouchage, contre : contraste et ambiance.", "contraste ratio key fill ambiance high key low key"),
-        lumiere("lum-couleur", "COULEUR", "Couleur", "Couleur", "Kelvins, mireds et gélatines de correction.", "mired kelvin cto ctb gelatine temperature de couleur lee rosco"),
-        lumiere("lum-champ", "CHAMP", "Champ", "Champ", "Ce que couvre une focale, hyperfocale, profondeur de champ.", "profondeur de champ hyperfocale angle largeur nettete"),
-        lumiere("lum-elec", "ELECTRICITE", "Électricité", "Élec", "Ampères, circuits, groupe électrogène.", "ampere watt disjoncteur prise circuit groupe kva triphase"),
-        lumiere("lum-scint", "SCINTILLEMENT", "Scintillement", "Scintill.", "Les cadences et les angles sûrs sous le secteur.", "flicker obturateur 50 hz 60 hz hmi cadence ralenti"),
-        lumiere("lum-conv", "CONVERSIONS", "Conversions", "Convers.", "Lux et footcandles, mètres et pieds, densités, diaphs.", "footcandle pieds nd densite transmission t-stop"),
-
-        Destination("fiches-cameras", Onglet.CAMERAS, Univers.SAVOIR, "Fiches caméras", "Caméras", "L'histoire et l'usage de chaque caméra.", "arri alexa red sony panavision camera catalogue", sous = "CAMERAS:CAMERA"),
-        Destination("fiches-objectifs", Onglet.CAMERAS, Univers.SAVOIR, "Fiches objectifs", "Objectifs", "Les grandes séries d'optiques de cinéma.", "cooke zeiss angenieux anamorphique optique serie", sous = "CAMERAS:OBJECTIF"),
-        Destination("fiches-projecteurs", Onglet.CAMERAS, Univers.SAVOIR, "Fiches projecteurs", "Projos", "63 projecteurs, avec leur photométrie.", "aputure skypanel hmi fresnel led tube lumiere projo", sous = "CAMERAS:PROJECTEUR"),
-        Destination("quiz", Onglet.CAMERAS, Univers.SAVOIR, "Quiz", "Quiz", "Reconnaître caméras et objectifs.", "jeu question reviser entrainement", sous = "CAMERAS:QUIZ"),
-        Destination("tables-exposition", Onglet.TABLES, Univers.SAVOIR, "Tables · exposition", "Tables", "Les repères d'exposition à retenir.", "ev iso vitesse diaph reciprocite", sous = "TABLES:EXPOSITION"),
-        Destination("tables-developpement", Onglet.TABLES, Univers.SAVOIR, "Tables · développement", "Dév.", "Temps, températures, dilutions.", "revelateur temps temperature dilution pousse", sous = "TABLES:DEVELOPPEMENT"),
-        Destination("tables-formules", Onglet.TABLES, Univers.SAVOIR, "Tables · formules", "Formules", "Toutes les formules que l'appli utilise.", "formule calcul loi carre inverse mired gelatines", sous = "TABLES:FORMULES")
-    )
-}
-
-private fun destination(id: String): Destination? = DESTINATIONS.firstOrNull { it.id == id }
+/* Les destinations, l'Aiguillage et le chemin de chaque page sont dans Navigation.kt. */
 
 /** Quatre cases : tout ce que l'appli contient. */
 private val IconeTout = icone("tout") {
@@ -695,6 +647,7 @@ private fun Lanceur(
     var recherche by remember { mutableStateOf("") }
     val mots = sansAccents(recherche).split(' ').filter { it.isNotBlank() }
     val trouvees = DESTINATIONS.filter { d ->
+        if (!d.dansLanceur) return@filter false
         val botte = sansAccents(d.titre + " " + d.detail + " " + d.mots + " " + d.univers.titre)
         mots.all { it in botte }
     }

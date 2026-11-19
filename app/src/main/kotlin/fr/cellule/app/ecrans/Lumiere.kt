@@ -1,6 +1,17 @@
 package fr.cellule.app.ecrans
 
+import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
+import fr.cellule.app.DESTINATIONS
+import fr.cellule.app.IconeLumiere
+import fr.cellule.app.LocalPaysage
+import fr.cellule.app.OUTIL_SOMMAIRE
+import fr.cellule.app.chemin
+import fr.cellule.app.destination
+import fr.cellule.app.enfants
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -58,9 +69,10 @@ import kotlin.math.sqrt
 import kotlin.math.tan
 
 /*
- * La vue Lumière de l'onglet Cinéma : les calculs du plateau. Tout reprend
- * le réglage de caméra du Matériel (EI, cadence, obturateur, filtres) ; les
- * unités (mètres ou pieds, lux ou foot-candles) se choisissent en tête.
+ * La vue Lumière de l'onglet Cinéma : les calculs du plateau, rangés dans un
+ * sommaire en cartes. Tout reprend le réglage de caméra du Matériel (EI,
+ * cadence, obturateur, filtres) ; les unités (mètres ou pieds, lux ou
+ * foot-candles) se choisissent une fois, dans les Paramètres.
  */
 
 enum class OutilLumiere(val libelle: String) {
@@ -129,46 +141,81 @@ private class SaisieSource {
 }
 
 @Composable
-fun PageLumiere(reglages: Reglages, cinema: DepotCinema) {
-    val outil = runCatching { OutilLumiere.valueOf(reglages.lumiereOutil) }.getOrDefault(OutilLumiere.PROJECTEUR)
+fun PageLumiere(reglages: Reglages, cinema: DepotCinema, ouvrirParametres: () -> Unit = {}) {
+    /* Une valeur qui n'est pas un outil (« SOMMAIRE ») ouvre le sommaire. */
+    val outil = OutilLumiere.entries.firstOrNull { it.name == reglages.lumiereOutil }
     val u = UnitesLumiere(reglages.lumiereMetres, reglages.lumiereLux)
     val source = remember { SaisieSource() }
+    val versSommaire: () -> Unit = { reglages.lumiereOutil = OUTIL_SOMMAIRE }
 
+    /* Le retour du téléphone remonte d'un outil au sommaire, comme dans le Labo. */
+    BackHandler(enabled = outil != null, onBack = versSommaire)
+
+    if (outil == null) {
+        SommaireLumiere(u, ouvrirParametres) { reglages.lumiereOutil = it }
+    } else {
+        val ici = DESTINATIONS.firstOrNull { it.outil == outil.name }
+        FilAriane(
+            chemin = miettes(ici?.id ?: "lumiere", versSommaire),
+            titre = ici?.titre ?: outil.libelle,
+            phrase = ici?.detail,
+            retour = versSommaire
+        )
+        when (outil) {
+            OutilLumiere.PLAN_SOL -> ListePlansSol(reglages, cinema, null, tous = true)
+            OutilLumiere.PROJECTEUR -> OutilProjecteur(reglages, source, u)
+            OutilLumiere.PLACER -> OutilPlacer(reglages, source, u)
+            OutilLumiere.RAPPORTS -> OutilRapports(u)
+            OutilLumiere.COULEUR -> OutilCouleur()
+            OutilLumiere.CHAMP -> OutilChamp(reglages, u)
+            OutilLumiere.ELECTRICITE -> OutilElectricite(reglages)
+            OutilLumiere.SCINTILLEMENT -> OutilScintillement(reglages)
+            OutilLumiere.CONVERSIONS -> OutilConversions()
+        }
+    }
+    Spacer(Modifier.height(Interligne))
+}
+
+/**
+ * Le fil d'Ariane d'une page Lumière. Seul le sommaire Lumière se touche
+ * pour l'instant : celui de Cinéma n'a pas encore d'écran à lui.
+ */
+private fun miettes(id: String, versSommaire: () -> Unit): List<Miette> =
+    chemin(id).map { d -> Miette(d.titre, if (d.id == "lumiere") versSommaire else null) }
+
+/** Les outils du plateau en cartes, rangés par groupe, et les unités en cours. */
+@Composable
+private fun SommaireLumiere(u: UnitesLumiere, ouvrirParametres: () -> Unit, ouvrir: (String) -> Unit) {
+    val ici = destination("lumiere")
+    FilAriane(chemin = miettes("lumiere") {}, titre = ici?.titre ?: "Lumière", phrase = ici?.detail)
+
+    /* Les unités se choisissent une fois pour toutes dans les Paramètres : on les rappelle ici. */
     Row(
         Modifier
             .fillMaxWidth()
-            .horizontalScroll(rememberScrollState())
-            .padding(horizontal = Gouttiere, vertical = 6.dp),
-        horizontalArrangement = Arrangement.spacedBy(6.dp)
+            .padding(horizontal = Gouttiere - 6.dp)
+            .clip(RoundedCornerShape(10.dp))
+            .clickable { ouvrirParametres() }
+            .padding(horizontal = 6.dp, vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        OutilLumiere.entries.forEach { o ->
-            Pastille(o.libelle, accent = o == outil) { reglages.lumiereOutil = o.name }
-        }
-    }
-    Row(
-        Modifier.fillMaxWidth().padding(horizontal = Gouttiere, vertical = 4.dp),
-        horizontalArrangement = Arrangement.spacedBy(Interligne)
-    ) {
-        Box(Modifier.weight(1f)) {
-            ChoixSegmente(listOf(true, false), reglages.lumiereMetres, { if (it) "mètres" else "pieds" }) { reglages.lumiereMetres = it }
-        }
-        Box(Modifier.weight(1f)) {
-            ChoixSegmente(listOf(true, false), reglages.lumiereLux, { if (it) "lux" else "fc" }) { reglages.lumiereLux = it }
-        }
+        Text(
+            "Unités : " + (if (u.metres) "mètres" else "pieds") + " · " + (if (u.lux) "lux" else "footcandles"),
+            style = Detail,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.weight(1f)
+        )
+        Text("Paramètres ›", style = Detail, color = MaterialTheme.colorScheme.primary)
     }
 
-    when (outil) {
-        OutilLumiere.PLAN_SOL -> ListePlansSol(reglages, cinema, null, tous = true)
-        OutilLumiere.PROJECTEUR -> OutilProjecteur(reglages, source, u)
-        OutilLumiere.PLACER -> OutilPlacer(reglages, source, u)
-        OutilLumiere.RAPPORTS -> OutilRapports(u)
-        OutilLumiere.COULEUR -> OutilCouleur()
-        OutilLumiere.CHAMP -> OutilChamp(reglages, u)
-        OutilLumiere.ELECTRICITE -> OutilElectricite(reglages)
-        OutilLumiere.SCINTILLEMENT -> OutilScintillement(reglages)
-        OutilLumiere.CONVERSIONS -> OutilConversions()
+    val colonnes = if (LocalPaysage.current) 3 else 2
+    val outils = enfants("lumiere")
+    outils.map { it.groupe }.distinct().forEach { groupe ->
+        Etiquette(groupe, Modifier.padding(start = Gouttiere, end = Gouttiere, top = 14.dp, bottom = 4.dp), accent = true)
+        GrilleSommaire(outils.filter { it.groupe == groupe }, colonnes) { d, m ->
+            CarteSommaire(d.titre, d.detail, d.icone ?: IconeLumiere, modifier = m) { d.outil?.let(ouvrir) }
+        }
     }
-    Spacer(Modifier.height(Interligne))
 }
 
 /* ── La source ─────────────────────────────────────────────────────────── */

@@ -114,7 +114,7 @@ class Reglages(contexte: Context) {
     var cineRecadre by BooleenPref(prefs, "cine_recadre", true)
     /* ── La Lumière ─────────────────────────────────────────────────────── */
 
-    var lumiereOutil by TextePref(prefs, "lumiere_outil", "PROJECTEUR")
+    var lumiereOutil by TextePref(prefs, "lumiere_outil", "SOMMAIRE")
     /** Vrai : mètres ; faux : pieds. */
     var lumiereMetres by BooleenPref(prefs, "lumiere_metres", true)
     /** Vrai : lux ; faux : foot-candles. */

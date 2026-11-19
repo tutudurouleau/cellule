@@ -21,12 +21,17 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedTextField
@@ -35,6 +40,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -42,9 +48,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import fr.cellule.app.ChiffreGrand
 import fr.cellule.app.Corps
 import fr.cellule.app.Detail
 import fr.cellule.app.Gouttiere
@@ -54,6 +64,7 @@ import fr.cellule.app.RayonControle
 import fr.cellule.app.RayonFlottant
 import fr.cellule.app.StyleEtiquette
 import fr.cellule.app.TitreCarte
+import fr.cellule.app.TitreEcran
 import java.util.Locale
 import kotlin.math.abs
 
@@ -543,5 +554,221 @@ fun Depliable(titre: String = "Comprendre", ouvertAuDepart: Boolean = false, con
             Text(if (ouvert) "↑" else "↓", style = Corps, color = MaterialTheme.colorScheme.primary)
         }
         if (ouvert) Column(content = contenu)
+    }
+}
+
+/* ── Naviguer à l'intérieur d'un écran ─────────────────────────────────── */
+
+/*
+ * Trois façons de se déplacer, pas une de plus : le lanceur (partout), le
+ * sommaire en cartes (une rubrique d'outils différents), et les onglets
+ * soulignés (deux à quatre vues d'une même chose). La gélule de
+ * [ChoixSegmente] ne sert, elle, qu'à choisir une valeur.
+ */
+
+/**
+ * Des onglets : du texte simple, un trait sous celui qui est ouvert, toute la
+ * largeur, jamais de défilement. Ils changent de vue ; pour changer un
+ * réglage, c'est [ChoixSegmente].
+ */
+@Composable
+fun <T> Onglets(
+    options: List<T>,
+    selection: T,
+    libelle: (T) -> String,
+    modifier: Modifier = Modifier,
+    surChoix: (T) -> Unit
+) {
+    Column(modifier.fillMaxWidth()) {
+        Row(Modifier.fillMaxWidth().padding(horizontal = Gouttiere - 4.dp)) {
+            options.forEach { option ->
+                val actif = option == selection
+                val trait by animateColorAsState(
+                    if (actif) MaterialTheme.colorScheme.primary else Color.Transparent,
+                    label = "onglet"
+                )
+                Column(
+                    Modifier
+                        .weight(1f)
+                        .clip(RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp))
+                        .clickable { surChoix(option) }
+                        .padding(top = 12.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        libelle(option),
+                        style = Corps.copy(fontWeight = if (actif) FontWeight.SemiBold else FontWeight.Normal),
+                        color = if (actif) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.padding(horizontal = 4.dp)
+                    )
+                    Spacer(Modifier.height(10.dp))
+                    Box(
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 10.dp)
+                            .height(3.dp)
+                            .background(trait, RoundedCornerShape(topStart = 3.dp, topEnd = 3.dp))
+                    )
+                }
+            }
+        }
+        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+    }
+}
+
+/**
+ * Une carte de sommaire, dans le dessin des tuiles du Labo : son icône, son
+ * titre, une ligne « à quoi ça sert », et si c'est utile un résumé vivant
+ * (« ALEXA 35 · 50 mm · EI 800 »).
+ */
+@Composable
+fun CarteSommaire(
+    titre: String,
+    detail: String,
+    icone: ImageVector,
+    modifier: Modifier = Modifier,
+    resume: String? = null,
+    surClic: () -> Unit
+) {
+    Column(
+        modifier
+            .clip(RoundedCornerShape(RayonCarte))
+            .background(MaterialTheme.colorScheme.surfaceContainer)
+            .clickable { surClic() }
+            .padding(Gouttiere)
+    ) {
+        Icon(icone, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(26.dp))
+        Spacer(Modifier.height(10.dp))
+        Text(titre, style = TitreCarte, color = MaterialTheme.colorScheme.onSurface)
+        Text(detail, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        if (!resume.isNullOrBlank()) {
+            Spacer(Modifier.height(6.dp))
+            Text(resume, style = Detail, color = MaterialTheme.colorScheme.primary, maxLines = 2, overflow = TextOverflow.Ellipsis)
+        }
+    }
+}
+
+/** Des cartes de sommaire en grille, de même hauteur ligne par ligne. */
+@Composable
+fun <T> GrilleSommaire(
+    elements: List<T>,
+    colonnes: Int,
+    modifier: Modifier = Modifier,
+    carte: @Composable (element: T, modifier: Modifier) -> Unit
+) {
+    Column(
+        modifier.fillMaxWidth().padding(horizontal = Gouttiere, vertical = 5.dp),
+        verticalArrangement = Arrangement.spacedBy(Interligne)
+    ) {
+        elements.chunked(colonnes.coerceAtLeast(1)).forEach { ligne ->
+            Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(Interligne)) {
+                ligne.forEach { e -> carte(e, Modifier.weight(1f).fillMaxHeight()) }
+                repeat(colonnes - ligne.size) { Spacer(Modifier.weight(1f)) }
+            }
+        }
+    }
+}
+
+/** Un morceau du fil d'Ariane ; sans [surClic], il se lit sans se toucher. */
+class Miette(val texte: String, val surClic: (() -> Unit)? = null)
+
+/**
+ * Le haut d'une page rangée dans un sommaire : le chemin (« Cinéma › Lumière »),
+ * dont chaque morceau mène à son sommaire, le bouton « ‹ » qui remonte d'un
+ * niveau, le titre, et une phrase qui dit à quoi sert la page.
+ */
+@Composable
+fun FilAriane(
+    chemin: List<Miette>,
+    titre: String,
+    phrase: String? = null,
+    retour: (() -> Unit)? = null
+) {
+    Column(Modifier.fillMaxWidth().padding(start = Gouttiere, end = Gouttiere, top = 6.dp, bottom = 8.dp)) {
+        Row(Modifier.heightIn(min = 40.dp), verticalAlignment = Alignment.CenterVertically) {
+            if (retour != null) {
+                Box(
+                    Modifier
+                        .size(40.dp)
+                        .clip(RoundedCornerShape(50))
+                        .background(MaterialTheme.colorScheme.surfaceVariant)
+                        .clickable { retour() },
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        "‹",
+                        style = TitreCarte.copy(fontSize = 24.sp, lineHeight = 24.sp),
+                        color = MaterialTheme.colorScheme.onSurface,
+                        modifier = Modifier.padding(bottom = 3.dp)
+                    )
+                }
+                Spacer(Modifier.width(8.dp))
+            }
+            chemin.forEachIndexed { i, m ->
+                if (i > 0) {
+                    Text("›", style = Corps, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(horizontal = 2.dp))
+                }
+                val clic = m.surClic
+                Text(
+                    m.texte,
+                    style = Corps,
+                    maxLines = 1,
+                    color = if (clic != null) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = if (clic != null) {
+                        Modifier.clip(RoundedCornerShape(10.dp)).clickable { clic() }.padding(horizontal = 6.dp, vertical = 9.dp)
+                    } else {
+                        Modifier.padding(horizontal = 6.dp, vertical = 9.dp)
+                    }
+                )
+            }
+        }
+        Text(titre, style = TitreEcran, color = MaterialTheme.colorScheme.onBackground, modifier = Modifier.padding(top = 2.dp))
+        if (!phrase.isNullOrBlank()) {
+            Text(phrase, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 2.dp))
+        }
+    }
+}
+
+/**
+ * La carte du résultat, mise en avant : le fond doux de la teinte de
+ * l'onglet, les chiffres en grand ([GrandeValeur]). Elle suit la carte
+ * « Ce que tu donnes », et précède le « Pour aller plus loin » replié.
+ */
+@Composable
+fun CarteResultat(
+    titre: String = "Résultat",
+    modifier: Modifier = Modifier,
+    contenu: @Composable ColumnScope.() -> Unit
+) {
+    Column(
+        modifier
+            .fillMaxWidth()
+            .padding(horizontal = Gouttiere, vertical = 5.dp)
+            .background(MaterialTheme.colorScheme.primaryContainer, RoundedCornerShape(RayonCarte))
+            .padding(horizontal = Gouttiere, vertical = Gouttiere + 2.dp)
+    ) {
+        Text(
+            titre.uppercase(Locale.FRANCE),
+            style = StyleEtiquette,
+            color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
+        )
+        Spacer(Modifier.height(6.dp))
+        CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onPrimaryContainer) {
+            contenu()
+        }
+    }
+}
+
+/** Un chiffre de résultat : son intitulé, la valeur en grand, le détail dessous. */
+@Composable
+fun GrandeValeur(intitule: String, valeur: String, detail: String? = null) {
+    Column(Modifier.fillMaxWidth().padding(vertical = 6.dp)) {
+        Text(intitule, style = Detail, color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f))
+        Text(valeur, style = ChiffreGrand, color = MaterialTheme.colorScheme.onPrimaryContainer)
+        if (!detail.isNullOrBlank()) {
+            Text(detail, style = Detail, color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f))
+        }
     }
 }
