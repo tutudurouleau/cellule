@@ -1,0 +1,2241 @@
+{
+ "titre": "Formules optiques vérifiées pour les coupes d'objectifs de Cellule",
+ "methode": "Recopiées des brevets (texte de Google Patents). Chaque formule est vérifiée en recalculant la focale par un tracé paraxial : elle retrouve celle du brevet au centième. Longueurs en mm ; indiceApres / abbeApres : le verre qui suit la surface (absent : air). Les brevets ne donnent pas les diamètres : ils sont estimés par tracé paraxial (+5 %). demiDiametreAxe : le faisceau du centre à pleine ouverture ; demiDiametreChampComplet : le bord de l'image sans aucun vignetage (trop grand pour les lentilles avant) ; demiDiametreConseille : entre les deux, pour dessiner — un vrai objectif vignette dans les coins.",
+ "sources": {
+  "correspondances": "https://photonstophotos.net/GeneralTopics/Lenses/OpticalBench/OpticalBenchHub.htm",
+  "brevets": "https://patents.google.com"
+ },
+ "objectifs": [
+  {
+   "id": "arri-zeiss-master-prime-50",
+   "serie": "Master Prime",
+   "fabricant": "ARRI / Zeiss",
+   "focaleNominale": 50,
+   "ouvertureNominale": "T1.3",
+   "focaleBrevet": 49.99,
+   "ouvertureBrevet": 1.3,
+   "hauteurImage": 15.55,
+   "brevet": "US 2007/0236805 A1",
+   "exemple": "1re réalisation (fig. 1)",
+   "lien": "https://patents.google.com/patent/US20070236805A1/en",
+   "correspondance": "Photons to Photos relie ce brevet (et DE 10 2005 025 204) aux Master Prime T1.3.",
+   "notes": "Mise au point par deux groupes flottants ; le brevet ne donne pas leurs écarts selon la distance : coupe à l'infini seulement (un curseur de mise au point peut les simuler, signalé comme tel). Asphérique en notation Code V (A, B, C, D = ordres 4, 6, 8, 10 ; conique nulle). Ouverture non donnée par le brevet : T1.3 de la série pour estimer les diamètres ; hauteur d'image Super 35 (15,55 mm).",
+   "focaleCalculee": 49.99,
+   "tirageCalcule": -0.02,
+   "surfaces": [
+    {
+     "numero": 1,
+     "rayon": null,
+     "epaisseurApres": 0.0,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 20.19,
+     "demiDiametreChampComplet": 41.04,
+     "demiDiametreConseille": 30.62
+    },
+    {
+     "numero": 2,
+     "rayon": -290.07,
+     "epaisseurApres": 4.0,
+     "indiceApres": 1.48751,
+     "abbeApres": 70.4,
+     "demiDiametreAxe": 20.19,
+     "demiDiametreChampComplet": 41.04,
+     "demiDiametreConseille": 30.62
+    },
+    {
+     "numero": 3,
+     "rayon": 50.119,
+     "epaisseurApres": 16.2,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 20.28,
+     "demiDiametreChampComplet": 40.35,
+     "demiDiametreConseille": 30.32
+    },
+    {
+     "numero": 4,
+     "rayon": -122.32,
+     "epaisseurApres": 7.5,
+     "indiceApres": 1.75528,
+     "abbeApres": 27.58,
+     "demiDiametreAxe": 24.03,
+     "demiDiametreChampComplet": 42.54,
+     "demiDiametreConseille": 33.28
+    },
+    {
+     "numero": 5,
+     "rayon": -70.795,
+     "epaisseurApres": 11.7,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 25.65,
+     "demiDiametreChampComplet": 44.24,
+     "demiDiametreConseille": 34.94
+    },
+    {
+     "numero": 6,
+     "rayon": -52.708,
+     "epaisseurApres": 4.1,
+     "indiceApres": 1.65416,
+     "abbeApres": 39.63,
+     "demiDiametreAxe": 26.89,
+     "demiDiametreChampComplet": 43.36,
+     "demiDiametreConseille": 35.13
+    },
+    {
+     "numero": 7,
+     "rayon": -658.79,
+     "epaisseurApres": 1.3,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 27.98,
+     "demiDiametreChampComplet": 44.51,
+     "demiDiametreConseille": 36.25
+    },
+    {
+     "numero": 8,
+     "rayon": 434.01,
+     "epaisseurApres": 18.0,
+     "indiceApres": 1.52875,
+     "abbeApres": 76.97,
+     "demiDiametreAxe": 28.51,
+     "demiDiametreChampComplet": 45.06,
+     "demiDiametreConseille": 36.79
+    },
+    {
+     "numero": 9,
+     "rayon": -60.43,
+     "epaisseurApres": 0.3,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 32.95,
+     "demiDiametreChampComplet": 49.35,
+     "demiDiametreConseille": 41.15
+    },
+    {
+     "numero": 10,
+     "rayon": 78.863,
+     "epaisseurApres": 15.4,
+     "indiceApres": 1.49702,
+     "abbeApres": 81.54,
+     "demiDiametreAxe": 32.98,
+     "demiDiametreChampComplet": 49.33,
+     "demiDiametreConseille": 41.16
+    },
+    {
+     "numero": 11,
+     "rayon": -196.68,
+     "epaisseurApres": 10.361,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 31.75,
+     "demiDiametreChampComplet": 45.44,
+     "demiDiametreConseille": 38.6
+    },
+    {
+     "numero": 12,
+     "rayon": 46.639,
+     "epaisseurApres": 16.7,
+     "indiceApres": 1.72005,
+     "abbeApres": 43.69,
+     "demiDiametreAxe": 29.69,
+     "demiDiametreChampComplet": 40.34,
+     "demiDiametreConseille": 35.01
+    },
+    {
+     "numero": 13,
+     "rayon": -143.3,
+     "epaisseurApres": 4.0,
+     "indiceApres": 1.65416,
+     "abbeApres": 39.63,
+     "demiDiametreAxe": 23.3,
+     "demiDiametreChampComplet": 29.51,
+     "demiDiametreConseille": 26.4
+    },
+    {
+     "numero": 14,
+     "rayon": 103.66,
+     "epaisseurApres": 1.0,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 21.69,
+     "demiDiametreChampComplet": 26.78,
+     "demiDiametreConseille": 24.23
+    },
+    {
+     "numero": 15,
+     "rayon": 92.48961,
+     "epaisseurApres": 4.0,
+     "indiceApres": 1.71743,
+     "abbeApres": 29.62,
+     "aspherique": {
+      "K": 0.0,
+      "A4": -1.132e-06,
+      "A6": 4.95e-10,
+      "A8": -1.325e-13,
+      "A10": 6.213e-16
+     },
+     "demiDiametreAxe": 21.16,
+     "demiDiametreChampComplet": 25.82,
+     "demiDiametreConseille": 23.49
+    },
+    {
+     "numero": 16,
+     "rayon": 31.623,
+     "epaisseurApres": 9.32,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 19.54,
+     "demiDiametreChampComplet": 23.11,
+     "demiDiametreConseille": 21.32
+    },
+    {
+     "numero": 17,
+     "rayon": null,
+     "epaisseurApres": 7.0,
+     "indiceApres": null,
+     "abbeApres": null,
+     "diaphragme": true,
+     "demiDiametreAxe": 17.18,
+     "demiDiametreChampComplet": 17.18,
+     "demiDiametreConseille": 17.18
+    },
+    {
+     "numero": 18,
+     "rayon": -31.851,
+     "epaisseurApres": 4.0,
+     "indiceApres": 1.67276,
+     "abbeApres": 32.21,
+     "demiDiametreAxe": 15.42,
+     "demiDiametreChampComplet": 18.1,
+     "demiDiametreConseille": 16.76
+    },
+    {
+     "numero": 19,
+     "rayon": 114.65,
+     "epaisseurApres": 3.56,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 15.59,
+     "demiDiametreChampComplet": 19.33,
+     "demiDiametreConseille": 17.46
+    },
+    {
+     "numero": 20,
+     "rayon": -170.31,
+     "epaisseurApres": 7.3,
+     "indiceApres": 1.74104,
+     "abbeApres": 52.64,
+     "demiDiametreAxe": 16.18,
+     "demiDiametreChampComplet": 21.56,
+     "demiDiametreConseille": 18.87
+    },
+    {
+     "numero": 21,
+     "rayon": -47.315,
+     "epaisseurApres": 0.2,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 17.16,
+     "demiDiametreChampComplet": 24.59,
+     "demiDiametreConseille": 20.87
+    },
+    {
+     "numero": 22,
+     "rayon": 202.42,
+     "epaisseurApres": 7.5,
+     "indiceApres": 1.52857,
+     "abbeApres": 76.97,
+     "demiDiametreAxe": 17.16,
+     "demiDiametreChampComplet": 24.65,
+     "demiDiametreConseille": 20.91
+    },
+    {
+     "numero": 23,
+     "rayon": -74.452,
+     "epaisseurApres": 0.2,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 16.77,
+     "demiDiametreChampComplet": 25.99,
+     "demiDiametreConseille": 21.38
+    },
+    {
+     "numero": 24,
+     "rayon": 69.783,
+     "epaisseurApres": 10.4,
+     "indiceApres": 1.49702,
+     "abbeApres": 81.54,
+     "demiDiametreAxe": 16.73,
+     "demiDiametreChampComplet": 26.0,
+     "demiDiametreConseille": 21.37
+    },
+    {
+     "numero": 25,
+     "rayon": -82.937,
+     "epaisseurApres": 36.004,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 14.53,
+     "demiDiametreChampComplet": 25.32,
+     "demiDiametreConseille": 19.93
+    },
+    {
+     "numero": 26,
+     "rayon": null,
+     "epaisseurApres": 0.0,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 0.01,
+     "demiDiametreChampComplet": 16.34,
+     "demiDiametreConseille": 8.17
+    }
+   ],
+   "ecartsVariables": {}
+  },
+  {
+   "id": "arri-zeiss-master-prime-75",
+   "serie": "Master Prime",
+   "fabricant": "ARRI / Zeiss",
+   "focaleNominale": 75,
+   "ouvertureNominale": "T1.3",
+   "focaleBrevet": 74.98,
+   "ouvertureBrevet": 1.3,
+   "hauteurImage": 15.55,
+   "brevet": "US 2007/0236805 A1",
+   "exemple": "3e réalisation (fig. 3)",
+   "lien": "https://patents.google.com/patent/US20070236805A1/en",
+   "correspondance": "Photons to Photos relie ce brevet (et DE 10 2005 025 204) aux Master Prime T1.3. Formule de 75 mm du même brevet : Master Prime 75 probable, à confirmer.",
+   "notes": "Mise au point par deux groupes flottants ; le brevet ne donne pas leurs écarts selon la distance : coupe à l'infini seulement (un curseur de mise au point peut les simuler, signalé comme tel). Asphérique en notation Code V (A, B, C, D = ordres 4, 6, 8, 10 ; conique nulle). Ouverture non donnée par le brevet : T1.3 de la série pour estimer les diamètres ; hauteur d'image Super 35 (15,55 mm).",
+   "focaleCalculee": 74.98,
+   "tirageCalcule": -0.0,
+   "surfaces": [
+    {
+     "numero": 1,
+     "rayon": null,
+     "epaisseurApres": 0.0,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 30.28,
+     "demiDiametreChampComplet": 51.75,
+     "demiDiametreConseille": 41.02
+    },
+    {
+     "numero": 2,
+     "rayon": -755.31,
+     "epaisseurApres": 7.8,
+     "indiceApres": 1.51635,
+     "abbeApres": 64.14,
+     "demiDiametreAxe": 30.28,
+     "demiDiametreChampComplet": 51.75,
+     "demiDiametreConseille": 41.02
+    },
+    {
+     "numero": 3,
+     "rayon": 74.452,
+     "epaisseurApres": 11.0,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 30.39,
+     "demiDiametreChampComplet": 50.81,
+     "demiDiametreConseille": 40.6
+    },
+    {
+     "numero": 4,
+     "rayon": -446.68,
+     "epaisseurApres": 4.5,
+     "indiceApres": 1.51682,
+     "abbeApres": 64.17,
+     "demiDiametreAxe": 32.93,
+     "demiDiametreChampComplet": 52.69,
+     "demiDiametreConseille": 42.81
+    },
+    {
+     "numero": 5,
+     "rayon": 68.786,
+     "epaisseurApres": 15.1,
+     "indiceApres": 1.62017,
+     "abbeApres": 63.48,
+     "demiDiametreAxe": 33.73,
+     "demiDiametreChampComplet": 53.37,
+     "demiDiametreConseille": 43.55
+    },
+    {
+     "numero": 6,
+     "rayon": -403.88,
+     "epaisseurApres": 5.76,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 35.77,
+     "demiDiametreChampComplet": 54.78,
+     "demiDiametreConseille": 45.28
+    },
+    {
+     "numero": 7,
+     "rayon": 103.66,
+     "epaisseurApres": 14.0,
+     "indiceApres": 1.43876,
+     "abbeApres": 94.99,
+     "demiDiametreAxe": 36.72,
+     "demiDiametreChampComplet": 55.16,
+     "demiDiametreConseille": 45.94
+    },
+    {
+     "numero": 8,
+     "rayon": -233.75,
+     "epaisseurApres": 5.41,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 36.8,
+     "demiDiametreChampComplet": 53.54,
+     "demiDiametreConseille": 45.17
+    },
+    {
+     "numero": 9,
+     "rayon": 67.803,
+     "epaisseurApres": 12.9,
+     "indiceApres": 1.49702,
+     "abbeApres": 81.54,
+     "demiDiametreAxe": 36.47,
+     "demiDiametreChampComplet": 52.09,
+     "demiDiametreConseille": 44.28
+    },
+    {
+     "numero": 10,
+     "rayon": 453.16,
+     "epaisseurApres": 16.753,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 33.65,
+     "demiDiametreChampComplet": 46.5,
+     "demiDiametreConseille": 40.07
+    },
+    {
+     "numero": 11,
+     "rayon": 70.795,
+     "epaisseurApres": 11.85,
+     "indiceApres": 1.71705,
+     "abbeApres": 47.93,
+     "demiDiametreAxe": 28.77,
+     "demiDiametreChampComplet": 36.48,
+     "demiDiametreConseille": 32.63
+    },
+    {
+     "numero": 12,
+     "rayon": -202.42,
+     "epaisseurApres": 11.5,
+     "indiceApres": 1.65416,
+     "abbeApres": 39.63,
+     "demiDiametreAxe": 24.75,
+     "demiDiametreChampComplet": 29.8,
+     "demiDiametreConseille": 27.28
+    },
+    {
+     "numero": 13,
+     "rayon": 81.752,
+     "epaisseurApres": 6.413,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 20.65,
+     "demiDiametreChampComplet": 23.01,
+     "demiDiametreConseille": 21.83
+    },
+    {
+     "numero": 14,
+     "rayon": null,
+     "epaisseurApres": 2.67,
+     "indiceApres": null,
+     "abbeApres": null,
+     "diaphragme": true,
+     "demiDiametreAxe": 17.93,
+     "demiDiametreChampComplet": 17.93,
+     "demiDiametreConseille": 17.93
+    },
+    {
+     "numero": 15,
+     "rayon": -260.53296,
+     "epaisseurApres": 3.6,
+     "indiceApres": 1.71743,
+     "abbeApres": 29.51,
+     "aspherique": {
+      "K": 0.0,
+      "A4": 3.75e-06,
+      "A6": 3.704e-10,
+      "A8": -5.545e-13,
+      "A10": 0.0
+     },
+     "demiDiametreAxe": 16.79,
+     "demiDiametreChampComplet": 17.77,
+     "demiDiametreConseille": 17.28
+    },
+    {
+     "numero": 16,
+     "rayon": 37.047,
+     "epaisseurApres": 8.9,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 16.0,
+     "demiDiametreChampComplet": 17.76,
+     "demiDiametreConseille": 16.88
+    },
+    {
+     "numero": 17,
+     "rayon": -35.227,
+     "epaisseurApres": 3.6,
+     "indiceApres": 1.61664,
+     "abbeApres": 36.63,
+     "demiDiametreAxe": 15.38,
+     "demiDiametreChampComplet": 20.74,
+     "demiDiametreConseille": 18.06
+    },
+    {
+     "numero": 18,
+     "rayon": 52.708,
+     "epaisseurApres": 10.2,
+     "indiceApres": 1.78805,
+     "abbeApres": 47.37,
+     "demiDiametreAxe": 15.83,
+     "demiDiametreChampComplet": 22.3,
+     "demiDiametreConseille": 19.07
+    },
+    {
+     "numero": 19,
+     "rayon": -53.088,
+     "epaisseurApres": 0.2,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 16.68,
+     "demiDiametreChampComplet": 25.87,
+     "demiDiametreConseille": 21.28
+    },
+    {
+     "numero": 20,
+     "rayon": -202.42,
+     "epaisseurApres": 5.7,
+     "indiceApres": 1.81605,
+     "abbeApres": 46.62,
+     "demiDiametreAxe": 16.66,
+     "demiDiametreChampComplet": 25.92,
+     "demiDiametreConseille": 21.29
+    },
+    {
+     "numero": 21,
+     "rayon": -63.096,
+     "epaisseurApres": 0.2,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 16.56,
+     "demiDiametreChampComplet": 27.01,
+     "demiDiametreConseille": 21.79
+    },
+    {
+     "numero": 22,
+     "rayon": 50.119,
+     "epaisseurApres": 7.0,
+     "indiceApres": 1.49702,
+     "abbeApres": 81.54,
+     "demiDiametreAxe": 16.51,
+     "demiDiametreChampComplet": 27.01,
+     "demiDiametreConseille": 21.76
+    },
+    {
+     "numero": 23,
+     "rayon": 1295.7,
+     "epaisseurApres": 36.153,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 14.6,
+     "demiDiametreChampComplet": 25.75,
+     "demiDiametreConseille": 20.17
+    },
+    {
+     "numero": 24,
+     "rayon": null,
+     "epaisseurApres": 0.0,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 0.0,
+     "demiDiametreChampComplet": 16.33,
+     "demiDiametreConseille": 8.17
+    }
+   ],
+   "ecartsVariables": {}
+  },
+  {
+   "id": "sigma-35",
+   "serie": "Cine FF High Speed",
+   "fabricant": "Sigma",
+   "focaleNominale": 35,
+   "ouvertureNominale": "T1.5",
+   "focaleBrevet": 34.0,
+   "ouvertureBrevet": 1.45,
+   "hauteurImage": 21.6,
+   "distanceProche_mm": 300.0,
+   "brevet": "JP 2014-048488 A",
+   "exemple": "exemple numérique 3",
+   "lien": "https://patents.google.com/patent/JP2014048488A/en",
+   "correspondance": "Photons to Photos relie cet exemple au Sigma 35mm F1.4 DG HSM Art. Sigma dit que ses Cine FF High Speed reprennent le système optique de ses objectifs photo : correspondance focale par focale à confirmer.",
+   "notes": "Écarts variables à l'infini et à la distance proche du brevet : ce sont eux qui font bouger le groupe de mise au point. Asphériques : z = c·h²/(1+√(1−(1+K)c²h²)) + A4·h⁴ + A6·h⁶ + … (c = 1/rayon). Une lame plane en fin de formule, s'il y en a une, est le verre de protection du capteur.",
+   "focaleCalculee": 34.0,
+   "tirageCalcule": 39.2,
+   "surfaces": [
+    {
+     "numero": 1,
+     "rayon": 51.6928,
+     "epaisseurApres": 2.5,
+     "indiceApres": 1.58913,
+     "abbeApres": 61.25,
+     "aspherique": {
+      "K": 0.0,
+      "A4": 1.65056e-06,
+      "A6": 1.96288e-09,
+      "A8": -3.8208e-12,
+      "A10": 7.44465e-15,
+      "A12": -5.09935e-18
+     },
+     "demiDiametreAxe": 12.31,
+     "demiDiametreChampComplet": 35.6,
+     "demiDiametreConseille": 23.95
+    },
+    {
+     "numero": 2,
+     "rayon": 23.1387,
+     "epaisseurApres": 13.8467,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 12.09,
+     "demiDiametreChampComplet": 33.91,
+     "demiDiametreConseille": 23.0
+    },
+    {
+     "numero": 3,
+     "rayon": -108.959,
+     "epaisseurApres": 1.5,
+     "indiceApres": 1.437,
+     "abbeApres": 95.1,
+     "demiDiametreAxe": 14.41,
+     "demiDiametreChampComplet": 31.01,
+     "demiDiametreConseille": 22.71
+    },
+    {
+     "numero": 4,
+     "rayon": 47.6787,
+     "epaisseurApres": 3.5755,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 14.64,
+     "demiDiametreChampComplet": 30.92,
+     "demiDiametreConseille": 22.78
+    },
+    {
+     "numero": 5,
+     "rayon": 196.1242,
+     "epaisseurApres": 4.5045,
+     "indiceApres": 2.001,
+     "abbeApres": 29.13,
+     "demiDiametreAxe": 15.93,
+     "demiDiametreChampComplet": 31.63,
+     "demiDiametreConseille": 23.78
+    },
+    {
+     "numero": 6,
+     "rayon": -94.0062,
+     "epaisseurApres": 3.8127,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 16.56,
+     "demiDiametreChampComplet": 31.71,
+     "demiDiametreConseille": 24.13
+    },
+    {
+     "numero": 7,
+     "rayon": -37.6685,
+     "epaisseurApres": 1.3,
+     "indiceApres": 1.72825,
+     "abbeApres": 28.32,
+     "demiDiametreAxe": 16.94,
+     "demiDiametreChampComplet": 30.57,
+     "demiDiametreConseille": 23.76
+    },
+    {
+     "numero": 8,
+     "rayon": 606.2428,
+     "epaisseurApres": 0.15,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 17.27,
+     "demiDiametreChampComplet": 30.79,
+     "demiDiametreConseille": 24.03
+    },
+    {
+     "numero": 9,
+     "rayon": 79.8753,
+     "epaisseurApres": 8.9087,
+     "indiceApres": 1.59282,
+     "abbeApres": 68.62,
+     "demiDiametreAxe": 17.34,
+     "demiDiametreChampComplet": 30.83,
+     "demiDiametreConseille": 24.08
+    },
+    {
+     "numero": 10,
+     "rayon": -46.6701,
+     "epaisseurApres": null,
+     "indiceApres": null,
+     "abbeApres": null,
+     "ecartVariable": "d10",
+     "demiDiametreAxe": 19.13,
+     "demiDiametreChampComplet": 31.38,
+     "demiDiametreConseille": 25.26
+    },
+    {
+     "numero": 11,
+     "rayon": 61.2667,
+     "epaisseurApres": 5.7369,
+     "indiceApres": 2.001,
+     "abbeApres": 29.13,
+     "demiDiametreAxe": 19.69,
+     "demiDiametreChampComplet": 29.27,
+     "demiDiametreConseille": 24.48
+    },
+    {
+     "numero": 12,
+     "rayon": -336.7562,
+     "epaisseurApres": 0.15,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 18.99,
+     "demiDiametreChampComplet": 27.04,
+     "demiDiametreConseille": 23.01
+    },
+    {
+     "numero": 13,
+     "rayon": 74.1753,
+     "epaisseurApres": 8.8511,
+     "indiceApres": 1.59282,
+     "abbeApres": 68.62,
+     "demiDiametreAxe": 18.94,
+     "demiDiametreChampComplet": 26.91,
+     "demiDiametreConseille": 22.93
+    },
+    {
+     "numero": 14,
+     "rayon": -45.397,
+     "epaisseurApres": 1.5,
+     "indiceApres": 1.60342,
+     "abbeApres": 38.01,
+     "demiDiametreAxe": 16.44,
+     "demiDiametreChampComplet": 20.94,
+     "demiDiametreConseille": 18.69
+    },
+    {
+     "numero": 15,
+     "rayon": 35.4664,
+     "epaisseurApres": null,
+     "indiceApres": null,
+     "abbeApres": null,
+     "ecartVariable": "d15",
+     "demiDiametreAxe": 16.02,
+     "demiDiametreChampComplet": 19.94,
+     "demiDiametreConseille": 17.98
+    },
+    {
+     "numero": 16,
+     "rayon": null,
+     "epaisseurApres": 5.5151,
+     "indiceApres": null,
+     "abbeApres": null,
+     "diaphragme": true,
+     "demiDiametreAxe": 14.79,
+     "demiDiametreChampComplet": 14.79,
+     "demiDiametreConseille": 14.79
+    },
+    {
+     "numero": 17,
+     "rayon": -30.0,
+     "epaisseurApres": 1.25,
+     "indiceApres": 1.80518,
+     "abbeApres": 25.46,
+     "demiDiametreAxe": 13.83,
+     "demiDiametreChampComplet": 16.89,
+     "demiDiametreConseille": 15.36
+    },
+    {
+     "numero": 18,
+     "rayon": 119.7609,
+     "epaisseurApres": 4.996,
+     "indiceApres": 1.437,
+     "abbeApres": 95.1,
+     "demiDiametreAxe": 13.96,
+     "demiDiametreChampComplet": 17.47,
+     "demiDiametreConseille": 15.71
+    },
+    {
+     "numero": 19,
+     "rayon": -68.8075,
+     "epaisseurApres": 0.15,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 14.79,
+     "demiDiametreChampComplet": 20.55,
+     "demiDiametreConseille": 17.67
+    },
+    {
+     "numero": 20,
+     "rayon": 70.0035,
+     "epaisseurApres": 6.265,
+     "indiceApres": 1.56883,
+     "abbeApres": 56.04,
+     "demiDiametreAxe": 14.82,
+     "demiDiametreChampComplet": 20.67,
+     "demiDiametreConseille": 17.74
+    },
+    {
+     "numero": 21,
+     "rayon": -57.8073,
+     "epaisseurApres": 0.15,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 14.92,
+     "demiDiametreChampComplet": 23.02,
+     "demiDiametreConseille": 18.97
+    },
+    {
+     "numero": 22,
+     "rayon": 86.6673,
+     "epaisseurApres": 1.1,
+     "indiceApres": 1.48749,
+     "abbeApres": 70.44,
+     "demiDiametreAxe": 14.9,
+     "demiDiametreChampComplet": 23.07,
+     "demiDiametreConseille": 18.99
+    },
+    {
+     "numero": 23,
+     "rayon": 41.4963,
+     "epaisseurApres": 1.6662,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 14.75,
+     "demiDiametreChampComplet": 23.25,
+     "demiDiametreConseille": 19.0
+    },
+    {
+     "numero": 24,
+     "rayon": 83.8165,
+     "epaisseurApres": 5.2749,
+     "indiceApres": 1.7725,
+     "abbeApres": 49.47,
+     "demiDiametreAxe": 14.69,
+     "demiDiametreChampComplet": 24.09,
+     "demiDiametreConseille": 19.39
+    },
+    {
+     "numero": 25,
+     "rayon": -56.3959,
+     "epaisseurApres": null,
+     "indiceApres": null,
+     "abbeApres": null,
+     "ecartVariable": "BF",
+     "aspherique": {
+      "K": 0.0,
+      "A4": 4.3716e-06,
+      "A6": -2.8629e-10,
+      "A8": -4.07099e-13,
+      "A10": 7.96087e-15,
+      "A12": -7.28754e-18
+     },
+     "demiDiametreAxe": 14.19,
+     "demiDiametreChampComplet": 24.93,
+     "demiDiametreConseille": 19.56
+    }
+   ],
+   "ecartsVariables": {
+    "d0": {
+     "infini": null,
+     "proche": 164.0
+    },
+    "d10": {
+     "infini": 7.0345,
+     "proche": 1.0
+    },
+    "d15": {
+     "infini": 7.0624,
+     "proche": 5.9204
+    },
+    "BF": {
+     "infini": 39.2,
+     "proche": 46.3765
+    }
+   }
+  },
+  {
+   "id": "sigma-50",
+   "serie": "Cine FF High Speed",
+   "fabricant": "Sigma",
+   "focaleNominale": 50,
+   "ouvertureNominale": "T1.5",
+   "focaleBrevet": 49.58,
+   "ouvertureBrevet": 1.46,
+   "hauteurImage": 21.63,
+   "distanceProche_mm": 400.0,
+   "brevet": "JP 2015-114366 A",
+   "exemple": "exemple numérique 1",
+   "lien": "https://patents.google.com/patent/JP2015114366A/en",
+   "correspondance": "Photons to Photos relie cet exemple au Sigma 50mm F1.4 DG HSM Art. Sigma dit que ses Cine FF High Speed reprennent le système optique de ses objectifs photo : correspondance focale par focale à confirmer.",
+   "notes": "Écarts variables à l'infini et à la distance proche du brevet : ce sont eux qui font bouger le groupe de mise au point. Asphériques : z = c·h²/(1+√(1−(1+K)c²h²)) + A4·h⁴ + A6·h⁶ + … (c = 1/rayon). Une lame plane en fin de formule, s'il y en a une, est le verre de protection du capteur.",
+   "focaleCalculee": 49.58,
+   "tirageCalcule": 38.8,
+   "surfaces": [
+    {
+     "numero": 1,
+     "rayon": 59.9687,
+     "epaisseurApres": 7.5464,
+     "indiceApres": 1.91082,
+     "abbeApres": 35.25,
+     "demiDiametreAxe": 17.83,
+     "demiDiametreChampComplet": 43.77,
+     "demiDiametreConseille": 30.8
+    },
+    {
+     "numero": 2,
+     "rayon": 178.4018,
+     "epaisseurApres": 0.6242,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 16.76,
+     "demiDiametreChampComplet": 39.33,
+     "demiDiametreConseille": 28.05
+    },
+    {
+     "numero": 3,
+     "rayon": 192.0154,
+     "epaisseurApres": 2.0,
+     "indiceApres": 1.62588,
+     "abbeApres": 35.74,
+     "demiDiametreAxe": 16.64,
+     "demiDiametreChampComplet": 38.76,
+     "demiDiametreConseille": 27.7
+    },
+    {
+     "numero": 4,
+     "rayon": 28.7552,
+     "epaisseurApres": 16.1562,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 16.35,
+     "demiDiametreChampComplet": 37.47,
+     "demiDiametreConseille": 26.91
+    },
+    {
+     "numero": 5,
+     "rayon": -67.9622,
+     "epaisseurApres": 10.7338,
+     "indiceApres": 1.497,
+     "abbeApres": 81.61,
+     "demiDiametreAxe": 18.23,
+     "demiDiametreChampComplet": 33.71,
+     "demiDiametreConseille": 25.97
+    },
+    {
+     "numero": 6,
+     "rayon": -26.2761,
+     "epaisseurApres": 1.5,
+     "indiceApres": 1.54814,
+     "abbeApres": 45.82,
+     "demiDiametreAxe": 20.02,
+     "demiDiametreChampComplet": 33.8,
+     "demiDiametreConseille": 26.91
+    },
+    {
+     "numero": 7,
+     "rayon": 43.9346,
+     "epaisseurApres": 10.7524,
+     "indiceApres": 1.883,
+     "abbeApres": 40.81,
+     "demiDiametreAxe": 20.3,
+     "demiDiametreChampComplet": 33.88,
+     "demiDiametreConseille": 27.09
+    },
+    {
+     "numero": 8,
+     "rayon": -94.4447,
+     "epaisseurApres": 0.0,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 21.07,
+     "demiDiametreChampComplet": 32.86,
+     "demiDiametreConseille": 26.96
+    },
+    {
+     "numero": 9,
+     "rayon": null,
+     "epaisseurApres": null,
+     "indiceApres": null,
+     "abbeApres": null,
+     "ecartVariable": "d9",
+     "diaphragmeAntiReflets": true,
+     "demiDiametreAxe": 21.07,
+     "demiDiametreChampComplet": 32.86,
+     "demiDiametreConseille": 26.96
+    },
+    {
+     "numero": 10,
+     "rayon": 49.8944,
+     "epaisseurApres": 3.9121,
+     "indiceApres": 1.92286,
+     "abbeApres": 20.88,
+     "demiDiametreAxe": 20.44,
+     "demiDiametreChampComplet": 28.01,
+     "demiDiametreConseille": 24.22
+    },
+    {
+     "numero": 11,
+     "rayon": 108.4891,
+     "epaisseurApres": 0.15,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 19.54,
+     "demiDiametreChampComplet": 25.97,
+     "demiDiametreConseille": 22.75
+    },
+    {
+     "numero": 12,
+     "rayon": 47.6761,
+     "epaisseurApres": 8.0538,
+     "indiceApres": 1.72916,
+     "abbeApres": 54.67,
+     "demiDiametreAxe": 19.5,
+     "demiDiametreChampComplet": 25.85,
+     "demiDiametreConseille": 22.67
+    },
+    {
+     "numero": 13,
+     "rayon": -69.2432,
+     "epaisseurApres": 0.95,
+     "indiceApres": 1.72825,
+     "abbeApres": 28.32,
+     "demiDiametreAxe": 16.83,
+     "demiDiametreChampComplet": 20.36,
+     "demiDiametreConseille": 18.59
+    },
+    {
+     "numero": 14,
+     "rayon": 31.4317,
+     "epaisseurApres": null,
+     "indiceApres": null,
+     "abbeApres": null,
+     "ecartVariable": "d14",
+     "demiDiametreAxe": 16.51,
+     "demiDiametreChampComplet": 19.71,
+     "demiDiametreConseille": 18.11
+    },
+    {
+     "numero": 15,
+     "rayon": null,
+     "epaisseurApres": 4.6436,
+     "indiceApres": null,
+     "abbeApres": null,
+     "diaphragme": true,
+     "demiDiametreAxe": 15.37,
+     "demiDiametreChampComplet": 15.37,
+     "demiDiametreConseille": 15.37
+    },
+    {
+     "numero": 16,
+     "rayon": -31.6556,
+     "epaisseurApres": 0.95,
+     "indiceApres": 1.62588,
+     "abbeApres": 35.74,
+     "demiDiametreAxe": 14.48,
+     "demiDiametreChampComplet": 16.95,
+     "demiDiametreConseille": 15.72
+    },
+    {
+     "numero": 17,
+     "rayon": 71.6171,
+     "epaisseurApres": 4.661,
+     "indiceApres": 1.59282,
+     "abbeApres": 68.62,
+     "demiDiametreAxe": 14.54,
+     "demiDiametreChampComplet": 17.34,
+     "demiDiametreConseille": 15.94
+    },
+    {
+     "numero": 18,
+     "rayon": -96.5972,
+     "epaisseurApres": 0.15,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 14.84,
+     "demiDiametreChampComplet": 19.35,
+     "demiDiametreConseille": 17.09
+    },
+    {
+     "numero": 19,
+     "rayon": 85.5221,
+     "epaisseurApres": 6.6571,
+     "indiceApres": 1.59282,
+     "abbeApres": 68.62,
+     "demiDiametreAxe": 14.84,
+     "demiDiametreChampComplet": 19.43,
+     "demiDiametreConseille": 17.14
+    },
+    {
+     "numero": 20,
+     "rayon": -40.3262,
+     "epaisseurApres": 0.95,
+     "indiceApres": 1.51742,
+     "abbeApres": 52.15,
+     "demiDiametreAxe": 14.46,
+     "demiDiametreChampComplet": 21.23,
+     "demiDiametreConseille": 17.84
+    },
+    {
+     "numero": 21,
+     "rayon": 57.5543,
+     "epaisseurApres": 0.9291,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 14.38,
+     "demiDiametreChampComplet": 21.48,
+     "demiDiametreConseille": 17.93
+    },
+    {
+     "numero": 22,
+     "rayon": 77.4702,
+     "epaisseurApres": 5.8822,
+     "indiceApres": 1.7725,
+     "abbeApres": 49.47,
+     "aspherique": {
+      "K": 0.0,
+      "A4": -9.93095e-07,
+      "A6": 1.24366e-09,
+      "A8": -7.51084e-13,
+      "A10": 0.0
+     },
+     "demiDiametreAxe": 14.39,
+     "demiDiametreChampComplet": 22.02,
+     "demiDiametreConseille": 18.21
+    },
+    {
+     "numero": 23,
+     "rayon": -47.5092,
+     "epaisseurApres": null,
+     "indiceApres": null,
+     "abbeApres": null,
+     "ecartVariable": "BF",
+     "aspherique": {
+      "K": 0.0,
+      "A4": 3.17495e-06,
+      "A6": -1.01711e-10,
+      "A8": 2.0025e-12,
+      "A10": -1.26705e-15
+     },
+     "demiDiametreAxe": 13.95,
+     "demiDiametreChampComplet": 23.23,
+     "demiDiametreConseille": 18.59
+    }
+   ],
+   "ecartsVariables": {
+    "d0": {
+     "infini": null,
+     "proche": 258.0
+    },
+    "d9": {
+     "infini": 9.9796,
+     "proche": 1.2
+    },
+    "d14": {
+     "infini": 6.0186,
+     "proche": 5.8989
+    },
+    "BF": {
+     "infini": 38.7999,
+     "proche": 47.6991
+    }
+   }
+  },
+  {
+   "id": "sigma-24",
+   "serie": "Cine FF High Speed",
+   "fabricant": "Sigma",
+   "focaleNominale": 24,
+   "ouvertureNominale": "T1.5",
+   "focaleBrevet": 24.65,
+   "ouvertureBrevet": 1.47,
+   "hauteurImage": 21.63,
+   "distanceProche_mm": 248.0,
+   "brevet": "JP 2016-012034 A",
+   "exemple": "exemple numérique 1",
+   "lien": "https://patents.google.com/patent/JP2016012034A/en",
+   "correspondance": "Photons to Photos relie cet exemple au Sigma 24mm F1.4 DG HSM Art. Sigma dit que ses Cine FF High Speed reprennent le système optique de ses objectifs photo : correspondance focale par focale à confirmer.",
+   "notes": "Écarts variables à l'infini et à la distance proche du brevet : ce sont eux qui font bouger le groupe de mise au point. Asphériques : z = c·h²/(1+√(1−(1+K)c²h²)) + A4·h⁴ + A6·h⁶ + … (c = 1/rayon). Une lame plane en fin de formule, s'il y en a une, est le verre de protection du capteur.",
+   "focaleCalculee": 24.65,
+   "tirageCalcule": 38.45,
+   "surfaces": [
+    {
+     "numero": 1,
+     "rayon": 53.9982,
+     "epaisseurApres": 1.8,
+     "indiceApres": 1.92119,
+     "abbeApres": 23.96,
+     "demiDiametreAxe": 8.81,
+     "demiDiametreChampComplet": 33.84,
+     "demiDiametreConseille": 21.32
+    },
+    {
+     "numero": 2,
+     "rayon": 25.7944,
+     "epaisseurApres": 5.0922,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 8.66,
+     "demiDiametreChampComplet": 32.44,
+     "demiDiametreConseille": 20.55
+    },
+    {
+     "numero": 3,
+     "rayon": 45.1546,
+     "epaisseurApres": 2.4,
+     "indiceApres": 1.58913,
+     "abbeApres": 61.25,
+     "aspherique": {
+      "K": 0.0,
+      "A4": 5.0484e-06,
+      "A6": 4.6004e-09,
+      "A8": -5.2592e-12,
+      "A10": 1.9961e-14,
+      "A12": -1.2087e-17
+     },
+     "demiDiametreAxe": 9.48,
+     "demiDiametreChampComplet": 30.71,
+     "demiDiametreConseille": 20.09
+    },
+    {
+     "numero": 4,
+     "rayon": 28.8431,
+     "epaisseurApres": 7.6405,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 9.53,
+     "demiDiametreChampComplet": 29.59,
+     "demiDiametreConseille": 19.56
+    },
+    {
+     "numero": 5,
+     "rayon": 100.4997,
+     "epaisseurApres": 1.4,
+     "indiceApres": 1.437,
+     "abbeApres": 95.1,
+     "demiDiametreAxe": 11.29,
+     "demiDiametreChampComplet": 28.55,
+     "demiDiametreConseille": 19.92
+    },
+    {
+     "numero": 6,
+     "rayon": 32.8511,
+     "epaisseurApres": 6.115,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 11.46,
+     "demiDiametreChampComplet": 28.29,
+     "demiDiametreConseille": 19.88
+    },
+    {
+     "numero": 7,
+     "rayon": 143.4549,
+     "epaisseurApres": 4.2773,
+     "indiceApres": 1.90366,
+     "abbeApres": 31.32,
+     "demiDiametreAxe": 13.5,
+     "demiDiametreChampComplet": 29.0,
+     "demiDiametreConseille": 21.25
+    },
+    {
+     "numero": 8,
+     "rayon": -119.4892,
+     "epaisseurApres": 3.2925,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 14.06,
+     "demiDiametreChampComplet": 28.85,
+     "demiDiametreConseille": 21.46
+    },
+    {
+     "numero": 9,
+     "rayon": -41.2211,
+     "epaisseurApres": 2.4229,
+     "indiceApres": 1.437,
+     "abbeApres": 95.1,
+     "demiDiametreAxe": 14.53,
+     "demiDiametreChampComplet": 27.92,
+     "demiDiametreConseille": 21.22
+    },
+    {
+     "numero": 10,
+     "rayon": 59.9885,
+     "epaisseurApres": 5.7,
+     "indiceApres": 2.001,
+     "abbeApres": 29.13,
+     "demiDiametreAxe": 15.03,
+     "demiDiametreChampComplet": 27.93,
+     "demiDiametreConseille": 21.48
+    },
+    {
+     "numero": 11,
+     "rayon": -177.6617,
+     "epaisseurApres": null,
+     "indiceApres": null,
+     "abbeApres": null,
+     "ecartVariable": "d11",
+     "demiDiametreAxe": 15.47,
+     "demiDiametreChampComplet": 27.22,
+     "demiDiametreConseille": 21.34
+    },
+    {
+     "numero": 12,
+     "rayon": 49.53,
+     "epaisseurApres": 6.9508,
+     "indiceApres": 1.59282,
+     "abbeApres": 68.63,
+     "demiDiametreAxe": 15.83,
+     "demiDiametreChampComplet": 25.09,
+     "demiDiametreConseille": 20.46
+    },
+    {
+     "numero": 13,
+     "rayon": -64.389,
+     "epaisseurApres": 0.2,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 15.3,
+     "demiDiametreChampComplet": 22.01,
+     "demiDiametreConseille": 18.66
+    },
+    {
+     "numero": 14,
+     "rayon": 68.3007,
+     "epaisseurApres": 5.6229,
+     "indiceApres": 1.59282,
+     "abbeApres": 68.63,
+     "demiDiametreAxe": 15.24,
+     "demiDiametreChampComplet": 21.83,
+     "demiDiametreConseille": 18.54
+    },
+    {
+     "numero": 15,
+     "rayon": -52.539,
+     "epaisseurApres": 0.9,
+     "indiceApres": 1.64769,
+     "abbeApres": 33.84,
+     "demiDiametreAxe": 13.85,
+     "demiDiametreChampComplet": 17.96,
+     "demiDiametreConseille": 15.9
+    },
+    {
+     "numero": 16,
+     "rayon": 33.9121,
+     "epaisseurApres": null,
+     "indiceApres": null,
+     "abbeApres": null,
+     "ecartVariable": "d16",
+     "demiDiametreAxe": 13.64,
+     "demiDiametreChampComplet": 17.37,
+     "demiDiametreConseille": 15.51
+    },
+    {
+     "numero": 17,
+     "rayon": null,
+     "epaisseurApres": 4.1343,
+     "indiceApres": null,
+     "abbeApres": null,
+     "diaphragme": true,
+     "demiDiametreAxe": 12.93,
+     "demiDiametreChampComplet": 12.93,
+     "demiDiametreConseille": 12.93
+    },
+    {
+     "numero": 18,
+     "rayon": -31.543,
+     "epaisseurApres": 5.5164,
+     "indiceApres": 1.437,
+     "abbeApres": 95.1,
+     "demiDiametreAxe": 12.44,
+     "demiDiametreChampComplet": 15.03,
+     "demiDiametreConseille": 13.73
+    },
+    {
+     "numero": 19,
+     "rayon": -16.7305,
+     "epaisseurApres": 0.9,
+     "indiceApres": 1.8061,
+     "abbeApres": 33.27,
+     "demiDiametreAxe": 12.64,
+     "demiDiametreChampComplet": 17.78,
+     "demiDiametreConseille": 15.21
+    },
+    {
+     "numero": 20,
+     "rayon": 189.9985,
+     "epaisseurApres": 3.3257,
+     "indiceApres": 1.59282,
+     "abbeApres": 68.63,
+     "demiDiametreAxe": 12.8,
+     "demiDiametreChampComplet": 18.33,
+     "demiDiametreConseille": 15.57
+    },
+    {
+     "numero": 21,
+     "rayon": -73.834,
+     "epaisseurApres": 0.15,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 13.52,
+     "demiDiametreChampComplet": 20.68,
+     "demiDiametreConseille": 17.1
+    },
+    {
+     "numero": 22,
+     "rayon": 67.3617,
+     "epaisseurApres": 7.8492,
+     "indiceApres": 1.59282,
+     "abbeApres": 68.63,
+     "demiDiametreAxe": 13.56,
+     "demiDiametreChampComplet": 20.83,
+     "demiDiametreConseille": 17.19
+    },
+    {
+     "numero": 23,
+     "rayon": -33.3415,
+     "epaisseurApres": 0.15,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 14.14,
+     "demiDiametreChampComplet": 24.67,
+     "demiDiametreConseille": 19.4
+    },
+    {
+     "numero": 24,
+     "rayon": -169.3198,
+     "epaisseurApres": 0.9,
+     "indiceApres": 1.60342,
+     "abbeApres": 38.01,
+     "demiDiametreAxe": 14.12,
+     "demiDiametreChampComplet": 24.72,
+     "demiDiametreConseille": 19.42
+    },
+    {
+     "numero": 25,
+     "rayon": 77.1561,
+     "epaisseurApres": 0.4138,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 14.07,
+     "demiDiametreChampComplet": 24.96,
+     "demiDiametreConseille": 19.52
+    },
+    {
+     "numero": 26,
+     "rayon": 81.0787,
+     "epaisseurApres": 5.8071,
+     "indiceApres": 1.7725,
+     "abbeApres": 49.47,
+     "aspherique": {
+      "K": 0.0,
+      "A4": -4.7314e-06,
+      "A6": -1.8348e-09,
+      "A8": -2.6174e-12,
+      "A10": 2.04104e-14,
+      "A12": 0.0
+     },
+     "demiDiametreAxe": 14.08,
+     "demiDiametreChampComplet": 25.22,
+     "demiDiametreConseille": 19.65
+    },
+    {
+     "numero": 27,
+     "rayon": -42.4883,
+     "epaisseurApres": null,
+     "indiceApres": null,
+     "abbeApres": null,
+     "ecartVariable": "BF",
+     "aspherique": {
+      "K": 0.0,
+      "A4": 4.4107e-06,
+      "A6": -1.7309e-09,
+      "A8": 9.7532e-13,
+      "A10": 3.318e-14,
+      "A12": 0.0
+     },
+     "demiDiametreAxe": 13.73,
+     "demiDiametreChampComplet": 26.47,
+     "demiDiametreConseille": 20.1
+    }
+   ],
+   "ecartsVariables": {
+    "d0": {
+     "infini": null,
+     "proche": 115.0
+    },
+    "d11": {
+     "infini": 5.2435,
+     "proche": 1.0
+    },
+    "d16": {
+     "infini": 5.9413,
+     "proche": 5.2837
+    },
+    "BF": {
+     "infini": 38.45,
+     "proche": 43.3511
+    }
+   }
+  },
+  {
+   "id": "sigma-20",
+   "serie": "Cine FF High Speed",
+   "fabricant": "Sigma",
+   "focaleNominale": 20,
+   "ouvertureNominale": "T1.5",
+   "focaleBrevet": 20.69,
+   "ouvertureBrevet": 1.46,
+   "hauteurImage": 21.63,
+   "distanceProche_mm": 959.0,
+   "brevet": "JP 2019-117419 A",
+   "exemple": "exemple numérique 1",
+   "lien": "https://patents.google.com/patent/JP2019117419A/en",
+   "correspondance": "Photons to Photos relie cet exemple au Sigma 20mm F1.4 DG HSM Art. Sigma dit que ses Cine FF High Speed reprennent le système optique de ses objectifs photo : correspondance focale par focale à confirmer.",
+   "notes": "Écarts variables à l'infini et à la distance proche du brevet : ce sont eux qui font bouger le groupe de mise au point. Asphériques : z = c·h²/(1+√(1−(1+K)c²h²)) + A4·h⁴ + A6·h⁶ + … (c = 1/rayon). Une lame plane en fin de formule, s'il y en a une, est le verre de protection du capteur.",
+   "focaleCalculee": 20.69,
+   "tirageCalcule": 1.0,
+   "surfaces": [
+    {
+     "numero": 1,
+     "rayon": 55.8667,
+     "epaisseurApres": 2.0,
+     "indiceApres": 1.92286,
+     "abbeApres": 20.88,
+     "demiDiametreAxe": 7.44,
+     "demiDiametreChampComplet": 44.46,
+     "demiDiametreConseille": 25.95
+    },
+    {
+     "numero": 2,
+     "rayon": 32.188,
+     "epaisseurApres": 11.1453,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 7.31,
+     "demiDiametreChampComplet": 42.56,
+     "demiDiametreConseille": 24.94
+    },
+    {
+     "numero": 3,
+     "rayon": 39.6726,
+     "epaisseurApres": 3.0,
+     "indiceApres": 1.6935,
+     "abbeApres": 53.2,
+     "aspherique": {
+      "K": -2.4116,
+      "A4": 6.6683e-07,
+      "A6": -8.6532e-09,
+      "A8": 1.5787e-11,
+      "A10": -1.446e-14,
+      "A12": 5.7555e-18
+     },
+     "demiDiametreAxe": 8.28,
+     "demiDiametreChampComplet": 35.74,
+     "demiDiametreConseille": 22.01
+    },
+    {
+     "numero": 4,
+     "rayon": 20.4304,
+     "epaisseurApres": 19.693,
+     "indiceApres": null,
+     "abbeApres": null,
+     "aspherique": {
+      "K": -0.9479,
+      "A4": -1.1248e-07,
+      "A6": -1.995e-08,
+      "A8": 3.17347e-11,
+      "A10": -3.4771e-14,
+      "A12": 1.7899e-17
+     },
+     "demiDiametreAxe": 8.18,
+     "demiDiametreChampComplet": 33.55,
+     "demiDiametreConseille": 20.86
+    },
+    {
+     "numero": 5,
+     "rayon": 518.9274,
+     "epaisseurApres": 1.9,
+     "indiceApres": 1.497,
+     "abbeApres": 81.61,
+     "demiDiametreAxe": 12.5,
+     "demiDiametreChampComplet": 31.62,
+     "demiDiametreConseille": 22.06
+    },
+    {
+     "numero": 6,
+     "rayon": 46.5995,
+     "epaisseurApres": 7.4808,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 12.77,
+     "demiDiametreChampComplet": 31.46,
+     "demiDiametreConseille": 22.11
+    },
+    {
+     "numero": 7,
+     "rayon": 88.5605,
+     "epaisseurApres": 8.0408,
+     "indiceApres": 1.883,
+     "abbeApres": 40.8,
+     "demiDiametreAxe": 15.34,
+     "demiDiametreChampComplet": 33.01,
+     "demiDiametreConseille": 24.17
+    },
+    {
+     "numero": 8,
+     "rayon": -88.5605,
+     "epaisseurApres": 2.8258,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 16.15,
+     "demiDiametreChampComplet": 32.49,
+     "demiDiametreConseille": 24.32
+    },
+    {
+     "numero": 9,
+     "rayon": -48.6468,
+     "epaisseurApres": 1.9,
+     "indiceApres": 1.437,
+     "abbeApres": 95.1,
+     "demiDiametreAxe": 16.24,
+     "demiDiametreChampComplet": 31.23,
+     "demiDiametreConseille": 23.73
+    },
+    {
+     "numero": 10,
+     "rayon": 63.2408,
+     "epaisseurApres": 6.9907,
+     "indiceApres": 2.001,
+     "abbeApres": 29.13,
+     "demiDiametreAxe": 16.47,
+     "demiDiametreChampComplet": 31.02,
+     "demiDiametreConseille": 23.74
+    },
+    {
+     "numero": 11,
+     "rayon": -165.6233,
+     "epaisseurApres": null,
+     "indiceApres": null,
+     "abbeApres": null,
+     "ecartVariable": "d11",
+     "demiDiametreAxe": 16.57,
+     "demiDiametreChampComplet": 29.47,
+     "demiDiametreConseille": 23.02
+    },
+    {
+     "numero": 12,
+     "rayon": 48.77,
+     "epaisseurApres": 5.3297,
+     "indiceApres": 1.59282,
+     "abbeApres": 68.63,
+     "demiDiametreAxe": 16.03,
+     "demiDiametreChampComplet": 24.78,
+     "demiDiametreConseille": 20.4
+    },
+    {
+     "numero": 13,
+     "rayon": -173.3714,
+     "epaisseurApres": 0.2,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 15.14,
+     "demiDiametreChampComplet": 21.7,
+     "demiDiametreConseille": 18.42
+    },
+    {
+     "numero": 14,
+     "rayon": 55.4982,
+     "epaisseurApres": 5.8716,
+     "indiceApres": 1.59282,
+     "abbeApres": 68.63,
+     "demiDiametreAxe": 15.07,
+     "demiDiametreChampComplet": 21.5,
+     "demiDiametreConseille": 18.29
+    },
+    {
+     "numero": 15,
+     "rayon": -55.4982,
+     "epaisseurApres": 0.9,
+     "indiceApres": 1.8061,
+     "abbeApres": 33.27,
+     "demiDiametreAxe": 13.31,
+     "demiDiametreChampComplet": 16.98,
+     "demiDiametreConseille": 15.15
+    },
+    {
+     "numero": 16,
+     "rayon": 26.2988,
+     "epaisseurApres": null,
+     "indiceApres": null,
+     "abbeApres": null,
+     "ecartVariable": "d16",
+     "demiDiametreAxe": 13.1,
+     "demiDiametreChampComplet": 16.4,
+     "demiDiametreConseille": 14.75
+    },
+    {
+     "numero": 17,
+     "rayon": null,
+     "epaisseurApres": 3.1958,
+     "indiceApres": null,
+     "abbeApres": null,
+     "diaphragme": true,
+     "demiDiametreAxe": 12.96,
+     "demiDiametreChampComplet": 12.96,
+     "demiDiametreConseille": 12.96
+    },
+    {
+     "numero": 18,
+     "rayon": -149.925,
+     "epaisseurApres": 8.4815,
+     "indiceApres": 1.437,
+     "abbeApres": 95.1,
+     "demiDiametreAxe": 12.87,
+     "demiDiametreChampComplet": 14.89,
+     "demiDiametreConseille": 13.88
+    },
+    {
+     "numero": 19,
+     "rayon": -17.7149,
+     "epaisseurApres": 0.9,
+     "indiceApres": 1.8061,
+     "abbeApres": 33.27,
+     "demiDiametreAxe": 12.94,
+     "demiDiametreChampComplet": 18.71,
+     "demiDiametreConseille": 15.82
+    },
+    {
+     "numero": 20,
+     "rayon": 112.16,
+     "epaisseurApres": 3.2223,
+     "indiceApres": 1.59282,
+     "abbeApres": 68.63,
+     "demiDiametreAxe": 13.08,
+     "demiDiametreChampComplet": 19.22,
+     "demiDiametreConseille": 16.15
+    },
+    {
+     "numero": 21,
+     "rayon": -112.16,
+     "epaisseurApres": 0.15,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 13.7,
+     "demiDiametreChampComplet": 21.4,
+     "demiDiametreConseille": 17.55
+    },
+    {
+     "numero": 22,
+     "rayon": 61.3754,
+     "epaisseurApres": 7.6624,
+     "indiceApres": 1.59282,
+     "abbeApres": 68.63,
+     "demiDiametreAxe": 13.73,
+     "demiDiametreChampComplet": 21.54,
+     "demiDiametreConseille": 17.64
+    },
+    {
+     "numero": 23,
+     "rayon": -36.1032,
+     "epaisseurApres": 0.15,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 14.21,
+     "demiDiametreChampComplet": 25.16,
+     "demiDiametreConseille": 19.69
+    },
+    {
+     "numero": 24,
+     "rayon": -205.2853,
+     "epaisseurApres": 0.9,
+     "indiceApres": 1.70154,
+     "abbeApres": 41.15,
+     "demiDiametreAxe": 14.19,
+     "demiDiametreChampComplet": 25.21,
+     "demiDiametreConseille": 19.7
+    },
+    {
+     "numero": 25,
+     "rayon": 51.6317,
+     "epaisseurApres": 0.3905,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 14.15,
+     "demiDiametreChampComplet": 25.44,
+     "demiDiametreConseille": 19.79
+    },
+    {
+     "numero": 26,
+     "rayon": 54.8683,
+     "epaisseurApres": 7.1599,
+     "indiceApres": 1.7645,
+     "abbeApres": 49.1,
+     "aspherique": {
+      "K": 0.0,
+      "A4": -3.0887e-06,
+      "A6": -3.8195e-09,
+      "A8": 1.5976e-11,
+      "A10": -2.5938e-14,
+      "A12": 0.0
+     },
+     "demiDiametreAxe": 14.19,
+     "demiDiametreChampComplet": 25.74,
+     "demiDiametreConseille": 19.96
+    },
+    {
+     "numero": 27,
+     "rayon": -39.1917,
+     "epaisseurApres": null,
+     "indiceApres": null,
+     "abbeApres": null,
+     "ecartVariable": "d27",
+     "aspherique": {
+      "K": 0.0,
+      "A4": 4.5465e-06,
+      "A6": -3.8413e-09,
+      "A8": 1.6837e-11,
+      "A10": -1.1342e-14,
+      "A12": 0.0
+     },
+     "demiDiametreAxe": 13.83,
+     "demiDiametreChampComplet": 27.41,
+     "demiDiametreConseille": 20.62
+    },
+    {
+     "numero": 28,
+     "rayon": null,
+     "epaisseurApres": 1.45,
+     "indiceApres": 1.52301,
+     "abbeApres": 58.59,
+     "demiDiametreAxe": 0.7,
+     "demiDiametreChampComplet": 22.95,
+     "demiDiametreConseille": 11.83
+    },
+    {
+     "numero": 29,
+     "rayon": null,
+     "epaisseurApres": null,
+     "indiceApres": null,
+     "abbeApres": null,
+     "ecartVariable": "BF",
+     "demiDiametreAxe": 0.36,
+     "demiDiametreChampComplet": 22.83,
+     "demiDiametreConseille": 11.6
+    }
+   ],
+   "ecartsVariables": {
+    "d0": {
+     "infini": null,
+     "proche": 798.2357
+    },
+    "d11": {
+     "infini": 7.5732,
+     "proche": 6.5175
+    },
+    "d16": {
+     "infini": 5.2496,
+     "proche": 5.7528
+    },
+    "d27": {
+     "infini": 36.5001,
+     "proche": 37.0527
+    },
+    "BF": {
+     "infini": 1.001,
+     "proche": null,
+     "note": "non donné par le brevet : tirage recalculé"
+    }
+   }
+  },
+  {
+   "id": "sigma-105",
+   "serie": "Cine FF High Speed",
+   "fabricant": "Sigma",
+   "focaleNominale": 105,
+   "ouvertureNominale": "T1.5",
+   "focaleBrevet": 101.85,
+   "ouvertureBrevet": 1.46,
+   "hauteurImage": 21.63,
+   "distanceProche_mm": 999.0,
+   "brevet": "JP 2019-144477 A",
+   "exemple": "exemple numérique 1",
+   "lien": "https://patents.google.com/patent/JP2019144477A/en",
+   "correspondance": "Photons to Photos relie cet exemple au Sigma 105mm F1.4 DG HSM Art. Sigma dit que ses Cine FF High Speed reprennent le système optique de ses objectifs photo : correspondance focale par focale à confirmer.",
+   "notes": "Écarts variables à l'infini et à la distance proche du brevet : ce sont eux qui font bouger le groupe de mise au point. Asphériques : z = c·h²/(1+√(1−(1+K)c²h²)) + A4·h⁴ + A6·h⁶ + … (c = 1/rayon). Une lame plane en fin de formule, s'il y en a une, est le verre de protection du capteur.",
+   "focaleCalculee": 101.85,
+   "tirageCalcule": 1.0,
+   "surfaces": [
+    {
+     "numero": 1,
+     "rayon": 115.7436,
+     "epaisseurApres": 5.4407,
+     "indiceApres": 1.65844,
+     "abbeApres": 50.85,
+     "demiDiametreAxe": 36.62,
+     "demiDiametreChampComplet": 72.53,
+     "demiDiametreConseille": 54.58
+    },
+    {
+     "numero": 2,
+     "rayon": 180.1804,
+     "epaisseurApres": 0.3,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 35.94,
+     "demiDiametreChampComplet": 70.45,
+     "demiDiametreConseille": 53.19
+    },
+    {
+     "numero": 3,
+     "rayon": 74.5,
+     "epaisseurApres": 6.0183,
+     "indiceApres": 1.437,
+     "abbeApres": 95.1,
+     "demiDiametreAxe": 35.92,
+     "demiDiametreChampComplet": 70.33,
+     "demiDiametreConseille": 53.12
+    },
+    {
+     "numero": 4,
+     "rayon": 100.3863,
+     "epaisseurApres": 0.3,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 34.71,
+     "demiDiametreChampComplet": 67.02,
+     "demiDiametreConseille": 50.87
+    },
+    {
+     "numero": 5,
+     "rayon": 63.431,
+     "epaisseurApres": 12.3856,
+     "indiceApres": 1.437,
+     "abbeApres": 95.1,
+     "demiDiametreAxe": 34.67,
+     "demiDiametreChampComplet": 66.87,
+     "demiDiametreConseille": 50.77
+    },
+    {
+     "numero": 6,
+     "rayon": 249.4535,
+     "epaisseurApres": 2.9002,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 31.44,
+     "demiDiametreChampComplet": 58.6,
+     "demiDiametreConseille": 45.02
+    },
+    {
+     "numero": 7,
+     "rayon": 216.1665,
+     "epaisseurApres": 2.2,
+     "indiceApres": 1.6131,
+     "abbeApres": 44.36,
+     "demiDiametreAxe": 30.51,
+     "demiDiametreChampComplet": 56.11,
+     "demiDiametreConseille": 43.31
+    },
+    {
+     "numero": 8,
+     "rayon": 49.5173,
+     "epaisseurApres": 15.8891,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 29.95,
+     "demiDiametreChampComplet": 54.73,
+     "demiDiametreConseille": 42.34
+    },
+    {
+     "numero": 9,
+     "rayon": -248.4001,
+     "epaisseurApres": 4.613,
+     "indiceApres": 1.437,
+     "abbeApres": 95.1,
+     "demiDiametreAxe": 29.38,
+     "demiDiametreChampComplet": 49.35,
+     "demiDiametreConseille": 39.36
+    },
+    {
+     "numero": 10,
+     "rayon": -95.8446,
+     "epaisseurApres": 1.8,
+     "indiceApres": 1.6134,
+     "abbeApres": 44.27,
+     "demiDiametreAxe": 29.43,
+     "demiDiametreChampComplet": 48.54,
+     "demiDiametreConseille": 38.98
+    },
+    {
+     "numero": 11,
+     "rayon": -500.0,
+     "epaisseurApres": 1.0,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 29.51,
+     "demiDiametreChampComplet": 48.36,
+     "demiDiametreConseille": 38.93
+    },
+    {
+     "numero": 12,
+     "rayon": 67.9843,
+     "epaisseurApres": 10.4346,
+     "indiceApres": 1.83481,
+     "abbeApres": 42.72,
+     "demiDiametreAxe": 29.54,
+     "demiDiametreChampComplet": 48.14,
+     "demiDiametreConseille": 38.84
+    },
+    {
+     "numero": 13,
+     "rayon": -211.9683,
+     "epaisseurApres": 1.8,
+     "indiceApres": 1.6134,
+     "abbeApres": 44.27,
+     "demiDiametreAxe": 27.67,
+     "demiDiametreChampComplet": 43.52,
+     "demiDiametreConseille": 35.59
+    },
+    {
+     "numero": 14,
+     "rayon": 67.2983,
+     "epaisseurApres": null,
+     "indiceApres": null,
+     "abbeApres": null,
+     "ecartVariable": "d14",
+     "demiDiametreAxe": 27.27,
+     "demiDiametreChampComplet": 42.56,
+     "demiDiametreConseille": 34.91
+    },
+    {
+     "numero": 15,
+     "rayon": 53.7906,
+     "epaisseurApres": 4.5962,
+     "indiceApres": 1.92286,
+     "abbeApres": 20.88,
+     "demiDiametreAxe": 25.53,
+     "demiDiametreChampComplet": 35.09,
+     "demiDiametreConseille": 30.31
+    },
+    {
+     "numero": 16,
+     "rayon": 94.6373,
+     "epaisseurApres": 0.3,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 24.22,
+     "demiDiametreChampComplet": 32.53,
+     "demiDiametreConseille": 28.38
+    },
+    {
+     "numero": 17,
+     "rayon": 46.5373,
+     "epaisseurApres": 4.1734,
+     "indiceApres": 1.61997,
+     "abbeApres": 63.88,
+     "demiDiametreAxe": 24.13,
+     "demiDiametreChampComplet": 32.3,
+     "demiDiametreConseille": 28.22
+    },
+    {
+     "numero": 18,
+     "rayon": 66.7867,
+     "epaisseurApres": 0.3,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 22.5,
+     "demiDiametreChampComplet": 29.25,
+     "demiDiametreConseille": 25.87
+    },
+    {
+     "numero": 19,
+     "rayon": 40.7185,
+     "epaisseurApres": 6.9541,
+     "indiceApres": 1.59282,
+     "abbeApres": 68.63,
+     "demiDiametreAxe": 22.37,
+     "demiDiametreChampComplet": 28.97,
+     "demiDiametreConseille": 25.67
+    },
+    {
+     "numero": 20,
+     "rayon": 275.0,
+     "epaisseurApres": 1.3,
+     "indiceApres": 1.85478,
+     "abbeApres": 24.8,
+     "demiDiametreAxe": 19.1,
+     "demiDiametreChampComplet": 23.14,
+     "demiDiametreConseille": 21.12
+    },
+    {
+     "numero": 21,
+     "rayon": 28.4253,
+     "epaisseurApres": 7.5444,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 18.56,
+     "demiDiametreChampComplet": 22.19,
+     "demiDiametreConseille": 20.38
+    },
+    {
+     "numero": 22,
+     "rayon": null,
+     "epaisseurApres": 5.4041,
+     "indiceApres": null,
+     "abbeApres": null,
+     "diaphragme": true,
+     "demiDiametreAxe": 16.98,
+     "demiDiametreChampComplet": 16.98,
+     "demiDiametreConseille": 16.98
+    },
+    {
+     "numero": 23,
+     "rayon": -50.8188,
+     "epaisseurApres": 0.9,
+     "indiceApres": 1.65412,
+     "abbeApres": 39.68,
+     "demiDiametreAxe": 15.85,
+     "demiDiametreChampComplet": 18.45,
+     "demiDiametreConseille": 17.15
+    },
+    {
+     "numero": 24,
+     "rayon": 29.516,
+     "epaisseurApres": 7.5115,
+     "indiceApres": 1.87071,
+     "abbeApres": 40.73,
+     "demiDiametreAxe": 15.84,
+     "demiDiametreChampComplet": 18.72,
+     "demiDiametreConseille": 17.28
+    },
+    {
+     "numero": 25,
+     "rayon": -196.5287,
+     "epaisseurApres": 2.267,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 15.35,
+     "demiDiametreChampComplet": 20.21,
+     "demiDiametreConseille": 17.78
+    },
+    {
+     "numero": 26,
+     "rayon": -76.2095,
+     "epaisseurApres": 3.5767,
+     "indiceApres": 1.91082,
+     "abbeApres": 35.25,
+     "demiDiametreAxe": 14.92,
+     "demiDiametreChampComplet": 20.85,
+     "demiDiametreConseille": 17.89
+    },
+    {
+     "numero": 27,
+     "rayon": -35.1809,
+     "epaisseurApres": 0.9,
+     "indiceApres": 1.64769,
+     "abbeApres": 33.84,
+     "demiDiametreAxe": 14.9,
+     "demiDiametreChampComplet": 21.85,
+     "demiDiametreConseille": 18.37
+    },
+    {
+     "numero": 28,
+     "rayon": 124.7179,
+     "epaisseurApres": 0.3,
+     "indiceApres": null,
+     "abbeApres": null,
+     "demiDiametreAxe": 14.83,
+     "demiDiametreChampComplet": 22.05,
+     "demiDiametreConseille": 18.44
+    },
+    {
+     "numero": 29,
+     "rayon": 68.8532,
+     "epaisseurApres": 4.9326,
+     "indiceApres": 1.84915,
+     "abbeApres": 40.0,
+     "aspherique": {
+      "K": 0.0,
+      "A4": -1.27386e-06,
+      "A6": -1.15209e-10,
+      "A8": 0.0
+     },
+     "demiDiametreAxe": 14.82,
+     "demiDiametreChampComplet": 22.19,
+     "demiDiametreConseille": 18.51
+    },
+    {
+     "numero": 30,
+     "rayon": -92.2688,
+     "epaisseurApres": null,
+     "indiceApres": null,
+     "abbeApres": null,
+     "ecartVariable": "d30",
+     "aspherique": {
+      "K": 0.0,
+      "A4": 1.98113e-06,
+      "A6": 1.20129e-10,
+      "A8": 1.65076e-12
+     },
+     "demiDiametreAxe": 14.21,
+     "demiDiametreChampComplet": 22.75,
+     "demiDiametreConseille": 18.48
+    },
+    {
+     "numero": 31,
+     "rayon": null,
+     "epaisseurApres": 1.45,
+     "indiceApres": 1.52301,
+     "abbeApres": 58.59,
+     "demiDiametreAxe": 0.7,
+     "demiDiametreChampComplet": 22.71,
+     "demiDiametreConseille": 11.71
+    },
+    {
+     "numero": 32,
+     "rayon": null,
+     "epaisseurApres": null,
+     "indiceApres": null,
+     "abbeApres": null,
+     "ecartVariable": "BF",
+     "demiDiametreAxe": 0.36,
+     "demiDiametreChampComplet": 22.71,
+     "demiDiametreConseille": 11.54
+    }
+   ],
+   "ecartsVariables": {
+    "d0": {
+     "infini": null,
+     "proche": 826.8724
+    },
+    "d14": {
+     "infini": 15.8705,
+     "proche": 3.0
+    },
+    "d30": {
+     "infini": 37.5626,
+     "proche": 50.4932
+    },
+    "BF": {
+     "infini": 1.0,
+     "proche": 1.0
+    }
+   }
+  }
+ ]
+}
