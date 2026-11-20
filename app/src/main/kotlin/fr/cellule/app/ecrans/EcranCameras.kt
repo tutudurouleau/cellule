@@ -67,6 +67,9 @@ import fr.cellule.core.ETAGERES_OBJECTIFS
 import fr.cellule.core.ETAGERES_PROJECTEURS
 import fr.cellule.core.FicheProjecteur
 import fr.cellule.core.GenreMateriel
+import fr.cellule.core.FicheMachinerie
+import fr.cellule.core.ETAGERES_MACHINERIE
+import fr.cellule.core.ETAGERES_ELECTRIQUE
 import fr.cellule.core.Materiel
 import fr.cellule.core.Objectif
 import fr.cellule.core.PROJECTEURS_CATALOGUE
@@ -140,6 +143,8 @@ fun EcranCameras(depot: DepotQuiz, reglages: Reglages) {
                         GenreMateriel.CAMERA -> "Caméras"
                         GenreMateriel.OBJECTIF -> "Objectifs"
                         GenreMateriel.PROJECTEUR -> "Projecteurs"
+                        GenreMateriel.MACHINERIE -> "Machino"
+                        GenreMateriel.ELECTRIQUE -> "Élec"
                     }
                 },
                 surChoix = { catalogue.genre = it }
@@ -161,6 +166,8 @@ private fun Catalogue(etat: EtatCatalogue, ouvrirQuiz: () -> Unit, surOuvrir: (M
         GenreMateriel.CAMERA -> ETAGERES_CAMERAS
         GenreMateriel.OBJECTIF -> ETAGERES_OBJECTIFS
         GenreMateriel.PROJECTEUR -> ETAGERES_PROJECTEURS
+        GenreMateriel.MACHINERIE -> ETAGERES_MACHINERIE
+        GenreMateriel.ELECTRIQUE -> ETAGERES_ELECTRIQUE
     }
     val visibles = remember(etat.genre, etat.recherche) {
         etageres
@@ -183,8 +190,11 @@ private fun Catalogue(etat: EtatCatalogue, ouvrirQuiz: () -> Unit, surOuvrir: (M
                 Champ(
                     valeur = etat.recherche,
                     intitule = "Chercher",
-                    indication = if (etat.genre == GenreMateriel.PROJECTEUR) "un nom, une marque, une famille…"
-                    else "un nom, une marque, un film, un chef opérateur…",
+                    indication = when (etat.genre) {
+                        GenreMateriel.PROJECTEUR -> "un nom, une marque, une famille…"
+                        GenreMateriel.MACHINERIE, GenreMateriel.ELECTRIQUE -> "un nom, un mot du plateau…"
+                        else -> "un nom, une marque, un film, un chef opérateur…"
+                    },
                     modifier = Modifier.fillMaxWidth()
                 ) { etat.recherche = it }
                 Spacer(Modifier.height(4.dp))
@@ -255,7 +265,7 @@ private fun EntreeCatalogue(m: Materiel, surClic: () -> Unit) {
                 color = MaterialTheme.colorScheme.onSurface
             )
             Text(
-                "${m.libelleAnnee} · ${m.categorie}",
+                listOf(m.libelleAnnee, m.categorie).filter { it.isNotBlank() }.joinToString(" · "),
                 style = Detail,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -329,10 +339,10 @@ internal fun FeuilleFiche(m: Materiel, reglages: Reglages? = null, onFermer: () 
                 )
                 Spacer(Modifier.width(14.dp))
                 Column(Modifier.weight(1f)) {
-                    Etiquette(m.genre.libelle + " · " + m.fabricant, accent = true)
+                    Etiquette(listOf(m.genre.libelle, m.fabricant).filter { it.isNotBlank() }.joinToString(" · "), accent = true)
                     Text(m.nomComplet, style = TitreEcran, color = MaterialTheme.colorScheme.onSurface)
                     Text(
-                        "${m.libelleAnnee} · ${m.categorie}",
+                        listOf(m.libelleAnnee, m.categorie).filter { it.isNotBlank() }.joinToString(" · "),
                         style = Detail,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -345,6 +355,12 @@ internal fun FeuilleFiche(m: Materiel, reglages: Reglages? = null, onFermer: () 
             if (m is Objectif) {
                 Ligne("Disponibilité", "", m.disponibilite.libelle)
             }
+            if (m is FicheMachinerie) {
+                Section("Sur le plateau", m.surLePlateau)
+                if (m.aussi.isNotEmpty()) Ligne("On dit aussi", "", m.aussi.joinToString(", "))
+            }
+            /* La vraie photo, quand l'appli n'en a pas de libre : une recherche d'images, dans le navigateur. */
+            LienPhotos(m, avecPhoto = photo != null && credit != null)
 
             /* La fiche complète. */
             Section("Histoire", m.histoire)
@@ -376,6 +392,22 @@ internal fun FeuilleFiche(m: Materiel, reglages: Reglages? = null, onFermer: () 
             Spacer(Modifier.navigationBarsPadding())
         }
     }
+}
+
+@Composable
+private fun LienPhotos(m: Materiel, avecPhoto: Boolean) {
+    val liens = androidx.compose.ui.platform.LocalUriHandler.current
+    val requete = java.net.URLEncoder.encode(m.nomComplet + if (m.genre == GenreMateriel.MACHINERIE || m.genre == GenreMateriel.ELECTRIQUE) " cinéma" else "", "UTF-8")
+    Text(
+        if (avecPhoto) "Plus de photos sur le web ↗" else "Voir des photos sur le web ↗",
+        style = Detail,
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(RayonControle))
+            .clickable { runCatching { liens.openUri("https://duckduckgo.com/?ia=images&iax=images&q=$requete") } }
+            .padding(vertical = 8.dp)
+    )
 }
 
 /* Les configurations publiées de la famille : une ligne par réflecteur ou
@@ -459,6 +491,7 @@ private fun GrilleChiffres(chiffres: List<Paire>) {
 
 @Composable
 private fun Section(titre: String, texte: String) {
+    if (texte.isBlank()) return
     Separateur()
     Etiquette(titre)
     Spacer(Modifier.height(6.dp))

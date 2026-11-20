@@ -85,6 +85,8 @@ private sealed interface VueReviser {
     data object Sommaire : VueReviser
     data class Theme(val theme: ThemeFormule) : VueReviser
     data class Session(val source: Source) : VueReviser
+    data object Lexique : VueReviser
+    data object Marques : VueReviser
 }
 
 /** Le nombre de questions d'une série. */
@@ -98,6 +100,13 @@ fun EcranReviser(reglages: Reglages, naviguer: (String) -> Unit) {
     var vue by remember { mutableStateOf<VueReviser>(VueReviser.Sommaire) }
     val retour = { vue = VueReviser.Sommaire }
     BackHandler(enabled = vue != VueReviser.Sommaire, onBack = retour)
+    /* Depuis le lanceur : « REVISER:LEXIQUE », « REVISER:MARQUES ». */
+    androidx.compose.runtime.LaunchedEffect(fr.cellule.app.Aiguillage.cible) {
+        when (fr.cellule.app.Aiguillage.prendre("REVISER")) {
+            "LEXIQUE" -> vue = VueReviser.Lexique
+            "MARQUES" -> vue = VueReviser.Marques
+        }
+    }
     key(vue) {
         when (val v = vue) {
             VueReviser.Sommaire -> Column(
@@ -107,6 +116,8 @@ fun EcranReviser(reglages: Reglages, naviguer: (String) -> Unit) {
             }
             is VueReviser.Theme -> PageTheme(reglages, v.theme, retour)
             is VueReviser.Session -> PageSession(reglages, v.source, retour)
+            VueReviser.Lexique -> PageLexique(reglages, retour)
+            VueReviser.Marques -> PageMarques(retour)
         }
     }
 }
@@ -192,6 +203,19 @@ private fun SommaireReviser(reglages: Reglages, ouvrir: (VueReviser) -> Unit, na
             if (total.second > 0) " Depuis le début : ${total.first} justes sur ${total.second}." else "",
         icone = IconeReviser
     ) { ouvrir(VueReviser.Session(Source.Serie)) }
+
+    Etiquette("Le vocabulaire du métier", Modifier.padding(start = Gouttiere, end = Gouttiere, top = 16.dp, bottom = 4.dp), accent = true)
+    val nbPerso = fr.cellule.core.LexiquePerso.lire(reglages.lexiquePerso).size
+    GrilleSommaire(listOf(0, 1), colonnes) { i, m ->
+        if (i == 0) {
+            CarteSommaire(
+                "Les mots du plateau", "Wind-up, 216, PAT, crabe… et tes propres mots.", IconeReviser, modifier = m,
+                resume = "${fr.cellule.core.Lexique.TERMES.size} mots" + if (nbPerso > 0) " · ${accorder(nbPerso, "mot")} à toi" else ""
+            ) { ouvrir(VueReviser.Lexique) }
+        } else {
+            CarteSommaire("Les marques", "ARRI, Cooke, Matthews, Kupo… qui fait quoi.", Onglet.CAMERAS.icone, modifier = m) { ouvrir(VueReviser.Marques) }
+        }
+    }
 
     Etiquette("Les formules, thème par thème", Modifier.padding(start = Gouttiere, end = Gouttiere, top = 16.dp, bottom = 4.dp), accent = true)
     Text(

@@ -13,7 +13,9 @@
   "choix": "File:ARRI AMIRA Camera.jpg"
  },
  "arri-alexa-65": {
-  "recherche": [],
+  "recherche": [
+   "arri alexa 65"
+  ],
   "openverse": [
    "\"Alexa 65\""
   ],
@@ -27,8 +29,13 @@
   "choix": "File:Alexa Mini.jpg"
  },
  "arri-alexa-lf": {
-  "recherche": [],
-  "aucune": true
+  "recherche": [
+   "arri alexa lf"
+  ],
+  "aucune": true,
+  "openverse": [
+   "arri alexa lf"
+  ]
  },
  "arri-alexa-mini-lf": {
   "recherche": [
@@ -89,7 +96,8 @@
  "red-monstro-8k-vv": {
   "recherche": [
    "RED DSMC2 camera",
-   "RED Ranger camera"
+   "RED Ranger camera",
+   "red monstro 8k vv"
   ],
   "openverse": [
    "\"DSMC2\"",
@@ -98,7 +106,9 @@
   "aucune": true
  },
  "red-komodo-et-komodo-x": {
-  "recherche": [],
+  "recherche": [
+   "red komodo et komodo x"
+  ],
   "openverse": [
    "\"RED Komodo\""
   ],
@@ -167,7 +177,9 @@
   "choix": "File:Canon C 300.JPG"
  },
  "canon-eos-c300-mark-ii-et-mark-iii": {
-  "recherche": [],
+  "recherche": [
+   "canon eos c300 mark ii et mark iii"
+  ],
   "openverse": [
    "\"C300 Mark II\"",
    "\"C300 Mark III\""
@@ -182,7 +194,9 @@
   "choix": "File:BMPCC 6K.jpg"
  },
  "blackmagic-ursa-mini-pro-12k": {
-  "recherche": [],
+  "recherche": [
+   "blackmagic ursa mini pro 12k"
+  ],
   "openverse": [
    "\"URSA Mini Pro\""
   ],
@@ -216,7 +230,9 @@
   "choix": "File:Panavision Millennium DXL.jpg"
  },
  "panasonic-varicam-35-et-lt": {
-  "recherche": [],
+  "recherche": [
+   "panasonic varicam 35 et lt"
+  ],
   "openverse": [
    "\"VariCam LT\"",
    "\"VariCam 35\""
@@ -237,7 +253,9 @@
   "choix": "File:DJI RONIN 4D和DJI TRANSMISSION.jpg"
  },
  "silicon-imaging-si-2k": {
-  "recherche": [],
+  "recherche": [
+   "silicon imaging si 2k"
+  ],
   "openverse": [
    "\"SI-2K\""
   ],
@@ -300,14 +318,18 @@
   "choix": "File:Konrad Wickler und Katja Raganelli.jpg"
  },
  "zeiss-super-speed": {
-  "recherche": [],
+  "recherche": [
+   "zeiss super speed"
+  ],
   "openverse": [
    "\"Zeiss Super Speed\""
   ],
   "aucune": true
  },
  "arri-zeiss-ultra-prime": {
-  "recherche": [],
+  "recherche": [
+   "arri zeiss ultra prime"
+  ],
   "openverse": [
    "\"Ultra Prime\""
   ],
@@ -322,7 +344,9 @@
   "choix": "openverse:18ce5f82-a96d-4249-a282-85c8f3a2fe10"
  },
  "zeiss-cp-3": {
-  "recherche": [],
+  "recherche": [
+   "zeiss cp 3"
+  ],
   "openverse": [
    "\"Zeiss CP.3\""
   ],
@@ -335,25 +359,36 @@
   "choix": "File:ARRI-ZEISS의 Supreme prime 렌즈.jpg"
  },
  "arri-signature-prime": {
-  "recherche": [],
-  "aucune": true
+  "recherche": [
+   "arri signature prime"
+  ],
+  "aucune": true,
+  "openverse": [
+   "arri signature prime"
+  ]
  },
  "cooke-speed-panchro": {
-  "recherche": [],
+  "recherche": [
+   "cooke speed panchro"
+  ],
   "openverse": [
    "\"Speed Panchro\""
   ],
   "aucune": true
  },
  "cooke-s4-i": {
-  "recherche": [],
+  "recherche": [
+   "cooke s4 i"
+  ],
   "openverse": [
    "\"Cooke S4\""
   ],
   "aucune": true
  },
  "cooke-anamorphic-i": {
-  "recherche": [],
+  "recherche": [
+   "cooke anamorphic i"
+  ],
   "openverse": [
    "\"Cooke anamorphic\""
   ],
@@ -367,14 +402,18 @@
   "choix": "openverse:f739c52c-5d15-4e9e-a233-bcde14ed5757"
  },
  "cooke-panchro-i-classic": {
-  "recherche": [],
+  "recherche": [
+   "cooke panchro i classic"
+  ],
   "openverse": [
    "\"Cooke Panchro\""
   ],
   "aucune": true
  },
  "angenieux-25-250": {
-  "recherche": [],
+  "recherche": [
+   "angenieux 25 250"
+  ],
   "openverse": [
    "\"Angenieux 25-250\"",
    "\"Angénieux 25-250\""
@@ -389,84 +428,108 @@
   "choix": "File:Angenieux Optimo Ultra 12X.jpg"
  },
  "angenieux-ez-1-et-ez-2": {
-  "recherche": [],
+  "recherche": [
+   "angenieux ez 1 et ez 2"
+  ],
   "openverse": [
    "\"Angenieux EZ\""
   ],
   "aucune": true
  },
  "leitz-summilux-c-et-summicron-c": {
-  "recherche": [],
+  "recherche": [
+   "leitz summilux c et summicron c"
+  ],
   "openverse": [
    "\"Summilux-C\""
   ],
   "aucune": true
  },
  "leitz-thalia": {
-  "recherche": [],
+  "recherche": [
+   "leitz thalia"
+  ],
   "openverse": [
    "\"Leitz Thalia\""
   ],
   "aucune": true
  },
  "panavision-c-series": {
-  "recherche": [],
+  "recherche": [
+   "panavision c series"
+  ],
   "openverse": [
    "\"Panavision anamorphic\""
   ],
   "aucune": true
  },
  "panavision-primo": {
-  "recherche": [],
+  "recherche": [
+   "panavision primo"
+  ],
   "openverse": [
    "\"Panavision Primo\""
   ],
   "aucune": true
  },
  "panavision-primo-70-et-sphero-65": {
-  "recherche": [],
+  "recherche": [
+   "panavision primo 70 et sphero 65"
+  ],
   "openverse": [
    "\"Primo 70\""
   ],
   "aucune": true
  },
  "panavision-t-series": {
-  "recherche": [],
+  "recherche": [
+   "panavision t series"
+  ],
   "openverse": [
    "\"Panavision T Series\""
   ],
   "aucune": true
  },
  "kowa-cine-prominar-anamorphiques": {
-  "recherche": [],
+  "recherche": [
+   "kowa cine prominar anamorphiques"
+  ],
   "openverse": [
    "\"Kowa anamorphic\""
   ],
   "aucune": true
  },
  "lomo-square-front-et-round-front": {
-  "recherche": [],
+  "recherche": [
+   "lomo square front et round front"
+  ],
   "openverse": [
    "\"LOMO anamorphic\""
   ],
   "aucune": true
  },
  "vantage-hawk-v-lite": {
-  "recherche": [],
+  "recherche": [
+   "vantage hawk v lite"
+  ],
   "openverse": [
    "\"Hawk anamorphic\""
   ],
   "aucune": true
  },
  "bausch-lomb-baltar": {
-  "recherche": [],
+  "recherche": [
+   "bausch lomb baltar"
+  ],
   "openverse": [
    "\"Bausch & Lomb Baltar\""
   ],
   "aucune": true
  },
  "canon-k35": {
-  "recherche": [],
+  "recherche": [
+   "canon k35"
+  ],
   "openverse": [
    "\"Canon K35\""
   ],
@@ -518,7 +581,9 @@
   "choix": "File:Arriflex 416 Plus HS Camera.jpg"
  },
  "sony-pmw-ex3": {
-  "recherche": [],
+  "recherche": [
+   "sony pmw ex3"
+  ],
   "openverse": [
    "\"PMW-EX3\""
   ],
@@ -547,7 +612,9 @@
   ]
  },
  "thomson-viper-filmstream": {
-  "recherche": [],
+  "recherche": [
+   "thomson viper filmstream"
+  ],
   "openverse": [
    "\"Viper FilmStream\"",
    "\"Thomson Viper\""
@@ -613,7 +680,9 @@
   "choix": "File:Beaulieu Reglomatic 4008 ZM II Movie Camera, 8mm - DPLA - ab964265c9d8637fb06f23e32f7edf8c (page 1).jpg"
  },
  "zeiss-standard-speed": {
-  "recherche": [],
+  "recherche": [
+   "zeiss standard speed"
+  ],
   "openverse": [
    "\"Standard Speed\" Zeiss"
   ],
@@ -627,14 +696,18 @@
   "choix": "File:Zeiss Planar 50mm F0.7 lens attached to camera..jpg"
  },
  "arri-zeiss-master-anamorphic": {
-  "recherche": [],
+  "recherche": [
+   "arri zeiss master anamorphic"
+  ],
   "openverse": [
    "\"Master Anamorphic\""
   ],
   "aucune": true
  },
  "arri-prime-dna": {
-  "recherche": [],
+  "recherche": [
+   "arri prime dna"
+  ],
   "openverse": [
    "\"DNA lens\""
   ],
@@ -656,7 +729,9 @@
   ]
  },
  "arri-fujinon-alura": {
-  "recherche": [],
+  "recherche": [
+   "arri fujinon alura"
+  ],
   "openverse": [
    "\"Alura\" zoom"
   ],
@@ -677,7 +752,9 @@
   "choix": "File:FUJINON Premista 28-100mm T2.9 20250517141029.jpg"
  },
  "panavision-apo-panatar-1-25x": {
-  "recherche": [],
+  "recherche": [
+   "panavision apo panatar 1 25x"
+  ],
   "openverse": [
    "\"Ultra Panavision\""
   ],
@@ -693,5 +770,765 @@
    "titre:Leica R lens"
   ],
   "choix": "File:Leica-p1030810.jpg"
+ },
+ "matthews-c-stand": {
+  "recherche": [
+   "C-stand",
+   "century stand grip"
+  ],
+  "openverse": [
+   "C-stand",
+   "century stand grip"
+  ]
+ },
+ "pied-de-projecteur-baby-et-junior": {
+  "recherche": [
+   "light stand",
+   "junior stand"
+  ],
+  "openverse": [
+   "light stand",
+   "junior stand"
+  ]
+ },
+ "wind-up": {
+  "recherche": [
+   "wind up stand",
+   "crank up light stand"
+  ],
+  "openverse": [
+   "wind up stand",
+   "crank up light stand"
+  ]
+ },
+ "low-boy-et-embase-tortue": {
+  "recherche": [
+   "turtle base light stand",
+   "low boy stand"
+  ],
+  "openverse": [
+   "turtle base light stand",
+   "low boy stand"
+  ]
+ },
+ "pied-a-roulettes": {
+  "recherche": [
+   "roller stand light",
+   "rolling light stand"
+  ],
+  "openverse": [
+   "roller stand light",
+   "rolling light stand"
+  ]
+ },
+ "combo-stand": {
+  "recherche": [
+   "combo stand grip",
+   "junior combo stand"
+  ],
+  "openverse": [
+   "combo stand grip",
+   "junior combo stand"
+  ]
+ },
+ "manfrotto-super-clamp": {
+  "recherche": [
+   "Manfrotto super clamp",
+   "super clamp 035"
+  ],
+  "openverse": [
+   "Manfrotto super clamp",
+   "super clamp 035"
+  ]
+ },
+ "matthews-mafer": {
+  "recherche": [
+   "mafer clamp"
+  ],
+  "openverse": [
+   "mafer clamp"
+  ]
+ },
+ "cardellini": {
+  "recherche": [
+   "cardellini clamp"
+  ],
+  "openverse": [
+   "cardellini clamp"
+  ]
+ },
+ "gaffer-grip": {
+  "recherche": [
+   "gaffer grip clamp"
+  ],
+  "openverse": [
+   "gaffer grip clamp"
+  ]
+ },
+ "pinces-a-ressort-a-clamps": {
+  "recherche": [
+   "A-clamp spring clamp",
+   "spring clamp grip"
+  ],
+  "openverse": [
+   "A-clamp spring clamp",
+   "spring clamp grip"
+  ]
+ },
+ "pinces-a-linge-c-47": {
+  "recherche": [
+   "clothespin C-47",
+   "wooden clothespin"
+  ],
+  "openverse": [
+   "clothespin C-47",
+   "wooden clothespin"
+  ]
+ },
+ "serre-joint": {
+  "recherche": [
+   "bar clamp",
+   "F-clamp"
+  ],
+  "openverse": [
+   "bar clamp",
+   "F-clamp"
+  ]
+ },
+ "bec-de-canard": {
+  "recherche": [
+   "duckbill clamp",
+   "platypus clamp"
+  ],
+  "openverse": [
+   "duckbill clamp",
+   "platypus clamp"
+  ]
+ },
+ "big-ben": {
+  "recherche": [
+   "big ben clamp grip"
+  ],
+  "openverse": [
+   "big ben clamp grip"
+  ]
+ },
+ "collier-d-echafaudage": {
+  "recherche": [
+   "scaffold clamp coupler",
+   "scaffolding coupler"
+  ],
+  "openverse": [
+   "scaffold clamp coupler",
+   "scaffolding coupler"
+  ]
+ },
+ "plaques-baby-et-junior": {
+  "recherche": [
+   "baby plate grip",
+   "wall plate baby pin"
+  ],
+  "openverse": [
+   "baby plate grip",
+   "wall plate baby pin"
+  ]
+ },
+ "ventouse": {
+  "recherche": [
+   "suction cup mount camera",
+   "suction cup car mount"
+  ],
+  "openverse": [
+   "suction cup mount camera",
+   "suction cup car mount"
+  ]
+ },
+ "rotule-de-c-stand": {
+  "recherche": [
+   "grip head c-stand",
+   "gobo head"
+  ],
+  "openverse": [
+   "grip head c-stand",
+   "gobo head"
+  ]
+ },
+ "bras-de-rallonge": {
+  "recherche": [
+   "gobo arm",
+   "c-stand arm"
+  ],
+  "openverse": [
+   "gobo arm",
+   "c-stand arm"
+  ]
+ },
+ "manfrotto-bras-magique": {
+  "recherche": [
+   "Manfrotto magic arm",
+   "magic arm 143"
+  ],
+  "openverse": [
+   "Manfrotto magic arm",
+   "magic arm 143"
+  ]
+ },
+ "manfrotto-autopole": {
+  "recherche": [
+   "Manfrotto autopole",
+   "autopole"
+  ],
+  "openverse": [
+   "Manfrotto autopole",
+   "autopole"
+  ]
+ },
+ "ecarteur-mural": {
+  "recherche": [
+   "wall spreader grip"
+  ],
+  "openverse": [
+   "wall spreader grip"
+  ]
+ },
+ "menace": {
+  "recherche": [
+   "menace arm"
+  ],
+  "openverse": [
+   "menace arm"
+  ]
+ },
+ "adaptateurs-de-spigot": {
+  "recherche": [
+   "baby pin spigot",
+   "spigot adapter"
+  ],
+  "openverse": [
+   "baby pin spigot",
+   "spigot adapter"
+  ]
+ },
+ "speed-rail-et-tubes": {
+  "recherche": [
+   "speed rail grip",
+   "scaffold tube lighting rig"
+  ],
+  "openverse": [
+   "speed rail grip",
+   "scaffold tube lighting rig"
+  ]
+ },
+ "apple-boxes": {
+  "recherche": [
+   "apple box film",
+   "apple boxes"
+  ],
+  "openverse": [
+   "apple box film",
+   "apple boxes"
+  ]
+ },
+ "sac-de-lest": {
+  "recherche": [
+   "sandbag film set",
+   "shot bag"
+  ],
+  "openverse": [
+   "sandbag film set",
+   "shot bag"
+  ]
+ },
+ "gueuse": {
+  "recherche": [
+   "cast iron counterweight",
+   "stage weight"
+  ],
+  "openverse": [
+   "cast iron counterweight",
+   "stage weight"
+  ]
+ },
+ "cales-et-cales-a-gradins": {
+  "recherche": [
+   "wedges dolly track",
+   "step blocks grip"
+  ],
+  "openverse": [
+   "wedges dolly track",
+   "step blocks grip"
+  ]
+ },
+ "cup-blocks": {
+  "recherche": [
+   "cup blocks grip"
+  ],
+  "openverse": [
+   "cup blocks grip"
+  ]
+ },
+ "drapeau": {
+  "recherche": [
+   "flag film set",
+   "cinema flag black"
+  ],
+  "openverse": [
+   "flag film set",
+   "cinema flag black"
+  ]
+ },
+ "cutter-et-floppy": {
+  "recherche": [
+   "floppy flag",
+   "cutter flag grip"
+  ],
+  "openverse": [
+   "floppy flag",
+   "cutter flag grip"
+  ]
+ },
+ "filets-simple-et-double": {
+  "recherche": [
+   "scrim net film",
+   "single net double net"
+  ],
+  "openverse": [
+   "scrim net film",
+   "single net double net"
+  ]
+ },
+ "cookie": {
+  "recherche": [
+   "cucoloris",
+   "cookie lighting"
+  ],
+  "openverse": [
+   "cucoloris",
+   "cookie lighting"
+  ]
+ },
+ "cadres-et-toiles-butterfly": {
+  "recherche": [
+   "butterfly frame film",
+   "12x12 overhead"
+  ],
+  "openverse": [
+   "butterfly frame film",
+   "12x12 overhead"
+  ]
+ },
+ "borniol": {
+  "recherche": [
+   "duvetyne",
+   "black molton"
+  ],
+  "openverse": [
+   "duvetyne",
+   "black molton"
+  ]
+ },
+ "nid-d-abeille": {
+  "recherche": [
+   "honeycomb grid softbox",
+   "egg crate softbox"
+  ],
+  "openverse": [
+   "honeycomb grid softbox",
+   "egg crate softbox"
+  ]
+ },
+ "reflecteurs-et-polystyrene": {
+  "recherche": [
+   "polystyrene bounce board",
+   "reflector film set"
+  ],
+  "openverse": [
+   "polystyrene bounce board",
+   "reflector film set"
+  ]
+ },
+ "trepied-camera": {
+  "recherche": [
+   "camera tripod sticks",
+   "film tripod"
+  ],
+  "openverse": [
+   "camera tripod sticks",
+   "film tripod"
+  ]
+ },
+ "sachtler-tete-fluide": {
+  "recherche": [
+   "Sachtler fluid head",
+   "fluid head tripod"
+  ],
+  "openverse": [
+   "Sachtler fluid head",
+   "fluid head tripod"
+  ]
+ },
+ "arri-tete-a-manivelles": {
+  "recherche": [
+   "geared head camera",
+   "Arrihead"
+  ],
+  "openverse": [
+   "geared head camera",
+   "Arrihead"
+  ]
+ },
+ "demi-boule-et-embase-de-niveau": {
+  "recherche": [
+   "half ball leveler",
+   "leveling base tripod"
+  ],
+  "openverse": [
+   "half ball leveler",
+   "leveling base tripod"
+  ]
+ },
+ "tiffen-steadicam": {
+  "recherche": [
+   "Steadicam",
+   "steadicam operator"
+  ],
+  "openverse": [
+   "Steadicam",
+   "steadicam operator"
+  ]
+ },
+ "dji-stabilisateur-motorise-gimbal": {
+  "recherche": [
+   "DJI Ronin",
+   "camera gimbal"
+  ],
+  "openverse": [
+   "DJI Ronin",
+   "camera gimbal"
+  ]
+ },
+ "easyrig": {
+  "recherche": [
+   "Easyrig"
+  ],
+  "openverse": [
+   "Easyrig"
+  ]
+ },
+ "slider": {
+  "recherche": [
+   "camera slider",
+   "camera slider rail"
+  ],
+  "openverse": [
+   "camera slider",
+   "camera slider rail"
+  ]
+ },
+ "rails-de-travelling": {
+  "recherche": [
+   "dolly track",
+   "camera dolly track"
+  ],
+  "openverse": [
+   "dolly track",
+   "camera dolly track"
+  ]
+ },
+ "chapman-leonard-peewee": {
+  "recherche": [
+   "Chapman PeeWee dolly",
+   "Chapman dolly"
+  ],
+  "openverse": [
+   "Chapman PeeWee dolly",
+   "Chapman dolly"
+  ]
+ },
+ "j-l-fisher-dolly-fisher": {
+  "recherche": [
+   "Fisher dolly",
+   "J.L. Fisher dolly"
+  ],
+  "openverse": [
+   "Fisher dolly",
+   "J.L. Fisher dolly"
+  ]
+ },
+ "panther-dolly-panther": {
+  "recherche": [
+   "Panther dolly",
+   "Panther Evolution dolly"
+  ],
+  "openverse": [
+   "Panther dolly",
+   "Panther Evolution dolly"
+  ]
+ },
+ "dolly-plateau-et-western": {
+  "recherche": [
+   "doorway dolly",
+   "western dolly"
+  ],
+  "openverse": [
+   "doorway dolly",
+   "western dolly"
+  ]
+ },
+ "dolly-araignee": {
+  "recherche": [
+   "Elemack",
+   "spider dolly"
+  ],
+  "openverse": [
+   "Elemack",
+   "spider dolly"
+  ]
+ },
+ "louma": {
+  "recherche": [
+   "Louma crane",
+   "Louma"
+  ],
+  "openverse": [
+   "Louma crane",
+   "Louma"
+  ]
+ },
+ "technocrane": {
+  "recherche": [
+   "Technocrane"
+  ],
+  "openverse": [
+   "Technocrane"
+  ]
+ },
+ "jimmy-jib": {
+  "recherche": [
+   "Jimmy Jib"
+  ],
+  "openverse": [
+   "Jimmy Jib"
+  ]
+ },
+ "filmotechnic-grue-sur-vehicule-russian-arm": {
+  "recherche": [
+   "Russian Arm",
+   "camera car crane"
+  ],
+  "openverse": [
+   "Russian Arm",
+   "camera car crane"
+  ]
+ },
+ "car-mount-et-hostess-tray": {
+  "recherche": [
+   "hostess tray car",
+   "camera car mount"
+  ],
+  "openverse": [
+   "hostess tray car",
+   "camera car mount"
+  ]
+ },
+ "p17": {
+  "recherche": [
+   "IEC 60309 plug",
+   "CEE plug blue"
+  ],
+  "openverse": [
+   "IEC 60309 plug",
+   "CEE plug blue"
+  ]
+ },
+ "powerlock": {
+  "recherche": [
+   "Powerlock connector",
+   "powerlock"
+  ],
+  "openverse": [
+   "Powerlock connector",
+   "powerlock"
+  ]
+ },
+ "socapex": {
+  "recherche": [
+   "Socapex",
+   "Socapex connector"
+  ],
+  "openverse": [
+   "Socapex",
+   "Socapex connector"
+  ]
+ },
+ "neutrik-powercon": {
+  "recherche": [
+   "powerCON",
+   "Neutrik powerCON"
+  ],
+  "openverse": [
+   "powerCON",
+   "Neutrik powerCON"
+  ]
+ },
+ "prise-domestique-16-a": {
+  "recherche": [
+   "Type E socket",
+   "French socket"
+  ],
+  "openverse": [
+   "Type E socket",
+   "French socket"
+  ]
+ },
+ "xlr-4-broches-et-d-tap": {
+  "recherche": [
+   "4-pin XLR connector",
+   "D-Tap cable"
+  ],
+  "openverse": [
+   "4-pin XLR connector",
+   "D-Tap cable"
+  ]
+ },
+ "prolongateur-p17": {
+  "recherche": [
+   "CEE extension cable",
+   "IEC 60309 cable"
+  ],
+  "openverse": [
+   "CEE extension cable",
+   "IEC 60309 cable"
+  ]
+ },
+ "triplette-et-doublette": {
+  "recherche": [
+   "three way splitter CEE",
+   "power splitter 16A"
+  ],
+  "openverse": [
+   "three way splitter CEE",
+   "power splitter 16A"
+  ]
+ },
+ "cable-de-tete-hmi": {
+  "recherche": [
+   "HMI head cable",
+   "HMI ballast cable"
+  ],
+  "openverse": [
+   "HMI head cable",
+   "HMI ballast cable"
+  ]
+ },
+ "enrouleur": {
+  "recherche": [
+   "cable reel",
+   "extension reel"
+  ],
+  "openverse": [
+   "cable reel",
+   "extension reel"
+  ]
+ },
+ "cable-dmx": {
+  "recherche": [
+   "DMX cable",
+   "XLR 5 pin DMX"
+  ],
+  "openverse": [
+   "DMX cable",
+   "XLR 5 pin DMX"
+  ]
+ },
+ "groupe-electrogene": {
+  "recherche": [
+   "film generator",
+   "silent generator film set"
+  ],
+  "openverse": [
+   "film generator",
+   "silent generator film set"
+  ]
+ },
+ "armoire-de-distribution": {
+  "recherche": [
+   "power distribution box",
+   "distro box"
+  ],
+  "openverse": [
+   "power distribution box",
+   "distro box"
+  ]
+ },
+ "differentiel-30-ma": {
+  "recherche": [
+   "residual current device",
+   "RCD 30mA"
+  ],
+  "openverse": [
+   "residual current device",
+   "RCD 30mA"
+  ]
+ },
+ "ballast-hmi": {
+  "recherche": [
+   "HMI ballast",
+   "electronic ballast HMI"
+  ],
+  "openverse": [
+   "HMI ballast",
+   "electronic ballast HMI"
+  ]
+ },
+ "gradateur": {
+  "recherche": [
+   "dimmer pack",
+   "lighting dimmer"
+  ],
+  "openverse": [
+   "dimmer pack",
+   "lighting dimmer"
+  ]
+ },
+ "branchement-forain": {
+  "recherche": [
+   "temporary power connection",
+   "site power distribution"
+  ],
+  "openverse": [
+   "temporary power connection",
+   "site power distribution"
+  ]
+ },
+ "console-dmx": {
+  "recherche": [
+   "lighting console",
+   "DMX console"
+  ],
+  "openverse": [
+   "lighting console",
+   "DMX console"
+  ]
+ },
+ "lumenradio-dmx-sans-fil-crmx": {
+  "recherche": [
+   "LumenRadio CRMX",
+   "wireless DMX"
+  ],
+  "openverse": [
+   "LumenRadio CRMX",
+   "wireless DMX"
+  ]
+ },
+ "applications-de-pilotage": {
+  "recherche": [
+   "Sidus Link app",
+   "lighting control app"
+  ],
+  "openverse": [
+   "Sidus Link app",
+   "lighting control app"
+  ]
  }
 }

@@ -141,6 +141,9 @@ class Reglages(contexte: Context) {
     /** Vrai : on tape la réponse au lieu de choisir parmi quatre. */
     var quizTaper by BooleenPref(prefs, "quiz_taper", false)
 
+    /** Les mots du plateau ajoutés par la personne : « mot\tdéfinition », une ligne chacun. */
+    var lexiquePerso by TextePref(prefs, "lexique_perso", "")
+
     /** On ne demande la localisation qu'une fois d'office ; après un refus, on n'insiste pas. */
     var lieuDemande by BooleenPref(prefs, "lieu_demande", false)
 }

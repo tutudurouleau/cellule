@@ -21,7 +21,9 @@ data class ReferenceFilm(val titre: String, val artisan: String = "")
 enum class GenreMateriel(val libelle: String, val question: String) {
     CAMERA("Caméra", "Quelle caméra"),
     OBJECTIF("Objectif", "Quel objectif"),
-    PROJECTEUR("Projecteur", "Quel projecteur")
+    PROJECTEUR("Projecteur", "Quel projecteur"),
+    MACHINERIE("Machinerie", "Quel accessoire de machinerie"),
+    ELECTRIQUE("Électrique", "Quel matériel électrique")
 }
 
 /**
@@ -52,6 +54,18 @@ enum class Silhouette(val genre: GenreMateriel) {
     PROJ_OUVERT(GenreMateriel.PROJECTEUR),
     PROJ_DECOUPE(GenreMateriel.PROJECTEUR),
     PROJ_BALLON(GenreMateriel.PROJECTEUR),
+    MACHINO_PIED(GenreMateriel.MACHINERIE),
+    MACHINO_CLAMP(GenreMateriel.MACHINERIE),
+    MACHINO_BARRE(GenreMateriel.MACHINERIE),
+    MACHINO_LEST(GenreMateriel.MACHINERIE),
+    MACHINO_CADRE(GenreMateriel.MACHINERIE),
+    MACHINO_SUPPORT_CAMERA(GenreMateriel.MACHINERIE),
+    MACHINO_TRAVELLING(GenreMateriel.MACHINERIE),
+    MACHINO_GRUE(GenreMateriel.MACHINERIE),
+    ELEC_PRISE(GenreMateriel.ELECTRIQUE),
+    ELEC_CABLE(GenreMateriel.ELECTRIQUE),
+    ELEC_DISTRIBUTION(GenreMateriel.ELECTRIQUE),
+    ELEC_CONTROLE(GenreMateriel.ELECTRIQUE),
     PROJ_PRATIQUE(GenreMateriel.PROJECTEUR)
 }
 
@@ -83,7 +97,11 @@ sealed interface Materiel {
     /** « ARRIFLEX 16SR » plutôt que « ARRI ARRIFLEX 16SR ». */
     val nomComplet: String
         get() = if (nom.startsWith(fabricant, ignoreCase = true)) nom else "$fabricant $nom"
-    val libelleAnnee: String get() = if (anneeApprox) "vers $annee" else annee.toString()
+    val libelleAnnee: String get() = when {
+        annee <= 0 -> ""
+        anneeApprox -> "vers $annee"
+        else -> annee.toString()
+    }
 
     /** Identifiant stable, sans accents ni espaces — « arri-alexa-mini ». Nomme les photos. */
     val identifiant: String
@@ -196,6 +214,8 @@ fun <T : Materiel> chercherMateriel(requete: String, parmi: List<T>): List<T> {
             buildString {
                 append(m.nomComplet).append(' ').append(m.categorie)
                 m.films.forEach { append(' ').append(it.titre).append(' ').append(it.artisan) }
+                /* La machinerie se cherche aussi par ses noms de plateau. */
+                if (m is FicheMachinerie) append(' ').append(m.aussi.joinToString(" ")).append(' ').append(m.surLePlateau)
             }
         )
         mots.all { it in botte }

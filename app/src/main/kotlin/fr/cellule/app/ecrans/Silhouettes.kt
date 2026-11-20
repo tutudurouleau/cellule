@@ -296,6 +296,103 @@ private val ProjPratique = dessin("proj-pratique") {
     trait(15f, 3f, 17f, 5f); trait(33f, 3f, 31f, 5f)
 }
 
+/* ── Machinerie et électrique ─────────────────────────────────────────── */
+
+/* Un C-stand : colonne, trois pieds étagés, rotule et bras. */
+private val MachinoPied = dessin("machino-pied") {
+    trait(20f, 6f, 20f, 26f)
+    trait(20f, 26f, 12f, 30f); trait(20f, 24f, 28f, 29f); trait(20f, 22f, 20f, 30f)
+    cercle(20f, 6f, 2f)
+    trait(20f, 6f, 40f, 4f)
+    rectangle(34f, 4.5f, 42f, 11f)
+}
+
+/* Une pince : deux mâchoires et sa vis. */
+private val MachinoClamp = dessin("machino-clamp") {
+    moveTo(14f, 8f); lineTo(30f, 8f); lineTo(30f, 26f); lineTo(14f, 26f)
+    trait(14f, 8f, 14f, 13f); trait(14f, 26f, 14f, 21f)
+    trait(22f, 26f, 22f, 16f); rectangle(19f, 14f, 25f, 16f)
+    trait(30f, 17f, 38f, 17f); cercle(40f, 17f, 2f)
+}
+
+/* Un bras magique entre deux pinces. */
+private val MachinoBarre = dessin("machino-barre") {
+    rectangle(6f, 22f, 12f, 28f)
+    trait(9f, 22f, 20f, 12f); cercle(21f, 11f, 2.5f); trait(23f, 12f, 36f, 20f)
+    rectangle(35f, 20f, 41f, 26f)
+}
+
+/* Des apple boxes empilées : pleine, demi, quart. */
+private val MachinoLest = dessin("machino-lest") {
+    rectangle(10f, 16f, 38f, 28f)
+    rectangle(12f, 10f, 36f, 16f)
+    rectangle(14f, 7f, 34f, 10f)
+    rectangle(20f, 20f, 28f, 23f)
+}
+
+/* Un drapeau sur sa tige. */
+private val MachinoCadre = dessin("machino-cadre") {
+    rectangle(14f, 4f, 40f, 22f)
+    trait(17f, 7f, 37f, 19f); trait(17f, 19f, 37f, 7f)
+    trait(14f, 13f, 6f, 13f)
+    trait(6f, 13f, 6f, 30f)
+}
+
+/* Un trépied et sa tête. */
+private val MachinoSupportCamera = dessin("machino-support-camera") {
+    rectangle(18f, 3f, 32f, 9f)
+    rectangle(21f, 9f, 29f, 12f)
+    trait(25f, 12f, 12f, 30f); trait(25f, 12f, 38f, 30f); trait(25f, 12f, 25f, 30f)
+    trait(16f, 24f, 34f, 24f)
+}
+
+/* Une dolly sur ses rails. */
+private val MachinoTravelling = dessin("machino-travelling") {
+    rectangle(14f, 14f, 34f, 22f)
+    trait(24f, 14f, 24f, 6f); rectangle(19f, 3f, 29f, 6f)
+    cercle(17f, 24f, 2f); cercle(31f, 24f, 2f)
+    trait(2f, 27f, 46f, 27f); trait(2f, 30f, 46f, 30f)
+}
+
+/* Une grue : base, bras, contrepoids et tête. */
+private val MachinoGrue = dessin("machino-grue") {
+    trait(18f, 28f, 18f, 18f)
+    trait(10f, 28f, 26f, 28f)
+    trait(4f, 22f, 42f, 8f)
+    rectangle(2f, 21f, 7f, 26f)
+    rectangle(40f, 8f, 46f, 13f)
+}
+
+/* Une prise P17 vue de face : ses broches en cercle. */
+private val ElecPrise = dessin("elec-prise") {
+    cercle(24f, 16f, 11f)
+    cercle(24f, 16f, 7f)
+    cercle(24f, 10.5f, 1f); cercle(19f, 17f, 1f); cercle(29f, 17f, 1f); cercle(24f, 21f, 1.2f)
+}
+
+/* Un câble enroulé et sa fiche. */
+private val ElecCable = dessin("elec-cable") {
+    cercle(18f, 16f, 10f)
+    cercle(18f, 16f, 6f)
+    trait(28f, 16f, 38f, 16f)
+    rectangle(38f, 13f, 45f, 19f)
+}
+
+/* Une armoire de distribution et ses prises. */
+private val ElecDistribution = dessin("elec-distribution") {
+    rectangle(12f, 4f, 36f, 28f)
+    cercle(18f, 12f, 2.5f); cercle(30f, 12f, 2.5f)
+    cercle(18f, 21f, 2.5f); cercle(30f, 21f, 2.5f)
+    trait(24f, 28f, 24f, 31f)
+}
+
+/* Une console : des faders. */
+private val ElecControle = dessin("elec-controle") {
+    rectangle(6f, 8f, 42f, 26f)
+    trait(13f, 12f, 13f, 22f); trait(20f, 12f, 20f, 22f); trait(27f, 12f, 27f, 22f); trait(34f, 12f, 34f, 22f)
+    rectangle(11.5f, 15f, 14.5f, 17f); rectangle(18.5f, 18f, 21.5f, 20f); rectangle(25.5f, 13f, 28.5f, 15f); rectangle(32.5f, 17f, 35.5f, 19f)
+}
+
 fun Silhouette.image(): ImageVector = when (this) {
     Silhouette.STUDIO -> Studio
     Silhouette.COMPACTE -> Compacte
@@ -320,4 +417,16 @@ fun Silhouette.image(): ImageVector = when (this) {
     Silhouette.PROJ_DECOUPE -> ProjDecoupe
     Silhouette.PROJ_BALLON -> ProjBallon
     Silhouette.PROJ_PRATIQUE -> ProjPratique
+    Silhouette.MACHINO_PIED -> MachinoPied
+    Silhouette.MACHINO_CLAMP -> MachinoClamp
+    Silhouette.MACHINO_BARRE -> MachinoBarre
+    Silhouette.MACHINO_LEST -> MachinoLest
+    Silhouette.MACHINO_CADRE -> MachinoCadre
+    Silhouette.MACHINO_SUPPORT_CAMERA -> MachinoSupportCamera
+    Silhouette.MACHINO_TRAVELLING -> MachinoTravelling
+    Silhouette.MACHINO_GRUE -> MachinoGrue
+    Silhouette.ELEC_PRISE -> ElecPrise
+    Silhouette.ELEC_CABLE -> ElecCable
+    Silhouette.ELEC_DISTRIBUTION -> ElecDistribution
+    Silhouette.ELEC_CONTROLE -> ElecControle
 }
