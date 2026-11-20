@@ -3,6 +3,9 @@ package fr.cellule.app.ecrans
 import android.Manifest
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.border
+import fr.cellule.app.LocalPaysage
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.DropdownMenu
@@ -281,6 +284,7 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
     val metres = reglages.lumiereMetres
     val hauteurPanneau = LocalConfiguration.current.screenHeightDp.dp * (if (grand) 0.72f else 0.45f)
     val couleurRegle = MaterialTheme.colorScheme.primary
+    val paysage = LocalPaysage.current
     fun longueur(m: Double) = if (metres) nombreCourt(m, 2) + " m" else nombreCourt(Unites.pieds(m), 1) + " ft"
 
     val annuler: () -> Unit = {
@@ -387,10 +391,9 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
                 when (vuePlan) {
                     VuePlan.DESSUS -> {
                         /* ── La toile ───────────────────────────────────── */
+                        val toile: @Composable (Modifier) -> Unit = { m ->
                         Box(
-                            Modifier
-                                .weight(1f)
-                                .fillMaxWidth()
+                            m
                                 .clipToBounds()
                                 .onSizeChanged {
                                     taille = it
@@ -555,71 +558,76 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
                                 }
                             }
                         }
+                        }
 
-                        /* ── En bas : outils, ou l'inspecteur de l'élément ─ */
+                        /* ── En bas (ou à droite en paysage) : outils, ou l'inspecteur ─ */
                         val e = selection?.let { plan.element(it) }
                         val aDeplacer = deplacer?.let { plan.element(it) }?.takeIf { it.type == TypeElement.PROJECTEUR }
-                        val basculer = { grand = !grand }
-                        when {
-                            aDeplacer != null -> PanneauBasSol(hauteurPanneau, basculer) {
-                                BlocDeplacerProjecteur(
-                                    plan, aDeplacer, reglages,
-                                    sujetInitial = sujetDeplacement,
-                                    surPlafond = { plan = plan.copy(plafond = it) },
-                                    surApercu = { fantome = it },
-                                    surAppliquer = {
-                                        plan = plan.remplacer(it)
-                                        version++
-                                    },
-                                    surFermer = {
-                                        deplacer = null
-                                        fantome = null
-                                    }
-                                )
-                            }
-                            e != null -> PanneauBasSol(hauteurPanneau, basculer) {
-                                Inspecteur(
-                                    e, plan, metres, reglages, version,
-                                    surChangement = { plan = plan.remplacer(it) },
-                                    surDupliquer = {
-                                        val copie = e.copy(identifiant = System.currentTimeMillis(), x = e.x + 0.5, y = e.y + 0.5)
-                                        plan = plan.copy(elements = plan.elements + copie)
-                                        selection = copie.identifiant
-                                    },
-                                    surPositionSuivante = {
-                                        val (dx, dy) = Sol.direction(e.rotation)
-                                        val autres = plan.elements.filter { it.type == e.type && it.nom.trim() == e.nom.trim() }
-                                        val suivante = e.copy(
-                                            identifiant = System.currentTimeMillis(),
-                                            x = e.x + dx * 1.0, y = e.y + dy * 1.0,
-                                            etape = (autres.maxOfOrNull { it.etape } ?: e.etape) + 1
-                                        )
-                                        plan = plan.copy(elements = plan.elements + suivante)
-                                        selection = suivante.identifiant
-                                    },
-                                    surCalculer = { sujet ->
+                        val panneauOuvert = aDeplacer != null || e != null || panneau != null
+                        val contenuPanneau: @Composable ColumnScope.() -> Unit = {
+                            when {
+                                aDeplacer != null -> {
+                                    BlocDeplacerProjecteur(
+                                        plan, aDeplacer, reglages,
+                                        sujetInitial = sujetDeplacement,
+                                        surPlafond = { plan = plan.copy(plafond = it) },
+                                        surApercu = { fantome = it },
+                                        surAppliquer = {
+                                            plan = plan.remplacer(it)
+                                            version++
+                                        },
+                                        surFermer = {
+                                            deplacer = null
+                                            fantome = null
+                                        }
+                                    )
+                                }
+                                e != null -> {
+                                    Inspecteur(
+                                        e, plan, metres, reglages, version,
+                                        surChangement = { plan = plan.remplacer(it) },
+                                        surDupliquer = {
+                                            val copie = e.copy(identifiant = System.currentTimeMillis(), x = e.x + 0.5, y = e.y + 0.5)
+                                            plan = plan.copy(elements = plan.elements + copie)
+                                            selection = copie.identifiant
+                                        },
+                                        surPositionSuivante = {
+                                            val (dx, dy) = Sol.direction(e.rotation)
+                                            val autres = plan.elements.filter { it.type == e.type && it.nom.trim() == e.nom.trim() }
+                                            val suivante = e.copy(
+                                                identifiant = System.currentTimeMillis(),
+                                                x = e.x + dx * 1.0, y = e.y + dy * 1.0,
+                                                etape = (autres.maxOfOrNull { it.etape } ?: e.etape) + 1
+                                            )
+                                            plan = plan.copy(elements = plan.elements + suivante)
+                                            selection = suivante.identifiant
+                                        },
+                                        surCalculer = { sujet ->
+                                            sujetDeplacement = sujet
+                                            deplacer = e.identifiant
+                                        },
+                                        surSupprimer = {
+                                            plan = plan.sans(e.identifiant)
+                                            selection = null
+                                        },
+                                        surFini = { selection = null }
+                                    )
+                                }
+                                panneau == PanneauSol.AJOUTER -> {
+                                    GrilleAjouter(surType = poser, fermer = { panneau = null })
+                                }
+                                panneau == PanneauSol.LUMIERE -> {
+                                    ContenuLumiereSol(plan, reglages, fermer = { panneau = null }) { projo, sujet ->
+                                        panneau = null
+                                        selection = projo
                                         sujetDeplacement = sujet
-                                        deplacer = e.identifiant
-                                    },
-                                    surSupprimer = {
-                                        plan = plan.sans(e.identifiant)
-                                        selection = null
-                                    },
-                                    surFini = { selection = null }
-                                )
-                            }
-                            panneau == PanneauSol.AJOUTER -> PanneauBasSol(hauteurPanneau, basculer) {
-                                GrilleAjouter(surType = poser, fermer = { panneau = null })
-                            }
-                            panneau == PanneauSol.LUMIERE -> PanneauBasSol(hauteurPanneau, basculer) {
-                                ContenuLumiereSol(plan, reglages, fermer = { panneau = null }) { projo, sujet ->
-                                    panneau = null
-                                    selection = projo
-                                    sujetDeplacement = sujet
-                                    deplacer = projo
+                                        deplacer = projo
+                                    }
                                 }
                             }
-                            else -> Row(
+                        }
+                        val barreOutils: @Composable () -> Unit = {
+                            Row(
                                 Modifier
                                     .fillMaxWidth()
                                     .background(MaterialTheme.colorScheme.surfaceContainerHigh)
@@ -640,6 +648,18 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
                                 }
                                 OutilSol(IconeExporterSol, "Exporter", Modifier.weight(1f)) { feuille = FeuilleSol.EXPORT }
                             }
+                        }
+                        if (paysage) {
+                            Row(Modifier.weight(1f).fillMaxWidth()) {
+                                Column(Modifier.weight(1f).fillMaxHeight()) {
+                                    toile(Modifier.weight(1f).fillMaxWidth())
+                                    if (!panneauOuvert) barreOutils()
+                                }
+                                if (panneauOuvert) PanneauCoteSol(contenuPanneau)
+                            }
+                        } else {
+                            toile(Modifier.weight(1f).fillMaxWidth())
+                            if (panneauOuvert) PanneauBasSol(hauteurPanneau, { grand = !grand }, contenuPanneau) else barreOutils()
                         }
                     }
                     VuePlan.CAMERA -> PanneauVueCamera(plan, reglages, Modifier.weight(1f)) { plan = plan.remplacer(it) }
@@ -759,6 +779,21 @@ private fun PanneauBasSol(hauteurMax: Dp, basculer: () -> Unit, contenu: @Compos
             content = contenu
         )
     }
+}
+
+/** En paysage, le panneau passe à droite : la toile garde toute la hauteur. */
+@Composable
+private fun PanneauCoteSol(contenu: @Composable ColumnScope.() -> Unit) {
+    val largeur = (LocalConfiguration.current.screenWidthDp * 0.42f).dp.coerceAtMost(400.dp)
+    Column(
+        Modifier
+            .width(largeur)
+            .fillMaxHeight()
+            .background(MaterialTheme.colorScheme.surfaceContainerHigh, RoundedCornerShape(topStart = 20.dp, bottomStart = 20.dp))
+            .verticalScroll(rememberScrollState())
+            .padding(Gouttiere),
+        content = contenu
+    )
 }
 
 /** « Ajouter » : une grille par familles ; l'élément se pose au centre, déjà sélectionné. */

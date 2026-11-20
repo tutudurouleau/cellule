@@ -321,12 +321,32 @@ private fun ColumnScope.PositionSource(source: SaisieSource, u: UnitesLumiere, a
 
 private fun ChampNul(texte: String): Double = texte.trim().replace(',', '.').toDoubleOrNull() ?: 0.0
 
+/* ── Le squelette commun ───────────────────────────────────────────────── */
+
+/** « Pour aller plus loin » : les explications, repliées sous le résultat. */
+@Composable
+private fun PourAllerPlusLoin(contenu: @Composable ColumnScope.() -> Unit) {
+    Carte { Depliable("Pour aller plus loin") { contenu() } }
+}
+
+/** Une explication, en petit. */
+@Composable
+private fun Explication(texte: String) {
+    Text(texte, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 4.dp, bottom = 4.dp))
+}
+
+/** Ce qui manque pour calculer, dans la carte du résultat. */
+@Composable
+private fun Manque(texte: String) {
+    Text(texte, style = Corps, color = MaterialTheme.colorScheme.onPrimaryContainer)
+}
+
 /* ── Combien j'ai ici ? ────────────────────────────────────────────────── */
 
 @Composable
 private fun OutilProjecteur(reglages: Reglages, source: SaisieSource, u: UnitesLumiere) {
     val reglage = reglageTournage(reglages, FiltresJson.lire(reglages.cineFiltres))
-    Carte(titre = "Combien j'ai ici ?", sousTitre = "L'éclairement au sujet, et l'ouverture qu'il donne avec le réglage de ta caméra.") {
+    Carte(titre = "Ce que tu donnes") {
         ChoixSource(source, u, reglages)
         Spacer(Modifier.height(Interligne))
         PositionSource(source, u, avecDistance = true)
@@ -334,31 +354,28 @@ private fun OutilProjecteur(reglages: Reglages, source: SaisieSource, u: UnitesL
     val i = source.intensite(u)
     val d = source.distanceM(u)
     val angle = source.angleFaisceau()
-    Carte(titre = "Résultat") {
+    CarteResultat {
         if (i == null || d == null) {
-            Text("Il manque l'éclairement de référence ou la distance.", style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            return@Carte
+            Manque("Il manque l'éclairement de référence ou la distance.")
+            return@CarteResultat
         }
         val lux = Eclairage.lux(i, d, ChampNul(source.incidence), ChampNul(source.pertes))
         val ev = Eclairage.ev100(lux)
         val t = Tournage.ouvertureExacte(ev, reglage)
-        Ligne("Éclairement au sujet", u.eclairement(lux), "EV " + n(ev) + " à 100 ISO", accent = true)
-        Ligne(
+        GrandeValeur("Éclairement au sujet", u.eclairement(lux), "EV " + n(ev) + " à 100 ISO")
+        GrandeValeur(
             "Ouverture",
             Tournage.tStopLePlusProche(t).libelle,
             "exacte T" + n(t, 2) + " · EI ${reglage.ei}, " + Tournage.libelleTempsPose(reglage.tempsPose) +
-                (if (reglage.perteFiltres > 0) ", filtres caméra compris" else ""),
-            accent = true
+                (if (reglage.perteFiltres > 0) ", filtres caméra compris" else "")
         )
         angle?.let { a ->
             Ligne("Tache de lumière", "⌀ " + u.distance(Eclairage.diametre(a, d), 1), "faisceau de " + n(a, 0) + "° à " + u.distance(d))
         }
-        Text(
-            "La loi en 1/d² vaut pour une source vue de loin : à moins d'environ cinq fois sa taille (panneau, cadre de diffusion, réflecteur), l'éclairement réel décroît moins vite. Vérifie à la cellule.",
-            style = Detail,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.padding(top = 6.dp)
-        )
+    }
+    PourAllerPlusLoin {
+        Explication("La loi en 1/d² vaut pour une source vue de loin : à moins d'environ cinq fois sa taille (panneau, cadre de diffusion, réflecteur), l'éclairement réel décroît moins vite. Vérifie à la cellule.")
+        Explication("E = I × cos θ / d², puis l'ouverture qui expose juste avec l'EI, le temps de pose et les filtres de la caméra. Les formules sont dans Tables › Formules.")
     }
 }
 
@@ -369,7 +386,7 @@ private fun OutilPlacer(reglages: Reglages, source: SaisieSource, u: UnitesLumie
     val reglage = reglageTournage(reglages, FiltresJson.lire(reglages.cineFiltres))
     var tVoulu by remember { mutableStateOf(T_STOPS.minByOrNull { abs(it.exact - 2.8) } ?: T_STOPS.first()) }
     var largeur by remember { mutableStateOf("2") }
-    Carte(titre = "Où le placer ?", sousTitre = "La distance pour tenir l'ouverture voulue, ou pour couvrir une largeur.") {
+    Carte(titre = "Ce que tu donnes") {
         ChoixSource(source, u, reglages)
         Spacer(Modifier.height(Interligne))
         PositionSource(source, u, avecDistance = false)
@@ -381,17 +398,16 @@ private fun OutilPlacer(reglages: Reglages, source: SaisieSource, u: UnitesLumie
     }
     val intensite = source.intensite(u)
     val angle = source.angleFaisceau()
-    Carte(titre = "Résultat") {
+    CarteResultat {
         val i = intensite
         if (i == null) {
-            Text("Il manque l'éclairement de référence de la source.", style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Manque("Il manque l'éclairement de référence de la source.")
         } else {
             val luxVoulu = Eclairage.luxPour(tVoulu.exact, reglage)
             val d = Eclairage.distancePour(i, luxVoulu, ChampNul(source.incidence), ChampNul(source.pertes))
-            Ligne(
+            GrandeValeur(
                 "Pour ${tVoulu.libelle}", "à " + u.distance(d),
-                "il faut " + u.eclairement(luxVoulu) + " au sujet · EI ${reglage.ei}, " + Tournage.libelleTempsPose(reglage.tempsPose),
-                accent = true
+                "il faut " + u.eclairement(luxVoulu) + " au sujet · EI ${reglage.ei}, " + Tournage.libelleTempsPose(reglage.tempsPose)
             )
         }
         val a = angle
@@ -399,10 +415,14 @@ private fun OutilPlacer(reglages: Reglages, source: SaisieSource, u: UnitesLumie
         if (a != null && l != null) {
             Ligne("Pour couvrir " + u.distance(l, 1), "à " + u.distance(Eclairage.distancePourCouvrir(a, l)), "faisceau de " + n(a, 0) + "°")
         } else if (l != null) {
-            Text("Donne l'angle du faisceau pour savoir où il couvre cette largeur.", style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Explication("Donne l'angle du faisceau pour savoir où il couvre cette largeur.")
         }
     }
     CarteDeplacerSurPlan(reglages)
+    PourAllerPlusLoin {
+        Explication("d = √(I × cos θ / E) : la distance à laquelle la source donne l'éclairement qu'il faut pour cette ouverture. Pour couvrir une largeur : d = largeur / (2 × tan(faisceau / 2)).")
+        Explication("Reculer de ×1,4 fait perdre un diaph ; doubler la distance en fait perdre deux.")
+    }
 }
 
 /* ── Rapports et ambiances ─────────────────────────────────────────────── */
@@ -413,19 +433,26 @@ private fun OutilRapports(u: UnitesLumiere) {
     var debouchage by remember { mutableStateOf("200") }
     var contre by remember { mutableStateOf("") }
     var autres by remember { mutableStateOf("") }
-    Carte(titre = "Rapports", sousTitre = "Face, débouchage, contre : l'écart en diaphs et le rapport, mesurés en incident au sujet.") {
+    Carte(titre = "Ce que tu donnes") {
+        Explication("Mesuré en incident au sujet, cellule tournée vers chaque source.")
         LigneBoutons {
             Champ(face, "Face (${u.uEclairement})", Modifier.weight(1f)) { face = it }
             Champ(debouchage, "Débouchage", Modifier.weight(1f)) { debouchage = it }
             Champ(contre, "Contre", Modifier.weight(1f)) { contre = it }
         }
-        val f = lire(face)?.let { u.versLux(it) }
-        val b = lire(debouchage)?.let { u.versLux(it) }
-        val c = lire(contre)?.let { u.versLux(it) }
         Spacer(Modifier.height(6.dp))
-        if (f != null && b != null) {
+        Champ(autres, "Autres sources sur le sujet (${u.uEclairement})", Modifier.fillMaxWidth(), indication = "300, 150") { autres = it }
+    }
+    val f = lire(face)?.let { u.versLux(it) }
+    val b = lire(debouchage)?.let { u.versLux(it) }
+    val c = lire(contre)?.let { u.versLux(it) }
+    val somme = Regex("\\d+(?:[.,]\\d+)?").findAll(autres).mapNotNull { it.value.replace(',', '.').toDoubleOrNull() }.map { u.versLux(it) }.sum()
+    CarteResultat {
+        if (f == null || b == null) {
+            Manque("Donne au moins la face et le débouchage.")
+        } else {
             val ecart = Eclairage.diaphs(f / b)
-            Ligne("Face / débouchage", n(f / b, 1) + " : 1", "écart de " + libelleDiaphs(ecart).removePrefix("+") + " diaph", accent = true)
+            GrandeValeur("Face / débouchage", n(f / b, 1) + " : 1", "écart de " + libelleDiaphs(ecart).removePrefix("+") + " diaph")
             Ligne(
                 "Côté éclairé / côté ombre", n((f + b) / b, 1) + " : 1",
                 "le côté éclairé reçoit la face et le débouchage — c'est le « rapport d'éclairage » de beaucoup de manuels"
@@ -437,14 +464,13 @@ private fun OutilRapports(u: UnitesLumiere) {
         if (f != null && c != null) {
             Ligne("Contre / face", libelleDiaphs(Eclairage.diaphs(c / f)) + " diaph", "au-dessus de 0 : le contre domine la face")
         }
-        Separateur()
-        Champ(autres, "Autres sources sur le sujet (${u.uEclairement})", Modifier.fillMaxWidth(), indication = "300, 150") { autres = it }
-        val somme = Regex("\\d+(?:[.,]\\d+)?").findAll(autres).mapNotNull { it.value.replace(',', '.').toDoubleOrNull() }.map { u.versLux(it) }.sum()
         if (f != null && somme > 0) {
             Ligne("Total au sujet", u.eclairement(f + somme), "les éclairements s'additionnent ; +" + libelleDiaphs(Eclairage.diaphs((f + somme) / f)).removePrefix("+") + " diaph sur la face seule")
         }
     }
-    Carte(titre = "Ambiances", sousTitre = "Des repères d'usage, pas des normes : rapport de la face seule au débouchage seul.") {
+    PourAllerPlusLoin {
+        Etiquette("Ambiances")
+        Explication("Des repères d'usage, pas des normes : rapport de la face seule au débouchage seul.")
         AMBIANCES.forEach { a ->
             Ligne(
                 a.nom,
@@ -452,10 +478,9 @@ private fun OutilRapports(u: UnitesLumiere) {
                 n(a.diaphsMin, 0) + " à " + n(a.diaphsMax, 0) + " diaphs · " + a.idee
             )
         }
-        val f = lire(face)?.let { u.versLux(it) }
         if (f != null) {
             Separateur()
-            Text("Avec ta face à " + u.eclairement(f) + ", le débouchage :", style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Explication("Avec ta face à " + u.eclairement(f) + ", le débouchage :")
             AMBIANCES.forEach { a ->
                 Ligne(a.nom, u.eclairement(f / a.rapportMax) + " à " + u.eclairement(f / a.rapportMin))
             }
@@ -471,28 +496,28 @@ private fun OutilCouleur() {
     var cible by remember { mutableStateOf("5600") }
     var marque by remember { mutableStateOf("Lee") }
     val reperes = listOf(2700.0, 3200.0, 4300.0, 5600.0, 6500.0)
-    Carte(titre = "Mireds", sousTitre = "Un mired = un million divisé par la température en kelvins. Les décalages des gélatines s'additionnent en mireds, pas en kelvins.") {
+    Carte(titre = "Ce que tu donnes") {
         Champ(source, "Source (K)", Modifier.fillMaxWidth()) { source = it }
         RangeeReperes(reperes) { source = n(it, 0) }
         Spacer(Modifier.height(Interligne))
         Champ(cible, "Cible : balance de la caméra (K)", Modifier.fillMaxWidth()) { cible = it }
         RangeeReperes(reperes) { cible = n(it, 0) }
-        val s = lire(source)
-        val c = lire(cible)
-        if (s != null && c != null) {
-            val d = Mireds.decalage(s, c)
-            Spacer(Modifier.height(6.dp))
-            Ligne("Source", n(Mireds.depuisKelvins(s), 0) + " mireds")
-            Ligne("Cible", n(Mireds.depuisKelvins(c), 0) + " mireds")
-            Ligne(
-                "À corriger", (if (d > 0) "+" else "") + n(d, 0) + " mireds",
-                if (abs(d) < 5) "déjà raccord" else if (d > 0) "vers le chaud : gélatine orange (CTO)" else "vers le froid : gélatine bleue (CTB)",
-                accent = true
-            )
-        }
     }
     val s = lire(source)
     val c = lire(cible)
+    CarteResultat {
+        if (s == null || c == null) {
+            Manque("Donne la température de la source et celle de la caméra.")
+            return@CarteResultat
+        }
+        val d = Mireds.decalage(s, c)
+        GrandeValeur(
+            "À corriger", (if (d > 0) "+" else "") + n(d, 0) + " mireds",
+            if (abs(d) < 5) "déjà raccord" else if (d > 0) "vers le chaud : gélatine orange (CTO)" else "vers le froid : gélatine bleue (CTB)"
+        )
+        Ligne("Source", n(Mireds.depuisKelvins(s), 0) + " mireds")
+        Ligne("Cible", n(Mireds.depuisKelvins(c), 0) + " mireds")
+    }
     if (s != null && c != null && abs(Mireds.decalage(s, c)) >= 5) {
         val d = Mireds.decalage(s, c)
         Carte(titre = "Gélatines sur la source") {
@@ -512,21 +537,19 @@ private fun OutilCouleur() {
                     ).joinToString(" · ")
                 )
             }
-            Text(
-                "Décalages et transmissions relevés sur les fiches Lee et Rosco et chez leurs distributeurs ; « à relire » quand la valeur n'a pas été retrouvée.",
-                style = Detail,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(top = 6.dp)
-            )
         }
     }
-    Carte(titre = "Vert et magenta", sousTitre = "Pour raccorder une source à des tubes fluorescents ou à des LED qui tirent vers le vert, ou l'inverse.") {
+    PourAllerPlusLoin {
+        Explication("Un mired = un million divisé par la température en kelvins. Les décalages des gélatines s'additionnent en mireds, pas en kelvins.")
+        Explication("Décalages et transmissions relevés sur les fiches Lee et Rosco et chez leurs distributeurs ; « à relire » quand la valeur n'a pas été retrouvée.")
+        Separateur()
+        Etiquette("Vert et magenta")
+        Explication("Pour raccorder une source à des tubes fluorescents ou à des LED qui tirent vers le vert, ou l'inverse.")
         listOf(FamilleGelatine.PLUS_VERT, FamilleGelatine.MOINS_VERT).forEach { fam ->
-            Etiquette(fam.libelle)
+            Text(fam.libelle, style = Detail, color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(top = 6.dp))
             GELATINES.filter { it.famille == fam }.forEach { g ->
                 Ligne(g.marque + " " + g.reference, g.nom, "correction " + g.fraction)
             }
-            Spacer(Modifier.height(6.dp))
         }
     }
 }
@@ -559,7 +582,7 @@ private fun OutilChamp(reglages: Reglages, u: UnitesLumiere) {
     val h = lire(hauteur)
     val f = lire(focale)
     val d = lire(distance)?.let { u.versMetres(it) }
-    Carte(titre = "Champ", sousTitre = "Le capteur et la focale viennent du cadre de travail ; tout se modifie ici sans le toucher.") {
+    Carte(titre = "Ce que tu donnes") {
         LigneBoutons {
             Champ(largeur, "Capteur L (mm)", Modifier.weight(1f)) { largeur = it }
             Champ(hauteur, "H (mm)", Modifier.weight(1f)) { hauteur = it }
@@ -569,59 +592,63 @@ private fun OutilChamp(reglages: Reglages, u: UnitesLumiere) {
             Champ(focale, "Focale (mm)", Modifier.weight(1f)) { focale = it }
             Champ(distance, "Distance (${u.uDistance})", Modifier.weight(1f)) { distance = it }
         }
-        if (l != null && h != null && f != null) {
-            Spacer(Modifier.height(6.dp))
-            val diag = sqrt(l * l + h * h)
-            Ligne(
-                "Angles de champ",
-                n(Focales.angleDeChamp(l * cadre.desanamorphose, f), 1) + "° × " + n(Focales.angleDeChamp(h, f), 1) + "°",
-                "diagonale " + n(Focales.angleDeChamp(diag, f), 1) + "°" + if (cadre.desanamorphose != 1.0) " · désanamorphosé ×" + n(cadre.desanamorphose, 1) else "",
-                accent = true
-            )
-            if (d != null) {
-                Ligne(
-                    "À " + u.distance(d, 1) + ", le cadre couvre",
-                    u.distance(Optique.couverture(d, f, l * cadre.desanamorphose), 2) + " × " + u.distance(Optique.couverture(d, f, h), 2)
-                )
-            }
-        }
-        Spacer(Modifier.height(Interligne))
-        Champ(cadrer, "Je veux cadrer une largeur de (${u.uDistance})", Modifier.fillMaxWidth()) { cadrer = it }
-        val w = lire(cadrer)?.let { u.versMetres(it) }
-        if (l != null && d != null && w != null) {
-            Ligne("Focale à prendre", n(Optique.focalePour(w, d, l * cadre.desanamorphose), 1) + " mm", "à " + u.distance(d, 1))
-        }
-    }
-    Carte(titre = "Profondeur de champ", sousTitre = "Le cercle de confusion est une convention (diagonale ÷ 1500) ; le T sert de f, l'écart est faible.") {
+        Spacer(Modifier.height(6.dp))
         LigneBoutons {
             Champ(ouverture, "Ouverture (T ou f)", Modifier.weight(1f)) { ouverture = it }
             Champ(cercle, "Cercle (mm)", Modifier.weight(1f), indication = if (l != null && h != null) n(Optique.cercleConfusion(l, h), 3) else "") { cercle = it }
         }
-        val nOuv = lire(ouverture)
-        val c = lire(cercle) ?: if (l != null && h != null) Optique.cercleConfusion(l, h) else null
-        if (f != null && nOuv != null && c != null && d != null) {
-            val p = Optique.profondeur(f, nOuv, c, d)
+        Spacer(Modifier.height(6.dp))
+        LigneBoutons {
+            Champ(cadrer, "Cadrer une largeur (${u.uDistance})", Modifier.weight(1f)) { cadrer = it }
+            Champ(faisceau, "Faisceau d'un projo (°)", Modifier.weight(1f)) { faisceau = it }
+        }
+    }
+    CarteResultat {
+        if (l == null || h == null || f == null) {
+            Manque("Donne la taille du capteur et la focale.")
+            return@CarteResultat
+        }
+        val diag = sqrt(l * l + h * h)
+        GrandeValeur(
+            "Angles de champ",
+            n(Focales.angleDeChamp(l * cadre.desanamorphose, f), 1) + "° × " + n(Focales.angleDeChamp(h, f), 1) + "°",
+            "diagonale " + n(Focales.angleDeChamp(diag, f), 1) + "°" + if (cadre.desanamorphose != 1.0) " · désanamorphosé ×" + n(cadre.desanamorphose, 1) else ""
+        )
+        if (d != null) {
             Ligne(
+                "À " + u.distance(d, 1) + ", le cadre couvre",
+                u.distance(Optique.couverture(d, f, l * cadre.desanamorphose), 2) + " × " + u.distance(Optique.couverture(d, f, h), 2)
+            )
+        }
+        val w = lire(cadrer)?.let { u.versMetres(it) }
+        if (d != null && w != null) {
+            Ligne("Pour cadrer " + u.distance(w, 1), n(Optique.focalePour(w, d, l * cadre.desanamorphose), 1) + " mm", "focale à prendre, à " + u.distance(d, 1))
+        }
+        val nOuv = lire(ouverture)
+        val c = lire(cercle) ?: Optique.cercleConfusion(l, h)
+        if (nOuv != null && d != null) {
+            val p = Optique.profondeur(f, nOuv, c, d)
+            GrandeValeur(
                 "Net de", u.distance(p.procheM) + " à " + (p.loinM?.let { u.distance(it) } ?: "l'infini"),
-                "mise au point à " + u.distance(d, 1) + (p.loinM?.let { " · profondeur " + u.distance(it - p.procheM) } ?: ""),
-                accent = true
+                "mise au point à " + u.distance(d, 1) + (p.loinM?.let { " · profondeur " + u.distance(it - p.procheM) } ?: "")
             )
             Ligne("Hyperfocale", u.distance(p.hyperfocaleM, 1), "au point là, net de la moitié à l'infini")
         }
-    }
-    Carte(titre = "La lumière couvre-t-elle le cadre ?", sousTitre = "Pour un projecteur posé près de la caméra, dans le même axe.") {
-        Champ(faisceau, "Angle du faisceau (°)", Modifier.fillMaxWidth()) { faisceau = it }
         val b = lire(faisceau)
-        if (b != null && l != null && f != null) {
+        if (b != null) {
             val champH = Focales.angleDeChamp(l * cadre.desanamorphose, f)
             val part = tan(Math.toRadians(b / 2)) / tan(Math.toRadians(champH / 2))
             Ligne(
-                if (part >= 1) "Oui" else "Non",
+                "La lumière couvre le cadre ? " + if (part >= 1) "Oui" else "Non",
                 "faisceau " + n(b, 0) + "° · champ " + n(champH, 0) + "°",
-                if (part >= 1) "la tache déborde le cadre" else "la tache couvre " + n(part * 100, 0) + " % de la largeur du cadre",
-                accent = true
+                if (part >= 1) "la tache déborde le cadre" else "la tache couvre " + n(part * 100, 0) + " % de la largeur du cadre"
             )
         }
+    }
+    PourAllerPlusLoin {
+        Explication("Le capteur et la focale viennent du cadre de travail (Matériel) ; tout se modifie ici sans le toucher.")
+        Explication("Le cercle de confusion est une convention (diagonale ÷ 1 500) ; le T sert de f, l'écart est faible.")
+        Explication("« La lumière couvre le cadre » vaut pour un projecteur posé près de la caméra, dans le même axe.")
     }
 }
 
@@ -641,7 +668,7 @@ private fun OutilElectricite(reglages: Reglages) {
     var quantite by remember { mutableStateOf("1") }
     var cosPhi by remember { mutableStateOf("1") }
 
-    Carte(titre = "Électricité", sousTitre = "Un ordre de grandeur pour répartir les projecteurs. Ce n'est pas un outil de sécurité : le branchement reste l'affaire d'un électricien.") {
+    Carte(titre = "Ce que tu donnes") {
         ChoixSegmente(Region.entries.toList(), region, { if (it == Region.EUROPE) "Europe" else "États-Unis" }) { reglages.lumiereRegion = it.name }
         Spacer(Modifier.height(6.dp))
         Deroulant("Circuit", circuits, circuit, { it.nom + " · " + n(it.puissance / 1000, 1) + " kVA" }, Modifier.fillMaxWidth()) { circuitNom = it.nom }
@@ -678,36 +705,35 @@ private fun OutilElectricite(reglages: Reglages) {
         }
         Spacer(Modifier.height(6.dp))
         Champ(cosPhi, "Facteur de puissance (cos φ)", Modifier.fillMaxWidth()) { cosPhi = it }
-        Text(
-            "1 pour le tungstène. Pour les LED et les ballasts électroniques, et surtout les ballasts magnétiques de HMI, lis-le sur la fiche.",
-            style = Detail,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.padding(top = 4.dp)
-        )
     }
     val total = charges.sumOf { it.watts * it.quantite }
-    if (total > 0) {
+    CarteResultat(titre = "Bilan") {
+        if (total <= 0) {
+            Manque("Ajoute les appareils branchés sur ce circuit.")
+            return@CarteResultat
+        }
         val cp = lire(cosPhi)?.coerceIn(0.1, 1.0) ?: 1.0
         val a = Electricite.intensite(total, circuit, cp)
         val charge = Electricite.charge(total, circuit, cp)
-        Carte(titre = "Bilan") {
-            Ligne("Puissance totale", n(total, 0) + " W")
-            Ligne(
-                "Intensité", n(a, 1) + " A" + if (circuit.triphase) " par phase" else "",
-                "sur " + circuit.nom + " (" + n(circuit.tension, 0) + " V" + (if (circuit.triphase) " tri, réparti sur les trois phases" else "") + ")",
-                accent = true
-            )
-            Ligne(
-                "Charge du circuit", n(charge * 100, 0) + " %",
-                when {
-                    charge > 1 -> "dépassé : le disjoncteur saute"
-                    charge > Electricite.MARGE -> "au-delà de 80 % : trop près de la limite pour une charge continue"
-                    else -> "dans la marge (moins de 80 %)"
-                },
-                accent = true
-            )
-            Ligne("Groupe électrogène", "au moins " + n(Electricite.kvaGroupe(total / cp), 1) + " kVA", "puissance d'un groupe = 0,8 × kVA ; prends de la marge pour les démarrages")
-        }
+        GrandeValeur(
+            "Intensité", n(a, 1) + " A" + if (circuit.triphase) " par phase" else "",
+            "sur " + circuit.nom + " (" + n(circuit.tension, 0) + " V" + (if (circuit.triphase) " tri, réparti sur les trois phases" else "") + ")"
+        )
+        GrandeValeur(
+            "Charge du circuit", n(charge * 100, 0) + " %",
+            when {
+                charge > 1 -> "dépassé : le disjoncteur saute"
+                charge > Electricite.MARGE -> "au-delà de 80 % : trop près de la limite pour une charge continue"
+                else -> "dans la marge (moins de 80 %)"
+            }
+        )
+        Ligne("Puissance totale", n(total, 0) + " W")
+        Ligne("Groupe électrogène", "au moins " + n(Electricite.kvaGroupe(total / cp), 1) + " kVA", "puissance d'un groupe = 0,8 × kVA ; prends de la marge pour les démarrages")
+    }
+    PourAllerPlusLoin {
+        Explication("Un ordre de grandeur pour répartir les projecteurs. Ce n'est pas un outil de sécurité : le branchement reste l'affaire d'un électricien.")
+        Explication("cos φ vaut 1 pour le tungstène. Pour les LED et les ballasts électroniques, et surtout les ballasts magnétiques de HMI, lis-le sur la fiche.")
+        Explication("Pour un plan entier, avec une lettre de circuit par projecteur : plan au sol › ⋯ › Liste et électricité.")
     }
 }
 
@@ -718,56 +744,58 @@ private fun OutilScintillement(reglages: Reglages) {
     var cadence by remember { mutableStateOf(n(reglages.cineCadence, 3)) }
     var angle by remember { mutableStateOf(n(reglages.cineAngle, 1)) }
     val secteur = reglages.cineSecteur
-    Carte(
-        titre = "Scintillement",
-        sousTitre = "Sur secteur, certaines sources battent à deux fois sa fréquence : HMI et tubes à ballast magnétique, des LED à variation par impulsions. Le tungstène, chaud, bat très peu."
-    ) {
+    Carte(titre = "Ce que tu donnes") {
         ChoixSegmente(listOf(50.0, 60.0), secteur, { if (it == 50.0) "50 Hz (Europe)" else "60 Hz (États-Unis)" }) { reglages.cineSecteur = it }
         Spacer(Modifier.height(6.dp))
         LigneBoutons {
             Champ(cadence, "Cadence (im/s)", Modifier.weight(1f)) { cadence = it }
             Champ(angle, "Obturateur (°)", Modifier.weight(1f)) { angle = it }
         }
-        val c = lire(cadence)
-        val a = lire(angle)
-        if (c != null && a != null) {
-            val v = Scintillement.verdict(c, a, secteur)
-            Spacer(Modifier.height(6.dp))
-            Ligne(
-                v.libelle,
-                Tournage.libelleTempsPose(Tournage.tempsPose(a, c)),
-                when (v) {
-                    VerdictScintillement.SUR -> "le temps de pose contient un nombre entier de battements"
-                    VerdictScintillement.SUR_SI_SYNCHRO -> "chaque image démarre au même moment du cycle, tant que la cadence est tenue"
-                    VerdictScintillement.RISQUE -> "l'exposition varie d'une image à l'autre avec ces sources"
-                },
-                accent = true
-            )
-            Etiquette("Angles sûrs à ${n(c, 3)} im/s")
-            Row(
-                Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(top = 6.dp),
-                horizontalArrangement = Arrangement.spacedBy(6.dp)
-            ) {
-                Scintillement.anglesSurs(c, secteur).forEach { s ->
-                    Pastille(n(s, 1) + "°") {
-                        angle = n(s, 1)
-                        reglages.cineAngle = Math.round(s * 10) / 10.0
-                        reglages.cineCadence = c
-                    }
-                }
-            }
-            Text(
-                "Toucher un angle le règle aussi sur la cellule de tournage.",
-                style = Detail,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(top = 4.dp)
-            )
-        }
         Separateur()
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text("Avertir dans le viseur", style = Corps, color = MaterialTheme.colorScheme.onSurface, modifier = Modifier.weight(1f))
             Switch(checked = reglages.cineAlerteScintillement, onCheckedChange = { reglages.cineAlerteScintillement = it })
         }
+    }
+    val c = lire(cadence)
+    val a = lire(angle)
+    CarteResultat {
+        if (c == null || a == null) {
+            Manque("Donne la cadence et l'angle d'obturateur.")
+            return@CarteResultat
+        }
+        val v = Scintillement.verdict(c, a, secteur)
+        GrandeValeur(
+            v.libelle,
+            Tournage.libelleTempsPose(Tournage.tempsPose(a, c)),
+            when (v) {
+                VerdictScintillement.SUR -> "le temps de pose contient un nombre entier de battements"
+                VerdictScintillement.SUR_SI_SYNCHRO -> "chaque image démarre au même moment du cycle, tant que la cadence est tenue"
+                VerdictScintillement.RISQUE -> "l'exposition varie d'une image à l'autre avec ces sources"
+            }
+        )
+        Text(
+            "Angles sûrs à ${n(c, 3)} im/s : touche-en un pour le régler aussi sur la cellule de tournage.",
+            style = Detail,
+            color = MaterialTheme.colorScheme.onPrimaryContainer,
+            modifier = Modifier.padding(top = 6.dp)
+        )
+        Row(
+            Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(top = 6.dp),
+            horizontalArrangement = Arrangement.spacedBy(6.dp)
+        ) {
+            Scintillement.anglesSurs(c, secteur).forEach { s ->
+                Pastille(n(s, 1) + "°") {
+                    angle = n(s, 1)
+                    reglages.cineAngle = Math.round(s * 10) / 10.0
+                    reglages.cineCadence = c
+                }
+            }
+        }
+    }
+    PourAllerPlusLoin {
+        Explication("Sur secteur, certaines sources battent à deux fois sa fréquence : HMI et tubes à ballast magnétique, des LED à variation par impulsions. Le tungstène, chaud, bat très peu.")
+        Explication("Sûr si le temps de pose × la fréquence de battement est un nombre entier ; angles sûrs : k × 360 × cadence / battement.")
     }
 }
 
@@ -814,5 +842,10 @@ private fun OutilConversions() {
         val c = lire(cadence)
         val a = lire(angle)
         if (c != null && a != null) Ligne("Temps de pose", Tournage.libelleTempsPose(Tournage.tempsPose(a, c)), "angle ÷ (360 × cadence)")
+    }
+    PourAllerPlusLoin {
+        Explication("1 foot-candle = 10,764 lux ; E (lux) = 2,5 × 2^EV à 100 ISO.")
+        Explication("densité ≈ 0,3 × diaphs ; transmission = 2^−diaphs ; T = f ÷ √transmission ; t = angle ÷ (360 × cadence).")
+        Explication("Toutes les formules, et des exercices pour les retenir : Tables › Formules, et l'onglet Réviser.")
     }
 }

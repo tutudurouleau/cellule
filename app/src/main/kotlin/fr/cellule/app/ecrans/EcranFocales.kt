@@ -91,7 +91,7 @@ private val OPTIONS_RATIO: List<OptionRatio> = buildList {
  * disparaît : c'est l'œil qu'on entraîne, pas la lecture.
  */
 @Composable
-fun EcranFocales() {
+fun EcranFocales(enTete: (@Composable () -> Unit)? = null) {
 
     val contexte = LocalContext.current
     val proprietaire = LocalLifecycleOwner.current
@@ -209,12 +209,16 @@ fun EcranFocales() {
     Column(Modifier.fillMaxSize().background(Color.Black)) {
 
         /* ── Exercice, en haut ────────────────────────────────────────── */
-        Box(
+        Column(
             Modifier
                 .fillMaxWidth()
                 .statusBarsPadding()
                 .padding(horizontal = Gouttiere, vertical = 10.dp)
         ) {
+            if (enTete != null) {
+                enTete()
+                Spacer(Modifier.height(6.dp))
+            }
             ChoixSegmente(
                 options = Exercice.entries.toList(),
                 selection = exercice,

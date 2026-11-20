@@ -252,19 +252,6 @@ private fun resumeSupport(reglages: Reglages): String = listOfNotNull(
     "EI ${reglages.cineEi}"
 ).joinToString(" · ")
 
-/** « ‹ Cinéma » en haut à gauche du viseur : translucide, petite, lisible sur n'importe quelle image. */
-@Composable
-private fun PastilleRetour(vers: String, surClic: () -> Unit) {
-    Box(
-        Modifier
-            .clip(RoundedCornerShape(50))
-            .background(Color.Black.copy(alpha = 0.45f))
-            .clickable { surClic() }
-            .padding(horizontal = 12.dp, vertical = 7.dp)
-    ) {
-        Text("‹  $vers", style = Corps, maxLines = 1, color = Color.White)
-    }
-}
 
 /* ── Le viseur : focale ou angle, choisis sans quitter le cadre ─────────── */
 

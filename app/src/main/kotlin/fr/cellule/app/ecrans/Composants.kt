@@ -772,3 +772,21 @@ fun GrandeValeur(intitule: String, valeur: String, detail: String? = null) {
         }
     }
 }
+
+/**
+ * « ‹ Cinéma », « ‹ Tout » : la pastille de retour des écrans plein cadre,
+ * en haut à gauche. Translucide et petite, lisible sur n'importe quelle
+ * image, elle ne cache pas les mesures.
+ */
+@Composable
+fun PastilleRetour(vers: String, surClic: () -> Unit) {
+    Box(
+        Modifier
+            .clip(RoundedCornerShape(50))
+            .background(Color.Black.copy(alpha = 0.45f))
+            .clickable { surClic() }
+            .padding(horizontal = 12.dp, vertical = 7.dp)
+    ) {
+        Text("‹  $vers", style = Corps, maxLines = 1, color = Color.White)
+    }
+}

@@ -14,6 +14,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.text.style.TextOverflow
 import fr.cellule.app.ecrans.Champ
 import fr.cellule.app.ecrans.Pastille
+import fr.cellule.app.ecrans.PastilleRetour
 import fr.cellule.core.sansAccents
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
@@ -343,9 +344,10 @@ private fun Application() {
                     }
                     Box(Modifier.weight(1f).nestedScroll(connexion)) {
                         when (onglet) {
-                            Onglet.MESURER -> EcranMesurer(reglages, etat, cinema)
+                            /* Plein cadre : une pastille « ‹ Tout » ouvre le lanceur, même barre repliée. */
+                            Onglet.MESURER -> EcranMesurer(reglages, etat, cinema, enTete = { PastilleRetour("Tout") { lanceur = true } })
                             Onglet.ESTIMER -> EcranEstimer(reglages, etat)
-                            Onglet.FOCALES -> EcranFocales()
+                            Onglet.FOCALES -> EcranFocales(enTete = { PastilleRetour("Tout") { lanceur = true } })
                             Onglet.CAMERAS -> EcranCameras(quiz, reglages)
                             Onglet.CARNET -> EcranJournal(depot, reglages, etat, labo, tirages, pronostics, cinema)
                             Onglet.LABO -> EcranLabo(pronostics, etat, labo, tirages)
