@@ -15,12 +15,28 @@
   "source": "https://commons.wikimedia.org/wiki/File:Angenieux_Optimo_Ultra_12X.jpg",
   "plateforme": "Wikimedia Commons"
  },
+ "apple-boxes": {
+  "fichier": "apple-boxes.jpg",
+  "titre": "File:Gigantic Filmtools Apple Box.jpg",
+  "auteur": "TaurusEmerald",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Gigantic_Filmtools_Apple_Box.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
  "apple-iphone": {
   "fichier": "apple-iphone.jpg",
   "titre": "File:Deep Purple iPhone 14 Pro Max back photo.jpg",
   "auteur": "Nishino Asuka",
   "licence": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:Deep_Purple_iPhone_14_Pro_Max_back_photo.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "armoire-de-distribution": {
+  "fichier": "armoire-de-distribution.jpg",
+  "titre": "File:Power Distribution System (PDS).jpg",
+  "auteur": "Nkwalther",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Power_Distribution_System_(PDS).jpg",
   "plateforme": "Wikimedia Commons"
  },
  "arri-alexa-35": {
@@ -159,6 +175,22 @@
   "source": "https://commons.wikimedia.org/wiki/File:Bolex_H16,_1935.jpg",
   "plateforme": "Wikimedia Commons"
  },
+ "bras-de-rallonge": {
+  "fichier": "bras-de-rallonge.jpg",
+  "titre": "File:C-stand retracted and gobo arm P1098.jpeg",
+  "auteur": "EncMstr",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:C-stand_retracted_and_gobo_arm_P1098.jpeg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "cable-dmx": {
+  "fichier": "cable-dmx.jpg",
+  "titre": "File:XLR-3 (DMX) Cable - 25ft (46920440884).jpg",
+  "auteur": "SparkFun Electronics from Boulder, USA",
+  "licence": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:XLR-3_(DMX)_Cable_-_25ft_(46920440884).jpg",
+  "plateforme": "Wikimedia Commons"
+ },
  "canon-eos-5d-mark-ii": {
   "fichier": "canon-eos-5d-mark-ii.jpg",
   "titre": "File:Canon EOS 5D Mark II with 50mm 1.4 edit1.jpg",
@@ -181,6 +213,14 @@
   "auteur": "Free Photo Fun",
   "licence": "CC BY 2.0",
   "source": "https://commons.wikimedia.org/wiki/File:Canon_XL-1_3_CCD_Digital_Video_Camcorder_PAL_Mini_DV.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "collier-d-echafaudage": {
+  "fichier": "collier-d-echafaudage.jpg",
+  "titre": "File:Coupler 3.jpg",
+  "auteur": "Warburg",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Coupler_3.jpg",
   "plateforme": "Wikimedia Commons"
  },
  "cooke-s7-i": {
@@ -277,6 +317,22 @@
   "source": "https://commons.wikimedia.org/wiki/File:Leica-p1030810.jpg",
   "plateforme": "Wikimedia Commons"
  },
+ "manfrotto-autopole": {
+  "fichier": "manfrotto-autopole.jpg",
+  "titre": "openverse:8200ff3e-9519-4a06-ac8b-e75daf2dd854",
+  "auteur": "See-ming Lee (SML)",
+  "licence": "CC BY-SA 2.0",
+  "source": "https://www.flickr.com/photos/48973657@N00/1230584407",
+  "plateforme": "Flickr"
+ },
+ "matthews-c-stand": {
+  "fichier": "matthews-c-stand.jpg",
+  "titre": "File:40\" Double Riser Spring Loaded Folding C-Stand w-Grip Head and Arm.jpg",
+  "auteur": "Msegrip",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:40%22_Double_Riser_Spring_Loaded_Folding_C-Stand_w-Grip_Head_and_Arm.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
  "mitchell-bnc": {
   "fichier": "mitchell-bnc.jpg",
   "titre": "File:Viseur MITCHELL BNC années 30 à 60.jpg",
@@ -285,12 +341,36 @@
   "source": "https://commons.wikimedia.org/wiki/File:Viseur_MITCHELL_BNC_ann%C3%A9es_30_%C3%A0_60.jpg",
   "plateforme": "Wikimedia Commons"
  },
+ "neutrik-powercon": {
+  "fichier": "neutrik-powercon.jpg",
+  "titre": "File:Neutrik PowerCON type B.jpg",
+  "auteur": "DJSparky",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Neutrik_PowerCON_type_B.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "nid-d-abeille": {
+  "fichier": "nid-d-abeille.jpg",
+  "titre": "File:Октобокс с сотами.jpg",
+  "auteur": "Dmitry Makeev",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:%D0%9E%D0%BA%D1%82%D0%BE%D0%B1%D0%BE%D0%BA%D1%81_%D1%81_%D1%81%D0%BE%D1%82%D0%B0%D0%BC%D0%B8.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
  "nikon-ai-s-rehousses": {
   "fichier": "nikon-ai-s-rehousses.jpg",
   "titre": "File:Nikon AI-s Nikkor 105mm f1.8.jpg",
   "auteur": "Phiarc",
   "licence": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:Nikon_AI-s_Nikkor_105mm_f1.8.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "p17": {
+  "fichier": "p17.jpg",
+  "titre": "File:Kraftstrom- und Lichtstromsteckdose.jpg",
+  "auteur": "HTL-Mödchen23",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Kraftstrom-_und_Lichtstromsteckdose.jpg",
   "plateforme": "Wikimedia Commons"
  },
  "panavision-genesis": {
@@ -379,12 +459,36 @@
   "source": "https://commons.wikimedia.org/wiki/File:Wooden_Camera_Zip_Box_Pro.jpg",
   "plateforme": "Wikimedia Commons"
  },
+ "rotule-de-c-stand": {
+  "fichier": "rotule-de-c-stand.jpg",
+  "titre": "File:C-Stand.jpg",
+  "auteur": "Joseph T Wilkinson",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:C-Stand.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "serre-joint": {
+  "fichier": "serre-joint.jpg",
+  "titre": "File:1960s F clamp by Broederna Wibells Smidesfabrik Eskilstuna Sweden.jpg",
+  "auteur": "R. Henrik Nilsson",
+  "licence": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:1960s_F_clamp_by_Broederna_Wibells_Smidesfabrik_Eskilstuna_Sweden.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
  "sigma-cine-ff-high-speed": {
   "fichier": "sigma-cine-ff-high-speed.jpg",
   "titre": "File:Duclos Lenses Sigma Cine 40mm.jpg",
   "auteur": "Matthew Duclos",
   "licence": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:Duclos_Lenses_Sigma_Cine_40mm.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "socapex": {
+  "fichier": "socapex.jpg",
+  "titre": "File:Socapex 19pin.jpg",
+  "auteur": "Hugovanmeijeren",
+  "licence": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Socapex_19pin.jpg",
   "plateforme": "Wikimedia Commons"
  },
  "sony-burano": {
@@ -441,6 +545,30 @@
   "auteur": "Marcin Wichary from San Francisco, U.S.A.",
   "licence": "CC BY 2.0",
   "source": "https://commons.wikimedia.org/wiki/File:3-strip_Technicolor_camera.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "technocrane": {
+  "fichier": "technocrane.jpg",
+  "titre": "File:Carling Premier 1998 Iceland4.jpg",
+  "auteur": "Gmcinema",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Carling_Premier_1998_Iceland4.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "tiffen-steadicam": {
+  "fichier": "tiffen-steadicam.jpg",
+  "titre": "File:Curt O. Schaller - Steadicam Operator - Entwickler und Designer der artemis-Reihe von Sachtler.jpg",
+  "auteur": "Christian R. F. Schaller",
+  "licence": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Curt_O._Schaller_-_Steadicam_Operator_-_Entwickler_und_Designer_der_artemis-Reihe_von_Sachtler.jpg",
+  "plateforme": "Wikimedia Commons"
+ },
+ "ventouse": {
+  "fichier": "ventouse.jpg",
+  "titre": "File:Camera mounted on windshield with suction cup.jpg",
+  "auteur": "Motokoka",
+  "licence": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Camera_mounted_on_windshield_with_suction_cup.jpg",
   "plateforme": "Wikimedia Commons"
  },
  "vision-research-phantom": {
