@@ -664,10 +664,13 @@ private fun Lanceur(
     BackHandler(onBack = fermer)
     var recherche by remember { mutableStateOf("") }
     val mots = sansAccents(recherche).split(' ').filter { it.isNotBlank() }
-    val trouvees = DESTINATIONS.filter { d ->
-        if (!d.dansLanceur) return@filter false
-        val botte = sansAccents(d.titre + " " + d.detail + " " + d.mots + " " + d.univers.titre)
-        mots.all { it in botte }
+    /* Recalculé seulement quand la recherche change, pas à chaque image du défilement. */
+    val trouvees = remember(recherche) {
+        DESTINATIONS.filter { d ->
+            if (!d.dansLanceur) return@filter false
+            val botte = sansAccents(d.titre + " " + d.detail + " " + d.mots + " " + d.univers.titre)
+            mots.all { it in botte }
+        }
     }
     val colonnes = if (LocalPaysage.current) 4 else 2
     Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
@@ -768,7 +771,10 @@ private fun Lanceur(
 
 /** Le groupe d'une page dans le lanceur : son parent, sinon elle-même si elle a des enfants, sinon son onglet. */
 private fun cleDeGroupe(d: Destination): String =
-    d.parent ?: if (DESTINATIONS.any { it.parent == d.id }) d.id else d.onglet.name
+    d.parent ?: if (d.id in PARENTS) d.id else d.onglet.name
+
+/** Les pages qui ont des sous-pages : calculé une fois. */
+private val PARENTS: Set<String> by lazy { DESTINATIONS.mapNotNull { it.parent }.toSet() }
 
 /** La page principale d'un groupe : celle qui ouvre l'onglet ou le sommaire, s'il y en a une. */
 private fun racineDe(g: List<Destination>): Destination? {

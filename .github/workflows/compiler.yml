@@ -56,8 +56,8 @@ jobs:
         with:
           packages: platform-tools
       - uses: gradle/actions/setup-gradle@v4
-      - name: Construire l'APK de débogage
-        run: ./gradlew :app:assembleDebug
+      - name: Construire l'APK optimisé
+        run: ./gradlew :app:assembleRelease
       # Android n'installe une mise à jour par-dessus l'application que si
       # elle porte la même signature et un numéro de version au moins égal ;
       # sinon il faut désinstaller, et le carnet est perdu. On le vérifie
@@ -65,7 +65,7 @@ jobs:
       - name: Vérifier que l'APK s'installe par-dessus le précédent
         run: |
           outils=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
-          nouveau=$(ls app/build/outputs/apk/debug/*.apk)
+          nouveau=$(ls app/build/outputs/apk/release/*.apk)
           if ! curl -sfL -o precedent.apk "https://github.com/${GITHUB_REPOSITORY}/releases/download/apk/cellule.apk"; then
             echo "Aucun APK publié à comparer."
             exit 0
@@ -86,7 +86,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: cellule-debug
-          path: app/build/outputs/apk/debug/*.apk
+          path: app/build/outputs/apk/release/*.apk
           if-no-files-found: error
 
   # Les artefacts d'Actions arrivent en zip et exigent d'être connecté : peu

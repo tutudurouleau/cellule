@@ -43,15 +43,22 @@ android {
         versionCode = numeroDeCompilation
         /* La V2 : la refonte complète. Le numéro de compilation suit entre
            parenthèses, pour savoir quel APK est installé. */
-        versionName = "5.6.1 ($numeroDeCompilation)"
+        versionName = "5.6.2 ($numeroDeCompilation)"
     }
 
     buildTypes {
         debug {
             signingConfig = signingConfigs.getByName("cellule")
         }
+        /*
+         * L'APK publié est celui-ci : optimisé (R8) et non débogable, donc
+         * compilé pour de bon par le téléphone — une version de débogage
+         * fait saccader Compose. Même clé que le débogage : il s'installe
+         * par-dessus les anciens APK sans rien effacer.
+         */
         release {
-            isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("cellule")
+            isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
@@ -92,6 +99,9 @@ dependencies {
 
     /* Les QR codes des plans au sol : les créer et les lire, sans service Google. */
     implementation("com.google.zxing:core:3.5.3")
+
+    /* Compose livre ses profils de démarrage : installés avec l'APK, ils font compiler d'avance le code qui sert à défiler. */
+    implementation("androidx.profileinstaller:profileinstaller:1.4.1")
 
     val camerax = "1.4.1"
     implementation("androidx.camera:camera-core:$camerax")
