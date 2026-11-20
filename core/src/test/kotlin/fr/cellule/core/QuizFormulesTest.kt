@@ -74,4 +74,57 @@ class QuizFormulesTest {
             .first { it.enonce.startsWith("Obturateur à 180° et 25 im/s") }
         assertEquals("1/50 s", q.options[q.bonne])
     }
+
+    @Test
+    fun `chaque question renvoie a sa fiche`() {
+        ThemeFormule.entries.forEach { theme ->
+            QuizFormules.generateurs(theme).forEach { generateur ->
+                repeat(60) { graine ->
+                    val q = generateur(Random(graine))
+                    assertTrue(FichesFormules.pour(theme, q.sujet) != null, "Pas de fiche pour ${theme.name} « ${q.sujet} »")
+                }
+            }
+        }
+        /* Et pas de fiche orpheline, ni en double. */
+        val sujets = FichesFormules.TOUTES.map { it.theme to it.sujet }
+        assertEquals(sujets.size, sujets.toSet().size)
+        FichesFormules.TOUTES.forEach { f ->
+            assertTrue(f.formule.isNotBlank() && f.lettres.isNotEmpty() && f.exemple.isNotBlank() && f.repere.isNotBlank() && f.piege.isNotBlank(), f.sujet)
+            val posee = (0 until 600).any { QuizFormules.question(f.theme, Random(it)).sujet == f.sujet }
+            assertTrue(posee, "La fiche « ${f.sujet} » n'a aucune question")
+        }
+    }
+
+    @Test
+    fun `une question sur une formule precise`() {
+        val q = QuizFormules.questionSur(ThemeFormule.LUMIERE, "Tache de lumière", Random(3))
+        assertEquals("Tache de lumière", q.sujet)
+    }
+
+    @Test
+    fun `la reponse tapee juste est acceptee, et seulement elle`() {
+        var tapables = 0
+        ThemeFormule.entries.forEach { theme ->
+            QuizFormules.generateurs(theme).forEach { generateur ->
+                repeat(80) { graine ->
+                    val q = generateur(Random(graine))
+                    val gabarit = SaisieReponse.gabarit(q) ?: return@repeat
+                    tapables++
+                    assertTrue("…" in gabarit, gabarit)
+                    val attendu = SaisieReponse.attendu(q)!!
+                    val tape = nb(attendu, 6)
+                    assertTrue(SaisieReponse.accepte(q, tape), "« $tape » refusé pour ${q.options[q.bonne]}")
+                    assertTrue(!SaisieReponse.accepte(q, nb(attendu * 1.5 + 1, 3)), "réponse fausse acceptée pour ${q.options[q.bonne]}")
+                }
+            }
+        }
+        assertTrue(tapables > 2000, "seulement $tapables questions à taper")
+        /* La fraction se tape par son dénominateur, ou en entier. */
+        val q = (0 until 400).map { QuizFormules.generateurs(ThemeFormule.TOURNAGE)[0](Random(it)) }
+            .first { it.enonce.startsWith("Obturateur à 180° et 25 im/s") }
+        assertEquals("1/… s", SaisieReponse.gabarit(q))
+        assertTrue(SaisieReponse.accepte(q, "50"))
+        assertTrue(SaisieReponse.accepte(q, "1/50"))
+        assertTrue(!SaisieReponse.accepte(q, "48"))
+    }
 }

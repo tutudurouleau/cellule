@@ -18,6 +18,8 @@ import fr.cellule.app.Corps
 import fr.cellule.app.Detail
 import fr.cellule.app.TitreCarte
 import fr.cellule.core.AMBIANCES
+import fr.cellule.core.FichesFormules
+import fr.cellule.core.ThemeFormule
 import fr.cellule.core.CIRCUITS
 import fr.cellule.core.FORMATS_PELLICULE
 import fr.cellule.core.FamilleGelatine
@@ -104,6 +106,13 @@ fun TablesFormules() {
         Formule("Hyperfocale", "H = f² / (N × c) + f")
         Formule("Profondeur de champ", "proche = s(H − f) / (H + s − 2f) ; loin = s(H − f) / (H − s), l'infini si s ≥ H")
         Formule("Cadre sur la photo du téléphone", "fraction = (dimension / 2f) / tan(champ du téléphone / 2)", "Les tangentes des demi-angles se comparent directement : c'est ce qui se projette à plat.")
+    }
+
+    /* Les trois thèmes ajoutés pour réviser : la même source que leurs fiches. */
+    listOf(ThemeFormule.OPTIQUE_GEO, ThemeFormule.SENSITOMETRIE, ThemeFormule.NUMERIQUE).forEach { theme ->
+        Carte(titre = theme.titre) {
+            FichesFormules.du(theme).forEach { Formule(it.sujet, it.formule, it.repere) }
+        }
     }
 
     Carte(titre = "Électricité") {

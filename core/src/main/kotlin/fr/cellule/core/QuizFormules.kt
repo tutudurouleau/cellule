@@ -6,6 +6,7 @@ import kotlin.math.abs
 import kotlin.math.atan
 import kotlin.math.cos
 import kotlin.math.floor
+import kotlin.math.log10
 import kotlin.math.log2
 import kotlin.math.pow
 import kotlin.math.round
@@ -30,6 +31,9 @@ enum class ThemeFormule(val titre: String, val detail: String) {
     LUMIERE("Lumière", "carré de la distance, intensité, rapports"),
     COULEUR("Couleur", "kelvins, mireds, gélatines"),
     OPTIQUE("Optique", "angle de champ, hyperfocale, profondeur"),
+    OPTIQUE_GEO("Optique géométrique", "conjugaison, grandissement, ouverture"),
+    SENSITOMETRIE("Sensitométrie", "densité, gamma, latitude, ISO"),
+    NUMERIQUE("Numérique", "bits, dynamique, débit, échantillonnage"),
     ELECTRICITE("Électricité", "amperes, watts, groupes"),
     SCINTILLEMENT("Scintillement", "secteur, vitesses et angles sûrs")
 }
@@ -55,6 +59,15 @@ object QuizFormules {
         return generateurs(t).random(alea)(alea)
     }
 
+    /** Une question sur une formule précise (son sujet), pour revoir ses erreurs. */
+    fun questionSur(theme: ThemeFormule, sujet: String, alea: Random = Random.Default): QuestionFormule {
+        repeat(400) {
+            val q = question(theme, alea)
+            if (q.sujet == sujet) return q
+        }
+        return question(theme, alea)
+    }
+
     /** Toutes les façons de poser une question sur un thème. */
     fun generateurs(theme: ThemeFormule): List<(Random) -> QuestionFormule> = when (theme) {
         ThemeFormule.EXPOSITION -> listOf(::evCouple, ::sensibilite, ::incident, ::incidentInverse, ::reflechie, ::ouverturePourVitesse, ::diaphsRapport, ::fractionDiaph, reconnaitre(theme, RECO_EXPOSITION))
@@ -62,6 +75,9 @@ object QuizFormules {
         ThemeFormule.LUMIERE -> listOf(::intensite, ::carreDistance, ::reculer, ::distancePourEclairement, ::cosinus, ::tache, ::geometrie, ::addition, ::multiplierSources, ::rapports, ::unites, reconnaitre(theme, RECO_LUMIERE))
         ThemeFormule.COULEUR -> listOf(::mired, ::decalage, ::gelatineAChoisir, ::perteGelatine, reconnaitre(theme, RECO_COULEUR))
         ThemeFormule.OPTIQUE -> listOf(::angleDeChamp, ::focalePourAngle, ::largeurCadre, ::cercleConfusion, ::hyperfocale, ::netteteHyperfocale, ::procheNet, reconnaitre(theme, RECO_OPTIQUE))
+        ThemeFormule.OPTIQUE_GEO -> listOf(::conjugaison, ::tirage, ::grandissement, ::nombreOuverture, ::vergence, reconnaitre(theme, RECO_OPTIQUE_GEO))
+        ThemeFormule.SENSITOMETRIE -> listOf(::densiteOptique, ::transmissionDensite, ::gamma, ::latitude, ::isoDin, reconnaitre(theme, RECO_SENSITOMETRIE))
+        ThemeFormule.NUMERIQUE -> listOf(::niveaux, ::bitsPourNiveaux, ::dynamique, ::decibels, ::debitBrut, ::stockage, ::echantillonnage, reconnaitre(theme, RECO_NUMERIQUE))
         ThemeFormule.ELECTRICITE -> listOf(::monophase, ::puissancePrise, ::combienDeProjecteurs, ::triphase, ::groupe, reconnaitre(theme, RECO_ELECTRICITE))
         ThemeFormule.SCINTILLEMENT -> listOf(::battement, ::vitesseSure, ::angleSur, ::cadenceSure, reconnaitre(theme, RECO_SCINTILLEMENT))
     }
@@ -732,7 +748,7 @@ private fun vitesseSure(a: Random): QuestionFormule {
     val pieges = if (secteur == 50) listOf(48, 60, 120, 96, 200) else listOf(50, 100, 48, 25, 96, 200)
     val den = sures.random(a)
     return qcm(
-        TH_SCINT, "Sûr", "t × f_battement = nombre entier",
+        TH_SCINT, "Vitesse sûre", "t × f_battement = nombre entier",
         "Sur un secteur à $secteur Hz, quelle vitesse d'obturation évite le scintillement ?",
         "1/$den s", pieges.shuffled(a).map { "1/$it s" },
         "Sûr si t × $battement est un nombre entier : 1/$den × $battement = ${nb(battement.toDouble() / den, 2)}. Les autres donnent un nombre à virgule.", a
@@ -768,7 +784,7 @@ private fun cadenceSure(a: Random): QuestionFormule {
     val c = sures.random(a)
     fun ims(x: Int) = "$x im/s"
     return qcm(
-        TH_SCINT, "Sûr si la cadence est stable", "f_battement / cadence = nombre entier",
+        TH_SCINT, "Cadence sûre", "f_battement / cadence = nombre entier",
         "Sur un secteur à $secteur Hz, quelle cadence tombe juste avec le battement de la lumière ?",
         ims(c), pieges.shuffled(a).map(::ims),
         "f_battement / cadence = $battement / $c = ${nb(battement.toDouble() / c, 2)} : un nombre entier, chaque image reçoit la même lumière.", a
@@ -809,7 +825,7 @@ private val RECO_LUMIERE = listOf(
     Reco("Intensité d'une source", "I = E₀ × d₀²", listOf("I = E₀ / d₀²", "I = E₀ × d₀", "I = √(E₀ × d₀)")),
     Reco("Distance pour un éclairement", "d = √(I × cos θ / E)", listOf("d = I / E", "d = √(E / I)", "d = (I / E)²")),
     Reco("Tache de lumière", "D = 2 × d × tan(faisceau / 2)", listOf("D = d × tan(faisceau)", "D = 2 × d × sin(faisceau)", "D = d / tan(faisceau / 2)")),
-    Reco("Rapport côté éclairé / côté ombre", "(E_face + E_déb) / E_déb", listOf("E_face / E_déb", "E_déb / E_face", "(E_face − E_déb) / E_déb")),
+    Reco("Rapports", "côté éclairé / côté ombre = (E_face + E_déb) / E_déb", listOf("côté éclairé / côté ombre = E_face / E_déb", "côté éclairé / côté ombre = E_déb / E_face", "côté éclairé / côté ombre = (E_face − E_déb) / E_déb")),
     Reco("Géométrie", "d = √(recul² + Δh²)", listOf("d = recul + Δh", "d = √(recul + Δh)", "d = recul² + Δh²"))
 )
 
@@ -825,7 +841,7 @@ private val RECO_OPTIQUE = listOf(
     Reco("Hyperfocale", "H = f² / (N × c) + f", listOf("H = f / (N × c)", "H = N × c / f²", "H = f² × N / c")),
     Reco("Ce que couvre le cadre", "largeur = distance × capteur / f", listOf("largeur = distance × f / capteur", "largeur = capteur × f / distance", "largeur = distance / (capteur × f)")),
     Reco("Cercle de confusion", "c = diagonale / 1 500", listOf("c = diagonale / 150", "c = diagonale / 15 000", "c = diagonale × 1 500")),
-    Reco("Profondeur de champ, limite proche", "proche = s(H − f) / (H + s − 2f)", listOf("proche = s(H − f) / (H − s)", "proche = s × H / (H − s)", "proche = (H + s) / s"))
+    Reco("Profondeur de champ", "proche = s(H − f) / (H + s − 2f)", listOf("proche = s(H − f) / (H − s)", "proche = s × H / (H − s)", "proche = (H + s) / s"))
 )
 
 private val RECO_ELECTRICITE = listOf(
@@ -840,3 +856,355 @@ private val RECO_SCINTILLEMENT = listOf(
     Reco("Vitesse sûre", "t × f_battement = nombre entier", listOf("t / f_battement = nombre entier", "t × f_secteur = 1", "t = f_battement / cadence")),
     Reco("Angles sûrs", "angle = k × 360 × cadence / f_battement", listOf("angle = k × 360 / (cadence × f_battement)", "angle = k × f_battement / (360 × cadence)", "angle = 360 × cadence × f_battement"))
 )
+
+/* ── Optique géométrique ───────────────────────────────────────────────── */
+
+private val TH_OPTGEO = ThemeFormule.OPTIQUE_GEO
+private fun millimetres(x: Double, decimales: Int = 1): String = nb(x, decimales) + " mm"
+
+private fun conjugaison(a: Random): QuestionFormule {
+    val f = listOf(25, 35, 50, 85, 100).random(a).toDouble()
+    val d = listOf(0.5, 1.0, 2.0, 3.0, 5.0).random(a)
+    val dmm = d * 1000
+    val image = f * dmm / (dmm - f)
+    val t = image - f
+    return qcm(
+        TH_OPTGEO, "Conjugaison", "1/OA' − 1/OA = 1/f'",
+        "Objectif de ${nb(f)} mm, sujet à ${metres(d)} : à quelle distance derrière l'objectif se forme l'image nette ?",
+        millimetres(image), listOf(f, f - t, f + 2 * t, f * dmm / (dmm + f), f + 3 * t).map { millimetres(it) },
+        "OA = −${nb(dmm)} mm. 1/OA' = 1/f' + 1/OA = 1/${nb(f)} − 1/${nb(dmm)}, donc OA' = f' × d / (d − f') = ${nb(f)} × ${nb(dmm)} / ${nb(dmm - f)} ≈ ${millimetres(image, 2)}. L'image est ${millimetres(t, 2)} derrière le foyer.", a
+    )
+}
+
+private fun tirage(a: Random): QuestionFormule {
+    val f = listOf(25, 35, 50, 85, 100).random(a).toDouble()
+    val d = listOf(0.5, 1.0, 2.0, 3.0).random(a)
+    val dmm = d * 1000
+    val t = f * f / (dmm - f)
+    return qcm(
+        TH_OPTGEO, "Conjugaison", "1/OA' − 1/OA = 1/f'",
+        "Un objectif de ${nb(f)} mm est réglé sur l'infini. De combien doit-il avancer pour faire le point à ${metres(d)} ?",
+        millimetres(t, 2), listOf(t * 2, t / 2, t * 10, t * 4).map { millimetres(it, 2) },
+        "OA' = f' × d / (d − f') = ${nb(f)} × ${nb(dmm)} / ${nb(dmm - f)} ≈ ${millimetres(f + t, 2)}. Le tirage vaut OA' − f' = f'² / (d − f') ≈ ${millimetres(t, 2)}.", a
+    )
+}
+
+private fun grandissement(a: Random): QuestionFormule {
+    val f = listOf(25, 50, 85, 135).random(a).toDouble()
+    val d = listOf(2.0, 3.0, 5.0, 10.0).random(a)
+    val h = listOf(1.7, 1.8).random(a)
+    val dmm = d * 1000
+    val g = f / (dmm - f)
+    val image = h * 1000 * g
+    return qcm(
+        TH_OPTGEO, "Grandissement", "γ = OA' / OA",
+        "Une personne de ${metres(h)} se tient à ${metres(d)} d'un objectif de ${nb(f)} mm : quelle hauteur fait son image ?",
+        millimetres(image), listOf(image * 2, image / 2, image * 1.5, image / 3).map { millimetres(it) },
+        "γ = OA' / OA = −f' / (d − f') = −${nb(f)} / ${nb(dmm - f)} ≈ −${nb(g, 4)} : image renversée, ${nb(1 / g)} fois plus petite. ${nb(h * 1000)} mm × ${nb(g, 4)} ≈ ${millimetres(image)}.", a
+    )
+}
+
+private fun nombreOuverture(a: Random): QuestionFormule {
+    val f = listOf(35, 50, 85, 100, 135).random(a).toDouble()
+    val i = (1..4).random(a)
+    val n = OUVERTURES_QUIZ[i]
+    val d = f / n
+    return if (a.nextBoolean()) {
+        qcm(
+            TH_OPTGEO, "Nombre d'ouverture", "N = f / D",
+            "Un ${nb(f)} mm ouvert à ${fStop(n)} : quel diamètre de pupille d'entrée ?",
+            millimetres(d, 0), listOf(f * n, f / (2 * n), f / (n * n), d * 2, d / 2).map { millimetres(it, 0) },
+            "D = f / N = ${nb(f)} / ${nb(n, 1)} ≈ ${millimetres(d)}.", a
+        )
+    } else {
+        qcm(
+            TH_OPTGEO, "Nombre d'ouverture", "N = f / D",
+            "Un ${nb(f)} mm dont la pupille d'entrée mesure ${millimetres(d)} : quelle ouverture ?",
+            fStop(n), voisines(i, ::fStop),
+            "N = f / D = ${nb(f)} / ${nb(d, 1)} ≈ ${nb(n, 1)} : ${fStop(n)}.", a
+        )
+    }
+}
+
+private fun vergence(a: Random): QuestionFormule {
+    return if (a.nextBoolean()) {
+        val f = listOf(25, 50, 100, 200, 500).random(a).toDouble()
+        val v = 1000 / f
+        fun dioptries(x: Double) = nb(x, 1) + " δ"
+        qcm(
+            TH_OPTGEO, "Vergence", "V = 1 / f' (f' en mètres)",
+            "Quelle est la vergence d'un objectif de ${nb(f)} mm ?",
+            dioptries(v), listOf(v * 2, v / 2, f / 10, v * 10).map(::dioptries),
+            "V = 1 / f' avec f' en mètres : 1 / ${nb(f / 1000, 3)} = ${dioptries(v)}.", a
+        )
+    } else {
+        val v = listOf(1, 2, 3, 4).random(a).toDouble()
+        qcm(
+            TH_OPTGEO, "Vergence", "V = 1 / f' (f' en mètres)",
+            "Une bonnette de +${nb(v)} δ sur un objectif réglé à l'infini : à quelle distance se fait le point ?",
+            metres(1 / v, 2), listOf(1 / (2 * v), 2 / v, 1 / v + 1, 1 / (4 * v), v).map { metres(it, 2) },
+            "La bonnette ramène l'infini à son propre foyer : 1 / ${nb(v)} = ${metres(1 / v, 2)}.", a
+        )
+    }
+}
+
+/* ── Sensitométrie ─────────────────────────────────────────────────────── */
+
+private val TH_SENSITO = ThemeFormule.SENSITOMETRIE
+
+private fun densiteOptique(a: Random): QuestionFormule {
+    val (t, d) = listOf(50.0 to log10(2.0), 25.0 to log10(4.0), 10.0 to 1.0, 1.0 to 2.0, 0.1 to 3.0).random(a)
+    fun dens(x: Double) = "D = " + nb(x, 1)
+    return qcm(
+        TH_SENSITO, "Densité optique", "D = log₁₀(1 / T)",
+        "Une plage du négatif laisse passer ${pourcent(t, 1)} de la lumière : quelle densité ?",
+        dens(d), listOf(d + 0.3, d - 0.3, d * 2, d + 1, 1 - t / 100, log2(100 / t)).filter { it > 0.05 }.map(::dens),
+        "D = log₁₀(1 / T) = log₁₀(1 / ${nb(t / 100, 3)}) = log₁₀(${nb(100 / t)}) ≈ ${nb(d, 2)}.", a
+    )
+}
+
+private fun transmissionDensite(a: Random): QuestionFormule {
+    val d = listOf(0.3, 0.6, 0.9, 1.0, 2.0).random(a)
+    val t = 100 / 10.0.pow(d)
+    fun part(x: Double) = pourcent(x, if (x < 1) 2 else if (x < 20) 1 else 0)
+    return qcm(
+        TH_SENSITO, "Densité optique", "D = log₁₀(1 / T)",
+        "Une densité de ${nb(d, 1)} : quelle part de la lumière traverse ?",
+        part(t), listOf(t * 2, t / 2, 100 - d * 100, t * 10, t / 4).filter { it > 0.01 && it <= 100.0 }.map(::part),
+        "T = 10^−D = 10^−${nb(d, 1)} ≈ ${part(t)}. D = 0,3, c'est la moitié de la lumière : un diaph, comme un ND 0,3.", a
+    )
+}
+
+private fun gamma(a: Random): QuestionFormule {
+    val g = listOf(0.5, 0.6, 0.7, 0.8, 1.0).random(a)
+    val dlog = listOf(0.5, 1.0, 1.5, 2.0).random(a)
+    val d1 = listOf(0.3, 0.5, 0.8).random(a)
+    val d2 = d1 + g * dlog
+    fun gm(x: Double) = "γ = " + nb(x, 2)
+    return qcm(
+        TH_SENSITO, "Gamma", "γ = ΔD / Δlog H",
+        "Sur la partie droite de la courbe, la densité passe de ${nb(d1, 1)} à ${nb(d2, 2)} quand log H augmente de ${nb(dlog, 1)} : quel gamma ?",
+        gm(g), listOf(1 / g, g * dlog, g * 2, g / 2, d2 / dlog, g * 1.5, g + 0.25).map(::gm),
+        "γ = ΔD / Δlog H = (${nb(d2, 2)} − ${nb(d1, 1)}) / ${nb(dlog, 1)} = ${nb(g * dlog, 2)} / ${nb(dlog, 1)} = ${nb(g, 2)}.", a
+    )
+}
+
+private fun latitude(a: Random): QuestionFormule {
+    return if (a.nextBoolean()) {
+        val k = listOf(3, 5, 7, 8, 10).random(a)
+        val x = 0.3 * k
+        qcm(
+            TH_SENSITO, "Latitude", "1 diaph = 0,3 en log H",
+            "Une latitude de Δlog H = ${nb(x, 1)} représente combien de diaphs ?",
+            diaphs(k), listOf(x * 10, k + 1.0, k - 1.0, 2.0 * k, x).map(::diaphs),
+            "1 diaph = log₁₀ 2 ≈ 0,3 en log H : ${nb(x, 1)} / 0,3 = $k diaphs.", a
+        )
+    } else {
+        val k = listOf(5, 7, 10, 12, 14).random(a)
+        fun dl(x: Double) = "Δlog H = " + nb(x, 1)
+        qcm(
+            TH_SENSITO, "Latitude", "1 diaph = 0,3 en log H",
+            "Un film tient $k diaphs entre le pied et l'épaule : quel écart en log H ?",
+            dl(0.3 * k), listOf(0.1 * k, 0.5 * k, k.toDouble(), 0.3 * (k + 1)).map(::dl),
+            "1 diaph ≈ 0,3 en log H : $k × 0,3 = ${nb(0.3 * k, 1)}.", a
+        )
+    }
+}
+
+private fun isoDin(a: Random): QuestionFormule {
+    val isos = listOf(25, 50, 100, 200, 400, 800, 1600, 3200)
+    val i = (1..6).random(a)
+    val iso = isos[i]
+    val log = log10(iso.toDouble())
+    val din = round(10 * log + 1).toInt()
+    return if (a.nextBoolean()) {
+        qcm(
+            TH_SENSITO, "ISO et DIN", "DIN = 10 × log₁₀(ISO) + 1",
+            "Une pellicule de ${nb(iso)} ISO : combien de degrés DIN ?",
+            "$din°", listOf(din + 3, din - 3, din + 1, iso / 10).map { "$it°" },
+            "DIN = 10 × log₁₀(${nb(iso)}) + 1 = 10 × ${nb(log, 2)} + 1 ≈ $din°. +3° DIN = sensibilité ×2 = un diaph.", a
+        )
+    } else {
+        qcm(
+            TH_SENSITO, "ISO et DIN", "DIN = 10 × log₁₀(ISO) + 1",
+            "$din° DIN : quelle sensibilité ISO ?",
+            "${nb(iso)} ISO", listOf(isos[i - 1], isos[i + 1], din * 10, isos[(i + 2) % isos.size]).map { "${nb(it)} ISO" },
+            "ISO = 10^((DIN − 1) / 10) = 10^(${nb((din - 1) / 10.0, 1)}) ≈ ${nb(iso)}. 21° = 100 ISO, et chaque +3° double.", a
+        )
+    }
+}
+
+/* ── Numérique ─────────────────────────────────────────────────────────── */
+
+private val TH_NUM = ThemeFormule.NUMERIQUE
+
+private fun niveaux(a: Random): QuestionFormule {
+    val b = listOf(8, 10, 12, 14, 16).random(a)
+    val n = 2.0.pow(b)
+    fun nv(x: Double) = nb(x) + " niveaux"
+    return qcm(
+        TH_NUM, "Niveaux de quantification", "niveaux = 2^bits",
+        "Un signal codé sur $b bits par composante : combien de niveaux ?",
+        nv(n), listOf(2.0.pow(b - 1), 2.0.pow(b + 1), (b * b).toDouble(), b * 256.0, 2.0.pow(b + 2)).map(::nv),
+        "niveaux = 2^$b = ${nb(n)}. Chaque bit de plus double le nombre de nuances.", a
+    )
+}
+
+private fun bitsPourNiveaux(a: Random): QuestionFormule {
+    val b = listOf(8, 10, 12, 14).random(a)
+    val n = 2.0.pow(b)
+    return qcm(
+        TH_NUM, "Niveaux de quantification", "niveaux = 2^bits",
+        "Il faut ${nb(n)} niveaux par composante : combien de bits ?",
+        "$b bits", listOf(b + 1, b - 1, b + 2, (n / 256).toInt(), b * 2).map { "$it bits" },
+        "bits = log₂(${nb(n)}) = $b, car 2^$b = ${nb(n)}.", a
+    )
+}
+
+private fun dynamique(a: Random): QuestionFormule {
+    return if (a.nextBoolean()) {
+        val k = listOf(10, 12, 14, 16).random(a)
+        val r = 2.0.pow(k)
+        qcm(
+            TH_NUM, "Dynamique", "diaphs = log₂(rapport)",
+            "Une caméra distingue un rapport de ${nb(r)}:1 entre la plus forte et la plus faible lumière : combien de diaphs de dynamique ?",
+            diaphs(k), listOf(k + 1.0, k - 1.0, round(log10(r)), k * 2.0, r / 1000).map(::diaphs),
+            "diaphs = log₂(${nb(r)}) = $k.", a
+        )
+    } else {
+        val k = listOf(10, 12, 13, 14, 15).random(a)
+        fun rap(x: Double) = nb(x) + ":1"
+        qcm(
+            TH_NUM, "Dynamique", "diaphs = log₂(rapport)",
+            "Un capteur annonce $k diaphs de dynamique : quel rapport de contraste peut-il enregistrer ?",
+            rap(2.0.pow(k)), listOf(2.0.pow(k - 1), 2.0.pow(k + 1), k * 1000.0, 2.0.pow(k + 2)).map(::rap),
+            "rapport = 2^$k = ${rap(2.0.pow(k))}.", a
+        )
+    }
+}
+
+private fun decibels(a: Random): QuestionFormule {
+    val k = listOf(8, 10, 12, 14).random(a)
+    val r = 2.0.pow(k)
+    val db = 20 * log10(r)
+    fun decibel(x: Double) = nb(x, 0) + " dB"
+    return qcm(
+        TH_NUM, "Dynamique en décibels", "dB = 20 × log₁₀(rapport)",
+        "Une dynamique de $k diaphs (${nb(r)}:1), c'est combien de décibels ?",
+        decibel(db), listOf(db / 2, k * 10.0, db + 6, k.toDouble()).map(::decibel),
+        "dB = 20 × log₁₀(${nb(r)}) ≈ ${nb(db, 1)} dB : environ 6 dB par diaph.", a
+    )
+}
+
+private fun debitBrut(a: Random): QuestionFormule {
+    val (w, h) = listOf(1920 to 1080, 3840 to 2160, 4096 to 2160).random(a)
+    val bits = listOf(10, 12).random(a)
+    val fps = listOf(24, 25).random(a)
+    val bitsParSeconde = w.toDouble() * h * bits * fps
+    val mo = bitsParSeconde / 8 / 1e6
+    fun mos(x: Double) = nb(x, 0) + " Mo/s"
+    return qcm(
+        TH_NUM, "Débit brut", "débit = largeur × hauteur × bits × cadence / 8",
+        "Image RAW de $w × $h photosites, $bits bits chacun, $fps im/s, sans compression : quel débit ?",
+        mos(mo), listOf(mo * 3, mo * 8, mo / 2, mo * 2).map(::mos),
+        "$w × $h × $bits × $fps = ${nb(bitsParSeconde)} bits/s ; ÷ 8 = ${nb(bitsParSeconde / 8)} octets/s ≈ ${mos(mo)}. En RVB 4:4:4, trois valeurs par pixel : ×3.", a
+    )
+}
+
+private fun stockage(a: Random): QuestionFormule {
+    val debit = listOf(100, 220, 440, 880).random(a)
+    val (duree, libelle) = listOf(1800 to "30 min", 3600 to "1 h", 7200 to "2 h").random(a)
+    val go = debit / 8.0 * duree / 1000
+    fun gos(x: Double) = nb(x, if (x < 100) 1 else 0) + " Go"
+    return qcm(
+        TH_NUM, "Stockage", "taille = débit × durée / 8",
+        "Un codec à $debit Mbit/s, $libelle de rushes : quelle place sur la carte ?",
+        gos(go), listOf(go * 8, go / 8, go * 2, go / 2).map(::gos),
+        "$debit Mbit/s ÷ 8 = ${nb(debit / 8.0, 1)} Mo/s ; × ${nb(duree)} s = ${nb(debit / 8.0 * duree)} Mo ≈ ${gos(go)}.", a
+    )
+}
+
+private fun echantillonnage(a: Random): QuestionFormule {
+    return if (a.nextBoolean()) {
+        val f = listOf(15, 20, 22, 24).random(a)
+        qcm(
+            TH_NUM, "Échantillonnage", "f_éch ≥ 2 × f_max",
+            "Pour enregistrer des sons jusqu'à $f kHz, quelle fréquence d'échantillonnage au minimum ?",
+            "${2 * f} kHz", listOf(f, 4 * f, f + 10, 3 * f).map { "$it kHz" },
+            "Shannon : f_éch ≥ 2 × f_max = 2 × $f = ${2 * f} kHz.", a
+        )
+    } else {
+        val fe = listOf(32.0, 44.1, 48.0, 96.0).random(a)
+        fun khz(x: Double) = nb(x, 2) + " kHz"
+        qcm(
+            TH_NUM, "Échantillonnage", "f_éch ≥ 2 × f_max",
+            "Un son échantillonné à ${khz(fe)} : jusqu'à quelle fréquence peut-il restituer ?",
+            khz(fe / 2), listOf(fe, fe * 2, fe / 4, fe - 4).map(::khz),
+            "f_max = f_éch / 2 = ${khz(fe / 2)}. C'est pourquoi on enregistre en 48 kHz : au-delà des 20 kHz que l'oreille entend.", a
+        )
+    }
+}
+
+private val RECO_OPTIQUE_GEO = listOf(
+    Reco("Conjugaison", "1/OA' − 1/OA = 1/f'", listOf("1/OA' + 1/OA = 1/f'", "OA' − OA = f'", "1/OA − 1/OA' = 1/f'"), "Distances algébriques : OA est négatif, le sujet est devant l'objectif."),
+    Reco("Grandissement", "γ = OA' / OA", listOf("γ = OA / OA'", "γ = OA' × OA", "γ = f' / OA'")),
+    Reco("Nombre d'ouverture", "N = f / D", listOf("N = D / f", "N = f × D", "N = √(f / D)")),
+    Reco("Vergence", "V = 1 / f'", listOf("V = f'", "V = 1 / f'²", "V = 2 / f'"), "f' en mètres, V en dioptries.")
+)
+
+private val RECO_SENSITOMETRIE = listOf(
+    Reco("Densité optique", "D = log₁₀(1 / T)", listOf("D = log₂(1 / T)", "D = 1 / T", "D = log₁₀(T)")),
+    Reco("Gamma", "γ = ΔD / Δlog H", listOf("γ = Δlog H / ΔD", "γ = D / log H", "γ = ΔD × Δlog H")),
+    Reco("Latitude", "1 diaph = 0,3 en log H", listOf("1 diaph = 1 en log H", "1 diaph = 0,5 en log H", "1 diaph = 0,1 en log H")),
+    Reco("ISO et DIN", "DIN = 10 × log₁₀(ISO) + 1", listOf("DIN = ISO / 10", "DIN = log₂(ISO) + 1", "DIN = 10 × log₂(ISO)"))
+)
+
+private val RECO_NUMERIQUE = listOf(
+    Reco("Niveaux de quantification", "niveaux = 2^bits", listOf("niveaux = bits²", "niveaux = 10^bits", "niveaux = 2 × bits")),
+    Reco("Dynamique", "diaphs = log₂(rapport)", listOf("diaphs = log₁₀(rapport)", "diaphs = rapport / 2", "diaphs = √rapport")),
+    Reco("Dynamique en décibels", "dB = 20 × log₁₀(rapport)", listOf("dB = 10 × log₂(rapport)", "dB = 20 × rapport", "dB = log₁₀(rapport) / 20")),
+    Reco("Débit brut", "débit = largeur × hauteur × bits × cadence / 8", listOf("débit = largeur × hauteur × bits × cadence × 8", "débit = largeur × hauteur × cadence / bits", "débit = (largeur + hauteur) × bits × cadence")),
+    Reco("Stockage", "taille = débit × durée / 8", listOf("taille = débit × durée × 8", "taille = débit / durée", "taille = durée / (8 × débit)")),
+    Reco("Échantillonnage", "f_éch ≥ 2 × f_max", listOf("f_éch ≥ f_max", "f_éch ≥ f_max / 2", "f_éch ≥ 4 × f_max"), "Théorème de Shannon-Nyquist.")
+)
+
+/* ── Répondre en tapant ────────────────────────────────────────────────── */
+
+/**
+ * Pour s'entraîner sans les quatre propositions : le gabarit de la réponse
+ * (« 1/… s », « … lx »), et la vérification du nombre tapé, à 3 % près ou au
+ * dernier chiffre affiché.
+ */
+object SaisieReponse {
+    private val NOMBRE = Regex("[+−-]?\\d{1,3}(?: \\d{3})+(?:,\\d+)?|[+−-]?\\d+(?:,\\d+)?")
+
+    private fun dernier(texte: String): MatchResult? = NOMBRE.findAll(texte).lastOrNull()
+
+    /** Le gabarit de la réponse, ou null quand la question ne se prête pas à une réponse tapée. */
+    fun gabarit(q: QuestionFormule): String? {
+        if (q.formule.isBlank()) return null
+        val juste = q.options[q.bonne]
+        if (':' in juste) return null
+        val m = dernier(juste) ?: return null
+        val signe = m.value.first() in "+−-"
+        val trou = juste.substring(0, m.range.first) + "…" + juste.substring(m.range.last + 1)
+        return trou.replace(Regex("diaphs?\\b"), "diaph(s)").replace(Regex("projecteurs?\\b"), "projecteur(s)") +
+            if (signe) " (avec le signe)" else ""
+    }
+
+    /** Le nombre attendu. */
+    fun attendu(q: QuestionFormule): Double? = dernier(q.options[q.bonne])?.value?.let(::lire)
+
+    internal fun lire(texte: String): Double? =
+        texte.replace(" ", "").replace(" ", "").replace('−', '-').replace(',', '.').toDoubleOrNull()
+
+    fun accepte(q: QuestionFormule, saisie: String): Boolean {
+        val m = dernier(q.options[q.bonne]) ?: return false
+        val attendu = lire(m.value) ?: return false
+        /* « 1/50 » vaut « 50 » quand le gabarit est « 1/… s ». */
+        val tape = lire(saisie.trim().substringAfterLast('/').replace("+", "")) ?: return false
+        val decimales = m.value.substringAfter(',', "").length
+        val tolerance = maxOf(0.5 * 10.0.pow(-decimales), abs(attendu) * 0.03)
+        return abs(tape - attendu) <= tolerance + 1e-9
+    }
+}
