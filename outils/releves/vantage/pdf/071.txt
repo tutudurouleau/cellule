@@ -1,0 +1,53 @@
+# https://www.vantagefilm.com/file/edee/downloads/optics/1x-spherical-lenses-made-by-hawk/vantageone-technical-data-.pdf
+
+Vantage One
+High performance T1 lenses - Technical Data
+At T4, T2.8 and T2, Vantage One lenses can give cinematographers the flaw-
+less look other modern lenses produce, but with superior image illumination.
+And they offer additional versatility at other stops. At T1.4, the results are a bit
+more forgiving, yet still extremely good, and at T1, Vantage One lenses lend the
+image a lovely, subtle creaminess, perfect for skin tones.
+
+                                         Focal Length                     metric                    imperial           Angle of View*        Weight              Front           Overall        Min. Filter         Image        Illumination
+               Lens
+                                              Stop                  CFD            MOD         CFD          MOD          horizontal        kg        Ibs       Diameter          Length             Size           Circle             Circle
+
+  Vantage One 14.5                        14.5 mm/T1              0.25 m          0.05 m        10“            2“          84.8°          2.4       5.3        128 mm           158 mm           4x5.65“          32.2 mm          32.5 mm
+
+  Vantage One 17.5                        17.5 mm/T1              0.25 m          0.05 m        10“            2“          75.8°          2.0       4.4        110 mm           152 mm           4x5.65“            30 mm             31 mm
+
+  Vantage One 21                             21 mm/T1             0.25 m          0.06 m        10“         2 ½“           67.7           1.8       4.0        110 mm           142 mm           4x5.65“          32.2 mm          32.5 mm
+
+  Vantage One 25                             25 mm/T1             0.25 m          0.08 m        10“            3“          58.8°          1.6       3.5        110 mm           124 mm           4x5.65“          33.5 mm             34 mm
+
+  Vantage One 32                             32 mm/T1             0.25 m          0.08 m        10“            3“          48.9°          1.8       4.0        110 mm           126 mm           4x5.65“            34 mm             35 mm
+
+  Vantage One 40                             40 mm/T1             0.35 m          0.19 m        1‘2“           8“          37.9°          1.5       3.3        110 mm           126 mm           4x5.65“            34 mm          34.5 mm
+
+  Vantage One 50                             50 mm/T1             0.29 m          0.15 m        11“            6“          30.2°          1.4       3.1        110 mm           124 mm           4x5.65“            36 mm             37 mm
+
+  Vantage One 65                             65 mm/T1             0.39 m          0.23 m        1‘3“           9“          23.7°          1.6       3.5        110 mm           124 mm           4x5.65“            38 mm             42 mm
+
+  Vantage One 90                             90 mm/T1             0.59 m          0.43 m       1‘11“         1 ‘5“         18.2°          2.0       4.4        128 mm           142 mm           4x5.65“            36 mm             46 mm
+
+  Vantage One 120                          120 mm/T1              0.81 m          0.62 m        2‘8“           2‘          14.3°          3.7       8.2        156 mm           174 mm           4x5.65“            39 mm             47 mm
+                                                                                                                                         *Angle of view – quoted for S35 format (27.99 x 15.75 mm – 1.78:1 Release Format – Sensor size ALEXA 35)
+
+
+             CFD – close focus distance
+                                                                                                                                                                                                                Illumination Circle
+
+
+                                                                                                                                                                                                                Image Circle
+
+
+
+
+             MOD – minimal object
+                         distance
+
+
+
+                                                                               Technical specifications are subject to change without notice – additional lenses will follow. Made in Germany by Vantage Film
+                                                                                  Hawk®, Hawk Anamorphic®, Vantage® are registered trade-marks of Vantage Film GmbH, Germany. www.vantagefilm.com
+

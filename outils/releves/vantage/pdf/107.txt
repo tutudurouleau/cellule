@@ -1,0 +1,53 @@
+# https://www.vantagefilm.com/file/edee/downloads/psu/vf-psu-3-power-supply-information.pdf
+
+Vantage PSU-3® HD
+User Manual
+
+
+
+Power Supply
+The PSU-3 can be operated by regular camera batteries or AC power.
+
+Battery Operation (24-30 Volts): Connect one or two regular camera batteries to the battery input
+connectors on the backside of the PSU. Change empty batteries one after another to avoid shutdown of the
+PSU (hot swap). The display on the PSU touchscreen informs you of the remaining capacity and indicates
+the need to replace a battery.
+
+AC Power Operation:
+Connect the AC adapter to the PSU input power socket. Then,
+connect the plug of the AC adapter power cable to a regular
+power socket. To prevent damages to the PSU exclusively use
+the original PSU-3 AC adapter. Also, regular camera batteries
+may be connected to the battery connectors in parallel to the
+AC adapter. This serves to buffer possible power failures, if for
+instance the PSU is AC powered by a generator.
+
+WARNING!
+While the unit is running do not disconnect the PSU from its
+current power supply! Before disconnecting the shutdown
+process has to be fully completed.
+
+
+
+
+Data Storage Module
+Please make sure that the data storage module stays in place
+at all times during system operation. The module offers plenty
+of storage capacity. If you want to backup or archive your data
+the PSU offers various ways to write data to external storage
+media and to transfer them back to the PSU, if necessary.
+
+However, should you explicitly wish for a change of the
+data storage module, the PSU first has to be shut down and
+disconnected from AC power or batteries. After this, loosen the
+two screws of the storage module cover on the right side of the
+PSU and remove the cover. You now see a handle which serves
+to easily remove the data storage module from the device. The
+data storage module can be identified by its serial number.
+
+
+
+
+                                                                        Made in Germany by Vantage Film GmbH
+   For further information contact Vantage Film, Phone +49 961 26795, Fax +49 961 62983, www.vantagefilm.com
+

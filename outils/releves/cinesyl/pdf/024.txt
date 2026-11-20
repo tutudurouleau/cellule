@@ -1,0 +1,575 @@
+# https://www.cinesyl.com/wp-content/uploads/2017/06/Black_Arm_Manual_V0_75.pdf
+
+                              BLACK ARM SET UP INSTRUCTIONS V0.75
+
+
+
+
+                                                          NOTE! The current manual contains instruction/placement
+                                                          for the first generation dampeners. There is another manual
+                                                          out soon for second generation (shorter) dampeners soon.
+                                                          You can tell difference by looking at the soft end stops on the
+                                                          dampeners. ALL first generation dampeners will be replaced
+                                                          by Flowcine, as soon as possible, due to production errors
+                                                          emailed earlier. If you have a urgent problem with your
+                                                          dampener, please email info@flowcine.com. Thank you!
+
+
+                                                                           1st gen dampener (thin rubber end stop opposite end of ball joint)
+                                                                                                    337mm
+
+
+
+
+                                                                                                    297mm
+                                                                                 2nd gen dampener (thick rubber end stop)
+
+
+
+QUICK GUIDE SETUP AND CONFIGURATIONS FOR: BLACK ARM STANDARD & BLACK ARM COMPLETE
+Please read through the full documentation, before using the arm for the first time! The documentation includes configurations and
+help for troubleshooting most problems encountered on set.
+                                                  BLACK ARM SET UP INSTRUCTIONS V0.75
+
+BLACK ARM SPRING GUIDE:                       Dual nuts (Optional ). Helps you keep track of the maximum safety tension limit of 25mm.
+                                              The distance is set, from a relaxed spring (before any tensioning). Use a caliper
+                                              or equal to check distance between spring and nut before usage or change of springs.
+
+                                                                                                    Dual nuts (Optional). Keeps the spring from unintentionally wind/un-wind itself.
+                                                                                                    And keep track on which side to tension from.
+
+
+
+
+Single 7.0
+
+SINGLE SPRING 7.0 (Pre-installed for BLACK ARM STANDARD users): 2 x 7 mm (1x7 per side) for payload up to 14kg / 31 lbs payload. Max extension 25mm.
+NOTE! Always insert tension screw equally on each side when mounting a new spring.
+
+
+Single 7.5
+
+SINGLE SPRING 7.5 (Pre-installed for BLACK ARM COMPLETE users): 2 x 7.5 mm (1x7.5 per side) for payload up to 19 kg / 42 lbs payload. Max extension 25mm.
+
+
+
+
+To change to DUAL SPRING configuration. User the dual spring brackets, and insert the supplied M8x25 screws on each side. Then attach the dual spring
+brackets on the tension screws. Please always ensure to grease the tension screws before usage, to minimize friction when tensioning.
+
+
+                  Single nut & washer (Optional). Helps keep the dual spring bracket to align straight and not rotate, while there is no load on the springs. Always loosen these
+                  before ANY tensioning is done. You can use a nut&washer on each side, on one side or not use them at all (not necessary when the arm is in action).
+
+
+
+
+Dual 7.0
+
+
+
+DUAL SPRING 7.0: 4 x 7.0 mm (2x7.0 per side) for payload up to 28 kg / 62 lbs payload. Max extension 25mm per side.
+
+
+
+
+Dual 7.5
+
+
+DUAL SPRING 7.5: 4 x 7.5 mm (2x7.5 per side) for payload up to 38 kg / 84 lbs payload. Max extension 25mm per side.
+                                             BLACK ARM SET UP INSTRUCTIONS V0.75
+
+BLACK ARM SPRING/TENSION SCREW REPLACEMENT ILLUSTRATION:
+
+
+
+
+         1. Lessen the tension on the tension screw on the backside of the BLACK ARM (near the clamps). And follow along
+         moving the dual nuts that sets the tension safety limit until the tension screw is completely removed.
+
+         2. Be sure, not to drop the thrust bearings at the end of the tension screw. These are necessary to enable smooth friction when turning the knob.
+
+
+
+
+         3. Once one tension screw is removed, you can easily unwind the spring, and remove the dual nuts on the other side.
+
+
+
+
+      4. Rotate the shaft/tension screw and drag it out from below.
+                                     BLACK ARM SET UP INSTRUCTIONS V0.75
+
+
+
+
+5. Note correct shaft direction! The shafts should always have the flat surface facing from centre of the arm.
+
+
+
+
+6. Incorrect direction of shafts. If being used the thrust bearings will be bent and lead to problem.
+
+
+
+
+7. Tooless tension knobs. Usually used when using single 7.0 or 7.5 spring configuration when friction isnt to large. You can use hexagon tension screw
+on one side, and knob on the other if you like.
+
+
+
+
+8. Heaxgon nut tension screw. Four of these are shipped and packed in the BLACK ARM case, if you prefer to use the supplied ratchet wrench nr 13 for tensioning.
+                                       BLACK ARM SET UP INSTRUCTIONS V0.75
+
+VIBRATION MOUNT / GIMBAL INSTALLATION:
+
+
+
+
+     2. Once your vibration mount is removed from the BLACK ARM, remove bottom 4x M6x16 screws using a allen key #5.
+     Be sure to use mild/medium Loctite thread gluewhen fastening them again (we recommend Loctite 243).
+
+
+
+     3. If you have a toad-in-the hole or cinemilled mount, you insert the screws from the backside of the base plate. Other mounts can either be mounted directly
+     from the front of the base plate, using the 3/8”-16 threads. IF you have a gimbal/gyrohead with non-compatible pattern, please let us know and we try to help
+     you out as soon as possible.
+                                                   BLACK ARM SET UP INSTRUCTIONS V0.75
+
+MITCHELL MOUNT INSTALLATION:
+
+1. To install your optional mitchell mount. Remove bottom 4x M6x16 screws
+using a round head allen key #5. Be sure to use mild/medium
+Loctite thread glue when fastening them again (we recommend Loctite 243).
+
+
+
+2. Insert your mitchell castle nut between the mitchell rods on the mitchell mount.
+Because of limited spacing we don’t allow the mitchell nut to be slided in from
+the side afterwards. Flowcine will release a trimmed down Mitchell nut with
+slim sides that enables you to insert the mitchell nut after installation soon
+(Please note, the compatible thread size on our mitchell nut will be 2-3/4”-12UN)
+
+
+
+
+                                                                                                      3. Use the supplied 4x M8x16 screws mounting
+                                                                                                      the mitchell mount on the base plate. Be sure to
+                                                                                                       use Loctite when fastentening these screws.
+
+
+
+
+                                                                                      6.40
+                                                                                                                                     17.00
+                                                                                                                                     6.00
+4. Put back your bottom 4x M6x16 screws using a round head allen key #5.
+Be sure to use mild/medium Loctite thread glue when fastening them again
+(we recommend Loctite 243).
+
+
+5. End by inserting your male mitchel mount into the female mitchell, and lock the           73.03
+mitchell nut. NOTE! Please check the standard dimension we use for mitchell mount
+to see that your male mitchel is compatible. If not, compatible, please let us
+know your dimensions and the brand of your mitchell mount.                                   108
+
+                                                                                             175.00
+                                              BLACK ARM SET UP INSTRUCTIONS V0.75
+
+
+DAMPENER, CHANGE INSTRUCTIONS:
+
+
+
+
+ 1. For BLACK ARM complete
+ users, we ship 1pcs spare/extra
+ dampener. The main tube grip
+ is positioned for spare/replacement
+ usage. To use it as a extra dampener
+ for rough terrain/heavy weight setup,
+ simple remove the M6 screw, and flip
+ the grip in mirror position.
+
+2. Remove the Vibration mount, and remove the top M6 screw
+on the cheese plate, and the two M6 bottom screws holding the cheese
+plate.
+
+3. To insert a extra tilt dampener. Place the supplied extra tilt shafts and
+spacer at the front ball joint and tilt shaft at the main tube ball joint, and
+put back the cheese plate. Don’t forget to use Loctite.
+
+4. If you want to replace the current dampener with a extra spare,
+use the same instructions, but remove the tilt shafts/spacer first
+(note! You might need to tap out the shafts due to loctite)
+
+
+
+
+                                                                                    1. For BLACK ARM complete
+                                                                                    users, we ship 1pcs spare/extra
+                                                                                    dampener. The main tube grip
+                                                                                    is positioned for spare/replacement
+                                                                                    usage. To use it as a extra dampener
+                                                                                    for rough terrain/heavy weight setup,
+                                                                                    simple remove the M6 screw, and flip
+                                                                                    the grip in mirror position.
+
+
+
+
+                                                                                    2. To insert a extra roll dampener. Place the
+                                                                                    supplied extra roll shafts and lock nut on each
+                                                                                    side of the roll mount.
+
+                                                                                    3. If you want to replace the current dampener
+                                                                                    with a extra spare, use the same instructions,
+                                                                                    without flipping the main grip ball joint first.
+                                           BLACK ARM SET UP INSTRUCTIONS V0.75
+
+
+
+ROLL DAMPENER CONFIGURATIONS:
+
+1. The roll dampaner can be placed in
+four different configurations. When shipped the dampener
+is fastened in hole nr 2. on the roll bracket.
+
+2. There are the different options your can mount the roll
+dampener to:
+
+Position 1. Not currently being used.
+
+Position 2. Enables minimum force of the dampener and limited
+end stop positions (around 40 degrees) on left/right swing.
+
+Position 3. Enables medium dampener force (more momentum
+due to longer distance to centre), and larger end stop position.
+
+Position 4. Enables maximum dampener force, and largest swing
+angle. Change angle also by adjusting position of the dampener
+clamp that is fastened on the main tube.
+
+
+
+
+                                                                           4 3 2 1
+
+
+
+
+VERTICAL DAMPENER CONFIGURATIONS:
+
+
+1. You can change angle of the dampener to get more or less
+friction or avoid collision on any object placed behind the BLACK
+ARM. The following configurations are usuable for the vertical dampener.
+
+NOTE! This is NOT the correct position for 2nd generation dampeners,
+only for 1st generation dampener.
+                                                    BLACK ARM SET UP INSTRUCTIONS V0.75
+
+
+
+TILT DAMPENER TENSION PRE-SETTING:
+
+
+
+
+                                                                                                                                                         Dampener tension knob
+
+
+
+
+1. Mount your gimbal / gyro-head on the black arm following previous installation description.
+
+
+
+
+                                                          Correct motion
+
+
+
+                                                          Incorrect (to soft) motion
+
+
+
+2. Tilt the head until it reach the soft stop. The head should NOT swing back and forth, but be tensioned just enough so it goes back into neutral position.
+Of course, this tension might be altered depending on road surface and scenario (speed, terrain and so forth).
+                                               BLACK ARM SET UP INSTRUCTIONS V0.75
+
+
+
+ROLL DAMPENER TENSION PRE-SETTING:
+
+
+
+
+1. Mount your gimbal / gyro-head on the black arm following previous
+installation description.
+
+
+
+
+     Dampener tension knob
+
+
+
+
+                              Correct motion
+
+
+
+                              Incorrect (to soft) motion
+
+
+
+
+2. Bank the head on roll axis until it reach around 40 degree. The head should NOT swing back and forth, but be tensioned just enough so it goes back into neutral position.
+Of course, this tension might be altered depending on road surface and scenario (speed, terrain and so forth).
+                                                   BLACK ARM SET UP INSTRUCTIONS V0.75
+
+Quick setup instructions:
+
+1. Mount the arm
+
+Mount the black arm to the 50 mm tube with the two Burton clamps at the back of the arm.
+
+Make a quick estimation of the mounting height, so that the set up isn’t mounted too low on the tube.
+his could result in the camera hitting the ground at the bottom of the arms boom range.
+
+At this point, a quick estimation is all that is needed. You can fine tune this later, when you have the gimbal and camera rigged.
+
+2. Mount the gimbal and camera
+
+Mount your gimbal and camera with all the accessories needed for your shoot, batteries lenses cables etc, and let it float freely on the black arm.
+
+3. Spring adjustments
+
+Begin with adjusting the vertical arm dampener to it’s softest position. This is where the dampener provides the least force. This is done by turning the +/- knob on the dampener.
+Let the system hang freely on the Black arm, and look at the boom angle of the arm. If the arm is booming up that means that the springs are adjusted to strong and you will need
+to release some tension. Unscrew each spring equally until the arm floats in horizontal position.
+
+If the arm, on the opposite, is booming down you need to tension the spring knobs. Tension them equally on each side until the arm (the larger bones) is horisontal.
+At this point, push the arm to it’s lowest, most boomed down position, and make sure the rig can’t touch the ground.
+Keep in mind that in very uneven terrain, there may be bumps sticking up, so make sure to have proper clearance based on your conditions.
+
+4. Damping adjustment
+
+Each damper on the Black has a knob with a +/- sign, that you can turn to release or add resistance force on the dampener.
+First you need to adjust the dampener for the vertical movement. It's located on the dampener in the center of the arm. From the softest position, lift the total set up by booming
+the Black arm all the way up, and force it with a sudden push to boom down and see it’s reaction. If the arm swings up and down a few times after return to center then your
+dampener is adjusted too soft and you need to add force. Add a few clicks on the dampener knob and try again, repeat until the arm swings only once when forced and then it
+stops in center. Excessive swing is not ideal for the vertical stabilization. Also excessive force adjustment will make the boom action very stiff and make the arm less reactive.
+That means that you need to be somewhere in between. That is also relative to the nature of shot. If you intend to shoot on very rough terrain, for example, it’s better to be adjusted
+ little stiffer than usual as the bumps will have more effect on the set up. If the road is flat and smooth, you can have a little softer adjustment.
+After your adjustment, make a quick test run and correct if necessary.
+
+Roll and tilt dampeners - The same method of adjustment applies for both roll and tilt dampeners. Tilt back all the way with your hands, and let the system return to center.
+If it swings 2-3 times, overpassing the center, then the adjustment is too soft. Repeat adding adjustment clicks until the load only swings one time, passing the center position
+and returns to center. The same applies to the roll adjustment.
+
+This is a general rule, and again, if the terrain is very rough, or if you’re shooting at higher speeds you will need to add damping force. Do another test run and adjust if needed.
+
+Precautions
+
+Always clean the dampener piston rods with a wet cloth to remove mud and/or dust.
+Always adjust the height of the set up, so that the camera is kept at a safe distance from the ground.
+When you add safety straps for the camera, make sure they’re long enough to allow for the arms total boom range. If the strap is too short it will keep
+the arm of doing it’s job and might result in damage and vibrations.
+Always run an quick check before and after the shot to locate loose screws etc.Especially if you’re shooting in rough terrain.
+Always make sure your gripping tubes and clamps are safely and securely configured, and that the grip set up is safe.
+                        BLACK ARM SHOCK AND VIBRATION MOUNT
+
+
+
+
+                                            50.80 (2”)
+
+
+
+
+                                                                       25.4 (1”)
+
+
+ 38.10 (1.5”)
+                32.00                                          25.00               98.99
+
+
+                                                                       25.4 (1”)
+
+
+
+
+Available mounting points:
+
+A) 4 x 1/4”-20 UNC - 25mm CC
+B) 5 x 3/8”-16 UNC - 25,4mm (1”) CC
+C) 4 x 8mm holes - 98,99mm CC
+D) 6.5mm holes - 2”x1.5” CC (Cinemilled DJI Ronin Universal)
+E) 3.2mm holes - 32mm CC (toad-in-the-hole)
+                                            BLACK ARM SET UP INSTRUCTIONS V0.75
+
+
+INCLUDED AS EXTRAS IN BLACK ARM COMPLETE PACKAGE
+                        Extra / Spare
+                        vertical dampener
+
+                                                 Short
+                                                 vertical spacer
+                                                                                    Extra / Spare
+                                                 (Note! There are
+                                                                                    roll dampener
+                                                 also 4pcs of orange
+                                                 shims that can be placed                                                Extra / Spare
+                           Longer                between shaft/spacer                                                    tilt dampener
+                           vertical shaft        to make the ball joint
+      4x M4 12mm                                 connection tight)
+                                                                                            Roll upper
+                                                                                            shaft
+
+
+
+                                                      Note!
+                                                      Roll dampener
+                                                      has its tension
+                                                      knob placed 90
+                                                      degrees from
+                                                      main tube ball joint.                                               Note! Tilt dampener
+                      Short                                                                                               has no washer
+                      vertical shaft                                                                                      placed on end
+                                                                                                                          of ball joint.
+                                                                   2x Roll shafts    2x M8 locking nuts
+
+
+                                                 Long
+     8x M8 25mm                                                                                                         Roll lower spacer
+                                                 vertical spacer
+                                                                                                    Roll lower
+                                                                                                    shaft (shorter than upper shaft)
+
+     4x Dual brackets
+
+
+
+
+     4x 7.0 springs
+
+
+
+
+     2x 7.5 springs
+     (2 pcs are already
+     mounted on the arm,
+     unless you ordered
+     with heavy vibratoin mount
+     configuration. Then all
+     7.5 springs are already
+     assembled)
+
+                                                                                                     4x M8 nuts + M8 washers
+
+
+                                                                                                     INCLUDED IN BLACK ARM
+                                                                                                     STANDARD PACKAGE
+                                                                                                     (AND COMPLETE PACKAGE)
+        BLACK ARM SHOCK AND VIBRATION MOUNT
+
+
+
+Vibration mount #01 Range 7-10kg payload (15-22lbs)
+
+
+0 kg                    10 kg                     20 kg    30 kg    40 kg
+0 lbs                   22 lbs                    44 lbs   66 lbs   88 lbs
+
+
+
+
+Vibration mount #02 Range 10-14kg payload (22-31lbs)
+
+
+0 kg                    10 kg                     20 kg    30 kg    40 kg
+0 lbs                   22 lbs                    44 lbs   66 lbs   88 lbs
+
+
+
+
+Vibration mount #03 Range 14-19kg payload (31-42 lbs)
+
+
+0 kg                    10 kg                     20 kg    30 kg    40 kg
+0 lbs                   22 lbs                    44 lbs   66 lbs   88 lbs
+
+
+
+
+Vibration mount #04 Range 19-26kg payload (42-57 lbs)
+
+
+0 kg                    10 kg                     20 kg    30 kg    40 kg
+0 lbs                   22 lbs                    44 lbs   66 lbs   88 lbs
+
+
+
+
+Vibration mount #05 Range 26-34kg payload (57-75 lbs)
+
+
+0 kg                    10 kg                     20 kg    30 kg    40 kg
+0 lbs                   22 lbs                    44 lbs   66 lbs   88 lbs
+
+
+
+
+                 WIRE ROPE ISOLATOR CHART
+               BLACK ARM SHOCK AND VIBRATION MOUNT
+
+                                    WIRING INDENTIFICATION;
+
+
+
+
+Vibration mount #01
+Range 7-10kg payload (15-22lbs)
+All wires in a angle.
+Wire diameter 2.0mm
+
+
+
+
+Vibration mount #02
+Range 10-14kg payload (22-31lbs)
+1 straight wire on each end.
+Wire diameter 2.0mm
+
+
+
+
+Vibration mount #03
+Range 14-19kg payload (31-42 lbs)
+2 straight wires on each end.
+Wire diameter 2.0mm
+
+
+
+
+Vibration mount #04
+Range 19-26kg payload (42-57 lbs)
+3straight wires on each end.
+Wire diameter 2.5mm
+
+
+
+
+Vibration mount #05
+Range 26-34kg payload (57-75 lbs)
+4 straight wires on each end.
+Wire diameter 2.5mm
+
+
+
+
+                          WIRE ROPE ISOLATOR CHART
+

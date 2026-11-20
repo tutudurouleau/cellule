@@ -1,0 +1,301 @@
+# https://www.vantagefilm.com/file/edee/downloads/psu/vf-psu-users-manual-3-50mp.pdf
+
+PSU-3 Instructions for Use                                                                                            (Software Version PSU-3.50MP)
+WARNING! To prevent fire or shock hazard, do not expose the unit to rain or moisture. To avoid electrical shock, do not
+open the cabinet. Refer servicing to qualified personnel only. Do not block ventilation openings.
+Attention: PSU-3 Power Supply and Data Storage Module information can be found on the PSU Screen Protector.
+
+
+Starting the PSU (The system loading process takes 29 seconds)
+Press the POWER button. Connect the video signal from the camera(s) to the BNC input(s) CAM A, B, C and D (Cam C and D SD
+only). Connect sound to AUDIO IN, external speakers to AUDIO OUT, and additional monitors to one of the VIDEO OUT sockets.
+
+
+Channel Selector
+To display different sources, you can use the four input buttons CAM A, CAM B, CAM A+B (CAM C CAM D in four channel mode),
+and DISC. CAM A+B will show both video images side by side. DISC will display the takes already recorded. The selected source
+will be indicated on the upper right corner of the screen. By pressing the DISC button >1sec., you can additionally select different
+levels on the disc. HIDDEN TAKES directs you to all hidden takes (gray displays - see Hiding Takes). SHORT TAKES directs you to
+all takes shorter than the selected time ( light green displays - see User Settings). To return to the standard disc level, press DISC.
+The PSU automatically switches between HD and SD input formats. All common HD signals and PAL/NTSC SD signals will be
+automatically detected for each channel as well. There is no need to preset the four PSU inputs. (Automatic HD/SD Format
+Detection)
+
+
+Hawk Anamorphic® Desqueezing
+The Hawk Format Selector allows proper desqueezing for all current anamorphic formats either 2x Squeeze or 1.3x Squeeze. Each
+of the four camera inputs can be desqueezed separately. To switch between channels, press the HAWK button.
+
+
+Video-out Selector
+Two different video signals can be switched to additional monitors. The PSU-3 has 4 Video-out sockets, two for each channel. Select
+up to four sources per channel by pressing the appropriate buttons. The AUTO function automatically switches the picture that is
+shown on the PSU touch screen to the VIDEO OUT sockets. Two test images are available to calibrate additional monitors as well
+as the PSU touch screen. A 1000 Hz –20 dB test tone is switched to the AUDIO OUT sockets if a test image is switched on.
+Each channel can be set to HD or SD individually.
+
+
+Time-Display & Take-Info
+The Time-Display shows the running time of the selected take. Press the Time-Display to switch to reverse mode (counting
+backwards) or HD-SDI timecode. The Take-Info is displayed right below the Time-Display. It shows recording date, recording time,
+shooting time, and screen time (the screen time differs from the recording time, if a playback speed higher or lower than sync speed
+is selected). By pressing these text lines, the Take-Info will switch to System-Info. System-Info will show the number of recorded
+takes, hidden takes, short takes, free disc capacity in hours, and total shooting time.
+
+
+Recording Shots
+To start recording, press REC. To record both channels, press REC >1sec. To stop the recording, press STOP. The takes will be
+numbered chronologically. Press REC >1sec. during a recording to stop and hide / delete the recording instantly.
+
+Recording Shots with Lector® (can be configured in the User-Settings)
+To use these functions with digital cameras, activate the SDI-Remote flag at the camera. Film cameras have to be equipped with a
+                             ®                                                                                                             ®
+Vantage Onboard Lector System. The right green LED inside the CAM buttons will show that the prevailing Lector signal has been
+received properly. By starting the camera, the PSU will automatically record the video input as well as the speed information* for
+each channel (LED flashes red). The takes will be numbered chronologically. The recording will stop automatically when the camera
+is switched off. You can stop the automatic recording manually at any time by pressing the STOP button >1sec.
+*This function works with: Arri ALEXA, Arriflex D21, Sony F35, Sony F3, Arricam ST & LT, Arriflex 535, 535B, 435, 235, 35-3, Arriflex 416 and 16SR3, Moviecam
+Compact & SL. Other cameras on request. *Speed information will be recorded with film cameras only.
+
+
+
+Playback Shots
+To playback a shot, press PLAY. The PSU will show the shot as it was recorded at the selected sync-speed. To play the shot in
+reverse mode, press REV. To navigate within the shot, use the SLOW buttons or the NAVIGATOR. To play the complete disc, press
+PLAY or REV twice. The PSU will switch to continuous mode (take after take). To loop the take, press PLAY >1sec. The take will be
+                                                                                                                                ®
+constantly repeated in a loop. The PSU is able to play shots while recording (immediate playback). Shots recorded with Lector
+show a OCS label (original camera speed). The playback speed corresponds to the recording camera incl. any possible ramping.
+
+
+Dual Playback
+The PSU-3 offers two individual players. Both players can be used linked or unlinked. To playback two shots side by side, press
+DUAL PLAYBACK. The LINKED/UNLINKED button allows switching between both players in order to choose the takes and set their
+frame rates (the selected player is marked by red framed LCD-displays). A sync point can be set with the SLOW buttons or the
+NAVIGATOR. Press the UNLINKED button >1sec. to link both takes for Dual Playback. To unlink, press the LINKED button >1sec.
+While the takes are unlinked, both players work independently. It is possible to select two individual takes and play them at the same
+time. The Video-Out Selector offers two Dual Playback options: Dual Playback split screen on one monitor or Dual Playback on two
+monitors including DUAL PLAYBACK AUTO function for easy switching between live (both cameras) and Dual Playback streams.
+Change Playback Speed
+To change the playback speed of a take, use +/- under the Fps-Display. By pressing the Fps-Display, a numeric keyboard will
+appear to quickly enter playback speeds.** Preset the sync-speed for correct playback speed by pressing the Sync-Speed Display.
+The PSU-3 supports five sync speeds (23.9, 24, 25, 29.9, 30fps). At speeds higher than sync-speed, the PSU will interpolate the
+additional frames to simulate a smooth high speed playback. The Playback speed range is 0.1 fps to 2000 fps.
+                                     ®
+For each take recorded with Lector , the OCS function can be switched ON/OFF by pressing the OCS Button.
+** Three buttons in the numeric keyboard are programmable soft keys for frequently used speeds - press >1sec. to preset.
+
+
+Ramping (speed change within a take)
+Press RAMP and select the points within the take where the speed should change. Press SET. The points will be stored and listed.
+By pressing on these listed points, you can select them and change the camera speed by using +/- buttons or move these points.
+The graphic simulation will help you program the required ramp. After putting all points and speeds together, press OK to activate the
+ramp. The PSU will be ready for playback. If the ramp is already calculated, you can press EDIT to adjust it again. By pressing
+CLEAR, you can delete the marked point within the ramp. By pressing CLEAR >1sec., you will delete the entire ramp. Press CLOSE
+>1sec. to lock the ramp in regular playback mode to this take.
+
+
+Selecting Takes
+Use the SKIP buttons, and the Take-Display will show the take number. Press the Take-Display, and the PSU will show all recorded
+takes as icons (the takes are marked with different colors similar to the different cameras). Press one of these icons to select a take
+directly. If there are more than one full page of takes recorded, use the button NEXT PAGE. You can also enter the take number
+directly to select the take. By pressing one of the WEEKDAY buttons, you can select a specific shooting day. In order to indicate
+important takes, press >2sec. on any of these icons to mark it as a Favorite Take. It will be highlighted by a yellow frame. Press
+FILTER for selecting Take-Categories (Cam A-D only, Good Takes, Favorite Takes, Rehearsals, Takes, Changed Channel)
+
+
+Hiding Takes
+This feature will help to "clean up" the PSU without deleting any take. Press the Take-Display. Press HIDE/RECOVER. To hide a
+take, press its icon. To recover the take, press the icon again. The buttons HIDE ALL, SHOW ALL, INVERT SELECTION,
+SELECTED DAY will assist you.
+
+
+Change Channel
+The recording channel of an individual take (CAM A, CAM B, CAM C, CAM D) can be changed after recording. Press the Take-
+Display, and press CHANGE CHANNEL. Select the take to be changed, and press the new channel button.
+
+
+Deleting Takes
+To enter the Delete-Menu, press the DISC button >1sec. and select DELETE. To delete takes, press DELETE TAKE (code 1234), or
+DELETE MORE TAKES (code 4567). After entering the security codes, the takes will be deleted.**
+To delete the entire DISC, press DELETE DISC. After entering the security code for disc-deleting 7890, the DISC will be deleted
+entirely. All hidden takes, short takes, cuts, MPEGs and MPEG-lists will be deleted as well.** To delete the hidden takes or the short
+takes, press DISC >1sec. and select the specific disc level (HIDDEN TAKES or SHORT TAKES). The delete-function now only
+works for this level and does not affect any takes at the main level.
+**To save takes which are not yet deleted, you can stop the deleting process by pressing STOP DISC DELETION.
+
+
+Take Notes (Must be activated in the Tools-Settings)
+Press NOTES >1sec. to display a keyboard for typing individual messages per take. Five soft keys can be customized. Press one of
+the soft keys >1sec. to edit. Press the green √-button to mark good takes. In the Take-Menu (Icon-Mode) good takes can be
+separated from the rest by pressing the √-only button.
+
+
+Scene Numbering / Rehearsal (Must be activated in the Tools-Settings)
+Press the Take-Display, press NEW SCENE NO. and mark all takes which should be assigned the original scene/take number. If
+you enter the scene number and press OK, the take numbers will be generated automatically but can also be entered manually. The
+PSU will always mark a new take correctly (e.g., Scene 123A/5 followed by Scene 123A/6). If a different scene is recorded, enter the
+new scene number as described above. You can also enter scene numbers for takes which are in recording by pressing the icons of
+those takes during recording. The scene number of the next take to be recorded can be set in advance by pressing the button
+NEXT RECORDING per camera. Use more than one NEXT RECORDING button to enter the same scene/take number for more
+cameras. Press this button >1sec. to delete a preset scene number if required. Recordings can be labeled as Rehearsals by
+activating the Rehearsal function. Before recording, press the Rehearsal Button next to the recording Buttons. The recording buttons
+turn grey indicating Rehearsal recordings. Rehearsals and Takes can be recorded at the same time. Note: The status of the
+recording button at the start of the individual recording is crucial. Rehearsal labels can be added or removed at any time.
+
+
+Action Master (Must be activated in the Tools-Settings)
+Press IN and OUT during recording or playback to set in and out marks. The take will be played between these marks only. You can
+overwrite the points at any time by pressing the appropriate button again at the desired position of the take. Delete in and out marks
+by pressing IN or OUT >1sec. Auto Trimming sets both marks automatically. The "trim off time" can be preset between 0,5 and 7
+seconds. The Time-Display shows the running time between both marks. INDEX Marks can be set additionally.
+Multiple Frame Print (Must be activated in the Tools-Settings)
+Press + or – on the green Multiple-Frame-Button to set printing rates of the single frame (e.g., 5x to print every frame 5 times, and
+                                                                                                                      ®
+subsequently, to extend the sequence accordingly). Change the camera speed with the regular + or – buttons. Lector supported.
+
+
+Overlay
+There are two ways of doing overlays: overlay of two running layers or overlay of one running layer and up to three frame grabs. The
+Overlay Slider allows you to adjust (fade) both levels. Overlay can be combined with CHROMA KEYING.
+
+Running Overlay (two running layers)
+Select one source (CAM A or B or DISC) and press Set Background. Combine it with another source by pressing the appropriate
+button. Use Dual Playback for DISC with DISC overlay. If you want to use the picture settings to adjust the images when overlaying,
+use different camera inputs for the layers (e.g., LIVE CAM A and DISC CAM B); otherwise, the settings will affect both layers.
+Change channels if needed, see Change Channel.
+
+Freeze Overlay (a running layer on top of up to three frame grabs – or up to three frame grabs on top of a running layer)
+Select a single frame from one of the camera inputs or from the disc, and press SET to store it (you can store up to three frames).
+Before you capture them, they can be zoomed, flipped, color corrected, etc. Press SWAP LAYERS to select the position of the
+freeze (foreground or background). Use the PICTURE SETTINGS button in the menu to modify the captured pictures individually.
+Press DESIGN FREEZE to erase parts of the layers in order to make the lower or middle layer visible. To erase, use the touch
+screen to select different tools (rectangle or circles). Press COPY INVERTED to apply one erased section inverted on another
+image. Press MOVE to change the order of the frame grabs. Each frame grab can be switched on and off. Select the running source
+by pressing CAM A, CAM B, or DISC to complete the overlay.
+The frame-grabs can be downloaded to a computer (Import / Export Manager, Overlay folder, 1 - 3_freeze) - or up to three
+grabs can be uploaded into the PSU from a separate source. Read HELP.htm on main directory available through GbE socket.
+
+
+Picture Settings
+Press SETTINGS, and select PICTURE. You can select the following functions for all camera inputs and outputs individually:
+Chroma Keying, Mirror X or Y, Image Adjustments (Brightness, Contrast, Gamma, Color Correction, Black & White, Inverse), Ground
+Glass Markings (Format Markings, Remove Center Cross), Zoom & Mask feature, and Output selector. Up to three individual picture
+settings can be configured per channel.
+Chroma Key
+Use the COLOR slider to select the color you want to remove. Use COLOR RANGE to indicate the spectral range you want to
+remove. Use INTENSITY to adjust the color saturations. Press CHROMA MASK to isolate the Chroma Key area.
+Image Adjustments ► Brightness / Contrast
+Adjust brightness, contrast, and gamma as needed. Use ON/OFF to compare the result with the original.
+Image Adjustments ► Color Correction
+Change the colors of the video images as desired. Use ON/OFF to compare the result with the original.
+Ground Glass Markings ► Format Markings
+Set different aspect ratio aligned to the ground glass in use. Move the blue cross exactly on top of the ground glass center cross.
+Move the blue vertical bar to the outer right line of the ground glass. Press the button of the desired aspect ratio. You can set several
+standard markings and one custom marking with or without center cross. Design the style of the different markings by pressing its
+button >1sec. Combine Mask/Zoom/Move/Rotate functions with format marking by pressing MASK ON and / or ZOOM ON >1sec.
+Ground Glass Markings ► Grid
+Set your custom grid.
+Ground Glass Markings ► Markers
+Position up to eight individual markers.
+Ground Glass Markings ► Center Cross
+You can erase the center cross. Align the red markings to the center cross in the picture, and adjust it to the minimum size. Some
+ground glasses have dots in the center which can be removed by pressing the DOT button.
+Mask / Zoom – Move & Rotate
+You can mask the frame. Open the Mask-Menu, and press the LCD screen where the mask should begin. Move your finger to the
+lower corner of the opposite side. The mask will appear and can be adjusted exactly. OK saves the mask. MASK ON/OFF toggles
+the mask on and off. The shade of the mask can be adjusted separately. The Zoom/Move/Rotate-Function works similarily. You can
+zoom-in (press plus), zoom-out (press minus), move the image, or rotate it in 0.5° steps. Three soft keys can be preset for frequently
+used rotation angles.
+Output
+Select each picture settings function individually on PSU, Video-Out 1 and Video-Out 2.
+
+
+Audio Settings & Fan Control
+Press SETTINGS, and select AUDIO. Up to two audio signals will be recorded automatically. Audio 1 and Audio 2 can be recorded
+with CAM A or Audio 1 with Cam A and Audio 2 with CAM B. Audio playback will be available at 18 to 32 fps only. Press VARIABLE
+SOUND SPEED to playback the soundtrack at any speed. Adjust the volume of the headphones and the internal speaker. Press
+FAN CONTROL for sync sound recording. This function stops all fans (0dB) during recording. MANUAL FAN-OFF switches to silent-
+mode without recording. AUTO MUTE switches off all Audio Outputs (not the headphones) automatically while recording (REC-
+MUTE) or while live mode (LIVE-MUTE). The damping level can be selected between –3dB and –60dB (Audio OFF). MANUAL
+PLAYBACK SYNC allows you to advance or delay the sound playback up to 30 frames.
+Press SETTINGS >2sec. to enter the Picture-Settings-Reset-Menu. Press RESET to delete all possible Picture Settings and
+to switch the Overlay-Function off, or press CANCEL to leave the menu without resetting.
+
+Tools
+Press SETTINGS, and select TOOLS. The following functions are available:
+Four Channel Recording Select between two channel and four channel operation. At four channel operation, the PSU can
+record two HD/SD cameras (CAM A and CAM B) and two SD cameras (CAM C and CAM D) at the same time. CAM A and CAM B
+will be displayed above CAM C and CAM D. Press the CAM C+D Button >1sec. to swap this order.
+Multiple-Frame-Print simulates a reproduction of the same frame several times while the camera speed can be reduced (e.g.,
+cam speed 4 fps, printing ratio 6x to reach 24 fps or 8x for 32 fps post speed).
+Scene Numbering allows users to label the individual takes as they are labeled in the script.
+         ®
+Lector -Recording presets all parameters for automatic recording. Press SWITCH to trigger an automatic switch to the recording
+channel at the start of any recording. Press KEEP to prevent the PSU from automatically switching to the recording channel. AUTO
+starts and stops a recording automatically when the camera starts and stops. SEMI-AUTOMATIC can displays information about one
+to four running cameras (only if the take(s) is/are longer than the time limit which is preset in the Short-Take-Menu). Press REC at
+any time while the message is displayed to record the entire take(s) with an automatic stop at the end of the shot(s). Press NO
+                                                                                                    ®
+RECORDING to avoid recording on one to four channels. The viewing time of the Manual-Lector -Message can be preset. MANUAL
+                                                                                                                                   ®
+deactivates any automatic or semi-automatic mode. The recordings have to be started and stopped by hand. However, the Lector -
+                                                                                          ®
+Signal (camera speed) will still be recorded for every take. OFF deactivates the Lector – neither recording, nor frame rates will be
+captured. BEEP triggers a start tone when the camera is switched on. REDUCED CAMERA SPEED enables recording at speeds
+below 1 fps. (0.1 – 150 fps). FOOTAGE COUNTER presets the film stock management for all camera inputs.
+Take-Notes allows for the creation and storage of comments per recorded take. Activate this function, choose the outputs, and set
+the viewing time (MAN, 0.5 – 30 seconds, PERMANENTLY).
+Action Master enables the setting of in- and out-marks to concentrate on action.
+Tool-Tips provide On-Screen-Help for the PSU. Select language (German, English, French or Spanish) and your skill level.
+View individual tips by pressing SKIP in this menu. Press on a tooltip to remove it from the screen, press the area again to
+read the last displayed tooltip once more.
+
+
+User Settings
+Press SETTINGS, and select SETTINGS. The following functions are available:
+Short-Takes select the minimum time of the takes. If you select e.g., 4 seconds, any take shorter than 4 seconds will not be
+                                         ®
+shown. Ideal to avoid automatic (Lector controlled) recording of gate checks, etc. If you select 0.0 seconds, all takes will be shown.
+You can not lose any takes since the PSU will record all of them. This function only controls whether short takes are shown or not. It
+can be selected at any time. Take numbers will disappear and will return when the function is switched back to 0.0 sec.
+Menu Time Adjust the timer (in seconds) that automatically closes menus.
+Temperature Display Displays the maximum temperature out of several PSU sensors on the touch screen in °C or °F.
+Capacity Control Select between STANDARD CAPACITY and LONG PLAY CAPACITY.
+Channel-Indicator Switch on/off the channel indicator individually for the PSU touch screen and the VIDEO OUT sockets. Set the
+in-picture time display on the Video-Out to “Time”, “Time remaining”, “Timecode” or “Auto” (as shown on PSU touch screen). Switch
+FLASHY RECORD INDICATION on to emphasize channels currently in recording.
+Battery Selection Select the battery type in use. Battery status is located below the EXIT button.
+Lock Screen Set the code for unlocking the PSU. The pre-set code is 5555.
+Clean-Screen Simplyfies cleaning of the LCD screen of the PSU. As long as you are cleaning the monitor, it will stay dark to assist
+you. Fold the screen into a horizontal position. Do not use alcohol or acetone!
+Video-Out Settings Select 24Hz/50Hz/60Hz for HD monitors. Select PAL or NTSC for SD monitors.
+Interpolation Switch off the interpolation used for high speed playback.
+Remote Settings Enable or disable the director’s and operator’s remote receiver.
+Date-&-Time Enter the correct date and time information. This data will be recorded with every shot.
+
+
+Footage Counter (film cameras only - must be activated in the Tools-Settings ►Lector Recording)  ®
+
+                                                                                          ®
+The Footage Counter keeps track of the use of film stock. This function requires a Lector system per film camera. Press FOOTAGE
+                          ®
+COUNTER in the Lector Menu. Set the film format which is used (16, 35 4-perf, 3-perf, or 2-perf), set METERS or FEET. One to
+four displays in the time display show the remaining film stock per magazine. Press SET (on the right side of the Footage-Counter-
+Display) and preset the loaded amount of film (122m, 305m or manually any short end). If the camera is running, the counter will
+display the remaining film negative. A warning will show up if there is not enough film stock left to shoot the previous scene again.
+Press CALCULATOR to calculate screening times for different film formats and various camera speeds (this function is a pure
+calculator and has no effect on any PSU operation).
+
+
+Lock Screen & Quitting the PSU
+To lock the screen, press EXIT and then LOCK SCREEN >1sec. To get access again, press EXIT, and enter the code for unlocking.
+The pre-set code is 5555. To shut down the PSU, press EXIT and then SHUTDOWN >3sec.
+WARNING! Do not disconnect the PSU from power as long as the unit is running! Before disconnecting, the
+shutdown process has to be fully completed!
+For technical data, see reverse side of PSU-3 Editing Instructions.
+
+Design and specifications are subject to change without notice. Made in Germany by Vantage Film
+Vantage Film GmbH - Phone +49 961 26795 - Fax +49 961 62983 - E-mail cameras@vantagefilm.com - www.vantagefilm.com
+VANTAGE®, PSU®, LECTOR®, HAWK®, HAWK ANAMORPHIC® are registered trademarks of Vantage Film GmbH, Germany – patents granted
+

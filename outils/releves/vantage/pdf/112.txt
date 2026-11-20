@@ -1,0 +1,76 @@
+# https://www.vantagefilm.com/file/edee/downloads/psu/vf-psu-import-export-manager-3-40mp.pdf
+
+­­PSU-3 Import/Export Manager                                                                                                 (Software PSU-3.40MP)
+
+
+To use footage from the PSU, a                Setup the Ethernet connection
+computer or the PSU-3-DVD-Backup              Connect your computer using the Update/Data Cable to the GbE 1 socket. Configure
+Recorder can be connected. For                the ethernet network device of your operating system to IP: 192.168.10.101
+instant download, just setup the              Subnet: 255.255.255.0.
+computer as described and download            The files are accessible on server address IP: http://192.168.10.100:8080 via web
+the files in Quicktime format. For            based WebDAV, anonymous login, no password.
+exporting files in MPEG2 or iPad™/
+                                              Access has been successfully tested with Internet Explorer (Windows), CyberDuck, TotalCommander, Transmit, Goliath (Mac OS X),
+iPhone™ resolution, the takes have            Konqueror, Nautilus, cadaver (Linux) – please consult the manual of your favorite software on how to open a WebDAV-Resource. Further
+to be converted first.                        information: www.webdav.org
+
+
+
+
+   Quicktime™                           H.264 takes for iPad™/iPhone™
+   download                             Press the DISC button >1sec. and select IMPORT / EXPORT. To return to the standard
+   The PSU-folder                       disc level, press cANCEL. Press NEW EXPORT-LIST, choose the iPad™/iPhone™ and
+   “Quicktime” allows                   select the individual takes to be transcoded. The converted takes can be found in the
+   direct download of                   iPad folder. Export lists help to organize your takes when downloading. Press OK to
+   all takes without                    continue regular work.
+   conversion.                          The status of H.264-file conversions can be watched on the display.
+
+
+
+Import & Export Images (Overlay Freeze)
+Individual frames captured in the Overlay-Menu can be exported. The original Images 1-3 are represented by the filenames
+1_freeze, 2_freeze, and 3_freeze. To import any given image to the PSU Overlay-Menu, name these images 1_, 2_, and 3_
+followed by any file name and upload them into the Overlay folder.
+
+Job-Reports
+The PSU automatically produces a detailed Job-Report for every shooting day. This PDF-document includes scene/take
+number, length of the take, shooting time, take notes, camera speed, and one printed, original frame per scene. Press
+NOTES >1sec. to display the keyboard. Press JOB REPORT to type the header of your production. The header will be quoted
+automatically on every report. Job reports can be downloaded from the PSU as PDF files or added to a recorded DVD.
+
+
+
+
+   MPEG files
+   Press the DISC button >1sec. and select IMPORT / EXPORT. To return to the standard disc level, press cANCEL.
+   Press NEW EXPORT-LIST, choose Video-DVD or Data DVD and select the individual takes to be converted. The
+   converted takes can be found in the MPEG folder. Export lists help to organize your takes when downloading. Press
+   OK to continue regular work.­­­
+
+
+      Video DVD                                                                                                                  Data DVD
+      Select Video-DVD in the IMPORT / EXPORT section. The buttons MOVE UP,                                                      Select Data-DVD in the IM-
+      MOVE DOWN, INSERT BEFORE, INSERT AFTER, INSERT SHOOTING DAY,                                                               PORT / EXPORT section.
+      OUT, REPLACE, DELETE LIST will assist you to build the Export-list. If you                                                 Preset Single or Dual Lay-
+      plan to write a Video-DVD, be aware that the individual takes will be placed                                               er according to the DVD
+      on the DVD in the selected order. Preset Single or Dual Layer according to the                                             media in use. Activate Job
+      DVD media in use. Activate Job Reports button to add PDF files to the DVD.                                                 Reports button to add PDF
+      Press RECORD ON DVD (the PSU DVD writer has to be connected to the IEEE                                                    files to the DVD. Press RE-
+      1394 socket first).                                                                                                        CORD ON DVD (the PSU
+                                                                                                                                 DVD writer has to be con-
+      DVD Title Generator                                                                                                        nected to the IEEE 1394
+      (The Note-Function must be activated in the User-Settings ►Take-Notes first)                                               socket first).
+      Press NOTES >1sec. to display a keyboard for typing individual messages per                                                The take order in the Ex-
+      MPEG-list. This note will be displayed in the main menu of the burned DVD.                                                 port List is not important.
+
+
+
+
+Delete Export-Lists
+Press DELETE SOME EXPORT-LISTS or DELETE ALL EXPORT-LISTS to delete compressed files from the PSU-drives. See PSU-3
+User Manual (Deleting Takes) for further steps.
+
+Design and specifications are subject to change without notice. Made in Germany
+Vantage Film GmbH - Phone +49 961 26795 - Fax +49 961 62983 - E-mail cameras@vantagefilm.com - www.vantagefilm.com
+VANTAGE®, PSU®, LECTOR®, HAWK®, HAWK ANAMORPHIC® are registered trademarks of Vantage Film GmbH, Germany – patents granted
+

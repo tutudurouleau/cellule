@@ -1,0 +1,3 @@
+17 pages, 1 PDF, 20 adresses vues
+ÉCHEC https://www.transpalux.fr/ : <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.transpalux.fr'. (_ssl.c:1011)>
+ÉCHEC https://transpalux.com/contact-transpalux/ : HTTP Error 404: Not Found

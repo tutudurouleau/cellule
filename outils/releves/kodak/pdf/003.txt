@@ -1,0 +1,464 @@
+# https://business.kodakmoments.com/sites/default/files/files/resources/ti2443.pdf
+
+KODAK PROFESSIONAL
+Single-Use Chemistry Kit, Process
+TECHNICAL DATA / COLOR CHEMICAL                                                                                   November 2008 • TI-2443
+
+
+CHEMICALS
+The KODAK PROFESSIONAL Single-Use Chemistry Kit,
+Process E-6, is specially designed for customers who
+process small batches of color reversal films in rotary-tube
+processors, small tanks, or other single-use processes.
+Each kit makes 5 litres of first developer, reversal bath,
+color developer, pre-bleach, bleach, fixer and final rinse to
+give you the reliable performance you expect from Kodak
+chemicals.
+
+Mixing and Splitting Instructions
+KODAK PROFESSIONAL Single-Use Chemistry Kit,
+Process E-6 (US version, CAT 107 7643*)
+
+        Solution           To Make      To Make                To Make           To Make         To Make
+                         350 mL, Use: 500 mL, Use:             1 L, Use:         2 L, Use:       5L, Use:
+Step 1: Start with this volume of water at 68 to 104°F (20 to 40°C):
+                           210.0 mL          300.0 mL         600.0 mL           1200.0 mL          3L
+Step 2: Add this volume of concentrate:
+First Developer             70.0 mL          100.0 mL         200.0 mL           400.0 mL       1000.0 mL
+                                                                                              (entire bottle)
+Reversal Bath                8.8 mL           12.5 mL          25.0 mL           50.0 mL        125.0 mL
+                                                                                              (entire bottle)
+Color Developer A†           50 mL            71.3 mL          142.5 mL          285.0 mL       712.5 mL
+                                                                                              (entire bottle)
+Color Developer B           16.5 mL           23.5 mL          47.0 mL           94.0 mL        235.0 mL
+                                                                                              (entire bottle)
+Pre-Bleach                  24.5 mL           35.0 mL          70.0 mL           140.0 mL       350.0 mL
+                                                                                              (entire bottle)
+Bleach                     108.5 mL          155.0 mL          310.0 mL          620.0 mL       1550.0 mL
+                                                                                             (2 entire bottles)
+Fixer                       24.5 mL           35.0 mL          70.0 mL           140.0 mL       350.0 mL
+                                                                                              (entire bottle)
+Final Rinse*                                                                                  (entire bottle)
+CAT 1077643                  3.5 mL            5.0mL            10.0 mL          20.0 mL         50.0 mL
+CAT 839 6210                 5.5 mL            7.8 mL           15.6 mL          31.2 mL         78.0 mL
+Step 3: Finally, add water to bring volume to:
+                           350.0 mL          500.0 mL              1L               2L              5L
+* CAT 107 7643 is the newest version of this product, replacing CAT 839 6210.
+  The final rinse mixing instructions have changed. Find the CAT number on
+  your packaging, and mix your final rinse accordingly.
+† When mixing the color developer, start with water. Add Part A and stir. Then
+  add Part B and top off with water.
+
+
+
+
+©Eastman Kodak Company, 2008
+KODAK PROFESSIONAL Single-Use Chemistry Kit, Process E-6 (European version, CAT 525 6763)
+
+           Solution                To Make      To Make                To Make           To Make             To Make
+                                 350 mL, Use: 500 mL, Use:             1 L, Use:         2 L, Use:           5L, Use:
+Step 1: Start with this volume of water at 68 to 104°F (20 to 40°C):
+                                   140.0 mL          200.0 mL         400.0 mL          800.0 mL                   2L
+Step 2: Add this volume of concentrate:
+First Developer                     70.0 mL          100.0 mL         200.0 mL          400.0 mL            1000.0 mL
+                                                                                                          (entire bottle)
+Reversal Bath                        8.8 mL           12.5 mL          25.0 mL           50.0 mL            125.0 mL
+                                                                                                          (entire bottle)
+Color Developer A*                  70.0 mL          100.0 mL         200.0 mL          400.0 mL            1000.0 mL
+                                                                                                          (entire bottle)
+Color Developer B                   17.5 mL           25.0 mL          50.0 mL          100.0 mL             250.0 mL
+                                                                                                          (entire bottle)
+Pre-Bleach                          35.0 mL           50.0 mL          100.0 mL         200.0 mL            500.0 mL
+                                                                                                          (entire bottle)
+Bleach                             140.0 mL          200.0 mL         400.0 mL          800.0 mL            2000.0 mL
+                                                                                                         (2 entire bottles)
+Fixer                               24.5 mL           35.0 mL          70.0 mL          140.0 mL            350.0 mL
+                                                                                                          (entire bottle)
+Final Rinse                          7.0 mL           10.0 mL          20.0 mL           40.0 mL            100.0 mL
+                                                                                                          (entire bottle)
+Step 3: Finally, add water to bring volume to:
+                                   350.0 mL          500.0 mL              1L               2L                     5L
+*When mixing the color developer, start with water. Add Part A and stir. Then add Part B and top off with water.
+
+
+
+
+STORAGE                                                                                   EFFLUENT
+For best results, store mixed solutions a maximum of 4                                    The bleach and fixer, along with the rest of the solutions in
+weeks if stored under nitrogen or 1 week if stored in                                     this kit, are designed for simplicity of use. They should not
+partially filled bottles. Store chemicals at 5 to 29°C (40 to                             be re-used or regenerated.
+85°F). Don’t store chemicals at extremely high or low
+temperatures.
+                                                                                          SILVER RECOVERY
+                                                                                          You can recover silver from used fixer by collecting the
+SOLUTION VOLUMES                                                                          solution, and using any conventional silver recovery
+For best sensitometric results, use no less than 250 mL of                                method, including TMT precipitation, KODAK Chemical
+each solution per square foot of film (235 mL for two                                     Recovery Cartridge, or electrolytic desilvering. The fixer
+135-36 rolls). This kit is designed to use an equal volume of                             effluent can be collected and combined with fixer effluent
+all solutions. Some film holders or tubes may require more                                from other processes for terminal silver recovery.
+solution to produce better uniformity or to compensate for
+solution oxidation. Check your processor manual for the
+solution volume recommended for your processor.
+
+
+
+
+2                                                                   KODAK PROFESSIONAL Single-Use Chemistry Kit, Process E-6 • TI-2443
+STEPS AND CONDITIONS: ROTARY-TUBE PROCESSING
+These are general recommendations to use as a starting place for setting up your rotary-tube processor. For additional
+information, refer to the information provided by your processor manufacturer.
+
+                   Step                          Time*            Temperature                      Comments
+                                               (min:sec)            °C (°F)
+Use process manufacturer’s                         6:00†             38.0 ± 1.0        Processor may be warmed with
+recommended warm-up.                                               (100.4 ± 1.8)       running warm water, warm air,
+                                                                                       or water jacketing, depending
+                                                                                       on the equipment
+                                                                                       manufacturer’s
+                                                                                       recommendation.
+                                       Perform these steps in total darkness.
+Film warm-up                                        4:00                38.0           Load tube with film and insert
+                                                                      (100.4)          tube in processor.
+Pre-wet‡
+First Developer                                    6:00 to          38.0 ± 0.3
+                                                    7:00§         (100.4 ± 0.5)
+Wash                                                2:00             38.0 ± 1.0        Rotary-tube manufacturers
+                                                                   (100.4 ± 1.8)       have several different wash
+                                                                                       modes. Use the wash mode
+                                                                                       that most resembles a
+                                                                                       continuous wash.**
+Reversal Bath††                                     2:00             38.0 ± 1.0
+                                                                   (100.4 ± 1.8)
+Color Developer                                     4:00             38.0 ± 1.0
+                                                                   (100.4 ± 1.8)
+                                    Remaining steps can be done in room light.††
+Pre-Bleach                                          2:00            35 to 40
+                                                                   (95 to 104)
+Bleach                                              6:00            35 to 40
+                                                                   (95 to 104)
+Fixer                                               4:00            35 to 40
+                                                                   (95 to 104)
+Wash                                                1:00            35 to 40           Two 1-minute running water
+Wash                                                1:00           (95 to 104)         washes, then a 2-minute wash,
+Wash                                                2:00                               are recommended.
+Final Rinse                                         1:00             Ambient           This step can be performed in
+                                                                                       the rotary tube or in a separate
+                                                                                       tank outside the processor.
+Dry                                            As needed             Up to 60
+                                                                      (140)
+Post-Cycle Wash                                     5:00                24
+                                                                       (75)
+* All times include 10- to 20-second drain time.
+† Determine the exact time and temperature for your processor.
+‡ A pre-wet step is not recommended. If the processor manufacturer recommends a film pre-wet, note that it can cause sensitometric effects with some emulsions in both
+ speed and color balance. Since some emulsions are affected more than others, your control strip may not reflect the results you get with all films. Contact your processor’s
+ manufacturer to find out how to disable the pre-wet step.
+§ You can vary this time from 5 to 8 1/2 minutes to produce an in-control process at a selected temperature. Once you have chosen the time, maintain it within +/- 5
+ seconds; once you have selected a temperature from the 36 to 40°C (97 to 104°F) range, control it within +/- 0.3°C (+/- 0.5°F).
+**Two short 20- to 30-second washes followed by a third 1-minute wash most resembles a continuous a 2-minute continuous wash.
+††Although you can open the processor after the reversal bath step, it is best to leave it closed throughout the process to avoid heat loss in the processing chamber.
+
+
+
+
+KODAK PROFESSIONAL Single-Use Chemistry Kit, Process E-6 • TI-2443                                                                                                       3
+Pre-Cycle Steps                                                   with assurance that your process is in control while
+The pre-cycle steps and conditions recommended are                processing film.
+designed to compensate for solution heat loss during               1. Load a KODAK Control Strip, Process E-6, on a
+processing. The processor warm-up and film warm-up                    processing reel. It can be placed on the same reel as a
+steps minimize changes in the first developer temperature             135-24 roll, when running a single roll, or on a
+by raising the temperature of the processing chamber.                 separate reel if you are not.
+Follow the processor manufacturer’s recommendations.               2. Follow your normal processing cycle to process the
+  A pre-wet step is not recommended, even if the rotary               film along with your control strip.
+tube manufacturer specifies one. A pre-wet can cause
+sensitometric effects with some emulsions in both speed            3. Measure the D-max, HD, LD, TD, and D-min densities
+and color balance. Since some emulsions are affected                  of the control strip on a densitometer. Calculate and
+                                                                      plot the differences from aim for that batch of control
+more than others, your control strip may not reflect the
+                                                                      strips on a KODAK Process Record Form, KODAK
+results you get with all films.
+                                                                      Publication No. Y-55.
+Post-Cycle Steps                                                     If the differences from aim are within the control limits,
+The post-cycle step is simply a cleaning operation.                  and the processed transparencies are acceptable, the
+Thoroughly rinse all inner surfaces of the processor tray,           process cycle you used is satisfactory. Include a control
+tube and film holders to remove all traces of chemicals—             strip with each run, and plot the differences from aim for
+especially fixer. If the last chemical to go through the             each strip.
+delivery system is fixer, make sure you completely wash it           If the differences from aim plot outside the control
+away before starting the next process. If you intend to run          limits, analyze the results (see “Analyzing and
+another processing cycle immediately, you may need to                Adjusting Your Process,” below).
+keep the post-cycle temperature at approximately 24°C                If you are interested in monitoring the consistency of
+(75°F). If you have dried your processor with a hot-air           your processing system, including your chemical mixing,
+dryer, allow it to cool to room temperature to minimize film      chemical keeping, agitation and temperature control, you
+speed variations. With some processors, the tube, tray, and       can keep a control chart on control strips run in a separate
+processor cabinet may have to be at the same temperature          process before running your actual production. This will
+before each run.                                                  give you a tool to ensure your process is in control before
+                                                                  processing your, or your customer’s, film, and a tool for
+Agitation                                                         trouble-shooting.
+Agitation is provided by rotation of the processor tube.
+Good agitation is necessary for film uniformity. Follow your       1. Load a KODAK Control Strip, Process E-6, on a
+                                                                      processing reel. It is important to run your control
+processor manufacturer’s recommendations.
+                                                                      strip in the same position from one process to
+                                                                      another.
+Process Control
+Each processor may provide slightly different results. The         2. Follow your normal processing cycle to process the
+design of the tube, film holder, processing tray, and means           control strip.
+of rotating the tube can affect agitation, heating capacity,       3. Measure the D-max, HD, LD, TD, and D-min densities
+and amount of solution oxidation.                                     of the control strip on a densitometer.
+   There are two ways you can monitor your process using             You will see different densities when you process only a
+KODAK Control Strips, Process E-6.                                control strip. This is because the chemicals in each
+   If you are interested in monitoring the consistency of         solution are used at a different rate depending on the
+your production, you can run a control strip in the process       amount of film processed together. What you are looking
+along with your actual production. This will provide you          for is the consistency of your system when using this type
+                                                                  of process control. The process level for ‘control only’
+                                                                  strips will not be the same as those used for production
+                                                                  control.
+                                                                     One way to determine where your ‘control only’ strips
+                                                                  should plot is by running a ‘control only’ process directly
+                                                                  after a successful production run. Do this several times to
+                                                                  establish your average expected densities.
+
+
+
+
+4                                                   KODAK PROFESSIONAL Single-Use Chemistry Kit, Process E-6 • TI-2443
+Analyzing and Adjusting Your Process                                    Variable Speed—Control strips from successive
+If the difference from aim plot outside the control limits           processing runs plot out of control with some results
+and your processed transparencies are not acceptable,                plotting above the aim (too slow) and some results
+modify your processing cycle. The most common                        plotting below the aim (too fast). Properly exposed
+out-of-control situations and possible remedies are                  transparencies appear too dark from some processes, and
+described below.                                                     too light from other processes.
+    Fast Speed—The green densities of the LD step plot                  Your operating conditions may be inconsistent. Variable
+below the control limit. Properly exposed transparencies             speed can also be caused by inconsistent mixing of the first
+appear light.                                                        developer. If more consistent operating procedures do not
+                                                                     eliminate the speed variations, you may need to modify the
+1.     Decrease the first-developer time in 15-second increments     pre-cycle step. Try the following changes one at a time. If
+       until the densities of the LD step plot within the action     any change reduces variability, include it in your normal
+       limits. Modify your normal processing cycle to include this
+       change. Do not decrease your first-developer time below 5     process cycle.
+       minutes.
+                                                                     1.      If the first process you run after the processor has been idle
+                              - OR -
+                                                                             for more than a few hours is consistently slower than other
+2.     Reduce your starting process temperature by 0.5°C (0.9°F)             runs, increase the machine warm-up time for the first run
+       by decreasing the processor heater thermostat setting, and            by 2 minutes. Then return to your normal warm-up time.
+       the first developer, first wash, reversal bath, color
+                                                                     If the processes you run immediately after other processes are
+       developer, and pre-cycle running water temperatures by
+                                                                     consistently faster, increase the post-cycle wash time to 10
+       0.5°C (0.9°F). Continue to reduce the temperatures until
+                                                                     minutes.
+       the densities of the LD step plot in control or until you
+       reach the minimum process temperature of 36°C (97°F).         2.      If process-speed variability seems to be random, try the
+                                                                             following steps—one at a time.
+       If your first developer temperature is 36°C (97°F), do not
+       decrease it in an attempt to get the control strip readings           a. Increase the processor warm-up time by 2 minutes.
+       within the control limits. Other conditions, such as                  b. Increase the film warm-up time by 2 minutes.
+       contamination (i.e. fixer remaining because of inadequate
+       post-cycle washing), storage, or mixing errors may be
+       causing the problem. Do not reduce the temperature to            Yellow D-min Stain—The blue D-min densities and
+       less than 36°C (97°F) or the time below 5 minutes.            sometimes the green plot high. The D-min is yellow
+       When you find a temperature that produces an in-control       overall, and there are yellow streaks and patches of varying
+       process, use this as your normal temperature for future       densities from run to run. It is usually most noticeable in
+       processes.                                                    large areas of low density.. To eliminate yellow D-min
+                                                                     stain, try the following modifications—one at a time.
+  Slow Speed—The green densities of the LD step plot
+above the control limit. Properly exposed transparencies             1.      Increase the time of the pre-bleach to 4 minutes.
+appear dark.                                                         2.      Blow nitrogen into the processing chamber during the
+                                                                             color-developer step.
+1.     Make these changes, one at a time. Process a control strip
+       after each change.                                            3.      The pre-bleach may be exhausted. Make a new pre-bleach.
+
+       a. Increase the processor warm-up time by 2 minutes.          4.      The color developer may be oxidized. Make a new color
+                                                                             developer.
+       b. Increase the film warm-up time by 1 minute.
+                                                                     5.      Add a 30-second spray or flowing wash between the
+       c. Check the volume of the first and color developers to              color-developer and pre-bleach steps and replace the final
+       make sure the volume meets recommendations.                           rinse with KODAK FLEXICOLOR Stabilizer III Replenisher.
+                              - OR -                                         Important: Adding a wash between the color developer and
+                                                                             pre-bleach steps, without the corresponding change to
+2.     If any one of these changes increases the densities of the            Stabilizer III, will result in unsatisfactory magenta-image
+       LD step significantly, modify your cycle to include the               stability.
+       change.
+                                                                     6.      Increase the amount of pre-bleach used by 50 percent.
+                              - OR -
+                                                                     If none of the changes corrects the problem, check for
+3.     Increase the first developer time in 15-second increments     chemical-mixing or storage errors, and solution contamination.
+       until the densities of the LD step plot within the action
+       limits. Modify your normal processing cycle to include this   If you have a large processor, the yellow D-min stain may be most
+       change. Do not increase the first developer time beyond 8     evident in the film that is farthest from the solution inlet.
+       1/2 minutes.                                                  Sometimes the solution flow may leave pre-bleach at the inlet
+                                                                     while color developer collects at the opposite end. To minimize
+                              - OR -                                 this, move the position of the inlet to the center of the tray or install
+4.     If none of these steps corrects the slow speed, increase      inlets at the ends as well as at the center. This change will also
+       your process temperature by 0.5°C (0.9°F). Continue to        produce more consistent results with the other processing steps.
+       increase the temperature until the control values plot in
+       control. Do not increase the processing temperature
+       beyond 40°C (104°F). If all of these steps do not correct
+       the slow speed, check for chemical-mixing or storage
+       errors, and solution contamination.
+
+
+
+
+KODAK PROFESSIONAL Single-Use Chemistry Kit, Process E-6 • TI-2443                                                                           5
+   Poor Color Balance—A blue or yellow color balance in
+your control plots can be caused by color-developer
+alkalinity (pH) that is too low or too high, by using lower
+than recommended volumes of processing solutions, or by
+incorrect mixing of the color developer. You can adjust
+color-developer alkalinity (pH) by adding small amounts
+of sodium hydroxide (5N NaOH) or sulfuric acid (5N
+H2SO4). Adding sodium hydroxide increases alkalinity
+and corrects a blue color balance; adding sulfuric acid
+decreases alkalinity and corrects a yellow color balance.
+BEFORE ADDING ACID OR BASE, VERIFY THAT THE
+COLOR DEVELOPER MIX HAS BEEN MADE CORRECTLY
+AND THAT THE CORRECT SOLUTION VOLUMES ARE
+BEING USED.
+   Other Problems—Refer to KODAK Publication Z-119,
+“Using KODAK Chemicals, Process E-6” for additional
+problem-solving information.
+
+STEPS AND CONDITIONS: SMALL TANK PROCESSING
+
+         Step         Time*            Temperature                           Comments
+                    (min:sec)            °C (°F)†
+                                Perform these steps in total darkness.
+ First                6:00 to            38.0 ± 0.3          Initial and subsequent agitation.§
+ Developer             7:00‡           (100.4 ± 0.5)
+ Wash                  2:00             35.0 to 40           If a flowing wash is not available, use
+                                        (95 to 104)          several (3 to 4) short washes over the
+                                                             two-minute time. Use initial and
+                                                             subsequent agitation.§
+ Reversal              2:00             35.0 to 40           Initial agitation§
+ Bath**                                 (95 to 104)
+ Color                 6:00             38.0 ± 1.0           Initial and subsequent agitation§
+ Developer                             (100.4 ± 2.0
+                           Remaining steps can be done in room light.**
+ Pre-Bleach            2:00              35 to 40            Initial agitation§
+                                        (95 to 104)
+ Bleach                6:00              35 to 40            Initial and subsequent agitation§
+                                        (95 to 104)
+ Fixer                 4:00              35 to 40            Initial and subsequent agitation§
+                                        (95 to 104)
+ Wash                  6:00              35 to 40            If a flowing wash is not available, use
+                                        (95 to 104)          several (3 to 4) short washes over the
+                                                             six-minute time. Use initial and
+                                                             subsequent agitation.§
+ Final Rinse            1:00             Ambient             Initial agitation§
+ Dry                    As               Up to 60
+                      needed              (140)
+* All times include a 10- to 20-second drain time.
+† Use a temperature-controlled water bath to maintain the temperature of the solutions.
+‡ You can vary this time from 5 to 8 1/2 minutes to produce an in-control process at a selected temperature. Once you have chosen this time, maintain it within +/- 5
+ seconds; once you have selected a temperature from the 36 to 40°C (97 to 104°F) range, control it within +/- 0.3°C (+/- 0.5°F).
+§ Small tank agitation techniques are described in the next section.
+**Although you can open the tank after the reversal bath step, it is best to leave it closed throughout the process to avoid heat loss.
+
+
+
+
+6                                                                      KODAK PROFESSIONAL Single-Use Chemistry Kit, Process E-6 • TI-2443
+Agitation                                                              STEPS AND CONDITIONS: SINK LINE
+Agitation in small-tank processors is provided manually.               PROCESSING
+Good agitation is necessary for film uniformity. There are
+                                                                       The KODAK PROFESSIONAL Single-Use Chemistry Kit,
+two types of tanks: invertible and non-invertible; and two
+                                                                       Process E-6 is not designed for use in a replenished
+types of agitation: intial and subsequent.
+                                                                       sink-line process. For replenished systems, the 10-litre
+                                                                       sized KODAK Chemicals, Process E-6 are a more
+                        Invertible Tanks
+                                                                       appropriate choice. If you do choose to use this product in
+                 First Developer, Color          Reversal Bath,        a sink-line processor, follow the recommendations below
+                Developer, Bleach, Fixer,       Pre-Bleach, Final      (solutions are used for a given amount of film and then
+                        Washes                       Rinse
+                                                                       discarded).
+Initial       Tap tank to dislodge air bubbles. Turn tank over 7 or
+              8 times in 15 seconds. Return tank to water bath.
+                                                                       Limitations
+Subsequent    At 30-second intervals,      None
+              remove tank from water                                   Approximately 10 to 12 square feet of film (about twenty
+              bath. Quickly turn tank over                             135-36 rolls) can be processed through a 5-litre sink line
+              2 or 3 times. Return tank to                             using this chemistry in a batch mode. After this much film
+              water bath.
+                                                                       has been processed, you can increase your first developer
+                                                                       time by 20 to 30 seconds and your bleach time from 6 to
+                     Non-Invertible Tanks
+                                                                       10 minutes to process another 5 to 6 square feet of film
+                 First Developer, Color          Reversal Bath,        (about ten 135-36 rolls) with satisfactory sensitometric
+                Developer, Bleach, Fixer,       Pre-Bleach, Final      results.
+                        Washes                       Rinse                Processing more film will require even longer first
+Initial       Tap tank to dislodge air bubbles. Return tank to         developer times and will result in high contrast images.
+              water bath. Rotate reel 4 or 5 times during first 5 to
+              10 seconds.
+                                                                       This may be acceptable for some appplications (e.g.
+                                                                       graphics / text presentations), but not for general
+Subsequent    At 30-second intervals,         None
+              rotate reel 4 or 5 times.                                photographic images. In any case, do not process more
+                                                                       than a total of fifty 135-36 rolls in a 5-litre mix of this
+                                                                       chemistry.
+
+
+
+
+KODAK PROFESSIONAL Single-Use Chemistry Kit, Process E-6 • TI-2443                                                               7
+   KODAK PROFESSIONAL Single-Use Chemistry Kit, Process E-6
+
+
+                      Step                          Time*             Temperature                      Comments
+                                                  (min:sec)             °C (°F)
+                                          Perform these steps in total darkness.
+   First Developer                                   6:00†             38.0 ± 0.3         Nitrogen agitation. One
+                                                                     (100.4 ± 0.5)        2-second burst every 10
+                                                                                          seconds.
+   Wash                                              2:00               38.0 ± 1.0        Flowing wash. Manual
+                                                                      (100.4 ± 1.8)       agitation‡ every 30 seconds.
+   Reversal Bath                                     2:00               38.0 ± 1.0        No agitation. Tap to dislodge air
+                                                                      (100.4 ± 1.8)       bubbles.
+   Color Developer                                   6:00               38.0 ± 1.0        Nitrogen agitation. One
+                                                                      (100.4 ± 1.8)       2-second burst every 10
+                                                                                          seconds.
+                                       Remaining steps can be done in room light.
+   Pre-Bleach                                        2:00               35 to 40          No agitation. Tap to dislodge air
+                                                                       (95 to 104)        bubbles.
+   Bleach                                            6:00§              35 to 40          Air agitation. One 2-second
+                                                                       (95 to 104)        burst every 10 seconds.
+   Fixer                                             4:00               35 to 40          Air agitation. One 2-second
+                                                                       (95 to 104)        burst every 10 seconds.
+   Wash                                              4:00               35 to 40          Flowing wash. Manual agitation
+                                                                       (95 to 104)        every 30 seconds.
+   Final Rinse                                       1:00               Ambient           No agitation. Tap to dislodge air
+                                                                                          bubbles.
+   Dry                                            As needed             Up to 60
+                                                                         (140)
+  * All times include a 10-second drain time. Increase the first developer time 15 seconds when you process roll films on reels with manual
+   agitation.
+  † You can vary this time from 5 to 7 minutes to produce an in-control process at a selected temperature. Once you have chosen the time,
+    maintain it within +/- 5 seconds; once you have selected a temperature from the 36 to 40°C (97 to 104°F) range, control it within +/-
+    0.3°C (+/- 0.5°F). See “Limitations” section above.
+  ‡ Initially immerse rack fully into solution and tap to dislodge air bubbles. Then lift and lower racks several times for each manual agitation
+    cycle.
+  § See “Limitations” section above. After the equivalent of twenty 135-36 rolls have been processed, increase the bleach time to 10 minutes.
+    Some films may be harder to bleach and may require an increase in time before the 20-roll (or equivalent) limit has been processed.
+
+
+
+
+Kodak and Kodak Professional are trademarks.
+
+
+
+Revised 11-08
+Printed in U.S.A.
+
+
+KODAK PROFESSIONAL Single-Use
+Chemistry Kit, Process E-6
+KODAK Publication No. TI-2443
+
+
+Consumer Digital Imaging Group
+EASTMAN KODAK COMPANY • ROCHESTER, NY 14650
+

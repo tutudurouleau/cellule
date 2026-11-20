@@ -1,0 +1,362 @@
+# https://125px.com/docs/techpubs/kodak/z119-10.pdf
+
+10 ROTARY-TUBE PROCESSORS
+STEPS AND CONDITIONS
+Table 10-1 Steps and Conditions—Rotary-Tube Processors
+
+                                                       Time*                                   Temperature
+                 Step                                                                                                                                 Comments
+                                                 (Minutes:Seconds)                               °C (°F)
+        Turn on processor                                                                       40.0 (104.0)                   Turn on heaters and leave on throughout the
+                                                                                                                               processing cycle. No film in processor.
+ Warm-up with running water                                6:00‡                                 38.0 ±1.0
+  (7.5 L/min [2 gal/min])†                                                                      (100.4 ±1.8)
+                                                                   Perform these steps in total darkness.
+           Film warm-up                                    4:00‡                                38.0 (100.4)                   Load tube with film and insert tube in
+                                                                                                                               processor.
+               PrewetJ
+          First Developer                                  7:00¶                                 38 ±0.3¶                      Prepare first developer as tank solution.
+                                                                                               (100.4 ±0.5)¶
+                 Wash                                       2:00                                 38.0 ±1.0                     Running water (7.5 L/min [2 gal/min]).
+                                                                                                (100.4 ±1.8)
+         Reversal Bath¶**                                   2:00                                 38.0 ±1.0                     Prepare as 60 percent of replenisher
+                                                                                                (100.4 ±1.8)                   solution.¶
+        Color Developer††                                   4:00                                 38.0 ±1.0                     Prepare color developer as tank solution.
+                                                                                                (100.4 ±1.8)
+                                                              Remaining steps can be done in room light.
+             Pre-Bleach                                     2:00                                  20 to 40                     Prepare pre-bleach as tank solution.
+                                                                                                 (68 to 104)
+                Bleach                                      6:00                                  33.3 to 40                   Prepare bleach as tank solution.
+                                                                                                 (92 to 104)
+                 Fixer                                      4:00                                  33.3 to 40                   Prepare fixer as tank solution.
+                                                                                                 (92 to 104)
+                 Wash                                       1:00                                  33.3 to 40                   Three 1-minute running-water washes
+                 Wash                                       1:00                                 (92 to 104)                   (7.5 L/min [2 gal/min]) with a 10- to 20-
+                                                                                                                               second drain after each wash.
+                 Wash                                       1:00
+             Final Rinse                                    0:30                                   Ambient                     Use separate tank outside processor.
+                  Dry                                  As needed                               Up to 60 (140)
+        Post-Cycle Wash                                     5:00                                    24 (75)
+* All times include a 10- to 20-second drain time.
+† This step may not be necessary with a water-jacketed processor.
+‡ Determine the exact time and temperature for your processor.
+J If the processor manufacturer recommends a film prewet, note that a prewet can cause a slight sensitometric effect with some
+  emulsions. Since some emulsions are affected more than others, your control strip may not reflect the results you get with all films.
+¶ You can vary this time from 5 to 81⁄2 minutes to produce an in-control process at a selected temperature. Once you have chosen the
+  time, maintain it within ±5 seconds; once you have selected a temperature from the 36 to 40°C (97 to 104°F) range, control it within
+  ±0.3°C (±0.5°F).
+¶ Mix the reversal bath or reversal bath replenisher to 60 percent of the normal concentration used for conventional processing, e.g.,
+  if the instructions tell you to use 50 millilitres per litre of reversal bath concentrate, use only 30 millilitres per litre. If the instructions
+  tell you to dilute one bottle of reversal-bath concentrate to prepare 19 litres (5 gallons) of solution, use the concentrate to prepare
+  31.5 litres (8.3 gallons) of solution.
+**Although you can open the processor after the reversal-bath step, it is best to leave it closed until after the color-developer step to
+  avoid heat loss in the processing chamber.
+††See the comments under “Yellow D-min Stain” on page 10-4.
+
+
+
+
+Using KODAK Chemicals, Process E-6 • Z-119 Sixth Edition                                                                                                                   10-1
+CHEMICALS                                                              SOLUTION STORAGE
+You can use any Process E-6 chemicals with your rotary-                For best results, store solutions according to the conditions
+tube processor.                                                        given in the table on page 2-6.
+   Mix and use the KODAK PROFESSIONAL Single-Use
+Chemistry Kit or the 1-gallon-size chemicals for rotary-tube
+processors according to the instructions packaged with the             PRE-CYCLE STEPS
+chemicals. With larger sizes, first mix replenisher solutions          The pre-cycle steps and conditions recommended are
+according to the instructions; for pre-bleach, fixer, and final        designed to compensate for solution heat loss during
+rinse, use the replenisher solutions as mixed. Use reversal            processing. The processor warm-up and film warm-up steps
+bath replenisher at 60 percent of the normal concentration             minimize changes in the first-developer temperature by
+for your reversal bath. For first and color developers, mix            raising the temperature of the processing chamber. Although
+developer starter with the replenisher according to the                you don’t need to raise the temperature of the chamber to the
+instructions to prepare a tank solution. For bleach, dilute the        processing temperature, you will get more repeatable results
+replenisher with water, and add bleach starter.                        if you keep it consistent for each run. If your processor heater
+   Depending on your processor, you may need to add 1 to 4             cannot provide a consistent chamber temperature, don’t use
+mL per litre of 5N NaOH (sodium hydroxide) to the color                it. If your processor has not been used for several hours, you
+developer to adjust the color balance (see “Color-Balance              may need to pre-warm the chamber to minimize variations in
+Control” on page 3-3.                                                  film speed.
+
+
+SOLUTION VOLUME                                                        POST-CYCLE STEP
+For best sensitometric results, use no less than the minimum           The post-cycle step is simply a cleaning operation.
+solution volumes given in Table 10-2. Some film holders or             Thoroughly rinse all inner surfaces of the processor tray,
+tubes may require more solution to produce better uniformity           tube, and film holders to remove all traces of chemicals—
+or to compensate for solution oxidation. Check your                    especially fixer. If you intend to run another processing cycle
+processor manual for the solution volume recommended for               immediately, you may need to keep the post-cycle
+your processor.                                                        temperature at approximately 24°C (75°F). If you have dried
+                                                                       your processor with a hot-air-dryer, allow it to cool to room
+Table 10-2                                                             temperature to minimize film-speed variations. With some
+Minimum Solution Volumes                                               processors, the tube, tray, and processor cabinet may have to
+                                                                       be at the same temperature before each run.
+                                 Minimum Volume
+       Solution
+                        mL/m2 (mL/ft2)           fl oz/ft2
+                                                                       AGITATION
+First and Color           2,750 (250)              81⁄2
+Developers                                                             Rotation of the processor tube provides agitation. Good
+Reversal Bath,            1,650 (150)               5                  agitation is necessary for good film uniformity.
+Pre-Bleach,
+Bleach, and Fixer
+
+
+
+
+10-2                                                              Using KODAK Chemicals, Process E-6 • Z-119 Sixth Edition
+MONITORING YOUR PROCESS                                            2. Reduce your starting process temperature by 0.5°C
+Each processor may provide slightly different results. The            (0.9°F) by decreasing the processor heater thermostat
+                                                                      setting, and the first-developer, first-wash, reversal-bath,
+design of the tube, film holder, processing tray, and means of
+                                                                      color-developer, and pre-cycle running water
+rotating the tube can affect agitation, heating capacity, and
+                                                                      temperatures by 0.5°C (0.9°F). Continue to reduce the
+amount of solution oxidation. To check the process with
+                                                                      temperatures until the densities of the LD step plot in
+your equipment, process a KODAK Control Strip,                        control or until you reach the minimum process
+Process E-6.                                                          temperature of 36°C (97°F).
+1. Attach a KODAK Control Strip, Process E-6, in the tube             If your first-developer temperature is 36°C (97°F), do not
+   or on the drum near the center of the tube or drum. You            decrease it to match the aim. Other conditions, such as
+   may need to staple the control strip to an acetate sheet that      contamination, storage, or mixing errors may be causing
+   you have cut to fit the film clips. The sheet should be            the problem. Do not reduce the temperature to less than
+   dimpled or ridged so that it allows solution to drain from         36°C (97°F) or the time below 6 minutes.
+   behind the control strip. In smaller processors, load the
+   control strip on a processing reel.                                When you find a temperature that produces an in-control
+                                                                      process, use this as your normal temperature for future
+  Run all processes with the control strip in the same                processes.
+  position.
+                                                                   Slow Speed—The green densities of the LD step plot
+2. Follow your normal processing cycle to process the              above the control limit. Properly exposed transparencies
+   control strip.
+                                                                   appear dark.
+3. Measure the D-max, HD, LD, and D-min densities of the
+                                                                   1. Make these changes, one at a time. Process a control strip
+   control strip. Calculate and plot the differences from aim
+                                                                      after each change.
+   for that batch of control strips on a KODAK Process
+   Record Form, KODAK Publication No. Y-55.                           a. Increase the processor warm-up time by 2 minutes.
+  If the differences from aim plot within the control limits,         b. Increase the film warm-up time by 1 minute.
+  and the processed transparencies are acceptable, the                c. Increase the volume of the first and color developers
+  process cycle you used is satisfactory. Include a control               by 25 percent.
+  strip with each run, and plot the differences from aim for
+                                                                   2. If any one of these changes increases the densities of
+  each strip.
+                                                                      the LD step significantly, modify your cycle to include the
+  If the differences from aim plot outside the control limits,        change.
+  analyze the results (see “Analyzing and Adjusting Your
+                                                                   3. Increase the first-developer time in 15-second increments
+  Process,” below).
+                                                                      until the densities of the LD step plot within the action
+Analyzing and Adjusting Your Process: If the differences              limits. Modify your normal processing cycle to include
+from aim plot outside the control limits and your processed           this change. Do not increase the first-developer time
+transparencies are not acceptable, modify your processing             beyond 81⁄2 minutes.
+cycle. The most common out-of-control situations and               4. If none of these steps corrects the slow speed, increase
+possible remedies are described below.                                your process temperature by 0.5°C (0.9°F). Continue to
+Fast Speed—The green densities of the LD step plot                    increase the temperature until the control values plot in
+below the control limit. Properly exposed transparencies              control. Do not increase the processing temperature
+appear light.                                                         beyond 40°C (104°F). If all of these steps do not correct
+                                                                      the slow speed, check for chemical-mixing or storage
+1. Decrease the first-developer time in 15-second increments
+                                                                      errors, and solution contamination.
+   until the densities of the LD step plot within the action
+   limits. Modify your normal processing cycle to include
+   this change. Do not decrease your first-developer time
+   below 6 minutes.
+
+
+
+
+Using KODAK Chemicals, Process E-6 • Z-119 Sixth Edition                                                                     10-3
+Variable Speed—Control strips from successive processing                 3. Blow nitrogen into the processing chamber during the
+runs plot out of control with some results plotting above the               color-developer step.
+aim (too slow) and some results plotting below the aim (too              4. Increase the amount of pre-bleach used by 50 percent.
+fast). Properly exposed transparencies appear too dark from
+                                                                         5. Add a 30-second spray or flowing wash between the
+some processes, and too light from other processes.
+                                                                            color-developer and pre-bleach steps and replace the final
+   Your operating conditions may be inconsistent. Variable
+                                                                            rinse with KODAK FLEXICOLOR Stabilizer III
+speed can also be caused by inconsistent mixing of the first                Replenisher.
+developer. If more consistent operating procedures do not
+eliminate the speed variations, you may need to modify the                 Important: Adding a wash between the color developer
+pre-cycle step. Try the following changes one at a time. If                and pre-bleach steps, without the corresponding change to
+any change reduces variability, include it in your normal                  Stabilizer III, will result in unsatisfactory magenta-image
+process cycle.                                                             stability.
+1. If the first process you run after the processor has been idle
+   for more than a few hours is consistently slower than other           6. If any of these changes reduces the D-min, include it in
+   runs, increase the machine warm-up time for the first run                your normal process cycle. If none of the changes corrects
+   by 2 minutes. Then return to your normal warm-up time.                   the problem, check for chemical-mixing or storage errors,
+  If the processes you run immediately after other processes                and solution contamination.
+  are consistently faster, increase the post-cycle wash time                If you have a large processor, the yellow D-min stain
+  to 10 minutes.                                                            may be most evident in the film that is farthest from the
+2. If process-speed variability seems to be random, try the                 solution inlet. Sometimes the solution flow may leave
+   following steps—one at a time.                                           pre-bleach at the inlet while color developer collects at
+                                                                            the opposite end. To minimize this, move the position of
+   a. Increase the processor warm-up time (with running                     the inlet to the center of the tray or install inlets at the
+      water) by 2 minutes.                                                  ends as well as at the center. This change will also
+   b. Increase the film warm-up time by 2 minutes.                          produce more consistent results with the other
+   c. Use the modified pre-cycle steps for the processor,                   processing steps.
+      but turn the heaters off during the processing cycle.              7. Be sure that you are mixing and reusing the bleach and
+Yellow D-min Stain—The green and especially the blue                        fixer according to the instructions.
+D-min densities plot high. The D-min is yellow overall, and              Poor Color Balance—A green or magenta color balance can
+there are yellow streaks and patches of varying densities                be caused by color-developer alkalinity (pH) that is too low
+from run to run. This problem is most apparent in large-                 or too high, or by incorrect mixing of the color developer.
+format sheet films, and in large areas of low density. The               You can adjust color-developer alkalinity (pH) by adding
+problem is usually caused by color-developer oxidation. To               small amounts of sodium hydroxide (5N NaOH), sulfuric
+eliminate yellow D-min stain, try the following                          acid (5N H2SO4) or 28% acetic acid. Adding sodium
+modifications—one at a time.                                             hydroxide increases alkalinity and corrects a magenta color
+1. Use twice the amount of color developer.                              balance; adding sulfuric acid or acetic acid decreases
+                                                                         alkalinity and corrects green color balance.
+2. Decrease the tube rotation rate, particularly during the                 Sometimes, a blue-bias process could be corrected by
+   reversal-bath, color-developer, and pre-bleach steps                  increasing the process volume by 30%. If this option is
+   (e.g., if your processor rotates at 32 rpm, reduce the speed          chosen, the process temperature should be reduced by 0.5°C
+   to 20 rpm).
+                                                                         (0.9°F).
+                                                                         Other Problems—Use the diagnostic charts (section 14) and
+                                                                         control-chart examples (section 15) to diagnose other
+                                                                         problems.
+
+
+
+
+10-4                                                                Using KODAK Chemicals, Process E-6 • Z-119 Sixth Edition
+                                                                                                  Process In
+                                                                              Basic cycle;         Control              Process
+                                                                             see page 10-1.                           customer film.
+
+                                                                                       Process Out of Control
+                                                                                                                                                                                                                                                              Low
+                                                                                                                                                                                                                                                                             Figure 10-1
+
+                                                                                                                                                       Variable                            Yellow                                Poor                       maximum
+                                                                              Fast speed                          Slow speed                            speed                            D-min satin                         color balance                   density
+                                                                                                      No                                 No                                 No                                    No                                 No
+                                                                            Green LD step                       Green LD step                      Variable LD step                   Blue density plots                  Processed film has              or other process
+                                                                          densities plot below                densities plot above                    densities.                      above the control                   a magenta or green               problems, see
+                                                                              the control                         the control                                                          limit for D-min.                      color balance.                  sections 14
+                                                                                  limit.                              limit.                                                                                                                                   and 15.
+
+                                                                               Yes                                 Yes                                Yes                                 Yes                                  Yes
+                                                                                                                                                                                                                                                                             Analyzing and Adjusting Your Process
+
+                                                                         Decrease first-                   Make these changes,                  If the first process             Make these changes,                   Cast may be caused by
+                                                                         developer time in                 one at a time. Process a             after processor has              one at a time-                        incorrect color-developer
+                                                                         15-second increments              control strip after each             been idle for several            1. Use twice as much                  alkalinity (pH).
+                                                                         until process is in               change.                              hours is consistently               color developer.                   1. Add sodium hydroxide
+                                                                         control. Do not use               1. Increase the processor            slow, increase the               2. Decrease rate of                      (5N NaOH) to correct
+                                                                         a time shorter than                  warm-up time by                   warm-up by 2 minutes                tube rotation.                        a magenta color balance.
+                                                                         6 minutes.                           2 minutes.                        (first run only).                3. Blow nitrogen into                 2. Add 28% acetic acid
+                                                                         Reduce first-developer            2. Increase the film                     If several successive           processing chamber                    to correct a
+                                                                         temperature in incre-                warm-up time by                   processes show an                   during color-developer                green color balance.
+                                                                         ments of 0.9 o F (0.5 o C)           1 minute.                         upward trend in                     step.
+Using KODAK Chemicals, Process E-6 • Z-119 Sixth Edition
+
+
+
+                                                                         until process is in               3. Increase volume of                speed, increase the              4. Use 50 percent
+                                                                         control. If temperature is           both developers by                post-cycle wash to                  more pre-bleach.                   Include change in basic
+                                                                                       o      o
+                                                                         less than 97 F (36 C),               25 percent.                       10 minutes.                      5. Add a 30-second                    cycle and process
+                                                                         check for solution                                                     If variability is random,           wash between the                   customer film.
+                                                                                                           If process is still slow-
+                                                                         contamination or                                                       make the following                  color-developer and
+                                                                                                              Increase first-developer
+                                                                         improper mixing or                                                     changes, one at a                   pre-bleach steps and
+                                                                                                              time in 15-second
+                                                                         storage.                                                               time-                               replace final rinse with
+                                                                                                              increments until
+                                                                                                                                                1. Increase processor               KODAK FLEXICOLOR
+                                                                                                              process is in control.
+                                                                                                                                                    warm-up time by                 Stabilizer III Replenisher.
+                                                                 Include change in basic                      Increase processing
+                                                                                                                                                    2 minutes.                   6. For large processors,
+                                                                 cycle and process                            temperature in incre-
+                                                                                                                            o        o          2. Increase film                    move solution inlet to
+                                                                 customer film.                               ments of 0.9 F (0.5 C)
+                                                                                                                                                    warm-up time by                 the center of the tube.
+                                                                                                              until process is in
+                                                                                                                                                    2 minutes.                   7. Check for solution
+                                                                                                              control.
+                                                                                                                                                3. Use the modified                 contamination or
+                                                                                                           Note: If none of these
+                                                                                                                                                    pre-cycle, but turn             improper mixing or
+                                                                                                           steps corrects the speed,
+                                                                                                                                                    heaters off during              storage.
+                                                                                                           check for solution
+                                                                                                                                                    processing.
+                                                                                                           contamination or
+                                                                                                           improper mixing or                                                    Include change in basic
+                                                                                                           storage.                                                              cycle and process
+                                                                                                                                              Include change in basic
+                                                                                                                                              cycle and process                  customer film.
+                                                                                                           Include change in basic            customer film.
+                                                                                                           cycle and process
+                                                                                                           customer film.
+                                                           F009_9004EC
+
+10-5
+SMALL ROTARY-TUBE PROCESSORS                                             To reuse your bleach, you must replace the chemicals lost
+You may have to modify the normal processing cycle for                through dilution, carry-over, and chemical reaction. First
+some small rotary-tube processors (i.e., processors that have         measure the specific gravity of the used bleach at 27°C
+a tank capacity of approximately 1 litre). If the instructions        (80°F); see section 3. “Monitoring and Controlling
+for your processor recommend a prewet, it may have a slight           Processing Solutions.” Stir the used bleach thoroughly
+sensitometric effect with certain emulsions. The effect is            before you take the sample.
+greater with some emulsions than with others, so your                    After you have measured the specific gravity of the used
+control strip may not reflect the result with all emulsions.          bleach, determine the amount of bleach replenisher that you
+   Usually, you can use these processors without a prewet.            need to add from Table 10-3.
+However, maintaining good control in these processors                 Table 10-3
+without a prewet requires long warm-up times                          Additions for Reconstituting Used Bleach
+(approximately 30 minutes). If you can’t afford these long
+warm-up times, use the prewet as recommended by the                    If the Specific Gravity
+                                                                                                        Add this Amount of
+manufacturer.                                                             (at 27°C [80°F]) of
+                                                                                                        Process E-6 Bleach
+                                                                                 Your
+   To use these processors without a prewet, closely follow                 Used Bleach is
+                                                                                                        Replenisher (mL/L)
+the recommendations for first-developer time and
+                                                                          1.123 or greater                        80
+temperature, cabinet temperature, and warm-up times.
+                                                                           1.120 to 1.123                        110
+   You can usually correct speed problems by adjusting the
+first-developer time and/or temperature, or by modifying the               1.118 to 1.120                        140
+warm-up time (see Figure 10-1). For repeatable results,                    1.115 to 1.118                        170
+maintain a consistent cabinet temperature and monitor all                  1.113 to 1.115                        200
+temperatures closely.                                                       below 1.113          The bleach is too dilute. Discard it.
+   Be sure to clean the tube and all drum surfaces thoroughly                                    Check your pre-bleach drain time.
+between processing runs. Small rotary-tube processors are
+                                                                         After you add bleach replenisher to the used bleach, stir
+particularly subject to solution contamination. Chemical
+                                                                      the solution thoroughly. Then measure the specific gravity of
+spills, solution carry-over, and residual chemicals left in
+                                                                      the reconstituted bleach at 27°C (80°F). The specific gravity
+lines and holding tanks can be sources of contamination.
+                                                                      should be greater than 1.130. If it is not, you will need to add
+   Use reversal bath replenisher at 60-percent concentration.
+                                                                      more bleach replenisher. If your bleach is not properly
+Use the color developer prepared as a tank solution.
+                                                                      reconstituted, bleaching will be inadequate, and your
+                                                                      transparencies will have a high D-min from retained silver.
+BLEACH EFFLUENT                                                       If your transparencies have a low red D-max density, aerate
+You can collect used Process E-6 bleach and reconstitute it           the reconstituted bleach for 1 hour before using it.
+for reuse to reduce processing effluent and chemical costs.
+   To reuse the bleach, collect the bleach from your                  SILVER RECOVERY
+processor drain. Minimize contamination from other
+                                                                      You can recover silver from used fixer by collecting the
+processing solutions by allowing an adequate drain time
+                                                                      solution, and then passing it through a KODAK Chemical
+after the color-developer and pre-bleach steps. Collect the
+                                                                      Recovery Cartridge, Junior Model II (31⁄2-gallon size,
+bleach before you drain any fixer from the processor.
+                                                                      CAT No. 166 9431), a KODAK Chemical Recovery
+Discard any used bleach that you think contains greater-
+                                                                      Cartridge, Model II (5-gallon size, CAT No. 173 4953), or
+than-normal amounts of color developer, or that contains any
+                                                                      an equivalent cartridge.
+amount of fixer; these chemicals can affect keeping or reuse.
+   You can reconstitute the bleach immediately or store it
+and then reconstitute it.
+
+
+
+
+10-6                                                             Using KODAK Chemicals, Process E-6 • Z-119 Sixth Edition
+

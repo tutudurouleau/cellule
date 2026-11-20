@@ -1,0 +1,53 @@
+# https://www.vantagefilm.com/file/edee/downloads/optics/2x-hawk-anamorphic-lenses/hawk-v-lite-technical-data.pdf
+
+Hawk V-Lite
+2x Anamorphic Lenses - Technical Data
+Hawk V‑Lite 2x anamorphic lenses deliver the unique look and reliability of
+Hawk anamorphic glass in a smaller package. The combination of their optical
+characteristics, robustness, user-friendliness, range of focal lengths and surprisingly
+small size – smaller than many commonly used spherical primes – has made them
+popular worldwide.
+
+
+                                         Focal Length                     metric              imperial        Angle of View*       Weight               Front            Overall         Min. Filter       Image Area        Illumination
+               Lens
+                                              Stop                  CFD            MOD     CFD      MOD        horizontal      kg          Ibs       Diameter            Length              Size           diagonal        Area diagonal
+
+  Hawk V-Lite 28                           28 mm/T2.2               0.8 m        0.65 m    2‘7“      2‘2“         84.4°        2.1        4.6         120 mm            138 mm            4x5.65“           28.5 mm              29 mm
+
+  Hawk V-Lite 35                           35 mm/T2.2                 1m           0.8 m   3‘3“      2‘7“         61.8°        2.9        6.4         120 mm            170 mm            4x5.65“              30 mm           30.5 mm
+
+  Hawk V-Lite 45                           45 mm/T2.2                 1m           0.8 m   3‘3“      2‘7“         52.1°        2          4.4         104 mm            155 mm            4x5.65“           31.5 mm              32 mm
+
+  Hawk V-Lite 55                           55 mm/T2.2                 1m           0.8 m   3‘3“      2‘7“         43.8°        2          4.4         104 mm            155 mm            4x5.65“           32.5 mm              33 mm
+
+  Hawk V-Lite 55 macro                     55 mm/T2.2             0.35 m         0.12 m    1‘2“          5“       48.3°        3          6.6         120 mm            210 mm            4x5.65“           29.5 mm              30 mm
+
+  Hawk V-Lite 65                           65 mm/T2.2                 1m           0.8 m   3‘3“      2‘7“         38.4°        2.2        4.8         104 mm            163 mm            4x5.65“           31.5 mm              32 mm
+
+  Hawk V-Lite 80                           80 mm/T2.2                 1m           0.8 m   3‘3“      2‘7“         33.6°        2.4        5.3         104 mm            183 mm            4x5.65“           34.5 mm              35 mm
+
+  Hawk V-Lite 110                           110 mm/T3                 1m           0.8 m   3‘3“      2‘7“         24.3°        2.7         6          104 mm            200 mm            4x5.65“              42 mm           44.5 mm
+
+  Hawk V-Lite 140                        140 mm/T3.5                  1m         0.75 m    3‘3“      2‘6“         20.1°        2.9        6.4         104 mm            226 mm            4x5.65“              42 mm             45 mm
+                                                                                                                                     *Angle of view – quoted for S35 format ( 22.94 x 19.22 mm – 2.39:1 Release Format – Sensor size ALEXA 35)
+
+
+
+
+                                           CFD – Close Focus Distance                                                                                                                                        Anamorphic Lens –
+                                                                                                                                                                                                             the Illumination Area is
+                                                                                                                                                                                                             of rectangular shape.
+
+
+                                                                                                                                                                                                             Image Area
+
+                                                                                                                                                                                                             Illumination Area
+
+                                           MOD – Minimal Object
+                                                      Distance
+
+
+                                                                Technical specifications are subject to change without notice – additional lenses will follow. Made in Germany by Vantage Film
+  Hawk®, Hawk Anamorphic®, Vantage® are registered trade-marks of Vantage Film GmbH, Germany. For further information contact Vantage Film, Phone +49 961 26795, www.vantagefilm.com
+

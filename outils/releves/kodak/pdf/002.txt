@@ -1,0 +1,3223 @@
+# https://www.kodak.com/content/products-brochures/Film/Using-KODAK-Kit-Chemicals-in-Motion-Picture-Film-Laboratories.pdf
+
+          Using
+  KODAK Kit Chemicals
+  in Motion Picture Film
+      Laboratories
+This publication is written especially for laboratory operators. It provides the
+most commonly used technical information about film processes for using
+KODAK ECN-2 Kit Chemicals and KODAK ECP-2E Kit Chemicals in
+your motion picture laboratory. Using KODAK Kit Chemicals will help
+you provide optimum results with the least environmental impact possible.
+This publication describes the processing cycles recommended for
+processing KODAK Motion Picture Negative Films and KODAK Motion
+Picture Print Films.
+
+This manual is divided into five sections:
+  • Chemicals and Chemical Handling
+  • KODAK ECN-2 Kit Chemicals
+  • KODAK ECP-2E Kit Chemicals
+  • Process Monitoring and Troubleshooting
+  • Appendix/Index
+For more detailed information on processing, see KODAK Publication
+No. H-24, Processing KODAK Motion Picture Films, or the Entertainment
+Imaging Internet site www.kodak.com/go/motion.
+
+
+
+
+©Eastman Kodak Company, 22020
+CONTENTS
+Chemicals and Chemical Handling . . . . . . . . . . . . . . . . . . . . . . . . . 1
+Chemical Terms . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+How Each Processing Solution Affects Your Results . . . . . . . . . . . . . . . . . . 3
+Choosing the Right Chemicals for Your Process . . . . . . . . . . . . . . . . . . . . . . 5
+Safe Handling of Photographic Chemicals . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+Chemical Mixing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+How to Check Your Chemicals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+Solution Storage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+Compensating for Evaporation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+Cleaning Lab Tanks and Racks . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+Disposing of Processing Effluent . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+Silver Recovery . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+KODAK ECN-2 Kit Chemicals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+Processing Cycles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+Film Processing Cycles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+Process Cycles for KODAK ECN-2 Kit Chemicals . . . . . . . . . . . . . . . . . . . 22
+General Notes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+Mixing Instructions for KODAK ECN-2 Kit Chemicals . . . . . . . . . . . . . . . 27
+pH Adjustment . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+Regeneration – UL Bleach Additions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+KODAK ECP-2E Kit Chemicals . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+Processing Cycles for KODAK Kit Chemicals . . . . . . . . . . . . . . . . . . . . . . 34
+Film Processing Cycles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+Process Cycles for KODAK ECP-2E Kit Chemicals . . . . . . . . . . . . . . . . . . 35
+General Notes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+Mixing Instructions for KODAK ECP-2E Kit Chemicals . . . . . . . . . . . . . . 39
+pH Adjustment . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+Regeneration – UL Bleach Additions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 41
+Process Monitoring and Troubleshooting . . . . . . . . . . . . . . . . . . 43
+Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+Terms in Process Monitoring and Troubleshooting . . . . . . . . . . . . . . . . . . . 44
+How to Monitor Your Process . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+KODAK Control Strips Are the Basic Control Material . . . . . . . . . . . . . . . 46
+Storing and Handling Control Strips . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+Processing Control Strips . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 49
+Plotting Control-Strip Densities . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 49
+Changing to a New Batch of Control Strips . . . . . . . . . . . . . . . . . . . . . . . . . 55
+Troubleshooting Your Process . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57
+Appendix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 59
+Film Handling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 59
+Film Storage and Handling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 59
+Other Film Characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 59
+Simplified Metric Conversion Charts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 60
+Temperature Conversion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62
+Analytical Procedures . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 64
+  Spectrophotometric Determination of Iodide in Fixer . . . . . . . . . . . . . . . . 64
+  Determination of Total Iron in EASTMAN Color Films,
+  Process ECN-2 “UL” Type Bleach Using
+  a HACH Pocket Colorimeter Test Kit . . . . . . . . . . . . . . . . . . . . . . . . . . . . 67
+Index . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 73
+More Information . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 75
+                                           Chemicals and Chemical Handling
+
+
+
+CHEMICALS AND CHEMICAL HANDLING
+High-quality customer orders begin with proper chemical handling and your
+choice of chemicals. Chemical handling includes how you store and mix
+chemicals and your attention to chemical safety.
+
+This section includes:
+  • Chemical terms
+  • How each solution affects your results
+  • Choosing the right chemicals for your process
+  • Features and benefits of KODAK Kit Chemicals for
+    Processes ECN-2 and ECP-2E
+  • Safe handling of photographic chemicals
+  • Chemical mixing
+  • How to check chemicals
+  • Solution storage
+  • Compensating for evaporation
+  • Cleaning tanks and racks
+  • Disposing of processing effluent
+  • Regeneration
+  • Silver recovery
+
+
+
+
+                                       1
+Chemical Terms
+
+
+
+ Chemical Terms
+ To help you understand the terms we’ve used to describe the chemicals in this
+ manual, here are some definitions:
+
+ Chemical Concentrates or Concentrates—Chemicals that must be diluted
+ to make replenisher or tank solutions.
+
+ Fresh Solution—Newly mixed, unseasoned solution.
+
+ Replenisher—Solution used to restore the chemical components of the tank
+ solution to maintain photographic performance over time.
+
+ Regenerator—Solution or concentrate added to tank-solution overflow to
+ convert it for reuse as replenisher solution.
+
+ Seasoned Solution—A tank solution that has been used and replenished for
+ a period of time. The chemical components and seasoning by-products of a
+ seasoned solution are at an optimum equilibrium level for processing.
+
+ Starter—Concentrate added to a replenisher to prepare a fresh tank solution so
+ it yields results similar to those provided by a seasoned tank solution.
+
+ Tank Solution—The solution used in the processor tank; often referred to as
+ “working solution.”
+
+
+
+
+                                     2
+                                                   Processing Solution Effects
+
+
+
+How Each Processing Solution Affects Your Results
+Each solution affects the emulsion differently. Understanding the reaction of
+each solution can help you diagnose processing problems.
+
+Developer—The developer chemically reduces the exposed silver halide in the
+film to form a metallic silver image. At the same time, the color developing
+agent in the developer oxidizes and combines with the dye couplers at the site
+of the silver image in each of the dye-forming emulsion layers to form a color
+image. Once the dye image has formed, there is no need for the silver image. It
+is removed by bleaching and fixing.
+   The amount of cyan, magenta, and yellow dye formed depends on exposure
+and developer activity. Temperature, time, pH, chemical constituent
+concentration, replenishment rate, replenisher concentration, agitation, and the
+rate at which solutions diffuse into the emulsion affect developer activity. Time,
+temperature, and agitation affect the diffusion rate. With too much developer
+activity, too much dye forms; with too little activity, not enough dye forms.
+
+Stop Bath—This is an acidic solution that stops the development of silver
+halide grains, and washes Color Developing Agent from the film.
+
+Bleach—In the film process, the bleach converts metallic silver into silver
+halide. The silver halide is dissolved in the fixer. Bleach concentration and the
+rate at which the solution diffuses into the emulsion affect bleach activity. Time,
+agitation, and temperature affect the rate of diffusion. Replenishment rate,
+mixing procedures, and aeration efficiency affect the chemical concentrations.
+   If bleaching is inadequate, less than the normal amount of cyan image dye is
+formed because some of the dye remains in the leuco (colorless) condition. This
+affects the color balance. Bleach time that is too short or bleach that is too dilute
+can cause leuco-cyan dye to form. Low pH can also cause leuco-cyan dye.
+   Inadequate bleaching can cause retained silver because not all of the metallic
+silver is converted to silver halide. Leuco-cyan dye and retained silver adversely
+affect image quality, but you can correct both conditions by re-bleaching and
+re-fixing the film in good solutions.
+
+
+
+
+                                         3
+Processing Solution Effects
+
+
+
+ Fixer—In a film process, the fixer converts silver halide in the film into soluble
+ silver complexes. Most of these silver complexes remain in the fixer solution;
+ you can recover the silver with electrolytic silver-recovery units and/or
+ chemical-recovery cartridges. Fixing efficiency depends on fixer activity and
+ the diffusion rate into the emulsion. Temperature, replenisher concentration,
+ and replenishment rate affect fixer activity. Time, temperature, and agitation
+ affect the diffusion rate.
+    Inadequate fixing may not remove all of the sensitizing dyes and silver
+ halide. An increase in the red and green D-min densities of the control plot is
+ one sign of incomplete fixing. Another sign is a milky appearance in the D-min
+ areas of control strips and processed film. If this problem occurs, you can test
+ the fixer by re-fixing the control strip (or film) in a fixer that you are sure is
+ good. If re-fixing the strip corrects the control plot, the original fixer is probably
+ exhausted. You can correct inadequately fixed film by re-fixing it.
+    The most probable causes of inadequate fixing are fixer that is diluted by
+ excessive solution carryover, an inadequate fixing time, under-replenishment
+ (or replenisher that is under-concentrated), and fixer sulfurization.
+    Agitation is necessary primarily for uniform fixing.
+
+ Final Rinse—The final rinse step promotes uniform drying, and reduces water
+ spotting. Wash water removes residual chemicals from the film. Good washing
+ requires enough circulation to keep fresh water in contact with the emulsion.
+ The water temperature must be warm enough to swell the gelatin so the water
+ moves freely into the emulsion to remove the chemicals, but not so warm that it
+ damages the emulsion. A thorough final wash is necessary because chemicals
+ that remain in the film (particularly fixer) can cause dyes to fade.
+
+
+
+
+                                       4
+                                             Choosing the Right Chemicals
+
+
+
+Choosing the Right Chemicals for Your Process
+Kodak is committed to providing labs with chemicals that are safe and easy to
+use. The kit chemicals designed for motion picture labs are supplied in liquid
+concentrates for easy mixing and handling; they are available in convenient and
+economical sizes.
+
+Features and Benefits for Kit Chemical Processes
+
+        Features               Advantages                    Benefits
+Complete Packaged Kit • Easy to use                 • Potential labor savings
+                      • No technical lab staff        due to reduced chemical
+                        needed                        analysis, reduced
+                                                      measuring and re-mixing
+                      • Avoids mixing errors          due to errors
+                      • Saves time – no             • Better productivity
+                        measuring out of
+                        chemicals
+                      • Saves effort – just add
+                        water
+Kodak branded           • Consistent chemical       • Higher quality process
+                          strength of solution        produces higher quality
+                        • Mixes to correct aims       results
+                        • Meets current             • Little chemical analysis
+                          environmental standards     needed for standard
+                                                      production
+                        • Consistency from mix to
+                          mix                       • More satisfied customers
+All-liquid              • Fewer chemical powders • Less dust for chemical
+                          being used               mixers
+Supplied by Kodak       • Only need to order from   • Reduced ordering/admin.
+                          one supplier                costs
+Stocked by Kodak        • Order as needed, not in   • Reduced inventory
+                          bulk                        carrying costs
+Supported by Kodak      • Full Kodak technical      • Reduced lab down-time
+                          support for problem       • Easy to get help
+                          resolution
+Regeneration            • Uses less chemicals       • Reduced costs
+                                                    • Reduced effluent
+
+
+
+
+                                       5
+Chemical Handling
+
+
+
+ Safe Handling of Photographic Chemicals
+ Handle all chemicals carefully. For more information about potential health
+ hazards and safe handling of specific Kodak chemicals, see the label and the
+ Material Safety Data Sheet (MSDS) for the chemical or call the Kodak health,
+ safety, and environmental information hotline at (585) 722-5151, 24 hours a
+ day, 365 days a year. In countries outside the U.S. and Canada you can also
+ contact Kodak in your country.
+
+ Follow Instructions Carefully—Kodak chemical packages have
+ precautionary information on the labels. Always follow the label instructions.
+ Read the Material Safety Data Sheets (MSDS’s) for more handling information.
+ Material Safety Data Sheets are available at the Entertainment Imaging website,
+ www.kodak.com/go/motion. If you need additional help in the U.S. and
+ Canada, call the Kodak Information Center at (800) 242-2424, extension 25, or
+ ask your Kodak sales representative. Please supply the catalog (CAT) numbers
+ for the chemicals when you request MSDS’s. In other regions, contact Kodak
+ in your country.
+
+ Store Chemicals and Processing Solutions Safely—Keep chemicals and
+ processing solutions out of the reach of children and pets. Do not store
+ chemicals where you handle or store food. Do not eat, drink, or smoke in
+ chemical-handling areas. Always wash your hands thoroughly after handling
+ chemicals, especially before eating or drinking.
+
+ Label All Chemicals Properly—In the U.S., The Occupational Safety and
+ Health Administration (OSHA) Hazard Communication Standard requires
+ employers to inform employees about hazardous chemicals in the workplace.
+ This standard requires that all containers of hazardous chemicals, including
+ storage and processor tanks, be labeled. These labels must give the chemical
+ hazard, handling instructions, and the action to take in case of accidental
+ contact. Other countries may have similar requirements, so check with local
+ authorities or Kodak in your country. Label information may be found on the
+ Entertainment Imaging website at www.kodak.com/go/motion.
+
+
+
+
+                                    6
+                                                            Chemical Handling
+
+
+
+Keep the Mixing Area Clean—Clean up spilled chemicals as soon as
+possible with mild soap and water; wear nitrile rubber gloves. Residue from
+dried chemicals can become airborne and be inhaled or contaminate processing
+and printing areas.
+
+Wear Protective Clothing—Wear goggles or a face shield and an apron
+(made of PVC) and protective gloves (made of nitrile rubber) when you mix
+solutions. Clean protective clothing after use to remove any chemical residue
+that can cause contamination.
+
+Handle Chemicals Carefully—Avoid contact of any chemicals with your
+skin; some photographic solutions, particularly developers, can cause skin
+irritation and an allergic skin reaction. In case of accidental chemical contact,
+wash your skin with running tap water and a non-alkaline (slightly acid) hand
+cleaner. If symptoms persists, get medical attention. There must be an eyewash
+station handy to all employees. The station must be capable of providing a
+15-minute flush of water or eye-wash fluid at a rate of 1.5 litres/minute. All
+employees must know the location of the eyewash station, as well as the location
+of fire extinquishers and first-aid kits.
+
+Ventilate the Area Properly—Some photographic chemicals and solutions
+give off vapors and gases. For safety and comfort, keep the concentration of
+these vapors and gases to a minimum. To minimize the concentration of vapors
+and gases, provide good ventilation (about 10 changes of room air per hour) and
+use covers and floating lids on all solution storage tanks (which also helps
+reduce evaporation and oxidation). Also, keep the processing tanks enclosed
+and vent the dryer according to the manufacturer’s specifications.
+
+
+
+
+                                        7
+Chemical Mixing
+
+
+
+ Chemical Mixing
+ For the most current information, follow the mixing instructions packaged with
+ the chemicals or on the label of the chemical container. Follow all safety
+ precautions and handling recommendations given in the instructions.
+
+ Contamination Can Ruin a Process—To minimize the possibility of
+ contamination, keep processing and mixing equipment and storage containers
+ clean. Dirt and contamination can affect the life and photographic quality of the
+ processing solutions. Avoid conditions where solutions can come in contact
+ with other chemicals. Developers are especially sensitive to contamination.
+ Small amounts of fixer or bleach solution can contaminate developer solutions
+ and cause adverse photographic effects. To lessen the possibility of
+ contamination, thoroughly rinse and clean processing and mixing equipment
+ and storage containers before use. Be careful not to drip solution into other tanks
+ when you remove racks for cleaning. Wash and rinse processing and mixing
+ equipment thoroughly before reusing it. Contamination is most often caused
+ by—
+   • solution splashed or dripped into another solution
+   • using mixing equipment that has not been thoroughly cleaned
+   • dry chemicals that become airborne during mixing
+   • pipes and tanks made of material that reacts with the photographic
+     chemicals
+
+ How to Check Your Chemicals
+ Fresh KODAK ECN-2 Kit Chemicals and KODAK ECP-2E Kit
+ Chemicals concentrates and solutions have a characteristic appearance and
+ odor. By checking the appearance and odor, you may be able to determine
+ if a concentrate was stored properly or if a solution was mixed correctly.
+
+
+
+
+                                      8
+                                                             Solution Storage
+
+
+
+Solution Storage
+  • Store chemical concentrates at 5 to 30°C (40 to 86°F) in a dry location. At
+    temperatures lower than 5°C (40°F), components may come out of solution
+    or crystallize. Temperatures higher than 30°C (86°F) will accelerate
+    chemical reactions and cause deterioration.
+  • Store mixed solutions in polyethylene storage tanks at approximately 21°C
+    (70°F).
+  • Storing a replenisher at too high a temperature accelerates oxidation and
+    evaporation. Storing a replenisher at too low a temperature can affect the
+    temperature of the tank solution.
+  • To reduce oxidation and evaporation, use floating lids on all solutions.
+  For best results, do not use KODAK ECN-2 Kit Chemicals and KODAK
+ECP-2E Kit Chemicals stored longer than the times given in the table below.
+
+                                     Solution in         Replenisher in
+       Mixed Solutions               Processor–         Covered Tank with
+                                    No Operation          Floating Lid
+Developer                              1 week                2 weeks
+Prebath                                1 week                2 weeks
+All others                             4 weeks               8 weeks
+
+
+
+
+                                       9
+Compensating for Evaporation
+
+
+
+ Compensating for Evaporation
+ When water evaporates from processing solutions, the chemical components
+ remain and the solutions become overconcentrated. Evaporation occurs
+ naturally to some degree, but it is more likely to occur when tank solutions are
+ up to temperature, but no film is being processed or when solutions are cooling
+ down after shutdown. “Down-time evaporation” occurs after you shut down
+ your processor; the level of your processing solutions is lower in the morning
+ when you start up your process. When the process is running, there is also a
+ slight loss of solution volume due to evaporation. With typical utilization, most
+ replenishers deliver enough water to compensate for evaporation that may occur
+ when the processor is running. However, if your processor operates at low
+ utilization, evaporation may take place at a greater rate than what was built into
+ the design of the replenisher solutions. You can compensate for “run-time
+ evaporation” by topping off your solutions with water at a temperature that is
+ close to the temperature of your tank solutions. Never use cold water to top-off
+ solutions.
+    It is difficult to accurately estimate the amount of run-time evaporation that
+ may occur, because some labs do not have the capability of monitoring the
+ specific gravity of processing solutions, and because there are many variables
+ that contribute to the severity of the evaporation.
+
+
+
+
+                                     10
+                                              Compensating for Evaporation
+
+
+
+1. At daily start-up—With the recirculation system on, check the level of the
+   tank solutions. If the tank solution level is not up to the top of the overflow
+   tube, add water—at approximately operating temperature—to bring the
+   solution level up to the top of the overflow tube.
+   If the solution level is at the top of the overflow tube, squirt the top edges
+   of the tank and the rollers at the top of the rack lightly with warm water to
+   remove any buildup of dried chemicals. Do not use too much water to avoid
+   severely diluting the tank solution.
+2. During production—Check the level of the processing solutions at least
+   once during the day or shift. Check the solutions when you are not
+   processing film. If the level of the tank solutions is lower than the top of the
+   tank overflow tube, determine the reason for the loss. If the loss is slight, it
+   may be due to evaporation. To alleviate this condition, run film or add a
+   very slight amount of water to bring the tank to the appropriate level.
+   If the solution level is at the top of the overflow tube, squirt the top edges
+   of the tank and the rollers at the top of the rack lightly with warm water to
+   remove any buildup of dried chemicals. Do not use too much water to avoid
+   severely diluting the tank solution.
+   When using this technique, it is important not to disturb solids, which can
+   drop back into the solution as solid particles. This would be a source of dirt.
+   This technique will only work if there is minor evaporation and you are
+   redissolving some chemical salts back into solution.
+3. At shutdown—Squirt the top edges of the tank, the top of the rack, and the
+   rollers at the top of the rack lightly with warm water to prevent the buildup
+   of dried chemicals. Do not use too much water to avoid severely diluting
+   the tank solution. To minimize chemical buildup, Clean and rinse
+   crossovers thoroughly using only small amounts of water.
+
+
+
+
+                                       11
+Cleaning Tanks and Racks
+
+
+
+ Cleaning Lab Tanks and Racks
+ Biological growth can occur in final rinse and wash tanks, and is a potential
+ source of dirt. Clean wash tanks weekly, and final rinse tanks as needed.
+ KODAK ECN-2/ECP-2E Kit Final Rinse and Replenisher contains PROXEL
+ GXL to help control biological growth. Wear protective gloves and splash-
+ proof goggles when you follow this procedure.
+
+ To remove biological growth:
+  1. Empty the processing solution or wash water tank. Dispose of waste
+     solutions according to local or state disposal regulations.
+  2. Rinse the tanks and racks with hot water; drain the rinse water and repeat.
+     DANGER! The addition of cleaning agents that contain strong acids or
+     oxidizing agents (e.g., chlorine-containing bleaches) to some
+     photoprocessing solutions may release irritating and toxic gases, such as
+     sulfur dioxide. Do not add cleaning agents to processing tanks unless the
+     tanks and racks have been completely drained and thoroughly rinsed with
+     water. Read the Material Safety Data Sheet for information on the potential
+     hazards of the working tank solution.
+  3. Fill the tank with a dilute sodium hypochlorite (NaOCl) solution, such as
+     2 mL CLOROX (5.25 percent NaOCl) or SUNNY SOL (12.5 percent
+     NaOCl) per litre of water.
+  4. Allow the hypochlorite solution to remain in the tanks for up to 30 minutes.
+     Longer dwell times can damage plastic or rubber materials. After
+     treatment, dispose of the hypochlorite solution according to local or State
+     disposal regulations.
+  5. Brush foreign matter from the tanks and racks.
+  6. Before refilling the tanks, flush them thoroughly with water. Small
+     amounts of remaining hypochlorite can have an adverse effect on
+     processing solution activity. Be sure to recirculate rinse water through the
+     recirculation system to remove traces of hypochlorite.
+ Note: For more information on the recommended methods for cleaning
+ processing tanks contact your Kodak representative.
+
+
+
+
+                                    12
+                                                              Effluent Disposal
+
+
+
+Disposing of Processing Effluent
+Disposing of processing effluent is an important operation of your lab. Effluent
+from processing using KODAK ECN-2 Kit Chemicals and KODAK ECP-2E
+Kit Chemicals consists of developer, bleach, de-silvered fixer, prebath, stop
+bath, final rinse and sound track developer. This effluent is compatible with and
+can be effectively treated by a municipal secondary waste-water treatment
+plant.
+    Because regulations define photographic effluent as an industrial waste
+discharge, you may need a permit to discharge it to a municipal sewer system.
+   After efficient silver recovery, the combined effluent from a lab using
+KODAK ECN-2 Kit Chemicals and KODAK ECP-2E Kit Chemicals should
+have approximately these characteristics:
+pH                                             6.5 to 9
+Temperature                                    Less than 30°C (86°F)
+Silver                                         0.1 mg/L
+Suspended solids                               600 mg/L
+Oils, greases, detergents                      10 mg/L
+
+   Concentration of other materials depends on factors such as replenishment
+and wash rates, type of processor, chemical regeneration, and treatment
+methods. For more information on the composition of photographic solutions
+that you use, see the Material Safety Data Sheets. MSDS sheets are available at
+the Kodak website, www.kodak.com/go/motion. If you need additional help in
+the U. S. and Canada, call the Kodak Information Center at (800) 242-2424. In
+other regions, contact Kodak in your country. Each country has its own
+regulations regarding disposal of processing effluent.
+
+
+
+
+                                       13
+Effluent Disposal
+
+
+
+ Reduce Processing Effluent—To reduce the environmental impact, keep the
+ discharge of photographic chemicals as low as possible. Some ways that you
+ can accomplish that include:
+   • Use chemicals designed to have the least environmental impact
+   • Use correct replenishment rates and check them often
+   • Avoid making batch discharges, such as tank dumps
+   • Discharge processing effluent to your sewer slowly by trickling it in with
+     normal non-processing effluent
+   • De-silver fixer, and final rinse overflow before you discharge it
+
+ Other Effluent Disposal Methods—Although most labs discharge their
+ effluent to a municipal waste-treatment plant, restrictions or lack of access to a
+ treatment plant may require some labs to use an off-site disposal service. You
+ can have your processing effluent removed by a licensed disposal company.
+ Sewering—Direct discharge of untreated processing effluents to receiving
+ waters or to surface drains or storm sewers is not recommended and may not be
+ lawful.
+ Septic-Tank Systems—The disposal of photo-processing effluent to a
+ septic-tank system requires regulatory approval. Contact your local regulatory
+ agency responsible for ground-water discharges to determine if you can
+ discharge effluent to your septic system and how it should be monitored.
+
+
+
+
+                                     14
+                                                                  Silver Recovery
+
+
+
+Silver Recovery
+Silver is a seasoning product of processing photographic films. Sewer codes
+may limit the concentration of silver in effluent that may be discharged. To
+reduce the amount of silver in the effluent, you can de-silver used fixer and final
+rinse solutions with electrolytic silver-recovery cell and/or silver-recovery
+cartridges. Electrolytic silver recovery can be done using one of two methods;
+batch or continuous. The batch method requires a minimum of equipment, but
+is not as efficient as the continuous method. When a sufficient volume of used
+fixer is collected, the silver content in the fixer is reduced to 0.5 to 1.0 g/L by
+an electrolytic cell. Chemicals are then added to reconstitute the fixer for use as
+a replenisher.
+   The continuous method includes the electrolytic cell in the fixer recirculation
+system. The fixer is continuously drawn from the processing machine through
+the electrolytic cell. The silver content is reduced to 0.5 to 1.0 g/L and the fixer
+is returned to the machine. To maintain the proper chemical and pH levels, a
+suitable replenisher is added to the system at a convenient location. This is a
+very efficient method, but it requires more space and careful control of the
+current density (i.e., amperes per unit cathode area) of the cell.
+
+
+
+
+                                        15
+Silver Recovery
+
+
+
+    Silver can be further reduced by utilizing the metallic replacement method in
+ combination with the electrolytic cell. In the metallic replacement method, a
+ metal (usually iron), reacts with the silver thiosulfate and goes into solution.
+ The silver settles out as a solid. To bring the silver into contact with the iron, the
+ used fixer is passed through a container filled with steel wool. The steel wool
+ provides the source of iron to replace the silver. The main advantages of this
+ method are very low initial cost and the simplicity of installation. The
+ disadvantages, compared to the electrolytic method, are that the silver is
+ recovered as a sludge, making it more difficult to determine the exact amount
+ recovered, and the sludge requires more refining than the plate silver obtained
+ from electrolytic methods. The cartridges cannot be reused, and require
+ replacement when exhausted. The effluent from the cartridges contains high
+ amounts of iron. This would be a problem in a locality with a sewer code that
+ limits the iron concentration in the effluent.
+    Operate your electrolytic-recovery cell according to the manufacturer’s
+ instructions. Use for as long an operation time as appropriate. After efficient
+ electrolytic silver recovery followed by metallic replacement cartridges, the
+ silver concentration should be less than 5 mg/L. Discharge the de-silvered
+ effluent with other processing effluent.
+
+
+
+
+                                      16
+                                            KODAK ECN-2 Kit Chemicals
+
+
+
+KODAK ECN-2 KIT CHEMICALS
+This section includes:
+  • List of chemicals used for KODAK ECN-2 Kit Chemicals
+  • Characteristics of KODAK ECN-2 Kit Chemicals
+  • Processing cycles for KODAK ECN-2 Kit Chemicals
+  • General Notes
+  • Mixing Instructions for KODAK ECN-2 Kit Chemicals
+  • pH Adjustment
+  • Regeneration
+
+List of Chemicals for KODAK ECN-2 Kit Chemicals
+     KODAK ECN-2 Kit Prebath and      Minimum order quantity consists of one
+            Replenisher               20-litre plastic container. Add water to
+                                      yield 66.6 litres of replenisher or tank
+       Size: 380 x 258 x 288 mma      solution.
+             Weight: 26.2 kg
+
+   KODAK ECN-2 Kit Color Developer    Minimum order quantity is one case.
+             Starter                  Each case contains two 5 litre plastic
+                                      bottles. Each bottle seasons a 100 litre
+       Size: 330 x 160 x 315 mma      batch of developer tank solution mixed
+            Weight: 12.36 kg          from developer kits. Mixes as follows: 75
+                                      litres of developer replenisher plus one 5
+                                      litre bottle and adjust to 100 litres.
+
+
+   KODAK ECN-2 Kit Color Developer    Minimum order quantity is one 20 litre
+        Replenisher, Part A           plastic container. Order two containers
+                                      of Part A with each case of ECN-2 Kit
+       Size: 380 x 258 x 288 mma      Color Replenisher, Part B. Each 20 litre
+            Weight: 22.37 kg          Part A mixes with one 5 litre bottle of
+                                      Part B, to make 100 litres of developer
+                                      replenisher.
+
+
+
+
+                                     17
+KODAK ECN-2 Kit Chemicals
+
+
+
+    KODAK ECN-2 Kit Color Developer       Minimum order quantity is one case.
+         Replenisher, Part B              Each case consists of two 5 litre bottles
+                                          of Part B. Order one case Part B for
+         Size: 330 x 160 x 315 mm         every two containers of Part A.
+             Weight: 11.52 kg
+
+   KODAK ECN-2/ECP-2E Kit Stop Bath       Minimum order quantity is one case.
+          and Replenisher                 Each case consists of two five-litre
+                                          plastic bottles. Each bottle will yield
+         Size: 330 x 160 x 315 mma        100 litres of replenisher solution.
+              Weight: 12.79 kg
+
+         KODAK ECN-2/ECP2-E Kit           Minimum order quantity consists of one
+          Bleach and Replenisher          20-litre plastic container. Each container
+                                          will yield 33.3 litres of replenisher
+         Size: 380 x 258 x 288 mma        solution.
+              Weight: 21.34 kg
+
+        KODAK ECN-2 Kit Fixer and         Minimum order quantity consists of one
+              Replenisher                 20-litre plastic container. Each container
+                                          will yield 66.6 litres of replenisher
+         Size: 380 x 258 x 288 mma        solution.
+              Weight: 27.93 kg
+
+      KODAK ECN-2/ECP-2E Kit Final        Minimum order quantity is one case.
+         Rinse and Replenisher            Each case consists of eight one-litre
+                                          plastic bottles. Each bottle will yield
+         Size: 262 x 195 x 295 mma        100 litres of replenisher solution.
+               Weight: 6.49 kg
+
+  a Approximate size and weight.
+
+
+
+
+                                     18
+                                                          Characteristics of
+                                                  KODAK ECN-2 Kit Chemicals
+
+Characteristics of KODAK ECN-2 Kit Chemicals
+
+                               Normal
+   Chemical         Part                                     Comments
+                             Appearance
+Developer Starter          Clear, colorless to A crystalline precipitate may appear
+                           very pale yellow    in developer starter that has been
+                                               kept too long (more than 2 years)
+                                               and/or exposed to cold temperature.
+                                               If color and odor are normal, the
+                                               starter is usable if the crystalline
+                                               material dissolves upon mixing.
+Developer            A     Clear, colorless     A crystalline precipitate may appear
+Developer                  Odorless             in parts that are kept too long (more
+Replenisher                                     than 2 years) and/or exposed to cold
+                                                temperature. If color and odor are
+                                                normal, Part A is usable if the
+                                                crystalline material dissolves upon
+                                                mixing.
+                     B     Brownish             Absence of sulfur dioxide odor
+                           Sulphite odor        means the preservative is
+                                                exhausted. If the solution turns color
+                                                or becomes opaque, or if there is
+                                                precipitate, do not use it.
+Prebath                    Colorless to very    A crystalline precipitate may appear
+Prebath                    pale yellow          in parts that are kept too long (more
+Replenisher                Odorless             than 2 years) and/or exposed to cold
+                                                temperature. If color and odor are
+                                                normal, prebath is usable if the
+                                                crystalline material dissolves upon
+                                                mixing.
+UL Bleach                  Brownish             Occasionally you may see a very
+UL Bleach                  Odorless             small amount of light yellow-brown
+Replenisher                                     sediment in the mix. This material
+                                                should not affect processing.
+
+
+
+
+                                           19
+Characteristics of
+KODAK ECN-2 Kit Chemicals
+
+
+                                 Normal
+     Chemical         Part                                    Comments
+                               Appearance
+  Fixer                      Clear, colorless to Age and/or exposure to high
+  Fixer Replenisher          very pale yellow    temperature can cause sulfurization.
+                                                 When a white to light yellow
+                                                 sediment forms, the solution
+                                                 becomes more yellow, and a musty
+                                                 odor (sulfur) is noticeable along with
+                                                 the acetic acid odor. Severely
+                                                 degraded fixers may have a large
+                                                 amount of precipitate and an odor of
+                                                 hydrogen sulfide (i.e., rotten-egg
+                                                 odor) and may appear dark. Do not
+                                                 use if it appears this way.
+  Final Rinse                Clear, colorless
+  Final Rinse
+  Replenisher
+
+
+
+
+                                       20
+                                                            Processing Cycles
+
+
+
+Processing Cycles
+There are many different types of kit processors, and they are used under a
+variety of conditions. Kodak chemicals are designed to get the best results from
+your lab regardless of its operation.
+
+This section includes information on—
+  Time and temperature
+  Replenishment rates
+  Agitation
+  Filtration
+  Drying
+
+Film Processing Cycles
+The replenishment rates given for the cycle are for a typical mix of KODAK
+Color Negative Films. Use the rates as starting points; adjust them as required
+according to your control-plot results.
+
+
+
+
+                                      21
+Processing Cycles
+
+
+
+ Process Cycles for KODAK ECN-2 Kit Chemicals
+ Process ECN-2 has three bleaching alternatives, ferricyanide bleach (SR-29),
+ “UL” bleach (SR-33), and persulfate bleach (ST-31). KODAK Kit Chemicals
+ use the “UL” bleach.
+
+ “UL” Bleach Sequence
+
+             Step                                   Function
+  1. Prebath             Softens rem-jet backing for removal.
+  2. Rem-jet Removal Removes softened rem-jet backing.
+     and Rinse
+  3. Developer           Reduces exposed silver-halide grains in all three
+                         light-sensitive layers. The developing agent is oxidized by
+                         the exposed silver halide, and the oxidation product couples
+                         with the particular dye coupler incorporated within each layer
+                         to give dye images. A silver image is formed simultaneously
+                         at the exposed silver-halide sites.
+  4. Stop                Stops the development of silver-halide grains, and washes
+                         Color Developing Agent, CD-3 from the film.
+                    NOTE: The film can now be handled in white light.
+  5. Wash                Removes excess acid stop.
+  6. Bleach              Converts metallic silver from the yellow-filter layer, and the
+                         silver picture image formed during color development to
+                         silver-halide compounds that can be removed by the fixer.
+  7. Wash                Removes residual bleach from the film, preventing
+                         contamination of the fixer.
+  8. Fixer               Converts silver-halide compounds formed in the bleach to
+                         soluble silver thiosulfate complex salts that are removed
+                         from the film in this fixer and subsequent wash.
+  9. Wash                Removes the residual soluble silver thiosulfate complex salts
+                         and unused hypo from the film.
+  10. Final Rinse        Prevents water spots and controls biological growths.
+  11. Dryer              Dries film for subsequent handling.
+
+
+
+
+                                       22
+                                                                        Processing Cycles
+
+
+Mechanical Specifications for Process ECN-2 with “UL” Bleach
+
+                      Temperaturea                      Replenisher
+                                                                       Recirculation (R)
+     Process                               Time           Rate per
+                                                                         Filtration (F)
+      Steps             °C        °F      min:sec      100 ft (30.5 m)
+                                                                        Turbulation (T)
+                                                       of 35 mm filmb
+                                                                                R&F
+Prebath c             27 ± 1 80 ± 2          :10            400 mL
+                                                                            @20 to 40 L/min
+Rem-jet Removal         27        80
+                                                                                  None
+& Rinse d              to 38    to 100
+                       41.1      106
+Developer c,e,f                              3:00           900 mL               R, F & T
+                       ± 0.1     ± 0.2
+                        27        80                                            R&F
+Stop g                                       0:30           600 mL
+                       to 38    to 100                                      @20 to 40 L/min
+                        27        80
+Wash h                                       0:30            1.3 L                None
+                       to 38    to 100
+                                                                                R&F
+UL Bleach c,i         27 ± 1 80 ± 2          3:00           200 mL
+                                                                            @20 to 40 L/min
+                        27        80
+Wash h,j                                     1:00            1.3 L                None
+                       to 38    to 100
+                                 100                                            R&F
+Fixer k               38 ± 1                 2:00           600 mL
+                                 ±2                                         @20 to 40 L/min
+                        27        80
+Wash l                                       2:00           270 mL                None
+                       to 38    to 100
+                        27        80                                            R&F
+Final Rinse m                                0:10           400 mL
+                       to 38    to 100                                      @20 to 40 L/min
+Dryer                  Temperature           RH            Air Flow                Time
+                        32        90
+Impingement                            30 to 50%         1000 ft3/min           5 to 7 min
+                       to 47    to 117
+                        30        80
+Nonimpingement                         30 to 50%         1000 ft3/min           6 to 8 min
+                       to 38    to 100
+a Fahrenheit temperatures are primary. Celsius temperatures are rounded consistent with
+  process-control requirements.
+b For 16 mm film use one-half the 35 mm film replenishment and wash rates. Since processing
+  operations can vary greatly in respect to such factors as film-to-leader ratio, squeegee
+  efficiency, and amount of film processed per unit of time, adjustments in replenisher rates may
+  be required to maintain the recommended tank concentrations. With efficient squeegees,
+  adjustment rates for 35 mm leader will be as low as 20 mL/100 ft.
+c Use polypropylene, fiberglass, or bleached cotton as a filter medium in the developer. Viscose
+  rayon is not recommended for prebath, developer, or bleach because of undesirable
+  photographic effects.
+d Rem-jet removal time and wash rate will vary with equipment design and method.
+e Maintain close control of developer time and temperature, since small deviations can lead to
+  severe contrast mismatch. Use an accurate thermometer for checking the temperature
+  controller variability. The temperature should be uniform throughout the developer tank.
+
+
+
+                                              23
+Processing Cycles
+
+
+ f Design developer racks with submerged rollers and rack-drive assemblies to minimize
+   solution aeration and splashing.
+ g Install an exhaust over the stop tank, since developer carried over into the stop generates
+   sulfur dioxide and UL bleach tanks which have an ammonia or acetic acid odor. The exhaust
+   system should produce an air flow of 175 ft3/min (5 m3/min) for every square foot (0.09 m2) of
+   solution surface and provide 50 to 75 ft/min (15 to 23 m/min) control velocity over the surface
+   of the tank.
+ h Two-stage counter-current washes with squeegees between stages are recommended for
+   efficient washing. The wash rates given in the table assume the use of such two-stage
+   washes. Single-stage washes require substantially greater wash rates.
+ i Reconstitute and reuse the bleach to obtain the full economic advantage. See page 41.
+ j “UL” Bleach and the wash after the bleach are prone to biogrowth. Addition of PROXEL GXL
+   biocide to the bleach controls this growth. Frequent dumping and changing of this wash tank
+   may prove necessary.
+ k Fixer replenisher requirements vary with silver recovery equipment, method and operating
+   conditions. If provision is made for continuous electrolytic desilvering of the recirculated fixer,
+   the silver concentration should be maintained between 0.5 and 1 g/L.
+ l The wash rate given in this table assumes that the final wash is composed of four
+   counter-current-wash stages with squeegees between stages.
+ m The final rinse contains a wetting agent to promote more efficient squeegeeing of the film
+   strand prior to drying. PROXEL GXL biocide has already been added to control biological
+   growth in the tank.
+
+
+
+
+                                             24
+                                                              Processing Cycles
+
+
+
+General Notes
+Agitation—Good agitation is important, especially during the first few seconds
+of the developer.
+
+Filtration—Processing solutions and wash water may contain some insoluble
+materials. If these materials aren’t filtered out, they can stick to the film, tank
+walls, rollers and possibly damage the film. Use filters recommended by the
+manufacturer of the processor and change them regularly as a part of routine
+maintenance. Usually, filters with a porosity of 10 to 30 microns are effective
+for solutions and wash water, and filters with a porosity of 15 microns are
+effective for incoming water supplies.
+   Polypropylene is the most acceptable filter core material and one of the least
+expensive. This material has no photographic effect, but the surfactants used to
+produce the polypropylene yarns may have an effect on your process.
+Therefore, monitor your process carefully when you first change filters.
+
+Drying—Keep the film-drying area clean and free of dirt. If the dryer has a
+filter, check it regularly. If the film is over-dried and has excessive curl, the
+ambient conditions may be too dry; and the temperature may be reduced or the
+relative humidity may be increased.
+   Drying photographic film depends on time in the dryer, the geometry of the
+dryer, the pattern of air flow and/or impingement on the film, the volume of air
+flow, the humidity and temperature of the air in the drying cabinet, and the
+efficiency of the final squeegee before the dryer. The optimum conditions for
+drying film must be determined for each processor, making allowance for film
+moisture content and static buildup.
+   With careful control of the above factors, adequate drying of Process ECN-2
+films can be achieved in times as short as 5 1/2 minutes when using an
+impingement-type dryer. Extending the dryer time to 6 to 8 minutes allows for
+a wider range of drying conditions and dryer geometry (including
+nonimpingement drying) and less stringent control of drying conditions. Upon
+cooling to room temperature after leaving the dryer, the film should have a
+moisture content in equilibrium with air at 50 percent relative humidity and
+show minimum curl.
+
+
+
+
+                                        25
+Processing Cycles
+
+
+
+ Turbulation Specifications—Turbulators are essential in the recirculation
+ system for Process ECN-2 developer to provide uniform film processing. The
+ turbulators are used submerged in the solution and are located in such a way that
+ the recirculated solution impinges uniformly over the full width of the film
+ strand. Turbulation at the emulsion surface must be provided along the film path
+ at a suitable frequency. Backup rollers opposite the turbulators are necessary in
+ most processors when adequate turbulator pressures are used. Precise
+ turbulation design must be determined specifically for a particular processing
+ machine to promote good uniformity of development.
+
+ Wash Water Flow Rates—Adequate washing in conjunction with
+ conservation of wash water is a matter of concern for all processors. Ways of
+ reducing wash-water usage while maintaining adequate washing include:
+   • using multi-stage counter-current-flow washes;
+   • installing squeegees between wash stages as well as before the wash;
+   • shutting off wash water when the machine is not transporting film or leader.
+    The last alternative can easily be accomplished by installing solenoid valves
+ in the wash-water supply lines that are opened when the machine drive is
+ running. The water savings from the use of squeegees and counter-current
+ stages can be substantial. A three-stage counter-current final wash with
+ squeegees before and after each stage requires approximately 1/25 of the water
+ of a single-stage wash with entrance and exit squeegees. Overflow from one
+ wash step should never be used in any other wash step.
+    Decreased water flow in the final wash may increase the propensity toward
+ biological growth. Temperature control can also be a concern at lower flow
+ rates. After establishing the final flow rate, check to be sure the process stays
+ within the temperature tolerances specified in the tables above.
+    The wash-water flow rates in the tables above have been found to be
+ satisfactory in a 75 ft/min (23 m/min) processor, using two-stage
+ counter-current washes (four-stage final wash) with efficient squeegees
+ between stages. The optimum wash rates for a particular installation must be
+ determined after the film transport rate, the number of counter-current stages,
+ and the squeegee efficiencies have been established.
+
+
+
+
+                                    26
+                                                                                    Mixing Instructions
+
+
+
+Mixing Instructions for KODAK ECN-2 Kit Chemicals
+                                                                                               One KODAK
+  KODAK
+                               Mixing Instructions                              pH at 25°C      ECN-2 Kit
+ ECN-2 Kit
+                                                                                                 Makes
+  Prebath
+                          21-38 ˚C                                 1 min
+ Tank and                                       1 min                             10.20
+Replenisher                                                                                       66.6 L
+                                                                                  ± 0.20a
+ (To make
+  66.6 L)          = 30 L                                   = 66.6 L
+
+ Developer
+                     21-38˚C            1 min        1 min            1 min
+Replenisher                        A            B                                              Part A 100 L
+Part A and                                                                        10.32
+                                                                                                  Part B
+   Part B                                                                         ± 0.05a
+                                                                                                2 x 100 L
+ (To make
+   100 L)           = 60 L                                     = 100 L
+
+   Color           75 L of Developer
+ Developer                Replenisher                                   1 min
+                                                     1 min                        10.25
+Starter Tank                                                                                    2 x 100 L
+                                                                                  ± 0.05a
+ (To make
+                                                               = 100 L
+   100 L)
+
+ Stop Bath                   21-38 ˚C
+                                                    1 min
+                                                                       1 min        No
+ (To make                                                                       Adjustment      2 x 100 L
+   100 L)                                                                       0.8<pH<1.5
+                      = 85 L                                  = 100 L
+
+Potassium             21-38 ˚C                                          1 min
+ UL Bleach                                      1 min
+Replenisher                                                                     4.75 ± 0.20b      33.3 L
+ (To make
+  33.3 L)        = 10 L                                      = 33.3 L
+
+ Potassium
+                          21-38 ˚C                                    1 min
+ UL Bleach                                      1 min
+   Tank                                                                         4.75 ± 0.20b      49 L
+ (To make
+                    = 20 L                                   = 49 L
+   49 L)
+ Fixer Tank
+    and                     21-38 ˚C                                    1 min
+                                                    1 min                        7.75<pH
+Replenisher                                                                                       66.6 L
+                                                                                  <7.93c
+ (To make
+   66.6 L)          = 35 L                                    = 66.6 L
+
+                             21-38 ˚C                                 1 min
+ Final Rinse                                     1 min                              No
+  (To make                                                                                      8 x 100 L
+                                                                                Adjustment
+    100 L)
+                     = 95 L                                  = 100 L
+
+a If necessary, add H2SO4 7N to lower the pH, or NaOH to raise the pH.
+b If necessary, add HNO3 to lower the pH, or K2CO3 to raise the pH.
+c If necessary, add 90% acetic acid to lower the pH, or 20% ammonium hydroxide to raise
+  the pH.
+
+                                                        27
+pH Adjustment
+
+
+
+ pH Adjustment
+                                         pH variation for Prebath
+                             H 2 SO4 7N                             NaOH 220 g/L
+                  12                                                                       12
+                  10                                                                       10
+                   8                                                                       8
+             mL                                                                                 mL
+                   6                                                                       6
+                   4                                                                       4
+                   2                                                                       2
+                   0                                                                       0
+                   -0.15   -0.1         -0.05        0         0.05           0.1   0.15
+                                                    pH
+
+                                        pH variation for UL Bleach
+                             HNO 3 69.3%                            K 2 CO 3 50%
+                  3.5                                                                  3.5
+                   3                                                                   3
+                  2.5                                                                  2.5
+                   2                                                                   2
+             mL                                                                                 mL
+                  1.5                                                                  1.5
+                    1                                                                  1
+                  0.5                                                                  0.5
+                   0                                                                    0
+                   -0.15   -0.1         -0.05        0         0.05           0.1   0.15
+                                                    pH
+
+                                           pH variation for Fixer
+                           Acetic Acid 90%                 Ammonium Hydroxide 20%
+                  3.5                                                                  3.5
+                   3                                                                   3
+                  2.5                                                                  2.5
+                   2                                                                   2
+             mL                                                                                 mL
+                  1.5                                                                  1.5
+                    1                                                                  1
+                  0.5                                                                  0.5
+                   0                                                                    0
+                   -0.15   -0.1         -0.05        0         0.05           0.1   0.15
+                                                    pH
+
+                             pH variation for Color Developer Replenisher
+                             H 2 SO4 7N                             NaOH 220 g/L
+                  2.5                                                                  2.5
+                   2                                                                   2
+                  1.5                                                                  1.5
+             mL     1                                                                  1        mL
+                  0.5                                                                  0.5
+                   0                                                                    0
+                   -0.15   -0.1         -0.05        0         0.05           0.1   0.15
+                                                    pH
+
+                                  pH variation for Color Developer Tank
+                             H 2 SO4 7N                             NaOH 220 g/L
+                   3                                                                   3
+                  2.5                                                                  2.5
+                   2                                                                   2
+                  1.5                                                                  1.5
+             mL     1                                                                  1        mL
+                  0.5                                                                  0.5
+                   0                                                                    0
+                   -0.15   -0.1         -0.05        0         0.05           0.1   0.15
+                                                    pH
+    F009_0379DC
+
+                                          28
+                                                                     Regeneration
+
+
+
+Regeneration – UL Bleach Additions
+Procedure to Reconstitute the UL Bleach
+Applies to the KODAK ECN-2/ECP-2E Kit Bleach and Replenisher.
+ 1. Collect the overflow
+ 2. Analyze Fe2+.
+    If concentration of Fe2+ is less than 0.5 g/L, go to step 3.
+    If not, aerate the overflow until the concentration of Fe2+ drops below
+    0.5 g/L.
+    Analyze total iron.
+ 3. Use the equation below to determine the number of litres of UL bleach
+    concentrate which is to be added to the overflow.
+      If A = litres of tank overflow collected
+        B = g/L of Fe analyzed in tank overflow (Fe = total iron)
+        C = litres of UL bleach concentrate needed
+        D = 15 g/L which is the amount of iron in the UL bleach concentrate
+        Z = g/L of Fe specs in the replenisher with:
+                                             Z = 7.5 g/L for the ECN-2 bleach
+
+
+      C = A (7.5 – B)/7.5
+      (A * B) + (C * D) = Z (A + C)
+      Fe in overflow + Fe in UL bleach concentrate = Fe in new bleach made
+
+Example: (for ECN-2 Kit)
+         A = 300 L of overflow collected
+         B = 4.8 g/L total iron analyzed in overflow
+         C = to be calculated
+         D = 15 g/L
+         Z = 7.5 g/L
+
+  Therefore
+         C = 108 L
+
+
+
+
+                                        29
+Regeneration
+
+
+
+   Regenerating UL House Bleach
+   Replenishment rates are those prevailing for each process. For Process ECN-2
+   use 200 mL for 30.5 m of 35 mm film, and for Process ECP-2E use 400 mL per
+   30.5 m of 35 mm film. The procedure to reconstitute the UL house bleach is
+   exactly the same as the one to reconstitute the UL Bleach for Process ECP-2E.
+
+   KODAK ECN-2 Kit Fixer Used Directly and Without Dilution as
+   Replenisher
+   Summary: You can use KODAK ECN-2 Kit Fixer and Replenisher directly as
+   a machine replenisher (undiluted). The only modification needed is to adjust
+   fixer replenisher flow rate. To use the fixer directly without dilution, the fixer
+   replenisher flow rate should be changed from 23 L/h (machine speed 1680 m/h)
+   to 1 L/h. These recommendations only apply to KODAK Kit Chemicals.
+
+   Advantages: KODAK ECN-2 Kit Fixer and Replenisher used as replenisher
+   without mixing permits reduction of the normal flow rate of fixer replenisher by
+   23x without any sensitometric shift. Treat the overflow in the same way for
+   de-silvering, resin treatment, etc. Using this procedure will reduce mixing errors
+   for fixer/replenisher.
+
+   Limitations: When using this system the bromide and iodide level must be
+   monitored. The fixer may be used without sensitometric effect with a bromide
+   level up to 35 g/L and an iodide level up to 2 g/L.
+
+
+     The only adjustment needed is to the pH and sulphite :
+       Adjust the pH to 6.5 when the pH is under 5.5.
+       Adjust the sulphite to 20 g/L when the sulphite is under 15 g/L.
+     The silver level should be maintained between 0.3 and 1.5 g/L.
+
+
+
+
+                                    30
+                                           KODAK ECP-2E Kit Chemicals
+
+
+
+KODAK ECP-2E KIT CHEMICALS
+
+This section includes:
+  • List of chemicals used for KODAK ECP-2E Kit Chemicals
+  • Characteristics of KODAK ECP-2E Kit Chemicals
+  • Processing cycles for KODAK ECP-2E Kit Chemicals
+  • General Notes
+  • Mixing Instructions for KODAK ECP-2E Kit Chemicals
+  • pH Adjustment
+  • Regeneration
+
+List of Chemicals for KODAK ECP-2E Kit Chemicals
+       KODAK ECP-2E Kit Color         Minimum order quantity is one case.
+          Developer Starter           Each case contains two 5 litre plastic
+                                      bottles. Each case seasons a 100 litre
+       Size: 330 x 160 x 315 mma      batch of developer tank solution, mixed
+            Weight: 11.73 kg          from developer kits. Mixes as follows: 52
+                                      litres of developer replenisher plus two 5
+                                      litre bottles and adjust to 100 litres.
+
+
+      KODAK ECP-2E Kit Color          Minimum order quantity is one 20 litre
+     Developer Replenisher, Part A    plastic container. Order one container
+                                      Part A with each case of Part B. Each 20
+       Size: 380 x 258 x 288 mma      litre Part A mixes with two 5 litre bottles
+            Weight: 23.04 kg          of Part B to make 100 litres of developer
+                                      replenisher.
+
+
+       KODAK ECP-2E Kit Color         Minimum order quantity is one case.
+     Developer Replenisher, Part B    One case consists of two 5 litre plastic
+                                      bottles of Part B. Order one case Part B
+       Size: 330 x 160 x 315 mma      with each container Part A.
+            Weight: 11.24 kg
+
+ KODAK ECN-2/ECP-2E Kit Stop Bath     Minimum order quantity is one case.
+        and Replenisher               Each case consists of two five-litre
+                                      plastic bottles. Each bottle will yield
+       Size: 330 x 160 x 315 mma      100 litres of replenisher solution.
+             Weight: 12.9 kg
+
+
+
+
+                                     31
+KODAK ECP-2E Kit Chemicals
+
+
+
+         KODAK ECN-2/ECP-2E Kit           Minimum order quantity consists of one
+          Bleach and Replenisher          20-litre plastic container. Each container
+                                          will yield 33.3 litres of replenisher
+         Size: 380 x 258 x 288 mma        solution.
+              Weight: 21.34 kg
+
+        KODAK ECP-2E Kit Fixer and        Minimum order quantity consists of one
+              Replenisher                 20-litre plastic container. Each container
+                                          will yield 66.6 litres of replenisher
+         Size: 380 x 258 x 288 mma        solution.
+              Weight: 28.35 kg
+
+      KODAK ECN-2/ECP-2E Kit Final        Minimum order quantity is one case.
+         Rinse and Replenisher            Each case consists of eight 1 litre plastic
+                                          bottles. Each bottle will yield 100 litres of
+         Size: 262 x 195 x 295 mma        replenisher solution.
+               Weight: 6.49 kg
+
+
+  a Approximate size and weight.
+
+
+
+
+                                     32
+                                                          Characteristics of
+                                                 KODAK ECP-2E Kit Chemicals
+
+Characteristics of KODAK ECP-2E Kit Chemicals
+
+                               Normal
+   Chemical         Part                                     Comments
+                             Appearance
+Developer Starter          Clear, colorless to A crystalline precipitate may appear
+                           very pale yellow    in developer starter that is kept too
+                                               long (more than 2 years) and/or
+                                               exposed to cold temperature. If color
+                                               and odor are normal, the developer
+                                               starter is usable if the crystalline
+                                               material dissolves upon mixing
+Developer            A     Clear, colorless     A crystalline precipitate may appear
+Developer                  Odorless             in parts that are kept too long (more
+Replenisher                                     than 2 years) and/or exposed to cold
+                                                temperature. If color and odor are
+                                                normal, Part A is usable if the
+                                                crystalline material dissolves upon
+                                                mixing.
+                     B     Reddish              Absence of sulfur dioxide odor
+                           Sulphite odor        means the preservative is
+                                                exhausted. If the solution turns color
+                                                or becomes opaque, or if there is
+                                                precipitate, do not use it.
+UL Bleach                  Brownish             Occasionally you may see a very
+UL Bleach                  Odorless             small amount of light yellow-brown
+Replenisher                                     sediment in the mix. This material
+                                                should not affect processing.
+Fixer                      Clear, colorless to Age and/or exposure to high
+Fixer Replenisher          very pale yellow    temperature can cause sulfurization.
+                                               When a white to light yellow
+                                               sediment forms, the solution
+                                               becomes more yellow, and a musty
+                                               odor (sulfur) is noticeable along with
+                                               the acetic acid odor. Severely
+                                               degraded fixers may have a large
+                                               amount of precipitate and an odor of
+                                               hydrogen sulfide (i.e., rotten-egg
+                                               odor) and may appear dark. Do not
+                                               use if it appears this way.
+Final Rinse                Clear, colorless
+Final Rinse
+Replenisher
+
+
+
+
+                                           33
+Processing Cycles
+
+
+
+ Processing Cycles for KODAK Kit Chemicals
+ There are many different types of kit processors, and they are used under a
+ variety of conditions. Kodak chemicals are designed to get the best results from
+ your lab regardless of its operation.
+
+ This section includes:
+    • Processing cycles for KODAK ECP-2E Kit Chemicals
+ With information on—
+   Time and temperature
+   Replenishment rates
+   Agitation
+   Filtration
+   Drying
+
+ Film Processing Cycles
+ The replenishment rates given for the cycle are for a typical mix of KODAK
+ Color Print Films. Use the rates as starting points; adjust them as required
+ according to your control-plot results.
+
+
+
+
+                                    34
+                                                                Processing Cycles
+
+
+
+Process Cycles for KODAK ECP-2E Kit
+Chemicals
+“UL” Bleach Sequence
+          Step                                   Function
+1. Developer           Reduces exposed silver-halide grains in all three
+                       light-sensitive layers. The developing agent is oxidized by
+                       the exposed silver halide, and the oxidation product couples
+                       with the particular dye coupler incorporated within each layer
+                       to give dye images. A silver image is formed simultaneously
+                       at the exposed silver-halide sites.
+2. Stop                Stops the development of silver-halide grains, and washes
+                       Color Developing Agent, CD-2 from the film.
+                  NOTE: The film can now be handled in white light.
+3. Wash                Removes excess acid stop.
+4. First Fixer         Converts the unexposed and undeveloped silver halide to
+                       soluble complex silver thiosulfate compounds that are
+                       removed in this fixer and subsequent wash.
+5. Wash                Removes residual silver thiosulfate complex compounds that
+                       were not removed from the film in the first fixer.
+6. Bleach              Converts the metallic silver from both the sound track image
+   UL Bleach           and picture image that was formed during color development
+                       to silver-halide compounds.
+7. Wash                Removes the excess bleach from the film.
+8. Sound Track         Re-develops the analog sound track to silver.
+   Developer
+9. Spray Rinse         Removes the excess sound track developer.
+10. Second Fixer       Converts the silver halide to soluble complex silver
+                       thiosulfate compounds.
+11. Wash               Removes the residual thiosulfate complex compounds from
+                       the film.
+12. Final Rinse        Improves the drying uniformity.
+13. Dryer              Dries the film.
+
+
+
+
+                                         35
+Processing Cycles
+
+
+
+ Mechanical Specifications for Process ECP-2E with “UL” Bleach
+
+                        Temperaturea                      Replenisher
+                                                                         Recirculation (R)
+       Process                               Time           Rate per
+                                                                           Filtration (F)
+        Steps             °C        °F      min:sec      100 ft (30.5 m)
+                                                                          Turbulation (T)
+                                                         of 35 mm filmb
+  Developer c,d,e        36.7      98         3:00           690 mL             R, F & T
+                         ± 0.1    ± 0.2                                       @125 to 175 L/
+                                                                                  min
+  Stop f                27 ± 1 80 ± 2         0:40           770 mL               R&F
+                                                                              @40 to 60 L/min
+  Wash g                27 ± 3 80 ± 5         0:40             1.2 L                None
+  First Fixerh          27 ± 1 80 ± 2         0:40           200 mL               R&F
+                                                                              @40 to 60 L/min
+  Washg                 27 ± 3 80 ± 5         0:40             1.2 L                None
+  UL Bleachi            27 ± 1 80 ± 2         1:00           400 mL               R&F
+                                                                              @40 to 60 L/min
+  Washj                 27 ± 3 80 ± 5         0:40             1.2 L                None
+                 Dry film surface before sound track developer application
+  Sound track              Ambient          :10 - :20                               None
+  Developer
+  Spray Rinse           27 ± 3 80 ± 5       :01 - :02                               None
+  Second Fixerh         27 ± 1 80 ± 2         0:40                                R&F
+                                                                              @40 to 60 L/min
+  Washj                 27 ± 3 80 ± 5         1:00             1.2 L                None
+  Final Rinse           27 ± 3 80 ± 5         0:10           400 mL               R&F
+                                                                              @40 to 60 L/min
+  Dryer                  Temperature           RH            Air Flow               Time
+  Impingement             57       135     15 to 25%       5000 ft /min
+                                                                   3             3 to 5 min
+                          43      110                      5000 ft3/min          5 to 7 min
+  Nonimpingement                        15 to 25%
+                        to 49    to 120
+                    35 mm Edgewax, 16 and 8 mm Full coat lubrication
+  a Fahrenheit temperatures are primary. Celsius temperatures are rounded consistent with
+    process-control requirements.
+  b For 16 mm film use one-half the 35 mm film replenishment and wash rates. Since processing
+    operations can vary greatly in respect to such factors as film-to-leader ratio, squeegee
+    efficiency, and amount of film processed per unit of time, adjustments in replenisher rates may
+    be required to maintain the recommended tank concentrations. With efficient squeegees,
+    adjustment rates for 35 mm leader will be as low as 20 mL/100 ft.
+  c Use polypropylene, fiberglass, or bleached cotton as a filter medium in the developer. Viscose
+    rayon is not recommended for developer because of undesirable photographic effects.
+  d Maintain close control of developer time and temperature, since small deviations can lead to
+    severe contrast mismatch. Use an accurate thermometer for checking the temperature
+    controller variability. The temperature should be uniform throughout the developer tank.
+
+
+                                            36
+                                                                           Processing Cycles
+
+
+e Design developer racks with submerged rollers and rack-drive assemblies to minimize
+  solution aeration and splashing.
+f Install an exhaust over the stop tank, since developer carried over into the stop generates
+  sulfur dioxide. The exhaust system should produce an air flow of 175 ft3/min (5 m3/min) for
+  every square foot (0.09 m2) of solution surface, and provide 50 to 75 ft/min (15 to 23 m/min)
+  control velocity over the surface of the tank.
+g The wash rate is for two counter-current stages with squeegees between stages.
+h Fixer replenishment requirements vary with silver recovery equipment, method and operating
+  conditions. If provision is made for continuous electrolytic desilvering of the recirculated fixer,
+  the silver concentration should be maintained between 0.5 and 1 g/L. See page 15 for details.
+  The fixer and replenisher must be kept separate from other processes. Cascading the first
+  fixer overflow into the second fixer helps conserve chemicals.
+i Reconstitute and reuse the bleach to obtain the full economic advantage. See page 41.
+j The wash rate given in the table assumes that the final wash and bleach wash are composed
+  of three counter-current wash stages with squeegees between stages.
+
+
+General Notes
+Agitation—Good agitation is important, especially during the first few seconds
+of the developer.
+
+Filtration—Processing solutions and wash water may contain some insoluble
+materials. If these materials aren’t filtered out, they can stick to the film, tank
+walls, rollers and possibly damage the film. Use filters recommended by the
+manufacturer of the processor and change them regularly as a part of routine
+maintenance. Usually, filters with a porosity of 10 to 30 microns are effective
+for solutions and wash water, and filters with a porosity of 15 microns are
+effective for incoming water supplies.
+   Polypropylene is the most acceptable filter core material and one of the least
+expensive. This material has no photographic effect, but the surfactants used to
+produce the polypropylene yarns may have an effect on your process.
+Therefore, monitor your process carefully when you first change filters.
+
+Drying—Keep the film-drying area clean and free of dirt. If the dryer has a
+filter, check it regularly. If the film is over-dried and has excessive curl, the
+ambient conditions may be too dry; and the temperature may be reduced or the
+relative humidity may be increased.
+   Drying photographic film depends on time in the dryer, the geometry of the
+dryer, the pattern of air flow and/or impingement on the film, the volume of air
+flow, the humidity and temperature of the air in the drying cabinet, and the
+efficiency of the final squeegee before the dryer. The optimum conditions for
+drying film must be determined for each processor, making allowance for film
+moisture content and static buildup.
+   With careful control of the above factors, adequate drying of Process
+ECP-2E films can be achieved in times as short as 5 1/2 minutes when using an
+impingement-type dryer. Extending the dryer time to 6 to 8 minutes allows for
+
+                                                37
+Processing Cycles
+
+
+
+ a wider range of drying conditions and dryer geometry (including
+ nonimpingement drying) and less stringent control of drying conditions. Upon
+ cooling to room temperature after leaving the dryer, the film should have a
+ moisture content in equilibrium with air at 50 percent relative humidity and
+ show minimum curl.
+
+ Turbulation Specifications—Turbulators are essential in the recirculation
+ system for Process ECP-2E developer to provide uniform film processing. The
+ turbulators are used submerged in the solution and are located in such a way that
+ the recirculated solution impinges uniformly over the full width of the film
+ strand. Turbulation at the emulsion surface must be provided along the film path
+ at a suitable frequency. Backup rollers opposite the turbulators are necessary in
+ most processors when adequate turbulator pressures are used. Precise
+ turbulation design must be determined specifically for a particular processing
+ machine to promote good uniformity of development.
+
+ Wash Water Flow Rates—Adequate washing in conjunction with
+ conservation of wash water is a matter of concern for all processors. Ways of
+ reducing wash-water usage while maintaining adequate washing include:
+   • using multi-stage counter-current-flow washes;
+   • installing squeegees between wash stages as well as before the wash;
+   • shutting off wash water when the machine is not transporting film or leader.
+    The last alternative can easily be accomplished by installing solenoid valves
+ in the wash-water supply lines that are opened when the machine drive is
+ running. The water savings from the use of squeegees and counter-current
+ stages can be substantial. A three-stage counter-current final wash with
+ squeegees before and after each stage requires approximately 1/25 of the water
+ of a single-stage wash with entrance and exit squeegees. Overflow from one
+ wash step should never be used in any other wash step.
+    Decreased water flow in the final wash may increase the propensity toward
+ biological growth. Temperature control can also be a concern at lower flow
+ rates. After establishing the final flow rate, check to be sure the process stays
+ within the temperature tolerances specified in the tables above.
+    The wash-water flow rates in the tables above have been found to be
+ satisfactory in a 165 ft/min (50 m/min) processor, using two-stage
+ counter-current washes (three-stage final wash) with efficient squeegees
+ between stages. The optimum wash rates for a particular installation must be
+ determined after the film transport rate, the number of counter-current stages,
+ and the squeegee efficiencies have been established.
+
+
+                                    38
+                                                                                 Mixing Instructions
+
+
+
+Mixing Instructions for KODAK ECP-2E Kit Chemicals
+
+                                                                                         One KODAK
+ KODAK
+                             Mixing Instructions                            pH at 25°C   ECP-2E Kit
+ECP-2E Kit
+                                                                                           Makes
+ Developer          21-38 ˚C                                        1 min
+                                      1 min           1 min
+Replenisher                                     B
+                                 A
+Part A and                                                                    11.20      Part A 100 L
+   Part B                                                                     ± 0.05a    Part B 100 L
+ (To make
+                 = 60 L                                       = 100 L
+   100 L)
+   Color         52 L of Developer
+                                               1 min                1 min
+ Developer               Replenisher
+  Starter                                                                     10.59
+                                                                                         100 L
+    Tank                                                                      ± 0.05a
+ (To make
+   100 L)                                                     = 100 L
+
+                           21-38 ˚C
+ Stop Bath                                    1 min
+                                                                  1 min         No
+ (To make                                                                   adjustment 2 x 100 L
+   100 L)                                                                   0.8<pH<1.5
+                   = 85 L                               = 100 L
+
+Potassium
+ UL Bleach                 21-38 ˚C                                 1 min
+                                               1 min
+ Tank and
+                                                                            4.75 ± 0.20b 33.3 L
+Replenisher
+ (To make          = 10 L                                = 33.3 L
+  33.3 L)
+   Fixer               21-38 ˚C                                   1 min
+ Tank and                                     1 min
+Replenisher                                                                 6.5<pH<6.7c 66.6 L
+ (To make
+                  = 35 L                                = 66.6 L
+  66.6 L)
+                           21-38 ˚C                               1 min
+Final Rinse                                   1 min                             No
+ (To make                                                                                8 x 100 L
+                                                                            adjustment
+   100 L)
+                   = 95 L                              = 100 L
+
+a If necessary, add H2SO4 7N to lower the pH, or NaOH to raise the pH.
+b If necessary, add HNO3 to lower the pH, or K2CO3 to raise the pH.
+c If necessary, add 90% acetic acid to lower the pH, or 20% ammonium hydroxide to raise
+  the pH.
+
+
+
+
+                                                       39
+pH Adjustment
+
+
+
+ pH Adjustment
+
+
+
+
+                 40
+                                                                     Regeneration
+
+
+
+Regeneration – UL Bleach Additions
+Procedure to Reconstitute the UL Bleach
+Applies to the KODAK ECN-2/ECP-2E Kit Bleach and Replenisher.
+ 1. Collect the overflow
+ 2. Analyze Fe2+.
+    If concentration of Fe2+ is less than 0.5 g/L, go to step 3.
+    If not, aerate the overflow until the concentration of Fe2+ drops below
+    0.5 g/L.
+    Analyze total iron.
+ 3. Use the equation below to determine the number of litres of UL bleach
+    concentrate which is to be added to the overflow.
+      If A = litres of tank overflow collected
+        B = g/L of Fe analyzed in tank overflow (Fe = total iron)
+        C = litres of UL bleach concentrate needed
+        D = 15 g/L which is the amount of iron in the UL bleach concentrate
+        Z = g/L of Fe specs in the replenisher with:
+                                             Z = 10 g/L for the ECP-2E bleach
+
+      C = A (10 – B)/5
+      (A * B) + (C * D) = Z (A + C)
+      Fe in overflow + Fe in UL bleach concentrate = Fe in new bleach made
+
+Example: (for ECP-2E Kit)
+         A = 300 L of overflow collected
+         B = 4.8 g/L total iron analyzed in overflow
+         C = to be calculated
+         D = 15 g/L
+         Z = 10 g/L
+
+  Therefore
+         C = 312 L
+
+
+
+
+                                        41
+Regeneration
+
+
+
+ Regenerating UL House Bleach
+ Replenishment rates are those prevailing for each process. For Process ECN-2
+ use 200 mL for 30.5 m of 35 mm film, and for Process ECP-2E use 400 mL per
+ 30.5 m of 35 mm film. The procedure to reconstitute the UL house bleach is
+ exactly the same as the one to reconstitute the UL Bleach for Process ECP-2E.
+
+
+
+
+                                  42
+                                                       Process Monitoring and
+                                                             Troubleshooting
+
+PROCESS MONITORING AND TROUBLESHOOTING
+This section describes:
+  • Introduction
+  • Terms used in process monitoring and troubleshooting
+  • How to monitor your process
+  • Storing, handling, and processing control strips
+  • Processing control strips
+  • Plotting control-strip densities - Process ECN-2
+  • Plotting control-strip densities - Process ECP-2E
+  • Changing to a new batch of control strips
+  • Troubleshooting your process
+
+Introduction
+If you mix chemicals properly and use the correct settings for the process cycles,
+your process should plot in control, and your lab will produce high-quality
+customer orders. Deviations from standard conditions for the processing
+solutions, time, temperature, agitation, replenishment, filtration, wash water, or
+drying can cause processing problems. Deviations from normal conditions
+produce either under- or over-development.
+  • Under-development in the ECN-2 or ECP-2E process will result in a
+    decrease in density in your control strips for your processes. It may also
+    produce a color shift, depending on the cause of the problem.
+  • Over-development will produce an increase in density in your control
+    strips. It may also produce a color shift, depending on the cause of the
+    problem.
+   When the control plot shows a problem, you may also see the problem in
+customer orders. However, remember that customer orders reflect the entire
+system—i.e., Process ECN-2 and Process ECP-2E. For example, too much
+activity in Process ECN-2 (over-development of negative) or too little activity
+in Process ECP-2E may cause the prints to be light. Checking only the control
+plots may not always isolate the problem, because using the wrong control
+strip or improperly stored strips may give false information. Therefore, to find
+the cause of any problem, check the control plots of your ECN and ECP
+processes and visually review appropriate customer orders.
+
+
+
+
+                                       43
+Process Monitoring Terms
+
+
+
+ Terms in Process Monitoring and Troubleshooting
+ The following terms are frequently used in process monitoring.
+
+ Action Limits—The action limits are the boundaries of the desired operating
+ range of the process. As long as the density values remain between the upper
+ and lower action limits, your process is operating correctly. If a density value
+ exceeds the action limit, it is an “early warning.” You can still safely process
+ customer work, but you should check for the cause of the shift and correct it.
+ When the density values plot between the upper and lower action limits (i.e., the
+ “aim zone”), your process is in control.
+
+ Aim Values—These are the values to which you compare your control strip
+ densities. To obtain aim values, read the reference strip densities; then apply the
+ correction factors to the density readings. Enter these values in the spaces
+ provided on the left side of your control chart.
+
+ Color-Balance Spread Limits—A color spread is the density difference
+ between the two most widely separate densities of the HD – LD plot. If the
+ process exceeds the color spread limit, stop processing customer work, and take
+ corrective action.
+
+ Control Limits—The control limits define the maximum tolerances that are
+ acceptable for processing customer work. If any density value of your process
+ plots beyond the control limit, the process is out of control, and results will be
+ unsatisfactory for color, density, and/or contrast. When any density value plots
+ beyond the control limits, stop processing customer work until you find the
+ cause of the shift and correct it.
+
+ Control Strips—These are precisely exposed strips used to monitor your
+ process.
+
+ Correction Factors—Numbers used to adjust the densities of the reference
+ strip to obtain aim values. They are printed in the instruction sheet packaged
+ with each box of control strips. Correction factors usually differ for each code
+ number.
+
+ Reference Strips—This is a control strip that is precisely processed by Kodak
+ at standard conditions. A reference strip is packaged with each batch of control
+ strips. To obtain aim values, measure the reference-strip densities and apply the
+ correct factors for that batch of control strips.
+
+
+                                     44
+                                                            Process Monitoring Terms
+
+
+
+Tolerances and Limits—Tolerances and limits are density variations allowed
+before you must take corrective action; they include action and control limits.
+See KODAK Publication H-24 for more information on limits and adjustment
+tolerances.
+
+Tolerance Limits
+
+Process ECN-2
+                                                                          CB Spread
+                  D-min       LD        MD          HD       HD – LD
+     Step                                                                  Limitsa
+                   dot        14          8          4       4 – 14      LD      HD – LD
+ Action Limits    + 0.03     ± 0.03    ± 0.05      ± 0.06     ± 0.05    0.03        0.05
+Control Limits    + 0.05     ± 0.05    ± 0.07      ± 0.08     ± 0.07    0.05       0.07
+
+
+Process ECP-2E
+                                                                          CB Spread
+                  D-min       LD        MD          HD      HD – LD
+     Step                                                                  Limitsa
+                   dot        14         11          8       8 – 11      MD      HD – MD
+ Action Limits    + 0.03    ± 0.06     ± 0.13      ± 0.20    ± 0.13     0.10        0.10
+Control Limits    + 0.05    ± 0.08     ± 0.15      ± 0.25    ± 0.15     0.13        0.13
+a The CB spread limits are the maximum allowable density differences between plotted control
+  values of any two colors in a step (i.e. red-green, green-blue, or blue-red).
+
+
+
+
+                                              45
+Process Monitoring Methods
+
+
+
+ How to Monitor Your Process
+ To begin process monitoring, you will need—
+   • KODAK VISION3 Color Negative Control Strips, Process ECN-2
+   • KODAK VISION Color Print Control Strips, Process ECP-2E
+   • An electronic densitometer equipped with Status M filters to read the
+     ECN-2 control strips and Status A filters to read the ECP-2E control strips
+   • KODAK Process Record Form H-24F, Y-55, or similar graph paper
+   • Red, green, and blue pencils
+
+ KODAK Control Strips Are the Basic Control Material
+ KODAK Control Strips are available for monitoring your processes. For color
+ negative film that uses the ECN-2 process, use KODAK VISION3 Color
+ Negative Control Strips, Process ECN-2. For color print film that uses the
+ ECP-2E process, use KODAK VISION Color Print Control Strips, Process
+ ECP-2E.
+    KODAK VISION3 Color Negative Control Strips, Process ECN-2, are
+ packaged in 100-foot rolls containing at least 120 exposures, and a processed
+ reference strip. The exposures on the roll are spaced at 9.5-inch intervals. Each
+ exposure has 21 gray-scale steps at 0.20 log H increments (2/3 camera stop).
+ See the figure on page 47.
+    KODAK VISION Color Print Control Strips, Process ECP-2E, are packaged
+ in 100-foot rolls containing at least 120 exposures, and a processed reference
+ strip. The exposures on the roll are spaced at 9.5 inch intervals. Each exposure
+ has 21 gray-scale steps at 0.15 log H increments (1/2 camera stop). See the
+ figure on page 47.
+
+
+
+
+                                    46
+                                                                    Control Strips
+
+
+Process Control Strips
+
+
+
+
+          ECN-2                         ECP-2E
+           9071                          0011
+                         Steps
+
+
+
+                           4
+                          HD
+
+
+
+
+                          8
+                        MD HD
+
+
+
+                          11
+                          MD
+
+
+                          14
+                          LD
+
+
+
+
+                          21
+                         D-min
+
+
+
+                  KODAK VISION3                  KODAK VISION
+            Color Negative Control Strips    Color Print Control Strips
+
+   The reference strip accompanying each roll of control strips was exposed
+along with all other control strips; it was then processed under specified
+well-controlled conditions. An instruction sheet enclosed with the package
+contains process deviation (correction) factors, if they are required, to
+determine your laboratory process aim numbers. A four-digit code number
+appearing on the carton, can, control strips, reference strips, and instruction
+sheet, identifies each production batch of strips.
+
+
+
+
+                                       47
+Storing, Handling and
+Processing Control Strips
+
+ Storing and Handling Control Strips
+ Store unused control strips at –18°C (0°F) or lower. Handle unprocessed strips
+ in total darkness. Remove only a day’s supply from one package at a time;
+ reseal and return the package to the freezer as quickly as possible. (Do not keep
+ the package out of the freezer for more than 1 hour per day.) Store your daily
+ supply of control strips in a light-tight container at room temperature. At the end
+ of the day, discard any unprocessed strips that you removed from storage.
+    A highly recommended way to prepare the strips for processing is to break
+ down the entire batch (or at least one 30.5-metre [100-foot] roll), into individual
+ containers (35 mm film cassette containers are ideal) and then place all
+ containers into the freezer until needed. They should require very little warm-up
+ time prior to processing.
+    There are no physical indicators on the exposed control strip roll, such as
+ dimples or notches denoting the location of the exposures. To be sure you have
+ a complete 21-step exposure, the control film length to be processed should be
+ at least 690 mm (27 inches). This yields about 45 strips from each 30.5-metre
+ (100-foot) roll.
+    Handle control strips by the edges to prevent fingerprints and surface
+ damage. If film sticking, static marking, or moisture mottle occurs, allow the
+ strips to warm up to room temperature before you process them. Store the
+ reference strip in its envelope when you are not using it.
+    It is very important to always use fresh control strips to ensure consistency in
+ process monitoring. Because the latent image on all film changes to some
+ degree with age, each control strip package is dated at the time of manufacture,
+ and the strips must not be used beyond the expiration date indicated. This
+ expiration date is also very important when ordering the control strips, to
+ prevent over-ordering. Initially, you should order a quantity that will last well
+ within the expiration date of that particular batch. However, with some
+ experience of quantity needs, it is always advantageous to order as large a
+ supply as possible of the same batch (code) number, to continue on the same
+ aim numbers as long as possible.
+
+
+
+
+                                     48
+                                             Plotting Control-Strip Densities
+
+
+
+Processing Control Strips
+Each time you process a control strip, position it in the same location in your
+processor. Process a control strip—
+  • At the beginning of the day or shift, before processing customer work
+  • At regular intervals with customer work
+  • At the end of the day or shift
+   The 30.5-metre (100-foot) roll of control strips is wound with the emulsion
+side in and with the low density end of each strip toward the outside of the roll.
+The low density end comes off the roll first; enter it into the processor first.
+However, always have the strip enter the processor in an identical direction for
+each process run, to minimize possible directional process effects.
+
+Plotting Control-Strip Densities
+Create a control chart by using the KODAK Process Record Form H-24F, Y-55,
+or similar graph paper. Follow the procedure given below. Your chart will look
+like the example on page 50. For more information about setting up a control
+plot and using control strips, see KODAK Publication H-24, Processing
+KODAK Motion Picture Films.
+
+
+
+
+                                       49
+Plotting Control-Strip Densities
+
+
+ Typical Control Chart for Process ECN-2
+
+                                                                         EASTMAN Process Record Form (H-24F)
+          CONTROL NUMBER
+                                    1    2      3      4     5 6          7 8            9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+                         .25
+   AIM                                                                    Typical Control Chart for Process ECN-2
+   VALUES                .20
+
+                         .15
+
+                         .10
+    HD                   .05
+                         +      R
+          1.19             0
+    RED                         G
+          1.69
+  GREEN                  .05    B
+
+
+
+
+                                                                                                                                                   Adjust pH to std,    dec. replen. pH
+          1.98
+   BLUE                  .10
+    B/W                  .15
+
+                         .20
+
+                         .25
+
+
+
+
+                                                                                                                                                                                                                             Adjust pH to std,    inc. replen. pH
+                         .20
+
+                         .15
+     MD
+                         .10
+          0.85
+    RED
+          1.33
+                         .05
+  GREEN                  +      R
+          1.59             0    G
+   BLUE                         B
+                         .05
+    B/W
+                         .10
+                                              NORMAL                       VARIABLE                                  DENSITY DRIFT                                                                DENSITY DRIFT
+                         .15
+                                       PROCESS                             PROCESS                                      INCREASE                                                                   DECREASE
+                         .20
+    LD                          CB action = 0.03
+                         .10    CB control = 0.05
+          0.33
+    RED                  .05
+          0.72           +      R
+  GREEN
+          1.05             0    G
+   BLUE
+                                B
+                         .05
+    B/W
+                         .10
+   D-min                                                                                                                                                                                   CB=0.07                   CB=0.06
+                         .10
+          0.15
+    RED                  .05
+          0.54           +
+  GREEN                         R
+          0.95             0    G
+   BLUE
+                         .05    B
+    B/W
+                         .10
+   HD-LD                        CB action = 0.05
+                                                                                     CB=0.10                         CB=0.00                                             CB=0.06 CB=0.07
+                         .10    CB control = 0.07
+          0.86
+    RED                  .05
+          0.97           +      R
+  GREEN
+          0.93             0    G
+   BLUE
+                                B
+                         .05
+    B/W
+                      .10
+                                12                    12                 12                    12                     12                                                                                       12
+                  DATES           10      10     10     11    11    11     12      12     12        13   13     13      16     16     16      16                       16                   16      16   16      17     17                       17
+                                  m       m      m      m      m     m     m        m     m      m         m     m       m     30      m     30        am                                     0      m     m     m       m                  m
+                                8a      1p     4p     8a     1p    4p    8a       1p    4p     8a        1p    4p      8a    8:      9a    9:                                               :3     1p    4p    8a      1p                 4p
+                                                                                                                                                     10                                   10
+
+
+                 PROCESS       ECN-2
+                               #1                                              EASTMAN KODAK COMPANY ROCHESTER, NY 14650
+                 MACHINE
+                 Reference Strip Code No.      7121                            KODAK Publication No. H-24F                   Kodak and Eastman are trademarks.                                                   Printed in U.S.A.
+
+
+
+
+   F009_0144DC
+
+
+
+
+                                                                                50
+                                             Plotting Control-Strip Densities
+
+
+
+1. Draw in the action and control limits given in the appropriate table on
+   page 45. Use black for the action limits and red for the control limits.
+2. Allow the reference strip to warm up to room temperature (about 15
+   minutes) and then remove it from its envelope. Exposing a frozen strip to
+   warm, moist air can cause low readings, particularly in the higher density
+   patches.
+3. Measure the red, green and blue densities in the center of each patch with
+   a precision electronic densitometer. Do not move the strip as you make the
+   density readings or you may affect the precision and reliability of the
+   measurements. If you have several boxes of strips with the same code
+   number, average the readings of all the reference strips. A code number on
+   the box label, the reference strips and the control strips identifies each batch
+   For Process ECN-2, measure the densities of the reference strips identified
+   in the table below. Set your densitometer to the transmission mode, and use
+   the Status M filters. For Process ECP-2E, measure the densities of the
+   reference strips identified the table below. Set your densitometer to the
+   transmission mode, and use the Status A filters.
+
+     Control Steps
+
+             Process ECN-2                  Process ECP-2E
+      D-min (opposite dot)           D-min (opposite dot)
+      LD (Step 14)                   LD (Step 14)
+      MD (Step 8)                    MD (Step 11)
+      HD (Step 4)                    HD (Step 8)
+      HD – LD (Steps 4-14)           HD – MD (Steps 8-11)
+      (Use Status M Densitometry)    (Use Status A Densitometry)
+
+   The control parameters are: a base or minimum density (D-min); a low
+   density step (LD), which represents the characteristic curve toe; a film
+   speed step, which is the mid-density (MD); a high density (HD) step,
+   representing the picture blacks but not necessarily the maximum density
+   (D-max); and a calculated color contrast and balance parameter (CB). The
+   contrast parameter is the difference between a high density and the
+   designated lower density for a particular product, and is a very good
+   indicator of process performance. The color balance parameter (CB) is the
+   density spread or difference between any two colors of an individual step.
+   The control steps for Processes ECN-2 and ECP-2E are shown in the
+   figures on page 52.
+
+
+
+                                       51
+Plotting Control-Strip Densities
+
+
+
+ KODAK VISION3 Color Negative Film
+              4.0
+                       Process: ECN-2
+                       Densitometry: Status M
+
+                        NOTE: These curves should not
+                              be used as a process aim.
+              3.0
+
+
+                                                                                         HD
+
+
+
+
+    DENSITY
+                                                                                 B
+                                                                        MD
+              2.0                                                                G
+
+
+
+                                            LD                                   R
+                     D-min
+              1.0
+
+
+
+
+              0.0
+                    21 20 19 18 17 16 15 14 13 12 11 10             9   8    7   6   5   4    3   2   1
+
+    F009_0135AC                                      Steps
+
+ KODAK VISION Color Print Film
+              4.0
+                       Process: ECP-2E
+                       Densitometry: Status A
+
+                         NOTE: These curves should not
+                               be used as a process aim.
+              3.0
+                                                                             B
+                                                                R
+
+
+
+    DENSITY
+                                                           G            HD
+              2.0
+
+
+
+
+              1.0
+
+                                                          MD
+
+                     D-min                  LD
+
+
+              0.0
+                    21 20 19 18 17 16 15 14 13 12 11 10             9   8    7   6   5   4    3   2   1
+
+    F009_0136AC                                      Steps
+
+  4. To calculate aim values, apply the correction factors supplied in the
+     instruction sheet packaged with each box of control strips to the reference
+
+                                                               52
+                                         Plotting Control-Strip Densities
+
+
+
+strip densities. If you averaged the reference strip readings from several
+boxes of the same code number, apply the correction factors to the average.
+These corrected density values are the aim values for that batch of control
+strips. Record them in the proper spaces in the left margin of Form H-24F
+or Y-55.
+• To obtain the HD – LD aim values, subtract the adjusted LD values from
+  the adjusted HD values.
+• To obtain the HD – MD aim values, subtract the adjusted MD values
+  from the adjusted HD values
+For an example of how to calculate aims value see the table below, Typical
+Correction Factors for Process ECN-2, and the table on page 54,
+Calculating Aim Values for Process ECN-2.
+
+ Typical Correction Factors for Process ECN-2
+
+     Code Number              Filter in Densitometer
+        5122               Red          Green      Blue
+  D-min (opposite dot)    - 0.01        - 0.01      0.00
+  LD (Step 14)             0.00          0.00     + 0.01
+  MD (Step 8)              0.01         + 0.03    + 0.03
+  HD (Step 4)            + 0.02         + 0.02    + 0.04
+
+
+
+
+                                   53
+Plotting Control-Strip Densities
+
+
+ Calculating Aim Values for Process ECN-2
+
+                            Ref. Strip Dens.
+                                                    Corr. Factor     Aim Values
+                                Reading
+       D-min        R              0.16                - 0.01            0.15
+                    G              0.55                - 0.01            0.54
+                    B              0.95                 0.00             0.95
+       LD           R              0.33                 0.00             0.33
+                    G              0.72                 0.00             0.72
+                    B              1.04                + 0.01            1.05
+       MD           R              0.84                + 0.01            0.85
+                    G              1.30                + 0.03            1.33
+                    B              1.56                + 0.03            1.59
+       HD           R              1.17                + 0.02            1.19
+                    G              1.67                + 0.02            1.69
+                    B              1.94                + 0.04            1.98
+       HD – LD      R              0.84                + 0.02            0.86
+                    G              0.95                + 0.02            0.97
+                    B              0.90                + 0.03            0.93
+       Note: Using Values from Typical Correction Factors for Process ECN-2
+       on page 53, and KODAK VISION3 Color Negative Film on page 52.
+
+  5. Process a control strip and measure the same patches that you measured in
+     step 3.
+  6. Calculate the variations from aim by subtracting the aim densities from
+     your control-strip densities. Plot the variations on your control chart.
+     • Plot differences that are larger than the corresponding aim values
+       (+ values) above the aim line.
+     • Plot differences that are smaller than the aim values (– values) below the
+       aim line.
+  7. If any of the variations from aim plot beyond the action or control limits,
+     process another control strip. If the second strip confirms the results of the
+     first strip, determine the cause of the problem.
+  8. Whenever you take corrective action, process another control strip to
+     confirm that the change you made returned the process to control before
+     you resume normal processing. Make a note on your control chart of what
+     corrective action you took.
+
+
+                                    54
+                                                    Changing to a New Batch
+                                                           of Control Strips
+
+Changing to a New Batch of Control Strips
+When you change from your current batch of control strips to strips with a
+different code number, make a crossover to confirm that both code numbers
+provide the same information. Be sure that your process is stable and in control
+before you begin using a new batch of control strips.
+ 1. While you still have a week’s supply of control strips of the current code,
+     process one control strip from the new batch of strips with one strip from
+     the current batch in three separate runs.
+ 2. Read and record the densities of the processed strips.
+ 3. Determine aim values for the new batch of control strips; see Plotting
+    Control-Strip Densities on page 49.
+ 4. For your current batch of control strips, calculate the variations from aim
+    by subtracting your current aim densities from the densities of the three
+    strips. Plot the variations on your control chart.
+ 5. For the new batch of strips, calculate the variations from aim by subtracting
+    the new aim densities (calculated in step 3) from the densities of the three
+    strips. Plot the variations on your control chart.
+ 6. Post the new aim values on the same form as the old, leaving an appropriate
+    space between the two aim sets (as illustrated in the figure Control Strip
+    Crossover for Process ECN-2 on page 56). This way you can see the
+    differences of each control strip reaction at a glance. Plot the differences
+    from aim values for each batch on the same form. Both should be tracking
+    in similar directions, but not exactly. However, they should still be within
+    the same action and control limits. Please remember, no matter how the aim
+    densities differ in numerical value, you still use each set as your zero (0)
+    reference line.
+ 7. Once you are comfortable with the new batch of control strips, use a new
+    H-24F or Y-55 form to separate and not confuse the old and new aim
+    numbers while making the daily notations.
+ 8. If, for some reason, there is a need to adjust the process to conform the new
+    batch of control strips to new action and control limits, cease processing,
+    and evaluate the entire system. Such a need for change indicates a
+    fundamental system difficulty, which most likely involves all aspects of the
+    process, not necessarily a problem with the new batch of control strips. If
+    difficulty continues, contact your Kodak representative.
+
+
+
+
+                                       55
+Changing to a New Batch
+of Control Strips
+
+ Control Strip Crossover for Process ECN-2
+
+  Control-Strip Crossover for Process ECN-2
+                                                                        EASTMAN Process Record Form (H-24F)
+           CONTROL NUMBER
+                                    C U R R E N T                                                           N E W
+                          .25
+   AIM                                                                  Control Strip Crossover Process ECN-2
+   VALUES                 .20
+
+                          .15
+
+                          .10
+                                                                                           R-1.19
+      HD                  .05   G                                                          G-1.69
+                          +     B                                                          B-1.98
+           1.39
+     RED                    0
+                                R
+           1.88                                                                         Code 8051
+  GREEN                   .05
+           2.24
+   BLUE                   .10
+     B/W                  .15
+
+                          .20
+
+                          .25
+
+                          .20
+
+                          .15
+      MD
+                          .10
+           1.00                                                                            R-0.85
+     RED                        B
+           1.49
+                          .05                                                              G-0.97
+  GREEN                   +     R                                                          B-0.93
+           1.99             0   G
+   BLUE
+                          .05
+     B/W
+                          .10
+
+                          .15
+                          .20
+      LD                         CB action = 0.06
+                          .10    CB control = 0.08
+           0.34                                                                            R-0.33
+     RED                  .05
+           0.75
+                                                                                           G-0.72
+  GREEN                   +     G
+                                                                                           B-1.05
+           1.32             0   R
+   BLUE                         B
+                          .05
+     B/W
+                          .10
+   D-Min
+                          .10
+           0.11                                                                            R-0.15
+     RED                  .05
+           0.54
+                                                                                           G-0.54
+  GREEN                   +     G
+                                                                                           B-0.95
+           0.95             0   R
+   BLUE
+                                B
+                          .05
+     B/W
+                          .10
+   HD-LD                         CB action = 0.07
+                          .10    CB control = 0.09
+           1.05                                                                            R-0.86
+     RED                  .05
+           1.13
+                                                                                           G-0.97
+  GREEN                   +     G
+                                                                                           B-0.93
+           0.92             0   B
+   BLUE
+                                R
+                          .05
+     B/W
+                       .10
+                                 12          12                  12                                         12 12 12
+                   DATES           10   10     11     11    11     12    12       12                          10 11 12
+                                   m  m am            m      m  m         m       m                           m     m     m
+                                 1p 4p  4           1p     4p 8a        1p      4p                          1p    1p    1p
+
+                  PROCESS       ECN-2
+                                #1                                            EASTMAN KODAK COMPANY ROCHESTER, NY 14650
+                  MACHINE
+                  Reference Strip Code No.    7121                            KODAK Publication No. H-24F               Kodak and Eastman are trademarks.   Printed in U.S.A.
+
+
+
+
+   F009_0143EC
+
+
+
+
+                                                                              56
+                                                                Troubleshooting
+
+
+
+Troubleshooting Your Process
+When one or more process parameters exceeds the control limits, stop
+processing customer work until you find and correct the cause of the problem.
+It is important to become familiar with control-chart patterns and
+cause-and-effect relationships. Control-chart patterns can generally be
+separated into three categories: high activity, low activity, and high D-min. Also,
+check your control chart to determine if the process drifted out of control slowly
+or suddenly.
+
+High Activity—The process is out of control with process parameters plotting
+above aim. This condition can be caused by:
+  • Developer temperature that is too high
+  • Developer time that is too long
+  • Overreplenished developer (i.e., the solution is replenished at a rate that is
+    too high)
+  • Mixing error
+  • Developer contamination
+  • Overconcentrated developer (from evaporation or insufficient topping off
+    with water)
+
+Low Activity—The process is out of control with process parameters plotting
+below aim. This condition can be caused by:
+  • Developer temperature that is too low
+  • Developer time that is too short
+  • Underreplenished developer (i.e., the solution is replenished at a rate that is
+    too low)
+  • Mixing error
+  • Developer tank solution diluted with water
+  • Developer contamination
+
+High D-min—This condition can be caused by:
+  • Developer oxidation caused by low utilization
+  • Developer contamination
+
+
+
+
+                                        57
+Troubleshooting
+
+
+
+ Trend—An out-of-control condition that has occurred slowly over time
+ indicates a problem such as:
+ Improper replenishment—caused by an incorrect replenishment rate, an
+ incorrectly mixed replenisher, or a defective replenisher pump.
+ Evaporation or oxidation—caused by low utilization or air drawn into the
+ processing solutions by a bad pump, a recirculation system leak, or a poorly
+ placed ventilation fan.
+ Contamination—caused by photographically active materials that leach slowly
+ into the solutions and cause the process to drift out of control. The contaminants
+ may be in any material the solutions contact, such as the filters, plumbing, etc.
+ Incorrect mixing—if you suspect that the problem was caused by replenisher
+ solution that was mixed incorrectly, mix a new batch of replenisher to see if a
+ fresh mix gradually corrects the problem.
+ Sudden Change—An out-of-control condition that has occurs suddenly
+ indicates a problem with your:
+ Control strip—check that you used control strips of the same code number.
+ Remember, if you change code numbers, you need to establish new aim values
+ for that code number (see Changing to a New Batch of Control Strips on
+ page 55). Check that the control-strip code numbers match those of the
+ reference strip. Check that the strips were handled and stored properly.
+ Densitometer—if your densitometer is not working properly or is out of
+ calibration, the density readings will be wrong. This can falsely signal that there
+ was a process change. Check that you used Status M filters for Process ECN-2
+ and Status A filters for Process ECP-2E.
+ Time or temperature—check that the time and temperature were set correctly,
+ particularly if they are easy to change.
+ Contamination—bleach-fix splashed into the developer while cleaning racks or
+ removing jams can cause sudden large spreads in your control plots.
+ Solution mixing—if the sudden change occurs after you have mixed a fresh tank
+ solution, check that it was mixed correctly.
+ Aim values—check that you compared the control-strip densities with the
+ correct aim values.
+ Note: When you troubleshoot a problem, check the easiest and most obvious
+ causes first; then check the more difficult and less likely causes.
+   For complete information on diagnosing your process, see the control-chart
+ examples in KODAK Publications No. H-24, Processing KODAK Motion
+ Picture Films; H-326, KODAK VISION Color Print Control Strips, and
+ KODAK VISION2 Color Negative Control Strips. This information is also
+ available on the Kodak website at:
+ www.kodak.com/US/en/motion/support/processing.
+                                     58
+                                                                     Film Handling
+
+
+
+APPENDIX
+Film Handling
+For information on Laboratory Aim Density (LAD), safelights, image structure,
+sensitometric curves, processing recommendations, film storage and types of
+rolls available, see the KODAK Publication relating to the film: H-1-film code
+i.e. 2393. Also refer to KODAK Publication No H-61, LAD—Laboratory Aim
+Density.
+
+Film Storage and Handling
+Store processed film at 21°C (70°F) or lower, and 40 to 50 percent relative
+humidity for normal or commercial use. For long-term storage conditions,
+see KODAK Publication No. H-845, The Essential Reference Guide for
+Filmmakers.
+   Exercise care when handling negative films to avoid scratches and/or dirt that
+will be noticeable on the final print. Have film handlers use lint-free nylon or
+DACRON gloves and handle the film the by edges. Further suggestions on how
+to keep camera or preprint films clean are in KODAK Publication No. H-24,
+Module 2, Equipment and Procedures.
+
+Other Film Characteristics
+For information on the physical characteristics of KODAK Motion Picture
+Films (including edge identification, antihalation backing, perforations, and
+dimensional change characteristics), as well as cores, spools, winding, and
+packaging, refer to KODAK Publication No. H-845, The Essential Reference
+Guide for Filmmakers.
+
+
+
+
+                                         59
+Simplified Metric Conversion Charts
+
+
+
+ Simplified Metric Conversion Charts
+ Because most laboratory measuring devices are calibrated in metric units, you
+ can use the following table to convert U.S. units of volume, length, and weight
+ to metric units. Do not use this table to convert from metric to U.S. values.
+ Accuracy of the table is within one percent.
+    To use the table, find the number you are converting from at the top of the
+ table for numbers from 1 to 9. For numbers greater than nine, find the number
+ you are converting by using a combination of the number at the left side of the
+ table and the number at the top.
+
+ Volume, Length, and Weight Conversion
+  U.S. Gallons to Litres
+   gal      0      1        2     3      4      5      6      7       8      9
+    0       —     3.8      7.6   11.4   15.1   18.9   22.7   26.5    30.3   34.1
+   10      37.8   41.6   45.4    49.2    53    56.8   60.6   64.4    68.1   71.9
+   20      75.7   79.5   83.3    87.1   90.8   94.6   98.4   102.2   106    107.8
+   30      113.6 117.3 121.1 124.9 128.7 132.5 136.3 140.1 143.8 147.6
+   40      151.4 155.2     159   162.8 166.6 170.3 174.1 177.9       81.7   185.5
+  U.S. Fluid Ounces to Millilitres
+   fl oz    0      1        2     3      4      5      6      7       8      9
+    0       —     29.5     59     89    118    148    177    207     237    265
+   10      295    325      355   385    415    445    475    500     530    560
+   20      590    620      650   680    710    740    770    800     830    860
+   30      890    920      950   980    1006   1035   1065   1094    1124   1153
+  Inches to Centimetres
+    in.     0      1        2     3      4      5      6      7       8      9
+    0       —     2.5      5.1    7.6   10.2   12.7   15.2   17.8    20.3   22.9
+   10      25.5   28.0   30.5    33.0   35.5   38.0   40.5   43.0    45.5   48.5
+   20       51    53       56     58     61    64      66     69      71     74
+   30       76    79       81     84     86    89      91     94      97     99
+  Ounces to Grams
+    oz      0      1        2     3      4      5      6      7       8      9
+    0       —     28.5     57     85    113    142    170    198     227    255
+   10      285    310      340   370    395    425    455    480     510    540
+   20      570    600      620   650    680    710    740    770     790    820
+   30      850    880      910   940    960    990    1021   1049    1077   1106
+    You can use the following to convert from metric to U.S. values or from U.S.
+ to metric values. To do this, multiply the metric or U.S. units in column 1 by the
+                                     60
+                                      Simplified Metric Conversion Charts
+
+
+
+number in column 2 (e.g., to convert 450 millilitres to fluid ounces, multiply
+450 by .03382 = 15.22 fluid ounces).
+
+Conversion Factors
+
+             To Convert                    Multiply By
+      Millilitres to Fluid Ounces            .03382
+      Fluid Ounces to Millilitres            29.573
+            Pints to Litres                  .4732
+            Litres to Pints                  2.113
+           Quarts to Litres                  .9463
+           Litres to Quarts                  1.057
+          Gallons to Litres                  3.785
+          Litres to Gallons                  .2642
+
+
+
+
+                                      61
+Temperature Conversion
+
+
+
+ Temperature Conversion
+ To convert a temperature from one unit of measure to another, use the following
+ table. Find the temperature you are converting from in the °F or °C column; if
+ you are converting to degrees Celsius, read the number from the to °C column.
+ If you are converting to degrees Fahrenheit, read the number from the to °F
+ column.
+
+          °F or                     °F or                     °F or
+  to °C            to °F    to °C            to °F    to °C            to °F
+           °C                        °C                        °C
+  37.78    100    212.0    18.33      65    149.0    –1.11      30     86.0
+  37.22     99    210.2    17.78      64    147.2    –1.67      29     84.2
+  36.67     98    208.4    17.22      63    145.4    –2.22      28     82.4
+  36.11     97    206.6    16.67      62    143.6    –2.78      27     80.6
+  35.56     96    204.8    16.11      61    141.8    –3.33      26     78.8
+  35.00     95    203.0    15.56      60    140.0    –3.89      25     77.0
+  34.44     94    201.2    15.00      59    138.2    –4.44      24     75.2
+  33.89     93    199.4    14.44      58    136.4    –5.00      23     73.4
+  33.33     92    197.6    13.89      57    134.6    –5.56      22     71.6
+  32.78     91    195.8    13.33      56    132.8    –6.11      21     69.8
+  32.22     90    194.0    12.78      55    131.0    –6.67      20     68.0
+  31.67     89    192.2    12.22      54    129.2    –7.22      19     66.2
+  31.11     88    190.4    11.67      53    127.4    –7.78      18     64.4
+  30.56     87    188.6    11.11      52    125.6    –8.33      17     62.6
+  30.00     86    186.8    10.56      51    123.8    –8.89      16     60.8
+  29.44     85    185.0    10.00      50    122.0     –9.44     15     59.0
+  28.89     84    183.2     9.44      49    120.2    –10.00     14     57.2
+  28.33     83    181.4     8.89      48    118.4    –10.56     13     55.4
+  27.78     82    179.6     8.33      47    116.6    –11.11     12     53.6
+  27.22     81    177.8     7.78      46    114.8    –11.67     11     51.8
+  26.67     80    176.0     7.22      45    113.0    –12.22     10     50.0
+  26.11     79    174.2     6.67      44    111.2    –12.78      9     48.2
+  25.56     78    172.4     6.11      43    109.4    –13.33      8     46.4
+  25.00     77    170.6     5.56      42    107.6    –13.89      7     44.6
+  24.44     76    168.8     5.00      41    105.8    –14.44      6     42.8
+  23.89     75    167.0     4.44      40    104.0    –15.00     5      41.0
+  23.33     74    165.2     3.89      39    102.2    –15.56     4      39.2
+  22.78     73    163.4     3.33      38    100.4    –16.11     3      37.4
+  22.22     72    161.6     2.78      37     98.6    –16.67     2      35.6
+  21.67     71    159.8     2.22      36     96.8    –17.22     1      33.8
+  21.11     70    158.0     1.67      35     95.0    –17.78      0     32.0
+  20.56     69    156.2     1.11      34     93.2    –18.33     –1     30.2
+  20.00     68    154.4     0.56      33     91.4    –18.89     –2     28.4
+  19.44     67    152.6     0.00      32     89.6    –19.44     –3     26.6
+  18.89     66    150.8    –0.56      31     87.8    –20.00     –4     24.8
+
+
+
+
+                                    62
+                                                   Temperature Conversion
+
+
+
+For temperatures not shown in the table on page 60, use the following formulas:
+ 1. To convert Fahrenheit to degree Celsius, subtract 32 from the Fahrenheit
+     temperature. Then divide the result by 1.8.
+    C = (F - 32) ÷ 1.8
+ 2. To convert Celsius to degrees Fahrenheit, multiply the Celsius temperature
+    by 1.8. Then add 32 to the result.
+    F = (C * 1.8) + 32
+
+
+
+
+                                      63
+Analytical Procedures
+
+
+
+ Analytical Procedures
+ Spectrophotometric Determination of Iodide in Fixer
+ ECP-2-936A
+
+ PRINCIPLE
+ The iodide is oxidized to iodine by sodium nitrite and then extracted into
+ chloroform. The chloroform phase is dried with sodium sulfate and its
+ absorbance measured at 508 nm. Hydrogen peroxide is used to oxidize the
+ thiosulfate present so that the nitrite will be available to oxidize the iodide. A
+ pretreatment with zinc is necessary on seasoned solutions containing silver.
+ Silver salts are reduced to metallic silver, minimizing the possibility of silver
+ reacting iodide.
+     Methanol interferes with the analysis by decreasing the absorbance of the
+ iodine solution. The chloroform is washed to remove the stabilizing alcohol in
+ it, and care must be taken to remove methanol from “dried” cells by rinsing with
+ washed chloroform. This procedure applies only for iodide determination in
+ Process ECP-2E Fixer F-35b.
+     This method requires handling potentially hazardous chemicals. Consult the
+ Material Safety Data Sheet for each chemical before use. MSDS's are available
+ from your chemical supplier.
+
+ RELIABILITY
+ Five replenisher formula calibration mixes were prepared with potassium iodide
+ concentrations ranging from 0.10 to 0.30 g/L. Three analysts in two laboratories
+ using two types of spectrophotometers analyzed each of the five mixes in
+ duplicate. Sixteen data points were used to derive an equation and predict
+ 95 percent confidence limits for an individual analysis of ± 0.02 g/L KI.
+
+ SPECIAL APPARATUS
+   • Exhaust Hood
+   • Spectrophotometer with tungsten lamp
+   • 1-cm Silica Cell
+   • Whatman 2V Filter Paper, folded, 12.5 cm
+ Note: Use pipets and volumetric glassware meeting the “Class A” definition by
+ the National Institute of Standards and Technology (NIST).
+
+
+
+
+                                     64
+                                                       Analytical Procedures
+
+
+
+REAGENTS
+Use ACS Reagent Grade reagents unless specified otherwise.
+  • Sodium Bromide, NaBr
+  • 5 M Sodium Nitrite, NaNO2
+  • 2 M Citrate Buffer, pH 3.92
+  • Sodium Sulfate, Na2SO4
+  • Chloroform, CHCl3, Spectro-grade, Washed
+  • Methanol, CH3OH, Spectro-grade
+  • 30 percent Hydrogen Peroxide, H2O2
+  • Zinc (10 to 30 mesh)
+
+PROCEDURE
+Glassware Preparation
+ 1. Rinse the following with distilled water; a 125-mL separatory funnel, a
+    125-mL conical flask, and a powder funnel. Drain well, but do not dry them
+    with methanol.
+      Note: Follow locally acceptable procedures for disposal of chloroform.
+ 2. Dry a clean silica cell with methanol, then rinse it twice with washed
+    chloroform and drain.
+
+Sample Pretreatment
+(Omit this step for fresh tank and replenisher.)
+Note: This pretreatment step is necessary for seasoned solutions containing
+silver.
+ 1. Weigh 1.0 g of zinc (10 to 30 mesh) into a 150-mL beaker.
+ 2. From a graduated cylinder add 50 mL of sample to the beaker and stir for
+    1 minute.
+ 3. Filter the solution through a Whatman 2V filter paper into a 125-mL
+    conical flask.
+
+Iodide Oxidation
+
+        Caution
+Nitrous oxide (a product of nitrite-iodide reactions) and chloroform are toxic.
+The extractions must be performed in an exhaust hood where there is adequate
+ventilation.
+ 1. Weigh 5.0 g of sodium bromide and set aside.
+
+                                       65
+Analytical Procedures
+
+
+
+  2. Pipet (wipe before leveling) 10 mL of sample into the previously prepared
+     125-mL separatory funnel.
+  3. Add 1 mL of hydrogen peroxide (30 percent), from a tip-up pipet, to the
+     separatory funnel.
+  4. Add 10 mL of 5 M sodium nitrite, from a tip-up pipet, to the separatory
+     funnel.
+  5. Add, using a powder funnel, the previously weighed sodium bromide to the
+     separatory funnel. Stopper and shake vigorously until the sodium bromide
+     is dissolved, usually 10 to 15 seconds, venting after 2 or 3 seconds.
+  6. Add 50 mL of 2 M citrate buffer, from a tip-up pipet, to the separatory
+     funnel; swirl to mix.
+  7. Set a timer for 15 minutes. Stopper and shake vigorously for 2 to 3 seconds
+     and again after 5, 8, and 12 minutes. Remove the stopper between shakes.
+  8. During the 15-minute period, add approximately 5 g of anhydrous sodium
+     sulfate to a prepared 125-mL conical flask equipped with a glass stopper.
+     (One level scoop from a No. 05 Coors porcelain spoon is approximately
+     5 g.)
+
+ Iodine Extraction
+  1. After the timer sounds, add 10 mL of washed chloroform, from a tip-up
+     pipet, to the separatory funnel.
+  2. Stopper the funnel and shake for 30 seconds, venting after 2 to 3 seconds.
+  3. Allow the phases to separate for 1 minute and drain the chloroform (lower)
+     layer into the 125-mL flask containing the sodium sulfate. Do not attempt
+     to remove all of the chloroform; allow a few drops of the chloroform to
+     remain in the funnel to ensure that no water is drained into the flask.
+  4. Perform a second extraction by immediately repeating steps 1 through 3,
+     adding chloroform to the same 125-mL flask.
+  5. Stopper and shake the 125-mL conical flask for 10 seconds.
+  6. Set a timer for 1 minute.
+
+ Absorbance Measurement
+  1. Immediately after the timer sounds, decant some of the chloroform solution
+     into a prepared 1-cm silica cell, rinsing twice with the chloroform solution
+     and then filling.
+  2. Measure the absorbance of the sample at 508 nm, using a tungsten lamp
+     (A508).
+
+
+                                    66
+                                                       Analytical Procedures
+
+
+
+      Note: If the absorbance reading decreases rapidly, repeat the analysis,
+      using more care in keeping water and/or methanol from the chloroform in
+      the flask and cell. If the chloroform solution turns to a peach or orange
+      color before the reading is taken, repeat the analysis after checking the
+      buffer to see if it is within its pH limits.
+
+Calculation
+
+ KI, g/L = 0.951(A508) + 0.003
+
+
+
+
+Determination of Total Iron in EASTMAN Color Films, Process
+ECN-2 “UL” Type Bleach Using a HACH Pocket Colorimeter Test Kit
+ECN-0026-01
+
+This test kit (HACH catalog no. 46700-22) is used to determine total iron in
+EASTMAN Color Films, Process ECN-2, “UL” type bleach samples. The
+bleach samples are diluted and mixed with a FerroVer® Iron Reagent Powder
+Pillow to create a colored solution. This colored solution is measured using the
+HACH Pocket Colorimeter provided with the test kit. The absorbance is then
+used to calculate the amount of iron in the bleach.
+   “Determination of Total Iron in EASTMAN Color Films, Process ECN-2,
+UL Type Bleach Using HACH Colorimeter Test Kit” (ECN-2-UL-3280) is used
+with the previous analog colorimeter Model DR 100.
+   Use of this method requires handling of potentially hazardous chemicals.
+Material Safety Data Sheets (MSDS) should be consulted for each chemical
+before use. These can be obtained from each chemical supplier.
+
+PRECISION AND BIAS
+Repeatability Standard Deviation (1sr)) & 95 Percent Confidence
+Estimate (not including bias)
+Repeatability standard deviation is an estimate of the variability one trained
+analyst should be able to obtain under favorable conditions (analyzing a sample,
+with one instrument, within one day).
+   The 95 percent confidence estimate (calculated using the repeatability
+standard deviation) around a single test will include the mean value 95 percent
+of the time.
+
+
+
+
+                                      67
+Analytical Procedures
+
+
+
+   To obtain the repeatability data, a single skilled analyst performed five (5)
+ replicates on each of the following solutions during methods development.
+  1. A “fresh” UL type bleach tank prepared with all components at their
+      respective “working tank” aim concentrations.
+  2. A “seasoned” UL type bleach tank analyzed colorimetrically as received,
+     at 5.59 g/L iron.
+  3. The same “seasoned” solution as in number 2, above, reanalyzed after
+     making an analytically weighed, standard addition of 1.68 g/L iron.
+
+                                          Iron
+                                           Repeatability
+                                                                 95 Percent
+                         Mean                Standard
+        Sample                      N                       Confidence Estimate
+                       (g/L Iron)          Deviation, 1Sr
+                                                                  (g/L Iron)
+                                             (g/L Iron
+  “Fresh” (Prepared
+                         5.04       5            0.065              ± 0.18
+  at 4.94 g/L)
+  “Seasoned” As
+                         5.59       5            0.022              ± 0.06
+  Received
+  “Seasoned” plus
+                         7.06       5            0.065              ± 0.18
+  Standard Addition
+
+ Bias
+ Bias is a statistically significant deviation of the mean from the known mix level
+ at a 95 percent confidence level. It is determined for fresh samples only. Bias is
+ not determined for seasoned samples, since the component concentration level
+ is not determined independently of the test method.
+    A bias of 0.10 g/L iron was found to be statistically significant at the
+ 95 percent confidence level, but was judged not to be practically significant.
+
+ Recovery
+ Recovery is used for seasoned samples, since the component concentration level
+ is not determined independently of the test method. It is defined as the
+ calculated mean for the seasoned sample with a standard addition of the
+ component minus the mean for the seasoned sample, divided by the actual
+ amount of the standard addition. It is expressed as a percentage.
+    Statistically, the recovery of 87.50 percent was statistically different from
+ 100 percent at the 95 percent confidence level, but was judged not to be
+ practically significant.
+
+
+
+
+                                     68
+                                                        Analytical Procedures
+
+
+
+Reproducibility
+Customer Standard Deviation, 1sc & 95 Percent Confidence Estimate
+(not including bias)
+Reproducibility or customer standard deviation (1sc) is an estimate of the
+variability a customer could expect when submitting a sample to any
+Photoprocessing Quality Services laboratory, where any trained analyst could
+test the sample using any instrument on any day.
+   The 95 percent confidence estimate (calculated using the customer standard
+deviation) around a single test result will include the mean value 95 percent of
+the time.
+   Because the results of the repeatability study show similar variability to the
+method ECN-2-UL-3280 that used an analog model colorimeter, and the reagent
+chemistry is unchanged, it is expected that the newer instrument with digital
+readout will exhibit comparable or superior performance under reproducibility
+conditions. Therefore, a reproducibility study was not performed. The results of
+the previous method reliability are duplicated below as a reference.
+   Three fresh mixes of Process ECN-2, “UL” Bleach (5.0, 10.0, 15.0 g/L total
+iron) were analyzed in duplicate on one day by three skilled analysts. A pooled
+standard deviation (1s) of 0.70 g/L (n=16) was calculated. The 95 percent
+confidence estimate, based on the pooled standard deviation, was ± 1.94 g/L.
+High biases of 18.8 percent, 9.4 percent, and 9.6 percent were found at the low,
+aim, and high levels, respectively.
+   A seasoned bleach sample analyzed to be 5.00 g/L total iron, and a standard
+addition to that sample of 1.06 g/L iron were analyzed in the same manner as
+the fresh samples. For the seasoned samples, the standard deviation (1s) was
+0.089 g/L (n=6) and the 95 percent confidence estimate was ± 0.23 g/L.
+Recovery of the standard addition was 95 percent.
+
+APPARATUS
+All volumetric glassware should meet all “Class A” specifications, as defined
+by American Society for Testing and Materials (ASTM) Standards E 287,
+E 288, and E 969, unless otherwise stated.
+  • 100, 500 mL volumetric flasks
+  • 2.0, 5.0 mL pipets
+  • Included in HACH test kit:
+     – (2) 2.5 cm sample cell
+     – HACH Pocket Colorimeter
+
+REAGENTS
+Use ACS Reagent Grade reagents unless otherwise specified.
+
+                                       69
+Analytical Procedures
+
+
+
+ • FerroVer® Iron Reagent Powder Pillow
+ • Water, Type I Reagent – This method was developed using reagent water
+   equivalent to purer than Type I Grade, as defined in ASTM Standard D 1193.
+   Other grades of water, e.g., reverse osmosis (RO), demineralized, or distilled
+   water, may give equivalent results, but the effects of water quality on method
+   performance have not been studied.
+
+ PROCEDURE
+ Refer to the Pocket Colorimeter Analysis System Instruction Manual for
+ additional information including safety precautions, a general description, and
+ calibration routines for Hi and Lo range samples.
+    1. Pipet 5.0 mL of bleach sample into a 500 mL volumetric flask. Dilute to
+       volume with reagent water. Invert six times to mix.
+   2. Pipet 2.0 mL of the solution contained in the 500 mL volumetric flask
+      (prepared in step 1) into a 100 mL volumetric flask. Dilute to volume with
+      reagent water. Invert six times to mix
+   3. Rinse both the 2.5 cm sample cells using the solution prepared in step 2.
+      One cell will be used for sample reagent and the other as a blank.
+   4. Fill one of the sample cells to the 10 mL mark (white line) with the
+      solution prepared in step 2. This will be sample reagent one.
+   5. Tear open one of the FerroVer Iron Reagent Powder Pillows and add its
+      contents to the sample cell from step 4. Cap the cell and shake to mix.
+      Wipe the outside of the cell with a clean tissue. (An orange color will
+      develop if iron is present.)
+       Note: After preparation of the sample in step 5, the remaining steps of this
+       procedure must be performed within 30 minutes.
+       Note: Accuracy is not effected by undissolved powder.
+   6. Set and start a timer for three minutes.
+   7. After three minutes have elapsed, fill the second 2.5 cm sample cell from
+      step 3 to the 10 mL mark (white line) with the solution from step 2. This
+      will be blank one.
+   8. Cap the blank sample cell. Wipe the outside of the cell with a clean tissue.
+      This cell is used as a sample blank to zero the instrument. No FerroVer
+      reagent is added.
+   9. Remove the instrument cap from the Pocket Colorimeter.
+  10. Place the blank sample cell from step 8 into the cell holder with the
+      diamond mark facing the keypad.
+
+
+                                    70
+                                                             Analytical Procedures
+
+
+
+ 11. Tightly cover the blank sample cell with the instrument cap (flat side
+     facing the back of the instrument).
+ 12. Press ‘ZERO’. The instrument will display “---” followed by “0.00”.
+ 13. Within 30 minutes after the 3 minute waiting period, place the reagent
+     sample cell prepared in step 5 into the cell holder with the diamond mark
+     facing the keypad.
+ 14. Tightly cover the reagent sample cell with the instrument cap (flat side
+     facing the back of the instrument).
+ 15. Press ‘READ’. The instrument will display “---” followed by the results
+     in mg/L iron.
+
+CALCULATIONS
+Multiply the mg/L iron reading (obtained in step 15, above) by 5 to obtain the
+iron content of the sample in g/L:
+
+                                                   5000 fold dilution
+g/L iron = (reading in mg/L iron from step 15) x
+                                                   1000 mg/g
+g/L iron = (reading in mg/L iron from step 15) (5)
+
+Example:
+
+g/L iron = (0.89 mg/L) (5)
+g/L iron = 4.45 g/L
+
+
+
+
+                                         71
+Analytical Procedures
+
+
+
+
+                        72
+                                                                        Index
+
+
+
+INDEX
+Action limits; 44
+Agitation; 3, 4, 25, 37
+Aim values; 44
+Analytical procedures
+  Determination of total iron using a pocket colorimeter test kit; 68
+  Spectrophotometric determination of iodide in fixer; 65
+Bleach; 3
+Characteristics of chemical concentrates; 19, 33
+Chemical
+  Concentrates; 2, 9
+  Handling; 6–7
+  Labeling; 6
+  Mixing; 8
+  Mixing equipment; 8
+  Safety; 6–7
+  Solution effects; 3–4
+  Terms; 2
+Chemicals and Chemical Handling; 1–16
+Cleaning tanks and racks; 12
+Color-balance spread; 46
+Compensating for evaporation; 10
+Contamination; 8
+Control limits; 44
+Control strips; 46–58
+  Adjusting factors; 53
+  Changing batches; 55
+  Plotting densities/variations from aim; 49–54
+  Processing frequency; 49
+  Reading; 49–54
+  Storage and handling; 48
+Correction factors; 44, 53
+Densitometer
+  Filters; 51
+Developer; 3, 19, 33
+Drying; 25, 37
+Effluent
+  Disposal; 13–14
+  Reduction; 14
+
+
+                                      73
+Index
+
+
+
+ Evaporation
+   Compensating for; 10
+ Film Handling; 60
+ Filtration; 25, 37
+ Final Rinse; 4, 12, 20, 33
+ Fixer; 4, 20, 33
+ KODAK Chemicals; 5, 17, 31
+ Metric conversion charts; 61
+ Process monitoring and troubleshooting; 43–58
+ Processing cycles for KODAK Chemicals; 21–26, 34–38
+ Processing solution function; 3–4
+ Processing steps and conditions;
+   21–26, 34–38
+ Protective clothing; 7
+ Reference strips; 44
+ Regeneration; 29, 41
+ Removing biological growth; 12
+ Replenishment rates
+   ECN-2 process; 23
+   ECP-2E process; 36
+ Retained silver; 15
+ Silver recovery; 15
+ Stop Bath; 3
+ Storage; 6, 9
+ Temperature conversion chart; 63
+ Tolerance limits; 45
+ Troubleshooting; 57–58
+ Utilization; 10, 57, 58
+ Ventilation; 7
+ Wash rates; 26, 38
+ Wash water; 12, 25, 26, 37, 38
+
+
+
+
+                               74
+MORE INFORMATION
+Kodak has many publications to familiarize you with the features, benefits and
+use of Kodak products. You can find a listing of Kodak publications on the
+Kodak website at www.kodak.com/go/motion.
+  For pricing information in the U.S. and Canada, call Kodak at 1-800-621-
+FILM (3456). Outside the U.S. and Canada, contact Kodak in your country.
+
+
+
+
+  For more information on motion picture products, call or write to the
+  Entertainment Imaging office nearest you. In the U.S. and Canada, call
+  Kodak at 1-800-621-FILM (3456) or email at EIAmericas@kodak.com
+  To find sales offices in other coutries go to: wwww.kodak.com/go/
+  salesoffices
+
+  Or visit Kodak’s website— http://www.kodak.com/go/motion
+  You may want to bookmark our location so you can find us more easily.
+
+                        http://www.kodak.com/go/motion
+
+
+
+
+             Kodak, Eastman, Vision, and Vision3 are trademarks.
+
+
+
+
+Using KODAK Kit Chemicals in Motion
+Picture Film Laboratories
+KODAK Publication No. H-333                                        Revised 12-19 jbb
+

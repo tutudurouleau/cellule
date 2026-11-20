@@ -1,0 +1,10 @@
+0 pages, 0 PDF, 2 adresses vues
+ÉCHEC https://www.rvz.fr/ : <urlopen error [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1011)>
+ÉCHEC navigateur https://www.rvz.fr/ : Page.goto: net::ERR_SSL_PROTOCOL_ERROR at https://www.rvz.fr/
+Call log:
+  - navigating to "https://www.rvz.fr/", waiting until "domcontentloaded"
+
+ÉCHEC https://rvz.fr/ : <urlopen error [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1011)>
+ÉCHEC navigateur https://rvz.fr/ : Page.goto: net::ERR_SSL_PROTOCOL_ERROR at https://rvz.fr/
+Call log:
+  - navigating to "https://rvz.fr/", waiting until "domcontentloaded"

@@ -1,0 +1,1797 @@
+# https://www.cinesyl.com/wp-content/uploads/2017/04/MT-400-ENG-AUG07.pdf
+
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+BEDIENUNGSANLEITUNG
+                             INSTRUCTION MANUAL
+
+
+
+MT 400
+MT 200            Movie Tech / ABC-Products                              Movie Tech / ABC-Products
+                  Martin-Kollar-Str. 9                                            Viale Edison 318
+                  81829 Munich                                                       20099 Milano
+                  Germany                                                                     Italy
+                  Tel. +49 (0)89 43 68 91 3                               Tel. +39 (0)2 22470043
+                  Fax. +49 (0)89 43 68 91 55                              Fax. +39 (0)2 24410163
+                  info@movietech.de                                         k.shore@movietech.de
+
+                                               WWW.MOVIETECH.DE
+                                   VERSION: MT 400_D_ V15_2007_EN – 20.08.2007
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                            1
+Bedienungsanleitung
+Instruction Manual
+
+
+
+Notes:
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+__________________________________________________________________________________
+
+
+
+
+Movie Tech MT 200 / MT 400                                                       2
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+              1 Table of contents
+1    Table of contents................................................................................................................................................................. 3
+2    Safety instructions and general notes ................................................................................................................................... 4
+3    Overview of the various set-up options for the MT 200.......................................................................................................... 6
+4    Overview of the various set-up options for the MT 400.......................................................................................................... 7
+5    Crane system components.................................................................................................................................................... 9
+6    Base set-up....................................................................................................................................................................... 13
+7    Setting up the MT 400 / MT 200........................................................................................................................................ 17
+  7.1       This section of the set-up instructions is based on the 400-P1 (platform) and 400-R1 (remote) versions....................... 18
+     7.1.1 Variant 1: Platform operation.............................................................................................................................. 22
+     Variant 2: Remote operation.............................................................................................................................................. 25
+  7.2       This section of the set-up instructions is based on all versions 400-P2 and 400-R2 or higher. ....................................... 27
+8    Checklist for start of operation........................................................................................................................................... 32
+9    Disassembly instructions .................................................................................................................................................... 35
+10 Terms in the tables in Ch.11 to 14...................................................................................................................................... 36
+11 MT 200 platform version ................................................................................................................................................... 37
+  11.1      200-P1 version ....................................................................................................................................................... 37
+  11.2      200-P2 version ....................................................................................................................................................... 37
+12 MT 200 remote head versions............................................................................................................................................ 38
+  12.1      200-R1 version ....................................................................................................................................................... 38
+  12.2      200-R2 version ....................................................................................................................................................... 38
+  12.3      200-R3 version ....................................................................................................................................................... 39
+13 MT 400 platform versions................................................................................................................................................. 40
+  13.1      400-P1 version ....................................................................................................................................................... 40
+  13.2      400-P2 version ....................................................................................................................................................... 41
+  13.3      400-P3 version ....................................................................................................................................................... 42
+14 MT 400 remote head versions............................................................................................................................................ 43
+  14.1      400-R1 version ....................................................................................................................................................... 43
+  14.2      400-R2 version ....................................................................................................................................................... 44
+  14.3      400-R3 version ....................................................................................................................................................... 45
+  14.4      400-R4 version ....................................................................................................................................................... 46
+  14.4      400-R4 version ....................................................................................................................................................... 46
+  14.5      400-R5 version ....................................................................................................................................................... 47
+  14.6      400-R6 version ....................................................................................................................................................... 48
+  14.7      400-R7 version ....................................................................................................................................................... 49
+15 Checks.............................................................................................................................................................................. 50
+  15.1      Test certificates........................................................................................................................................................ 50
+  15.2      Deficiency reports.................................................................................................................................................... 52
+16 Test certificates ................................................................................................................................................................. 53
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                                                                              3
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+           2 Safety instructions and general notes
+
+                                   All safety instructions are summarised in the following.
+                                   The safety instructions are repeated in the context of the respective chapters.
+
+
+
+
+     1) The MT 400 camera crane should only be used for professional recording of presentations with film and television cameras
+        and can only support people when the platform is used. The crane system may not be used for any purpose other than that
+        specified.
+
+     2) Only personnel trained by Movie Tech AG or by competent technicians are allowed to set up and operate the MT 400 crane
+        system. Training is offered by Movie Tech AG by arrangement.
+
+     3) Two people are required to set up the crane. Personnel must wear safety shoes, since the counterweights can present a
+        particular danger if they fall.
+
+     4) You must read and understand the instruction manual before using the crane. The instruction manual must always be
+        available to the operator at the point of use.
+
+     5) The crane may only be operated when balanced horizontally. Levelling legs or a level track are used for alignment. A
+        bubble level is used to check the balance. A commercially available bubble level can also be used.
+
+     6) The crane can only be operated on levelling legs or with guide wheels. The mounted pneumatic tyres are used to transport
+        the crane to the point of use only. The pneumatic tyres can be used to move the erected crane without payload and without
+        the corresponding counterweight.
+
+     7) Make sure that the ground can bear the weight of the crane before setting it up. The surface load is a result of the crane's
+        own weight in the required version plus counterweight and payload divided by the footprint or contact area. On this basis,
+        the total surface load is approx. 1.5 m² (load-bearing capacity of ceilings in buildings). For the load under an individual
+        levelling leg, particularly important in an open area, a third of the total weight of the version used is to be taken into
+        account. It may be necessary to increase the area under the levelling legs using wooden plates or similar (grass, meadow,
+        beach).
+
+     8) Do not set up or operate the crane while under the influence of drugs, alcohol or other medicines and narcotics.
+
+     9) Never operate the crane in the immediate vicinity of high-voltage lines – danger to life.
+
+     10) The crane must be shut down in sufficient time before the maximum permitted operating wind of 25 km/h is reached.
+
+     11) Particular care is required when operating the crane in unfavourable weather conditions. The crane must be shut down in
+         sufficient time when a thunderstorm is threatening. When in doubt, the crane should be secured and the area evacuated.
+         Pathways and operating elements should be kept free of ice if there is a risk of ice forming.
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                             4
+Bedienungsanleitung
+Instruction Manual
+
+
+
+     12) All elements of the crane must be within the field of vision of the operating personnel when in use. Visual obstructions can
+         include window blinds, fog or darkness. The crane can only be moved by line of sight.
+
+     13) Any movements to be carried out with the crane must be adequately rehearsed. Pay particular attention to keeping the
+         area of movement in front of and behind the crane free of obstacles. Quick movements and/or panning must be rehearsed
+         starting at low speeds. Make sure that the stability of the crane is not negatively affected by the dynamics of the quicker
+         movement under increasing speed. Pay attention to critical situations that may arise when lifting a levelling leg or guide
+         wheel.
+
+     14) These safety measures are especially important when driving in a circle! The maximum speed in the circle
+         (Master Track, diameter approx. 6 m) is 6.5 km/h, which corresponds to 35°/sec. or three crossties per
+         second. Caution – risk of tipping!
+
+     15) All materials and equipment used must be securely attached to the platform or remote crossbeam to prevent any drops.
+
+     16) Platform crew must immediately buckle up upon mounting the platform and should only dismount after consulting with
+         operating personnel. Caution – risk of tipping!
+
+     17) Prevent the unauthorised use of the erected crane system.
+
+     18) The maximum payload of the respective version and the corresponding maximum counterweight should not be exceeded.
+
+     19) Do not operate the crane on vehicles of any type – uncontrollable movements can be dangerous. (communication between
+         driver <=> operating personnel, uneven surface, etc.)
+
+     20) Standing under overhead loads until release by operating personnel is prohibited. Keep the danger zone cordoned off until
+         release and mark as a danger zone if necessary. People within the pivoting range of the crane must be specially instructed
+         and informed about the dangers. The operator must anticipate that such individuals may suddenly find themselves within
+         pivoting range of the crane and therefore, must maintain a safe distance to the crane to ensure sufficient reaction time.
+
+     21) Platform crew must be instructed that they are not permitted to grip the surrounding structure or similar. This can
+         negatively affect the balance of the crane – risk of tipping.
+
+     22) Should you need to route cable along the crane arm to the remote head or camera, the cable should not negatively impact
+         the movements of the crane in any way. It should also be noted that the weight of the cable counts towards the overall
+         payload.
+
+     23) The crane system and its individual components should be clean and dry when stored. Any accumulated dirt can negatively
+         impact proper function when the crane is operated next.
+
+     24) When transporting the crane system, make sure that the components do not rub together and cause any material wear.
+         Severe damage to the surface coating can lead to increased corrosion. Also make sure when transporting the individual
+         components that they do not hit against each other to avoid bending or denting them. Any bends or dents can weaken the
+         structure and make the system unusable.
+
+     25)        Crane components that have become unusable must be professionally disposed of. Movie Tech AG can properly dispose
+           of such components for you by sending them back to us.
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                              5
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+           3 Overview of the various set-up options for the MT 200
+MT 200 versions                                                 Strut turret
+                                                                 required/
+                                                              Auxiliary basket
+                                                                permitted?
+
+
+                                   200-P1 platform                   No
+
+
+
+
+                                   200-P2 platform                   Yes
+
+
+
+
+                                   200-R1 remote                     No
+
+
+
+
+                                   200-R2 remote                     Yes
+
+
+
+
+                                   200-R3 remote                     Yes
+
+
+
+
+Movie Tech MT 200 / MT 400                                                   6
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+           4 Overview of the various set-up options for the MT 400
+MT 400 versions                                            Strut turret required/
+                                                         Auxiliary basket permitted?
+
+                                   400-P1 platform
+                                                                     No
+
+
+
+
+                                   400-P2 platform                  Yes
+
+
+
+
+                                   400-P3 platform                  Yes
+
+
+
+
+                                     400-R1 remote
+                                                                     No
+
+
+
+
+                                     400-R2 remote
+                                                                    Yes
+
+
+
+
+                                     400-R3 remote
+                                                                    Yes
+
+
+
+
+Movie Tech MT 200 / MT 400                                                         7
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+                             400-R4 remote
+
+                                             Yes
+
+
+
+
+                             400-R5 remote
+
+                                             Yes
+
+
+
+
+                             400-R6 remote
+
+                                             Yes
+
+
+
+
+                             400-R7 remote
+                                             Yes
+
+
+
+
+Movie Tech MT 200 / MT 400                         8
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+           5 Crane system components
+
+
+                                                     14
+
+                                                     15
+
+  13
+                                                     9
+
+  10                                                 11
+
+  2
+                                                     3
+  1
+                                                     5
+                                                                     4
+
+  7                                                  6
+
+
+  8                          12
+
+Fig. 1: Basis of the MT 400
+
+   No.                              Part                  Number                   Article no.
+    1       Base frame                                      1x       4402_402-100
+    2       Column extension                                1x       4402_402-200
+    3       Fixing screw for column extension             4x or 8x   4402_402-3
+    4       Additional column extension (optional)          1x       4402_402-400
+
+
+    5       Pneumatic tyres                                 4x       Rad-15x6_00-6
+    6       Levelling leg, left                             2x       4403_403-0a
+    7       Levelling leg, right                            2x       4403_403-0
+    8       Track wheelset                                  4x       4404_404-0
+    9       Slide rod                                       1x       4402_402-300
+   10       Steering                                        1x       -
+   11       Brake                                           2x       -
+   12       Wheel wrench                                    1x       -
+   13       Turret                                          1x       4400_400-500
+   14       Rotary joint                                    1x       7500_500-100 ???
+   15       Centre section                                  1x       4400_400-120
+
+
+Movie Tech MT 200 / MT 400                                                                       9
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+                 25                                          20             21
+
+
+
+
+                  26
+
+
+  23              27
+
+
+
+
+                                                                  22                               30
+                                                        24
+
+
+                                                                                                   28
+
+
+
+                                                   29
+
+
+Fig. 2: Elements of the crane with accessories
+
+
+  No.                                       Part                  Number             Article no.
+   20       Crane element 1 m                                       3x     4400_400-150
+   21       Crane element 1.5 m                                     5x     4400_400-150
+   22       Strut bar and parallelogram bar 1 m                     7x     4400_400-50
+   23       Strut bar and parallelogram bar 1.5 m                  15x     4400_400-300
+   24       Balance weight                                          1x     7500_500-500
+   25       Strut turret, right                                     1x     4400_400-250
+   26       Strut turret, left                                      1x     4400_400-280
+   27       Derrick girt                                            1x     4400_400-290
+   28       Support for parallelogram bar                           3x     4400_400-450
+   29       Turnbuckle                                              4x     4400_400-900
+   30       Locking device                                          4x     4400_400-80
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                          10
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+                                                                                   35
+
+
+
+
+                                       37                                           36
+
+
+
+
+                                      Fig. 3: Complete weight basket with accessories
+
+
+
+  No.                                  Part                                Number                  Article no.
+   35       Weight basket, complete                                           1x         4400_400-600
+   36       Basket hitch                                                      1x         4400_400-760
+   37       End rocker                                                        2x         4400_400-350
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                       11
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+                                    38
+
+
+
+                                                                                       39
+
+
+
+                                           37
+
+
+
+
+                                         Fig. 4: Platform and remote head crossbeam
+
+
+
+  No.                                    Part                              Number                  Article no.
+   37       End rocker                                                        2x      4400_400-350
+   38       Remote head crossbeam                                             1x      4401_401-0
+   39       Platform                                                          1x      4406_406_0 ???
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                       12
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+           6 Base set-up
+
+ Do not operate the crane on vehicles of any type – uncontrolled movements can be dangerous.
+ Never operate the crane in the immediate vicinity of high-voltage lines – danger to life.
+
+
+The crane base is equipped with steerable pneumatic tyres for easy manoeuvrability. The tyres are not suitable for use when the
+crane is set-up.
+
+
+
+
+                                   Fig. 5: Crane base with column, rotary joint and centre section
+
+
+Apply the brakes before you start to set up the crane.
+
+
+
+
+                                                      Fig. 6: Applying the brakes
+
+
+Two variants are available for operating the crane: one for use with adjustable levelling legs in a fixed position, one for use on a track
+with guide wheels.
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                              13
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+                                            Fig. 7: Operation with levelling legs or tracks
+
+
+
+
+The crane base can be balanced horizontally in a position to ensure the safe operation of the crane. To do so, the levelling legs are
+mounted to the base facing outwards.
+
+
+
+
+    Fig. 9: Mounting the levelling
+                                                                         
+                                                   Fig. 8: Incorrect position of the
+                                                                                                                       
+                                                                                                    Fig. 10: Correct position of the
+                   legs                                       locking pin                                      locking pin
+
+Use the wrench provided to adjust the length of the levelling legs. There is a level on the crane column for balancing the crane. Note
+that all four levelling legs have to carry the same load.
+
+
+       Note that the crane should only be operated when balanced horizontally. The levelling legs are used to balance the crane.
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                               14
+    Bedienungsanleitung
+    Instruction Manual
+
+
+
+
+                                                                                                              
+                                                           Fig. 11: Balancing the base
+                                                                                                              
+✪                 After the levelling legs have been mounted and the base is balanced horizontally, both wheel brakes can be released.
+
+
+    Apparent is a load on the levelling leg similar to the torque required to adjust the levelling legs.
+
+    Alternatively, guide wheels can be mounted to the base that make it possible to drive the crane on a laid-out track.
+
+
+
+
+                                                                                    
+                                                      Fig. 12: Mounting the guide wheels
+                                                                                                                           
+    The guide wheels are to be mounted on the base, so that the area of movement of the guide wheels is free of obstacles. Pay particular
+                                attention to the track substructure to ensure that it can withstand the load.
+
+
+    When moving on the track, also make sure that the track substructure remains firmly on the ground to ensure the stability of the
+    crane.
+
+
+
+
+    Movie Tech MT 200 / MT 400                                                                                                           15
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+                                         Fig. 13: Base on a track system on level surface
+
+
+
+
+A slide rod can be mounted to the front or rear of the base to make moving the crane base on the track or ground easier. It is
+equipped with an adjustable pipe and makes walking next to the track possible.
+When pivoting, the slide rod must be removed to keep the pivoting range free of obstacles.
+
+
+Note that the crane can only be operated on levelling legs or with guide wheels. The mounted pneumatic tyres are used to transport
+the crane to the point of use only.
+
+ Any movements to be carried out with the crane must be adequately rehearsed. Pay particular attention that the area of
+movement both front and rear is free of obstacles. Quick movements and/or panning must be rehearsed starting at low speeds. Make
+sure that the stability of the crane is not negatively affected by the dynamics of the quicker movement under increasing speed. Pay
+attention to critical situations that may arise when lifting a levelling leg or guide wheel. Movement speeds must be reduced.
+
+ These safety measures are especially important when driving in a circle! The maximum speed in the circle (Master Track, diameter
+approx. 6 m) is 6.5 km/h, which corresponds to 35°/sec. or three crossties per second. Caution – risk of tipping!
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                       16
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+           7 Setting up the MT 400 / MT 200
+Information about setting up the MT 200 is also available here.
+
+You can begin mounting the crane arm only after balancing the base in the horizontal position.
+To assemble the crane, the base must already be locked into position by applying the brakes to the rotary joint and rotary bazooka.
+See the following figure. You must ensure that the brake on the rotary joint (left picture) is open before loading the
+crane.
+
+
+
+
+                               Fig. 14: Applying the brakes to the rotary joint and rotary bazooka
+
+
+
+
+                                                                             
+                                                 OPEN                           CLOSE
+                                                            CLOSED
+                              The stability of the base must be ensured before starting any set-up work.
+
+
+
+
+                                           Fig. 15: Checking the crane base for stability
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                            17
+Bedienungsanleitung
+Instruction Manual
+
+
+
+7.1 This section of the set-up instructions is based on the 400-P1 (platform) and 400-
+           R1 (remote) versions.
+
+For versions after 400 P_2 and 400 R_2, please go to page 27.
+
+
+                                The 400 P_1 and 400 R_1 versions do not require any strut turrets and bars.
+
+
+First, mount the crane element to the weight basket. Make sure that the locking pin is properly engaged and the clamping lever is
+firmly tightened.
+
+
+                    Longer side of the centre section:                                  Shorter side of the centre section:
+              The front crane elements are mounted here.                           The rear crane elements are mounted here.
+
+
+
+
+                                                    Step 1
+
+
+
+
+                        The locking bolt must be                Firmly tighten the clamping
+                          correctly engaged.                               lever.
+
+
+
+                                                                                                                        
+                                                                                                                        CLOSE
+  Step 2                                                                                  Step 3
+
+                                       Fig. 16: Mounting the rear crane element to the weight basket
+
+Mounting the front crane element works the same way.
+
+
+Movie Tech MT 200 / MT 400                                                                                                          18
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+                                             Fig. 17: Mounting the front crane elements
+
+
+In the next step, each end rocker is mounted and firmly tightened with the lever. Also make sure that the respective locking bolts are
+correctly engaged.
+
+
+
+
+          Step 1                                                                Step 2
+                                    Fig. 18: Mounting the end rockers, weight side and front side
+
+
+
+                                       The crane must be properly supported at the front and rear.
+                         Setting up the crane by means of counterweights and counterbalancing is not permitted.
+
+
+                                                                             Make sure that the brake on the rotary
+                                                                             joint is opened by now at the latest.
+
+
+
+
+                                               Fig. 19: Supporting the front crane arm
+
+Next, mount the parallelogram bar.
+
+
+Movie Tech MT 200 / MT 400                                                                                                           19
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+                                            Fig. 20: Mounting the parallelogram bars
+
+Make absolutely sure to fully extend the lock bar of the connections. The green mark must be clearly visible and the red mark
+covered.
+
+
+
+
+                                         
+                                    Fig. 21: Incorrect and correct position of the locking lever
+                                                                                                                  
+You can now start mounting the weight basket since the parallelogram bars for each required length have been installed. To prevent
+hand injuries, pay particular attention to the correct grip when mounting.
+
+
+
+
+                              Fig. 22: Correct hand grip when mounting the weight basket hitch
+                                                                                                                      
+Movie Tech MT 200 / MT 400                                                                                                           20
+Bedienungsanleitung
+Instruction Manual
+
+
+
+Now use both knurled-head knobs and the locking lever to secure the weight basket hitch. Also pay attention to the correct position of
+the locking lever (step 2).
+
+
+
+
+     Step 1                                                                    Step 2
+
+                                                 Fig. 23: Securing the basket hitch
+
+
+
+
+Support the rear section of the crane before hanging the basket.
+The front and rear section of the crane are safeguarded against overloading.
+
+
+
+
+                                               Fig. 24: Supporting the rear crane arm
+
+
+
+
+You can now hang the weight basket.
+
+
+
+
+                                                Fig. 25: Hanging the weight basket
+
+
+Depending on the length of the crane, you can then mount the platform or remote head crossbeam.
+Find the specifications for doing so on page 37.
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                          21
+Bedienungsanleitung
+Instruction Manual
+
+
+
+                    7.1.1 Variant 1: Platform operation
+
+Now use both knurled-head knobs and the locking lever to secure the platform. Also pay attention to the correct position of the locking
+lever (step 3).
+
+
+                                     Risk of injury and crushing when mounting the platform or
+                                                             remote crossbeam.
+
+
+
+
+                                                                      Step 1
+                                                                                                                     
+
+  Step 2                                                               Step 3
+
+Fig. 26: Mounting the platform
+
+
+
+
+Platform crew must be instructed that they are not permitted to firmly grip the surrounding structure or similar. This can negatively
+affect the balance of the crane – risk of tipping.
+
+ Platform crew must immediately buckle up upon mounting the platform and should only dismount after consulting with operating
+personnel.
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                          22
+Bedienungsanleitung
+Instruction Manual
+
+
+
+You can now mount a seat and seat arm on the platform.
+Make sure that the respective pins are fully inserted in the respective holes.
+
+
+
+
+                                                                                                                      
+
+                                                     
+Fig. 27: Incorrect and correct mounting of the seat arm and seat
+                                                                                                                      
+Make sure that anyone on the platform uses the safety belt. This can also prevent any unintentional dismount, which can lead to
+serious accidents.
+
+
+
+
+Fig. 28: Person with correctly secured safety belt
+                                                                      
+Movie Tech AG offers various options for mounting a camera. In general, make sure that the elements used are secured. In addition to
+the clamping system, the column extensions distributed by Movie Tech AG provide the ability to firmly bolt with the Euro adapter.
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                        23
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+Fig. 29: Mounting screw and 8 mm Allen key for mounting
+
+In addition, the existing eyebolts can also be used to secure loose parts and the camera itself with the help of safety ropes.
+
+
+
+
+                                Fig. 30 Safety rope on column extension for securing loose objects
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                       24
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+Variant 2: Remote operation
+
+
+The remote head crossbeam must be mounted.
+
+Use both knurled-head knobs (step 2) and the locking lever to secure the remote head crossbeam. Also pay attention to the correct
+position of the locking lever (step 3).
+
+
+
+
+                                                                    Step 1
+
+
+
+
+Step 2                                                               Step 3
+Fig. 31: Mounting the remote head crossbeam
+
+
+
+         All materials and equipment used must be securely attached to the platform or remote crossbeam to prevent any drops.
+
+
+  Standing under overhead loads until release by operating personnel is prohibited. Keep the danger zone cordoned off until release
+                                              and mark as a danger zone if necessary.
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                          25
+Bedienungsanleitung
+Instruction Manual
+
+
+
+The crane is now set up.
+
+
+                   However, the brake for the rotary joint must be released before starting to load the weight basket.
+
+
+
+The weight basket doors have a lock-in position to prevent unintentional closing. The locking bolt can be seen in the figure below.
+
+
+
+
+Step 1                                          Step 2                                          Step 3
+
+Fig. 32: Releasing the brake of the rotary joint and loading the weight basket
+
+
+
+  Make sure that the maximum payload of the respective version and the corresponding maximum counterweight are not exceeded.
+
+
+The crane is ready for use after it has been set up and the weight basket loaded. 400-P1 version without crew can be seen in Fig. 33
+below.
+
+
+
+
+                                            Fig. 33: 400-P1 version (platform operation)
+
+
+                                       Prevent the unauthorised use of the erected crane system.
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                             26
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+7.2 This section of the set-up instructions is based on all versions 400-P2 and 400-R2
+         or higher.
+
+
+The base is set up as described in section 6 on page 13.
+
+
+                             Strut turrets (25, 26) must be installed for 400-P2 and 400-R2 versions or higher.
+
+
+First, use the locking devices on the turrets to mount the turnbuckles.
+
+
+     Use the upper holes for mounting the turnbuckles for 400-P3 and 400-R3 versions or higher. Otherwise, use the lower holes.
+
+
+
+
+Fig. 34: Mounting the turnbuckles
+                                                                                                                          
+Bolt the turrets to the centre section of the crane. Make sure to bolt the turrets to the mounts from the outside in order to maintain the
+distance between the individual components required for bracing. View the procedure in the following illustration.
+
+
+
+                                                               The fixing screws of the strut turret
+                                                               must be screwed down completely.
+
+
+
+
+Fig. 35: Correct position of the turrets
+                                            
+Movie Tech MT 200 / MT 400                                                                                                             27
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+ Step 1                                          Step 2                                         Step 3
+
+
+
+
+Step 4                                           Step 5                                          Step 6
+
+Fig. 36: Mounting the strut turret
+
+
+
+
+You can then mount the crane elements, first on the back for the weight basket. Mount the locking device for the strut bars to this
+part.
+
+Refer to page 18 for the correct mounting of the crane elements.
+
+
+
+
+  Locking devices for the strut
+  bars
+
+
+                                                Fig. 37: Position of the locking device
+
+
+
+
+You can now mount the bracing rods. The individual steps are described in Fig. 35. You can use the turnbuckles to correctly adjust the
+length of the strut bars. Make absolutely sure to fully extend the lock levers of the connections.
+
+
+
+The position of the bracing rods is available in the version descriptions on page 37.
+
+Movie Tech MT 200 / MT 400                                                                                                            28
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+  Step 1                                        Step 2                                     Step 3
+
+Fig. 38: Mounting the strut bar and adjusting the length
+
+
+
+
+ ☺          It makes sense to start from the front and back.
+
+
+
+           After mounting, use the Allen keys to lightly tighten the bracing on the rear and front as described in Fig. 34, step 2.
+
+
+Tighten the Allen keys by hand only – do not use tools of any kind!
+After bracing, connect the parallelogram bar to the front of the crane with the crane elements.
+
+
+
+
+Fig. 39: Mounting the parallelogram bars
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                            29
+Bedienungsanleitung
+Instruction Manual
+
+
+
+To mount the platform or remote head crossbeam, proceed as described on page 22. For large loads, the MT 400 has an auxiliary
+weight basket that can be place on top of the normal weight basket.
+
+
+
+
+Fig. 40: Mounting the strut bar and adjusting the length
+
+
+
+
+                                     Fig. 41: 400-R7 version with auxiliary weight basket
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                      30
+Bedienungsanleitung
+Instruction Manual
+
+
+
+When using a 1.5 m crane element on the rear of the crane, it can be helpful to mount an additional column extension under the
+normal column. This is required to prevent the weight basket with the longer element from hitting the ground early and preventing
+the full range of movement. This configuration is illustrated in the figure below.
+
+
+
+
+                                                              1.5 m
+
+
+
+
+                                                                 Additional column extension
+
+
+
+
+                             Fig. 42: 1.5 m crane element to weight basket with column extension
+
+
+When mounting the column extension, make sure that the screws fit securely in the recesses provided. Use an Allen key to tighten the
+screws (max. 80 Nm).
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                          31
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+           8 Checklist for start of operation
+When setting up, make sure that no damaged or defective parts are used. Pay particular attention to the welded components. The
+welded seams should be free of defects and the crane elements should show no dents or cracks, which can negatively affect the
+stability of the system.
+Bracing rods whose pipe cross section is not smooth should be checked by the manufacture before continued use.
+
+Pay particular attention to the following points before putting the crane into operation.
+
+
+
+     -     Do all elements fit easily together, but nevertheless exhibit no unusual play?
+
+     -     Are the locking bolts on the levelling legs correctly engaged?
+
+
+
+
+     -     Are the strut bar locking levers completely extended?
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                       32
+Bedienungsanleitung
+Instruction Manual
+
+
+
+Is the crane base still level after assembly?
+
+
+
+
+     -     Are the locking bolts and clamping levers of the individual crane elements correctly engaged or tightened?
+
+
+
+
+                                                
+     -     Is the weight basket mounted correctly and are the doors closed?
+
+
+
+
+     -     Are the strut bars in the correct position? The positions are available in the tables starting on page 37.
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                              33
+Bedienungsanleitung
+Instruction Manual
+
+
+
+     -     For the versions without strut bar, is only the bottom weight basket installed?
+
+
+
+
+                             
+     -     Are the fixing screws of the strut turret screwed down completely?
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                   34
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+           9 Disassembly instructions
+The crane is disassembled in reverse order. Make sure that the counterweights are first removed from the basket.
+
+Disassembly procedure:
+     - The crane must be properly supported (e.g. with tripods) at the front and rear.
+                                                                                                 Use tripods to support the crane
+
+
+
+
+     -     The brake for the rotary joint must be released.
+
+
+
+
+                                                                                                  
+                                                                                                    OPEN
+To bear in mind when disassembling the crane:
+
+     -     It is important to note that the crane must first be supported on the weight basket and the front section before the strut
+           bars can be disassembled.
+     -     The crane must be supported evenly at the front and rear.
+     -     Standing under overhead loads during disassembly is prohibited.
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                              35
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+           10 Terms in the tables in Ch.11 to 14
+The following terms are used in the tables for crane dimensions:
+     •     Total travel                                                   "A"
+     •     Maximum height                                                 "B"
+     •     Boom length, front (in horizontal position of the crane arm)   "C"
+     •     Boom length, rear (in horizontal position of the crane arm)    "D"
+
+The terms used have been inserted in the following illustration:
+
+
+
+                                                                                C   D
+
+
+
+
+                 A                       B
+
+
+
+
+Movie Tech MT 200 / MT 400                                                              36
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+           11 MT 200 platform version
+11.1 200-P1 version
+This version is identical to the 400-P1 version. See page 40.
+
+11.2 200-P2 version
+
+
+
+
+                                      Rear boom                                      1m         1.5 m
+                               Required boom, front                                2 x 1.5 m   2 x 1.5 m
+                                                                Front              6 x 1.5 m   6 x 1.5 m
+    Strut bars / parallelogram bars
+                                                                Rear               3x1m        3 x 1.5 m
+                                      Total travel                                  6.05 m      4.64 m
+                                                     Without column extension       4.63 m      3.93 m
+            Maximum height
+                                                       With column extension        4.96 m      4.26 m
+                                       Payload                                      180 kg      180 kg
+                             Counterweight with payload                             520 kg      385 kg
+              Boom length                             Front (reception flange)      4.25 m      4.25 m
+                                                     Rear (outer edge of basket)    1.97 m      2.45 m
+                   Own weight without payload and counterweights                   283.2 kg    309.7 kg
+
+Tab. 1: Data for 200-P2 version
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                 37
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+           12 MT 200 remote head versions
+12.1 200-R1 version
+This version is identical to the 400-R1 version. See page 43.
+
+12.2 200-R2 version
+
+
+
+
+                                      Rear boom                                      1m         1.5 m
+                               Required boom, front                                2 x 1.5 m   2 x 1.5 m
+                                                                Front              6 x 1.5 m   6 x 1.5 m
+    Strut bars / parallelogram bars
+                                                                Rear               3x1m        3 x 1.5 m
+                                      Total travel                                  6.06 m      6.06 m
+                                                     Without column extension       4.99 m      4.28 m
+            Maximum height
+                                                       With column extension        5.32 m      4.61 m
+                                       Payload                                      80 kg       80 kg
+                             Counterweight with payload                             245 kg      195 kg
+                                                      Front (reception flange)      4.57 m      4.57 m
+              Boom length
+                                                     Rear (outer edge of basket)    1.97 m      2.45 m
+                   Own weight without payload and counterweights                   256.2 kg    282.7 kg
+
+Tab. 2: Data for 200-R2 version
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                 38
+Bedienungsanleitung
+Instruction Manual
+
+
+
+12.3 200-R3 version
+
+
+
+
+                                      Rear boom                                      1m         1.5 m
+                               Required boom, front                                3 x 1.5 m   3 x 1.5 m
+                                                               Front               9 x 1.5 m   9 x 1.5 m
+    Strut bars / parallelogram bars
+                                                                Rear               3x1m        3 x 1.5 m
+                                      Total travel                                  8.63 m      8.63 m
+                                                     Without column extension       6.28 m      5.25 m
+            Maximum height
+                                                       With column extension        6.61 m      6.42 m
+                                       Payload                                      80 kg       80 kg
+                             Counterweight with payload                             388 kg      264 kg
+              Boom length                             Front (reception flange)      6.05 m      6.05 m
+                                                     Rear (outer edge of basket)    1.97 m      2.45 m
+                   Own weight without payload and counterweights                   271.6 kg    298.1 kg
+Tab. 3: Data for 200-R3 version
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                 39
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+           13 MT 400 platform versions
+
+13.1 400-P1 version
+
+     CAUTION:                Only the bottom weight basket can be
+                             mounted when used without strut bar!
+
+
+                                      Rear boom                                      1m         1.5 m
+                                 Required boom, front                              1 x 1.5 m   1 x 1.5 m
+                                                               Front               1 x 1.5 m   1 x 1.5 m
+    Strut bars / parallelogram bars
+                                                                Rear               1x1m        1 x 1.5 m
+                                      Total travel                                  3.71 m      3.71 m
+                                                     Without column extension       3.46 m      3.02 m
+            Maximum height
+                                                       With column extension        3.79 m      3.69 m
+                                       Payload                                      180 kg      180 kg
+                              Counterweight with payload                            256 kg      200 kg
+              Boom length                             Front (reception flange)      2.77 m      2.77 m
+                                                     Rear (outer edge of basket)    1.97 m      2.45 m
+                   Own weight without payload and counterweights                   238.5 kg     265 kg
+Tab. 4: Data for 400-P1 version
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                 40
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+13.2 400-P2 version
+
+
+
+
+                                      Rear boom                                      1m         1.5 m
+                               Required boom, front                                2 x 1.5 m   2 x 1.5 m
+                                                               Front               6 x 1.5 m   6 x 1.5 m
+    Strut bars / parallelogram bars
+                                                                Rear               3x1m        3 x 1.5 m
+                                      Total travel                                  6.05 m      4.64 m
+                                                     Without column extension       4.63 m      3.93 m
+            Maximum height
+                                                       With column extension        4.96 m      4.26 m
+                              Counterweight unloaded                                50 kg        0 kg
+                                       Payload                                      180 kg      180 kg
+                             Counterweight with payload                             520 kg      385 kg
+              Boom length                             Front (reception flange)      4.25 m      4.25 m
+                                                     Rear (outer edge of basket)    1.97 m      2.45 m
+                   Own weight without payload and counterweights                    265 kg     291.5 kg
+
+Tab. 5: Data for 400-P2 version
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                 41
+Bedienungsanleitung
+Instruction Manual
+
+
+
+13.3 400-P3 version
+
+
+
+
+                                      Rear boom                                      1m         1.5 m
+                               Required boom, front                                3 x 1.5 m   3 x 1.5 m
+                                                               Front               9 x 1.5 m   9 x 1.5 m
+    Strut bars / parallelogram bars
+                                                                Rear               3x1m        3 x 1.5 m
+                                      Total travel                                  8.63 m      8.63 m
+                                                     Without column extension       5.92 m      4.89 m
+            Maximum height
+                                                       With column extension        6.25 m      5.95 m
+                              Counterweight unloaded                                132 kg      80 kg
+                                       Payload                                      135 kg      180 kg
+                             Counterweight with payload                             616 kg      560 kg
+              Boom length                             Front (reception flange)      5.8 m       5.8 m
+                                                     Rear (outer edge of basket)    1.97 m      2.45 m
+                   Own weight without payload and counterweights                   299.2 kg    325.7 kg
+Tab. 6: Data for 400-P3 version
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                 42
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+           14 MT 400 remote head versions
+14.1 400-R1 version
+
+
+
+        CAUTION:             Only the bottom weight basket can be
+                             mounted when used without strut bar!
+
+
+
+
+                                      Rear boom                                      1m         1.5 m
+                                Required boom, front                               1 x 1.5 m   1 x 1.5 m
+                                                               Front               1 x 1.5 m   1 x 1.5 m
+    Strut bars / parallelogram bars
+                                                                Rear               1x1m        1 x 1.5 m
+                                      Total travel                                  3.71 m      3.71 m
+                                                     Without column extension       3.82 m      3.38 m
+            Maximum height
+                                                       With column extension        4.15 m      4.05 m
+                               Counterweight unloaded                                0 kg        0 kg
+                                       Payload                                      80 kg       80 kg
+                             Counterweight with payload                             120 kg      80 kg
+              Boom length                             Front (reception flange)      3.01 m      3.01 m
+                                                     Rear (outer edge of basket)    1.97 m      2.45 m
+                    Own weight without payload and counterweights                  229.7 kg    256.2 kg
+
+Tab. 7: Data for 400-R1 version
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                 43
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+14.3 400-R3 version
+
+
+
+
+                                      Rear boom                                      1m         1.5 m
+                               Required boom, front                                3 x 1.5 m   3 x 1.5 m
+                                                               Front               9 x 1.5 m   9 x 1.5 m
+    Strut bars / parallelogram bars
+                                                                Rear               3x1m        3 x 1.5 m
+                                      Total travel                                  8.63 m      8.63 m
+                                                     Without column extension       6.28 m      5.25 m
+            Maximum height
+                                                       With column extension        6.61 m      6.42 m
+                              Counterweight unloaded                                92 kg       48 kg
+                                       Payload                                      80 kg       80 kg
+                             Counterweight with payload                             388 kg      264 kg
+                                                      Front (reception flange)      6.05 m      6.05 m
+              Boom length
+                                                     Rear (outer edge of basket)    1.97 m      2.45 m
+                   Own weight without payload and counterweights                   272.2 kg    298.7 kg
+
+Tab. 5: Data for 400-R3 version
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                 45
+Bedienungsanleitung
+Instruction Manual
+
+
+
+14.4 400-R4 version
+
+
+
+
+                                      Rear boom                                       1m          1.5 m
+                               Required boom, front                                4 x 1.5 m    4 x 1.5 m
+                                                               Front               10 x 1.5 m   10 x 1.5 m
+    Strut bars / parallelogram bars
+                                                                Rear                3x1m        3 x 1.5 m
+                                      Total travel                                  11.08 m      11.08 m
+                                                     Without column extension        7.5 m       6.18 m
+            Maximum height
+                                                       With column extension        7.83 m       7.54 m
+                              Counterweight unloaded                                160 kg       104 kg
+                                       Payload                                       80 kg        80 kg
+                             Counterweight with payload                             544 kg       400 kg
+              Boom length                             Front (reception flange)      7.57 m       7.57 m
+                                                     Rear (outer edge of basket)    1.97 m       2.45 m
+                   Own weight without payload and counterweights                    307 kg      333.5 kg
+Tab. 9: Data for 400-R4 version
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                   46
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+14.5 400-R5 version
+
+
+
+
+                                      Rear boom                                       1m           1.5 m
+                               Required boom, front                                5 x 1.5 m    4x1.5m+1x1m
+                                                               Front               13 x 1.5 m   12x1.5m+1x1m
+    Strut bars / parallelogram bars
+                                                                Rear                3x1m          3 x 1.5 m
+                                      Total travel                                  13.54 m       13.54 m
+                                                     Without column extension       8.49 m         7.12 m
+            Maximum height
+                                                       With column extension        8.82 m         8.7 m
+                              Counterweight unloaded                                260 kg         156 kg
+                                       Payload                                       65 kg         65 kg
+                             Counterweight with payload                             632 kg         424 kg
+              Boom length                             Front (reception flange)       9.9 m         9.9 m
+                                                     Rear (outer edge of basket)    1.97 m         2.45 m
+                  Own weight without payload and counterweights                    323.6 kg       350.1 kg
+Tab. 10: Data for 400-R5 version
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                     47
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+14.6 400-R6 version
+
+
+
+
+                                      Rear boom                                        1m            1.5 m
+                               Required boom, front                                5x1.5m+1x1m    4x1.5m+2x1m
+                                                               Front               15x1.5m+1x1m   12x1.5m+4x1m
+    Strut bars / parallelogram bars
+                                                                Rear                  3x1m          3 x 1.5 m
+                                      Total travel                                   15.52 m        15.52 m
+                                                     Without column extension         9.7 m          7.5 m
+           Maximum height
+                                                       With column extension          10.03m         9.3 m
+                              Counterweight unloaded                                  344 kg         220 kg
+                                       Payload                                        65 kg          65 kg
+                             Counterweight with payload                               764 kg         500 kg
+              Boom length                             Front (reception flange)       10.13 m         9.68 m
+                                                     Rear (outer edge of basket)      1.97 m         2.45 m
+                  Own weight without payload and counterweights                      333.1 kg       359.6 kg
+
+Tab. 11: Data for 400-R6 version
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                       48
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+           14.7 400-R7 version
+
+
+
+
+                                      Rear boom                                        1m            1.5 m
+                               Required boom, front                                5x1.5m+2x1m    4x1.5m+3x1m
+                                                               Front               15x1.5m+4x1m   12x1.5m+7x1m
+    Strut bars / parallelogram bars
+                                                                Rear                  3x1m          3 x 1.5 m
+                                      Total travel                                   16.84 m        16.84 m
+                                                     Without column extension        10.38 m         8.38 m
+           Maximum height
+                                                       With column extension         10.72 m        10.27 m
+                              Counterweight unloaded                                  432 kg         276 kg
+                                       Payload                                        45 kg          65 kg
+                             Counterweight with payload                               760 kg         592 kg
+              Boom length                             Front (reception flange)       11.13 m        10.64 m
+                                                     Rear (outer edge of basket)      1.97 m         2.45 m
+                  Own weight without payload and counterweights                      344.4 kg       367.4 kg
+
+Tab. 12: Data for 400-R7 version
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                       49
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+           15 Checks
+
+The inspections carried out by specialist and technical experts are documented in the following sections.
+Expert testing is required every four years, specialist testing every two years.
+Training is available for obtaining specialist status at Movie Tech AG in Munich, Germany on request.
+
+Manufacturer:                             Movie Tech AG
+Model:                                    __________________
+Version:                                  __________________
+Crane serial number:                      __________________
+Base serial number:                       __________________
+Year of manufacture:                      __________________
+
+
+15.1 Test certificates
+
+Name of the tester                 Qualification          Version tested                    Date            Deficiency, generate report
+                                   SV          SK         P2 / P3        R7                                 if necessary
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                                                            50
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+Name of the tester           Qualification    Version tested      Date   Deficiency, generate report
+                             SV          SK   P2 / P3        R7          if necessary
+
+
+
+
+Movie Tech MT 200 / MT 400                                                                         51
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+                 15.2           Deficiency reports
+
+When the operator is repairing deficiencies, use original replacement parts only.
+
+Tester               Date          Deficiency determined
+
+
+
+
+Movie Tech MT 200 / MT 400                                                          52
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+           16 Test certificates
+
+
+
+
+Movie Tech MT 200 / MT 400        53
+Bedienungsanleitung
+Instruction Manual
+
+
+
+
+Movie Tech MT 200 / MT 400   54
+

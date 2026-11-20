@@ -1,0 +1,55 @@
+# https://www.vantagefilm.com/file/edee/downloads/optics/1x-spherical-lenses-made-by-hawk/hawkmhx-technical-data.pdf
+
+Hawk MHX
+Hybrid Anamorphic Lenses - Technical Data
+Hawk MHX lenses deliver the power of anamorphic while avoiding the limitations of traditional 2x
+squeeze. They offer super-close focus – almost like macro lenses – with no breathing while focusing.
+Hawk MHX primes are geometrically well-corrected, yet still preserve classic anamorphic characteri-
+stics such as elliptical bokeh and shallow depth of field, resulting in an organic cinematic feel. Hawk
+MHX lenses deliver their full optical power to new, larger formats. Well-suited for CG.                   Patents granted Europe/US/Asia
+
+
+
+                                       Focal Length                    metric                       imperial             Angle of View*        Weight      Front            Overall          Min. Filter           Image          Illumination
+              Lens
+                                            Stop                 CFD            MOD           CFD          MOD             horizontal      kg       Ibs   Diameter           Length              Size              Circle             Circle
+
+  Hawk MHX 24                           24 mm/T1.9             0.22 m         0.04 m           9“              2“             87.9°        2.5      5.5   156 mm            142 mm             4x5.65“              45 mm              46 mm
+
+  Hawk MHX 28                           28 mm/T1.9             0.25 m         0.04 m          10“              2“             78.8°        2.8      6.2   136 mm            175 mm            4x5.65“               45 mm              46 mm
+
+  Hawk MHX 35                           35 mm/T1.9               0.3 m        0.06 m           1‘          2 ½“               69.6°        3.2      7.1   136 mm            203 mm            4x5.65“            45.5 mm            46.5 mm
+
+  Hawk MHX 45                           45 mm/T1.9             0.25 m         0.05 m          10“              2“             56.3°        2.8      6.2   136 mm            171 mm            4x5.65“               46 mm              47 mm
+
+  Hawk MHX 55                           55 mm/T1.9             0.26 m         0.04 m          10“              2“             49.1°        3        6.6   136 mm            182 mm            4x5.65“            48.5 mm            50.5 mm
+
+  Hawk MHX 65                           65 mm/T1.9             0.35 m         0.16 m          1‘2“             7“             40°          2.1      4.6   120 mm            150 mm            4x5.65“               48 mm              50 mm
+
+  Hawk MHX 85                           85 mm/T1.9               0.4 m        0.26 m          1‘4“          11“               30.6°        1.6      3.5   120 mm            140 mm            4x5.65“               55 mm           57.5 mm
+
+  Hawk MHX 105                        105 mm/T1.9                0.5 m        0.34 m          1‘8“          1‘2“              25.6°        1.7      3.7   120 mm            140 mm            4x5.65“               59 mm           > 60 mm
+
+  Hawk MHX 135                        135 mm/T1.9                0.7 m        0.53 m          2‘4“          1‘9“              20.2°        1.9      4.2   120 mm            140 mm            4x5.65“               59 mm           > 60 mm
+
+  Hawk MHX 180                        180 mm/T1.9              0.92 m         0.72 m           3‘           2 ‘4“             15.8°        3.0      6.6   120 mm            169 mm            4x5.65“            > 60 mm            > 60 mm
+                                                                                                                                                                   *Angle of view – quoted for large format (36.70 x 25.54 mm – Sensor size Mini LF)
+
+
+
+            CFD – close focus distance                                                                                                                                                                     Illumination Circle
+
+
+                                                                                                                                                                                                           Image Circle
+
+
+
+
+            MOD – minimal object
+                       distance
+
+
+
+                                                                Technical specifications are subject to change without notice – additional lenses will follow. Made in Germany by Vantage Film
+  Hawk®, Hawk Anamorphic®, Vantage® are registered trade-marks of Vantage Film GmbH, Germany. For further information contact Vantage Film, Phone +49 961 26795, www.vantagefilm.com
+

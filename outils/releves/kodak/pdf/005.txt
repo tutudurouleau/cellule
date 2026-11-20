@@ -1,0 +1,506 @@
+# https://125px.com/docs/unsorted/kodak/z119-3.pdf
+
+3 MONITORING AND CONTROLLING
+           PROCESSING SOLUTIONS
+CONTROL OF PROCESS VARIABLES
+Introduction
+Process variables include process time, temperature, agitation, and replenishment and wash rates. Changing these variables affects
+the process in specific ways. Being aware of how each of these variables affects your process will help you to troubleshoot any
+problems, and to use these variables to make small adjustments in your process.
+  The specifications for these process variables are given in Table 3-1.
+
+Table 3-1
+Process E-6 Specifications
+
+                               Time                         Temperature                 Replenishment Rate           Concentrate Ratio for
+                        (Minutes:Seconds)                     °C (°F)                     mL/m2 (mL/ft2)               Process E-6AR
+         Step                                                                                                            Chemicals
+                     Lower                 Upper Lower                Upper     Lower                     Upper
+                                 Aim                           Aim                             Aim
+                     Limit                 Limit Limit                Limit     Limit                     Limit       (Concentrate:Water)
+ First Developer       5:00      6:00       7:00      36.7      38.0    39.4    1,938         2,153       2,368               1:4
+                                                     (98.0)   (100.4) (103.0)   (180)         (200)       (220)
+ First Wash            1:00      2:00       4:00      33.3      38.0    39.4     —           7.5 L/min       —                —
+                                                     (92.0)   (100.4) (103.0)               (2 gal/min)
+ Reversal Bath         1:00      2:00       4:00      24.0      —       39.4     916          1,076       1,236              1:19
+                                                     (75.0)           (103.0)    (85)         (100)       (115)
+ Color Developer       5:00      6:00       7:00      36.7      38.0    39.4    1,938         2,153       2.368              1:1:3
+                                                     (98.0)   (100.4) (103.0)   (180)         (200)       (220)
+ Pre-Bleach            2:00      2:00       4:00      24.0      —       39.4     916          1,076       1,236               1:9
+                                                     (75.0)           (103.0)    (85)         (100)       (115)
+ Bleach                6:00      6:00       8:00      33.3      —       39.4     —             215           —            No dilution
+                                                     (92.0)           (103.0)                  (20)
+ Fixer                 4:00      4:00       6:00      33.3      —       39.4     916          1,076       1,236               1:9
+                                                     (92.0)           (103.0)    (85)         (100)       (115)
+ Final Wash*           4:00      4:00       8:00      33.3      —       39.4     —           7.5 L/min       —                —
+                                                     (92.0)           (103.0)               (2 gal/min)
+ Final Rinse           0:30      1:00       2:00      24.0      —       39.4     —            1,076          —               1:99
+                                                     (75.0)           (103.0)                 (100)
+* For best results, use a countercurrent-flow final wash.
+
+
+
+
+Process Temperature                                                             Process Time
+Slight variations in developer solution temperature can                         Time affects process control in about the same way that
+affect process control. In other processing solutions,                          temperature does. It is particularly critical for the
+temperature variations of a few degrees are not as critical.                    developers that you use the correct time. Use a stopwatch to
+   Once you have established the first- and color-developer                     measure the time that the film is in a solution from the time
+temperatures, maintain them within these limits:                                the film enters the solution to the time it enters the next
+                                                                                solution (or wash).
+     First Developer ±0.2°C (±0.3°F)                                               Once you have established the first- and color-developer
+                                                                                times, maintain them within these limits:
+     Color Developer ±0.3°C (±0.5°F)
+                                                                                        First Developer ±5 seconds
+                                                                                        Color Developer ±5 seconds
+
+
+
+
+                                                                                                                                            3-1
+Agitation                                                             Recirculation
+Agitation increases solution activity by removing used                Recirculation keeps the processing temperature uniform
+solution from the film surface and replacing it with fresh            throughout the processing solution. To maintain uniform
+solution. Too little agitation causes streaks or spots on the         temperature, concentration, and solution cleanliness, you
+film. Too much agitation mixes air into the solution, causing         must recirculate the first developer, color developer, bleach,
+some of the chemicals to oxidize. Oxidation is particularly           and fixer solutions. Recirculate the reversal bath, pre-bleach,
+harmful to the first and color developers. Two common                 and final rinse only as needed.
+methods of producing solution agitation are: 1) moving the
+film through the solution, and 2) moving the solution over            Filtration
+the film surface. The first method is used in continuous,             Processing solutions and wash water may contain some
+roller-transport, and rotary-tube processors, and in sink-line        insoluble solids and tars. If you don’t remove this material,
+processes (with manual agitation). The second method is               it can adhere to the film and to tank walls, rollers, and lines,
+used in rack-and-tank processors and in some continuous               and damage the film. Filters should be able to remove 10- to
+processors, as well as in sink-line processes. It consists of         30-micron-size particles from processing solutions and 5- to
+bubbling an inert gas (i.e., nitrogen for developers, air for         25-micron-size particles from wash water.
+other solutions) through the solution.                                   Table 3-3 lists the filter materials available; it also lists if
+                                                                      they are recommended for use with KODAK Chemicals,
+Table 3-2                                                             Process E-6.
+Methods of Agitation
+                                                                      Table 3-3
+                         Continuous, Roller-                          Filter Materials
+                          Transport, Rotary-          Rack-and-Tank
+                        Tube Processors, and           Processors
+        Step                                                              Recommended                     Not Recommended
+                         Sink-Line Processes          and Sink-Line
+                             (with Manual               Processes     Bleached cotton           Fiberglass with phenolic binder
+                              Agitation)                              Cellulose with phenolic Polyester with phenolic resin binder
+First Developer        Movement of film                  Nitrogen     resin binder
+Wash                   through the solution                Air        Polyester fiber           Wool with phenolic resin binder
+                       provides some agitation;
+Reversal Bath          slow speed machines                None        Polypropylene             Viscose rayon with phenolic resin
+                       may require                                                              binder
+Color Developer                                          Nitrogen
+                       supplemental agitation                         Spun polypropylene        Viscose rayon
+Pre-Bleach                                                None
+Bleach*                                                    Air
+Fixer                                                      Air           Polypropylene is the most acceptable filter-core material
+Wash                                                       Air        and one of the least expensive. However, many
+                                                                      polypropylene yarns are produced by using surfactants.
+Final Rinse                                               None
+                                                                      While polypropylene itself appears to have no photographic
+* Aeration is required for all types of processing.                   effect, some of these surfactants may; therefore, monitor
+                                                                      your process carefully when you first change filters.
+
+
+
+
+3-2
+Replenishment                                                     Drying
+During processing, some chemicals in the processing               Film drying is influenced by the design of the dryer, time in
+solution are used up, and some chemicals in the film dissolve     the dryer, the pattern of air flow, the amount of final rinse
+into the solution. These changes exhaust the solution. To         carried into the dryer, and the humidity and temperature of
+compensate for these changes, and restore the solution’s          the air in the dryer. Film drying can also be influenced by the
+normal activity, you add replenisher solution. The rate at        ambient temperature and relative humidity. You must
+which you add replenisher solution affects the solutions’s        determine the optimum conditions for drying film for each
+composition and activity.                                         processor. When your dryer is set correctly, the film will be
+   You can add replenisher in one of four ways:                   dry when it is approximately one-half to three-quarters of the
+• By replenishing for a batch of film processed; add              way through the dryer.
+   replenisher in a single amount after processing a batch of        Do not use drying temperatures higher than 63°C (145°F).
+   film.                                                          High drying temperatures cause excessive film curl. Filter
+• By feeding concentrate and water in simultaneously as a         the air in the dryer to reduce dirt. If the film has spots or
+  batch of film is processed.                                     streaks after drying, check for problems in the final rinse
+• By continuously feeding replenisher in at a set rate during     solution.
+  processing.
+• By continuously feeding concentrate and water in
+                                                                  Checklists
+  simultaneously at a set rate during processing. This is         Routine use of a start-up and shutdown checklist will help
+  similar to the third method, but the concentrate and the        you keep your processor in good operating condition. Also,
+  water are metered in separately instead of mixing the           use your process maintenance checklist to follow a regular
+  chemicals beforehand.                                           processor-maintenance schedule. For information about
+  It is important that you calibrate and check all replenisher    maintenance, see section 11.
+pumps and flowmeters frequently to be sure they are
+providing the correct amount of solution (or water).              COLOR-BALANCE CONTROL
+  Use only the rates recommended, especially with the
+developers. Initially, incorrect replenishment rates may not
+                                                                  Adjusting the pH
+appear to affect your control plot, but eventually the effect     If your process is in control for the LD step, but has a blue or
+will be significant. Also, image structure (graininess,           yellow spread in the HD step, you can correct it by adjusting
+sharpness, color quality, etc) can be affected without much       the pH of the color-developer tank solution with 5N NaOH
+change in the control plots. The problem may be more              or 5N H2SO4; see Table 3-4.
+apparent in your production than in the control strip.            Table 3-4
+                                                                  Color-Developer pH Adjustments for
+Wash-Water Control                                                Color-Balance Change
+Maintain the wash-water temperature and flow rate
+according to the recommended steps and conditions for your           Color
+                                                                    Balance
+processor. A low flow rate or incorrect temperature in the                                              Add to        To Change
+                                                                   Compared           Control
+first wash can cause speed and color-balance changes, and                                                Tank          the Color
+                                                                     to the            Plot
+                                                                                                       Solution         Balance
+poor dye stability.                                                Reference
+   Do not use a wash between the reversal bath and color              Strip
+developer or between the pre-bleach and bleach. Replace           Blue           Blue density plots    1 mL/L of         0.05
+water filters regularly to reduce dirt in the wash water. Use a                  below the red and      sodium
+                                                                                 green densities       hydroxide
+flowmeter to be sure that you are using the correct water flow                   for the HD step      (5N NaOH)
+rate. To minimize algae formation, drain the wash tanks each
+night (or at the end of the final shift), and especially over     Yellow         Blue density plots     1 mL/L of        0.05
+                                                                                 above the red        sulfuric acid
+weekends and holidays.                                                           and green            (5N H2SO4)
+                                                                                 densities for the         or
+                                                                                 HD step                1 mL/L of
+                                                                                                       28% acetic
+                                                                                                          acid
+
+
+
+
+                                                                                                                                3-3
+Calculations                                                           Preparing Sulfuric Acid Solution
+Calculate the amount of 5N sodium hydroxide or sulfuric
+acid needed to correct an out-of-control color balance by
+                                                                               Warning
+using this formula:
+                                                                       Follow the precautions on the container label. Sulfuric acid
+  mL of 5N acid
+                                                                       is corrosive; avoid contact with skin and clothing. Wear
+                    = color spread x       litres of
+                                                                       safety goggles, rubber gloves, and protective clothing.
+        or base           0.05           tank solution
+                                                                       To prevent a violent reaction (boiling and splattering),
+   For example, to decrease the color-balance spread by 0.14           always add the sulfuric acid to the water; never add the water
+density units to correct a blue color balance, add 2.8 mL of           to the sulfuric acid. With extreme caution and constant
+5N sodium hydroxide to each litre of color developer in the            stirring, slowly add 139 mL sulfuric acid H2SO4 (36N) to
+tank.                                                                  700 mL of cold water in a 2-litre glass beaker. Cool the
+    mL of 5N NaOH = 0.14 ÷ 0.05                                        solution to room temperature and add water to make 1 litre.
+    = 2.8 mL of 5N NaOH x litres of tank solution                      Store this solution in a glass bottle with a glass stopper, and
+  If the acid or base solution that you have is not 5N, you            label the bottle clearly.
+will first need to calculate the amount of your normality (N)
+acid or base required. To do that, use this equation:                  MONITORING WITH SPECIFIC-GRAVITY
+     mL/L of your N = (5N ÷ your N) x mL/L of 5N required
+                                                                       MEASUREMENTS
+  Then find the total volume of acid or base you need for
+                                                                       Definition
+your tank volume.
+                                                                       Measuring specific gravity is a quick way of checking for
+    Volume of your acid or base needed (mL) =
+                                                                       proper mixing of your solutions. You can also make
+    Tank volume (L) x mL/L of your acid or base
+                                                                       adjustments to your solutions by using specific-gravity
+                                                                       measurements.
+Preparing Sodium Hydroxide Solution                                      Specific gravity is the ratio of the mass of a liquid to the
+                                                                       mass of an equal volume of water. It is a convenient way to
+                                                                       measure the total dissolved material in a solution and check
+          Warning                                                      the concentration of processing solutions. Use specific-
+Follow the precautions for safe handling on the container              gravity measurements to check for mixing errors or water
+label. Sodium hydroxide is corrosive; avoid contact with
+                                                                       evaporation from solutions. There are three ways that you
+skin and clothing. Wear safety goggles, rubber gloves, and
+                                                                       can use specific-gravity measurements for process control.
+protective clothing. Do not weigh sodium hydroxide in an
+                                                                       • To check for errors in mixing fresh tank and replenisher
+aluminum dish.
+                                                                         solutions (see section 2, “Chemicals and Chemical
+To prevent a violent reaction (boiling and splattering),                 Mixing”).
+always add the sodium hydroxide to the water; never add the            • To check tank solutions for evaporation (see section 4,
+water to the sodium hydroxide. With extreme caution and                  “Starting Up Your Process”).
+constant stirring, slowly add 200 grams of sodium hydroxide
+(NaOH) to 500 mL of cold water in a 2-litre glass beaker.              • To adjust the concentration of your color-developer tank
+Cool the solution to room temperature and add water to make              solution to optimize the process for contrast (see section 4,
+                                                                         “Starting Up Your Process”).
+1 litre. Store this solution in a glass bottle with a rubber
+stopper or in a plastic (polyethylene) bottle, and label the             Table 3-5 lists the specific-gravity aims for Process E-6
+bottle clearly.                                                        replenisher solutions and fresh tank and seasoned tank
+                                                                       solutions.
+Table 3-5
+Specific-Gravity Aims
+
+                                            Specific Gravity Measured                          Specific Gravity Measured
+                                                  at 27°C (80°F)                                   at 38°C (100.4°F)
+              Solution
+                                                                       Seasoned                                         Seasoned
+                                  Replenisher          Fresh Tank                     Replenisher      Fresh Tank
+                                                                         Tank                                             Tank
+PROFESSIONAL First                1.057 ±0.003         1.055 ±0.003   1.060 ±0.003    1.054 ±0.003     1.052 ±0.003    1.057 ±0.003
+Developer
+PROFESSIONAL Reversal Bath        1.006 ±0.003         1.004 ±0.003   1.005 ±0.003    1.002 ±0.003     1.001 ±0.003    1.002 ±0.003
+PROFESSIONAL Color                1.039 ±0.003         1.033 ±0.003   1.038 ±0.003    1.036 ±0.003     1.030 ±0.003    1.035 ±0.003
+Developer
+PROFESSIONAL Pre-Bleach           1.019 ±0.003         1.019 ±0.003   1.021 ±0.004    1.016 ±0.003     1.016 ±0.003    1.018 ±0.004
+Bleach                            1.260 ±0.010         1.130 ±0.010   1.190 ±0.070    1.257 ±0.010     1.127 ±0.010    1.187 ±0.070
+Fixer                             1.041 ±0.003         1.041 ±0.003   1.065 ±0.025    1.038 ±0.003     1.038 ±0.003    1.062 ±0.025
+
+
+
+3-4
+Measuring Specific Gravity                                                 1. Fill a clean, dry 250 mL graduated cylinder to within
+You can make specific-gravity measurements of your                            2.5 cm (1 inch) of the top with the solution you are
+solutions with any hydrometer that meets the standard ANSI/                   measuring.
+ASTM E100-72. The hydrometer should be marked in                           2. Adjust the solution to the proper temperature (see the
+increments of at least 0.001 for an accuracy of ±0.0005.                      specifications given in Table 3-5). Proper solution
+Although most hydrometers are calibrated at 15.6°C (60°F),                    temperature is very important.
+they are useful at other temperatures. To measure the                      3. Place the cylinder in a sink or tray to catch overflow.
+specific gravity of Process E-6 solutions, you will need the
+standard hydrometers listed in Table 3-6.                                  4. Choose the correct hydrometer to match the
+                                                                              approximate specific gravity of the solution. (See the
+Table 3-6                                                                     hydrometer ranges listed in Table 3-6.)
+Hydrometers for Process E-6 Solutions                                      5. Be sure that the hydrometer is clean and dry.
+                                                                              Carefully lower the hydrometer into the solution. Let
+                              Range of
+     Solution
+                         Standard Hydrometer
+                                                          ASTM No.            it bob up and down slightly. When it stops, read the
+                                                                              number at the top of the MENISCUS.
+First developer               1.050 to 1.100                 126H
+and replenisher
+Reversal bath                 1.000 to 1.050                 125H
+and replenisher
+
+Color developer                                                              Reading is 1.063
+and replenisher
+                                                                              Reading is 1.063    Line of
+Pre-Bleach and                                                                      60            vision
+                                                                                                  Line of
+replenisher
+                                                                                    60            vision
+
+
+Bleach* and                   1.100 to 1.150                 127H
+replenisher                   1.150 to 1.200                 128H
+                              1.200 to 1.250                 129H
+                              1.250 to 1.300                 130H
+Fixer* and                    1.000 to 1.050                 125H
+replenisher                                                             Solution
+                              1.050 to 1.100                 126H
+                                                                        level
+* More than one hydrometer is listed for bleach and fixer because the    Solution
+                                                                            MENISCUS
+  acceptable ranges of the specific-gravity measurements for these       level
+  solutions are large.                                                              Hydrometer stem
+                                                                             MENISCUS
+                                                                                              Hydrometer
+                                                                                         Hydrometer stem
+Note: You should not need all six standard hydrometers
+listed in Table 3-6 for any one type of machine running                                       Hydrometer
+Process E-6.
+
+
+
+                                                                                                                          F009_9003GC
+
+                                                                           6. After making the measurement, discard the sample.
+                                                                              To avoid contaminating solutions, do not return the
+                                                                              sample to the tank.
+                                                                           7. Rinse the hydrometer and graduated cylinder
+                                                                              thoroughly with water.
+
+                                                                        Note: Never take specific-gravity readings of solutions in
+                                                                        the tanks. If you use the wrong hydrometer, it can sink to the
+                                                                        bottom of the tank and break, or bob on the surface, where
+                                                                        the stem may hit the edge of the tank and break. Label
+                                                                        hydrometer boxes to avoid confusion.
+                                                                        Do not use tape labels on the hydrometers.
+
+
+
+
+                                                                                                                                  3-5
+Adjusting Your Processing Solutions by Using                       Table 3-1
+Specific-Gravity Measurements                                      Addition of Water to Correct for Overconcentration of
+First and Color Developers: The first and color developers         First Developer—Seasoned Tank Solution
+are the most critical solutions in Process E-6; it is especially                                         Specific         mL Water
+                                                                     Specific         mL Water
+important to maintain proper concentrations.                         Gravity at
+                                                                                                        Gravity at       per Litre of
+                                                                                     per Litre of
+   You can use specific-gravity measurements to correct for                                               38°C              Tank
+                                                                    27°C (80°F)     Tank Solution
+overconcentration or underconcentration. A sample                                                       (100.4°F)         Solution
+calculation for overconcentration is given below. In the               1.060                0              1.057               0
+example, the calculation is done by using the difference               1.061               16              1.058              16
+between the specific gravity of an overconcentrated solution           1.062               32              1.059              32
+and the specific-gravity aim. With this type of calculation,           1.063              48               1.060             48
+you can determine the amount of overconcentration. Or, you             1.064              63               1.061             63
+can use the values in Table 3-1 instead of making a                    1.065              77               1.062             77
+calculation for overconcentrated first developer. To adjust            1.066              91               1.063             91
+the solution, remove and discard 8.3 litres of solution.               1.067              104              1.064             104
+Replace that amount of solution with the same amount of                1.068              118              1.065             118
+water. After the water is added, the specific gravity of the           1.069              130              1.066             130
+solution should be 1.063 ±0.003 (at 25°C [77°F]).                      1.070              143              1.067             143
+Example of a Specific-Gravity Calculation: You suspect                 1.071              155              1.068             155
+that your first-developer tank solution is overconcentrated.           1.072              167              1.069             167
+You measure its specific gravity at 27°C (80°F); the specific          1.073              178              1.070             178
+gravity is 1.069. When you check Table 3-5, you note that              1.074              189              1.071             189
+the specific-gravity aim for a seasoned tank solution is 1.063         1.075              200              1.072             200
+±0.003. To correct the solution, you need to know the                  1.076              211              1.073             211
+volume of the tank to calculate the amount of adjustment               1.077              221              1.074             221
+required. In this case, the tank volume is 95 litres. Sample
+                                                                   Table 3-2
+calculations are as follows:                                       Addition of KODAK First Developer Concentrate,
+                                                                   Process E-6AR, to Correct for Underconcentration of
+                                Step                               Seasoned Tank Solution
+ A Specific gravity of first-developer tank solution    1.069
+                                                                     Specific        mL of                         mL of
+ B Specific-gravity aim                                 1.063*      Gravity at                     Specific
+                                                                                   Concentrate    Gravity at    Concentrate
+ C A minus B                                            0.006          27°C        per Litre of                  per Litre of
+                                                                                                38°C (100.4°F)
+ D A minus 1.000 (the specific gravity of water)        0.069         (80°F)      Tank Solution                Tank Solution
+
+ E Amount of overconcentration (C divided by D)        0.087†         1.060              0               1.057               0
+                                                                      1.059              5               1.056               5
+ F Volume of tank solution                               95 L
+                                                                      1.058              9               1.055               9
+ G Volume of water to add to tank solution              8.3 L
+   (E multiplied by F)                                                1.057             14               1.054               14
+                                                                      1.056             19               1.053               19
+* From Table 3-5
+† 0.087 equals 8.7 percent overconcentration.                         1.055             23               1.052               23
+                                                                      1.054             28               1.051               28
+  You can also adjust underconcentrated solutions by using            1.053             32               1.050               32
+specific-gravity measurements. If your first-developer tank           1.052             36               1.049               36
+solution is diluted by a water leak, you can adjust the               1.051             41               1.048               41
+solution by adding undiluted KODAK First Developer                    1.050             45               1.047               45
+Concentrate, Process E-6AR. To make the adjustment,                   1.049             49               1.046               49
+measure the specific gravity. Then use Table 3-2 to                   1.048             54               1.045               54
+determine the amount of first developer replenisher                   1.047             58               1.044               58
+concentrate you need to add for each litre of tank solution.          1.046             62               1.043               62
+(Table 3-4 has information for adjusting seasoned color
+                                                                      1.045             66               1.042               66
+developer for underconcentration.) Finally, remove the
+                                                                      1.044             70               1.041               70
+amount of the underconcentrated solution you have
+                                                                      1.043             74               1.040               74
+determined in your calculation, and replace it with undiluted
+                                                                      1.042             78               1.039               78
+replenisher.
+                                                                      1.041             82               1.038               82
+                                                                   For each 40 mL of undiluted First Developer Replenisher, Process
+                                                                   E-6AR, add 1 mL of KODAK First Developer Starter, Process E-6
+
+
+
+
+3-6
+Table 3-3
+Addition of Water to Correct for
+Overconcentration of Color Developer—
+Seasoned Tank Solution
+
+                                     Specific       mL of
+  Specific         mL of             Gravity
+   Gravity                                        Water per
+                 Water per         Measured at
+ Measured at                                       Litre of
+                  Litre of            38°C          Tank
+ 27°C (80°F)   Tank Solution
+                                    (100.4°F)     Solution
+    1.038            0                1.035              0
+    1.039           26                1.036             26
+    1.040           50                1.037             50
+    1.041           73                1.038             73
+    1.042           95                1.039             95
+    1.043           116               1.040          116
+    1.044           136               1.041          136
+    1.045           156               1.042          156
+    1.046           174               1.043          174
+    1.047           191               1.044          191
+    1.048           208
+
+
+
+
+Table 3-4
+Addition of Undiluted KODAK PROFESSIONAL
+Color Developer Replenisher, Process E-6AR,
+to Correct for Underconcentration of Seasoned Tank
+Solution
+
+ Specific Gravity     mL of Part A             mL of Part B     Specific Gravity    mL of Part A      mL of Part B
+  Measured at        Concentrate per          Concentrate per     Measured at      Concentrate per   Concentrate per
+                      Litre of Tank            Litre of Tank                        Litre of Tank     Litre of Tank
+   27°C (80°F)                                                   38°C (100.4°F)
+                        Solution                 Solution                             Solution          Solution
+      1.038                    0                    0                1.035               0                 0
+      1.037                    4                    4                1.034               4                 4
+      1.036                    8                    8                1.033               8                 8
+      1.035                13                       13               1.032               13                13
+      1.034                16                       16               1.031               16                16
+      1.033                20                       20               1.030               20                20
+      1.032                24                       24               1.029               24                24
+      1.031                28                       28               1.028               28                28
+      1.030                31                       31               1.027               31                31
+      1.029                34                       34               1.026               34                34
+      1.028                38                       38
+            For each 40 mL of undiluted KODAK PROFESSIONAL Color Developer Replenisher, Process E-6AR,
+                Parts A and B, add 1 mL of KODAK PROFESSIONAL Color Developer Starter II, Process E-6
+
+
+
+
+                                                                                                                       3-7
+APPENDIX 1                                                            Table 3-1
+                                                                      Example 1
+HYDROMETER CROSSOVER PROCEDURE
+Like other measuring instruments, hydrometers have an                                        Reading with         Reading with
+inherent variability. Although the variability from                     Measurement             “Old”                “New”
+hydrometer to hydrometer is usually small, you should run a                                  Hydrometer           Hydrometer
+crossover test when you use a “new” hydrometer. To run a                      1                    1.063              1.062
+crossover test, follow these steps:                                           2                    1.062              1.062
+    8. Make specific-gravity measurements of at least four                    3                    1.063              1.063
+       different samples of the same tank solution with both                  4                    1.062              1.063
+       the “old” and the “new” hydrometer.
+                                                                              5                    1.064              1.064
+      9. Determine the average measurement for each                          Total                 5.314              5.314
+         hydrometer by adding the measurements and
+         dividing the result by the number of readings.               Average Reading—
+                                                                      “old” hydrometer       5.314
+      10. To calculate the difference between the hydrometers,                                        = 1.0628
+          subtract the smaller average from the larger average.                                5
+                                                                      Average Reading—
+   If the difference between the average readings for the             “new” hydrometer       5.314    = 1.0628
+hydrometers is greater than 0.002, contact your Kodak
+                                                                                               5
+account executive to help you determine which hydrometer
+is correct. If the difference is less than or equal to 0.002, start   Difference = 1.0628 – 1.0628 = 0; use the “new” hydrometer.
+using the “new” hydrometer.
+Note: Sample calculations are shown at the right.
+                                                                      Table 3-2
+                                                                      Example 2
+
+                                                                                             Reading with         Reading with
+                                                                        Measurement             “Old”                “New”
+                                                                                             Hydrometer           Hydrometer
+                                                                              1                    1.063              1.066
+                                                                              2                    1.062              1.065
+                                                                              3                    1.061              1.064
+                                                                              4                    1.062              1.066
+                                                                              5                    1.064              1.066
+                                                                             Total                 5.312              5.327
+
+                                                                      Average Reading—
+                                                                      “old” hydrometer       5.312    = 1.0624
+                                                                                               5
+                                                                      Average Reading—
+                                                                      “new” hydrometer       5.327    = 1.0654
+                                                                                               5
+                                                                      Difference = 1.0654 – 1.0624 = 0.003 > 0.002; contact your
+                                                                      account executive to determine which hydrometer is correct.
+
+
+
+
+3-8
+

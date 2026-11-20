@@ -1,0 +1,103 @@
+# https://www.vantagefilm.com/file/edee/downloads/psu/vantagepsu4.pdf
+
+             ST R
+                    EAM
+                          ING
+                                WO
+                                     RLD
+                                           -W I
+                                                  DE
+                                                       FRO
+                                                             MS
+                                                                  ET
+
+
+
+PSU
+THE ULTIMATE
+VIDEO ASSIST
+
+
+
+
+With the PSU4® Vantage presents a new digital
+video assist for the film set. The PSU4® achieves
+several major goals: 4K processing, 8 channel full
+HD architecture, super easy user interface, plug
+and play functionality, ultra-
+compactness in size, power-
+consumption and weight.
+                                From set to anyplace on earth,
+                                 the PSU4 provides secure and
+                                 reliable international collaboration
+                                 via streaming feature.
+
+
+
+Software Features                         Hardware Features
+• 8 independent video-outs               • Lightweight and robust
+• Up to 8 views per video-out               hardware, easy to carry
+   (cams/playbacks)                       • Professional display, daylight
+• Picture Settings can be effective         readable (1100 cd/m²),
+   on every view                             sensitive PCAP touchscreen,
+• 4 independent WiFi streams                coated Gorilla glass, optically
+   to iPads / iPhones / Macs                 bonded, carbon sun shades
+   (unlimited number of clients)          • Default configuration: 4x
+• 2-way intercom with WiFi clients          max.1080p60 input and output
+• Full PSU-remote-control via WiFi       • Optional configuration: 8x
+• Configurable touch interface              max.1080p60 input and output
+   (easy > advanced)                      • 1x HDMI-out up to 4K p60
+• 4 independent playbacks                • Video-input hardware prepared
+• Advanced overlay with 8                   for 4x 4Kp30, 3x 4Kp60
+   arbitrary layers                       • Video-output hardware
+• Instant time-lapse/slow-motion/           prepared for 2x 4Kp30,
+   ramp simulation (with audio)              1x 4Kp60, audio / TC
+• Chroma keying                             embedded in SDI
+• Smart Videohub control interface       • 4 plug-in 4K optical fiber inputs
+• ASC CDL speed color grading            • 2 plug-in HDMI inputs
+                                             (total 6 inputs)
+• LUT support and generator
+                                          • 4 plug-in analog SD-inputs
+• Image analysis with waveforms,
+                                             (total 8 inputs)
+   vectorscope, false color index
+                                          • Integrated WiFi router
+• Basic editing
+                                             (dual channel 2.4 / 5 GHz)
+• Alexa metadata support
+                                             controlled by PSU
+• Take notes / job reports
+                                          • 3/8" mounts to attach
+• Video-out monitoring on PSU
+                                             accessories
+
+
+
+
+                                                                                 05/2020 All features mentioned here are subject to change without further notice. Patented
+   or WiFi
+                                          • 2x 12V accessory power up
+• Automatic take backup
+                                             to 20W
+• Footage import / export via
+                                          • 2x USB-3.0 connectors backed
+   USB-devices, wireless network
+                                             with 12W power for
+   or cabled network
+                                             iPad / iPhone-fast-charging
+• ProRes 422 import / export
+                                          • 2 slots for data storage
+• Advanced audio capabilities               modules
+• Visual take selection with filtering   • Up to 20 TB SSD disc capacity
+• Platform independent wireless          • 2 battery connectors with
+   frame grab interface (for script)         hot-swap
+• Automatic Rec-Start/Stop
+• Scene/shot/take support
+• Optional uncompressed
+   recording
+• Keyboard support
+
+
+Made in Germany by Vantage Film GmbH
+www.vantagefilm.com
+

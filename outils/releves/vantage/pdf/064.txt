@@ -1,0 +1,56 @@
+# https://www.vantagefilm.com/file/edee/downloads/optics/1.3x-hawk-anamorphic-lenses/hawk65-vintage74-technical-data.pdf
+
+Hawk65 Vintage‘74
+Large Format Anamorphics – Technical Data
+The smart 1.3x squeeze offers an array of benefits and options. With large 24x36 mm sensors,
+for example, 1.3x produces the increasingly popular aspect ratio of 2:1 while making full use of
+the sensor’s area and resolution. A slight top / bottom crop produces widescreen ratios like 2.4:1.
+Meanwhile, an ingenious patented Iris Shaping System produces bokeh similar to that of a 2x
+squeeze for classic anamorphic flavor.
+
+
+                                     Focal Length                  metric                     imperial        Angle of View*     Weight           Front         Overall        Min. Filter      Image Area       Illumination
+             Lens
+                                          Stop               CFD            MOD          CFD          MOD      horizontal      kg     Ibs      Diameter          Length            Size          diagonal       Area diagonal
+
+  Hawk65‘74 35                        35 mm/T2.6             0.8 m        0.61 m         2‘7“            2‘       70°          3.5    7.7       156 mm          165 mm           4x5.65“            46 mm          46.5 mm
+
+  Hawk65‘74 40                        40 mm/T2.6                1m         0.8 m         3‘3“         2‘7“        63.3°        3.6    7.9       156 mm          178 mm           4x5.65“            48 mm             49 mm
+
+  Hawk65‘74 45                        45 mm/T2.6                1m         0.8 m         3‘3“         2‘7“        57.3°        3.8    8.4       156 mm          191 mm           4x5.65“            50 mm             51 mm
+
+  Hawk65‘74 50                        50 mm/T2.6             0.8 m        0.51 m         2‘7“         1‘8“        50°          3.8    8.4       142 mm          257 mm           4x5.65“            51 mm             52 mm
+
+  Hawk65‘74 60                        60 mm/T2.6                1m        0.74 m         3‘3“         2‘5“        41.7°        3.3    7.3       125 mm          225 mm           4x5.65“            52 mm             53 mm
+
+  Hawk65‘74 65   macro                65 mm/T2.9            0.55 m        0.31m         1‘10“            1‘       38.8°        3.4    7.6       125 mm          210 mm           4x5.65“         51.5 mm           52.5 mm
+
+  Hawk65‘74 70                        70 mm/T2.6                1m         0.8 m         3‘3“         2‘7“        35.4°        2.9    6.4       120 mm          195 mm           4x5.65“         51.5 mm           52.5 mm
+
+  Hawk65‘74 80                        80 mm/T3.2             0.8 m        0.54 m         2‘7“         1‘9“        31.9°        2.8    6.2       104 mm          234 mm           4x5.65“         53.5 mm              54 mm
+
+  Hawk65‘74 95                        95 mm/T3.2                1m        0.76 m         3‘3“         2‘6“       28.5°         2.5    5.5       104 mm          209 mm           4x5.65“            54 mm             55 mm
+
+  Hawk65‘74 120                      120 mm/T3.5                1m        0.71 m         3‘3“         2‘4“       24.5°         3.9    8.6       120 mm          260 mm           4x5.65“            58 mm             60 mm
+
+  Hawk65‘74 150                      150 mm/T3.5                1m        0.72 m         3‘3“         2‘4“       23.5°         3.9    8.6       120 mm          250 mm           4x5.65“          > 60 mm          > 60 mm
+                                                                                                                                                  *Angle of view – quoted for large format (25.54 x 36.70 mm sensor size Mini LF)
+
+
+                                       CFD – Close Focus Distance
+                                                                                                                                                                                                  Anamorphic Lens –
+                                                                                                                                                                                                  the Illumination Area is
+                                                                                                                                                                                                  of rectangular shape.
+
+
+                                                                                                                                                                                                  Image Area
+
+                                                                                                                                                                                                  Illumination Area
+
+                                       MOD – Minimal Object
+                                                 Distance
+
+
+                                                               Technical specifications are subject to change without notice – additional lenses will follow. Made in Germany by Vantage Film
+ Hawk®, Hawk Anamorphic®, Vantage® are registered trade-marks of Vantage Film GmbH, Germany. For further information contact Vantage Film, Phone +49 961 26795, www.vantagefilm.com
+

@@ -1,0 +1,404 @@
+# https://business.kodakmoments.com/sites/default/files/wysiwyg/retailers/chemistry/techpub/CIS-269.pdf
+
+Using KODAK EKTACOLOR Digital Developer
+Replenisher RT in Roller-Transport Processors
+
+
+CURRENT INFORMATION SUMMARY                                                                                        December 2017 • CIS-269
+
+
+
+KODAK EKTACOLOR Digital Developer Replenisher                                      Steps and Conditions
+RT is designed for use in roller-transport processors. It is                       Use the processing steps and conditions in Table 1 for
+designed to produce higher contrast and D-max results                              processing KODAK PROFESSIONAL PORTRA ENDURA,
+with KODAK Color Negative Papers and Display                                       SUPRA ENDURA, ULTRA ENDURA, and ENDURA Metallic
+Materials. KODAK EKTACOLOR Digital Developer                                       Papers; PORTRA Black & White and PORTRA Sepia Black
+Replenisher RT is specially formulated to reduce the                               & White Papers in roller-transport processors. See Table 3
+effects of oxidation and evaporation.                                              for replenishment rates.
+                                                                                      To process KODAK PROFESSIONAL ENDURA
+                                                                                   Transparency and Clear Display Materials, use the steps
+                                                                                   and conditions in Table 6. See Table 3 for replenishment
+                                                                                   rates.
+
+Table 1 Processing Steps and Conditions for Process RA-4—
+Roller-Transport Processors
+                                   Time*             Temperature
+       Solution/Step                                                                   Comments
+                                    sec                °C (°F)
+ EKTACOLOR Digital
+                                                      35.0 ± 0.3‡          One bottle of concentrate:
+ Developer Replenisher               45
+                                                      (95.0 ± 0.5)         92.7 m2 (1000 ft2)
+ RT
+ EKTACOLOR RA Bleach-                                   30 to 36           Recirculate and filter. Use
+                                     45
+ Fix and Replenisher                                   (86 to 96)          squeegees at tank exit.
+                                                       30 to 40
+ Wash                                90                                                     —
+                                                      (86 to 104)
+                                                      Not over 96
+ Dry                             As needed                                                  —
+                                                        (205)
+
+
+* Immersion time plus crossover time to the next tank. Developer time range is 44 to 48 seconds. Minimum
+times for other solutions can be one second less than the normal times. Longer than normal times should cause
+no adverse effect other than reducing the benefit of rapid access. For best results, use the recommended times
+with crossover times of 6 seconds or less. If the crossover time is longer than 6 seconds, the paper or material
+must be in the developer tank for at least 40 seconds.
+‡ Check the developer temperature frequently with an accurate thermometer.
+
+§ You can use EKTACOLOR RA Bleach-Fix and Replenisher NR if your processor utilization is at least 15 percent.
+¶ Where water conservation is required, you can replace the wash with a stabilizer (see Washless Option).
+
+
+
+
+© 2017 Kodak Alaris Inc.
+Mixing KODAK EKTACOLOR Digital Developer                        Replenishment Rates
+Replenisher RT                                                  The replenishment rates given in Table 3 are starting-point
+KODAK EKTACOLOR Digital Developer Replenisher RT is             recommendations only. Actual rates depend on the type of
+supplied a carton containing two bottles of concentrate to      processor, the paper or material processed, and the rate of
+make 12.5 gallons of mixed replenisher. Start with              evaporation and oxidation. If you process several
+approximately 9 gallons of water. Add the entire contents       products, use an average rate based on the product mix,
+of Part A, followed by the entire contents of Part B. Then      and adjust it as needed according to control-plot results.
+add the remaining water for the total of 12.5 gallons. Stir     Avoid over controlling replenishment rates. Rate changes
+the solution until mixed—approximately 5 minutes. Store         are likely to be small, and you may not see the full effect
+the developer replenisher in a tank with a floating lid cover   of changes for several weeks.
+to reduce evaporation and decomposition.
+   An alternative method of mixing solution is to use an        Table 3
+automatic mixer that automatically mixes the replenisher                                                   Developer
+and pumps it to a holding tank. Carefully calibrate the                   KODAK PROFESSIONAL
+                                                                                                       Replenishment Rate
+                                                                            Paper or Material
+delivery of the concentrates and the water according to the                                            mL/m2 and (mL/ft2)
+following table.                                                 PORTRA ENDURA                              174 (16.2)
+                                                                 SUPRA ENDURA
+Table 2—Replenisher Mix
+                                                                 ULTRA ENDURA                               194 (18)
+                                    Volume per one-Litre of      ENDURA Metallic
+           Component
+                                         Replenisher
+                                                                 PORTRA Black & White
+              Water                        800 mL                                                           174 (16.2)
+                                                                 PORTRA Sepia Black & White
+EKTACOLOR Digital Developer
+                                            100 mL               ENDURA Transparency Display
+Replenisher RT, Part A                                                                                      495 (46)
+                                                                 ENDURA Clear Display
+EKTACOLOR Digital Developer
+                                            100 mL
+Replenisher RT, Part B
+                                                                Bleach-Fix Replenishment Rate—
+Follow the mixer manufacturer’s recommendations to              The starting replenishment rate for EKTACOLOR RA
+accurately set up the mixing routine. Following the             Bleach-Fix and Replenisher for KODAK PROFESSIONAL
+addition of each of the two parts, briefly rinse the delivery   Papers is 215 mL/m2 (20 mL/ft2).
+funnel with water so that the two concentrates do not              For ENDURA Transparency and Clear Display Materials,
+come into direct contact. The total water from the initial      the starting bleach-fix replenishment rate is 495 mL/m2
+delivery and the water from the rinses should total 800         (46 mL/ft2).
+mL for each litre mixed.                                           Do not use EKTACOLOR Bleach-Fix and Replenisher NR
+                                                                in roller-transport processors unless the processor
+Note: Carefully observe that the mixing reservoir is            utilization is at least 15 percent. The starting rate for
+completely emptied before the next mix is made. If there is     EKTACOLOR Bleach-Fix NR is 54 mL/m2 (5 mL/ft2).
+residual mixed replenisher and there is no compensation         Bleach-fix regeneration is not recommended for
+for it, insufficient water may be added; the result of          rollertransport processors.
+insufficient water is an overconcentrated replenisher. If the
+replenisher becomes significantly overconcentrated,
+                                                                Wash and Stabilizer Replenishment Rate—
+precipitates may form in the mixed replenisher tank.            Use four countercurrent plumbed wash tanks, if possible. If
+                                                                you use fewer wash tanks, increase the wash rate
+                                                                accordingly. For the recommended rates for the number of
+                                                                wash tanks, see the following table. Adjust the wash-water
+                                                                rate for the maximum paper load processed, and then
+                                                                operate at this rate. Do not use average rates.
+
+
+
+
+2                      Using KODAK EKTACOLOR Digital Developer Replenisher RT in Roller-Transport Processors • CIS-269
+Table 4                                                                   PROCESSING KODAK PROFESSIONAL ENDURA
+      Number of Final                     Final Wash Rate                 TRANSPARENCY AND CLEAR DISPLAY
+       Wash Tanks                         mL/m2 (mL/ft2)                  MATERIALS
+               1                           10,800 (1000)*                 Although you can use the same processing chemicals for
+              2                    6460 to 10,800 (600 to 1000)           KODAK PROFESSIONAL ENDURA Transparency and
+              3                    4300 to 10,800 (400 to 1000)           ENDURA Clear Display Materials as for papers and print
+              4                    2150 to 10,800 (200 to 1000)           materials designed for Process RA-4, longer processing
+                                                                          times and higher replenishment rates are required because
+* If your processor has only one wash tank, use a wash rate of at least   these materials have thicker emulsions.
+10,800 mL/m2 (1000 mL/ft2). You may need to make other processor             Table 6 gives the steps and conditions for processing
+modifications to minimize the effect of bleach-fix carryover, because     these display materials in roller-transport processors using
+this rate may provide only a marginal safety factor.
+                                                                          Process RA-4. You can also use these conditions to
+                                                                          process display materials in continuous processors;
+Washless Option                                                           however, they are usually processed in roller-transport
+If your water supply is limited, you can use                              processors because of the inconvenience of rethreading a
+KODAK EKTACOLOR PRIME Stabilizer and Replenisher                          continuous processor. See Tables 3, 4, and 5 for
+LORR in place of a wash. Use temperature-controlled,                      replenishment rates for these materials in roller-transport
+countercurrent-flow, filtered tanks that have a recirculation             processors.
+rate of 0.40 to 0.65 tank volumes per minute. If the
+                                                                             Note that although there is a time range of 110 to 120
+recirculation or replenishment rate is too low, biological
+                                                                          seconds, the 120-second time is highly recommended for
+growth and precipitates may form and require frequent
+                                                                          the best performance. The longer time will significantly
+solution changes and tank cleaning. The stabilizer time and
+                                                                          reduce variability, especially in the yellow-record. The
+temperature are the same as for wash water. The stabilizer
+                                                                          variability can be caused, for example, by non-uniform
+replenishment rate depends on the number of tanks (see
+                                                                          agitation or low replenishment for high-density images.
+Table 5). This information applies only to roller-transport
+processors.                                                               Table 6—Processing Steps and Conditions for Process RA-4—
+                                                                          KODAK PROFESSIONAL ENDURA Transparency, and ENDURA
+Table 5—Replenishment Rates for KODAK EKTACOLOR PRIME                     Clear Display Materials
+Stabilizer
+                                                                                                     Time*       Temperature
+                                 Number of Countercurrent-Flow               Solution/Step                                             Comments
+                                                                                                      sec          °C (°F)
+KODAK PROFESSIONAL                          Tanks
+                                                                                                                                   Recirculate and
+Paper or Material                   2             3             4                                                                  filter. Use precise
+                                                                           EKTACOLOR
+                                          mL/m2 (mL/ft2)                                                          35.0 ± 0.3‡      temperature
+                                                                           Digital Developer       110 - 120‡
+                                                                                                                  (95.0 ± 0.5)     control. Use
+PORTRA ENDURA                                                              Replenisher RT
+                                   780          390           195                                                                  squeegees at tank
+SUPRA ENDURA                                                                                                                       exit.
+                                   (72)         (36)          (18)
+ULTRA ENDURA
+                                                                                                                                   Recirculate and
+ENDURA Transparency               1560          780           390          EKTACOLOR RA
+                                                                                                                    30 to 36       filter. Use
+ENDURA Clear                      (144)         (72)          (46)         Bleach-Fix and          110 - 120¶
+                                                                                                                   (86 to 96)      squeegees at tank
+                                                                           Replenisher
+                                                                                                                                   exit.
+                                                                                                                   30 to 40
+                                                                           Wash**                 220 - 240¶                                —
+                                                                                                                  (86 to 104)
+                                                                                                                  Not over 96
+                                                                           Dry                    As needed                                 —
+                                                                                                                    (205)
+
+                                                                          * Immersion time plus crossover time to the next tank.
+                                                                          † Check the developer temperature frequently with an accurate thermometer.
+                                                                          ‡ For Display Materials, the longer 120 sec developer time is recommended.
+                                                                          § Do not use EKTACOLOR RA Bleach-Fix and Replenisher NR with Display
+                                                                          Materials.
+                                                                          ¶ For best results, use the recommended times with a crossover time of 6
+                                                                          seconds or less.
+                                                                          ** Where water conservation is required, you can replace the wash with a
+                                                                          stabilizer (see Washless Option in Kodak Alaris Publication Z-130, Using KODAK
+                                                                          EKTACOLOR Chemicals).
+
+
+
+
+Using KODAK EKTACOLOR Digital Developer Replenisher RT in Roller-Transport Processors • CIS-269                                                       3
+Process Monitoring                                             Example Determination of Control Strip Aim
+Additional Adjustment Factors for KODAK                        Table 8—Determine Revised Correction Factors
+PROFESSIONAL Control Strips / Process RA-4
+With KODAK PROFESSIONAL Pro Strips Color Negative                                                  Digital
+                                                                                 Correction      Developer       Revised
+Paper Control Strips, Process RA-4 (CAT 129 8587), you           Measurement     Factors for    Adjustment      Correction
+will need to apply special adjustment factors to the                             Code 4901      Factors from     Factors
+correction factors packaged with each code of control                                             Table 7
+strips to determine your processor aim.                         Black BP-R         -0.03           -0.03            0
+KODAK EKTACOLOR Digital Developer Replenisher RT                Black BP-G           0             +0.05          +0.05
+has a higher developer activity than other                      Black BP-B         -0.02           +0.11          +0.09
+KODAK Developers. Note that the control strips are run at
+                                                                High HD-R          +0.02           +0.20          +0.22
+the paper-cycle times in Table 1.
+                                                                High HD-G          +0.02           +0.15          +0.17
+Table 7—Adjustment Factors when using KODAK EKTACOLOR           High HD-B          -0.01           +0.21          +0.20
+Digital Developer Replenisher RT                                Low LD-R           +0.04           +0.06          +0.10
+
+        Parameter           R           G            B          Low LD-G           +0.04           +0.02          +0.06
+
+Black Patch BP            +0.03       +0.05         +0.11       Low LD-B           +0.04           +0.07          +0.11
+
+HD                        +0.20        +0.15       +0.21        D-min R              0             +0.01          +0.01
+
+LD                        +0.06       +0.02        +0.07        D-min G              0             +0.01          +0.01
+
+D-min                     +0.01        +0.01       +0.01        D-min B            +0.01           +0.01          +0.02
+
+                                                               Table 9—Determination of Control Strip Aim
+Table 8 provides an example calculation of the correction
+factors and control strip aim. Use the correction factors                          Typical        Revised
+packaged with your specific control strip code. The second                       Reference       Correction    Aim for Code
+                                                                 Measurement
+column of Table 8 has the correction factors taken from                        Strip Reading    Factors from      4901
+                                                                               for Code 4901      Table 8
+the small sheet packaged with the reference strip for Code
+                                                                Black BP-R          2.52             0             2.52
+4901. The third column has the adjustment factors taken
+from Table 7. The fourth column is the sum of columns two       Black BP-G          2.40           +0.05           2.45
+and three. Apply the revised correction factors to the          Black BP-B          2.30           +0.09           2.39
+density reading you obtain from the reference strip for         High HD-R           1.64           +0.22           1.86
+Code 4901.                                                      High HD-G           1.60           +0.17           1.77
+
+As shown in Table 9, add your reference-strip density           High HD-B           1.61           +0.22           1.81
+readings and the revised correction factors from Table 8,       Low LD-R            0.76           +0.10          0.86
+paying attention to the signs, to produce the final aim for     Low LD-G            0.71           +0.06          0.79
+your process and densitometer. Compare your density             Low LD-B            0.71           +0.11          0.84
+readings of processed control strips with this aim to           D-min R             0.09           +0.01           0.10
+determine the status of your process.                           D-min G             0.09           +0.01           0.10
+                                                                D-min B             0.07           +0.02          0.09
+
+
+                                                               The Contrast, HD-LD, aim is determined from the values in
+                                                               the fourth column of Table 9. Subtract the respective LD
+                                                               value from the HD value for each color.
+
+                                                               Table 10—Calculating HD-LD Aim
+                                                                                    HD              LD           HD-LD
+                                                                R HD-LD             1.86           0.86           1.00
+                                                                G HD-LD             1.77           0.79           0.98
+                                                                B HD-LD             1.81           0.84           0.97
+
+
+
+
+4                     Using KODAK EKTACOLOR Digital Developer Replenisher RT in Roller-Transport Processors • CIS-269
+Preparation of Fresh Tank Mix using KODAK                           In the second conversion method, you can begin to use
+EKTACOLOR Digital Developer Replenisher RT                       the new replenisher on top of the existing developer tank.
+                                                                 While this avoids having to discard the existing developer
+You can prepare a fresh working tank mix for your
+                                                                 tank, it will require “chasing” the shift of the process to the
+processor using the mix volumes in the following table. You
+                                                                 higher activity with the printer setups. It will take the
+may want to short the amount of EKTACOLOR RA
+                                                                 amount of replenisher volume equivalent to three
+Developer Starter and then add the additional starter as
+                                                                 developer tank volumes to see the full effect of the new
+needed to reach the process aim. This avoids overshooting
+                                                                 replenisher and that may require several days or weeks,
+the amount of starter and a low process activity level. The
+                                                                 depending on the processor utilization.
+fresh tank may produce process control results that are
+slightly high in red and green speed, low in blue speed, and        Given the higher contrast and D-max that results from
+low in contrast. The process will season to the adjusted         KODAK EKTACOLOR Digital Developer Replenisher RT,
+control strip aim when the new replenisher is used.              for optimum results you will need to adjust and calibrate
+                                                                 your printers, following routine methods of printer setup.
+Table 11
+                                     Volume to make one Litre    LOW UTILIZATION
+            Component
+                                         of Tank Solution        When a processor is used for a small percentage of its
+Water                                        275 mL              actual capacity, the processing solutions can be affected
+EKTACOLOR Digital Developer
+                                             700 mL
+                                                                 and yield less than optimum results. At this time, there are
+Replenisher RT                                                   no recommendations for low-utilization operation with
+KODAK EKTACOLOR RA Developer                                     KODAK EKTACOLOR Digital Developer Replenisher RT.
+                                              25 mL
+Starter                                                          Use sufficient developer at a rate where the volume of
+                                                                 replenisher used in two weeks is at least equivalent to the
+Converting to KODAK EKTACOLOR Digital                            developer tank volume. To reduce oxidation further, turn off
+Developer Replenisher RT                                         the transport drive except during processing. Install a
+When you convert to KODAK EKTACOLOR Digital                      standby switch that allows you to turn off the transport
+Developer Replenisher RT you will need to run down the           drive without shutting down the recirculation pumps and
+current developer you are using and discard any remaining        temperature control.
+replenisher from replenisher storage tanks. Be sure to
+                                                                 Note: Do not use KODAK EKTACOLOR RA Developer
+follow all local regulations related to discarding old
+                                                                 Additive. It is not compatible with KODAK EKTACOLOR
+replenisher. A small amount of the previous developer is
+                                                                 Digital Developer Replenisher RT.
+tolerated, so it should not be necessary to do extraordinary
+cleaning of the replenisher tanks and lines. If maintenance
+for cleanliness of tanks and racks is scheduled, the time of
+conversion would be a good opportunity to clean up the
+system. The KODAK EKTACOLOR Digital Developer
+Replenisher RT chemistry is cleaner running; you may
+observe built-up dirt in the processor being dislodged as
+this developer seasons in.
+   There are two methods to convert from your current
+developer to begin using KODAK EKTACOLOR Digital
+Developer Replenisher RT. In one case, you can replace the
+existing developer tank solution with a fresh tank mix—see
+the previous section for the mix instructions for the fresh
+tank. This method has the advantage that the higher
+developer activity will be immediately observed. The
+disadvantage is that the existing developer tank solution
+will need to be discarded, following all local regulations for
+disposal.
+
+
+
+
+Using KODAK EKTACOLOR Digital Developer Replenisher RT in Roller-Transport Processors • CIS-269                                5
+  Filtration                                                                    Filter Manufacturer or Distributor
+  Processing solutions and wash water may contain some
+  insoluble materials. If you don’t filter out these materials,                                                     Seneca Tec, Inc.
+                                                                                 Polysales Filter                   Despatch Drive
+  they can stick to the paper, tank walls, rollers, and solution                 Model No. PS-232-9.8 109           East Rochester, NY 14445
+  lines, and may damage the paper. Usually, filters with a                                                          (585) 381-2645
+  porosity of 10 to 30 microns are effective for solutions and                   Serfilco Filter             Serfilco, Inc.
+  wash water. For incoming water supplies, use filters with a                    Model No. SFC-10W-carbofyne 1777 Shermer Road
+  porosity of 15 microns. Install the racks by slowly lowering                                               Northbrook, Illinois 60062
+  them into the tanks. When you have reinstalled all the racks                                               (847) 559-1777
+  and have verified that all the tanks are filled with solution,                                                    Serfilco Europe
+                                                                                                                    Ashburton Road West Trafford
+  turn on the recirculation and heater system and bring the                                                         Park
+  solutions up to operating temperature.                                                                            Manchester, M17 1RW,
+     You can use the following filter materials with processors                                                     England 0161-872-1317
+  that use EKTACOLOR Chemicals:                                                                                     Trumpler Clancy Inc.
+                                                                                 Filter Micro-Carbon                E. Main Street
+    • bleached cotton                                                            Model No. C9, 75P-W5 34            Hamburg, NY 14075
+    • cellulose with phenolic-resin binder                                                                          (585) 649-9330
+
+    • fiber glass with phenolic-resin binder
+    • polypropylene
+                                                                                SAFE HANDLING OF PHOTOGRAPHIC
+                                                                                CHEMICALS
+    • spun polypropylene
+                                                                                Handle all chemicals carefully. When you mix solutions,
+    • viscose rayon with phenolic-resin binder (do not use in                   wear goggles or a face shield, a protective apron, and
+      the developer)                                                            protective gloves made from neoprene or nitrile rubber.
+    • activated carbon                                                          Clean protective clothing after use to remove any chemical
+                                                                                residue that can cause contamination. For more information
+    Polypropylene is the most acceptable filter-core material
+                                                                                about potential health hazards and safe handling of specific
+  and one of the least expensive. This material has no
+                                                                                KODAK chemicals, see the chemical labels and the Material
+  photographic effect, but the surfactants used to produce the
+                                                                                Safety Data Sheets (MSDSs) for the chemicals. MSDSs also
+  polypropylene yarns may have an effect on your process.
+                                                                                provide regional contact information. MSDSs are available
+  Therefore, monitor your process carefully when you first
+                                                                                on the Kodak Alaris website at www.kodakalaris.com/
+  change filters. Replace filters weekly for developers and
+                                                                                es-mx/about/ehs.
+  every two weeks for other solutions.
+
+  Use of Activated-Carbon Filters to Remove Stain—
+  In roller-transport processors, a build-up of oxidized
+  chemicals in the developer tank solution can stain prints. To
+  remove these oxidized chemicals and prevent staining,
+  install an activated-carbon filter. You will see a significant
+  stain reduction within 24 hours. The life of the filter
+  cartridge depends on the amount of oxidation products that
+  are treated and the size of the processor tank; however,
+  typical length of use is about 14 days with a 75 litre
+  (20-gallon) tank.
+     To reduce the possibility of contamination from the filter,
+  pre-soak it in a small amount of developer replenisher for 24
+  hours before you install it. Discard the developer used for
+  the pre-soak. You can use the following filters:
+
+
+
+
+© 2017 Kodak Alaris Inc.
+TM/MC/MR: Edge, Endura, Portra, Prime, Royal, Supra
+The Kodak, Kodak Professional, Ektacolor, Lorr, and Ultra Trademarks are used under license from Eastman Kodak Company.
+
+Using KODAK EKTACOLOR Digital Developer Replenisher RT in Roller-Transport Processors
+KODAK Publication No. CIS-269
+Revised 12-17
+
+
+KODAK ALARIS • ROCHESTER, NY 14615
+

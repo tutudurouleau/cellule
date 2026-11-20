@@ -1,0 +1,125 @@
+# https://www.vantagefilm.com/file/edee/downloads/psu/vf-psu-editing-instruction-3-40mp-final.pdf
+
+PSU-3 Editing Instructions                                                       (Software PSU-3.40MP)
+
+
+Enter the Editing Level
+Press the DISC button >1sec., and select EDITING. The display color will change to red, and the editing operation tools
+will be available. To return to the standard disc level (blue displays), press DISC again.
+
+
+1. Select the Takes of a Sequence
+Press NEW SEQUENCE, and select the individual takes in the appropriate order. The buttons MOVE UP, MOVE
+DOWN, INSERT BEFORE, INSERT AFTER, INSERT SHOOTING DAY, OUT, REPLACE, and DELETE SEQUENCE
+will assist you to build the sequence.
+
+
+2. Select the In and Out Points
+Once you have selected all takes, press COMPLETE. The system will switch to the main editing level. Select the in and
+out points per take with the PLAY and SLOW buttons or the NAVIGATOR. Press SET to confirm each point.
+
+
+3. Ready!
+After putting all points together, press OK / SET SPEED to activate the sequence. The PSU will be ready to screen the
+cut.
+
+
+Select the Speed
+You can select the speed of each individual take within the sequence by touching its speed field. It will turn blue. Now
+you can select the speed using + / - buttons or the numeric buttons. Ramping and Multiple-Frame-Print are possible as
+well. Shots recorded with Lector® will show a yellow OCS field which stands for "original camera speed". This speed
+function can be switched off by selecting a different speed, doing a ramp, or setting a Multiple-Frame-Print. To return to
+the original speed, press ORIGINAL CAMERA SPEED.
+
+
+Edit the Timing again
+To edit the timing again, press SET TIMING. Select the in or out point by touching the point – it will turn blue. You can
+change the timing with the PLAY and SLOW buttons or the NAVIGATOR. Press SET to confirm the changed point.
+After putting all points together, press OK / SET SPEED to activate the sequence. The PSU will be ready to screen the
+cut.
+
+
+Replace Takes
+To replace a take, press CHANGE TAKES. Select the take by touching the take number – it will turn blue. Use SKIP to
+replace the take with a new one, and press SET. To change a take using the icon level press CHANGE TAKE >1sec.
+again right at the beginning. After inserting the new take press OK / SET SPEED to activate the sequence. The PSU
+will be ready for playback.
+
+
+Store separate
+The PSU will store all data of the sequence when you press OK / SET SPEED, leave the edited sequence with SKIP, or
+return to the main level (blue displays). The sequences will be numbered chronologically beginning with C1. If you edit
+an existing sequence later, the PSU will provide a STORE SEPARATE button to allow the separate storing of the
+modified sequence in order to save the original cut. Use this function by pressing the STORE SEPARATE button. The
+sequence will be numbered using the previous number and adding –1, –2 etc. (e.g., a new sequence build out of cut C1
+will be labeled C1-1).
+
+
+Cut Notes
+Press NOTES >1sec. to display an alphanumeric keyboard for typing individual messages per cut. Press the green √-
+button to mark good cuts. In the Cut-Menu (Icon-Mode), good cuts can be separated from the rest by pressing the √-
+button in that menu.
+The Cut-Note-Function has to be activated in the User-Settings (Take-Notes) first.
+
+If a cut is stored, it is not possible to delete its takes. To protect these takes, the system
+displays "part of cut" when they are selected. The whole cut must first be deleted before its
+single takes can be deleted.
+
+Design and specifications are subject to change without notice. Made in Germany
+Vantage Film GmbH - Phone +49 961 26795 - Fax +49 961 62983 - E-mail cameras@vantagefilm.com - www.vantagefilm.com
+VANTAGE®, PSU®, LECTOR®, HAWK®, HAWK ANAMORPHIC® are registered trademarks of Vantage Film GmbH, Germany – patents granted
+PSU-3 SPECIFICATIONS
+Battery power requirements / consumption                 24 to 30 V / 89 W
+AC-Adapter power requirements                            110 to 240 V AC, 50/60 Hz / about 0.4 A max
+Operating temperature / humidity                         0°C to 40°C (41° F to 105°F) / 20 % to 80 %
+Dimensions (w/h/d) / mass                                417 x 145 x 290 mm / 10.5 Kg
+Built in speaker                                         Ø 70 mm
+Disc capacity                                            approx. 100 h
+Max. playback speed                                      2000 fps
+Noise level at recording                                 0 dB
+
+Input connectors
+CAM A                                                    HD-SDI/SD BNC 75 ohms terminated 1 Vpp with Lector® encoding
+CAM B                                                    HD-SDI/SD BNC 75 ohms terminated 1 Vpp with Lector® encoding
+CAM C                                                    SD BNC Composite 75 ohms terminated 1 Vpp with Lector® encoding
+CAM D                                                    SD BNC Composite 75 ohms terminated 1 Vpp with Lector® encoding
+
+AUDIO IN 1                                               XLR 3-pin 0 dBm
+AUDIO IN 2                                               XLR 3-pin 0 dBm
+
+Output Connectors
+VIDEO OUT 1                                              2x HD-SDI/SD BNC 75 ohms terminated 1 Vpp (identical signal)
+VIDEO OUT 2                                              2x HD-SDI/SD BNC 75 ohms terminated 1 Vpp (identical signal)
+
+AUDIO OUT 1                                              XLR 3-pin 0 dBm
+AUDIO OUT 2                                              XLR 3-pin 0 dBm
+
+HEADPHONES 1                                             6.3mm jack
+HEADPHONES 2                                             6.3mm jack
+
+Digital Interface
+FIREWIRE                                                 IEEE1394A Lemo 6-pin
+USB 1                                                    USB 2.0 Lemo 14-pin
+USB 2                                                    USB 2.0 Lemo 14-pin
+GbE 1                                                    Fischer 8-pin
+GbE 2                                                    Fischer 8-pin
+
+Power Connectors
+BATTERY 1                                                Fischer 2-pin
+BATTERY 2                                                Fischer 2-pin
+AC-ADAPTER                                               Fischer 2-pin
+
+PSU-3 Accessories
+CAL-Pad, Screen Protector, AC Adapter, Update/Data Cable
+
+PSU-3 Optional Accessories
+Sunshade, Rain Cover, Remote Control, Extension Cable 10m for Remote Control, Director's Control, External Storage
+Module, PSU-3 Back-up Recorder, Battery Cable 1.8m, iPhone Cable, Location Case, Cargo Case, PSU Trolley,
+      ®
+Lector
+
+
+
+
+Design and specifications are subject to change without notice. Made in Germany
+

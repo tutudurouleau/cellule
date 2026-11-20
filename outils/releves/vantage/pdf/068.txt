@@ -1,0 +1,54 @@
+# https://www.vantagefilm.com/file/edee/downloads/optics/1x-spherical-lenses-made-by-hawk/0646v_minihawktechdata20.pdf
+
+MiniHawk
+Hybrid Anamorphic Lenses - Technical Data
+Due to their unique construction, the MiniHawks solve problems associated with anamorphic lenses
+while preserving classic anamorphic characteristics. They offer super-close focus – almost like
+macro lenses – with no breathing while focusing. MiniHawks are geometrically well-corrected, yet
+maintain the distinctive optical traits of traditional 2x squeeze photography such as elliptical bokeh
+and shallow depth of field, resulting in an organic cinematic feel. Well-suited for CG.                  Patents granted Europe/US/Asia
+
+
+
+                                       Focal Length                    metric                      imperial             Angle of View*      Weight      Front     Overall      Min. Filter         Image        Illumination
+              Lens
+                                            Stop                 CFD            MOD            CFD        MOD             horizontal      kg     Ibs   Diameter   Length           Size            Circle           Circle
+
+  MiniHawk 29                            29 mm/T1.7            0.25 m         0.06 m           10“        2 ½“              80°           2.3    5.0   128 mm     158 mm        4x5.65“          31.5 mm            32 mm
+
+  MiniHawk 35                            35 mm/T1.7            0.25 m         0.06 m           10“        2 ½“              71.5°         2.1    4.6   110 mm     153 mm        4x5.65“          30.9 mm          31.1 mm
+
+  MiniHawk 40                            40 mm/T1.7            0.25 m         0.07 m           10“            3“            62.2°         1.9    4.2   110 mm     143 mm        4x5.65“            32 mm          32.5 mm
+
+  MiniHawk 50                            50 mm/T1.7            0.25 m         0.10 m           10“            4“            53.6°         1.8    4.0   110 mm     135 mm        4x5.65“          33.7 mm            34 mm
+
+  MiniHawk 65                            65 mm/T1.7            0.25 m         0.08 m           10“         3 ¹⁄3“           43.5°         1.9    4.2   110 mm     135 mm        4x5.65“          34.4 mm          35.1 mm
+
+  MiniHawk 80                            80 mm/T1.7            0.35 m         0.22 m           1‘2“       8 ½“              34.9°         1.6    3.5   110 mm     135 mm        4x5.65“            34 mm          34.4 mm
+
+  MiniHawk 100                         100 mm/T1.7             0.35 m         0.18 m           1‘2“           7“            28°           1.5    3.3   110 mm     135 mm        4x5.65“          35.5 mm          36.2 mm
+
+  MiniHawk 135                         135 mm/T1.7             0.35 m         0.25 m           1‘2“        9 ½“             21.5°         1.7    3.7   110 mm     135 mm        4x5.65“            37 mm          38.5 mm
+
+  MiniHawk 180                         180 mm/T1.7               0.5 m        0.45 m           1‘8“        1½‘              17.2°         2.1    4.6   128 mm     135 mm        4x5.65“            35 mm           45 mm
+                                                                                                                                                                                          *Angle of view – quoted for S35 Format
+
+
+            CFD – close focus distance
+                                                                                                                                                                                                 Illumination Circle
+
+
+                                                                                                                                                                                                 Image Circle
+
+
+
+
+            MOD – minimal object
+                       distance
+
+
+
+
+                                                                Technical specifications are subject to change without notice – additional lenses will follow. Made in Germany by Vantage Film
+  Hawk®, Hawk Anamorphic®, Vantage® are registered trade-marks of Vantage Film GmbH, Germany. For further information contact Vantage Film, Phone +49 961 26795, www.vantagefilm.com
+

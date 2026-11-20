@@ -1,0 +1,1340 @@
+# https://www.kodak.com/content/products-brochures/Film/Processing-KODAK-Motion-Picture-Films-Module-7.pdf
+
+                               Processing
+                               KODAK
+                               Motion Picture Films,
+                               Module 7
+
+
+                               Process ECN-2
+                               Specifications
+
+
+
+
+©Eastman Kodak Company, 2020
+7-0   Process ECN-2 Specifications
+Table of Contents
+                  Process ECN-2 Specifications . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                      7-2
+                  INTRODUCTION . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-2
+                  FILMS AND PROCESS SEQUENCE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-3
+                     Designated Films . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-3
+                     Film Structure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-3
+                     Process ECN-2 Steps . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-4
+                     Safelights for Darkroom Illumination . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-4
+                     Film Storage and Handling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-5
+                     Other Film Characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-5
+                  PROCESSING MACHINE DESIGN AND CONSTRUCTION. . . . . . . . . . . . . . . . . 7-7
+                     Machine Design . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-7
+                     Construction Materials . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-9
+                     Filters . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-11
+                     Backing Removal Equipment . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-11
+                     Solution Crossover Devices . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-11
+                     Dryer Cabinet . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-11
+                     Machine Exhaust and Room Ventilation Systems . . . . . . . . . . . . . . . . . . . . . . 7-12
+                     Countercurrent Washes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-12
+                     Conversion to “UL” Bleach . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-13
+                  OPERATING SPECIFICATIONS . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-15
+                     Mechanical Specifications . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-15
+                     Selecting a Bleach Formulation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-15
+                     Controlling Tank Concentration with Replenisher Rate . . . . . . . . . . . . . . . . . . 7-15
+                     Chemical Supplies and Substitutions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-16
+                     Mixing Instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-16
+                     Drying Specifications . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-19
+                     Turbulation Specifications . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-19
+                     Wash-Water Flow Rates . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-20
+                     Stop Wash . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-20
+                     Bleach Wash . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-20
+                     Final Wash . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-20
+                     Rewashing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-21
+                  PROCESSING CHEMICALS . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-23
+                     Prepackaged Chemicals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-23
+                     Kit Chemicals. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .... . 7-23
+                     Solution Mixing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-26
+                  FORMULAS AND ANALYTICAL SPECIFICATIONS . . . . . . . . . . . . . . . . . . . . . . . 7-27
+                     Bulk Formulas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-27
+                     Rewash Formulas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-33
+                     STORAGE OF SOLUTIONS . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7-35
+
+
+
+
+Process ECN-2 Specifications                                                                                                                   7-1
+7           Process ECN-2 Specifications
+INTRODUCTION
+The information contained herein is furnished by Eastman
+Kodak Company without any warranty or guarantee
+whatsoever. While Kodak is unaware of any valid domestic
+patents of others which would be infringed by the methods,
+formulas or apparatus described herein, the furnishing of this
+information is not to be considered as any license for
+inducement of, or recommendation for any action by any
+party any such action being a matter for independent
+investigation and decision by such party.
+
+MODULE 7
+This module contains specifications describing continuous
+machine processing of Kodak color camera and laboratory
+films. The following modules are also used in conjunction
+with Process ECN-2.
+
+   Module 8 Effects of Mechanical and Chemical Variations in Process
+            ECN-2
+   Module 1 Process Control
+   Module 3 Analytical Procedures (for Chemical Analyses)
+   Module 4 Reagent Preparation Procedures (for Chemical Analyses)
+
+Other modules application to Process ECN-2 are:
+
+  Module 2 Equipment and Procedures
+  Module 5 Chemical Recovery Procedures
+  Module 6 Environmental Aspects
+
+
+
+
+7-2                                                                    Process ECN-2 Specifications
+FILMS AND PROCESS SEQUENCE
+
+
+Designated Films                                              Film Structure
+Camera Films                                                  Kodak color negative, intermediate, and internegative films
+KODAK VISION3 500T Color Negative Film 5219 / 7219            are multilayer films with incorporated color couplers.
+                                                              Figure 7-1 is a diagram of the film structure.
+KODAK VISION3 250D Color Negative Film 5207 / 7207            Figure 7-1 Cross Section of Unprocessed KODAK
+                                                              Color Negative and Intermediate Films
+KODAK VISION3 200T Color Negative Film 5213 / 7213
+                                                                      EXPOSING LIGHT
+
+KODAK VISION3 50D Color Negative Film 5203 / 7203
+                                                                                                   GEL PROTECTIVE COAT
+                                                                                                   BLUE-SENSITIVE EMULSION
+  For information on exposure index, lighting, color                                               YELLOW FILTER LAYER
+balance, required filters, image structure, sensitometric                                          GREEN-SENSITIVE EMULSION
+curves, film storage, and types of rolls available, see the                                        GEL INTERLAYER
+KODAK Publication relating to the film: H-1-5219,                                                  RED-SENSITIVE EMULSION
+
+H-1-5207, H-1-5213 and H-1-5203
+
+Laboratory Films                                                                                   SAFETY FILM BASE
+                                                                                                   REMOVABLE ANTIHALATION
+                                                                                                   BACKING
+KODAK VISION3 Color Digital Intermediate Film 2254
+KODAK VISION Color Intermediate Film 2242 / 3242                 This drawing illustrates only the relative layer arrangement of the
+KODAK VISION Color Intermediate Film 5242                        film and is not drawn to scale.
+                                                               F002_0457AC
+
+   For information on Laboratory Aim Density (LAD),              The upper blue-sensitive layer contains a colorless
+safelights, image structure, sensitometric curves, film       coupler, which is converted to yellow dye during
+storage, and types of rolls available for each laboratory     development, proportional to blue-light exposure. A yellow
+film, see the KODAK Publication relating to the film:         filter layer prevents blue light from reaching the two layers
+H-1-5254 and H-1-5242. Also refer to KODAK Publication        beneath, which are somewhat sensitive to blue light. The
+No. H-61, LAD—Laboratory Aim Density.                         next layer is green-sensitive and contains a colorless coupler
+                                                              and a yellow-colored coupler, both of which form a magenta
+                                                              dye during development, proportional to green-light
+                                                              exposure. The residual yellow-colored coupler becomes a
+                                                              mask to correct for the unwanted blue absorption of the
+                                                              magenta dye. The bottom emulsion layer is red-sensitive and
+                                                              contains a colorless coupler and a pink-colored coupler, both
+                                                              of which are converted to a cyan dye during development,
+                                                              proportional to red-light exposure. The residual pink-colored
+                                                              coupler forms a mask to correct for the unwanted absorption
+                                                              of blue and green light by the cyan dye. A removable black
+                                                              antihalation layer (rem-jet) is coated on the back side of the
+                                                              film support.
+
+
+
+
+Process ECN-2 Specifications                                                                                                      7-3
+Process ECN-2 Steps
+Process ECN-2 has four bleaching alternatives, Ferricyanide
+Bleach (SR-29), “UL” Bleach (SR-33), Ammonium “UL
+House” Bleach (SR-35), and Potassium “UL House” Bleach
+(SR-34). The “UL” bleaches can be used by laboratories
+having to comply with local environmental laws governing
+the amount of ferricyanide in the process effluent.
+
+Ferricyanide and Various “UL” Bleach Sequences
+
+Step                                Function
+ 1. Prebath                         Softens rem-jet for removal.
+ 2. Rem-Jet Removal and Rinse       Removes softened rem-jet backing.
+ 3. Developer                       Reduces exposed silver halide grains in all three light-sensitive layers. The developing agent is
+                                    oxidized by the exposed silver halide, and the oxidation product couples with the particular dye
+                                    coupler incorporated within each layer to produce dye images. A silver image is formed
+                                    simultaneously at the exposed silver-halide sites.
+ 4. Stop                            Stops the development of silver-halide grains and washes Color Developing Agent CD-3 from the
+                                    film.
+NOTE: The film can now be handled in white light.
+ 5. Wash                            Removes excess acid stop.
+6. Bleach (SR-29, SR-33, SR-34,     Converts metallic silver from the silver picture image, formed during color development, to silver-
+or SR-35)                           halide compounds that can be removed by the fixer.
+ 7. Wash                            Removes residual bleach from the film, preventing contamination of the fixer.
+ 8. Fixer                           Converts silver-halide compounds formed in the bleach to soluble silver thiosulfate complex salts that
+                                    are removed from the film in this fixer and subsequent wash.
+ 9. Wash                            Removes residual soluble silver thiosulfate complex salts and unused hypo from the film.
+10. Final Rinse                     Prevents water spots and controls biological growths.
+11. Dryer                           Dries film for subsequent handling.
+
+Safelights for Darkroom Illumination
+When handling film in a darkroom, safelights are used to
+provide as much light as possible without fogging the film.
+Handle the designated films in total darkness until after the
+stop. The remaining operations can be carried out in a lighted
+room. A safelight equipped with KODAK 3 Safelight
+Filter / dark green can be used to illuminate dials, meters,
+etc., during development, but do not allow the light to shine
+directly on the film.
+
+
+
+
+7-4                                                                                                   Process ECN-2 Specifications
+Film Storage and Handling
+Store processed film at 21°C (70°F) or lower, and 40 to 50
+percent relative humidity for normal or commercial use. For
+long-term storage conditions, see KODAK Publication
+No. H-23, The Book of Film Care.
+   Exercise care when handling negative films to avoid
+scratches and/or dirt that will be noticeable on the final print.
+Have film handlers use lint-free nylon or dacron gloves and
+handle the film the by edges. Further suggestions on how to
+keep camera or preprint films clean are in Module 2,
+Equipment and Procedures.
+
+Other Film Characteristics
+For information on the physical characteristics of Kodak
+motion picture films (including edge identification,
+antihalation backing, perforations, and dimensional change
+characteristics), as well as cores, spools, winding, and
+packaging, refer to KODAK Publication No. H-1, Kodak
+Professional Motion Picture Film.
+
+
+
+
+Process ECN-2 Specifications                                        7-5
+7-6   Process ECN-2 Specifications
+PROCESSING MACHINE DESIGN AND CONSTRUCTION
+
+
+Machine Design
+Films intended for Process ECN-2 are processed in roll form
+in a continuous processing machine. Film is transported
+through the various solution tanks, emulsion side out, on a
+series of spools. These spools are mounted in racks that fit
+into the tanks, and film is threaded over the spools so that it
+travels in a continuous spiral on each rack. The film should
+not be allowed to contact any part of the machine that can
+damage either the support or the emulsion side of the film.
+   The required treatment time for each processing step is
+obtained by installing racks in the solutions and washes that
+will transport a length of film for the required number of
+minutes at the machine transport speed. To provide adequate
+agitation of the developer at the emulsion surface, the
+developer tank is equipped with a turbulator. A turbulator is
+a submerged series of tubes, having nozzles or drilled holes
+at various locations along the tubes, opposite the film strand.
+For more information on turbulator design, see Module 2,
+Equipment and Procedures.
+   The processor chosen for Process ECN-2 should be a
+conventional deep-tank machine for 35 mm and/or 16 mm
+films. Submerged rollers and rack-drive assemblies are
+recommended for all solutions to minimize the splattering of
+solutions and aerial oxidation of the developer and fixer.
+Figure 7-2 is a simple schematic of a typical processing
+machine for Process ECN-2 using ferricyanide or “UL”
+bleach. Solution crossover devices should be used at all the
+locations shown in the schematics to reduce contamination
+and minimize loss of solution by carry-over into subsequent
+solutions.
+   Eastman Kodak Company does not market processing
+machines or auxiliary equipment suitable for Process
+ECN-2. However, a list of some manufacturers of processing
+equipment can be obtained through the Professional Motion
+Imaging offices.
+
+
+
+
+Process ECN-2 Specifications                                      7-7
+7-8
+
+
+
+
+                                                                                                                                                                               Figure 7-2 Machine Schematic for Process ECN-2 with Recommended "UL" Bleach or Ferricyanide Bleach Sequence
+                               F002_0379EC
+
+
+
+
+                                                                      Dark                                           Normal Room Light
+
+
+
+
+                                                                                             EXHAUST                      Solution Crossover Devices
+
+
+
+
+                                                              10                       180          30   120        180              120          120   180     10
+
+
+
+
+Process ECN-2 Specifications
+                                             FILM FEED ON   PREBATH     REM JET    DEVELOPER      STOP   WASH   FERRICYANIDE       WASH         FIXER   WASH   FINAL   DRYER
+                                                                        REMOVAL                                   BLEACH or                                    RINSE
+                                                                          UNIT                                   "UL" BLEACH
+
+
+
+
+                                                                        Solution times are in seconds.
+Construction Materials
+The construction materials recommended for the developer,
+stop, fixer, and bleach solutions are listed in Table 7-1. All
+the bleaches are quite corrosive. The “UL” bleach is slightly
+more corrosive than ferricyanide bleach. Titanium,
+Hastelloy C, and engineering plastics such as PVC are,
+therefore, recommended materials for UL or ferricyanide
+bleach. Use plastics compatible with low pH solutions (less
+than pH 5).
+   Red brass is commonly found in ferricyanide bleach
+systems, it will quickly be dissolved by “UL” bleach. In
+addition to machine tanks, it is often found in fittings,
+flowmeters, heat exchangers, and valves. Small red-brass
+parts have been found even when the bleach tank is
+constructed of titanium, Hastelloy C, or PVC.
+   It is a good practice to avoid extended exposure of staples
+to any bleach solution.
+   Additional information on materials construction and
+information on their use are given in KODAK Publication
+No. K-12, Construction Materials for Photographic
+Processing Equipment, and The SPSE Handbook of
+Photographic Science and Engineering, Materials of
+Construction for Photographic Processing Equipment
+section. You may also contact the Kodak Information Center
+at 1-800-242-2424.
+
+
+
+
+Process ECN-2 Specifications                                     7-9
+Table 7-1 Construction Materials for Process ECN-
+2
+
+                                                                         Plastics
+                                                                                                                                            Austenitic
+                                                                        (Polyvinyl
+                            Solution                                                            Titanium             Hastelloy C          Stainless Steel
+                                                                       Chloride or
+                                                                                                                                          AISI Type 316 a
+                                                                       Polyolefins)
+Bleach (“UL” or Ferricyanide):
+Tanks and Racks                                                              •b                      •                      •
+Mixing Tanks                                                                 •b                      •                      •
+Replenisher Holding Tanks                                                    •b                      •                      •
+Piping, Pumps, Valves, and Filter Cores                                      •b                      •                      •
+Overflow Holding Tank                                                        •b                      •                      •
+Stop:
+Tanks and Racks                                                              •b                      •                      •
+Mixing Tanks                                                                 •b                      •                      •                     •c
+Replenisher Holding Tanks                                                    •b                      •                      •                     •c
+Piping, Pumps, Valves, and Filter Cores                                      •b                      •                      •
+Others:
+Tanks and Racks                                                               •                      •                      •                      •
+Mixing Tanks                                                                  •                      •                      •                      •
+Replenisher Holding Tanks                                                     •                      •                      •                      •
+Piping, Pumps, Valves, and Filter Cores                                       •                      •                      •                      •
+a AISI Type 316 Stainless Steel has been extensively tested and is satisfactory for the uses listed in the table above. Refer to The SPSE Handbook of
+  Photographic Science and Engineering, Materials of Construction for Photographic Processing Equipment Section for information on other Austenitic
+  Stainless Steels.
+b Plastics compatible with low pH solutions should be used (e.g., polyvinyl chloride, polypropylene, and high-density polyethylene). The compatibility of other
+  plastics should be evaluated under actual use.
+c Provided the concentration of sulfuric acid specified for the stop is not exceeded.
+
+
+
+
+7-10                                                                                                                  Process ECN-2 Specifications
+Filters                                                            Solution Crossover Devices
+Filters are used to remove any insoluble material in the form      Processing solution loss and dilution are minimized by
+of solids and tars from processing solutions and wash waters.      various devices that wipe or remove solution off both sides
+If this material is not removed, it can adhere to the film being   of the film strand. These devices can consist of plastic
+processed, machine tank walls, rollers, lines, etc. Filters are    blades, air streams, vacuum, buffer plush, or other
+required in replenisher lines, recirculation systems, and          mechanical means. When located at solution crossovers,
+wash-water lines.                                                  these devices direct solution back into the originating tank
+    The ideal porosity rating for filters is 10 microns, but the   and minimize the carryover of processing solutions.
+back pressure of a 10-micron filter is sometimes too great to         Such a device should be located on the exit strand between
+permit adequate flow unless oversize pumps or parallel             stages of all countercurrent washes, and on all Process
+filters are used. Increasing the filter area will decrease the     ECN-2 solutions except the prebath. Some processing
+back pressure, but also increase the cost of filters. Filters      machines have used wiper-blade squeegees (30 to 40
+with porosity ratings larger than 30 microns will produce          durometer hardness) in the past; but the use of wiper-blade
+low-back pressure, but are of little value in removing             squeegees has steadily declined due to their inherent
+insoluble material. Another option is using high-porosity          potential to cause damage to film. Currently, wiper-blade
+filters in series. The high-porosity filters will slow the         squeegees are no longer recommended for use on ECN
+clogging of the low-porosity filters.                              processing machines. Even when carefully maintained,
+    Establish and follow a definite replacement schedule for       wiper-blade squeegees still have a greater propensity to
+filters. Change filters every week or two, or whenever the         cause damage to film than other types of carryover limiting
+pressure differential across the filter pot exceeds 10 psig        devices at solution crossovers. Air knives are recommended
+(69 kPa).                                                          for use with the ECN-2 process since they are least likely to
+    Polypropylene, fiber glass, or bleached cotton are             cause damage to the film.
+acceptable filter media for all Process ECN-2 solutions.
+Viscose rayon is not recommended with the prebath,                 Dryer Cabinet
+developer, or bleaches since it can cause adverse                  Carefully control drying of processed film to avoid a soft,
+photographic effects. Table 7-1 lists acceptable construction      sticky emulsion which leads to a physical defect called
+materials for filter cores. Test all filters for adverse           ferrotyping. If the film is over-dried, the emulsion becomes
+photographic effects before use. Before a change of filter         brittle and the film tends to blister. Satisfactory drying leaves
+materials or vendors is made, a photographic effect                the film dry without tackiness one half to two thirds of the
+screening test should be run.                                      way through the drying cabinet. Allow the film to cool to
+                                                                   room temperature before windup. After cooling, the film
+Backing Removal Equipment                                          should have a moisture content in equilibrium with air at
+All Process ECN-2 compatible films with rem-jet                    50 percent relative humidity.
+antihalation backing must have it removed prior to                    Either an impingement or convection (nonimpingement)
+development. As the film enters the machine, a prebath             dryer can be used. The impingement dryer dries film in a
+softens the backing for removal. The removal must be done          shorter time and occupies less space than most
+so that none of the backing material sticks to the emulsion        nonimpingement dryers. Regardless of the type, the drying
+surface. The removal unit is designed so the combined action       equipment must produce adequate and uniform drying to
+of water jets and buffers remove all of the backing and            prevent deformation of the film support or emulsion. Filter
+residual haze. Either a wet sponge or high-speed rotating          the input air to the dryer to remove dust particles that can
+buffers may be used. The buffers should only contact the           stick to the film. A high-efficiency particulate air (HEPA)
+film support side. Locate a film solution crossover device         filter, such as the Micretain Equi Flo* filter (95 percent
+after the last water spray before entering the developer.          efficient at 0.3-micron particle size) is recommended.
+   For details and specifications on removal units for acetate
+and ESTAR Base films, see Module 2, Equipment and
+Procedures.
+
+
+
+
+                                                                   * A product of Cambridge Filter Corporation, 7645 Henry Clay Blvd.,
+                                                                   Liverpool, NY 13088
+
+
+
+Process ECN-2 Specifications                                                                                                         7-11
+Machine Exhaust and Room Ventilation                             Countercurrent Washes
+Systems                                                          Multitank, countercurrent wash methods provide a great
+Install local exhausts at specific locations on the processing   savings in water. In this technique, fresh water enters the last
+machine and at specific work areas to provide for the safety     tank, flows to the previous tank, and so on to the first tank,
+and comfort of the laboratory personnel. Supplement local        in a direction counter to that of film travel. As the film
+exhausts with a room ventilation system having a capacity of     advances through the wash, it enters cleaner and cleaner
+10 air changes per hour. Vent the discharge air from these       water.
+systems outside the building so that discharged air does not        A four-stage countercurrent final wash is illustrated in
+contaminate incoming air.                                        Figure 7-3.
+   Locate local exhausts over chemical mixing tanks to           Figure 7-3 Four-Stage Countercurrent Wash
+remove irritating chemical dust and vapor produced when
+                                                                                              WATER LEVEL
+processing solutions are mixed.
+   Processing machines need local exhausts at the stop tank.
+A slot-type exhaust, for example, on the far side of the stop
+tank will carry away any sulfur dioxide or hydrogen sulfide
+generated by developer carried over into the stop.                   USED WATER
+                                                                     TO DRAIN
+   Exhaust hoods need not fit tightly over tanks, and slots
+should be placed to draw air away from the operator. The
+exhaust system should provide an air flow of 175 ft3/min
+(5 m3/min) for every square foot (0.09 m2) of solution
+surface, and provide 50 to 75 ft/min (15 to 23 m/min) control
+velocity over the surface of the tank.
+
+                                                                                                                     FRESH
+                                                                                                                     WATER IN
+                                                                                             FILM TRAVEL
+
+                                                                   F002_0455AC
+
+
+
+
+7-12                                                                                         Process ECN-2 Specifications
+Conversion to “UL” Bleach
+The advantages of converting to the “UL” bleach (SR-33),
+from ferricyanide bleach (SR-29) are:
+• “UL” bleach maintains a cleaner tank
+• “UL” bleach forms no Prussian blue
+• “UL” bleach is easier to regenerate
+• “UL” bleach regenerates into a cleaner replenisher
+
+The advantages of converting to the “UL” bleach, from
+persulfate bleach are:
+• “UL” bleach has more bleaching power
+• “UL” bleach has a longer solution life
+• “UL” bleach is less sensitive to process variations
+• “UL” bleach maintains the same D-min and film look as
+  ferricyanide
+   Mechanical changes are minor; just adjust controls to keep
+the bleach at 27°C (80°F). Solution times and replenishment
+rates do not change.
+   If using the ferricyanide bleach currently, first remove any
+red brass from the system, then clean up the bleach system.
+A high pH wash (10 to 12) will help eliminate any prussian
+blue in the system. Three cleaning cycles are recommended.
+
+
+
+
+Process ECN-2 Specifications                                      7-13
+7-14   Process ECN-2 Specifications
+OPERATING SPECIFICATIONS
+
+
+Mechanical Specifications                                          Selecting a Bleach Formulation
+The recommended mechanical specifications for                      Experimentation has shown that an all-ammonium bleach is
+Process ECN-2 are shown in Table 7-2 for ferricyanide              the most active and, therefore, needs the minimum amount
+bleach and 7-3 for various “UL” bleaches. Included are             of iron (and the associated amount of PDTA) for adequate
+temperatures and tolerances, processing solution times,            bleaching. When potassium cations are substituted for
+replenisher rates, and other pertinent information.                ammonium, about 20% more iron is needed to complete
+   Use the processing times and drying conditions shown in         bleaching in a given time. If all sodium cations are used,
+tables 7-2 and7-3 as a guide for preliminary machine design.       about another 5% more iron is needed to maintain the same
+The processing times actually used may differ slightly from        level of activity. The best formulation for use in a given lab
+the ones shown in the tables because of machine design             should be determined based on several operating factors.
+variables, such as film velocity, degree of solution agitation,    Some of the factors to consider are:
+and amount of solution carry-over. You must determine              • Local chemical cost and availability
+those specifications necessary to product satisfactory quality     • Laboratory ventilation factors
+for your installation. Optimum drying conditions (air
+                                                                   • Restrictions on sewer discharge.
+volume, temperature, and relative humidity) also vary with
+each dryer design.                                                 Controlling Tank Concentration with
+   Use the replenishment data listed with the mechanical           Replenisher Rate
+specifications as a starting point for determining exact           Since bleach systems are subject to evaporation in the
+requirements to maintain the tank chemical analytical              machine, overflow and replenisher holding tanks, system
+specifications.                                                    evaporation often plays a significant part in striking a
+   Handle the exposed stock designated for Process ECN-2           balance between replenisher concentration, replenisher rate,
+in total darkness during machine loading and processing            and tank concentration. The best way to adjust between these
+until after the stop. The processing steps after the stop can be   factors, especially in a house system, is to vary the
+performed in normal room light.                                    replenisher rate to maintain the desired tank concentration.
+   Three “UL” Bleach formulations are available to fill            Allowing the tank concentration to run high creates waste
+various laboratory operating and environmental needs. They         due to carryout. A low tank concentration presents the
+are:                                                               danger of inadequate bleaching. A new system should be
+  1. Ammonium “UL” Bleach, SR-33. This is the original             started up using the suggested replenisher rates given for
+     formulation for Process ECN-2 and has been in use             each bleach version. As the process or system seasons, the
+     since about 1990. This formulation contains the               rates may be adjusted to give the desired tank concentrations.
+     highest percentage of ammonium ion which                      Bromide, iron, and pH are the critical parameters and should
+     maximizes bleach activity. Because the least amount           stay within limits given. If bromide or iron is too high, no
+     of active ingredients are necessary, this is the least        harm to the process or film will occur, but expensive
+     expensive of the UL Bleach varieties to operate. The          chemicals will be wasted due to carryout.
+     use of ammonia in a laboratory may present some
+     handling and odor considerations and is restricted in
+     some sewer districts. The next two formulations have
+     been derived to minimize these considerations.
+  2. Ammonium “UL House” Bleach, SR-35. This
+     formulation was derived to allow for a common tank
+     and replenisher to be used for both Processes ECN and
+     ECP. This formula contains about half the ammonium
+     ion as the original formula. Its advantages are reduced
+     ammonium ion and less mixing and solution handling
+     between the two processes.
+  3. Potassium “UL House” Bleach, SR-34, combines the
+     advantages of a non-ammonium formulation with a
+     house system where one replenisher feeds tanks for
+     both Processes ECN and ECP. Through replenisher
+     rate manipulation, the tanks for Processes ECN and
+     ECP are maintained at appropriate levels so bleaching
+     is completed while excess carryout is avoided.
+
+
+
+
+Process ECN-2 Specifications                                                                                                7-15
+Chemical Supplies and Substitutions                               Mixing Instructions
+Ferric nitrate is supplied in crystalline form as nonahydrate     The preparation of UL bleaches from raw chemistry involves
+or dissolved in water as a 35 or 45% solution. Various            the reaction of iron with ammonium or potassium hydroxide
+bromides, carbonates, and hydroxides may be used                  and PDTA to form bleaching agent. Since a reaction is
+interchangeably provided attention is given to effluent           involved, take care to ensure that the solution is ready for
+requirements and various molecular weights and activities         each sequential addition so the reaction proceeds correctly.
+are compensated. The following multipliers may be used to         To get experience in the look and feel of mixing, it is
+calculate between formulations:                                   recommended that you make a small mix and observe it in
+     One gram of ferric nitrate nonahydrate = 1.31 mL of          the chemical laboratory prior to making the first large mix.
+     35% = 0.93 mL of 45% solution                                Optimum mixing practices should yield the correct pH after
+    One gram of ammonium bromide = 1.21 grams KBr                 the ferric nitrate addition, thereby avoiding expensive and
+    = 1.05 grams NaBr                                             time-consuming adjustments.
+
+    One mL of 50% NaOH = 1.64 mL 45% KOH
+  If the odor or handling of acetic acid is a problem or
+undesirable, solid chemicals may be substituted. They are
+added as follows:
+  One mL of glacial acetic acid is equivalent to
+1.05 grams of glacial acetic acid. One millilitre of glacial
+acetic acid can then be replaced by 1.35 grams of ammonium
+acetate. In potassium formulations, the
+one mL of glacial acetic acid can be replaced with
+1.71 grams of potassium acetate. The ammonium
+formulation is compensated by removing 2.2 mL of 28%
+ammonium hydroxide per mL of acetic acid from the
+formulation. The potassium formulation gets compensated
+by 1.49 mL of 45% potassium hydroxide for each mL of
+glacial acetic acid removed. This calculation is illustrated in
+the following example:
+      Formula calls for 10 mL of glacial acetic acid and
+     30 mL of 28% ammonium hydroxide. Substituting for
+     10 mL of acetic: 10 mL x 1.35 grams ammonium
+     acetate per gram acetic = 13.5 grams ammonium
+     acetate. The amount of ammonium hydroxide to
+     subtract is: 2.2 mL ammonium hydroxide per mL of
+     acetic or 2.2 x 10 = 22 mL. The formula becomes zero
+     acetic acid, 13.5 grams of ammonium acetate and 8 mL
+     of ammonium hydroxide.
+   "Dissolvine MP" is a PDTA Ferric Potassium Solution,
+[1,3 PDTA-Fe] K, that contains approximately 48 g of total
+Fe / L of solution. It may be used in any Potassium UL
+Bleach formulation by substituting "Dissolvine MP" for the
+entire amounts of KODAK Chelating Agent No. 1 (PDTA)
+and Ferric Nitrate (Nonahydrate) in the formulation. A
+potassium UL bleach can be made by using 20.8 ml of
+"Dissolvine MP" for each gram of total Fe in the formula and
+removing any KODAK Chelating Agent No. 1 (PDTA) and
+Ferric Nitrate (Nonahydrate) from the formulation. For
+example, if the total amount of Fe in a Potassium UL Bleach
+replenisher is 10 g/L, 1 L of that bleach replenisher could be
+made by substituting 208 ml of "Dissolvine MP" for all the
+KODAK Chelating Agent No. 1 (PDTA) and Ferric Nitrate
+(Nonahydrate) in the formulation. "Dissolvine MP" is a
+colored solution and its use will result in darker colored
+bleach replenisher and tank solutions.
+
+
+
+
+7-16                                                                                        Process ECN-2 Specifications
+Table 7-2 Mechanical Specifications for
+Process ECN-2 with Ferricyanide Bleach
+
+                                            KODAK Formula                Temperature                              Replenisher
+                                                                                                                  (Wash Rate)         Recirculation (R);
+                                                                                                  Time
+  Process Steps         Footnotes                                                                                  per 100 ft.          Filtration (F);
+                                          Tank        Replenisher         °C         °F          min:sec
+                                                                                                                   (30.5 m) of         Turbulation (T)
+                                                                                                                   35 mm film
+                                                                          (See Note)                               (See Note)
+Prebath                      1            PB-2            PB-2R         27 ±1      80 ±2            :10              400 mL                R&F
+                                                                                                                                       @ 20 to 40 L/min
+Rem-Jet                      2              —               —           27 to      80 to            —                   —                     None
+Removal & Rinse                                                          38         100
+Developer                   3, 4         SD-49          SD-49R           41.1      106.0           3:00              900 mL                 R, F, & T
+                                                                         ±0.1       ±0.2
+Stop                         5           SB-14            SB-14         27 to      80 to            :30              600 mL                R&F
+                                                                         38         100                                                @ 20 to 40 L/min
+Wash                         6              —               —           27 to      80 to            :30                1.3 L                  None
+                                                                         38         100
+Ferricyanide                 7           SR-29          SR-29R          38 ±1     100 ±2           3:00              200 mL                R&F
+Bleach                                                                                                                                 @ 20 to 40 L/min
+Wash                         6              —               —           27 to      80 to           1:00                1.3 L                  None
+                                                                         38         100
+Fixer                        8            F-34a          F-34aR         38 ±1     100 ±2           2:00              600 mL                R&F
+                                                                                                                                       @ 20 to 40 L/min
+Wash                         9              —               —           27 to      80 to           2:00              270 mL                   None
+                                                                         38         100
+Final Rinse                  10           FR-1            FR-1R         27 to      80 to            :10              400 mL                R&F
+                                                                         38         100                                                @ 20 to 40 L/min
+                                                   Type                  Temperature                RH              Air Flow                  Time
+Dryer                                         Impingement                 32 to 47°C            30 to 50%          1000 ft /min
+                                                                                                                           3               5 to 7 min.
+                                                                         (90 to 117°F)
+                                            Nonimpingement                30 to 38°C            30 to 50%          1000 ft3/min            6 to 8 min.
+                                                                         (80 to 100°F)
+1 Use polypropylene, fiberglass, or bleached cotton as a filter medium in the developer. Viscose rayon is not recommended for prebath, developer, or
+  bleaches because of undesirable photographic effects.
+2 Rem-jet removal time and wash rate will vary with equipment design and method. See Table 2-1, Module 2, Equipment and Procedures.
+3 Maintain close control of developer time and temperature, since small deviations can lead to severe contrast mismatch. Use an accurate thermometer for
+  checking the temperature controller variability. The temperature should be uniform throughout the developer tank.
+4 Design developer racks with submerged rollers and rack-drive assemblies to minimize solution aeration and splashing.
+5 Install an exhaust over the stop tank, since developer carried over into the stop generates sulfur dioxide. The exhaust system should produce an air flow
+  of 175 ft3/min (5 m3/min) for every square foot (0.09 m2) of solution surface and provide 50 to 75 ft/min (15 to 23 m/min) control velocity over the surface
+  of the tank.
+6 The wash preceding the ferricyanide bleach must not become acid enough to lower the bleach pH below 6.0. Low pH in a ferricyanide bleach can promote
+  the formation of Prussian blue. Keep the wash after the bleach effective enough to prevent film mottle from the reaction products of bleach carry-over into
+  the fixer. Two-stage countercurrent washes with solution crossover devices between stages are recommended for efficient washing. The wash rates given
+  in the table assume the use of such two-stage washes. Single-stage washes require substantially greater wash rates.
+7 Reconstitute and reuse the bleach to obtain the full economic advantage. See Module 5, Chemical Recovery Procedures, for a procedure for reconstituting
+  and regenerating ferricyanide bleach.
+8 Fixer replenisher requirements vary with silver recovery equipment, method, and operating conditions. If provision is made for continuous electrolytic
+  desilvering of the recirculated fixer, the silver concentration should be maintained between 0.5 and 1 g/L. See Module 5, Chemical Recovery Procedures,
+  for details. The fixer and replenisher should be kept separate from other processes.
+9 The wash rate given in this table assumes that the final wash is composed of four countercurrent-wash stages with solution crossover devices between
+  stages.
+10The final rinse contains a wetting agent to promote more uniform wetting of the film strand prior to drying. The Proxel GXL or Spectrus NX106 controls
+  biological growth in the tank.
+
+Note: Temperature--Celsius temperatures are rounded consistent with process-control requirements. Fahrenheit temperatures are
+primary.
+Replenisher (Wash Rate) for 16 mm film--Use one-half the 35 mm rate. Since processing operations can vary greatly in respect
+to such factors as film-to-leader ratio, solution crossover device efficiency, and amount of film processed per unit of time,
+adjustments in replenisher rates and/or formulas may be required to maintain the recommended tank concentrations.
+
+
+
+
+Process ECN-2 Specifications                                                                                                                              7-17
+Table 7-3 Mechanical Specifications for
+Process ECN-2 with Various “UL” Bleaches (SR-33, SR-34, SR-35)
+
+                                            KODAK Formula                Temperature                              Replenisher
+                                                                                                                  (Wash Rate)         Recirculation (R);
+                                                                                                 Time
+  Process Steps         Footnotes                                                                                  per 100 ft.          Filtration (F);
+                                           Tank       Replenisher         °C         °F         min:sec
+                                                                                                                   (30.5 m) of         Turbulation (T)
+                                                                                                                   35 mm film
+                                                                          (See Note)                               (See Note)
+Prebath                       1            PB-2           PB-2R         27 ±1      80 ±2           :10               400 mL                R&F
+                                                                                                                                       @ 20 to 40 L/min
+Rem-Jet Removal               2             —               —           27 to      80 to            —                   —                    None
+& Rinse                                                                  38         100
+Developer                   1, 3, 4       SD-49          SD-49R          41.1      106.0           3:00              900 mL                R, F, & T
+                                                                         ±0.1       ±0.2
+Stop                          5           SB-14           SB-14         27 to      80 to           :30               600 mL                R&F
+                                                                         38         100                                                @ 20 to 40 L/min
+Wash                          6             —               —           27 to      80 to           :30                1.3 L                  None
+                                                                         38         100
+“UL” Bleach:                7, 1          SR-33          SR-33R         27 ±1      80 ±2           3:00              200 mL                R&F
+(Select one)                              SR-34          SR-34R                                                      100 mL            @ 20 to 40 L/min
+                                          SR-35          SR-35R                                                      400 mL
+Wash                         6, 8           —               —           27 to      80 to           1:00               1.3 L                  None
+                                                                         38         100
+Fixer                         9           F-34a          F-34aR         38 ±1     100 ±2           2:00              600 mL                R&F
+                                                                                                                                       @ 20 to 40 L/min
+Wash                          10            —               —           27 to      80 to           2:00              270 mL                  None
+                                                                         38         100
+Final Rinse                   11           FR-1           FR-1R         27 to      80 to           :10               400 mL                R&F
+                                                                         38         100                                                @ 20 to 40 L/min
+                                                   Type                  Temperature               RH               Air Flow                 Time
+Dryer                                          Impingement                32 to 47°C           30 to 50%          1000 ft3/min            5 to 7 min.
+                                                                         (90 to 117°F)
+                                            Nonimpingement                30 to 38°C           30 to 50%          1000 ft3/min            6 to 8 min.
+                                                                         (80 to 100°F)
+1 Use polypropylene, fiberglass, or bleached cotton as a filter medium in the developer. Viscose rayon is not recommended for prebath, developer, or bleaches
+  because of undesirable photographic effects.
+2 Rem-jet removal time and wash rate will vary with equipment design and method. See Table 2-1, Module 2, Equipment and Procedures.
+3 Maintain close control of developer time and temperature, since small deviations can lead to severe contrast mismatch. Use an accurate thermometer for
+  checking the temperature controller variability. The temperature should be uniform throughout the developer tank.
+4 Design developer racks with submerged rollers and rack-drive assemblies to minimize solution aeration and splashing.
+5 Install an exhaust over the stop tank, since developer carried over into the stop generates sulfur dioxide, and UL Bleach tanks which have an ammonia or
+  acetic-acid odor. The exhaust system should produce an air flow of 175 ft3/min (5 m3/min) for every square foot (0.09 m2) of solution surface and provide 50
+  to 75 ft/min (15 to 23 m/min) control velocity over the surface of the tank.
+6 Two-stage countercurrent washes with solution crossover devices between stages are recommended for efficient washing. The wash rates given in the table
+  assume the use of such two-stage washes. Single-stage washes require substantially greater wash rates.
+7 Reconstitute and reuse the bleach to obtain the full economic advantage. See Module 5, Chemical Recovery Procedures, for a procedure for reconstituting
+  and regenerating “UL” Bleach.
+8 “UL” Bleach and the wash after the bleach are prone to biogrowth. Addition of Proxel GXL or Spectrus NX106 to the bleach controls this growth. Frequent
+  dumping and changing of this wash tank may prove necessary.
+9 Fixer replenisher requirements vary with silver recovery equipment, method, and operations conditions. If provision is made for continuous electrolytic
+  desilvering of the recirculated fixer, the silver concentration should be maintained between 0.5 and 1 g/L. See Module 5, Chemical Recovery Procedures,
+  for details. The fixer and replenisher must be kept separate from other processes.
+10The wash rate given in this table assumes that the final wash is composed of four countercurrent-wash stages with solution crossover devices between
+  stages.
+11The final rinse contains a wetting agent to promote more uniform wetting of the film strand prior to drying. Proxel GXL or Spectrus NX106 are added to
+  control biological growth in the tank.
+
+Note: Temperature--Celsius temperatures are rounded consistent with process-control requirements. Fahrenheit temperatures are
+primary.
+Replenisher (Wash Rate) for 16 mm film--Use one-half the 35 mm rate. Since processing operations can vary greatly in respect
+to such factors as film-to-leader ratio, solution crossover device efficiency, and amount of film processed per unit of time,
+adjustments in replenisher rates and/or formulas may be required to maintain the recommended tank concentrations.
+
+
+
+
+7-18                                                                                                                 Process ECN-2 Specifications
+Drying Specifications                                            Turbulation Specifications
+Drying photographic film depends on time in the dryer, the       Turbulators are essential in the recirculation system for
+geometry of the dryer, the pattern of air flow and/or            Process ECN-2 developer to provide uniform film
+impingement on the film, the volume of air flow, the             processing. The turbulators are used submerged in the
+humidity and temperature of the air in the drying cabinet, and   solution and are located in such a way that the recirculated
+the efficiency of the final solution crossover device before     solution impinges uniformly over the full width of the film
+the dryer. The optimum conditions for drying film must be        strand.
+determined for each processor, making allowance for film            Turbulation at the emulsion surface must be provided
+moisture content and static buildup.                             along the film path at a suitable frequency. Backup rollers
+   With careful control of the above factors, adequate drying    opposite the turbulators are necessary in most processors
+of Process ECN-2 films can be achieved in times as short as      when adequate turbulator pressures are used. Design
+5 1⁄ 2 minutes when using an impingement-type dryer.             guidelines for Process ECN-2 developer turbulation, along
+Extending the dryer time to 6 to 8 minutes allows for a wider    with typical solution flow information, are given in
+range of drying conditions and dryer geometry (including         Module 2, Equipment and Procedures. Precise turbulation
+nonimpingement drying) and less stringent control of drying      design must be determined specifically for a particular
+conditions. General specifications for both impingement and      processing machine to promote good uniformity of
+nonimpingement drying are shown in Tables 7-2 and 7-3 .          development. The guidelines in Module 2 provide starting
+Upon cooling to room temperature after leaving the dryer,        points for such designs.
+the film should have a moisture content in equilibrium with
+air at 50 percent relative humidity and show minimum curl.
+
+
+
+
+Process ECN-2 Specifications                                                                                             7-19
+Wash-Water Flow Rates                                            Stop Wash
+Adequate washing in conjunction with conservation of wash        An inadequate stop wash in the ferricyanide bleach sequence
+water is a matter of concern for all processors. Ways of         will cause a low pH in the ferricyanide bleach which, in turn,
+reducing wash-water usage while maintaining adequate             will increase the formation of prussian blue. The prussian
+washing include: 1. using multi-stage countercurrent-flow        blue can contaminate the film in the form of blue dirt or
+washes (see Figure 7-2); 2. installing solution crossover        scum. For adequate safety from Prussian blue, the final stage
+devices between wash stages as well as before the wash (see      of the stop wash should have a pH greater than 3.0.
+Figures 7-2); and 3. shutting off wash water when the
+machine is not transporting film or leader. The last             Bleach Wash
+alternative can easily be accomplished by installing solenoid    If the ferricyanide bleach wash is inadequate, the processed
+valves in the wash-water supply lines that are opened when       film may be mottled from reaction products of bleach carry-
+the machine drive is running. The water saving from the use      over in the fixer.
+of solution crossover devices and countercurrent stages can
+be substantial. A three-stage countercurrent final wash with     Final Wash
+solution crossover devices before and after each stage           The final wash must remove most of the thiosulfate (hypo)
+requires approximately 1/25 of the water of a single-stage       from the film. Retained hypo levels of 4 μg/cm2 or greater
+wash with entrance and exit solution crossover devices.          can cause serious dye fading. If the recommended four-stage
+Overflow from one wash step should never be used in any          countercurrent wash and wash rate are used, residual hypo in
+other wash step.                                                 the designated films processed in Process ECN-2 should be
+   Decreased water flow in the final wash may increase the       barely detectable (0.2 to 0.4 μg/cm2) by Analytical
+propensity toward biological growth. See Module 2,               Method ULM-0004/1 in Module 3, Analytical Procedures.
+Equipment and Procedures, for information on control of
+biological growth. Temperature control can also be a
+concern at lower flow rates. After establishing the final flow
+rate, check to be sure the process stays within the
+temperature tolerances specified in Tables 7-2 or 7-3.
+   The wash-water flow rates in Tables 7-2 and 7-3 have
+been found to be satisfactory in a 75 ft/min (23 m/min)
+processor, using two-stage countercurrent washes (four-
+stage final wash) with efficient solution crossover devices
+between stages. The optimum wash rates for a particular
+installation must be determined after the film transport rate,
+the number of countercurrent stages, and the solution
+crossover device efficiencies have been establish.
+   Experimentation is necessary to determine minimum
+wash-water flow rates that will provide adequate washing.
+Inadequate washing could result in significant contamination
+of the solution after the wash with the solution before the
+wash and/or loss of image stability.
+
+
+
+
+7-20                                                                                        Process ECN-2 Specifications
+Rewashing                                                                       Table 7-4 Rewash RW-1 Sequence
+For many years, the term rewashing referred to the common
+                                                                                          Step                            Function
+practice of running processed film through a complete
+                                                                                 1. Prebath PB-6           Swells the emulsion, causing the
+process for a second time. This operation removes dirt and/                                                scratches to be filled in and embedded
+or heals slight emulsion scratches and digs. Rewashing a                                                   dirt particles to be released.
+film once in the original process produces minimal changes                       2. Wash                   Removes unwanted chemicals, which, if
+in the dye stability and sensitometry. However, several                                                    left in, affect dye stability.
+rewashings may cause changes in green (or other) density                         3. Final Rinse FR-1 Contains a wetting agent to help prevent
+over the full exposure scale of the film. After several                                              water spots while the film is being dried.
+rewashings, subsequent print orders can require the green                        4. Dry                    Dries film for subsequent handling.
+light printer exposure (or other) to be changed from the
+                                                                                   The rewash machine consists of a loading elevator, tanks
+original setting.
+                                                                                for the prebath, wash, and final rinse solutions, and a dryer.
+   Rewash RW-1 is designed to avoid these sensitometric
+                                                                                Submerged rollers and rack-drive assemblies will minimize
+and dye stability changes, and at the same time to produce
+                                                                                spattering of solutions and aerial oxidation of sulfite in the
+similar emulsion swells to that obtained by going through the
+                                                                                prebath. Type 316 stainless steel is suitable for tanks, racks,
+original developer.
+                                                                                and recirculation equipment. Use 10-micron filters of
+                                                                                polypropylene, fiberglass, or bleached cotton in the
+                                                                                recirculation system. Use no solution crossover devices,
+                                                                                except after the final rinse, where a high efficiency final
+                                                                                solution crossover device is needed.
+
+
+Table 7-5 Mechanical Specifications for Rewash RW-1
+
+                                                                 Temperature1                                    Replenisher
+                              KODAK Formula                                                                      (Wash Rate)
+                                                                                                  Time                           Recirculation (R);
+      Process Steps             Tank and                                                                          per 100 ft.
+                                                            °C                  °F               min:sec                           Filtration (F)
+                               Replenisher                                                                        (30.5 m) of
+                                                                                                                 35 mm film2
+Prebath                              PB-6                 21 ±1              70 ±2                2:00             600 mL
+Wash                                   —                 21 to 38          70 to 100              3:00             300 mL3
+Final Rinse                          FR-1                21 to 38          70 to 100               :10
+                                     Type             Temperature                                  RH              Air Flow             Time
+Dryer                                                  32 to 47°C
+                                 Impingement                                                 30 to 50%           1000 ft3/min        5 to 7 min.
+                                                      (90 to 117°F)
+                                                       30 to 38°C
+                               Nonimpingement                                                30 to 50%           1000 ft3/min        6 to 8 min.
+                                                      (80 to 100°F)
+1 Celsius temperatures are rounded consistent with process-control requirements. Fahrenheit temperatures are primary.
+2 For 16 mm film, use one-half the 35 mm film replenishment and wash rates.
+3 Use a two-stage countercurrent wash.
+
+
+
+
+Process ECN-2 Specifications                                                                                                                       7-21
+7-22   Process ECN-2 Specifications
+PROCESSING CHEMICALS
+
+
+Prepackaged Chemicals
+There are prepackaged kits available for preparing the processing solutions used in Process ECN-2. For information
+on KODAK ECN-2 Kit Chemicals, see Using KODAK Kit Chemicals in Motion Picture Film Laboratories H-333.
+As an alternative to kit chemicals, each solution can be prepared according to formulas, using chemicals purchased
+in bulk.
+
+
+
+
+Process ECN-2 Specifications                                                                                         7-23
+7-24   Process ECN-2 Specifications
+Process ECN-2 Specifications   7-25
+Solution Mixing                                                       to be mixed. If a water hopper is used, take care not to
+Use the following mixing practices when preparing                     over dilute the solution.
+processing solutions with common mixing equipment. Mix                FERRICYANIDE BLEACH: When the ferricyanide
+solutions in the order in which the solutions occur in the            bleach is made with ferrocyanide and persulfate, the
+process sequence. This order will minimize the effect of              solution should be allowed to sit approximately an
+contamination of a solution by the previously mixed                   hour before final adjustments are made. This allows
+solution. The solutions are also less likely to be placed in the      for complete reaction of the two chemicals.
+wrong holding or machine tanks. See Module 8, Effects of
+Mechanical and Chemical Variations in Process ECN-2, for
+sensitometric effects of contamination and solution                     Caution
+                                                                        Caution
+                                                                      CORROSIVE. Avoid contact with ammonium
+concentration errors.
+                                                                      hydroxide solution and vapor. Avoid breathing vapor.
+  The mixing area should be well ventilated and have a local
+                                                                      Wear safety goggles and impervious gloves. Store in a
+exhaust over the mixing tank to carry off fumes and chemical          cool place to prevent pressure build-up in the
+dust. See Module 2, Equipment and Procedures, for exhaust             container.
+specifications.
+  Good mixing practices:                                              “UL” BLEACH: When adding ammonium hydroxide
+   1. Observe all precautionary information on containers             to the mix tank, be sure to add it below, or at the
+      and packages of each chemical, and on the Material              surface of the solution to minimize the escape of
+      Safety Data Sheets available from the seller of the             ammonia vapor. Careless handling may require
+      individual chemical. Footnotes with some formulas               evacuation of the mix room.
+      provide further precautionary information.                   5. Agitate the solution for a few minutes after it has been
+  2. Rinse the mix tank with water, and run fresh water               diluted to volume, to promote complete and uniform
+                                                                      dissolution of all the constituents. The prebath,
+     through the pump. Drain the tank and pump.
+                                                                      developer, stop, and final rinse should be agitated for
+     “UL” BLEACH: If converting from ferricyanide
+                                                                      at least 5 minutes after dilution to volume; the fixer for
+     bleach, first remove all red brass from the system, then
+                                                                      10 minutes; and the bleach for 15 minutes.
+     clean up the bleach system. A high pH wash (10 to 12)
+     will help eliminate any prussian blue in the system.          6. Analyze the solution for its critical constituents after
+     Three cleaning cycles are recommended.                           mixing. Then place the certified solution into the
+     If converting from persulfate bleach, a series of hot            appropriate storage tank.
+     water rinses is needed in the accelerator and bleach          7. Carefully rinse the mixing tank and any pump used to
+     tanks. Since the accelerator tank will become a wash             transport the solution. Clean the mixing equipment
+     tank, the initial series of rinses is enough. The bleach         immediately after the tank is emptied, before salts and
+     tank should be filled with hot water and the                     tars have time to form. The tank is more efficiently
+     recirculation and replenishment system turned on.                rinsed with numerous small-volume rinses than with a
+     Three to five cleaning cycles are recommended.                   few large-volume rinses.
+                                                                     * When preparing processing solutions, use photographic grade
+  3. Fill the tank to the mixing level with water at the              chemicals (passing ANSI or ANSI/ACS specifications). Kodak, as
+     appropriate temperature, and start the mixer. Be sure            well as some other suppliers, provide such chemicals.
+     the mixer is large enough to provide adequate agitation
+     for the volume of solution desired. Allow 30 seconds
+     for agitating the water between the time the mixer is
+     started and the first chemical addition is made. This
+     action helps remove air from the water and disperse
+     the first chemical addition.
+  4. Premeasure all chemicals,* but do not combine the dry
+     chemicals together before adding them to the mixing
+     tank. This practice can result in unwanted chemical
+     reactions producing toxic and noxious fumes. The
+     formula for each processing solution lists chemicals in
+     the proper mixing order. Add and dissolve the
+     chemicals in the order given, and dilute the solution to
+     volume with water
+     DEVELOPER: To avoid problems in dissolving the
+     KODAK Color Developing Agent, CD-3, agitate the
+     developer mix for 15 minutes after the addition of the
+     sodium bromide and for 10 minutes after the addition
+     of the CD-3 and before diluting to volume. Be sure the
+     starting volume of water is 85% of the volume
+
+
+
+7-26                                                                                          Process ECN-2 Specifications
+FORMULAS AND ANALYTICAL SPECIFICATIONS
+
+
+Bulk Formulas
+Each processing solution prepared from bulk chemicals must
+be prepared according to the formulas given below. After
+mixing, each solution should be analyzed to check
+conformity to pH, specific gravity, and analytical
+specifications given in the formula. Procedures for chemical
+analysis are given in Module 3, Analytical Procedures.
+   Maintain the fresh tank formula specifications exactly as
+given in the formulas. Immediately correct any deviations
+from tank specifications revealed by chemical analysis, by
+making appropriate additions or cuts to the tank solution.
+   Any long-term tendency to deviate from the tank
+analytical specifications (e.g., slowly increasing pH) should
+be corrected by adjustment of the replenisher. The
+replenisher formula specifications are to be used as starting
+points for typical operations.
+
+
+
+
+         Important
+Observe precautionary information on product labels and on the Material Safety Data Sheets.
+
+Prebath
+                                                                 Fresh and
+                                                              Seasoned Tank 1       Fresh       Replenisher Analytical
+Constituent                               Fresh Tank
+                                                                 Analytical       Replenisher      Specifications
+                                                               Specifications
+Prebath 2                                    (PB-2)                                (PB-2R)
+Water 27 to 38°C (80 to 100°F)               800 mL                                 800 mL
+Borax (Decahydrated) 3                       20.0 g                                 20.0 g
+Sodium Sulfate (Anhydrous)                    100 g                                  100 g
+Sodium Hydroxide                              1.0 g                                  1.0 g
+Water to make                                  1L                                     1L
+pH at 25.0°C (77.0°F)                                             9.25 ± 0.10                         9.25 ± 0.10
+Specific Gravity                                                 1.094 ± 0.004                      1.094 ± 0.004
+1 If a precipitate tends to form, add 1 mL/L of KODAK Anti-Calcium, No. 4.
+2 If biological growth becomes a problem, Proxel GXL may be added at 0.07 mL/L.
+3 Borax having 5 moles water of crystallization can be used at 15.0 g/L.
+
+
+
+
+Process ECN-2 Specifications                                                                                             7-27
+ Developer
+
+                                                                     Fresh and
+                                                                   Seasoned Tank             Fresh          Replenisher Analytical
+              Constituent                     Fresh Tank
+                                                                     Analytical            Replenisher         Specifications
+                                                                   Specifications
+ Developer
+ Water 21 to 38°C (70 to 100°F)                 850 mL                                        850 mL
+ KODAK Anti-Calcium, No. 4                       2.0 mL                                       2.7 mL
+ Sodium Sulfite (Anhydrous)1                      2.0 g              1.8 ± 0.2 g/L             2.5 g               2.2 ± 0.2 g/L
+ Sodium Bromide (Anhydrous)                      1.20 g            1.20 ± 0.05 g/L             0.80 g            0.80 ± 0.05 g/L
+ KODAK Color Developing Agent CD-31              4.0 g              3.9 ± 0.1 g/L              5.5 g              5.2 ± 0.1 g/L
+ Sodium Carbonate (Anhydrous)                    25.6 g                                        25.0 g
+ Sodium Bicarbonate                               2.7 g                                        0.6 g
+ KODAK Antifoggant AF-2000                       5.0 mL              5.0 ± 0.1 mL             5.3 mL              5.3 ± 0.1 mL
+ Water to make                                     1L                                           1L
+ pH at 25.0°C (77.0°F)                                               10.25 ± 0.05                                  10.32 ± 0.05
+ Specific Gravity at 25.0°C (77.0°F)                                1.029 ± 0.003                                 1.028 ± 0.003
+ Total Alkalinity (5 mL sample)                                     25.6 ± 1.5 mL                                 23.6 ± 0.5 mL
+  1 Mix CD-3 for minimum of 10 minutes or until completely desolved. The difference between the mix levels and the analytical specifications for
+
+  CD-3 and sodium sulfite are to compensate for aeration losses that occur during mixing and transfer of solution to the machine tank. The mix
+  levels necessary to achieve the required analytical specifications will vary with mixing equipment and solution transfer techniques.
+
+   Because of the very good stability of AF-2000 in the color developer, no modification of the replenisher AF-2000 concentration
+is necessary even if the machine is idle for a long period of time.
+
+
+
+
+7-28                                                                                                      Process ECN-2 Specifications
+Stop
+                                                                        Fresh and
+                                                                      Seasoned Tank      Fresh        Replenisher Analytical
+                Constituent                      Fresh Tank
+                                                                        Analytical     Replenisher       Specifications
+                                                                      Specifications
+Stop                                               (SB-14)                                  h
+Water 21 to 38°C (70 to 100°F)                     900 mL
+Sulfuric Acid (7.0 N)                              50 mL 1                             Same as Tank
+Water to make                                         1L
+pH at 25.0°C (77.0°F)                                                     0.8 to 1.5
+WARNING! May cause eye and skin irritation and allergic skin reaction. Avoid contact with eyes and skin. In case of contact,
+immediately flush with plenty of water; for eyes, get medical attention.
+1 10 mL of concentrated sulfuric acid may be substituted for 50 mL of 7.0 N acid.
+
+
+
+
+Process ECN-2 Specifications                                                                                                   7-29
+Recommended Process Bleach
+                                                                        Fresh and
+                                                                      Seasoned Tank        Fresh       Replenisher Analytical
+               Constituent                      Fresh Tank
+                                                                        Analytical       Replenisher      Specifications
+                                                                      Specifications
+Ammonium “UL” Bleach                              (SR-33)                                 (SR-33R)
+Water 21 to 38°C (70 to 100°F)                     700 mL                                  700 mL
+Proxel GXL                                        0.07 mL                                  0.10 mL
+Ammonium Hydroxide Solution (28%)                  30 mL                                   37 mL
+KODAK Chelating Agent No. 1                        24.2 g                                  38.4 g
+Ammonium Bromide                                   32.5 g               32 ± 7.5 g/L       51.6 g          51.6 ± 10.0 g/L
+Acetic Acid (Glacial)                              10 mL                                   14.5 mL
+Ferric Nitrate (Nonahydrate) 1                     28.8 g                                  45.7 g
+Water to make                                        1L                                      1L
+pH at 25.0°C (77.0°F) 2                                                  5.00 ± 0.20                         5.00 ± 0.20
+Specific Gravity at 25.0°C (77.0°F)                                    1.035 ± 0.003                       1.062 ± 0.003
+Total Iron                                                             4.0 ± 0.50 g/L                      6.35 ± 0.50 g/L
+Ferric Iron                                                            4.0 ± 0.50 g/L                      6.35 ± 0.50 g/L
+Ferrous Iron                                                               <.5 g/L                             <.5 g/L
+1 See Chemical Supplies and Substitutions for possible chemical alternatives.
+2 Adjust pH using glacial acetic acid, 7.0 N sulfuric acid, or 28% ammonium hydroxide.
+Note: See Chemical Supplies and Substitutions for calculations regarding raw chemical concentrations and alternatives.
+• It is especially important to follow the “Good Mixing Practices” when preparing this bleach.
+• Follow exactly the mix order given above.
+• Check the solution pH before starting the ferric nitrate addition. It should be between 8 and 8.5; adjust if necessary.
+• Add the ferric nitrate solution slowly while mixing.
+• The solution should be clear and yellow after completion of the ferric nitrate addition and subsequent mixing. A temporarily
+  cloudy solution caused by too low a pH will clear during pH adjustment.
+• A solution which stays red for a long time after mixing indicates an excess of iron or deficiency of chelating agent.
+• pH correction can be made using sulfuric acid or ammonium hydroxide. Do not use phosphoric acid or strong bases such as
+  potassium or sodium hydroxide.
+
+
+
+
+7-30                                                                                                   Process ECN-2 Specifications
+Alternate Process Bleach
+                                                                     Fresh and
+                                                                   Seasoned Tank              Fresh             Replenisher Analytical
+               Constituent                     Fresh Tank
+                                                                     Analytical             Replenisher            Specifications
+                                                                   Specifications
+Ammonium “UL House” Bleach                       (SR-35)                                      (SR-35R)
+Water 21 to 38°C (70 to 100°F)                   700 mL                                        700 mL
+Proxel GXL                                       0.07 mL                                       0.10 mL
+Ammonium Hydroxide Solution 1 (28%)               54 mL                                         64 mL
+KODAK Chelating Agent No. 1                       44.8 g                                         51 g
+Sodium Bromide                                     25 g                25 ± 3 g/L                32 g                 32 ± 3 g/L
+Acetic Acid (90% Solution)                        10 mL                                        14.5 mL
+Ferric Nitrate (Nonahydrate) 2                    53.8 g                                        61.2 g
+Water to make                                       1L                                            1L
+pH at 25.0°C (77.0°F) 3                                               5.30 ± 0.20                                     5.30 ± 0.20
+Specific Gravity at 25.0°C (77.0°F)                                  1.056 ± 0.003                                  1.066 ± 0.003
+Total Iron                                                          7.50 ± 0.50 g/L                                 8.20 ± 0.50 g/L
+Ferric Iron                                                         7.50 ± 0.50 g/L                                 8.20 ± 0.50 g/L
+Ferrous Iron                                                            <0.5 g/L                                       <0.5 g/L
+1 Ammonium acetate may be substituted for ammonium hydroxide and acetic acid. See Section 4 for calculations.
+2 See Chemical Supplies and Substitutions for possible chemical alternatives.
+3 Adjust pH using glacial acetic acid, 7.0 N sulfuric acid, or 28% ammonium hydroxide.
+Note: See Chemical Supplies and Substitutions for calculations regarding raw chemical concentrations and alternatives.
+• It is especially important to follow the “Good Mixing Practices” when preparing this bleach.
+• Follow exactly the mix order given above.
+• Check the solution pH before starting the ferric nitrate addition. It should be between 8 and 8.5; adjust if necessary.
+• Add the ferric nitrate solution slowly while mixing.
+• The solution should be clear and yellow after completion of the ferric nitrate addition and subsequent mixing. A temporarily
+  cloudy solution caused by too low a pH will clear during pH adjustment.
+• A solution which stays red for a long time after mixing indicates an excess of iron or deficiency of chelating agent.
+• pH correction can be made using sulfuric acid or ammonium hydroxide. Do not use phosphoric acid or strong bases such as
+  potassium or sodium hydroxide.
+
+
+
+
+Process ECN-2 Specifications                                                                                                             7-31
+Alternate Process Bleach
+                                                                           Fresh and
+                                                                         Seasoned Tank             Fresh           Replenisher Analytical
+                Constituent                       Fresh Tank
+                                                                           Analytical            Replenisher          Specifications
+                                                                         Specifications
+Potassium “UL House” Bleach                          (SB-34)                                       (SR-34R)
+Water 21 to 38°C (70 to 100°F)                       700 mL                                         700 mL
+Proxel GXL                                           0.07 mL                                        0.10 mL
+Potassium Hydroxide (45%) 1                          42.7 mL                                        83.8 mL
+KODAK Chelating Agent No. 1                           30.6 g                                         60.1 g
+Potassium Bromide (Anhydrous)                         51.5 g               51.1 ± 3 g/L              101 g                 101 ± 6 g/L
+Acetic Acid (Glacial)                                7.65 mL                                         15 mL
+Ferric Nitrate (Nonahydrate) 2                        35.7 g                                          70 g
+Water to make                                          1L                                             1L
+pH at 25.0°C (77.0°F)3                                                      5.30 ± 0.20                                    5.3 ± 0.20
+Specific Gravity at 25.0°C (77.0°F)                                       1.070 ± 0.003                                 1.1420 ± 0.003
+Total Iron                                                                 5.1 ± 0.5 g/L                                  10 ± 0.5 g/L
+Ferric Iron                                                                5.1 ± 0.5 g/L                                  10 ± 0.5 g/L
+Ferrous Iron                                                                 <0.5 g/L                                       <0.5 g/L
+1 DO NOT add more potassium hydroxide after ferric nitrate is added.
+2 See Chemical Supplies and Substitutions for calculations.
+3 Adjust pH with glacial acetic acid, potassium, carbonate or 7 N sulfuric acid.
+Note: See Chemical Supplies and Substitutions section for calculations regarding raw chemical concentrations and alternatives.
+• It is especially important to follow the “Good Mixing Practices” when preparing this bleach.
+• Follow exactly the mix order given above.
+• Check the solution pH before starting the ferric nitrate addition. It should be between 8 and 8.5; adjust if necessary.
+• Add the ferric nitrate solution slowly while mixing.
+• The solution should be clear and yellow after completion of the ferric nitrate addition and subsequent mixing. A temporarily
+  cloudy solution caused by too low a pH will clear during pH adjustment.
+• A solution which stays red for a long time after mixing indicates an excess of iron or deficiency of chelating agent.
+• pH correction can be made using sulfuric acid or potassium carbonate. Do not use phosphoric acid or strong bases such as
+  potassium or sodium hydroxide after ferric nitrate addition.
+
+Alternate Bleach
+                                                                           Fresh and
+                                                                         Seasoned Tank             Fresh           Replenisher Analytical
+                Constituent                       Fresh Tank
+                                                                           Analytical            Replenisher          Specifications
+                                                                         Specifications
+Ferricyanide Bleach                                  (SR-29)                                       (SR-29R)
+Water 32 to 43°C (90 to 110°F)                       900 mL                                         900 mL
+Potassium Ferricyanide (Anhydrous) 1                  40.0 g              40.0 ± 5.0 g/L             55.0 g              55.0 ± 2.0 g/L
+Sodium Bromide (Anhydrous)                            25.0 g              25.0 ± 2.0 g/L             35.0 g              35.0 ± 2.0 g/L
+Water to make                                          1L                                             1L
+pH at 25.0°C (77.0°F) 2                                                      6.5 ± 0.5                                      8.0 ± 0.3
+Specific Gravity at 25.0°C (77.0°F)                                      1.037 ± 0.003 3                                 1.052 ± 0.003
+1 One gram of this compound can also be obtained by mixing 0.41 gram of potassium persulfate and 1.47 grams of sodium ferrocyanide
+  decahydrate. The reaction between potassium persulfate and sodium ferrocyanide takes about 1 hour, after which the final adjustments to the
+  mix should be made. The specific gravity of a bleach prepared by the reaction will be higher than when using the formula, and will get higher
+  with each regeneration using potassium persulfate.
+2 To maintain pH control it may be necessary to add 1 to 2 g/L of Borax decahydrate. Adjust to proper pH with 2.5 N sodium hydroxide or
+  2.5 N sulfuric acid.
+3 These specifications apply to a fresh (unseasoned) tank only.
+
+
+
+
+7-32                                                                                                              Process ECN-2 Specifications
+Fixer
+                                                                           Fresh and
+                                                                         Seasoned Tank                 Fresh            Replenisher Analytical
+                Constituent                        Fresh Tank
+                                                                           Analytical                Replenisher           Specifications
+                                                                         Specifications
+Fixer                                                (SF-34a)                                          (F-34aR)
+Water 21 to 38°C (70 to 100°F)                        700 mL                                            700 mL
+KODAK Anti-Calcium, No. 4                             2.0 mL                                            2.8 mL
+Ammonium Thiosulfate Solution 58%                     185 mL               185 ± 15 mL/L                200 mL               200 ± 15 mL/L
+Sodium Sulfite (Anhydrous)                            10.0 g              20.0 ± 2.0 g/L 1               22.0 g              26.0 ± 2.0 g/L 1
+Sodium Metabisulfite (Anhydrous)                       8.4 g                                             4.0 g
+Water to make                                           1L                                                1L
+pH at 25.0°C (77.0°F)                                                        6.5 ± 0.2 2                                        7.2 ± 0.2 3
+Specific Gravity at 25.0°C (77.0°F)                                        1.086 ± 0.003   2                                  1.103 ± 0.003
+Hypo Index (3 mL sample)                                                   39.5 ± 2.5 mL                                      45.0 ± 2.0 mL
+1 The analytical method measures the total sulfite content of the solution and reports it as sodium metabisulfite (Na2S2O5). If a solution addition
+  to the sodium metabisulfite level must be made but sodium bisulfite is to be used, multiply the sodium metabisulfite addition weight by the factor
+  1.09 to obtain the equivalent amount of sodium bisulfite.
+2 These specifications apply to a fresh (unseasoned) tank only.
+3 Fixer pH may decrease with certain operating conditions when electrolytically desilvering the fixer. If the fixer is not continuously desilvered or
+  desilvered by the batch method and reused as replenisher, the replenisher pH should be 6.50 ± 0.2. If bleach regeneration is practiced, the fixer
+  pH should never be allowed to fall below 5.5, since low fixer pH affects the dye stability of Kodak color negative films.
+
+Final Rinse
+                                                                            Fresh and
+                                                                          Seasoned Tank                Fresh            Replenisher Analytical
+                Constituent                        Fresh Tank
+                                                                            Analytical               Replenisher           Specifications
+                                                                          Specifications
+Final Rinse 1                                        (SB-29)                                           (SR-29R)
+Water 21 to 38°C (70 to 100°F)                        900 mL                                            900 mL
+KODAK Stabilizer Additive                            0.14 mL                                            0.17 mL
+Water to make                                           1L                                                1L
+1 If biological growth becomes a problem, Proxel GXL may be added at 0.07 mL/L, or Spectrus NX106 at 0.7 mL/L.
+
+Rewash Formulas
+The final rinse formula (FR-1) is given above. Additional tank solution (FR-1) may be used in place of the replenisher solution
+(FR-1R) for the rewash operation.
+
+                                                                          Fresh and
+                                                                        Seasoned Tank                  Fresh             Replenisher Analytical
+                Constituent                       Fresh Tank
+                                                                          Analytical                 Replenisher            Specifications
+                                                                        Specifications
+Prebath                                              (PB-6)
+Water 21 to 38°C (70 to 100°F)                       800 mL
+KODAK Anti-Calcium, No. 4                            2.0 mL
+Sodium Sulfite (anhydrous)                            8.4 g               18.0 ± 2.0 g/L
+Sodium Bisulfite (anhydrous)                         10.0 g
+Water to make                                          1L
+pH at 25.0°C (77.0°F)                                                       6.5 ± 0.20
+
+
+
+
+Process ECN-2 Specifications                                                                                                                            7-33
+Alternate Prebath1
+                                                                     Fresh and
+                                                                  Seasoned Tank1      Fresh       Replenisher Analytical
+               Constituent                    Fresh Tank
+                                                                     Analytical     Replenisher      Specifications
+                                                                   Specifications
+Sodium Carbonate Prebath2                       (PB-C1)                              (PB-C1R)
+Water 27 to 38°C (80 to 100°F)                  800 mL                                800 mL
+KODAK Anti-Calcium, No. 4                        3.0 mL                               3.0 mL
+Sodium Carbonate (anhydrous)                     58.0 g                               58.0 g
+Sodium Bicarbonate (anhydrous)                   19.0 g                               19.0 g
+KODAK Stabilizer Additive                        0.5 mL                               0.5 mL
+Water to make                                      1L                                   1L
+pH at 25.0°C (77.0°F)                                                10.0 ± 0.20                        10.0 ± 0.20
+Specific gravity at 25.0°C (77.0°F)                                     1.0660                            1.0660
+1 May be used in place of PB-2 for Process ECN-2.
+2 If biological growth becomes a problem, Proxel GXL may be added at 0.07 mL/L.
+
+Alternate Prebath1
+                                                                     Fresh and
+                                                                  Seasoned Tank1      Fresh       Replenisher Analytical
+               Constituent                    Fresh Tank
+                                                                     Analytical     Replenisher      Specifications
+                                                                   Specifications
+Potassium Carbonate Prebath2                    (PB-C2)                              (PB-C2R)
+Water 27 to 38°C (80 to 100°F)                  800 mL                                800 mL
+KODAK Anti-Calcium, No. 4                        3.0 mL                               3.0 mL
+Potassium Carbonate (47%)                       150.0 g                               150.0 g
+Potassium Bicarbonate (anhydrous)                34.7 g                               34.7 g
+KODAK Stabilizer Additive                        0.5 mL                               0.5 mL
+Water to make                                      1L                                   1L
+pH at 25.0°C (77.0°F)                                                10.0 ± 0.20                        10.0 ± 0.20
+Specific gravity at 25.0°C (77.0°F)                                     1.1410                            1.1410
+1 May be used in place of PB-2 for Process ECN-2.
+2 If biological growth becomes a problem, Proxel GXL may be added at 0.07 mL/L.
+
+
+
+
+Process ECN-2 Specifications                                                                                               7-34
+STORAGE OF SOLUTIONS
+Do not use replenishers that have been stored at normal room
+temperatures 21 to 24°C (70 to 75°F), longer than the times
+given in Table 7-7. Storage temperatures higher than 24°C
+(75°F) will decrease the storage life of the solutions. Storage
+temperatures below 16°C (60°F) can cause some solution
+constituents to precipitate.
+   Do not attempt to bring aged replenisher solutions to the
+formula level. Decomposition products that are formed as
+the solution stands cannot be eliminated from the solution.
+These compounds build up to a concentration that can cause
+adverse photographic effects.
+
+Table 7-7 STORAGE LIFE OF REPLENISHER
+          SOLUTIONS AT 21 TO 24°C (70 TO 75°F)
+
+         Replenisher           Floating Cover    Open Tank
+        Color Developer           2 weeks          1 week
+          Stop SB-14             Indefinite 1      8 weeks
+             Others               8 weeks          4 weeks
+1 If solution is kept clean.
+
+   Discard the remaining few litres of replenisher before
+fresh replenisher is pumped into the holding tank.
+Replenisher remaining in the holding tank, even if kept
+under a close-fitting floating cover, usually has deteriorated
+to such an extent that it is unsatisfactory for further use.
+   For best process control, equip the holding tank for the
+color developer replenisher with a tight-fitting floating
+cover. The cover will minimize air oxidation of the solution,
+and absorption of carbon dioxide from the air, which would
+change the pH. Clearance between the cover and the tank
+wall should not be greater than 1/4 inch (6.4 mm).
+Polyethylene sheeting of 1/2 inch (12.7 mm) thickness
+makes adequate covers in sizes up to 3 feet (1 meter) in
+diameter. A dust cover, alone, permits air to contact more of
+the solution surface and allows air oxidation to take place.
+Dust covers should be used for non-developer solutions to
+minimize dirt in the replenisher tanks.
+
+
+
+
+Process ECN-2 Specifications                                      7-35
+Processing KODAK Motion Picture Films, Module 7
+ Process ECN-2 Specifications
+
+
+
+
+Processing KODAK Motion Picture   Kodak, Vision, and Estar are trademarks.   Revised 1-20 jbb
+Films, Module 7,                                                             Printed in U.S.A.
+Process ECN-2 Specifications
+KODAK Publication No. H-24.07
+

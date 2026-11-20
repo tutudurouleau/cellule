@@ -1,0 +1,57 @@
+# https://www.vantagefilm.com/file/edee/downloads/optics/2x-hawk-anamorphic-lenses/hawk-v-plus-technical-data.pdf
+
+Hawk V-Plus
+2x Anamorphic Lenses - Technical Data
+Fully matched, beautiful lenses designed to handle extreme high contrasts. Hawk V‑Plus anamorphics yield slightly
+greater definition and subtly boosted contrast. Superior optical design is also evident in two super-close-focus lenses, the
+65 mm and the 120 mm, which focus down to the front element. The V‑Plus line of lenses handles high contrast situations
+exceptionally well, and features masking to eliminate extraneous light rays. Hawk V‑Plus lenses match perfectly with other
+Hawk glass, imbuing images with all the subtle qualities cinematographers love in classic anamorphic photography.
+
+
+                                       Focal Length                    metric                        imperial            Angle of View*       Weight             Front            Overall          Min. Filter        Image Area        Illumination
+              Lens
+                                            Stop                 CFD            MOD           CFD           MOD            horizontal     kg        Ibs        Diameter           Length               Size            diagonal        Area diagonal
+
+  Hawk V-Plus 30                        30 mm/T2.2              0.75 m       0.53 m           2‘6“           1‘9“              80.8°      6       13.1         156 mm            186 mm             4x5.65“               28 mm           28.5 mm
+
+  Hawk V-Plus 35                        35 mm/T2.2              0.73 m       0.51 m           2‘5“           1‘8“              66.7°      5.3     11.7         156 mm            188 mm             4x5.65“               30 mm           30.5 mm
+
+  Hawk V-Plus 40                        40 mm/T2.2              0.73 m       0.50 m           2‘5“           1‘8“              58.8°      5.7     12.5         156 mm            199 mm             4x5.65“               31 mm           31.5 mm
+
+  Hawk V-Plus 50                        50 mm/T2.2              0.58 m       0.36 m          1‘11“           1‘2“              52°        3.7      8.2         125 mm            203 mm         4x5.65“/40.5           30.5 mm              31 mm
+                           Super
+  Hawk V-Plus 65           Close           65 mm/T3             0.35 m       0.02 m           1‘2“            >1“              40.8°      4.4      9.6         125 mm            252 mm             4x5.65“            28.5 mm              29 mm
+                           Focus
+
+  Hawk V-Plus 75                        75 mm/T2.2               0.6 m       0.34 m             2‘           1‘2“              35.6°      4.3      9.4         125 mm            234 mm             4x5.65“               32 mm           32.5 mm
+
+  Hawk V-Plus 85                        85 mm/T2.2               0.6 m       0.32 m             2‘           1‘2“              31.8°      4.5      9.9         125 mm            250 mm             4x5.65“               32 mm           32.5 mm
+
+  Hawk V-Plus 100                     100 mm/T2.2               0.98 m       0.63 m           3‘2“              2‘             27.7°      5.7     12.5         125 mm            325 mm             4x5.65“            33.5 mm            34.5 mm
+                           Super
+  Hawk V-Plus 120          Close      120 mm/T3.5               0.42 m       0.01 m           1‘5“            >1“              22.3°      5.7     12.5         125 mm            335 mm         4x5.65“/40.5              31 mm           31.5 mm
+                           Focus
+
+  Hawk V-Plus 135                        135 mm/T3              0.98 m       0.63 m           3‘2“              2‘             20.7°      5.4     11.9         125 mm            325 mm             4x5.65“            35.5 mm              38 mm
+
+  Hawk V-Plus 150                        150 mm/T3              0.98 m       0.62 m           3‘2“              2‘             18.6°      5.6     12.3         125 mm            323 mm             4x5.65“            35.5 mm              38 mm
+                                                                                                                                                *Angle of view – quoted for S35 format ( 22.94 x 19.22 mm – 2.39:1 Release Format – Sensor size ALEXA 35)
+
+
+                                          CFD – Close Focus Distance                                                                                                                                                    Anamorphic Lens –
+                                                                                                                                                                                                                        the Illumination Area is
+                                                                                                                                                                                                                        of rectangular shape.
+
+
+                                                                                                                                                                                                                        Image Area
+
+                                                                                                                                                                                                                        Illumination Area
+
+                                          MOD – Minimal Object
+                                                     Distance
+
+
+                                                                Technical specifications are subject to change without notice – additional lenses will follow. Made in Germany by Vantage Film
+  Hawk®, Hawk Anamorphic®, Vantage® are registered trade-marks of Vantage Film GmbH, Germany. For further information contact Vantage Film, Phone +49 961 26795, www.vantagefilm.com
+

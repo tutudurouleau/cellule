@@ -1,0 +1,53 @@
+# https://www.vantagefilm.com/file/edee/downloads/optics/2x-hawk-anamorphic-lenses/hawk-c-series-technical-data.pdf
+
+Hawk C-Series
+The very first lens line produced by Hawk - Technical Data
+The very first lens line produced by Hawk. The Hawk C‑Series lenses deliver thoroughly modern and
+sharp imagery that is also slightly forgiving, with a very natural feel. Designed with an understanding of
+how filmmakers work, the C‑Series family includes a 60 mm/T 2.2 lens – a very useful focal length in the
+2x format that had usually been left out in previous anamorphic lens sets. Because of their popularity,
+Hawk continues to produce parts and maintain the C‑Series line.
+
+
+                                      Focal Length                    metric                         imperial              Angle of View*          Weight**                Front            Overall           Min. Filter       Image Area         Illumination
+              Lens
+                                           Stop                CFD             MOD            CFD            MOD             horizontal           kg         Ibs       Diameter**            Length               Size           diagonal         Area diagonal
+
+  Hawk C-Series 40                      40 mm/T2.2           0.90 m          0.74 m          2‘11“            2‘5“             67.5°             2.2        4.7          110 mm             143 mm             4x5.65“               29 mm              30 mm
+
+  Hawk C-Series 50                      50 mm/T2.2           0.93 m          0.76 m             3‘            2‘6“             56.2°             2.1        4.6          110 mm             162 mm             4x5.65“               30 mm              31 mm
+
+  Hawk C-Series 60                      60 mm/T2.2           0.93 m          0.75 m             3‘            2‘6“             46°               2.2        4.7          110 mm             173 mm             4x5.65“               34 mm              35 mm
+
+  Hawk C-Series 75                      75 mm/T2.2           0.95 m          0.74 m           3‘1“            2‘5“             37°               2.5        5.4          110 mm             187 mm             4x5.65“               35 mm              38 mm
+
+  Hawk C-Series 100                      100 mm/T3           0.99 m          0.75 m           3‘3“            2‘6“             27.5°             2.8        6.2          110 mm             218 mm             4x5.65“               40 mm              42 mm
+
+  Hawk C-Series 100 MKII               100 mm/T2.8           0.93 m          0.73 m             3‘            2‘5“             27.5°             2.3        5.1          110 mm             185 mm             4x5.65“               40 mm              42 mm
+
+  Hawk C-Series 55-165               55-165 mm/T4            0.90 m          0.70 m          2‘11“            2‘4“          48° - 15.6°          2.2        4.7          110 mm             194 mm             4x5.65“            31.5 mm            32.5 mm
+
+                                                                                                                                                          *Angle of view – quoted for S35 format (22.94 x 19.22 mm – 2.39:1 Release Format – Sensor size ALEXA 35)
+                                                           **C-Series with Arma Cine: Orbital system for clip-on matte boxes, designed for lenses with rotating and extending front elements. Increases front diameter from 110 mm to 125 mm and adds ~300 g/0.7 lbs.
+
+
+
+
+                           CFD – Close Focus Distance                                                                                                                                                                           Anamorphic Lens –
+                                                                                                                                                                                                                                the Illumination Area is
+                                                                                                                                                                                                                                of rectangular shape.
+
+
+                                                                                                                                                                                                                               Image Area
+
+                                                                                                                                                                                                                               Illumination Area
+
+                           MOD – Minimal Object
+                                      Distance
+
+
+
+
+                                                                Technical specifications are subject to change without notice – additional lenses will follow. Made in Germany by Vantage Film
+  Hawk®, Hawk Anamorphic®, Vantage® are registered trade-marks of Vantage Film GmbH, Germany. For further information contact Vantage Film, Phone +49 961 26795, www.vantagefilm.com
+

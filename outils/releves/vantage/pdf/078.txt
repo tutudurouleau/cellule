@@ -1,0 +1,53 @@
+# https://www.vantagefilm.com/file/edee/downloads/optics/1x-spherical-lenses-made-by-hawk/0320v_vantageone4pu_2024.pdf
+
+Vantage One4 PU
+Partially uncoated large format primes – Technical Data
+The Vantage One4 PU lenses offer lower, natural contrast and pleasing skin tones, combined with
+enhanced flares. All other specifications are identical to the regular Vantage One4s.
+
+
+
+
+                                     Focal Length                   metric                      imperial        Angle of View*       Weight        Front            Overall          Min. Filter           Image          Illumination
+             Lens
+                                          Stop                CFD            MOD          CFD         MOD        horizontal      kg       Ibs     Diameter           Length              Size              Circle             Circle
+
+  Vantage One4 PU 19                   19 mm/T1.4           0.22 m        0.04 m           9“              2“       87.9°        2.9      6.4     156 mm            142 mm            4x5.65“               45 mm              46 mm
+
+  Vantage One4 PU 22                   22 mm/T1.4           0.25 m        0.05 m          10“              2“       78.8°        2.8      6.2     136 mm            170 mm            4x5.65“               45 mm              46 mm
+
+  Vantage One4 PU 27                   27 mm/T1.4             0.3 m       0.07 m           1‘          2 ½“         69.6°        3.1      6.8     136 mm            200 mm            4x5.65“            45.5 mm            46.5 mm
+
+  Vantage One4 PU 35                   35 mm/T1.4           0.25 m        0.05 m          10“              2“       56.3°        2.7          6   136 mm            166 mm            4x5.65“               46 mm              47 mm
+
+  Vantage One4 PU 42                   42 mm/T1.4           0.26 m        0.04 m          10“              2“       49.1°        3.3      7.3     136 mm            182 mm            4x5.65“            48.5 mm            50.5 mm
+
+  Vantage One4 PU 50                   50 mm/T1.4           0.35 m        0.17 m          1‘2“             7“       40°          2        4.4     120 mm            146 mm            4x5.65“               48 mm              50 mm
+
+  Vantage One4 PU 65                   65 mm/T1.4             0.4 m       0.27 m          1‘4“         11“          30.6°        1.5      3.3     120 mm            135 mm            4x5.65“               55 mm           57.5 mm
+
+  Vantage One4 PU 80                   80 mm/T1.4             0.5 m       0.35 m          1‘8“         1‘2“         25.6°        1.6      3.5     120 mm            135 mm            4x5.65“               59 mm            > 60 mm
+
+  Vantage One4 PU 105                105 mm/T1.4              0.7 m       0.55 m          2‘4“         1‘9“         20.2°        1.8          4   120 mm            135 mm            4x5.65“               59 mm            > 60 mm
+
+  Vantage One4 PU 140                140 mm/T1.4            0.92 m        0.72 m           3‘          2 ‘4“        15.8°        2.8      6.2     120 mm            170 mm            4x5.65“            > 60 mm             > 60 mm
+                                                                                                                                                           *Angle of view – quoted for large format (36.70 x 25.54 mm – Sensor size Mini LF)
+
+
+
+           CFD – close focus distance                                                                                                                                                              Illumination Circle
+
+
+                                                                                                                                                                                                   Image Circle
+
+
+
+
+           MOD – minimal object
+                      distance
+
+
+
+                                                                Technical specifications are subject to change without notice – additional lenses will follow. Made in Germany by Vantage Film
+  Hawk®, Hawk Anamorphic®, Vantage® are registered trade-marks of Vantage Film GmbH, Germany. For further information contact Vantage Film, Phone +49 961 26795, www.vantagefilm.com
+

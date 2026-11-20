@@ -1,0 +1,5 @@
+160 pages, 141 PDF, 305 adresses vues
+ÉCHEC https://www.vantagefilm.com/rentals : HTTP Error 404: Not Found
+ÉCHEC https://www.vantagefilm.com/en/products/hawk-anamorphic-lenses/v‑lite : 'ascii' codec can't encode character '\u2011' in position 41: ordinal not in range(128)
+ÉCHEC https://www.vantagefilm.com/en/+4402087523190 : HTTP Error 404: Not Found
+ÉCHEC https://www.vantagefilm.com/en/+353012765502 : HTTP Error 404: Not Found
