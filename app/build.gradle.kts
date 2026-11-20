@@ -43,7 +43,7 @@ android {
         versionCode = numeroDeCompilation
         /* La V2 : la refonte complète. Le numéro de compilation suit entre
            parenthèses, pour savoir quel APK est installé. */
-        versionName = "3.0 ($numeroDeCompilation)"
+        versionName = "4.0 ($numeroDeCompilation)"
     }
 
     buildTypes {
