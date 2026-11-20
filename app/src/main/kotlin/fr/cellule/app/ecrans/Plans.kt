@@ -2,6 +2,7 @@
 
 package fr.cellule.app.ecrans
 
+import fr.cellule.app.BlancSurImage
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -292,7 +293,7 @@ fun DrawScope.dessinerCadres(
     if (capteur.bottom < h) drawRect(cache, Offset(0f, capteur.bottom), Size(l, h - capteur.bottom))
     if (capteur.left > 0f) drawRect(cache, Offset(0f, capteur.top), Size(capteur.left, capteur.height))
     if (capteur.right < l) drawRect(cache, Offset(capteur.right, capteur.top), Size(l - capteur.right, capteur.height))
-    if (masque < 1f) drawRect(Color.White, capteur.topLeft, capteur.size, style = Stroke(width = 2f))
+    if (masque < 1f) drawRect(BlancSurImage, capteur.topLeft, capteur.size, style = Stroke(width = 2f))
 
     val pinceau = Paint().apply {
         isAntiAlias = true
@@ -337,7 +338,7 @@ fun BoxScope.CadreSurApercu(
             "Trop large pour ce téléphone : sur ce capteur, il ne montre rien de plus large que " +
                 nombreCourt(trace.focaleMinimale, 1) + " mm. Le cadre n'est pas tracé.",
             style = Detail,
-            color = Color.White,
+            color = BlancSurImage,
             modifier = Modifier
                 .align(Alignment.Center)
                 .padding(24.dp)
@@ -378,7 +379,7 @@ fun BoxScope.BoutonCapture(enCours: Boolean, surClic: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Box(Modifier.padding(end = 8.dp).background(MaterialTheme.colorScheme.primary, RoundedCornerShape(50)).padding(6.dp))
-        Text(if (enCours) "Capture…" else "Capturer le plan", style = Corps, color = Color.White)
+        Text(if (enCours) "Capture…" else "Capturer le plan", style = Corps, color = BlancSurImage)
     }
 }
 
@@ -411,7 +412,7 @@ fun ImagePlan(plan: Plan, modifier: Modifier = Modifier) {
                         if (plan.photo.isBlank()) "Pas de photo pour ce plan."
                         else "Photo introuvable dans la galerie de ce téléphone.",
                         style = Detail,
-                        color = Color.White.copy(alpha = 0.8f),
+                        color = BlancSurImage.copy(alpha = 0.8f),
                         modifier = Modifier.align(Alignment.Center).padding(16.dp)
                     )
                 }

@@ -1,5 +1,6 @@
 package fr.cellule.app.ecrans
 
+import fr.cellule.app.BlancSurImage
 import android.Manifest
 import android.content.pm.PackageManager
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -343,7 +344,7 @@ fun EcranFocales(enTete: (@Composable () -> Unit)? = null) {
                             if (exercice == Exercice.CADRER) "Cadre un ${cible!!.mm} mm"
                             else "Quelle focale ?",
                             style = Corps,
-                            color = Color.White
+                            color = BlancSurImage
                         )
                     }
                 }

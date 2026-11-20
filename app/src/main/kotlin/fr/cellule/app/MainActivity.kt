@@ -35,6 +35,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import fr.cellule.app.ecrans.ChoixSegmente
 import fr.cellule.app.ecrans.Etiquette
 import androidx.activity.compose.setContent
@@ -322,6 +323,7 @@ private fun Application() {
     }
     /* Le mode rouge : chambre noire, tournage de nuit. */
     val rouge = reglages.apparence == "rouge"
+    SideEffect { ModeRouge.actif = rouge }
     /* Les icônes de la barre d'état suivent le thème de l'appli, pas celui du téléphone. */
     val activite = contexte as? ComponentActivity
     LaunchedEffect(sombre) {
@@ -575,9 +577,9 @@ private fun BoxScope.NavigationFlottante(
         )
         epingles.forEach { d ->
             val actif = d.id == ici?.id
-            /* Le cinéma garde le rouge du voyant de tournage, quel que soit l'écran ouvert. */
+            /* Le cinéma garde le rouge du voyant de tournage, quel que soit l'écran ouvert — sauf en mode rouge, tout d'une teinte. */
             val tally = if (MaterialTheme.colorScheme.background.luminance() < 0.5f) Teinte.TALLY.sombre else Teinte.TALLY.clair
-            val cine = d.onglet == Onglet.CINEMA
+            val cine = d.onglet == Onglet.CINEMA && !ModeRouge.actif
             ElementBarre(
                 d.onglet.icone,
                 d.court,

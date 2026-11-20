@@ -5,6 +5,7 @@
 
 package fr.cellule.app.ecrans
 
+import fr.cellule.app.BlancSurImage
 import androidx.compose.ui.draw.clip
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.animateColorAsState
@@ -787,6 +788,6 @@ fun PastilleRetour(vers: String, surClic: () -> Unit) {
             .clickable { surClic() }
             .padding(horizontal = 12.dp, vertical = 7.dp)
     ) {
-        Text("‹  $vers", style = Corps, maxLines = 1, color = Color.White)
+        Text("‹  $vers", style = Corps, maxLines = 1, color = BlancSurImage)
     }
 }

@@ -2,6 +2,7 @@
 
 package fr.cellule.app.ecrans
 
+import fr.cellule.app.BlancSurImage
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -544,10 +545,10 @@ fun EcranMesurer(
                             .padding(start = 16.dp, end = 10.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text("Spot", style = Detail, color = Color.White)
+                        Text("Spot", style = Detail, color = BlancSurImage)
                         Spacer(Modifier.width(12.dp))
                         /* Le petit disque, puis le grand : on voit dans quel sens on va. */
-                        Canvas(Modifier.size(10.dp)) { drawCircle(Color.White.copy(alpha = 0.8f), size.minDimension / 4f) }
+                        Canvas(Modifier.size(10.dp)) { drawCircle(BlancSurImage.copy(alpha = 0.8f), size.minDimension / 4f) }
                         Slider(
                             value = moteur.rayon,
                             onValueChange = { moteur.reglerRayon(it) },
@@ -555,13 +556,13 @@ fun EcranMesurer(
                             colors = SliderDefaults.colors(
                                 thumbColor = MaterialTheme.colorScheme.primary,
                                 activeTrackColor = MaterialTheme.colorScheme.primary,
-                                inactiveTrackColor = Color.White.copy(alpha = 0.28f),
+                                inactiveTrackColor = BlancSurImage.copy(alpha = 0.28f),
                                 activeTickColor = Color.Transparent,
                                 inactiveTickColor = Color.Transparent
                             ),
                             modifier = Modifier.weight(1f).height(44.dp).padding(horizontal = 6.dp)
                         )
-                        Canvas(Modifier.size(18.dp)) { drawCircle(Color.White.copy(alpha = 0.8f), size.minDimension / 2f, style = Stroke(1.5.dp.toPx())) }
+                        Canvas(Modifier.size(18.dp)) { drawCircle(BlancSurImage.copy(alpha = 0.8f), size.minDimension / 2f, style = Stroke(1.5.dp.toPx())) }
                     }
                 }
             } else if (!avecCamera) {
@@ -900,26 +901,26 @@ fun EcranMesurer(
                         },
                         style = Corps,
                         maxLines = 1,
-                        color = Color.White
+                        color = BlancSurImage
                     )
                     Text(
                         if (tournage) Tournage.libelleTempsPose(reglageCine.tempsPose) else couple?.vitesse?.libelle ?: "—",
                         style = Detail,
                         maxLines = 1,
-                        color = Color.White.copy(alpha = 0.85f)
+                        color = BlancSurImage.copy(alpha = 0.85f)
                     )
                     Text(
                         (if (ev100 != null) fmt(ev100) else "––") + " EV",
                         style = Detail,
                         maxLines = 1,
-                        color = Color.White.copy(alpha = 0.7f)
+                        color = BlancSurImage.copy(alpha = 0.7f)
                     )
                     if (tournage) {
                         Box(
                             Modifier
                                 .size(58.dp)
                                 .clip(RoundedCornerShape(50))
-                                .background(Color.White.copy(alpha = 0.9f))
+                                .background(BlancSurImage.copy(alpha = 0.9f))
                                 .clickable(enabled = !captureEnCours && avecCamera && autorisee) { surCapture() }
                                 .padding(5.dp)
                                 .clip(RoundedCornerShape(50))
@@ -930,7 +931,7 @@ fun EcranMesurer(
                         Text(
                             if (moteur.gele) "Libérer" else "Figer",
                             style = Detail,
-                            color = if (moteur.gele) MaterialTheme.colorScheme.primary else Color.White,
+                            color = if (moteur.gele) MaterialTheme.colorScheme.primary else BlancSurImage,
                             modifier = Modifier
                                 .clip(RoundedCornerShape(50))
                                 .clickable { moteur.basculerGel() }
@@ -940,10 +941,10 @@ fun EcranMesurer(
                     Text(
                         "Plus",
                         style = Detail,
-                        color = Color.White,
+                        color = BlancSurImage,
                         modifier = Modifier
                             .clip(RoundedCornerShape(50))
-                            .background(Color.White.copy(alpha = 0.16f))
+                            .background(BlancSurImage.copy(alpha = 0.16f))
                             .clickable { panneauReplie = false }
                             .padding(horizontal = 12.dp, vertical = 6.dp)
                     )
@@ -952,7 +953,7 @@ fun EcranMesurer(
                     Text(
                         avisCapture,
                         style = Detail,
-                        color = Color.White,
+                        color = BlancSurImage,
                         modifier = Modifier
                             .align(Alignment.BottomCenter)
                             .navigationBarsPadding()

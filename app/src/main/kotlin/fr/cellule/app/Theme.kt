@@ -132,6 +132,17 @@ private val Rouge = darkColorScheme(
     surfaceDim = Color.Black
 )
 
+/**
+ * Le mode rouge, lisible partout, même dans un dessin : Application le tient
+ * à jour. Il sert aux couleurs écrites en dur, que le thème n'atteint pas.
+ */
+object ModeRouge {
+    var actif by mutableStateOf(false)
+}
+
+/** Le blanc des textes et repères posés sur l'image de la caméra ; rouge sombre en mode rouge. */
+val BlancSurImage: Color get() = if (ModeRouge.actif) Color(0xFFB01818) else Color.White
+
 /** Vrai en mode rouge : les fenêtres à part (l'éditeur du plan au sol) appliquent aussi le filtre. */
 val LocalModeRouge = staticCompositionLocalOf { false }
 

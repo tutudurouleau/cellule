@@ -1,5 +1,6 @@
 package fr.cellule.app.ecrans
 
+import fr.cellule.app.BlancSurImage
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
@@ -261,7 +262,7 @@ private fun PastilleViseur(texte: String, actif: Boolean, surClic: () -> Unit) {
     Box(
         Modifier
             .clip(RoundedCornerShape(50))
-            .background(if (actif) MaterialTheme.colorScheme.primary else Color.White.copy(alpha = 0.14f))
+            .background(if (actif) MaterialTheme.colorScheme.primary else BlancSurImage.copy(alpha = 0.14f))
             .clickable { surClic() }
             .padding(horizontal = 11.dp, vertical = 6.dp)
     ) {
@@ -269,7 +270,7 @@ private fun PastilleViseur(texte: String, actif: Boolean, surClic: () -> Unit) {
             texte,
             style = Detail,
             maxLines = 1,
-            color = if (actif) MaterialTheme.colorScheme.onPrimary else Color.White
+            color = if (actif) MaterialTheme.colorScheme.onPrimary else BlancSurImage
         )
     }
 }

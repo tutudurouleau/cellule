@@ -2,6 +2,7 @@
 
 package fr.cellule.app.ecrans
 
+import fr.cellule.app.BlancSurImage
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -132,7 +133,7 @@ fun BoxScope.CalquesTournage(moteur: MoteurCamera) {
                         val h = Math.sqrt(histogramme[i].toDouble() / max).toFloat() * size.height
                         if (h > 0f) {
                             drawRect(
-                                Color(0xFFF3EEE6),
+                                BlancSurImage,
                                 topLeft = Offset(i * pas, size.height - h),
                                 size = Size(pas, h)
                             )
@@ -150,7 +151,7 @@ fun BoxScope.CalquesTournage(moteur: MoteurCamera) {
                     /* Repères à 0, 50 et 100 % du signal. */
                     listOf(0f, 0.5f, 1f).forEach { f ->
                         val y = f * (size.height - 1f)
-                        drawLine(Color.White.copy(alpha = 0.28f), Offset(0f, y), Offset(size.width, y), strokeWidth = 1f)
+                        drawLine(BlancSurImage.copy(alpha = 0.28f), Offset(0f, y), Offset(size.width, y), strokeWidth = 1f)
                     }
                     drawImage(
                         image = onde,
