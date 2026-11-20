@@ -90,6 +90,8 @@ data class PlanSol(
     val grille: Boolean = true,
     /** Pas de la grille, en mètres. */
     val pasGrille: Double = 0.5,
+    /** Vrai : les éléments déplacés se calent sur la grille. */
+    val aimanter: Boolean = false,
     val legende: Boolean = true,
     /** Direction du nord sur le plan, en degrés depuis le haut, sens horaire. */
     val nordDeg: Double = 0.0,
@@ -140,6 +142,9 @@ data class Creneau(val debut: Double, val fin: Double)
 data class HeuresDuJour(val bleueMatin: Creneau?, val doreeMatin: Creneau?, val doreeSoir: Creneau?, val bleueSoir: Creneau?)
 
 object Sol {
+    /** Une position calée sur la grille de pas [pas] (en mètres). */
+    fun caler(v: Double, pas: Double): Double = if (pas <= 0.0) v else Math.round(v / pas) * pas
+
 
     const val HAUTEUR_PROJECTEUR = 2.5
     const val HAUTEUR_VISAGE = 1.6

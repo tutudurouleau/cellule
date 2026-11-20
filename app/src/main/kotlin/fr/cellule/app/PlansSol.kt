@@ -76,6 +76,7 @@ object PlansSol {
             elements = (0 until els.length()).mapNotNull { j -> els.optJSONObject(j)?.let { lireElement(it, j) } },
             grille = o.optBoolean("grille", true),
             pasGrille = o.optDouble("pas", 0.5),
+            aimanter = o.optBoolean("aimanter", false),
             legende = o.optBoolean("legende", true),
             nordDeg = o.optDouble("nord", 0.0),
             soleil = o.optBoolean("soleil", true),
@@ -144,7 +145,7 @@ object PlansSol {
             p.elements.forEach { els.put(ecrireElement(it)) }
             val o = JSONObject()
                 .put("id", p.identifiant).put("nom", p.nom).put("elements", els)
-                .put("grille", p.grille).put("pas", p.pasGrille).put("legende", p.legende)
+                .put("grille", p.grille).put("pas", p.pasGrille).put("aimanter", p.aimanter).put("legende", p.legende)
                 .put("nord", p.nordDeg).put("soleil", p.soleil).put("date", p.date).put("heure", p.heure)
                 .put("carte", p.carte).put("notes", p.notes)
             p.jourId?.let { o.put("jour", it) }
