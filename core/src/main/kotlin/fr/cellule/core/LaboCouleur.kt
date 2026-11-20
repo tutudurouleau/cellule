@@ -6,11 +6,11 @@ import kotlin.random.Random
  * Le labo couleur : les quatre procédés chromogènes, bain par bain, et la
  * correction d'une dominante au tirage.
  *
- * Mêmes règles que le reste du Labo. Chaque chiffre vient d'une publication
- * Kodak, citée. Un bain dont la durée n'a pas pu être relue dans cette
- * publication garde une durée nulle et la mention « à vérifier » : le chrono
- * refuse alors de partir tant qu'on ne l'a pas reprise de la notice de son
- * kit, plutôt que de proposer un chiffre de seconde main.
+ * Mêmes règles que le reste du Labo. Chaque chiffre a été relu dans la
+ * publication Kodak citée (texte des PDF dans outils/releves/kodak, lus par
+ * les machines de GitHub). Un bain sans durée publiée garde une durée nulle
+ * et la mention « notice » : le chrono refuse alors de partir tant qu'on ne
+ * l'a pas réglée, plutôt que de proposer un chiffre de seconde main.
  */
 
 enum class ProcedeCouleur(val code: String, val libelle: String, val pour: String) {
@@ -133,33 +133,33 @@ object LaboCouleur {
         listOf(
             BainCouleur("Prébain", ms(0, 10), "27 ± 1 °C", "Ramollit la couche anti-halo noire (rem-jet) au dos du film."),
             BainCouleur(
-                "Retrait du rem-jet", 0.0, "",
-                "On rince et on essuie le dos : le rem-jet ne doit pas passer dans le révélateur."
+                "Retrait du rem-jet et rinçage", 0.0, "27 à 38 °C",
+                "On rince et on frotte le dos : le rem-jet ne doit pas passer dans le révélateur. Kodak laisse la durée à l'appréciation de chaque installation."
             ),
             BainCouleur(
-                "Révélateur", ms(3), "41,1 °C",
+                "Révélateur", ms(3), "41,1 ± 0,1 °C",
                 "Forme l'argent et les colorants, comme en C-41 — plus chaud, donc plus court.",
                 critique = true
             ),
-            BainCouleur("Arrêt", 0.0, "", "Stoppe net le développement."),
+            BainCouleur("Arrêt", ms(0, 30), "27 à 38 °C", "Stoppe net le développement."),
             BainCouleur(
-                "Lavage", 0.0, "",
+                "Lavage", ms(0, 30), "27 à 38 °C",
                 "Retire l'acide de l'arrêt : Kodak prévient qu'un lavage trop court tache le film en bleu dans un blanchiment au ferricyanure."
             ),
-            BainCouleur("Blanchiment", 0.0, "", "Rend l'argent soluble ; les kits Kodak utilisent le blanchiment « UL »."),
-            BainCouleur("Lavage", 0.0, "", "Retire le blanchiment."),
-            BainCouleur("Fixateur", 0.0, "", "Dissout l'argent : il ne reste que les colorants."),
-            BainCouleur("Lavage", 0.0, "", "Retire le fixateur."),
-            BainCouleur("Rinçage final", 0.0, "", "Aide le séchage, sans traces.")
+            BainCouleur("Blanchiment", ms(3), "38 ± 1 °C", "Rend l'argent soluble (blanchiment au ferricyanure ; les kits Kodak utilisent le blanchiment « UL »)."),
+            BainCouleur("Lavage", ms(1), "27 à 38 °C", "Retire le blanchiment avant le fixateur."),
+            BainCouleur("Fixateur", ms(2), "38 ± 1 °C", "Dissout l'argent : il ne reste que les colorants."),
+            BainCouleur("Lavage", ms(2), "27 à 38 °C", "Retire le fixateur."),
+            BainCouleur("Rinçage final", ms(0, 10), "27 à 38 °C", "Agent mouillant : séchage sans traces.")
         ),
         listOf(
-            "Le révélateur ECN-2 travaille à 41,1 °C pendant 3 min : plus chaud que le C-41.",
+            "Le révélateur ECN-2 travaille à 41,1 ± 0,1 °C pendant 3 min : plus chaud et plus serré que le C-41.",
             "Le rem-jet, couche noire au dos du film, protège du halo et de l'électricité statique. Le prébain le ramollit, on le retire avant le révélateur : sinon il salit le bain et le film.",
             "Développer de l'ECN-2 en C-41 donne des couleurs fausses et un rem-jet qui se décolle : c'est un autre procédé, pas un réglage.",
-            "Kodak publie toutes les durées dans le module 7 de ses spécifications (H-24.07) et la notice de ses kits ; seuls le prébain et le révélateur ont pu être relus ici."
+            "Ces temps sont ceux des développeuses de laboratoire (module 7 de Kodak) ; un kit pour cuve peut donner les siens : suis sa notice."
         ),
         listOf(Sources.KODAK_ECN2, Sources.KODAK_KIT_CINEMA),
-        "Les durées vides sont à reprendre de la notice de ton kit ECN-2 : le chrono ne part pas sans elles."
+        "Kodak, Process ECN-2 avec blanchiment au ferricyanure. Le retrait du rem-jet n'a pas de durée publiée : règle-la au chrono."
     )
 
     val E6 = FicheCouleur(
@@ -167,35 +167,35 @@ object LaboCouleur {
         "La diapositive : un procédé inversible. Deux révélateurs — le premier, en noir et blanc, " +
             "décide de tout ; le second forme l'image positive en couleur.",
         listOf(
+            BainCouleur("Préchauffage du film", ms(4), "38,0 °C", "Dans le noir complet : le film et la cuve se mettent à température."),
             BainCouleur(
-                "Premier révélateur", ms(6), "38,0 ± 0,2 °C",
-                "Développe une image négative en noir et blanc. C'est lui qui fixe la densité : on pousse en allongeant ce bain.",
+                "Premier révélateur", ms(6), "38,0 ± 0,3 °C",
+                "Développe une image négative en noir et blanc. C'est lui qui fixe la densité : Kodak donne 6 à 7 min, et on pousse en l'allongeant.",
                 critique = true
             ),
-            BainCouleur("Premier lavage", ms(2), "", "Arrête le premier révélateur."),
+            BainCouleur("Premier lavage", ms(2), "38,0 ± 1,0 °C", "Arrête le premier révélateur."),
             BainCouleur(
-                "Bain d'inversion", ms(2), "",
+                "Bain d'inversion", ms(2), "38,0 ± 1,0 °C",
                 "Voile chimiquement les grains restés intacts : ce sont eux qui feront l'image positive."
             ),
             BainCouleur(
-                "Révélateur chromogène", ms(6), "38,0 ± 0,3 °C",
-                "Développe ces grains et forme les colorants : l'image positive, en couleur."
+                "Révélateur chromogène", ms(4), "38,0 ± 1,0 °C",
+                "Développe ces grains et forme les colorants : l'image positive, en couleur. La suite peut se faire en lumière."
             ),
-            BainCouleur("Pré-blanchiment", ms(2), "35 à 40 °C", "Prépare le blanchiment ; sans agitation."),
-            BainCouleur("Blanchiment", ms(6), "", "Rend tout l'argent soluble."),
-            BainCouleur("Fixateur", ms(4), "", "Dissout l'argent : il ne reste que les colorants."),
-            BainCouleur("Lavage final", 0.0, "", "Retire le fixateur."),
-            BainCouleur("Rinçage final", ms(1), "température ambiante", "Aide le séchage sans traces ; Kodak donne de 30 s à 1 min.")
+            BainCouleur("Pré-blanchiment", ms(2), "35 à 40 °C", "Prépare le blanchiment."),
+            BainCouleur("Blanchiment", ms(6), "35 à 40 °C", "Rend tout l'argent soluble."),
+            BainCouleur("Fixateur", ms(4), "35 à 40 °C", "Dissout l'argent : il ne reste que les colorants."),
+            BainCouleur("Lavage final", ms(4), "35 à 40 °C", "Kodak : deux lavages d'une minute, puis un de deux minutes, à l'eau courante."),
+            BainCouleur("Rinçage final", ms(1), "température ambiante", "Aide le séchage sans traces.")
         ),
         listOf(
-            "Le premier révélateur est le bain critique : 38 °C au plus serré. Une erreur ici se voit sur toute la diapo, et rien ne la rattrape au tirage.",
-            "On pousse ou retient une diapo en jouant sur le seul premier révélateur : la durée vient de la notice de ton kit.",
-            "Une fois la température choisie, Kodak la tient à ± 0,2 °C pour le premier révélateur et ± 0,3 °C pour le chromogène.",
+            "Le premier révélateur est le bain critique : 38,0 ± 0,3 °C. Une erreur ici se voit sur toute la diapo, et rien ne la rattrape au tirage.",
+            "Push et pull se règlent sur le seul premier révélateur, que Kodak donne de 6 à 7 min selon la cuve.",
             "Une diapo n'a pas de latitude de rattrapage : la pose doit être juste à la prise de vue.",
             "Les temps de Kodak comprennent 10 à 20 s d'égouttage entre deux bains."
         ),
         listOf(Sources.KODAK_E6_KIT, Sources.KODAK_Z119),
-        "Kodak, kit E-6 à usage unique et manuel Z-119. Le lavage final est à reprendre de la notice de ton kit."
+        "Kodak, kit E-6 à usage unique en cuve rotative (TI-2443)."
     )
 
     val RA4 = FicheCouleur(

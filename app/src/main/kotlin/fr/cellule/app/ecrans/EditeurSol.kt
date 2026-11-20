@@ -42,6 +42,7 @@ import fr.cellule.app.sol.nomCourt
 import fr.cellule.core.Historique
 import fr.cellule.core.CIRCUITS
 import fr.cellule.core.ListeLocation
+import fr.cellule.core.ListeTournage
 import fr.cellule.core.Region
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -173,7 +174,7 @@ import kotlin.math.sin
  * reste visible au-dessus. Rien ne défile sur le côté.
  */
 
-private enum class FeuilleSol { OPTIONS, LISTE, EXPORT }
+private enum class FeuilleSol { OPTIONS, LISTE, EXPORT, ENVOI }
 
 private enum class VuePlan(val libelle: String) { DESSUS("Dessus"), CAMERA("Caméra"), COTE("Côté") }
 
@@ -236,6 +237,7 @@ private fun nouvelElement(type: TypeElement, plan: PlanSol, x: Double, y: Double
         TypeElement.PORTE -> base.copy(largeur = 0.9, profondeur = 0.1)
         TypeElement.MEUBLE -> base.copy(largeur = 1.2, profondeur = 0.6, nom = "Meuble")
         TypeElement.REPERE -> base.copy(nom = "Repère", largeur = 0.3, profondeur = 0.3)
+        TypeElement.ENERGIE -> base.copy(nom = "Groupe", largeur = 0.6, profondeur = 0.4)
     }
 }
 
@@ -381,6 +383,10 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
                             DropdownMenuItem(text = { Text("Exporter", style = Corps) }, onClick = {
                                 menu = false
                                 feuille = FeuilleSol.EXPORT
+                            })
+                            DropdownMenuItem(text = { Text("Envoyer le plan (QR, texte)", style = Corps) }, onClick = {
+                                menu = false
+                                feuille = FeuilleSol.ENVOI
                             })
                             DropdownMenuItem(text = { Text("Supprimer le plan", style = Corps, color = MaterialTheme.colorScheme.error) }, onClick = {
                                 menu = false
@@ -681,6 +687,7 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
             }) { feuille = null }
             FeuilleSol.LISTE -> FeuilleListeSol(plan, reglages, { plan = it }) { feuille = null }
             FeuilleSol.EXPORT -> FeuilleExportSol(plan, cinema, metres) { feuille = null }
+            FeuilleSol.ENVOI -> FeuilleSolBase("Envoyer le plan", { feuille = null }) { fr.cellule.app.sol.ContenuEnvoiPlan(plan) }
             null -> {}
         }
         if (renommer) {
@@ -1043,7 +1050,7 @@ private fun ColumnScope.ReglagesType(e: ElementSol, metres: Boolean, reglages: R
                 }
             }
         }
-        TypeElement.COMEDIEN, TypeElement.REPERE -> {}
+        TypeElement.COMEDIEN, TypeElement.REPERE, TypeElement.ENERGIE -> {}
         else -> {
             LigneBoutons {
                 ChampLongueur(e.largeur, "Longueur", metres, cle, Modifier.weight(1f)) { v -> v?.let { surChangement(e.copy(largeur = it.coerceIn(0.05, 100.0))) } }
@@ -1482,13 +1489,49 @@ private fun FeuilleListeSol(plan: PlanSol, reglages: Reglages, surChangement: (P
     val region = Region.entries.firstOrNull { it.name == reglages.lumiereRegion } ?: Region.EUROPE
     FeuilleSolBase("Liste et électricité", onFermer) {
         Etiquette("À louer pour ce plan")
-        val lignes = ListeLocation.duPlan(plan, PlansSol::modele)
+        val lignes = ListeTournage.complete(plan, PlansSol::modele, { MonMateriel.projecteur(it.projecteur) }, PlansSol::puissance)
         if (lignes.isEmpty()) {
             Text("Rien à louer pour l'instant : pose des projecteurs, des cadres, un rail…", style = Corps, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         lignes.groupBy { it.categorie }.forEach { (categorie, l) ->
             Text(categorie, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 6.dp))
-            l.forEach { Ligne(it.nom, it.combien) }
+            l.forEach { Ligne(it.nom, it.combien, if (it.auto) "ajouté d'office" else null) }
+        }
+        if (lignes.any { it.auto }) {
+            Text(
+                "« Ajouté d'office » : pieds, sacs, ballasts, prolongs et consommables que demande ce que tu as posé. Ajuste-les au besoin dans la liste de location.",
+                style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 4.dp)
+            )
+        }
+
+        Separateur()
+        Etiquette("Les prolongs")
+        Spacer(Modifier.height(4.dp))
+        val cablage = ListeTournage.cablage(plan, PlansSol::modele, PlansSol::puissance)
+        if (!cablage.mesure) {
+            Text(
+                "Pose un point « Énergie » sur le plan (groupe, armoire ou prise : Ajouter › Repères et énergie) : l'appli mesure alors la longueur de câble de chaque projecteur.",
+                style = Corps, color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        } else {
+            cablage.tirages.forEach { t -> Ligne(t.projecteur, "${t.calibreA} A · " + nombreCourt(t.longueurM, 0) + " m") }
+            Text(
+                "Distance au point d'énergie le plus proche × 1,3 pour les détours, plus la hauteur du projecteur et 3 m de marge.",
+                style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 4.dp)
+            )
+        }
+        val phases = ListeTournage.phases(plan.elements, PlansSol::modele, PlansSol::puissance)
+        if (phases.charges.sum() > 0) {
+            Separateur()
+            Etiquette("Sur les trois phases")
+            Spacer(Modifier.height(4.dp))
+            phases.charges.forEachIndexed { i, w ->
+                Ligne("Phase L${i + 1}", nombreCourt(w, 0) + " W", phases.repartition[i].joinToString(", ").ifBlank { null })
+            }
+            Text(
+                "Une répartition équilibrée, du plus gros projecteur au plus petit : à reprendre au branchement.",
+                style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 4.dp)
+            )
         }
 
         Separateur()
@@ -1591,6 +1634,7 @@ private fun FeuilleExportSol(plan: PlanSol, cinema: DepotCinema, metres: Boolean
 @Composable
 fun ListePlansSol(reglages: Reglages, cinema: DepotCinema, jourId: Long?, tous: Boolean) {
     var ouvert by remember { mutableStateOf<Long?>(null) }
+    var recevoir by remember { mutableStateOf(false) }
     val liste = if (tous) PlansSol.plans else PlansSol.plans.filter { it.jourId == jourId }
     Carte(
         titre = "Plans au sol",
@@ -1614,6 +1658,15 @@ fun ListePlansSol(reglages: Reglages, cinema: DepotCinema, jourId: Long?, tous: 
         BoutonPlat("Nouveau plan au sol", accent = true, modifier = Modifier.fillMaxWidth().padding(top = 6.dp)) {
             val n = PlansSol.nouveau("Plan au sol " + (PlansSol.plans.size + 1), jourId)
             ouvert = n.identifiant
+        }
+        BoutonPlat("Recevoir un plan (QR, texte, fichier)", modifier = Modifier.fillMaxWidth().padding(top = 6.dp)) { recevoir = true }
+    }
+    if (recevoir) {
+        FeuilleSolBase("Recevoir un plan", { recevoir = false }) {
+            fr.cellule.app.sol.ContenuReceptionPlan(jourId) { p ->
+                recevoir = false
+                ouvert = p.identifiant
+            }
         }
     }
     ouvert?.let { id -> EditeurPlanSol(id, reglages, cinema) { ouvert = null } }

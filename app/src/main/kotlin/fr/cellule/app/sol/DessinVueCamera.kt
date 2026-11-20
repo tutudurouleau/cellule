@@ -157,6 +157,7 @@ object DessinVueCamera {
                     trait(P3(k[0].first, k[0].second, 0.01), P3(k[1].first, k[1].second, 0.01), Couleurs.RAIL, 3f)
                     trait(P3(k[3].first, k[3].second, 0.01), P3(k[2].first, k[2].second, 0.01), Couleurs.RAIL, 3f)
                 }
+                TypeElement.ENERGIE -> {}
                 TypeElement.REPERE -> {
                     trait(P3(e.x - 0.15, e.y - 0.15, 0.01), P3(e.x + 0.15, e.y + 0.15, 0.01), Couleurs.REPERE, 3f)
                     trait(P3(e.x - 0.15, e.y + 0.15, 0.01), P3(e.x + 0.15, e.y - 0.15, 0.01), Couleurs.REPERE, 3f)

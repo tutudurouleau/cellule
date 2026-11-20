@@ -98,6 +98,8 @@ object Lexique {
         t("Un C", "Un C-stand, le pied à tout faire du machino.", M, "Century", fiche = "matthews-c-stand"),
         t("Junior, baby", "Les deux standards de fixation : spigot baby de 16 mm, réceptacle junior de 28 mm.", M, fiche = "pied-de-projecteur-baby-et-junior"),
         t("Wind-up", "Pied lourd à manivelle pour lever haut un gros projecteur.", M, "crank-up", fiche = "wind-up"),
+        t("Un U", "Le pied U126, à jambe de nivellement : « passe-moi un U ». Chez TSF, jusqu'à 330 cm et 40 kg en version deux tiges.", M, "U126", fiche = "pied-u126"),
+        t("Pied de 1000", "Pied baby léger, prévu pour les projecteurs jusqu'à 1000 W.", M),
         t("Rotule", "La tête à deux trous d'un C-stand, qui serre le bras et le drapeau.", M, "gobo head", fiche = "rotule-de-c-stand"),
         t("Mafer", "Pince à vis avec embout de 16 mm ; souvent employé pour toute pince de ce type.", M, fiche = "matthews-mafer"),
         t("Super clamp", "Pince à cliquet Manfrotto, l'accroche universelle.", M, fiche = "manfrotto-super-clamp"),

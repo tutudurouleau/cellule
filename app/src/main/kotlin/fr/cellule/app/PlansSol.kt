@@ -161,22 +161,39 @@ object PlansSol {
         return o
     }
 
+    private fun ecrirePlan(p: PlanSol): JSONObject {
+        val els = JSONArray()
+        p.elements.forEach { els.put(ecrireElement(it)) }
+        val o = JSONObject()
+            .put("id", p.identifiant).put("nom", p.nom).put("elements", els)
+            .put("grille", p.grille).put("pas", p.pasGrille).put("aimanter", p.aimanter).put("circuitNom", p.circuitNom).put("legende", p.legende)
+            .put("nord", p.nordDeg).put("soleil", p.soleil).put("date", p.date).put("heure", p.heure)
+            .put("carte", p.carte).put("notes", p.notes)
+        p.jourId?.let { o.put("jour", it) }
+        p.latitude?.let { o.put("lat", it) }
+        p.longitude?.let { o.put("lon", it) }
+        p.plafond?.let { o.put("plafond", it) }
+        return o
+    }
+
     fun enJson(): JSONArray {
         val a = JSONArray()
-        plans.forEach { p ->
-            val els = JSONArray()
-            p.elements.forEach { els.put(ecrireElement(it)) }
-            val o = JSONObject()
-                .put("id", p.identifiant).put("nom", p.nom).put("elements", els)
-                .put("grille", p.grille).put("pas", p.pasGrille).put("aimanter", p.aimanter).put("circuitNom", p.circuitNom).put("legende", p.legende)
-                .put("nord", p.nordDeg).put("soleil", p.soleil).put("date", p.date).put("heure", p.heure)
-                .put("carte", p.carte).put("notes", p.notes)
-            p.jourId?.let { o.put("jour", it) }
-            p.latitude?.let { o.put("lat", it) }
-            p.longitude?.let { o.put("lon", it) }
-            p.plafond?.let { o.put("plafond", it) }
-            a.put(o)
-        }
+        plans.forEach { a.put(ecrirePlan(it)) }
         return a
+    }
+
+    /** Un plan seul, en JSON, pour l'envoyer (QR codes, texte, fichier). Sans le jour, propre à chaque appareil. */
+    fun versTexte(p: PlanSol): String = JSONArray().put(ecrirePlan(p.copy(jourId = null))).toString()
+
+    /**
+     * Ajoute le plan reçu, sous un nouvel identifiant : il ne remplace jamais
+     * un plan déjà là. Rend le plan ajouté, ou null si le texte n'en est pas un.
+     */
+    fun depuisTexte(json: String, jourId: Long?): PlanSol? {
+        val recu = runCatching { lire(JSONArray(json)).firstOrNull() }.getOrNull() ?: return null
+        val p = recu.copy(identifiant = System.currentTimeMillis(), jourId = jourId)
+        plans = plans + p
+        sauver()
+        return p
     }
 }

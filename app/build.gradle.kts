@@ -90,6 +90,9 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material:material-icons-core")
 
+    /* Les QR codes des plans au sol : les créer et les lire, sans service Google. */
+    implementation("com.google.zxing:core:3.5.3")
+
     val camerax = "1.4.1"
     implementation("androidx.camera:camera-core:$camerax")
     implementation("androidx.camera:camera-camera2:$camerax")

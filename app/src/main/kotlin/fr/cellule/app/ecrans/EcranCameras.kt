@@ -361,6 +361,7 @@ internal fun FeuilleFiche(m: Materiel, reglages: Reglages? = null, onFermer: () 
             }
             /* La vraie photo, quand l'appli n'en a pas de libre : une recherche d'images, dans le navigateur. */
             LienPhotos(m, avecPhoto = photo != null && credit != null)
+            ChezLesLoueurs(m)
 
             /* La fiche complète. */
             Section("Histoire", m.histoire)
@@ -392,6 +393,37 @@ internal fun FeuilleFiche(m: Materiel, reglages: Reglages? = null, onFermer: () 
             Spacer(Modifier.navigationBarsPadding())
         }
     }
+}
+
+/** Les loueurs dont le catalogue en ligne cite ce matériel, et un lien vers leur site. */
+@Composable
+private fun ChezLesLoueurs(m: Materiel) {
+    val chez = fr.cellule.core.Loueurs.chez(m.identifiant)
+    val liens = androidx.compose.ui.platform.LocalUriHandler.current
+    Separateur()
+    Etiquette("Chez les loueurs")
+    Spacer(Modifier.height(4.dp))
+    if (chez.isEmpty()) {
+        Text(
+            "Pas trouvé dans les catalogues en ligne relevés (TSF, RVZ, Transpalux, Panavision, Next Shot, Vantage, Cinesyl). Ça ne veut pas dire qu'ils ne l'ont pas : demande-leur.",
+            style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        return
+    }
+    chez.forEach { l ->
+        val adresse = if (l.recherche.isNotBlank()) l.recherche + java.net.URLEncoder.encode(m.nom, "UTF-8") else l.site
+        Row(
+            Modifier.fillMaxWidth().clip(RoundedCornerShape(RayonControle)).clickable { runCatching { liens.openUri(adresse) } },
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(Modifier.weight(1f)) { Ligne(l.nom, "", l.ville) }
+            Text("↗", style = Corps, color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(start = 8.dp))
+        }
+    }
+    Text(
+        "D'après leurs catalogues en ligne : vérifie la disponibilité et la version exacte en demandant un devis.",
+        style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
+    )
 }
 
 @Composable

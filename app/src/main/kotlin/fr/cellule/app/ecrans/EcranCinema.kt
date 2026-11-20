@@ -1,5 +1,7 @@
 package fr.cellule.app.ecrans
 
+import fr.cellule.app.MonMateriel
+
 import androidx.activity.compose.BackHandler
 import fr.cellule.core.ListeLocation
 import fr.cellule.app.PlansSol
@@ -410,7 +412,7 @@ private fun PageJour(
     /* Ce qu'il faut louer pour la journée, d'après ses plans au sol. */
     val plansSol = PlansSol.duJour(jour.identifiant)
     if (plansSol.isNotEmpty()) {
-        val location = ListeLocation.duJour(plansSol, PlansSol::modele)
+        val location = fr.cellule.core.ListeTournage.duJour(plansSol, PlansSol::modele, { MonMateriel.projecteur(it.projecteur) }, PlansSol::puissance)
         Carte(
             titre = "À louer pour ce jour",
             sousTitre = "D'après ses plans au sol : chaque élément au plus haut d'un plan, puisque le matériel passe d'un plan à l'autre."
@@ -418,7 +420,7 @@ private fun PageJour(
             if (location.isEmpty()) {
                 Text("Rien à louer d'après les plans au sol.", style = Corps, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
-            location.forEach { Ligne(it.nom, it.combien, it.categorie) }
+            location.forEach { Ligne(it.nom, it.combien, it.categorie + if (it.auto) " · ajouté d'office" else "") }
         }
     }
 

@@ -27,7 +27,9 @@ enum class TypeElement(val libelle: String, val pluriel: String) {
     FENETRE("Fenêtre", "Fenêtres"),
     PORTE("Porte", "Portes"),
     MEUBLE("Meuble", "Meubles"),
-    REPERE("Repère", "Repères");
+    REPERE("Repère", "Repères"),
+    /** D'où vient le courant : groupe électrogène, armoire, prise. Sert au calcul des prolongs. */
+    ENERGIE("Énergie", "Énergie");
 
     /** Les éléments qui se dessinent comme un trait (longueur = largeur, épaisseur = profondeur). */
     val enTrait: Boolean get() = this in setOf(REFLECTEUR, DIFFUSION, DRAPEAU, RAIL, MUR, FENETRE, PORTE)

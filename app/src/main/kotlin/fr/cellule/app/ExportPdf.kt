@@ -422,7 +422,7 @@ object ExportPdf {
         }
 
         /* Ce qu'il faut louer, et ce que porte chaque circuit. */
-        val location = fr.cellule.core.ListeLocation.duPlan(plan, PlansSol::modele)
+        val location = fr.cellule.core.ListeTournage.complete(plan, PlansSol::modele, { MonMateriel.projecteur(it.projecteur) }, PlansSol::puissance)
         val charges = fr.cellule.core.ListeLocation.charges(plan, PlansSol::puissance, PlansSol::modele)
         if (location.isNotEmpty()) {
             if (r.reste() < 80f) r.nouvellePage()

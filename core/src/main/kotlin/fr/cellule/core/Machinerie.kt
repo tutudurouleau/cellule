@@ -76,7 +76,10 @@ val ETAGERES_MACHINERIE: List<Etagere<FicheMachinerie>> = listOf(
             machino(
                 "C-stand", "Matthews", PIEDS, Silhouette.MACHINO_PIED,
                 "Le pied à tout faire du machino : drapeaux, petits projecteurs, toiles.",
-                listOf("Pieds" vaut "3, à hauteurs décalées pour s'imbriquer", "Tête" vaut "rotule à deux trous de 16 mm", BABY),
+                listOf(
+                    "Pieds" vaut "3, à hauteurs décalées pour s'imbriquer", "Tête" vaut "rotule à deux trous de 16 mm", BABY,
+                    "Century 40″ chez TSF" vaut "321 cm, 10 kg admissibles, pèse 7,2 kg"
+                ),
                 "« Un C », « un Century ». Livré avec sa rotule et son bras (gobo arm) : « mets-moi un drapeau sur un C ».",
                 "Ses trois pieds étagés lui permettent de se serrer contre un mur ou un autre pied. On le leste toujours d'un sac, posé sur le pied le plus haut, et on serre la rotule dans le sens où la charge la ferme (le poids à droite quand on regarde la rotule).",
                 "Le sac de lest va sur le pied le plus haut, côté charge. Et la règle de la rotule : « righty tighty », le poids doit tendre à la serrer.",
@@ -87,7 +90,11 @@ val ETAGERES_MACHINERIE: List<Etagere<FicheMachinerie>> = listOf(
             machino(
                 "Pied de projecteur (baby et junior)", "", PIEDS, Silhouette.MACHINO_PIED,
                 "Le pied télescopique classique : un spigot de 16 mm (baby) ou un réceptacle de 28 mm (junior).",
-                listOf(BABY, JUNIOR, "Sections" vaut "2 à 4, serrées par des molettes"),
+                listOf(
+                    BABY, JUNIOR, "Sections" vaut "2 à 4, serrées par des molettes",
+                    "Pied de 1000 acier (TSF)" vaut "288 cm, 10 kg admissibles",
+                    "Baby 2 kW (TSF)" vaut "100 cm, 30 kg admissibles"
+                ),
                 "« Un pied baby », « un pied junior ». On demande au machino « un junior » pour un 2K ou un 5K.",
                 "Le baby porte les petites têtes (spigot mâle de 16 mm), le junior les projecteurs lourds (leur tenon de 28 mm entre dans le pied). On le leste, on monte d'abord la section la plus large, et on ne le déploie jamais à fond sous une charge lourde.",
                 "Baby = 16 mm, junior = 28 mm : ce sont les deux standards de tout le matériel de tournage.",
@@ -96,11 +103,28 @@ val ETAGERES_MACHINERIE: List<Etagere<FicheMachinerie>> = listOf(
             machino(
                 "Wind-up", "", PIEDS, Silhouette.MACHINO_PIED,
                 "Le pied lourd à manivelle, pour lever haut un gros projecteur.",
-                listOf(JUNIOR, "Levage" vaut "crémaillère et manivelle"),
+                listOf(
+                    JUNIOR, "Levage" vaut "crémaillère et manivelle",
+                    "Baby crank (TSF)" vaut "175 cm, 100 kg admissibles, pèse 30,7 kg",
+                    "Long John (TSF)" vaut "340 cm, 120 kg admissibles, pèse 70 kg"
+                ),
                 "« Un wind-up » (aussi « crank-up ») : on monte la tête en tournant la manivelle, sans la porter à bout de bras.",
                 "Pour les HMI de 4 kW et plus, les 5K, 10K, les grosses LED ou une petite toile : la manivelle soulève la charge en douceur. On le leste largement et on le place avant de monter la tête.",
                 "Un wind-up se monte vide, se leste, puis reçoit sa tête : jamais l'inverse.",
                 aussi = listOf("crank-up", "pied à manivelle", "pied à crémaillère")
+            ),
+            machino(
+                "Pied U126", "", PIEDS, Silhouette.MACHINO_PIED,
+                "Le pied de projecteur à jambe de nivellement, partout sur les plateaux français.",
+                listOf(
+                    "U126, 2 tiges (TSF)" vaut "330 cm, 40 kg admissibles, pèse 8,3 kg",
+                    "U126 à roulettes (TSF)" vaut "315 cm, 12 kg admissibles",
+                    "Particularité" vaut "une jambe réglable pour rester d'aplomb sur un sol en pente"
+                ),
+                "« Un U », « un U126 » : « passe-moi un U » veut dire ce pied-là.",
+                "Sa jambe de nivellement permet de le poser droit dans un escalier, sur un trottoir ou un terrain en pente. Il porte des projecteurs moyens et se leste comme tout pied.",
+                "« Un U » = un pied U126. Le chiffre est le nom du modèle, repris par tous les loueurs.",
+                aussi = listOf("U", "pied U", "U126")
             ),
             machino(
                 "Low-boy et embase tortue", "", PIEDS, Silhouette.MACHINO_PIED,
@@ -121,7 +145,7 @@ val ETAGERES_MACHINERIE: List<Etagere<FicheMachinerie>> = listOf(
             machino(
                 "Combo stand", "", PIEDS, Silhouette.MACHINO_PIED,
                 "Le pied lourd polyvalent : un réceptacle junior et, en tête, un spigot baby.",
-                listOf(JUNIOR, BABY),
+                listOf(JUNIOR, BABY, "Combo 45 acier (TSF)" vaut "450 cm, 25 kg admissibles, pèse 4,9 kg"),
                 "« Un combo » : il prend une tête junior, ou un cadre et un drapeau grâce à son spigot.",
                 "Plus lourd qu'un C-stand, il porte cadres 4×4, projecteurs moyens et toiles par vent faible."
             )

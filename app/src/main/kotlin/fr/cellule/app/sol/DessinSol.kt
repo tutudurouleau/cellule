@@ -92,6 +92,7 @@ object Couleurs {
     const val REPERE = 0xFF7A3E9D.toInt()
     const val SELECTION = 0xFF0E9F6E.toInt()
     const val SOLEIL = 0xFFF2B705.toInt()
+    const val ENERGIE = 0xFFC62828.toInt()
 
     fun de(t: TypeElement): Int = when (t) {
         TypeElement.CAMERA -> CAMERA
@@ -106,6 +107,7 @@ object Couleurs {
         TypeElement.PORTE -> PORTE
         TypeElement.MEUBLE -> MEUBLE
         TypeElement.REPERE -> REPERE
+        TypeElement.ENERGIE -> ENERGIE
     }
 }
 
@@ -148,7 +150,7 @@ object DessinSol {
         /* Le décor d'abord, puis la lumière, la caméra, et les gens par-dessus. */
         val ordre = listOf(
             TypeElement.MEUBLE, TypeElement.MUR, TypeElement.FENETRE, TypeElement.PORTE, TypeElement.RAIL,
-            TypeElement.REFLECTEUR, TypeElement.DIFFUSION, TypeElement.DRAPEAU, TypeElement.REPERE
+            TypeElement.REFLECTEUR, TypeElement.DIFFUSION, TypeElement.DRAPEAU, TypeElement.REPERE, TypeElement.ENERGIE
         )
         ordre.forEach { t -> plan.elements.filter { it.type == t }.forEach { element(c, it, vue, o) } }
         plan.elements.filter { it.type == TypeElement.PROJECTEUR }.forEach { faisceau(c, it, vue, o) }
@@ -334,6 +336,16 @@ object DessinSol {
                     c.drawLine(x, -ecart * 1.3f, x, ecart * 1.3f, trait(couleur, 1.6f))
                     x += pas
                 }
+            }
+            TypeElement.ENERGIE -> {
+                /* Le point d'énergie : un boîtier et son éclair. */
+                val r = maxOf(0.25f * k, 12f)
+                c.drawRoundRect(RectF(-r, -r * 0.75f, r, r * 0.75f), r * 0.15f, r * 0.15f, plein(couleur))
+                val eclair = Path().apply {
+                    moveTo(r * 0.15f, -r * 0.6f); lineTo(-r * 0.35f, r * 0.08f); lineTo(0f, r * 0.08f)
+                    lineTo(-r * 0.15f, r * 0.6f); lineTo(r * 0.35f, -r * 0.08f); lineTo(0f, -r * 0.08f); close()
+                }
+                c.drawPath(eclair, plein(0xFFFFFFFF.toInt()))
             }
             TypeElement.REPERE -> {
                 val r = 0.15f * k

@@ -155,6 +155,11 @@ private val IconeRepere = icone("repere") {
     moveTo(3f, 12f); lineTo(21f, 12f)
 }
 
+/** Un éclair : groupe, armoire ou prise. */
+private val IconeEnergieSol = icone("energie") {
+    moveTo(13f, 3f); lineTo(6f, 13f); lineTo(11f, 13f); lineTo(9f, 21f); lineTo(18f, 10f); lineTo(13f, 10f); close()
+}
+
 internal fun iconeType(t: TypeElement): ImageVector = when (t) {
     TypeElement.CAMERA -> Onglet.CAMERAS.icone
     TypeElement.COMEDIEN -> IconeComedien
@@ -168,6 +173,7 @@ internal fun iconeType(t: TypeElement): ImageVector = when (t) {
     TypeElement.PORTE -> IconePorte
     TypeElement.MEUBLE -> IconeMeuble
     TypeElement.REPERE -> IconeRepere
+    TypeElement.ENERGIE -> IconeEnergieSol
 }
 
 /** Son nom court, pour la grille « Ajouter ». */
@@ -182,5 +188,5 @@ internal val FAMILLES_SOL: List<Pair<String, List<TypeElement>>> = listOf(
     "Personnes et caméra" to listOf(TypeElement.CAMERA, TypeElement.COMEDIEN, TypeElement.RAIL),
     "Lumière" to listOf(TypeElement.PROJECTEUR, TypeElement.REFLECTEUR, TypeElement.DIFFUSION, TypeElement.DRAPEAU),
     "Décor" to listOf(TypeElement.MUR, TypeElement.FENETRE, TypeElement.PORTE, TypeElement.MEUBLE),
-    "Repères" to listOf(TypeElement.REPERE)
+    "Repères et énergie" to listOf(TypeElement.REPERE, TypeElement.ENERGIE)
 )

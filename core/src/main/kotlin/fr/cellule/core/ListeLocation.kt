@@ -8,7 +8,14 @@ import kotlin.math.sqrt
  * et ce que chaque circuit va porter.
  */
 
-data class LigneLocation(val categorie: String, val nom: String, val quantite: Double, val unite: String = "") {
+data class LigneLocation(
+    val categorie: String,
+    val nom: String,
+    val quantite: Double,
+    val unite: String = "",
+    /** Ajoutée d'office (pied, sac, ballast, prolong) : la personne ne l'a pas posée sur le plan. */
+    val auto: Boolean = false
+) {
     /** « × 3 », ou « 6 m » pour une longueur. */
     val combien: String get() = if (unite.isNotBlank()) nombreCourt(quantite, 2) + " " + unite else "× " + nombreCourt(quantite, 0)
 }
@@ -25,7 +32,7 @@ object ListeLocation {
 
     const val SANS_CIRCUIT = "Sans circuit"
 
-    private val ORDRE = listOf("Caméra", "Projecteurs", "Accessoires", "Machinerie")
+    val ORDRE = listOf("Caméra", "Projecteurs", "Accessoires", "Machinerie", "Électrique", "Consommables")
 
     /** Ce qu'il faut pour un plan au sol. [nomProjecteur] donne le modèle d'un projecteur. */
     fun duPlan(plan: PlanSol, nomProjecteur: (ElementSol) -> String): List<LigneLocation> {
