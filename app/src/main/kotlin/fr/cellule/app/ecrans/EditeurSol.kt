@@ -174,7 +174,7 @@ import kotlin.math.sin
  * reste visible au-dessus. Rien ne défile sur le côté.
  */
 
-private enum class FeuilleSol { OPTIONS, LISTE, EXPORT, ENVOI }
+private enum class FeuilleSol { OPTIONS, LISTE, EXPORT, ENVOI, DEMANDE }
 
 private enum class VuePlan(val libelle: String) { DESSUS("Dessus"), CAMERA("Caméra"), COTE("Côté") }
 
@@ -383,6 +383,10 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
                             DropdownMenuItem(text = { Text("Exporter", style = Corps) }, onClick = {
                                 menu = false
                                 feuille = FeuilleSol.EXPORT
+                            })
+                            DropdownMenuItem(text = { Text("Demande au loueur (PDF)", style = Corps) }, onClick = {
+                                menu = false
+                                feuille = FeuilleSol.DEMANDE
                             })
                             DropdownMenuItem(text = { Text("Envoyer le plan (QR, texte)", style = Corps) }, onClick = {
                                 menu = false
@@ -686,7 +690,12 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
                 onFermer()
             }) { feuille = null }
             FeuilleSol.LISTE -> FeuilleListeSol(plan, reglages, { plan = it }) { feuille = null }
-            FeuilleSol.EXPORT -> FeuilleExportSol(plan, cinema, metres) { feuille = null }
+            FeuilleSol.EXPORT -> FeuilleExportSol(plan, cinema, metres, versDemande = { feuille = FeuilleSol.DEMANDE }) { feuille = null }
+            FeuilleSol.DEMANDE -> FeuilleDemandeLocation(
+                reglages,
+                ListeTournage.complete(plan, PlansSol::modele, { MonMateriel.projecteur(it.projecteur) }, PlansSol::puissance),
+                listOf(plan), metres, plansParDefaut = false
+            ) { feuille = null }
             FeuilleSol.ENVOI -> FeuilleSolBase("Envoyer le plan", { feuille = null }) { fr.cellule.app.sol.ContenuEnvoiPlan(plan) }
             null -> {}
         }
@@ -1586,7 +1595,7 @@ private fun FeuilleListeSol(plan: PlanSol, reglages: Reglages, surChangement: (P
 }
 
 @Composable
-private fun FeuilleExportSol(plan: PlanSol, cinema: DepotCinema, metres: Boolean, onFermer: () -> Unit) {
+private fun FeuilleExportSol(plan: PlanSol, cinema: DepotCinema, metres: Boolean, versDemande: () -> Unit, onFermer: () -> Unit) {
     val contexte = LocalContext.current
     val portee = rememberCoroutineScope()
     var message by remember { mutableStateOf("") }
@@ -1595,6 +1604,13 @@ private fun FeuilleExportSol(plan: PlanSol, cinema: DepotCinema, metres: Boolean
     val projet = jour?.let { j -> cinema.donnees.projets.firstOrNull { it.identifiant == j.projetId } }
     val enTete = listOfNotNull(projet?.nom?.takeIf { it.isNotBlank() }, jour?.intitule).joinToString(" › ")
     FeuilleSolBase("Exporter", onFermer) {
+        /* La liste seule pour le loueur : c'est la demande de location, sans le plan. */
+        BoutonPlat("Liste pour le loueur (demande en PDF)", accent = true, modifier = Modifier.fillMaxWidth()) { versDemande() }
+        Text(
+            "La liste du matériel (avec les accessoires d'office et les prolongs), rangée par service, prête à envoyer au loueur. Coche « Joindre les plans au sol » si tu veux aussi le plan.",
+            style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 4.dp, bottom = 10.dp)
+        )
+        Separateur()
         Text(
             "L'image se partage d'un geste (message, mail) ; le PDF ajoute ce qu'on lit sur le plan : caméras, projecteurs, soleil, heures dorées. Les dossiers PDF d'un jour contiennent aussi ses plans au sol.",
             style = Detail,

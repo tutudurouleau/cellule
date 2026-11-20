@@ -93,13 +93,13 @@ internal fun BoutonsLocation(reglages: Reglages, jourId: Long, lignes: List<Lign
 }
 
 @Composable
-private fun ContenuDemande(reglages: Reglages, lignes: List<LigneLocation>, plans: List<PlanSol>, metres: Boolean) {
+private fun ContenuDemande(reglages: Reglages, lignes: List<LigneLocation>, plans: List<PlanSol>, metres: Boolean, plansParDefaut: Boolean = true) {
     val contexte = LocalContext.current
     val portee = rememberCoroutineScope()
     var infos by remember { mutableStateOf(DemandeLocation.lireInfos(reglages.demandeInfos)) }
     var loueurId by remember { mutableStateOf(Loueurs.TOUS.first().id) }
     var autre by remember { mutableStateOf("") }
-    var avecPlans by remember { mutableStateOf(true) }
+    var avecPlans by remember { mutableStateOf(plansParDefaut) }
     var avecPrix by remember { mutableStateOf(false) }
     var message by remember { mutableStateOf("") }
     fun maj(i: fr.cellule.core.InfosProduction) { infos = i; reglages.demandeInfos = DemandeLocation.ecrireInfos(i) }
@@ -163,6 +163,12 @@ private fun ContenuDemande(reglages: Reglages, lignes: List<LigneLocation>, plan
         }
     }
     if (message.isNotBlank()) Text(message, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 6.dp))
+}
+
+/** La demande de location ouverte directement (menu ⋯ ou Exporter du plan au sol). */
+@Composable
+internal fun FeuilleDemandeLocation(reglages: Reglages, lignes: List<LigneLocation>, plans: List<PlanSol>, metres: Boolean, plansParDefaut: Boolean, onFermer: () -> Unit) {
+    FeuilleLocation("Demande au loueur (PDF)", onFermer) { ContenuDemande(reglages, lignes, plans, metres, plansParDefaut) }
 }
 
 @Composable
