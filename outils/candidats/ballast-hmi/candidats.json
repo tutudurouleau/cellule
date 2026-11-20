@@ -1,0 +1,60 @@
+{
+ "fichiers": [],
+ "recherche": [
+  "HMI ballast",
+  "electronic ballast HMI"
+ ],
+ "openverse": [
+  "HMI ballast",
+  "electronic ballast HMI"
+ ],
+ "apercu": 250,
+ "complet": true,
+ "candidates": [
+  {
+   "titre": "File:HMI ballast front.jpg",
+   "licence": "CC BY 2.5",
+   "auteur": "Eliot Lash",
+   "description": "An HMI ballast box. In the background, you can see the base of a high roller that is supporting this HMI .",
+   "taille": "1200x1600",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/HMI_ballast_front.jpg/250px-HMI_ballast_front.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:HMI on stand sunny.jpg",
+   "licence": "CC BY 2.5",
+   "auteur": "Eliot Lash",
+   "description": "An HMI light on a \"high roller\" stand. Also see the connected ballast .",
+   "taille": "1600x1200",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/HMI_on_stand_sunny.jpg/250px-HMI_on_stand_sunny.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Flyback 2589.JPG",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Daniel*D",
+   "description": "« Transformateur » de convertisseur Flyback 250 W à 50 kHz, dimensions : Ø 28 mm, L 32 mm, masse 90 grammes. Utilisation : étage générateur de puissance constante de ballast pour lampe HMI.",
+   "taille": "1944x2592",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Flyback_2589.JPG/250px-Flyback_2589.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:Flyback 2605.JPG",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Daniel*D",
+   "description": "« Transformateur » de convertisseur Flyback 250 W à 50 kHz, dimensions : Ø 28 L 32, masse 90 gr. Utilisation : étage générateur de puissance constante de ballast pour lampe HMI. Vue côté sorties.",
+   "taille": "1944x2592",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Flyback_2605.JPG/250px-Flyback_2605.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  },
+  {
+   "titre": "File:125 2561.JPG",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Daniel*D",
+   "description": "Circuit électronique d'un ballast pour lampe HMI 125/200 W, alimenté par batterie 24/35 V. L'étage générateur de puissance constante est constitué d'un convertisseur Flyback de 250 W.",
+   "taille": "2592x1944",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/125_2561.JPG/250px-125_2561.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "4.jpg"
+  }
+ ]
+}

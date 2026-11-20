@@ -1,0 +1,33 @@
+{
+ "fichiers": [],
+ "recherche": [
+  "Chapman PeeWee dolly",
+  "Chapman dolly"
+ ],
+ "openverse": [
+  "Chapman PeeWee dolly",
+  "Chapman dolly"
+ ],
+ "apercu": 250,
+ "complet": true,
+ "candidates": [
+  {
+   "titre": "openverse:e4b56c55-4d63-43b9-9d41-f6620811cf50",
+   "licence": "CC BY 2.0",
+   "auteur": "istolethetv",
+   "description": "chapman house_laundry (Flickr)",
+   "taille": "1024x763",
+   "vignette": "https://live.staticflickr.com/92/250167129_fefc17edeb_b.jpg",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "openverse:18cf4589-d130-4cf1-b501-cd6b20faf307",
+   "licence": "CC BY 2.0",
+   "auteur": "istolethetv",
+   "description": "chapman house (Flickr)",
+   "taille": "807x1024",
+   "vignette": "https://live.staticflickr.com/87/250166996_2399eae958_b.jpg",
+   "fichier": "1.jpg"
+  }
+ ]
+}

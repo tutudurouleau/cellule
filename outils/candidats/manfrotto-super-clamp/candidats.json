@@ -1,0 +1,69 @@
+{
+ "fichiers": [],
+ "recherche": [
+  "Manfrotto super clamp",
+  "super clamp 035"
+ ],
+ "openverse": [
+  "Manfrotto super clamp",
+  "super clamp 035"
+ ],
+ "apercu": 250,
+ "complet": true,
+ "candidates": [
+  {
+   "titre": "openverse:d71d8fa0-96a9-4ae3-bd50-c5bd10243053",
+   "licence": "CC BY 2.0",
+   "auteur": "JOE-3PO",
+   "description": "Abducted (Flickr)",
+   "taille": "1024x742",
+   "vignette": "https://live.staticflickr.com/4008/4482935481_46438ab5cd_b.jpg",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "openverse:52554239-5462-4f2a-bd72-b836d7ac7e67",
+   "licence": "CC BY 2.0",
+   "auteur": "JOE-3PO",
+   "description": "Contact (Flickr)",
+   "taille": "1024x683",
+   "vignette": "https://live.staticflickr.com/4003/4483584858_67710c8ea9_b.jpg",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "openverse:e5e23b92-52db-480c-b9b4-103da283ea15",
+   "licence": "CC BY 2.0",
+   "auteur": "K . Chan",
+   "description": "IMG_3199 (Flickr)",
+   "taille": "1024x683",
+   "vignette": "https://live.staticflickr.com/5066/5633448449_e69a461839_b.jpg",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "openverse:b3d2f011-7c80-471a-917f-fd5beeb1daa2",
+   "licence": "CC BY 2.0",
+   "auteur": "JOE-3PO",
+   "description": "I ♥ My Ghetto Boom! (Flickr)",
+   "taille": "344x500",
+   "vignette": "https://live.staticflickr.com/4007/4327655148_71924342e0.jpg",
+   "fichier": "3.jpg"
+  },
+  {
+   "titre": "openverse:ceb0fc16-58f2-4f4b-9f4f-d0c8e6df2528",
+   "licence": "CC BY 2.0",
+   "auteur": "K . Chan",
+   "description": "IMG_3192 (Flickr)",
+   "taille": "1024x683",
+   "vignette": "https://live.staticflickr.com/5227/5633467131_172df55542_b.jpg",
+   "fichier": "4.jpg"
+  },
+  {
+   "titre": "openverse:8cf9f3bf-955a-4f15-aece-e9032649155b",
+   "licence": "CC BY 2.0",
+   "auteur": "Mark Turnauckas",
+   "description": "CatCam (Flickr)",
+   "taille": "1024x709",
+   "vignette": "https://live.staticflickr.com/7139/7834541196_cf1622b767_b.jpg",
+   "fichier": "5.jpg"
+  }
+ ]
+}

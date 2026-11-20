@@ -1,0 +1,69 @@
+{
+ "fichiers": [],
+ "recherche": [
+  "Louma crane",
+  "Louma"
+ ],
+ "openverse": [
+  "Louma crane",
+  "Louma"
+ ],
+ "apercu": 250,
+ "complet": true,
+ "candidates": [
+  {
+   "titre": "File:Jib-up.jpg",
+   "licence": "CC BY 2.5",
+   "auteur": "The original uploader was Henryn at English Wikipedia .",
+   "description": "Jib positioned for high-angle shot; Photo by Henry Nelson, Wichita Kansas, USA, www.henrynelson.com Henryn 19:20, 30 July 2007 (UTC)",
+   "taille": "600x654",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Jib-up.jpg/250px-Jib-up.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Jib-down.jpg",
+   "licence": "CC BY 2.5",
+   "auteur": "Henryn at en.wikipedia",
+   "description": "\"Jib\" used for motion picture or video cameras. A counterweighted boom that can move the camera up or down rapidly. Photo by Henry Nelson, Wichita Kansas, USA. Henryn 19:20, 30 July 2007 (UTC)",
+   "taille": "600x440",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Jib-down.jpg/250px-Jib-down.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:KietaCAM-G.png",
+   "licence": "CC0",
+   "auteur": "KietaCAM",
+   "description": "Crane KietaCAM-G",
+   "taille": "1200x1494",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/KietaCAM-G.png/250px-KietaCAM-G.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:Medium-jib.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Thehumanjib",
+   "description": "Medium-Length Camera Jib with Motorized Pan/Tilt",
+   "taille": "4032x3024",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Medium-jib.jpg/250px-Medium-jib.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  },
+  {
+   "titre": "File:LoumaCrane.jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Jean-Marie Lavalou",
+   "description": "A Louma crane",
+   "taille": "2268x1185",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/LoumaCrane.jpg/250px-LoumaCrane.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "4.jpg"
+  },
+  {
+   "titre": "File:ABC-Crane-Paleo02.jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Manuguf",
+   "description": "Crane for Arte at the Paleo 2008",
+   "taille": "3840x2160",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/ABC-Crane-Paleo02.jpg/250px-ABC-Crane-Paleo02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "5.jpg"
+  }
+ ]
+}

@@ -1,0 +1,69 @@
+{
+ "fichiers": [],
+ "recherche": [
+  "butterfly frame film",
+  "12x12 overhead"
+ ],
+ "openverse": [
+  "butterfly frame film",
+  "12x12 overhead"
+ ],
+ "apercu": 250,
+ "complet": true,
+ "candidates": [
+  {
+   "titre": "File:Zhenya with seven-color flower.jpg",
+   "licence": "Public domain",
+   "auteur": "Michael Tsekhanovsky (director) Soyuzmultfilm (production company)",
+   "description": "Zhenya with a seven-color flower, frame from the cartoon Seven-color flower, Soyuzmultfilm, 1948. For details, see w:ru:Файл:Женя с цветиком-семицветиком.jpg",
+   "taille": "997x760",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Zhenya_with_seven-color_flower.jpg/250px-Zhenya_with_seven-color_flower.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Butterfliesframed.jpg",
+   "licence": "Public domain",
+   "auteur": "Jose A. Fadul, own work.",
+   "description": "Different species of butterflies framed together for display.",
+   "taille": "560x601",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Butterfliesframed.jpg/250px-Butterfliesframed.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Soga Brothers Surprising Suketsune, 1890.png",
+   "licence": "Public domain",
+   "auteur": "Toyohara Kunichika",
+   "description": "Dramatic kabuki scene from the famous tale of the Soga Brothers, whose lifelong quest was to avenge the death of their father at the hands of the nobleman Suketsune. Here, the pair surprises Suketsune",
+   "taille": "1065x527",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Soga_Brothers_Surprising_Suketsune%2C_1890.png/250px-Soga_Brothers_Surprising_Suketsune%2C_1890.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:Multi-Level-Stack-Parking-in-NYC.jpg",
+   "licence": "CC0",
+   "auteur": "Rajesh Natraj",
+   "description": "Multi level car parking manufactures in chennai , Tamilnadu India",
+   "taille": "2560x1920",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Multi-Level-Stack-Parking-in-NYC.jpg/250px-Multi-Level-Stack-Parking-in-NYC.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  },
+  {
+   "titre": "openverse:3797df1d-7c60-41f5-8fcd-2e821824b552",
+   "licence": "CC BY 2.0",
+   "auteur": "H o l l y.",
+   "description": "Lonely Butterfly (Flickr)",
+   "taille": "850x1024",
+   "vignette": "https://live.staticflickr.com/578/22021005524_0283fe2852_b.jpg",
+   "fichier": "4.jpg"
+  },
+  {
+   "titre": "openverse:1fd0120c-3715-44e7-85bf-e2ddf84ab6f4",
+   "licence": "CC BY 2.0",
+   "auteur": "H o l l y.",
+   "description": "day 071. (Flickr)",
+   "taille": "855x1024",
+   "vignette": "https://live.staticflickr.com/361/19678271991_6f6c4b4a2a_b.jpg",
+   "fichier": "5.jpg"
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "fichiers": [],
+ "recherche": [
+  "Panther dolly",
+  "Panther Evolution dolly"
+ ],
+ "openverse": [
+  "Panther dolly",
+  "Panther Evolution dolly"
+ ],
+ "apercu": 250,
+ "complet": true,
+ "candidates": [
+  {
+   "titre": "File:ClassicPlus Dolly.png",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Panther GmbH",
+   "description": "ClassicPlus Dolly",
+   "taille": "1024x768",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/ClassicPlus_Dolly.png/250px-ClassicPlus_Dolly.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Panther S Type Camera Dolly.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "TaurusEmerald",
+   "description": "A Panther S Type camera dolly.",
+   "taille": "3318x3022",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Panther_S_Type_Camera_Dolly.jpg/250px-Panther_S_Type_Camera_Dolly.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:Tristar High Low Drehkreuz 026 Kopie Hintergrund weiß.jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Panther GmbH",
+   "description": "Tristar Dolly mit patentierem \"High-Low-Drehkreuz\"",
+   "taille": "768x1024",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Tristar_High_Low_Drehkreuz_026_Kopie_Hintergrund_wei%C3%9F.jpg/250px-Tristar_High_Low_Drehkreuz_026_Kopie_Hintergrund_wei%C3%9F.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "2.jpg"
+  }
+ ]
+}

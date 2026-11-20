@@ -1,0 +1,42 @@
+{
+ "fichiers": [],
+ "recherche": [
+  "combo stand grip",
+  "junior combo stand"
+ ],
+ "openverse": [
+  "combo stand grip",
+  "junior combo stand"
+ ],
+ "apercu": 250,
+ "complet": true,
+ "candidates": [
+  {
+   "titre": "File:Apples and other stuff.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "ESTHER NAKITENDE",
+   "description": "apples and other stuff",
+   "taille": "3120x4160",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Apples_and_other_stuff.jpg/250px-Apples_and_other_stuff.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "openverse:2985d01d-60d3-4ff6-bfbf-051a3cc5de8b",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "avometrical",
+   "description": "Kupo Junior combo stand with Samsung HMX20C (Flickr)",
+   "taille": "1018x735",
+   "vignette": "https://live.staticflickr.com/4096/4766962347_68d50b2fdc_b.jpg",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "openverse:db52ee7c-ee8a-40ec-b210-144f1edc5f13",
+   "licence": "CC BY-SA 2.0",
+   "auteur": "avometrical",
+   "description": "Kupo Junior combo stand with Samsung HMX20C (Flickr)",
+   "taille": "469x500",
+   "vignette": "https://live.staticflickr.com/4082/4766962069_fbda34a885.jpg",
+   "fichier": "2.jpg"
+  }
+ ]
+}

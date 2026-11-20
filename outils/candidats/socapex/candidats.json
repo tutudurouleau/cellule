@@ -1,0 +1,51 @@
+{
+ "fichiers": [],
+ "recherche": [
+  "Socapex",
+  "Socapex connector"
+ ],
+ "openverse": [
+  "Socapex",
+  "Socapex connector"
+ ],
+ "apercu": 250,
+ "complet": true,
+ "candidates": [
+  {
+   "titre": "File:Socapex 19pin.jpg",
+   "licence": "CC BY-SA 3.0",
+   "auteur": "Hugovanmeijeren",
+   "description": "19 Pin Socapex connector. Both male and female part are shown.",
+   "taille": "4272x2848",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Socapex_19pin.jpg/250px-Socapex_19pin.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Socapex-Male-Panelmount.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Alistair1978",
+   "description": "Socapex 19-pin connector - male panelmount",
+   "taille": "2348x1300",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Socapex-Male-Panelmount.jpg/250px-Socapex-Male-Panelmount.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "openverse:129b8154-9569-4164-886e-752aa174c4b1",
+   "licence": "CC BY 2.0",
+   "auteur": "On Stage Lighting",
+   "description": "Stage Lighting Rack (Flickr)",
+   "taille": "768x1024",
+   "vignette": "https://live.staticflickr.com/3086/2396269968_4400b8f533_b.jpg",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "openverse:3ef1a0fc-cc56-4566-9c2f-cd302bd578c0",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "",
+   "description": "Microfoons - MICROFOONAFTAKSLOF zelfbouw Type: - (europeana)",
+   "taille": "2150x1719",
+   "vignette": "https://images1.noterik.com/domain/euscreen/user/eu_nisv/picture/BG0115553_r_con.jpg",
+   "fichier": "3.jpg"
+  }
+ ]
+}

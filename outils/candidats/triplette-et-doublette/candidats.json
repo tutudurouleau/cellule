@@ -1,0 +1,24 @@
+{
+ "fichiers": [],
+ "recherche": [
+  "three way splitter CEE",
+  "power splitter 16A"
+ ],
+ "openverse": [
+  "three way splitter CEE",
+  "power splitter 16A"
+ ],
+ "apercu": 250,
+ "complet": true,
+ "candidates": [
+  {
+   "titre": "File:400v 230v power splitter.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Santeri Viinamäki",
+   "description": "400 V (IEC 60309) to 230 V (Schuko) power splitter.",
+   "taille": "4000x3000",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/400v_230v_power_splitter.jpg/250px-400v_230v_power_splitter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  }
+ ]
+}

@@ -1,0 +1,51 @@
+{
+ "fichiers": [],
+ "recherche": [
+  "speed rail grip",
+  "scaffold tube lighting rig"
+ ],
+ "openverse": [
+  "speed rail grip",
+  "scaffold tube lighting rig"
+ ],
+ "apercu": 250,
+ "complet": true,
+ "candidates": [
+  {
+   "titre": "File:Image from page 381 of \"American engineer and railroad journal\" (1893).jpg",
+   "licence": "CC0",
+   "auteur": "Internet Archive Book Images",
+   "description": "Identifier: americanengineer80newy Title: American engineer and railroad journal Year: 1893 (1890s) Authors: Subjects: Railroad engineering Engineering Railroads Railroad cars Publisher: New York : M.",
+   "taille": "2116x584",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Image_from_page_381_of_%22American_engineer_and_railroad_journal%22_%281893%29.jpg/250px-Image_from_page_381_of_%22American_engineer_and_railroad_journal%22_%281893%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:Wuppertal-Cronenberg- old railcar VT 95.jpg",
+   "licence": "CC BY 2.0",
+   "auteur": "wwwuppertal",
+   "description": "I have already uploaded a similar shot, but this one shows the proportions and the shape of the old VT 95 railcar better. This type of diesel car once roamed the \"Sambatrasse\", a short railway line wh",
+   "taille": "3126x2295",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Wuppertal-Cronenberg-_old_railcar_VT_95.jpg/250px-Wuppertal-Cronenberg-_old_railcar_VT_95.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "openverse:924d5a56-8b5b-44d0-a919-9960ad561550",
+   "licence": "domaine public",
+   "auteur": "Queensland State Archives",
+   "description": "Monorail Driver, Expo 88 (Flickr)",
+   "taille": "1024x681",
+   "vignette": "https://live.staticflickr.com/5564/31247249561_cf579467b4_b.jpg",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "openverse:31e42c23-154e-4c5c-8e87-86ce64bab448",
+   "licence": "CC BY 2.0",
+   "auteur": "Olgierd Pstrykotwórca",
+   "description": "On-One Inbred 26er single speed (Flickr)",
+   "taille": "1024x768",
+   "vignette": "https://live.staticflickr.com/8153/7235953908_1e84298f8c_b.jpg",
+   "fichier": "3.jpg"
+  }
+ ]
+}

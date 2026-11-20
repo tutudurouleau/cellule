@@ -1,0 +1,87 @@
+{
+ "fichiers": [],
+ "recherche": [
+  "4-pin XLR connector",
+  "D-Tap cable"
+ ],
+ "openverse": [
+  "4-pin XLR connector",
+  "D-Tap cable"
+ ],
+ "apercu": 250,
+ "complet": true,
+ "candidates": [
+  {
+   "titre": "File:XLR connectors, male and female.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Jud McCranie",
+   "description": "Three-pin XLR connectors, male on the left; female on the right",
+   "taille": "5002x3186",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/XLR_connectors%2C_male_and_female.jpg/250px-XLR_connectors%2C_male_and_female.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "0.jpg"
+  },
+  {
+   "titre": "File:XLRwPins.png",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Tonhaus",
+   "description": "Pin 1: Ground Pin 2: Hot Pin 3: Cold",
+   "taille": "29x29",
+   "vignette": "https://upload.wikimedia.org/wikipedia/commons/1/1f/XLRwPins.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "fichier": "1.jpg"
+  },
+  {
+   "titre": "File:XLRmPins.png",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Tonhaus",
+   "description": "Pin 1: Ground Pin 2: Hot Pin 3: Cold",
+   "taille": "34x34",
+   "vignette": "https://upload.wikimedia.org/wikipedia/commons/7/78/XLRmPins.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "fichier": "2.jpg"
+  },
+  {
+   "titre": "File:Neutrik REAN tiny XLR.jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Phiarc",
+   "description": "Tiny XLR plug (3-pin) left, panel-mount socket right",
+   "taille": "5648x4262",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Neutrik_REAN_tiny_XLR.jpg/250px-Neutrik_REAN_tiny_XLR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "3.jpg"
+  },
+  {
+   "titre": "File:DMX-terminator-1.png",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "Verdel",
+   "description": "DMX-terminator diagram for 3-pin and 5-pin XLR connectors",
+   "taille": "300x500",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/DMX-terminator-1.png/250px-DMX-terminator-1.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "4.jpg"
+  },
+  {
+   "titre": "File:The Dave Bunker \"Touch Guitar\".jpg",
+   "licence": "CC BY-SA 4.0",
+   "auteur": "David Douglas Bunker",
+   "description": "The close-up picture shows a multiple use guitar 5 pin XLR type cable-out, allowing for multiple uses of the combination Guitar/Bass features of the \"Touch Guitar\". The 13 pin midi plug next to the XL",
+   "taille": "800x600",
+   "vignette": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/The_Dave_Bunker_%22Touch_Guitar%22.jpg/250px-The_Dave_Bunker_%22Touch_Guitar%22.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "fichier": "5.jpg"
+  },
+  {
+   "titre": "openverse:74aabb34-4a5d-41d5-83e6-113662576a0b",
+   "licence": "domaine public",
+   "auteur": "comedy_nose",
+   "description": "Project 365 #176: 250618 Pull Out The Pin (Flickr)",
+   "taille": "1024x683",
+   "vignette": "https://live.staticflickr.com/1782/42106851355_d149851df9_b.jpg",
+   "fichier": "6.jpg"
+  },
+  {
+   "titre": "openverse:ba5de4e7-955f-4d1c-b9ec-f4b3f2892880",
+   "licence": "CC BY 2.0",
+   "auteur": "Silver Novice of the Wirral",
+   "description": "BT Pole Man (2 of 2) (Flickr)",
+   "taille": "683x1024",
+   "vignette": "https://live.staticflickr.com/65535/49832576293_dbba30b00e_b.jpg",
+   "fichier": "7.jpg"
+  }
+ ]
+}
