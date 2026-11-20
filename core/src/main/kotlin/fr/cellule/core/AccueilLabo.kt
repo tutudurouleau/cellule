@@ -2,8 +2,9 @@ package fr.cellule.core
 
 /**
  * Les trois domaines du Labo. L'accueil ne montre que ce qui sert au domaine
- * choisi : les calculs du film, ceux du tirage — et, pour la couleur, rien
- * encore, faute de fiches relues.
+ * choisi : les calculs du film, ceux du tirage. La couleur n'a pas de
+ * calculateur à pari : ses procédés, son chrono et sa correction de
+ * dominante vivent dans [LaboCouleur].
  */
 enum class DomaineLabo(val libelle: String, val calculateurs: List<Calculateur>) {
     FILM(

@@ -57,11 +57,14 @@ import fr.cellule.core.DeveloppementNote
 import fr.cellule.core.DomaineLabo
 import fr.cellule.core.Duree
 import fr.cellule.core.FichesLabo
+import fr.cellule.core.LaboCouleur
+import fr.cellule.core.ProcedeCouleur
 import fr.cellule.core.Echelle
 import fr.cellule.core.EntrainementLabo
 import fr.cellule.core.Exercice
 import fr.cellule.core.Progressions
 import fr.cellule.core.Pronostic
+import fr.cellule.core.SequenceLabo
 import fr.cellule.core.Sequences
 import fr.cellule.core.Source
 import fr.cellule.core.ThemeLabo
@@ -90,6 +93,10 @@ private sealed interface VueLabo {
     /** Les recettes maison : Caffenol, herbes, thiosulfate. */
     data object Maison : VueLabo
     data object Quiz : VueLabo
+    /** Un procédé couleur : ses bains, dans l'ordre. */
+    data class Procede(val procede: ProcedeCouleur) : VueLabo
+    data object CorrigerDominante : VueLabo
+    data object CouleurExpliquee : VueLabo
 }
 
 private fun titre(v: VueLabo): String = when (v) {
@@ -101,6 +108,9 @@ private fun titre(v: VueLabo): String = when (v) {
     VueLabo.Tables -> "Les tables du labo"
     VueLabo.Maison -> "Recettes maison"
     VueLabo.Quiz -> "Quiz"
+    is VueLabo.Procede -> "${v.procede.code} · ${v.procede.libelle}"
+    VueLabo.CorrigerDominante -> "Corriger une dominante"
+    VueLabo.CouleurExpliquee -> "La couleur expliquée"
 }
 
 /*
@@ -136,7 +146,7 @@ private class EtatEntrainement(themeInitial: ThemeLabo? = null) {
 /**
  * Le Labo : développer ses films, tirer ses épreuves — et comprendre pourquoi
  * les chiffres sont ce qu'ils sont. Un accueil par domaine (film, tirage,
- * couleur) mène aux calculateurs, au chrono, aux fiches et au quiz ; un
+ * couleur) mène aux calculateurs, aux procédés, au chrono et au quiz ; un
  * chrono en cours reste toujours à un appui.
  */
 @Composable
@@ -160,20 +170,36 @@ fun EcranLabo(
     val versTirage: (TirageNote) -> Unit = { etatApplication.tiragePropose = it }
     /* Depuis un calcul ou une question, sauter droit à la fiche qui l'explique. */
     val versFiche: (String) -> Unit = { nom -> vue = VueLabo.Fiche(nom) }
-    /* Le chrono s'ouvre sur l'enchaînement du domaine : bains film ou bains papier. */
+    /* Le chrono s'ouvre sur l'enchaînement du domaine : bains film, papier ou couleur. */
     val ouvrirChrono = {
         if (!Minuteur.enCours) {
             val papier = chrono.modele.nom == Sequences.PAPIER.nom
-            if (domaine == DomaineLabo.TIRAGE && !papier) chrono.charger(Sequences.PAPIER)
-            if (domaine == DomaineLabo.FILM && papier) chrono.charger(Sequences.FILM_ILFORD)
+            val couleur = LaboCouleur.estCouleur(chrono.modele)
+            when (domaine) {
+                DomaineLabo.FILM -> if (papier || couleur) chrono.charger(Sequences.FILM_ILFORD)
+                DomaineLabo.TIRAGE -> if (!papier) chrono.charger(Sequences.PAPIER)
+                DomaineLabo.COULEUR -> if (!couleur) chrono.charger(LaboCouleur.C41.sequence)
+            }
         }
+        vue = VueLabo.Chrono
+    }
+    /* Depuis la page d'un procédé : ses bains, chargés au chrono. */
+    val versChronoCouleur: (SequenceLabo) -> Unit = { s ->
+        if (!Minuteur.enCours) chrono.charger(s)
         vue = VueLabo.Chrono
     }
 
     BackHandler(enabled = vue != VueLabo.Accueil) { vue = VueLabo.Accueil }
     /* Depuis Réviser ou le lanceur : « LABO:QUIZ » ouvre directement le quiz. */
     LaunchedEffect(Aiguillage.cible) {
-        if (Aiguillage.prendre("LABO") == "QUIZ") vue = VueLabo.Quiz
+        when (Aiguillage.prendre("LABO")) {
+            "QUIZ" -> vue = VueLabo.Quiz
+            "COULEUR" -> {
+                domaine = DomaineLabo.COULEUR
+                vue = VueLabo.Accueil
+            }
+            "DOMINANTE" -> vue = VueLabo.CorrigerDominante
+        }
     }
 
     Column(Modifier.fillMaxSize()) {
@@ -199,6 +225,9 @@ fun EcranLabo(
                         ouvrirFiches = { vue = VueLabo.Fiches },
                         ouvrirTables = { vue = VueLabo.Tables },
                         ouvrirMaison = { vue = VueLabo.Maison },
+                        ouvrirProcede = { vue = VueLabo.Procede(it) },
+                        ouvrirDominante = { vue = VueLabo.CorrigerDominante },
+                        ouvrirCouleur = { vue = VueLabo.CouleurExpliquee },
                         ouvrirQuiz = { theme ->
                             if (theme != null) {
                                 entrainement.theme = theme
@@ -227,6 +256,13 @@ fun EcranLabo(
                         chrono.charger(s)
                         vue = VueLabo.Chrono
                     }
+                    is VueLabo.Procede -> PageProcede(
+                        LaboCouleur.fiche(v.procede),
+                        versChrono = versChronoCouleur,
+                        versDominante = { vue = VueLabo.CorrigerDominante }
+                    )
+                    VueLabo.CorrigerDominante -> OutilDominante()
+                    VueLabo.CouleurExpliquee -> ComprendreCouleur { vue = VueLabo.CorrigerDominante }
                     VueLabo.Quiz -> {
                         Carte(
                             sousTitre = "Les calculateurs vérifient ton intuition sur un cas réel. Le quiz entraîne ce qui ne se calcule pas — " +
@@ -321,6 +357,9 @@ private fun Accueil(
     ouvrirFiches: () -> Unit,
     ouvrirTables: () -> Unit,
     ouvrirMaison: () -> Unit,
+    ouvrirProcede: (ProcedeCouleur) -> Unit,
+    ouvrirDominante: () -> Unit,
+    ouvrirCouleur: () -> Unit,
     ouvrirQuiz: (ThemeLabo?) -> Unit
 ) {
     /* En chambre noire, c'est l'information qui compte : elle passe devant tout. */
@@ -372,7 +411,30 @@ private fun Accueil(
             ) {}
             DernierTirage(tirages)
         }
-        DomaineLabo.COULEUR -> CarteCouleur()
+        DomaineLabo.COULEUR -> {
+            EntreeComprendre(
+                "La couleur en sept tables",
+                "Couches, colorants, blanchiment, température, masque orange, diapo, dominantes.",
+                ouvrirCouleur
+            )
+            FilConducteur(
+                listOf(
+                    "Choisis" to "le procédé du film",
+                    "Chronomètre" to "au bain-marie",
+                    "Corrige" to "la dominante au tirage"
+                )
+            )
+            Tuiles(
+                LaboCouleur.FICHES.map { f ->
+                    Tuile(f.procede.code, f.procede.libelle.lowercase(), iconeProcede(f.procede)) { ouvrirProcede(f.procede) }
+                } + listOf(
+                    Tuile("Chrono", "bains couleur", IconeChrono, ouvrirChrono),
+                    Tuile("Dominante", "corriger un tirage", IconeFiltreCouleur, ouvrirDominante),
+                    Tuile("Quiz", "procédés et dominantes", IconeQuiz) { ouvrirQuiz(ThemeLabo.COULEUR) }
+                )
+            )
+            CarteRevelateursCouleur(ouvrirProcede)
+        }
     }
 }
 
@@ -381,16 +443,20 @@ private fun Accueil(
  * les calculs supposent connu.
  */
 @Composable
-private fun EntreeTables(ouvrir: () -> Unit) {
+private fun EntreeTables(ouvrir: () -> Unit) = EntreeComprendre(
+    "Le développement en six tables",
+    "Les bains, les mots, les révélateurs, la température, les dilutions, le push.",
+    ouvrir
+)
+
+@Composable
+private fun EntreeComprendre(titre: String, detail: String, ouvrir: () -> Unit) {
     Carte(modifier = Modifier.clickable { ouvrir() }) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f)) {
                 Etiquette("Pour comprendre", accent = true)
-                Text("Le développement en six tables", style = TitreCarte, color = MaterialTheme.colorScheme.onSurface)
-                Text(
-                    "Les bains, les mots, les révélateurs, la température, les dilutions, le push.",
-                    style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+                Text(titre, style = TitreCarte, color = MaterialTheme.colorScheme.onSurface)
+                Text(detail, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             Text("›", style = TitreCarte, color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(start = 10.dp))
         }
@@ -515,28 +581,6 @@ private fun DernierTirage(tirages: DepotTirages) {
     Carte(titre = "Ton dernier tirage", sousTitre = "${tirages.tirages.size} tirage(s) au carnet · le détail est dans Carnet › Tirages") {
         Ligne(t.titre, t.date, listOf(t.papier, t.filtre, t.ouverture).filter { it.isNotBlank() }.joinToString(" · ").ifBlank { null })
         t.deroule().forEach { Text(it, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant) }
-    }
-}
-
-/**
- * La couleur, pour l'instant : de quoi comprendre les trois procédés, sans un
- * chiffre qui n'ait pas été relu chez Kodak.
- */
-@Composable
-private fun CarteCouleur() {
-    Carte(
-        titre = "La couleur, bientôt",
-        sousTitre = "Découverte d'abord, pas de calculateur : il s'agit de comprendre l'exigence avant de s'y risquer."
-    ) {
-        Ligne("C-41", "négatif couleur", "la chimie des films comme la Portra ou l'Ektar")
-        Ligne("E-6", "diapositive", "un procédé inversible, aux étapes plus nombreuses")
-        Ligne("RA-4", "tirage couleur", "le papier couleur, sous agrandisseur ou en machine")
-        Spacer(Modifier.height(6.dp))
-        Paragraphe(
-            "Ces procédés tiennent leur température bien plus serré que le noir et blanc. Leurs chiffres viendront des manuels " +
-                "Kodak (Z-131 pour le C-41, Z-130 pour le RA-4) dès qu'ils auront pu être relus ; d'ici là, le Labo n'affiche rien " +
-                "plutôt qu'un chiffre de seconde main."
-        )
     }
 }
 

@@ -55,4 +55,37 @@ object Sources {
         "Ilford (HARMAN technology)", "PERCEPTOL, ID-11 and MICROPHEN film developers", "", "août 2024",
         "https://www.ilfordphoto.com/amfile/file/download/file/1829/product/551/"
     )
+
+    /* ── La couleur : les publications Kodak des procédés chromogènes ── */
+
+    val KODAK_Z131 = Source(
+        "Kodak Alaris", "Using KODAK FLEXICOLOR Chemicals (Process C-41)", "publication Z-131", "",
+        "https://business.kodakmoments.com/sites/default/files/wysiwyg/pro/chemistry/z131.pdf"
+    )
+
+    val KODAK_E6_KIT = Source(
+        "Eastman Kodak", "KODAK PROFESSIONAL Single-Use Chemistry Kit, Process E-6", "TI-2443", "nov. 2008",
+        "https://business.kodakmoments.com/sites/default/files/files/resources/ti2443.pdf"
+    )
+
+    /** Le manuel E-6, chapitre 3 : temps, températures et tolérances des bains. */
+    val KODAK_Z119 = Source(
+        "Eastman Kodak", "Using KODAK Chemicals, Process E-6", "publication Z-119", "6e édition",
+        "https://kodak.com/global/plugins/acrobat/en/service/Zmanuals/z119-3.pdf"
+    )
+
+    val KODAK_ECN2 = Source(
+        "Eastman Kodak", "Processing KODAK Motion Picture Films, Module 7 : Process ECN-2", "H-24.07", "2020",
+        "https://www.kodak.com/content/products-brochures/Film/Processing-KODAK-Motion-Picture-Films-Module-7.pdf"
+    )
+
+    val KODAK_KIT_CINEMA = Source(
+        "Eastman Kodak", "Using KODAK Kit Chemicals in Motion Picture Film Laboratories", "", "2020",
+        "https://www.kodak.com/content/products-brochures/Film/Using-KODAK-Kit-Chemicals-in-Motion-Picture-Film-Laboratories.pdf"
+    )
+
+    val KODAK_RA4 = Source(
+        "Kodak Alaris", "Process RA-4, temps et températures", "CIS-269", "",
+        "https://business.kodakmoments.com/sites/default/files/wysiwyg/retailers/chemistry/techpub/CIS-269.pdf"
+    )
 }

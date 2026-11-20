@@ -85,7 +85,9 @@ internal val DESTINATIONS: List<Destination> by lazy {
         Destination("carnet-vues", Onglet.CARNET, Univers.APRES, "Carnet · vues", "Carnet", "Ce que tu as photographié, et ton biais.", "journal notes photos pellicule", sous = "CARNET:VUES"),
         Destination("carnet-films", Onglet.CARNET, Univers.APRES, "Carnet · films", "Films", "Tes développements notés.", "developpement pellicule revelateur", sous = "CARNET:DEVELOPPEMENTS"),
         Destination("carnet-tirages", Onglet.CARNET, Univers.APRES, "Carnet · tirages", "Tirages", "Tes tirages notés.", "papier agrandisseur tirage", sous = "CARNET:TIRAGES"),
-        Destination("labo-quiz", Onglet.LABO, Univers.APRES, "Quiz du labo", "Quiz labo", "Bains, dilutions, push, réciprocité, diaphs de tête.", "quiz labo entrainement question bains revelateur", sous = "LABO:QUIZ"),
+        Destination("labo-quiz", Onglet.LABO, Univers.APRES, "Quiz du labo", "Quiz labo", "Bains, dilutions, push, réciprocité, diaphs, couleur.", "quiz labo entrainement question bains revelateur couleur", sous = "LABO:QUIZ"),
+        Destination("labo-couleur", Onglet.LABO, Univers.APRES, "Labo couleur", "Couleur", "C-41, ECN-2, E-6, RA-4 : les bains, le chrono, la couleur expliquée.", "couleur c41 c-41 ecn2 ecn-2 e6 e-6 ra4 ra-4 diapo diapositive negatif couleur blanchiment vision3 portra ektachrome kodak", sous = "LABO:COULEUR"),
+        Destination("labo-dominante", Onglet.LABO, Univers.APRES, "Corriger une dominante", "Dominante", "La filtration de l'agrandisseur couleur, corrigée.", "dominante filtration filtre jaune magenta cyan tirage couleur ra-4 agrandisseur", sous = "LABO:DOMINANTE"),
         Destination("labo", Onglet.LABO, Univers.APRES, "Labo", "Labo", "Développer, tirer, le chrono, et comprendre pourquoi.", "chrono minuteur revelateur fixateur dilution temperature tirage bande d'essai"),
 
         /* Le sommaire Cinéma, puis ses quatre pages dans l'ordre de ses cartes. */

@@ -49,6 +49,8 @@ import fr.cellule.core.Agitation
 import fr.cellule.core.Agitations
 import fr.cellule.core.Chrono
 import fr.cellule.core.DeveloppementNote
+import fr.cellule.core.LaboCouleur
+import fr.cellule.core.ProcedeCouleur
 import fr.cellule.core.Duree
 import fr.cellule.core.Position
 import fr.cellule.core.SequenceLabo
@@ -111,21 +113,17 @@ private fun Preparation(etat: EtatChrono) {
     val lancer = { Minuteur.lancer(contexte, etat.sequence()) }
     /* Sans la permission, le chrono bipe quand même ; seule la notification manque. */
     val demande = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { lancer() }
+    val couleur = LaboCouleur.estCouleur(etat.modele)
 
     Carte(
         titre = "Chrono labo",
         sousTitre = "Un enchaînement de bains, avec bips et vibrations à chaque changement et à chaque agitation — écran éteint, appli en arrière-plan."
     ) {
+        /* Les bains couleur ont leurs propres choix : on ne passe pas du C-41 au papier N&B d'un toucher. */
         ChoixSegmente(
-            options = Sequences.TOUTES,
+            options = if (couleur) LaboCouleur.SEQUENCES else Sequences.TOUTES,
             selection = etat.modele,
-            libelle = {
-                when (it) {
-                    Sequences.FILM_ILFORD -> "Film Ilford"
-                    Sequences.FILM_KODAK -> "Film Kodak"
-                    else -> "Papier"
-                }
-            }
+            libelle = { it.court.ifBlank { it.nom } }
         ) { etat.charger(it) }
         if (etat.modele.note.isNotBlank()) {
             Spacer(Modifier.height(6.dp))
@@ -175,7 +173,9 @@ private fun Preparation(etat: EtatChrono) {
         }
         Spacer(Modifier.height(6.dp))
         Text(
-            "Film : Ilford demande de manipuler la HP5 Plus dans le noir complet — écran éteint, les bips suffisent. " +
+            if (couleur) "Couleur : film et papier se manipulent dans le noir complet — écran éteint, les bips suffisent. " +
+                "Garde les bains au bain-marie : c'est la température du révélateur qui décide des couleurs."
+            else "Film : Ilford demande de manipuler la HP5 Plus dans le noir complet — écran éteint, les bips suffisent. " +
                 "Au tirage, l'affichage rouge limite la lumière ; garde tout de même l'écran loin du papier.",
             style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -270,12 +270,18 @@ private fun ChronoEnCours(versCarnet: (DeveloppementNote) -> Unit) {
             }
             Spacer(Modifier.height(Interligne))
         }
-        if (p.fini && s.nom != Sequences.PAPIER.nom) {
+        /* Un tirage (papier N&B ou RA-4) ne se verse pas au carnet des films. */
+        val ficheCouleur = LaboCouleur.FICHES.firstOrNull { it.sequence.nom == s.nom }
+        val tirage = s.nom == Sequences.PAPIER.nom || ficheCouleur?.procede == ProcedeCouleur.RA4
+        if (p.fini && !tirage) {
             BoutonPlat("Verser ce développement au carnet", modifier = Modifier.fillMaxWidth()) {
-                val revelateur = s.etapes.first()
+                /* En couleur, le bain qui compte n'est pas toujours le premier (prébain de l'ECN-2). */
+                val i = ficheCouleur?.let { f -> f.bains.indexOfFirst { it.critique } }?.takeIf { it in s.etapes.indices } ?: 0
+                val revelateur = s.etapes[i]
                 versCarnet(
                     DeveloppementNote(
                         identifiant = 0, date = "",
+                        revelateur = ficheCouleur?.procede?.code.orEmpty(),
                         tempsDonne = revelateur.duree,
                         agitation = revelateur.agitation?.libelle.orEmpty()
                     )

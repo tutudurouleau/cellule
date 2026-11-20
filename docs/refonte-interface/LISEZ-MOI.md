@@ -24,6 +24,9 @@ d'origine ni tout le dépôt.
     « À louer pour ce jour » ;
   - le raccord lumière (`ecrans/RaccordLumiere.kt`, `core/RaccordLumiere.kt`), dans la fiche de
     chaque plan.
+- **Labo couleur** (`core/LaboCouleur.kt`, `ecrans/EcranCouleur.kt`) : C-41, ECN-2, E-6, RA-4
+  bain par bain (sources Kodak citées ; une durée non relue reste à 0 et le chrono la demande),
+  le chrono couleur, l'outil « Corriger une dominante » et le thème de quiz Couleur.
 - **Piège de compilation vu en vrai** : deux déclarations `private` de même nom dans deux
   fichiers du même paquet entrent en conflit (K2). Vérifie les noms avant de pousser.
 

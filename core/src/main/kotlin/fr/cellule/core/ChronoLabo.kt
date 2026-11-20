@@ -67,7 +67,9 @@ data class SequenceLabo(
     val nom: String,
     val etapes: List<Etape>,
     val source: Source? = null,
-    val note: String = ""
+    val note: String = "",
+    /** Son nom dans le sélecteur du chrono : « Film Ilford », « C-41 ». */
+    val court: String = ""
 ) {
     val duree: Double get() = etapes.sumOf { it.duree }
 
@@ -152,7 +154,8 @@ object Sequences {
             Etape("Agent mouillant", 30.0, null, "KODAK PHOTO-FLO : 30 s, puis sécher à l'abri de la poussière.")
         ),
         Sources.KODAK_TRIX,
-        "Entre 18 et 24 °C pour tous les bains."
+        "Entre 18 et 24 °C pour tous les bains.",
+        "Film Kodak"
     )
 
     val FILM_ILFORD = SequenceLabo(
@@ -165,7 +168,8 @@ object Sequences {
             Etape("Agent mouillant", 30.0, null, "ILFOTOL, 5 mL par litre. Ilford ne donne pas de durée ; Kodak compte 30 s pour son PHOTO-FLO.")
         ),
         Sources.ILFORD_HP5,
-        "Tous les bains à la même température, ou à 5 °C au plus du révélateur."
+        "Tous les bains à la même température, ou à 5 °C au plus du révélateur.",
+        "Film Ilford"
     )
 
     /**
@@ -182,7 +186,8 @@ object Sequences {
             Etape("Lavage", 0.0, null, "Durée de la fiche du papier : un baryté se lave bien plus longtemps qu'un RC.")
         ),
         null,
-        "Règle chaque durée d'après les fiches de ton papier et de tes bains."
+        "Règle chaque durée d'après les fiches de ton papier et de tes bains.",
+        "Papier"
     )
 
     val TOUTES = listOf(FILM_ILFORD, FILM_KODAK, PAPIER)

@@ -17,7 +17,8 @@ enum class ThemeLabo(val libelle: String) {
     TEMPERATURE("Température"),
     DIAPHS("Tirage en diaphs"),
     PUSH("Push et pull"),
-    RECIPROCITE("Réciprocité")
+    RECIPROCITE("Réciprocité"),
+    COULEUR("Couleur")
 }
 
 data class Exercice(
@@ -41,6 +42,7 @@ object EntrainementLabo {
         ThemeLabo.DIAPHS -> diaphs(alea)
         ThemeLabo.PUSH -> push(alea)
         ThemeLabo.RECIPROCITE -> reciprocite(alea)
+        ThemeLabo.COULEUR -> QuizCouleur.exercice(alea)
     }
 
     fun auHasard(alea: Random): Exercice = exercice(ThemeLabo.entries.random(alea), alea)
