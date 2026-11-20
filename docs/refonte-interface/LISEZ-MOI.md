@@ -8,14 +8,24 @@ d'origine ni tout le dépôt.
 
 ## Où on en est
 
-- **Étapes 1 et 2 faites**, validées par l'utilisateur (branche `claude/adoring-lamport-yln7ao`).
-  Il aime le sommaire Cinéma : « beaucoup plus lisible ».
-- **En plus, à sa demande : l'onglet « Réviser »** (`ecrans/EcranReviser.kt`). Il regroupe tous les
-  quiz. Les exercices sur les formules (`core/.../QuizFormules.kt`, 7 thèmes, 53 types de
-  questions) vivent ici. Les quiz Caméras, Labo (`LABO:QUIZ`) et Focales s'ouvrent chez eux.
-  Il prépare le concours de Louis-Lumière : les exercices doivent rester courts et faisables
-  dans l'appli.
-- **Prochaine étape : la 3** (plan au sol pro, §7).
+- **Étapes 1, 2 et 3 faites** (branche `claude/adoring-lamport-yln7ao`). L'utilisateur aime le
+  sommaire Cinéma : « beaucoup plus lisible ». Reste l'étape 4 (finitions, §8).
+- **Réviser** (`ecrans/EcranReviser.kt`) regroupe tous les quiz. Pour chaque thème, deux onglets :
+  - Apprendre : les fiches de `core/FichesFormules.kt`, à lire ou à réciter ;
+  - S'entraîner : les exercices de `core/QuizFormules.kt` (10 thèmes, 70 types), à choix ou à
+    taper, réponses vérifiées par `SaisieReponse`.
+
+  La carte « À revoir » reprend les erreurs. Il prépare le concours de Louis-Lumière : les
+  exercices restent courts et faisables dans l'appli.
+- **Sur le plateau**, en plus de la refonte :
+  - le rapport caméra (`ecrans/RapportCamera.kt`, `core/RapportCamera.kt`), dans chaque jour de
+    tournage, avec son PDF ;
+  - la liste de location et le bilan électrique (`core/ListeLocation.kt`) : plan au sol › ⋯, et
+    « À louer pour ce jour » ;
+  - le raccord lumière (`ecrans/RaccordLumiere.kt`, `core/RaccordLumiere.kt`), dans la fiche de
+    chaque plan.
+- **Piège de compilation vu en vrai** : deux déclarations `private` de même nom dans deux
+  fichiers du même paquet entrent en conflit (K2). Vérifie les noms avant de pousser.
 
 ## 0. À lire d'abord : économiser les crédits
 
