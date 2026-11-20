@@ -131,6 +131,9 @@ object PlansSol {
             pertesDiaphs = o.optDouble("pertes", 0.0),
             circuit = o.optString("circuit", ""),
             puissanceW = o.reel("watts"),
+            symbole = o.optString("symbole", ""),
+            lampe = o.optString("lampe", ""),
+            gelatine = o.optString("gelatine", ""),
             notes = o.optString("notes", "")
         )
     }
@@ -152,6 +155,9 @@ object PlansSol {
         e.distanceReference?.let { o.put("dref", it) }
         e.faisceau?.let { o.put("faisceau", it) }
         e.puissanceW?.let { o.put("watts", it) }
+        if (e.symbole.isNotBlank()) o.put("symbole", e.symbole)
+        if (e.lampe.isNotBlank()) o.put("lampe", e.lampe)
+        if (e.gelatine.isNotBlank()) o.put("gelatine", e.gelatine)
         return o
     }
 

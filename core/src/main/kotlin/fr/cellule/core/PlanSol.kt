@@ -73,6 +73,12 @@ data class ElementSol(
     val circuit: String = "",
     /** Sa puissance, quand le projecteur n'en a pas dans sa fiche (saisie directe). */
     val puissanceW: Double? = null,
+    /** Son symbole sur le plan de feu (nom d'un [SymboleProjecteur]) ; vide : celui de son modèle. */
+    val symbole: String = "",
+    /** Sa source (nom d'une [SourceLampe]) ; vide : celle de son modèle. */
+    val lampe: String = "",
+    /** La gélatine posée devant : « 1/2 CTO », « 216 ». */
+    val gelatine: String = "",
     val notes: String = ""
 ) {
     val libelle: String

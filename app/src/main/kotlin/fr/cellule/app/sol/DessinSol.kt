@@ -12,6 +12,7 @@ import fr.cellule.core.PlanSol
 import fr.cellule.core.Projecteur
 import fr.cellule.core.Sol
 import fr.cellule.core.SoleilPlan
+import fr.cellule.core.SymbolesPlan
 import fr.cellule.core.Tuiles
 import fr.cellule.core.TypeElement
 import fr.cellule.core.Unites
@@ -293,8 +294,8 @@ object DessinSol {
                 c.drawCircle(0f, 0f, r, trait(0xFFFFFFFF.toInt(), 2f))
             }
             TypeElement.PROJECTEUR -> {
-                c.drawRoundRect(RectF(-0.18f * k, -0.14f * k, 0.18f * k, 0.16f * k), 0.03f * k, 0.03f * k, plein(couleur))
-                c.drawRect(RectF(-0.2f * k, -0.2f * k, 0.2f * k, -0.14f * k), plein(Couleurs.ENCRE))
+                val modele = modele(e, o)
+                SymbolesSol.dessiner(c, SymbolesPlan.symbole(e, modele), taillesymbole(k), SymbolesSol.couleur(e, modele))
             }
             TypeElement.MUR -> c.drawRect(RectF(-l / 2, -p / 2, l / 2, p / 2), plein(couleur))
             TypeElement.FENETRE -> {
@@ -341,7 +342,16 @@ object DessinSol {
             }
         }
         c.restore()
+        if (e.type == TypeElement.PROJECTEUR) {
+            val modele = modele(e, o)
+            SymbolesPlan.source(e, modele)?.let { SymbolesSol.lettre(c, it, vue.sx(e.x), vue.sy(e.y), taillesymbole(k)) }
+        }
     }
+
+    private fun modele(e: ElementSol, o: OptionsDessin): Projecteur? = if (e.projecteur.isBlank()) null else o.projecteurs(e.projecteur)
+
+    /** La demi-taille d'un symbole : environ 40 cm sur le plan, jamais illisible. */
+    private fun taillesymbole(k: Float): Float = maxOf(0.2f * k, 10f)
 
     private fun cone(c: Canvas, e: ElementSol, vue: VueSol) {
         val champ = Sol.champHorizontal(e) ?: return
@@ -374,8 +384,9 @@ object DessinSol {
             chemin.lineTo(vue.sx(e.x + dx * longueur), vue.sy(e.y + dy * longueur))
         }
         chemin.close()
-        c.drawPath(chemin, plein(Couleurs.PROJECTEUR, 40))
-        c.drawPath(chemin, trait(Couleurs.PROJECTEUR, 1.2f).apply { alpha = 120 })
+        val teinte = SymbolesSol.couleur(e, choisi)
+        c.drawPath(chemin, plein(teinte, 40))
+        c.drawPath(chemin, trait(teinte, 1.2f).apply { alpha = 120 })
     }
 
     private fun fleche(c: Canvas, a: ElementSol, b: ElementSol, vue: VueSol, o: OptionsDessin) {
@@ -420,6 +431,18 @@ object DessinSol {
         val y = vue.sy(e.y) + decalage
         c.drawRoundRect(RectF(x - 4, y - o.texte * 0.6f, x + w + 4, y + o.texte * 0.18f), 6f, 6f, fond)
         c.drawText(libelle, x, y, p)
+        /* Sous le nom d'un projecteur : sa puissance, sa gélatine, son circuit. */
+        if (e.type == TypeElement.PROJECTEUR) {
+            val detail = SymbolesPlan.etiquette(e, modele(e, o))
+            if (detail.isNotBlank()) {
+                val pd = texte(Couleurs.GRIS, o.texte * 0.5f)
+                val wd = pd.measureText(detail)
+                val xd = vue.sx(e.x) - wd / 2
+                val yd = y + o.texte * 0.62f
+                c.drawRoundRect(RectF(xd - 4, yd - o.texte * 0.5f, xd + wd + 4, yd + o.texte * 0.15f), 6f, 6f, fond)
+                c.drawText(detail, xd, yd, pd)
+            }
+        }
     }
 
     private fun selection(c: Canvas, e: ElementSol, vue: VueSol) {
@@ -507,13 +530,22 @@ object DessinSol {
             ).joinToString(" · ", prefix = " : "))
         }
         plan.elements.filter { it.type == TypeElement.PROJECTEUR }.forEach { p ->
-            val nom = p.nom.ifBlank { o.projecteurs(p.projecteur)?.nomComplet ?: "Projecteur" }
-            lignes.add(Couleurs.PROJECTEUR to "  " + nom + (p.hauteur?.let { " · h " + nombreCourt(it, 2) + " m" } ?: ""))
+            val m = modele(p, o)
+            val nom = p.nom.ifBlank { m?.nomComplet ?: "Projecteur" }
+            val detail = SymbolesPlan.etiquette(p, m)
+            lignes.add(SymbolesSol.couleur(p, m) to "  " + nom + (p.hauteur?.let { " · h " + nombreCourt(it, 2) + " m" } ?: "") +
+                (if (detail.isNotBlank()) " · $detail" else ""))
         }
+        /* La clé des symboles et des sources présents sur le plan. */
+        val projos = plan.elements.filter { it.type == TypeElement.PROJECTEUR }
+        val symboles = projos.map { SymbolesPlan.symbole(it, modele(it, o)) }.distinct()
+        val sources = projos.mapNotNull { SymbolesPlan.source(it, modele(it, o)) }.distinct()
+        val cle = symboles.map { it.libelle } + sources.map { "${it.lettre} = ${it.libelle}" }
         val t = texte(Couleurs.ENCRE, o.texte * 0.48f)
         val pas = o.texte * 0.66f
         val w = (lignes.maxOf { t.measureText(it.second) } + o.texte * 1.2f).coerceAtMost(largeur * 0.6f)
-        val h = pas * lignes.size + o.texte * 0.5f
+        val pasCle = o.texte * 0.95f
+        val h = pas * lignes.size + o.texte * 0.5f + if (cle.isEmpty()) 0f else pasCle * symboles.size + pas * sources.size + o.texte * 0.3f
         val x = largeur - w - o.texte * 0.4f
         val y = hauteur - h - o.texte * 0.4f
         c.drawRoundRect(RectF(x, y, x + w, y + h), 10f, 10f, plein(0xFFFFFFFF.toInt(), 230))
@@ -522,6 +554,20 @@ object DessinSol {
             val ly = y + o.texte * 0.25f + pas * (i + 1) - pas * 0.25f
             c.drawCircle(x + o.texte * 0.4f, ly - pas * 0.25f, o.texte * 0.14f, plein(couleur))
             c.drawText(libelle, x + o.texte * 0.75f, ly, t)
+        }
+        var ly = y + o.texte * 0.25f + pas * lignes.size + o.texte * 0.3f
+        symboles.forEach { s ->
+            c.save()
+            c.translate(x + o.texte * 0.5f, ly + pasCle * 0.45f)
+            SymbolesSol.dessiner(c, s, o.texte * 0.22f, Couleurs.GRIS)
+            c.restore()
+            c.drawText(s.libelle, x + o.texte * 1.1f, ly + pasCle * 0.6f, t)
+            ly += pasCle
+        }
+        sources.forEach { src ->
+            c.drawCircle(x + o.texte * 0.4f, ly + pas * 0.5f, o.texte * 0.14f, plein(SymbolesSol.couleur(src)))
+            c.drawText("${src.lettre} : ${src.libelle}", x + o.texte * 0.75f, ly + pas * 0.75f, t)
+            ly += pas
         }
     }
 

@@ -140,6 +140,9 @@ import fr.cellule.core.SaisieMateriel
 import fr.cellule.core.Sol
 import fr.cellule.core.Tournage
 import fr.cellule.core.TypeElement
+import fr.cellule.core.SymboleProjecteur
+import fr.cellule.core.SymbolesPlan
+import fr.cellule.core.SourceLampe
 import fr.cellule.core.Unites
 import fr.cellule.core.nombreCourt
 import kotlinx.coroutines.Dispatchers
@@ -990,6 +993,34 @@ private fun ColumnScope.ReglagesType(e: ElementSol, metres: Boolean, reglages: R
                 }
                 Spacer(Modifier.height(6.dp))
             }
+            /* Le symbole du plan de feu et la source : ceux du modèle, sauf choix contraire. */
+            val symboleModele = choisi?.let { SymbolesPlan.symbole(it) }
+            val sourceModele = choisi?.let { SymbolesPlan.source(it) }
+            LigneBoutons {
+                Deroulant(
+                    "Symbole", listOf("") + SymboleProjecteur.entries.map { it.name }, e.symbole,
+                    { n -> SymboleProjecteur.entries.firstOrNull { it.name == n }?.libelle ?: ("Auto" + (symboleModele?.let { " : " + it.libelle } ?: "")) },
+                    Modifier.weight(1.2f)
+                ) { surChangement(e.copy(symbole = it)) }
+                Deroulant(
+                    "Source", listOf("") + SourceLampe.entries.map { it.name }, e.lampe,
+                    { n -> SourceLampe.entries.firstOrNull { it.name == n }?.let { "${it.lettre} · ${it.libelle}" } ?: ("Auto" + (sourceModele?.let { " : " + it.lettre } ?: "")) },
+                    Modifier.weight(1f)
+                ) { surChangement(e.copy(lampe = it)) }
+            }
+            Spacer(Modifier.height(6.dp))
+            LigneBoutons {
+                var gel by remember(cle) { mutableStateOf(e.gelatine) }
+                Champ(gel, "Gélatine", Modifier.weight(1.2f), indication = "1/2 CTO, 216…") { gel = it; surChangement(e.copy(gelatine = it)) }
+                Deroulant("Courantes", listOf("") + SymbolesPlan.GELATINES, "", { if (it.isBlank()) "—" else it }, Modifier.weight(1f)) {
+                    if (it.isNotBlank()) {
+                        val g = if (e.gelatine.isBlank()) it else e.gelatine + " + " + it
+                        gel = g
+                        surChangement(e.copy(gelatine = g))
+                    }
+                }
+            }
+            Spacer(Modifier.height(6.dp))
             ChampReel(e.pertesDiaphs, "Pertes : gélatines, diffusion (diaphs)", cle, Modifier.fillMaxWidth()) { surChangement(e.copy(pertesDiaphs = it ?: 0.0)) }
             Spacer(Modifier.height(6.dp))
             /* Pour la liste et le bilan électrique (menu ⋯). */
