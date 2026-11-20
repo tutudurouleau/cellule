@@ -141,6 +141,37 @@ def lire_html(corps, base):
     return p.titre, texte, p.liens
 
 
+def plan_du_site(base, maximum=60):
+    """Toutes les adresses déclarées par les plans du site (robots.txt, sitemaps)."""
+    u = urllib.parse.urlsplit(base)
+    racine = f"{u.scheme}://{u.netloc}"
+    a_lire = []
+    try:
+        _, _, corps = telecharger(racine + "/robots.txt", 20)
+        a_lire += re.findall(r"(?im)^sitemap:\s*(\S+)", corps.decode("utf-8", "replace"))
+    except Exception:
+        pass
+    a_lire += [racine + p for p in ("/sitemap.xml", "/sitemap_index.xml", "/wp-sitemap.xml", "/product-sitemap.xml")]
+    vus, adresses = set(), []
+    while a_lire and len(vus) < maximum:
+        plan = a_lire.pop(0)
+        if plan in vus:
+            continue
+        vus.add(plan)
+        try:
+            _, _, corps = telecharger(plan, 30)
+        except Exception:
+            continue
+        texte = corps.decode("utf-8", "replace")
+        for loc in re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", texte):
+            loc = loc.replace("&amp;", "&")
+            if loc.endswith(".xml") or "sitemap" in loc.lower() and loc.endswith((".xml", ".xml.gz")):
+                a_lire.append(loc)
+            else:
+                adresses.append(loc)
+    return adresses
+
+
 def normaliser(adresse):
     u = urllib.parse.urlsplit(adresse)
     requete = urllib.parse.urlencode(
@@ -172,6 +203,19 @@ def relever(entree):
         file.append((10, d))
     nav = Navigateur()
     pages, pdfs, journal = [], [], []
+    if entree.get("plan", True):
+        plan = []
+        for d in entree["depart"]:
+            if urllib.parse.urlsplit(d).netloc.lower().removeprefix("www.") in ("duckduckgo.com", "bing.com"):
+                continue
+            plan += plan_du_site(d)
+        plan = list(dict.fromkeys(plan))
+        with open(os.path.join(sortie, "plan.txt"), "w", encoding="utf-8") as f:
+            f.write("\n".join(plan))
+        # Les pages de produits d'abord : le plan du site les donne toutes.
+        for h in plan:
+            if not MOTS_INUTILES.search(h):
+                file.append((score(h, "") + 1, h))
 
     def dans_le_site(adresse):
         h = urllib.parse.urlsplit(adresse).netloc.lower().removeprefix("www.")
