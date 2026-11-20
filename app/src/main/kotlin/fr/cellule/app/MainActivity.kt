@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -725,7 +726,10 @@ private fun Lanceur(
                     val pages = trouvees.filter { it.univers == u }
                     if (pages.isNotEmpty()) {
                         item(key = u.name) { Etiquette(u.titre, modifier = Modifier.padding(top = 8.dp), accent = true) }
-                        items(pages.chunked(colonnes), key = { it.first().id }) { rangee ->
+                        /* Un onglet principal et ses sous-pages forment un bloc ; une page seule reste une tuile. */
+                        val groupes = pages.groupBy { cleDeGroupe(it) }
+                        val seules = groupes.values.filter { g -> g.size == 1 && racineDe(g) != null }.map { it.first() }
+                        items(seules.chunked(colonnes), key = { "seules-" + it.first().id }) { rangee ->
                             Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                                 rangee.forEach { d ->
                                     Tuile(
@@ -735,6 +739,11 @@ private fun Lanceur(
                                     )
                                 }
                                 repeat(colonnes - rangee.size) { Spacer(Modifier.weight(1f)) }
+                            }
+                        }
+                        groupes.filter { (_, g) -> !(g.size == 1 && racineDe(g) != null) }.forEach { (cle, g) ->
+                            item(key = "bloc-" + u.name + cle) {
+                                BlocLanceur(g, racineDe(g), ici, epingles, colonnes, surChoix, surEpingle)
                             }
                         }
                     }
@@ -754,6 +763,123 @@ private fun Lanceur(
                 }
             }
         }
+    }
+}
+
+/** Le groupe d'une page dans le lanceur : son parent, sinon elle-même si elle a des enfants, sinon son onglet. */
+private fun cleDeGroupe(d: Destination): String =
+    d.parent ?: if (DESTINATIONS.any { it.parent == d.id }) d.id else d.onglet.name
+
+/** La page principale d'un groupe : celle qui ouvre l'onglet ou le sommaire, s'il y en a une. */
+private fun racineDe(g: List<Destination>): Destination? {
+    val cle = cleDeGroupe(g.first())
+    return g.firstOrNull { it.id == cle } ?: g.firstOrNull {
+        it.sous.isBlank() && it.parent == null && (it.cineVue == null || it.cineVue == "ACCUEIL") && it.outil == null
+    }
+}
+
+/**
+ * Un onglet principal en grand, et ses sous-pages rangées dessous en plus
+ * petit : on voit d'un coup d'œil ce qui est un onglet et ce qui est dedans.
+ */
+@Composable
+private fun BlocLanceur(
+    pages: List<Destination>,
+    racine: Destination?,
+    ici: String?,
+    epingles: List<String>,
+    colonnes: Int,
+    surChoix: (Destination) -> Unit,
+    surEpingle: (Destination) -> Unit
+) {
+    val onglet = (racine ?: pages.first()).onglet
+    val sous = pages.filter { it != racine }
+    Column(
+        Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(RayonCarte))
+            .background(MaterialTheme.colorScheme.surfaceContainer)
+            .padding(bottom = 8.dp)
+    ) {
+        val actif = racine != null && racine.id == ici
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .background(if (actif) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainerHigh)
+                .then(if (racine != null) Modifier.clickable { surChoix(racine) } else Modifier)
+                .padding(start = 14.dp, end = 2.dp, top = 6.dp, bottom = 10.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(racine?.icone ?: onglet.icone, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(24.dp))
+            Column(Modifier.weight(1f).padding(start = 12.dp, top = 4.dp)) {
+                Text(
+                    racine?.titre ?: onglet.titre,
+                    style = TitreCarte.copy(fontSize = 18.sp),
+                    color = if (actif) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface,
+                    maxLines = 1, overflow = TextOverflow.Ellipsis
+                )
+                Text(
+                    racine?.detail ?: onglet.sousTitre.replaceFirstChar { it.uppercase() },
+                    style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 2, overflow = TextOverflow.Ellipsis
+                )
+            }
+            if (racine != null) {
+                val e = racine.id in epingles
+                Text(
+                    if (e) "★" else "☆",
+                    style = TitreCarte.copy(fontSize = 18.sp),
+                    color = if (e) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
+                    modifier = Modifier.clip(RoundedCornerShape(50)).clickable { surEpingle(racine) }.padding(horizontal = 10.dp, vertical = 8.dp)
+                )
+            } else {
+                Spacer(Modifier.width(12.dp))
+            }
+        }
+        if (sous.isNotEmpty()) {
+            Text(
+                if (racine != null) "Dedans" else "Les pages",
+                style = Detail.copy(fontSize = 11.sp, letterSpacing = 0.6.sp),
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(start = 14.dp, top = 8.dp, bottom = 2.dp)
+            )
+            sous.chunked(colonnes).forEach { rangee ->
+                Row(
+                    Modifier.fillMaxWidth().height(IntrinsicSize.Min).padding(horizontal = 8.dp, vertical = 3.dp),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    rangee.forEach { d -> SousTuile(d, d.id == ici, d.id in epingles, Modifier.weight(1f).fillMaxHeight(), { surChoix(d) }, { surEpingle(d) }) }
+                    repeat(colonnes - rangee.size) { Spacer(Modifier.weight(1f)) }
+                }
+            }
+        }
+    }
+}
+
+/** Une sous-page : son nom et son étoile, sur une ligne, sous son onglet. */
+@Composable
+private fun SousTuile(d: Destination, actif: Boolean, epinglee: Boolean, modifier: Modifier, surClic: () -> Unit, surEpingle: () -> Unit) {
+    Row(
+        modifier
+            .clip(RoundedCornerShape(RayonControle))
+            .background(if (actif) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainerHighest)
+            .clickable { surClic() }
+            .padding(start = 10.dp, top = 2.dp, bottom = 2.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(d.icone ?: d.onglet.icone, contentDescription = null, tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f), modifier = Modifier.size(15.dp))
+        Text(
+            d.court.ifBlank { d.titre }.let { c -> if (d.titre.length <= 22) d.titre else c },
+            style = Corps,
+            color = if (actif) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface,
+            maxLines = 1, overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.weight(1f).padding(start = 8.dp)
+        )
+        Text(
+            if (epinglee) "★" else "☆",
+            style = Corps,
+            color = if (epinglee) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
+            modifier = Modifier.clip(RoundedCornerShape(50)).clickable { surEpingle() }.padding(horizontal = 10.dp, vertical = 9.dp)
+        )
     }
 }
 

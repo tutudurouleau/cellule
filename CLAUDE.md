@@ -3,7 +3,9 @@
 Appli Android de photo et de cinéma pour un étudiant en cinéma (prépa Louis-Lumière),
 qui teste sur son téléphone.
 
-- **Où on en est** : **v5.5** (versionName 5.5). La v5 (5 étapes de `docs/v5/PLAN-V5.md`)
+- **Où on en est** : **v5.6** (versionName 5.6) : le lanceur « Tout » range chaque onglet
+  principal en bloc, ses sous-pages dedans (`BlocLanceur`, `cleDeGroupe` dans MainActivity).
+  Avant, **v5.5** La v5 (5 étapes de `docs/v5/PLAN-V5.md`)
   plus l'éditeur de plans au sol pour PC : `pc/editeur-plan.src.html`, assemblé par
   `python3 -I outils/editeur_pc.py` en `pc/editeur-plan.html` (fichier hors ligne) et
   `pc/artifact/editeur-plan.html`, publié en Artifact (lien dans `sol/TransfertPlan.kt`,
