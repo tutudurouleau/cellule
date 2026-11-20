@@ -317,9 +317,11 @@ private fun Application() {
     /* Par défaut l'appli suit le téléphone ; les paramètres peuvent l'imposer. */
     val sombre = when (reglages.apparence) {
         "clair" -> false
-        "sombre" -> true
+        "sombre", "rouge" -> true
         else -> isSystemInDarkTheme()
     }
+    /* Le mode rouge : chambre noire, tournage de nuit. */
+    val rouge = reglages.apparence == "rouge"
     /* Les icônes de la barre d'état suivent le thème de l'appli, pas celui du téléphone. */
     val activite = contexte as? ComponentActivity
     LaunchedEffect(sombre) {
@@ -330,9 +332,9 @@ private fun Application() {
 
     val configuration = LocalConfiguration.current
     val paysage = configuration.screenWidthDp > configuration.screenHeightDp
-    androidx.compose.runtime.CompositionLocalProvider(LocalPaysage provides paysage) {
-    CelluleTheme(sombre = sombre, teinte = onglet.teinte) {
-        Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+    androidx.compose.runtime.CompositionLocalProvider(LocalPaysage provides paysage, LocalModeRouge provides rouge) {
+    CelluleTheme(sombre = sombre, teinte = onglet.teinte, rouge = rouge) {
+        Surface(modifier = Modifier.fillMaxSize().filtreRouge(rouge), color = MaterialTheme.colorScheme.background) {
             Box(Modifier.fillMaxSize()) {
 
                 /* En paysage, la pilule de navigation occupe le bord droit : le contenu s'arrête avant. */
@@ -369,6 +371,8 @@ private fun Application() {
                             lanceur = false
                             parametres = true
                         },
+                        modeRouge = rouge,
+                        surModeRouge = { reglages.apparence = if (rouge) "systeme" else "rouge" },
                         fermer = { lanceur = false }
                     )
                 }
@@ -466,19 +470,23 @@ private fun FeuilleParametres(reglages: Reglages, fermer: () -> Unit) {
             Etiquette("Apparence")
             Spacer(Modifier.height(6.dp))
             ChoixSegmente(
-                options = listOf("systeme", "clair", "sombre"),
+                options = listOf("systeme", "clair", "sombre", "rouge"),
                 selection = reglages.apparence,
                 libelle = {
                     when (it) {
                         "clair" -> "Clair"
                         "sombre" -> "Sombre"
+                        "rouge" -> "Rouge"
                         else -> "Système"
                     }
                 }
             ) { reglages.apparence = it }
             Spacer(Modifier.height(6.dp))
             Text(
-                "« Système » suit le réglage du téléphone. Au soleil, le clair se lit mieux ; en chambre noire, le sombre éblouit moins.",
+                "« Système » suit le réglage du téléphone. Au soleil, le clair se lit mieux. « Rouge » passe tout en rouge sombre, pour la chambre noire ou la nuit : il garde ta vision nocturne ; baisse aussi la luminosité du téléphone. " +
+                    (if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) "Les photos, les dessins et l'image de la caméra passent en rouge aussi."
+                    else "Sur ce téléphone (avant Android 12), les photos, les dessins et l'image de la caméra gardent leurs couleurs.") +
+                    " Le raccourci est dans « Tout », en haut.",
                 style = Detail,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -646,6 +654,8 @@ private fun Lanceur(
     surChoix: (Destination) -> Unit,
     surEpingle: (Destination) -> Unit,
     surParametres: () -> Unit,
+    modeRouge: Boolean,
+    surModeRouge: () -> Unit,
     fermer: () -> Unit
 ) {
     BackHandler(onBack = fermer)
@@ -667,6 +677,21 @@ private fun Lanceur(
                     maxLines = 1,
                     modifier = Modifier.weight(1f)
                 )
+                /* Le mode rouge d'un toucher : chambre noire, tournage de nuit. */
+                Box(
+                    Modifier
+                        .clip(RoundedCornerShape(50))
+                        .background(if (modeRouge) MaterialTheme.colorScheme.primaryContainer else Color.Transparent)
+                        .clickable { surModeRouge() }
+                        .padding(10.dp)
+                ) {
+                    Icon(
+                        IconeLumiere,
+                        contentDescription = if (modeRouge) "Quitter le mode rouge" else "Mode rouge",
+                        tint = if (modeRouge) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.size(22.dp)
+                    )
+                }
                 Box(Modifier.clip(RoundedCornerShape(50)).clickable { surParametres() }.padding(10.dp)) {
                     Icon(IconeReglages, contentDescription = "Paramètres", tint = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.size(22.dp))
                 }

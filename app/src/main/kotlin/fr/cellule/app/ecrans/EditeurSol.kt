@@ -4,6 +4,8 @@ import android.Manifest
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.border
 import fr.cellule.app.LocalPaysage
+import fr.cellule.app.LocalModeRouge
+import fr.cellule.app.filtreRouge
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.size
@@ -341,7 +343,8 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
                 else -> vuePlan = VuePlan.DESSUS
             }
         }
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+        /* Une fenêtre à part : le filtre du mode rouge s'y applique aussi. */
+        Surface(Modifier.fillMaxSize().filtreRouge(LocalModeRouge.current), color = MaterialTheme.colorScheme.background) {
             Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
                 /* ── La barre du haut ───────────────────────────────────── */
                 Row(Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {

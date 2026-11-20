@@ -1,6 +1,12 @@
 package fr.cellule.app
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.asComposeRenderEffect
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -80,6 +86,76 @@ private val Clair = lightColorScheme(
     onErrorContainer = Color(0xFF9A3B12)
 )
 
+/*
+ * Le mode rouge : tout en rouge sombre sur noir, pour la chambre noire ou la
+ * nuit — le rouge préserve la vision nocturne. Une seule teinte, quel que
+ * soit l'onglet.
+ */
+private val RougeAccent = Color(0xFFC81E1E)
+private val RougeTexte = Color(0xFFB01818)
+private val Rouge = darkColorScheme(
+    primary = RougeAccent,
+    onPrimary = Color.Black,
+    primaryContainer = Color(0xFF2A0404),
+    onPrimaryContainer = RougeAccent,
+    inversePrimary = RougeTexte,
+    secondary = RougeAccent,
+    onSecondary = Color.Black,
+    secondaryContainer = Color(0xFF2A0404),
+    onSecondaryContainer = RougeTexte,
+    tertiary = RougeAccent,
+    onTertiary = Color.Black,
+    tertiaryContainer = Color(0xFF2A0404),
+    onTertiaryContainer = RougeTexte,
+    background = Color.Black,
+    onBackground = RougeTexte,
+    surface = Color(0xFF050000),
+    onSurface = RougeTexte,
+    surfaceVariant = Color(0xFF160202),
+    onSurfaceVariant = Color(0xFF7E1010),
+    surfaceTint = RougeAccent,
+    inverseSurface = Color(0xFF3A0606),
+    inverseOnSurface = RougeTexte,
+    error = Color(0xFFE53030),
+    onError = Color.Black,
+    errorContainer = Color(0xFF300505),
+    onErrorContainer = Color(0xFFE53030),
+    outline = Color(0xFF3A0606),
+    outlineVariant = Color(0xFF240404),
+    scrim = Color.Black,
+    surfaceBright = Color(0xFF1E0303),
+    surfaceContainer = Color(0xFF0A0101),
+    surfaceContainerHigh = Color(0xFF120202),
+    surfaceContainerHighest = Color(0xFF1A0303),
+    surfaceContainerLow = Color(0xFF070000),
+    surfaceContainerLowest = Color.Black,
+    surfaceDim = Color.Black
+)
+
+/** Vrai en mode rouge : les fenêtres à part (l'éditeur du plan au sol) appliquent aussi le filtre. */
+val LocalModeRouge = staticCompositionLocalOf { false }
+
+/**
+ * Le filtre rouge : chaque pixel ne garde que du rouge, d'autant plus fort
+ * qu'il est clair — dessins, photos, image de la caméra compris. À partir
+ * d'Android 12 ; avant, le thème rouge fait l'essentiel.
+ */
+fun Modifier.filtreRouge(actif: Boolean): Modifier =
+    if (actif && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) this.graphicsLayer { renderEffect = effetRouge() } else this
+
+@RequiresApi(Build.VERSION_CODES.S)
+private fun effetRouge(): androidx.compose.ui.graphics.RenderEffect =
+    android.graphics.RenderEffect.createColorFilterEffect(
+        android.graphics.ColorMatrixColorFilter(
+            floatArrayOf(
+                0.9f, 0.45f, 0.18f, 0f, 0f,
+                0f, 0f, 0f, 0f, 0f,
+                0f, 0f, 0f, 0f, 0f,
+                0f, 0f, 0f, 1f, 0f
+            )
+        )
+    ).asComposeRenderEffect()
+
 /** L'accent d'un onglet : sa couleur, le texte posé dessus, son fond doux et le texte posé sur ce fond. */
 class Accent(val couleur: Color, val surCouleur: Color, val fond: Color, val surFond: Color)
 
@@ -141,7 +217,11 @@ enum class Teinte(val sombre: Accent, val clair: Accent) {
  * une seule animation, au moment du changement, jamais en continu.
  */
 @Composable
-fun CelluleTheme(sombre: Boolean = isSystemInDarkTheme(), teinte: Teinte = Teinte.AMBRE, contenu: @Composable () -> Unit) {
+fun CelluleTheme(sombre: Boolean = isSystemInDarkTheme(), teinte: Teinte = Teinte.AMBRE, rouge: Boolean = false, contenu: @Composable () -> Unit) {
+    if (rouge) {
+        MaterialTheme(colorScheme = Rouge, content = contenu)
+        return
+    }
     val base = if (sombre) Sombre else Clair
     val a = if (sombre) teinte.sombre else teinte.clair
     val duree = tween<Color>(durationMillis = 260)
