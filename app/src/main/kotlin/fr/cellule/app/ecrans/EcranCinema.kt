@@ -1,6 +1,8 @@
 package fr.cellule.app.ecrans
 
 import androidx.activity.compose.BackHandler
+import fr.cellule.core.ListeLocation
+import fr.cellule.app.PlansSol
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -404,6 +406,21 @@ private fun PageJour(
     ListePlansSol(reglages, cinema, jour.identifiant, tous = false)
 
     CarteRapportCamera(reglages, projet, jour)
+
+    /* Ce qu'il faut louer pour la journée, d'après ses plans au sol. */
+    val plansSol = PlansSol.duJour(jour.identifiant)
+    if (plansSol.isNotEmpty()) {
+        val location = ListeLocation.duJour(plansSol, PlansSol::modele)
+        Carte(
+            titre = "À louer pour ce jour",
+            sousTitre = "D'après ses plans au sol : chaque élément au plus haut d'un plan, puisque le matériel passe d'un plan à l'autre."
+        ) {
+            if (location.isEmpty()) {
+                Text("Rien à louer d'après les plans au sol.", style = Corps, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            location.forEach { Ligne(it.nom, it.combien, it.categorie) }
+        }
+    }
 
     Carte(titre = "Le jour") {
         ChoixSegmente(TypeJour.entries.toList(), jour.type, { it.libelle }) { cinema.modifierJour(jour.copy(type = it)) }

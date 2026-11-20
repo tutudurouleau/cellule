@@ -399,6 +399,32 @@ object ExportPdf {
             r.ligne(intitule, valeur)
         }
 
+        /* Ce qu'il faut louer, et ce que porte chaque circuit. */
+        val location = fr.cellule.core.ListeLocation.duPlan(plan, PlansSol::modele)
+        val charges = fr.cellule.core.ListeLocation.charges(plan, PlansSol::puissance, PlansSol::modele)
+        if (location.isNotEmpty()) {
+            if (r.reste() < 80f) r.nouvellePage()
+            r.rubrique("À louer")
+            location.forEach {
+                if (r.reste() < 20f) r.nouvellePage()
+                r.ligne(it.categorie, it.nom + "   " + it.combien)
+            }
+        }
+        if (charges.isNotEmpty()) {
+            if (r.reste() < 80f) r.nouvellePage()
+            r.rubrique("Électricité")
+            charges.forEach { c ->
+                if (r.reste() < 20f) r.nouvellePage()
+                r.ligne(
+                    if (c.circuit == fr.cellule.core.ListeLocation.SANS_CIRCUIT) "Sans circuit" else "Circuit " + c.circuit,
+                    nombreCourt(c.puissanceW, 0) + " W — " + c.sources.joinToString(", ") +
+                        if (c.sansPuissance > 0) " (" + c.sansPuissance + " sans puissance connue)" else ""
+                )
+            }
+            val total = charges.sumOf { it.puissanceW }
+            r.ligne("Total", nombreCourt(total, 0) + " W · groupe d'au moins " + nombreCourt(fr.cellule.core.ListeLocation.groupeKva(total), 1) + " kVA")
+        }
+
         /* Ce que voit chaque caméra du plan, en perspective. */
         val cameras = plan.elements.filter { it.type == fr.cellule.core.TypeElement.CAMERA && fr.cellule.core.CameraVirtuelle.depuis(it) != null }
         cameras.take(6).forEach { cam ->

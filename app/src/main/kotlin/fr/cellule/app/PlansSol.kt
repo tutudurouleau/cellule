@@ -8,6 +8,9 @@ import androidx.compose.runtime.setValue
 import fr.cellule.core.ElementSol
 import fr.cellule.core.PlanSol
 import fr.cellule.core.TypeElement
+import fr.cellule.core.Circuit
+import fr.cellule.core.CIRCUITS
+import fr.cellule.core.Region
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -38,6 +41,16 @@ object PlansSol {
     }
 
     fun plan(id: Long): PlanSol? = plans.firstOrNull { it.identifiant == id }
+
+    /** Le modèle d'un projecteur du plan, pour la liste de location. */
+    fun modele(e: ElementSol): String = MonMateriel.projecteur(e.projecteur)?.let { MonMateriel.libelle(it) } ?: "Projecteur sans modèle"
+
+    /** Sa puissance : celle de sa fiche, sinon celle saisie sur le plan. */
+    fun puissance(e: ElementSol): Double? = MonMateriel.projecteur(e.projecteur)?.puissanceW ?: e.puissanceW
+
+    /** Le calibre des circuits du bilan électrique : celui du plan, sinon le premier de la région. */
+    fun circuitDe(plan: PlanSol, region: Region): Circuit =
+        CIRCUITS.firstOrNull { it.nom == plan.circuitNom && it.region == region } ?: CIRCUITS.first { it.region == region }
     fun duJour(jourId: Long): List<PlanSol> = plans.filter { it.jourId == jourId }
 
     fun nouveau(nom: String, jourId: Long?): PlanSol {
@@ -77,6 +90,7 @@ object PlansSol {
             grille = o.optBoolean("grille", true),
             pasGrille = o.optDouble("pas", 0.5),
             aimanter = o.optBoolean("aimanter", false),
+            circuitNom = o.optString("circuitNom", ""),
             legende = o.optBoolean("legende", true),
             nordDeg = o.optDouble("nord", 0.0),
             soleil = o.optBoolean("soleil", true),
@@ -115,6 +129,8 @@ object PlansSol {
             distanceReference = o.reel("dref"),
             faisceau = o.reel("faisceau"),
             pertesDiaphs = o.optDouble("pertes", 0.0),
+            circuit = o.optString("circuit", ""),
+            puissanceW = o.reel("watts"),
             notes = o.optString("notes", "")
         )
     }
@@ -127,7 +143,7 @@ object PlansSol {
             .put("nom", e.nom).put("etape", e.etape)
             .put("desq", e.desanamorphose).put("incl", e.inclinaison)
             .put("plans", e.plans).put("projo", e.projecteur).put("spot", e.spot)
-            .put("pertes", e.pertesDiaphs).put("notes", e.notes)
+            .put("pertes", e.pertesDiaphs).put("notes", e.notes).put("circuit", e.circuit)
         e.hauteur?.let { o.put("h", it) }
         e.focaleMm?.let { o.put("focale", it) }
         e.capteurLargeurMm?.let { o.put("cl", it) }
@@ -135,6 +151,7 @@ object PlansSol {
         e.luxReference?.let { o.put("lux", it) }
         e.distanceReference?.let { o.put("dref", it) }
         e.faisceau?.let { o.put("faisceau", it) }
+        e.puissanceW?.let { o.put("watts", it) }
         return o
     }
 
@@ -145,7 +162,7 @@ object PlansSol {
             p.elements.forEach { els.put(ecrireElement(it)) }
             val o = JSONObject()
                 .put("id", p.identifiant).put("nom", p.nom).put("elements", els)
-                .put("grille", p.grille).put("pas", p.pasGrille).put("aimanter", p.aimanter).put("legende", p.legende)
+                .put("grille", p.grille).put("pas", p.pasGrille).put("aimanter", p.aimanter).put("circuitNom", p.circuitNom).put("legende", p.legende)
                 .put("nord", p.nordDeg).put("soleil", p.soleil).put("date", p.date).put("heure", p.heure)
                 .put("carte", p.carte).put("notes", p.notes)
             p.jourId?.let { o.put("jour", it) }

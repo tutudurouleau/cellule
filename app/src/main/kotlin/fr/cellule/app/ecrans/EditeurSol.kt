@@ -35,6 +35,9 @@ import fr.cellule.app.sol.IconeToutVoirSol
 import fr.cellule.app.sol.iconeType
 import fr.cellule.app.sol.nomCourt
 import fr.cellule.core.Historique
+import fr.cellule.core.CIRCUITS
+import fr.cellule.core.ListeLocation
+import fr.cellule.core.Region
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Canvas
@@ -162,7 +165,7 @@ import kotlin.math.sin
  * reste visible au-dessus. Rien ne défile sur le côté.
  */
 
-private enum class FeuilleSol { OPTIONS, EXPORT }
+private enum class FeuilleSol { OPTIONS, LISTE, EXPORT }
 
 private enum class VuePlan(val libelle: String) { DESSUS("Dessus"), CAMERA("Caméra"), COTE("Côté") }
 
@@ -360,6 +363,10 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
                             DropdownMenuItem(text = { Text("Réglages du plan", style = Corps) }, onClick = {
                                 menu = false
                                 feuille = FeuilleSol.OPTIONS
+                            })
+                            DropdownMenuItem(text = { Text("Liste et électricité", style = Corps) }, onClick = {
+                                menu = false
+                                feuille = FeuilleSol.LISTE
                             })
                             DropdownMenuItem(text = { Text("Exporter", style = Corps) }, onClick = {
                                 menu = false
@@ -646,6 +653,7 @@ fun EditeurPlanSol(id: Long, reglages: Reglages, cinema: DepotCinema, onFermer: 
                 PlansSol.supprimer(plan.identifiant)
                 onFermer()
             }) { feuille = null }
+            FeuilleSol.LISTE -> FeuilleListeSol(plan, reglages, { plan = it }) { feuille = null }
             FeuilleSol.EXPORT -> FeuilleExportSol(plan, cinema, metres) { feuille = null }
             null -> {}
         }
@@ -945,6 +953,26 @@ private fun ColumnScope.ReglagesType(e: ElementSol, metres: Boolean, reglages: R
                 Spacer(Modifier.height(6.dp))
             }
             ChampReel(e.pertesDiaphs, "Pertes : gélatines, diffusion (diaphs)", cle, Modifier.fillMaxWidth()) { surChangement(e.copy(pertesDiaphs = it ?: 0.0)) }
+            Spacer(Modifier.height(6.dp))
+            /* Pour la liste et le bilan électrique (menu ⋯). */
+            val wattsFiche = choisi?.puissanceW
+            LigneBoutons {
+                var circuit by remember(cle) { mutableStateOf(e.circuit) }
+                Champ(circuit, "Circuit (A, B…)", Modifier.weight(1f)) {
+                    circuit = it
+                    surChangement(e.copy(circuit = it))
+                }
+                if (wattsFiche == null) {
+                    ChampReel(e.puissanceW, "Puissance (W)", cle, Modifier.weight(1f)) { surChangement(e.copy(puissanceW = it?.takeIf { w -> w > 0 })) }
+                } else {
+                    Text(
+                        nombreCourt(wattsFiche, 0) + " W, d'après sa fiche",
+                        style = Detail,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.weight(1f).align(Alignment.CenterVertically)
+                    )
+                }
+            }
         }
         TypeElement.COMEDIEN, TypeElement.REPERE -> {}
         else -> {
@@ -1376,6 +1404,68 @@ private fun PanneauVueCote(plan: PlanSol, reglages: Reglages, modifier: Modifier
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
+    }
+}
+
+/** Ce qu'il faut louer pour ce plan, et ce que porte chaque circuit. */
+@Composable
+private fun FeuilleListeSol(plan: PlanSol, reglages: Reglages, surChangement: (PlanSol) -> Unit, onFermer: () -> Unit) {
+    val region = Region.entries.firstOrNull { it.name == reglages.lumiereRegion } ?: Region.EUROPE
+    FeuilleSolBase("Liste et électricité", onFermer) {
+        Etiquette("À louer pour ce plan")
+        val lignes = ListeLocation.duPlan(plan, PlansSol::modele)
+        if (lignes.isEmpty()) {
+            Text("Rien à louer pour l'instant : pose des projecteurs, des cadres, un rail…", style = Corps, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+        lignes.groupBy { it.categorie }.forEach { (categorie, l) ->
+            Text(categorie, style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 6.dp))
+            l.forEach { Ligne(it.nom, it.combien) }
+        }
+
+        Separateur()
+        Etiquette("Électricité")
+        Spacer(Modifier.height(6.dp))
+        val circuit = PlansSol.circuitDe(plan, region)
+        Deroulant("Chaque circuit", CIRCUITS.filter { it.region == region }, circuit, { it.nom }, Modifier.fillMaxWidth()) {
+            surChangement(plan.copy(circuitNom = it.nom))
+        }
+        Spacer(Modifier.height(6.dp))
+        val charges = ListeLocation.charges(plan, PlansSol::puissance, PlansSol::modele)
+        if (charges.isEmpty()) {
+            Text("Pas de projecteur sur le plan.", style = Corps, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+        charges.forEach { c ->
+            val reparti = c.circuit != ListeLocation.SANS_CIRCUIT
+            val part = ListeLocation.partDeLaMarge(c.puissanceW, circuit)
+            Ligne(
+                if (reparti) "Circuit ${c.circuit}" else "Sans circuit",
+                nombreCourt(c.puissanceW, 0) + " W · " + nombreCourt(ListeLocation.courant(c.puissanceW, circuit), 1) + " A",
+                listOfNotNull(
+                    c.sources.joinToString(", "),
+                    if (reparti) nombreCourt(part * 100, 0) + " % de la charge admise" else null,
+                    if (c.sansPuissance > 0) "${c.sansPuissance} sans puissance connue" else null
+                ).joinToString(" · "),
+                accent = reparti && part <= 1.0
+            )
+            if (reparti && part > 1.0) {
+                Text("Trop chargé : passe une source sur un autre circuit.", style = Detail, color = MaterialTheme.colorScheme.error)
+            }
+        }
+        val total = charges.sumOf { it.puissanceW }
+        if (total > 0) {
+            Separateur()
+            Ligne(
+                "Total", nombreCourt(total, 0) + " W",
+                "groupe électrogène d'au moins " + nombreCourt(ListeLocation.groupeKva(total), 1) + " kVA (facteur 0,8, chargé à 80 %)",
+                accent = true
+            )
+        }
+        Text(
+            "Donne une lettre de circuit à chaque projecteur : touche-le, puis Réglages. La charge admise est 80 % du calibre ; les puissances viennent des fiches, ou de ta saisie.",
+            style = Detail,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(top = 6.dp)
+        )
     }
 }
 

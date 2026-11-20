@@ -69,6 +69,10 @@ data class ElementSol(
     val distanceReference: Double? = null,
     val faisceau: Double? = null,
     val pertesDiaphs: Double = 0.0,
+    /** La lettre du circuit électrique qui l'alimente (« A », « B »…) ; vide : pas encore réparti. */
+    val circuit: String = "",
+    /** Sa puissance, quand le projecteur n'en a pas dans sa fiche (saisie directe). */
+    val puissanceW: Double? = null,
     val notes: String = ""
 ) {
     val libelle: String
@@ -92,6 +96,8 @@ data class PlanSol(
     val pasGrille: Double = 0.5,
     /** Vrai : les éléments déplacés se calent sur la grille. */
     val aimanter: Boolean = false,
+    /** Le calibre des circuits du bilan électrique (un nom de CIRCUITS) ; vide : le premier de la région. */
+    val circuitNom: String = "",
     val legende: Boolean = true,
     /** Direction du nord sur le plan, en degrés depuis le haut, sens horaire. */
     val nordDeg: Double = 0.0,
