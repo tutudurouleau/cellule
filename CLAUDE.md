@@ -25,6 +25,8 @@ qui teste sur son téléphone.
 - Une étape = un commit = un APK envoyé = un retour de l'utilisateur.
 - `core` (Kotlin pur) : `./gradlew :core:test -q` en local. `app` ne compile que sur
   GitHub Actions (workflow « Compiler »), qui publie l'APK sur la release `apk`.
+  Depuis la 5.6.2, c'est l'APK **release** (R8, non débogable, même clé « cellule ») :
+  le code de `fr.cellule.**` est gardé tel quel (`app/proguard-rules.pro`).
   Si le job « Publier l'APK » échoue par concurrence, relance les jobs échoués.
 - Les commits qui ne touchent que la doc prennent `[skip ci]`.
 - Ne touche pas à `docs/coupes-objectifs/`.
