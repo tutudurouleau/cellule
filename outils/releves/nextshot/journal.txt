@@ -1,2 +1,1 @@
-2 pages, 0 PDF, 3 adresses vues
-ÉCHEC https://www.next-shot.fr/ : <urlopen error [Errno -2] Name or service not known>
+55 pages, 0 PDF, 55 adresses vues

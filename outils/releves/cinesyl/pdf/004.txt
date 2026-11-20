@@ -1,115 +1,1861 @@
-# https://www.cinesyl.com/wp-content/uploads/2014/07/ABC-Crane-Speedy-6-Notice.pdf
+# https://www.cinesyl.com/wp-content/uploads/2016/02/Magnum-Manual.pdf
 
-             Cranes Kräne   Speedy                                                                                       Speedy Crane 6 Part No./Art.Nr. 8313-0
-                                                                                                                         Speedy Crane 9 Part No./Art.Nr. 8313-02
-
-
-                                                                                                                           Advantages Vorteile
-                                             Speedy tube
-                                             Speedy Rohr                                                                   •   Extremely short assembling times! (complete assembly in approx. 10 minutes!)
-                                                                                                                           •   Base-located hand grip for continuous adjustment of the crane-head angle!
-                                                                                                                           •   Pin for fixed horizontal position when using a Remote Head
-                                                                                                                           •   Wired rigs are separately colored – no danger of mix-up!
-                                                                                                                           •   3 different assembly lengths including extensible bracket rig (small/medium/large)
-                                                                                                                           •   Universal deployable for high flexibility
-                                                                                                                           •   Upgradeable with light ABC - Remote Head “V5” at DV/HDV-Camcorder allows both
-                                                                                                                               pan and tilt with a 360 degree vertical and horizontal. Please check camera weight!
-
-
-                                                                                                                           •   Sehr kurze Aufbauzeiten! (ca.10 Minuten komplette Montage!)
-                                                                                                                           •   Handgriff für stufenlose Verstellung des Krankopfwinkels von der Basis aus!
-PAGE
-SEITE   46                                                                                                                 •   Pin für fixe 0 Grad Position bei Verwendung eines Remote Heads
-                                                                                                                                                                                                                      PAGE
-                                                                                                                                                                                                                      SEITE   47
-
-                            Crane Speedy 6                                 Crane Speedy 9
-                                                                                                                           •   Abspannseile sind farblich gekennzeichnet – keine Verwechslungsgefahr!
-                                                                                                                           •   3 Verschiedene Aufbaulängen mit verlängerbaren Abspannseilen (small/medium/large)
-                                                                                                                           •   Universell einsetzbar für hohe Flexibilität
-                                                                                                                           •   Aufrüstbar mit leichtem ABC - Remote Head „V5“ bei DV/HDV-Camcordern (Euromount
-                                                                                                                               Anschluß am Krankopf inkl.) bedeutet motorischer Schwenkradius von 360 Grad vertikal
-                                                                                                                               und horizontal! Kameragewicht beachten!
-                              The successful Broadcast-Crane DV/HDV/HD       All rounder with large Reserves DV/HDV/HD
-                              Camera up to 13kg/28.6 lb                      Camera up to 10kg/22.0 lb
-                              Der erfolgreiche Broadcast-Crane DV/HDV/HD     Alleskönner mit großen Reserven DV/HDV/HD
-                              Kameragewicht bis 13kg                         Kameragewicht bis 10kg
-                                                                                                                                                                                                                                                                                                          Speedy
-             Technical specifications and details
-             Technische Spezifikation und Details
+                                                  MANUAL
+                                 MAGNUM
+                                    DOLLY
+                                   SYSTEM
 
 
 
-                                                                                                                                   Speedy 6                                                                                                                                             Speedy 9
+Movie Tech AG                                      Movie Tech s.r.l
+Martin-Kollar-Str. 9                              Viale Edison 318
+81829 München                                        20099 Milano
+Germany                                                       Italia
+Tel. +49 (0)89 43 68 91 3                 Tel. +39 (0)2 22470043
+Fax. +49 (0)89 43 68 91 55                Fax. +39 (0)2 24410163
+info@movietech.de                           k.shore@movietech.de
 
-                                                                                                                                                                                                                                                                                                          Package includes:                                                                               Lieferumfang:
-                                                                                                                                                                                                                                                                                                          •    1 Crane segment with axis for crane prop (base element for tripod assembly)                •    1 Kransegment mit Achse für Kranstütze (Grundelement für Stativmontage)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  Speedy extansion kit 6 to 9 m
+
+                       WWW.MOVIETECH.DE
+MAGNUM DOLLY SYSTEM                                JUN. 10
 
 
 
 
-                                                                                                                                                                 Hubhöhe max.7.28m
-                                                                                                                                                                                                                                                                                                          •    2 Extension segments (3 with Speedy 9)                                                     •    2 Verlängerungssegmente (3 bei Speedy 9)
-                                                                                                                                                                                                                                                                                                          •    1 Segment with Outrigger                                                                   •    1 Segment mit Outrigger                                                            Speedy Verlängerungssatz 6 auf 9 m
-                                                                                                                                                                                                                                                                                                          •    1 Segment with crane-head                                                                  •    1 Segment mit Krankopf
-                                                                                                                                                                                                                                                                                                          •    1 Crane prop                                                                               •    1 Kranstütze
-                                                                                                                                                                                                                                                                                                          •    1 Crane-head with Euromount connection (for Remote Head assembly)                          •    1 Krankopf mit Euromountanschluß (für Remote Head Montage)
+Contents:
+
+
+Part I: The MAGNUM Dolly System
+
+
+General Safety Tips                                               Page 4
+
+Technical Specifications                                          Page 5
+
+The MAGNUM Basic-Dolly                                            Page 6
+
+MAGNUM Dolly Wheel Arm Settings                                   Page 8
+
+Base Plate with Euro Adapter Mount                                Page 10
+
+MAGNUM Electromechanical Column                                   Page 11
+
+DUO Jib Arm                                                       Page 14
 
 
 
 
-               Hubhöhe max. 5.06m
-                                                                                                                                                                                                                                                                                                          •    1 Adjustment frame for crane angle adjustment                                              •    1 Verstellbügel für Kranwinkelverstellung
-                                                                                                                                                                                                                                                                                                          •    1 Camera screw ¼ inch                                                                      •    1 Kameraschraube ¼ Zoll
-                                                                                                                                                                                                                                7.18m                                                       1.08m         •    1 Camera screw 3/8 inch                                                                    •    1 Kameraschraube 3/8 Zoll
-                                                                                                                                                                                                                                                                                                          •    1 Rig Set for assembly length “small” (2.74 m / 8.98 ft total length)                      •    1 Seilsatz für Aufbaulänge „small“ (2,74 m Länge gesamt)                           Item No. Art. Nr. 8313-01
-                                                                               4.58m                                                   1.08m                                                                                                                                                              •    1 Set rig extensions “medium” (4.04 m /1 3.25 ft total length)                             •    1 Satz Seilverlängerungen „medium“ (4,04 m Länge gesamt)
-                                                                                                                                                                                                                                                                                                          •    1 Rig Set for assembly length “large” (3.48 m / 11.41 ft total length)                     •    1 Seilsatz für Aufbaulänge „large“ (5,34 m Länge gesamt)
-                                                                                                                                                                                                                                                                                                          •    Only Speedy 9: 1 Rig Set for assembly length “x-large” (7.94 m / 26.04 ft total length)    •    Nur Speedy 9: 1 Seilsatz für Aufbaulänge „x-large“ (7,94 m Länge gesamt)
-                                                                                                                                                                                                                                                                                                          •    1 Weight support bar (Ø 28mm / 1.10 inch, Length 800mm / 31.49 inch)                       •    1 Gewichtsträgerstange (Ø 28mm, Länge 800mm)
+Part II: The control of the MAGNUM Dolly
 
 
-                                       Hubhöhe 1.41m                                                                                                                                 Hubhöhe 1.41m
-PAGE
-        48                                                                                                                                                                                                                                                                                                •    2 Saftety split pin for weights                                                            •    2 Sicherungssplinte für Gewichte                                                                                PAGE
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       49
-                                                                                          (max. 1.28m)   mind. 1.10m                                                                                                                                     (max. 1.28m)   mind. 1.10m
-SEITE                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          SEITE
-                                                                                                                                                                                                                                                                                                          •    1 Transport bag                                                                            •    1 Transporttasche
-                                                                                                                                                                                                                                                                                                          •    1 Manual                                                                                   •    1 Bedienungsanleitung
+Mode 0 - storage of upper and lower position                      Page 19
+
+Mode 1 - storage of max. 30 positions                             Page 22
+
+Mode 2 - storage complete drive up to 4 Min. 20 Sec.              Page 26
+
+Mode 3 – operation via serial interface                           Page 29
+
+Error messages scheme and error correction power supply 48 Volt   Page 30
+
+Arrangement of controls on the electronic front                   Page 33
+
+Explanation multifunctional display                               Page 34
+
+www.movietech.de             … the easy working film equipment              2
+MAGNUM DOLLY SYSTEM                              JUN. 10
 
 
 
-                                                                                                                                                                                                                                                                                                          Accessories see page 70. Please note the below mentioned technical specifications for Speedy crane                                                                                      Soft-case
-                                    Crane lengths Kranlängen
-                                                                                                                                                                                                                                                                                                          Zubehör siehe Seite 70. Bitte beachten Sie die Besonderheiten für Speedy s. unten                                                                                                       Transport Tasche
-                                                                                                                                                                                                                           Lever forward/backward for
-                                                       max. camera weight         Front crane arm                      Back crane arm          Total length
-                                                                                                                                                                                                                           changing directly the angle
-                                                        in pounds / kilogram        in feet / meter                      in feet / meter       in feet / meter                                                             of the crane head                                                              Tripods:                                                                                        Stative:
-                                    Speedy 9           22.05 lb / 10 kg          23.56 ft / 7,18 m                     3.54 ft / 1,08 m    27.10 ft / 8,26 m                                                               Handhebel Vor-/ Zurückver-                                                     Item No. 8321-01     Tripod 132X modified                                                       Art. Nr. 8321-01    Stativ 132X Lastenverstellung
-                                                                                                                                                                                                                           stellung - Direkte Verände-
-                                    Speedy 6           28.66 lb / 13 kg                                                                                                                                                                                                                                   Counterweights:                                                                                 Gegengewichte:
-                                                                                                                                                                                                                           rung des Krankopfwinkels
-                                                                                                                                                                                                                                                                                                          Required for a maximum camera weight of 10 kg (11.02 lb) / total weight 74.6 kg (164.5 lb)      Erforderlich bei max. Kameragewicht von 10 kg / Gesamt 74,6 kg
-                                    Large version                                15.03 ft / 4,58 m                     3.54 ft / 1,08 m    18.57 ft / 5,66 m                                                                                                                                                                                                                                                                                                                                              Item No. Art. Nr. 832160
-                                                                                                                                                                                                                                                                                                          Recommended division into shares “9” (4 x 16 kg (35.27 lb)/1x8 kg (17.63 lb)/1x4kg (8.81 lb)    Empfohlene Stückelung „9“ (4 x 16 kg/1x8 kg/1x4kg)
-                                    Medium version                               9.78 ft / 2,98 m                      3.54 ft / 1,08 m    13.98 ft / 4,26 m
-                                                                                                                                                                                                                                                                         Weight suport bar with safety    Remote Head:                                                                                    Remote Head:
-                                    Short version                                5.51 ft / 1,68 m                      3.54 ft / 1,28 m    9.71 ft / 2,96 m
-                                                                                                                                                                                                                                                                         split pin                        Item No. 8417-0      Remote Head V5 (see Remote Heads). Please note maximum camera              Art. Nr. 8417-0     Remote Head V5 (siehe Remote Heads) max. Gewicht der Kamera
-                                                                                                                                                                                                                                                                                                                               weight 3,5kg / 7.71 lb                                                                         beachten: 5kg
-                                                                                                                                                                                                                                                                         Gegengewichtsstange mit Siche-
-                                    Technical Data Technische Daten                                                                                                                                                                                                      rungsringen                      Crane as Jib-Arm:                                                                               Kran als Jib-Arm:
-                                                                                                                                                                                                                                                                                                          With ball adapters 75 mm/ 2.952 inch or 100 mm/ 3.937 inch, Fluid head mountable on crane-      Mit Kugelschalen 75 mm oder 100mm Montagemöglichkeit von Fluidhead auf dem
-                                    Speedy                                                                             Speedy 6                                                                      Speedy 9                       Crane head with euro                                                  head. Recommended for short assembly option. On respective adjustment with counterweights the   Krankopf. Empfohlen für kurze Aufbauvariante. Bei entsprechender Tarierung mit Gegen-
-                                                                                                                                                                                                                                                                                                          camera person is able to combine crane movements and camera motion without effort.              gewichten kann der Kameramann ohne Kraftaufwand Kranfahrten mit Schwenkbewegun-         Optional: Flight case for Speedy crane
-                                    Weight/ Gewicht                            33.07 lb / 15 kg                                                               41.00 lb / 18.6 kg                                                    mount connection
-                                                                                                                                                                                                                                                                                                                                                                                                          gen kombinieren.                                                                        Optional: Koffer für Speedy Kran
-                                    Dimension when packed / Packmaße           65.35 x 14.96 x 9.84 in / 166 x 38 x 25 cm                                     65.35 x 14.96 x 9.84 in / 166 x 38 x 25 cm                            Krankopf mit Euromount
-                                                                                                                                                                                                                                    Anschluß                                                                                                                                                                                                                                                              Item No. Art. Nr. 842200
-                                    Max. payload / Max. Zuladung               28.66 lb / 13 kg                                                               22.05 lb / 10 kg
-                                    Counterweight / Gegengewicht               129.08 lb / 58,55 kg                                                           164.55 lb / 74,64 kg
-                                    Weights split / Gewichtsstückelung         3 x 35.27 lb, 17.64 lb ; 8.82 lb / 3 x 16 kg ; 8 kg ; 4 kg                     4 x 35.27 lb, 17.64 lb ; 8.82 lb / 4 x 16 kg ; 8 kg ; 4 kg
+
+Control Unit                                                   Page 35
+
+SMD – LED advice on the board and function                     Page 38
+
+Layout fuse                                                    Page 39
+
+Handling and care of MAGNUM batteries                          Page 40
+
+Error messages power supply 110 or 220 Volt                    Page 41
+
+Instruction manual charger Magnum Dolly 24/48V since 2004      Page 42
+
+EC-Declaration of Conformity                                   Page 43
+
+
+
+
+www.movietech.de           … the easy working film equipment             3
+MAGNUM DOLLY SYSTEM                                         JUN. 10
+
+
+
+
+                                  Part I – The MAGNUM Dolly
+
+
+General safety tips:
+1) The MAGNUM Dolly should only be used on a stable, flat and horizontal underground.
+
+2) At all times, the entire lift range of the MAGNUM column, jib-arms incl. Duo Jib (max. platform
+   height 272 cm / 8.9 ft) etc. must be kept clear and free from obstructions (0.5 m / 19.7 in clearance
+   in all directions), whether switched on or off, at all times. When operating beware of pinch points.
+   Attention: The Duo Jib Arm may not be mounted or operated when the MAGNUM Dolly is fitted
+   with pneumatic wheels.
+3) Attention in automobiles or uneven surfaces. The MAGNUM Dolly must be secured so that it cannot
+   move or roll.
+
+4) In the electromechanical column there are 3 pneumatic springs which are under constant high
+   pressure. Should the column be damaged or the mechanics interfered with, it may eject with high
+   speed and strength. The drive belt must be inspected and if necessary replaced after every 100
+   operational hours or at least every 12 months. The load carrying device must be inspected after
+   every 100 operational hours. To inspect or repair the column, the column must be extended fully to
+   relax the pneumatic springs.
+
+5) Absolute attention to balance must be observed at all times especially during set-up and operation.
+   Caution: Tipping danger!
+
+6) When operating the Duo Jib in open air, the maximum operational wind speed of 32 km/h (19
+   mph) may not be exceeded. This applies even in halls, where the gates are open more than 1/3 of
+   the upstream wind of the hall walls. Analog DIN 1055, Part 4, Section 6.3.1.
+
+7) When operating from mains, all usual guidelines for operating electrical equipment must be
+   observed.
+
+8) All electronical components should be protected from over exposure to moisture and humidity.
+
+9) It is recommended to use safety belts when operating at a fall height above 1,50 m (5 ft).
+
+10) To prevent a uncontrolled dropping of the MAGNUM column while using a Duo-Jib, a catch screw
+    nut, which does not carry in normal operation, is built-in (series built after May 2009 on). It takes
+    over the carrying function as a safety element at a possible failure of the piston stroke mother.
+    However, it is not appropriate for driving the column. An occurred intervention of the catch screw nut
+    can be closed from the following:
+              • Changed driving noise of the piston stroke column (loud, metallic)
+             • Increased and further disconnection of the control with the error messages "Err.9"
+In this case, the operation of the MAGNUM Dolly with Duo Jib immediately has to be terminated and
+the defect must be repaired! To do so, please contact the manufacturer.
+
+
+
+
+www.movietech.de                      … the easy working film equipment                                  4
+MAGNUM DOLLY SYSTEM                                           JUN. 10
+
+
+
+
+Technical Specifications
+
+Basic Dolly                                                 MAGNUM Dolly with Duo-Jib
+Weight:                             62 kg / 136 lbs         Maximum Payload Capacity
+Minimum size for transport:                                 including 2 pers.
+        Length:                        64 cm / 25“          with High Rig mode (photo 3c)     200 kg / 440
+                                                                                                        lbs
+        Width:                         64 cm / 25“          with Low Rig mode (photo 3)       220 kg / 484
+                                                                                                        lbs
+        Height:                      37 cm / 14,5“          Standart mode (photo 3a & 3b)     250 kg / 550
+                                                                                                        lbs
+Max. Payload Capacity:             1000 kg / 2200           Max. Platform Height:            272 cm / 107”
+                                               lbs
+Maximum track width:                  62 cm / 24“           Min. Platform Height:              26 cm / 10”
+Minimum track width:                  36 cm / 14“           Lift range:                       150 cm / 59”
+
+
+
+
+Basic Dolly and Electromechanical Column                    MAGNUM Dolly with Duo-Jib and TV-Platform
+Weight of MAGNUM Column:           78 kg / 171 lbs          Maximum Payload Capacity
+Transport sitze, assembled:                                 including 1 pers:             192 kg /423 lbs
+          Length:                     64 cm / 25“           Maximum Platform Height:        209 cm / 82“
+          Width:                      64 cm / 25“           Minimum Platform Height:          59 cm / 23“
+          Height:                     80 cm / 31“           Lift range:                     150 cm / 59“
+Maximum Payload Capacity:            148 cm / 58“
+          Column extended:        250 kg / 550 lbs
+          Column retracted:      800 kg / 1763 lbs          MAGNUM Dolly with Mini-Jibarm
+Max. height (euro-adapter):          148 cm / 58“           Maximum Payload Capacity:      80 kg / 176 lbs
+Min. height (euro-adapter):           80 cm / 31“           Maximum Height (euro-adapter):  235 cm / 93“
+Lift range:                           68 cm / 28“           Minimum Height (euro-adapter):    70 cm / 27“
+Fastest time through column lift                            Minimum Height with Mini Low
+range:                                                      Rig:                                9 cm / 3”
+          24 V                             4,5 sec          Lift range:                     165 cm / 65“
+          48 V                             3,2 sec
+
+Battery performance when fully                              MAGNUM Dolly Low Rig
+ranged:                           150 column moves
+Battery capacity:                              8 Ah         Maximum Payload Capacity:         130 kg / 286
+Battery charge current:                     24 VDC                                                      lbs
+Charge cycle with mains               approx. 8 hrs         Maximum Height (euro-adapter):     78 cm / 30“
+Mains voltage:                      110 / 220 V AC          Minimum Height (euro-adapter):      10 cm / 4“
+Mains input voltage (2 versions    110 or 220 V AC          Lift range:                        68 cm / 26“
+available)
+
+
+
+
+www.movietech.de                        … the easy working film equipment                                 5
+MAGNUM DOLLY SYSTEM                                        JUN. 10
+
+
+
+
+The MAGNUM Basic-Dolly
+
+Picture: The MAGNUM Basic-Dolly
+
+Components Basic Dolly
+
+1. steering rod                   6. tension adjuster                        11. wheel setting clamp
+2. steering rod socket            7.locking screw wheel axles                12. totable bearing
+3. wheel arm lever                8.studio wheel                             13. locking screw
+4. carry grip                     9. track wheel                             14. column locking screw
+5. tension adjuster               10. wheel brake                            15. Euro adapter plate
+
+
+
+
+                                                                                     1
+                                            14   15
+
+
+                         13
+                                                                               2
+
+               11
+
+                    12
+
+
+
+                                                                         3
+
+
+
+                                                                                         4
+                                                          5
+      10
+                                            6
+
+
+           9                                7
+
+                              9
+                                        8
+
+
+
+
+www.movietech.de                     … the easy working film equipment                                  6
+MAGNUM DOLLY SYSTEM                                        JUN. 10
+
+
+
+
+The Basic Dolly is the basis of the MAGNUM Dolly System. It allows manoeuvrability in a number of
+ways.
+
+The wheel arms may be set in 16 different positions (see Figure 1).
+
+Wheel Arm Positioning:
+
+The wheel arms may be repositioned by pulling the Wheel Arm Lever (pos. 3, photo 1). After reaching
+the required position, the Wheel Arm Lever should be gently released allowing the locking pin to slip
+into place. Ensure that the wheel arm is fixed securely after every repositioning.
+
+Combi-wheel Settings
+
+The Basic Dolly has 4 combi-wheels. Each combi-wheel consists of 2 studio wheels and 1 or 2 track
+wheels. The studio wheels can be exchanged for pneumatic wheels. This is done by simply removing the
+locking screw (pos. 7) and removing the studio wheel. The pneumatic wheel is mounted in the same
+manner and locked in position with the locking screw.
+
+Note: The integrated Track Wheels allow smooth tracking movements without having to change the
+Combi-wheels.
+
+For operating on track the wheels should be set at the FREE position to enable them to compensate the
+tracks curve.
+
+Ensure that the track is supported correctly and completely leveled!
+
+
+The Wheel Setting Clamp (pos. 11) has 3 settings:
+
+CRAB -> Enables connected steering of the wheels.
+FREE -> Enables the wheels to rotate freely (for use on track).
+FIXED -> Allows the wheels to be locked at set angles of 45 degrees.
+
+Examples for possible wheel settings on the next page.
+
+
+
+
+www.movietech.de                     … the easy working film equipment                                  7
+MAGNUM DOLLY SYSTEM                        JUN. 10
+
+
+
+
+MAGNUM Dolly wheel settings
+
+
+
+
+www.movietech.de     … the easy working film equipment   8
+MAGNUM DOLLY SYSTEM                                         JUN. 10
+
+
+
+
+Rotation around an off-set axis (fig. 14)
+1. Extend all wheel arms fully.
+2. Choose one of the combi wheels as rotation center
+3. With the Wheel Setting Clamp (pos.11) set this combi-wheel on FREE.
+4. The combi-wheel on the opposite side (diagonally) should be set on FREE and then positioned at 90°
+   to the wheel arm. By selecting FIXED, this combi-wheel position will   be secured. This combi-
+   wheel may be used as the steering point.
+5. The remaining two combi-wheels should be set on FREE and positioned at 45° to each of their wheel
+   arms. These wheel positions may be locked by selecting FIXED.
+
+Rotation around own central axis (fig. 13 )
+1. Extend all wheel arms fully.
+2. With the Wheel Setting Clamp (pos11) put all wheels on FREE
+3. Set all four combi-wheels at 90° to each of their wheel arms.
+4. With the Wheel Locking Clamp, set all wheels on FIXED.
+
+
+Two wheel steering (fig. 12)
+1. With the Wheel Setting Clamp (pos.11) set all wheels on CRAB and set them in straight direction.
+2. Select two of the combi-wheels that are parallel to each other and set them on FIXED.
+3. Put the steering rod in the Steering Rod Socket (pos.2) of either of the two wheels that are set on
+   crab.
+
+
+To return to 4 wheel steering set the wheel setting clamp on each of the wheels at CRAB. Turn the
+steering rod until all 4 wheels connect. The Basic Dolly can be steered from each of the 4 wheel arms
+provided the designated wheel arm is switched to Crab.
+
+Should the combi wheels of the Basic Dolly need adjustment because they are not running straight,(e.g.
+due to a bump or knock) the following action needs to be taken.
+
+Older models:
+Ensure that the locking clamps of all the combi-wheels are set at FIXED.
+Open the Locking Bolt above the combi-wheel with an Allen Key.
+With the help of a wheel locking bar, water level or any straight object align the wheels    so that each
+set of two wheels are parallel to each other.
+Re-lock the Locking Bolt.
+
+Newer Models:
+Ensure that the locking clamps of all the combi-wheels are set at lock.
+Directly above the track wheel there are 2 locking bolts. Loosen the locking bolts with an Allen key.
+With the help of a wheel locking bar, water level or any straight object align the wheels so that each set
+of two wheels are parallel to each other.
+Re-lock the locking bolt.
+
+
+
+
+www.movietech.de                      … the easy working film equipment                                  9
+MAGNUM DOLLY SYSTEM                                        JUN. 10
+
+
+
+
+The Basic Dolly contains a rotatable bearing (pos. 12) which allows to completely pan the columns etc
+mounted on it. The rotatable bearing may be locked with the Rotatable Bearing Brake (pos. 15).
+
+Maximum payload on the Basic Dolly is 1000 kg.
+
+The Basic Dolly accommodates 2 different fixtures:
+
+    1. Base Plate with Euro Adapter Mount
+
+    2. The MAGNUM Electromechanical Column
+
+
+
+
+Base Plate with Euro Adapter Mount
+The base Plate with Euro Adapter Mount (pos. 15), as with both possible fixtures, is mounted on the
+Basic Dolly by simply positioning it on the dolly so that the 3 bayonet connections may be locked into
+position by the 3 Locking Screws (pos. 13). Ensure that all 3 locking levers are tightened securely.
+
+The Base Plate accommodates any accessory that connects to a Euro Adapter Mount.
+
+
+
+
+www.movietech.de                     … the easy working film equipment                                   10
+MAGNUM DOLLY SYSTEM                                           JUN. 10
+
+
+
+
+MAGNUM Electromechanical Column
+Picture: Manual Electromechanical Column
+
+
+Components MAGNUM-Column
+
+     1. Hand control unit                7.Hand control connector        13. Turnstile mount
+     2. Connection for carry bars        8. Emergency switch             14. Locking screw turnstile
+                                                                         mount
+     3. Duo Jib connection for           9. Digital display              15. Turnstile
+        support rod
+     4. Program channel                  10. Battery                     16. Brake for Turnstile
+     5. Ramp mode switch                 11. Foot rest platform
+     6. Cable connection hand            12. Adjustable seat arm bolt
+        control unit
+
+
+
+
+             13                                                14
+
+
+
+
+                                                                                              12
+                           11
+                                    10
+                                                                             1
+
+                                                                         2
+                                3
+                                                                                   6
+
+                   8
+
+
+                                                                                         7
+                       5
+
+
+
+               4
+
+
+
+
+www.movietech.de                     … the easy working film equipment                                 11
+MAGNUM DOLLY SYSTEM                                        JUN. 10
+
+
+
+
+To operate the MAGNUM Column to its full potential it is important to understand the basic principles of
+how this column functions. We have endeavoured to explain this in simple terms.
+
+The MAGNUM's motor, which is connected to a central spindle by means of a drive belt, powers the
+column upwards or downwards. Three pneumatic springs exerting an upward pressure of 2700 N and
+provide the extra strength necessary to carry a maximun payload of 250kg. It is important to remember
+that the motor uses the least amount of energy when the column is loaded with approx. 150kg. This
+point should be taken into consideration when operating with battery power. To achieve the longest
+consumption time with a battery, always load the column.
+Therefore: Operate the column for a maximum battery operating time only in loaded condition!
+Min. payload 80kg/ ideal payload 150kg / max. payload 250kg
+
+The coordinating factor in the whole system is the MAGNUM Electronic. The electronic provides the
+motor with the instructions needed to allow smooth coordinated movements of the column. These
+instructions are in turn transmitted to the electronic from the operator via the Hand Control Unit.
+
+When the MAGNUM Dolly is switched on, the initial stage is "stand by" i.e. the electronic system is
+activated. Within the first 1-2 seconds of activation the self diagnostic electronic makes an automatic
+system check to ensure that there are no faults present. In stand-by condition the column is held in
+position by an electromagnetic brake. By pressing the manual control switch the electromagnetic brake
+is deactivated and the motor moves the column up or down. When the column is no longer moving the
+motor holds the present position of the column automatically. After 8 seconds the brake closes again
+and holds the column in position. During this time the motor is moving or regulating the columns
+position, energy consumption is at its highest. After activation of the electromagnetic brake energy
+consumption drops dramatically to an absolute minimum.
+
+Battery operated: Standard use with 2 x battery = 48V
+In case of emergency 1x battery + short-circuit connector = 24V or
+Power supply 115V oder 230V
+
+One or two batteries can be connected to the column by means of the socket flanges (pos. 3, photo 10).
+The MAGNUM will work with one battery or two. When operating with two batteries, energy will be
+consumed from both batteries simultaneously. For longer operational time it is recommended to use two
+batteries. It is also recommended to keep two fully charged batteries in reserve. When the battery
+reaches 34 V, an automatic shut-down will take place. The digital display on the electronic will show Err
+Nr. 6. The unloaded battery should be replaced by 2 fully charged batteries. This automatic shut-down
+is meant to protect the batteries from being deeply unloaded i.e. below 17 V.
+See page 50 for information on handling and care of the MAGNUM batteries.
+
+
+
+
+www.movietech.de                     … the easy working film equipment                                 12
+MAGNUM DOLLY SYSTEM                                         JUN. 10
+
+
+
+
+Getting Started – 48 Volt Version
+
+Once the power supply has been provided the following procedure should be followed.
+
+1. Ensure that the General Safety Tips have been followed
+
+2. Connect the Hand Control Unit (pos. 6) via the Hand Control Cable to the Control Cable Socket (pos.
+   8) in the Electronic Unit Housing.
+
+3. Select the required drive ramp (pos. 6).
+
+4. Activate the electronic by pressing the Main On / Off Switch integrated in the Hand Control Unit and
+   wait until the self-test is finished (3 sec.)
+
+5. Press the Manual Control Switch in the desired direction i.e. forwards to go up, press back to go
+   down.
+
+   Note: After activation should the column be in a fully retracted or extended position, it is
+   necessary to clear the two end switch areas. This simply means that the column should be driven,
+   depending upon the activating position, either upwards or downwards approximately 110mm.
+   The column is now fully operational.
+
+
+6. Attention: Wait approx. 8 sec after the last up- or down movement before switching off the column
+   completely,!
+
+
+
+
+www.movietech.de                      … the easy working film equipment                              13
+MAGNUM DOLLY SYSTEM                                            JUN. 10
+
+
+
+
+DUO Jib Arm
+Picture: DUO-Jib-Arm
+
+
+Components Duo-Jib-Arm
+
+    1.    Connection Pin                 8. Fixing Lock                      15. Platform Leveller
+    2.    Counterweight Rod              9. Anchor Bracket Column            16. Middle Section
+    3.    Counterweight Triangle         10. Platform                        17. Connection Pin
+    4.    End Section                    11. Platform Locking Lever          18. End section Lock
+    5.    Anchor Bracket Duo Jib         12. High/ Low Rig Locking Lever     19. Parallelogram Rod
+    6.    Automatic Locking Pin          13. High/ Low
+    7.    Connector Rod                  14. Front Section
+
+
+
+
+                                              13
+                                                      12
+                                         14
+                                    15
+
+
+                               16                                                10
+
+
+                    18
+                         17
+               19                                             11
+
+
+           1                                            8
+
+
+                                     6
+           2
+      3
+                                5
+
+
+                           4    7
+
+
+
+
+                                                                             9
+
+
+
+
+www.movietech.de                         … the easy working film equipment                           14
+
+      3
+MAGNUM DOLLY SYSTEM                                         JUN. 10
+
+
+
+
+The Duo Jib Arm may only be used on the MAGNUM Dolly. The following set-up instructions should be
+observed.
+
+Attention: Before set-up and at all times during operation, ensure that either Drive Ramp 3 or 4 is
+selected. Do not operate the Duo Jib on Drive Ramp 1 or 2.
+In the event of a power failure due to an electronical or battery cut out, it is recommended to have an
+appropriate ladder to enable the camera crew to dismount.
+
+Attention: Do not use pneumatic wheels when mounting or operating the Duo Jib!
+
+Set up:
+1. Extend all 4 wheel arms of the Basic Dolly fully (pos. 1, page 8).
+2. Mount the middle section (pos. 16) of the Duo Jib onto the column by connecting it to the Euro
+     Adapter Mount.
+3. Connect the Connector Rod (pos. 7) to the Anchor Bracket on the column (pos. 9). Ensure that the
+     Automatic Locking Pins are locked securely.
+4. Connect the Connector Rod (pos. 7) to the Anchor Bracket of the Duo Jib of the Duo Jib
+     (pos.5). Ensure that the Automatic Locking Pins are locked securely.
+5. Lock the middle section securely with the fixing lock (pos. 8).
+6. Mount the end section (pos. 4) and tighten securely with the end section lock (pos. 18, photo 3).
+7. Attach the Counterweight Triangle (pos. 3) to end section.
+8. Connect the parallelogram rod (pos. 19) to middle section and counterweight triangle. Ensure that
+     the connection pins (pos. 1 and 17) connect correctly.
+9. On the lower connection of the front section (pos. 14), mount, High / Low Rig (pos. 13). Ensure that
+     locking lever (pos. 12) is locked securely.
+10. Connect the Platform (pos. 10, photo 3) to High / Low Rig. Ensure that locking lever (pos. 11) is
+     locked securely. Maximum Payload capacity incl. 2 persons = 220kg / 485 lbs. For other versions
+     see the following pages.
+11. Ensure that all connections are locked and tightened correctly.
+
+No more than two counterweights should be loaded whilst the platform is unloaded. As a general rule
+of thumb, for one person on the platform attach 4 or 5 counterweights, for two persons on the
+platform attach 8 or 10 counterweights.
+When operating the Duo Jib attention must be payed when mounting and dismounting the platform.
+By two-man operation, remove the extra counterweights before one person dismounts i.e. no more than
+four or five counterweights should be left connected. Before the second person dismounts, reduce the
+amount of counterweights to three.
+
+It is not recommended to drive the Duo Jib when the platform is unloaded and counterweights are
+attached. At all times beware correct balance by sufficient counterweight. To prevent an uncontrolled
+dropping of the MAGNUM column, (since year of manufacture May 2009) while using a Duo-Jib, a
+catch screw nut, which does not carry in normal operation, is built-in. It takes over the carrying function
+as a safety element at a possible failure of the piston stroke mother. However, it is not appropriate for
+driving the column. An occurred intervention of the catch screw nut can be closed from the following:
+     • Changed driving noise of the piston stroke column (loud, metallic)
+     • Increased and further disconnection of the control with the error messages "Err Nr.9".
+
+
+
+
+www.movietech.de                      … the easy working film equipment                                  15
+MAGNUM DOLLY SYSTEM                                         JUN. 10
+
+
+
+
+In this case, the operation of the MAGNUM Dolly with Duo Jib immediately has to be terminated and
+the defect must be repaired! To do so, please contact the manufacturer.
+
+Picture: Duo Jib Platform upper connection
+
+      1
+                                                 2
+
+
+                                                             1. Platform
+                                                             2. Locking Lever and Bolt for Platform
+                                                             3. Front section
+
+
+                                                       3
+
+
+1. Connect the Platform (pos. 10, photo 3a) to the upper connection on the Front Section (pos. 14,
+   photo 3a) as shown. Ensure that the Locking Lever and Bolt (pos.11, photo 4a) are tightened
+   correctly.
+2. Ensure that all connections are locked and tightened correctly.
+
+Maximum Payload capacity incl. 2 persons = 250kg / 551 lbs
+
+
+Picture: DUO Jib Platform lower connection
+
+
+
+                   2                                   3
+          1
+
+                                                           1. Platform
+                                                           2. Locking lever and bolt for platform
+                                                           3. Front section
+
+
+1. Connect the Platform (Pos. 10) to the lower connection on the Front Section (Pos. 14) as shown.
+   Ensure that the Locking Lever and Bolt (Pos. 11) are tightened and locked securely.
+
+2. Ensure that all connections are locked and tightened correctly.
+
+Maximum Payload capacity incl. 2 persons = 250kg / 251 lbs.
+
+
+
+
+www.movietech.de                      … the easy working film equipment                               16
+MAGNUM DOLLY SYSTEM                                          JUN. 10
+
+
+
+
+Picture: Duo Jib platform with high/ low range
+
+                                                                  2
+
+
+
+
+                                                                          4
+
+       1
+
+                                       3
+
+
+1. Platform
+2. Locking lever and bolt for platform
+3. Locking lever and bolt for high/ low rig
+4. High / low Rig                                                             5
+5. Front section
+
+
+1. On the upper connection of the front section mount high/ low rig as shown. Ensure that locking lever
+and bolt is locked securely.
+
+2. Hand screw bolt (pos 3) into the whole (pos 2).
+
+3. Connect the Platform to High / Low Rig as shown. Ensure that locking lever (pos. 3) is locked
+securely.
+
+a. Ensure that all connections are locked and tightened correctly.
+
+Maximum payload capacity incl. 2 persons = 200kg / 440 lbs.
+
+Picture: High/ low rig
+
+
+                                              1. Bolt
+                                              2. Threaded whole
+
+                                              When using the high/ low rig as High Rig it is necessary to
+                                              hand screw the Bolt (pos. 1) into the Threaded Hole (pos 2).
+ 1      2
+
+
+
+
+www.movietech.de                      … the easy working film equipment                                 17
+MAGNUM DOLLY SYSTEM                               JUN. 10
+
+
+
+
+                   Part II – The control of the MAGNUM Dolly
+
+
+
+                            Instruction Manual
+                         Programming Overview
+                   Software version: 1.6 / 23. 11. 2009
+
+
+
+
+www.movietech.de            … the easy working film equipment   18
+MAGNUM DOLLY SYSTEM                                           JUN. 10
+
+
+
+
+Mode 0 - storage of upper and lower position
+This mode will allow you to limit the manual working range top/bottom of the dolly.
+In this mode there are no programmed moves possible, that is why it is originally named “0”
+There will be no reaction by pressing any keys.
+Therefore there is no reaction by accidental pressing of any key.
+The dolly will ramp down at the set limits.
+
+Keypad layout:
+REC + F1               Actual position will be set as top limit
+REC + F2               Actual position will be set as bottom limit
+GO + F1                Top limit will be deleted, dolly extend to the fullest
+GO + F2                Bottom limit will be deleted, dolly retract to the fullest
+RESET                  Allows you to make moves exceptionally outside the set limits
+
+
+
+The 4 program possibilities can be used in any different sequences, as long as you pay attention to the
+following points:
+     • Programming a top limit below an already set limit is logically not possible, and vice versa.
+     • Position 000 mm cannot be set as top limit, at the same time the max position cannot be set as
+        bottom limit.
+
+The actual programed status will be permanent shown on display
+(e.g. table display)
+When dolly is switched off the values will be stored. When the dolly is switched on, or
+at change of any mode to mode „0“, outside of the limits the user will be asked to
+move the column back into range:
+
+Go below high limit (XXX mm)!       respectively Go above low limit (XXX mm)!
+
+The opposite direction of the range limits will be initially blocked.
+
+
+
+
+www.movietech.de                       … the easy working film equipment                             19
+MAGNUM DOLLY SYSTEM                                          JUN. 10
+
+
+
+
+Display at switch on
+After switch on or change of any mode into mode „0“ the display will show one of the 4 following lines:
+
+If no limits are set:
+       No limits stored, press REC+F1 for high,REC+F2 for low limit
+
+If only bottom limit is set:
+       Low limit XXX mm, press REC+F1 for high limit or GO+F2 to delete low limit
+
+
+If only top limit is set:
+       High limit XXX mm, press REC+F2 for low limit or GO+F1 to delete high limit
+
+
+If top and bottom limits are set:
+       Low limit XXX mm, high limit XXX mm, GO+F1 to delete high limit, GO+F2 to delete low limit
+
+
+Leaving the range of limits:
+If it is required during operation to leave the limited range simply press and hold the RESET-key. As
+long as the Reset key is pressed the limits are without function.
+As soon as the Reset key is released the column can be brought back in direction of the limit range set.
+Further you will see the following line in the display:
+
+Go below high limit (XXX mm)!       respectively Go above low limit (XXX mm)!
+
+
+Mode „0“: Overlook display messages
+OPERATION STATUS                    DISPLAY “RUNNING” LINES
+
+                                    No limits stored, press REC+F1 for high,
+No limits stored
+                                     REC+F2 for low limit
+                                    High limit XXX mm, press REC+F2 for low limit
+Only top limit set
+                                    or GO+F1 to delete high limit
+                                    Low limit XXX mm, press REC+F1 for high limit
+Only bottom limit set
+                                    or GO+F2 to delete low limit
+                                    Low limit XXX mm, high limit XXX mm,
+Both limits set
+                                    GO+F1 to delete high limit, GO+F2 to delete low limit
+Unit after switch on above top
+                                 Go below high limit (XXX mm)!
+limit
+Unit after switch on below
+                                 Go above low limit (XXX mm)!
+bottom limit
+By entering values no end switch
+                                 Pass upper or lower position indicator to enable programming!
+passed yet
+
+
+
+
+www.movietech.de                       … the easy working film equipment                              20
+MAGNUM DOLLY SYSTEM                                          JUN. 10
+
+
+
+
+Reason and position of proximity sensor:
+Both proximity sensors (normally an absolute position indicator) will prevent the column to hit at all
+possible occasions the mechanical limits (top or bottom) of the column (e.g. the initial switch on after
+changing the hand control).
+In fact the position of the column is stored after switch off, but the electronics will have no indication of
+using the emergency switch or exchange. In order to assure the proper operation the control has to get
+a feedback right after switch on about the absolute position of the column.
+That is why on each side there is a proximity sensor is placed 11cm before the mechanical stop.
+
+Position bottom sensor: 110 mm from bottom end stop
+
+Position top sensor: 566 mm from top end stop
+
+Without passing one of these sensors there will be no retrieval of programming function!
+
+
+The display will show:
+        Pass upper or lower position indicator to enable programming!
+Until one of the sensors will be passed!
+A passing move of the sensor will basically happen when moving the column down passing
+110mm, or moving the column up passing 566 mm (see mm value in display).
+
+
+
+
+www.movietech.de                       … the easy working film equipment                                   21
+MAGNUM DOLLY SYSTEM                                           JUN. 10
+
+
+
+
+Mode 1 - storage of max. 30 positions
+This mode will allow the user to program up to 30 fix positions in sequences.
+These programmed positions can be called up always in the same sequence (forward and reverse) With
+each programmed position the individual speed and ramp will be stored.
+Up to 30 positions can be stored.
+By changing into a different mode the whole setting will be stored and will be always available.
+
+Keypad layout:
+REC for min.           Setting reference point (starting point) of the position sequence.
+3 sec                  At the same time all prior stored positions will be deleted
+F1                     Setting a target point after manual move
+F2                     Ending the setting procedure after entering 1 -30 target points
+GO                     Start move to reference point, or next target point
+GO + F2                Start move to previous target point (sequence in return)
+RESET                  Immediate abortion of a programmed move (Emergency stop!!!)
+
+Display after switch on:
+After switch on or change into mode 1 the display will show one of the following messages:
+
+If no target points are stored:
+         NO TARGET POINTS STORED, 30 FREE, PRESS REC 3S TO STORE REFERENCE POINT.
+If target points are stored (e.g. 4):
+        04 target points stored, 26 free, move to next target, press F1 to store, F2 to terminate
+        programming
+Program can be used, see program call up, point 2
+
+
+
+
+www.movietech.de                        … the easy working film equipment                       22
+MAGNUM DOLLY SYSTEM                                         JUN. 10
+
+
+
+
+Programming procedure (example for 4 target positions):
+
+1. Initially the column hast o be moved into the desired reference/starting                position.
+   This position will be stored if the REC key is pressed for min                          3 sec.
+   This action is confirmed in the display.
+   Reference point stored, 30 target points free, move to target and press F1 to store .
+
+2. Now move the column to the first target point and choose at the same time the desired speed. In
+   order to keep the move easy the highest reached speed for the move will be stored.
+   To store the first target point press the F1 key. The display will show now:
+   01 target points stored, 29 free, move to next target, press F1 to store, F2 to terminate
+   programming
+
+
+3. The procedure in no 2 can be repeated up to 29 times, after storing 4 positions the
+   display will show:
+   04 target points stored, 26 free, move to next target, press F1 to store, F2 to terminate
+   programming
+
+
+4. To end the storing procedures please press the F2 key.
+   The display will show now:
+   Programming completed, 04 target points stored, press GO to move to reference point
+
+
+
+5. The programming procedure is finalized.
+
+
+To call up the program simply press the GO key to move the column to the reference point, please
+see program procedure no 2.
+
+
+
+
+www.movietech.de                     … the easy working film equipment                             23
+MAGNUM DOLLY SYSTEM                                          JUN. 10
+
+
+
+
+Program call up (e.g. 4 target points):
+
+1. After switching on respectively choosing mode 1 the following message will be shown in the display:
+        04 target points stored, press GO to move to reference point
+
+2. By pressing the GO key the column will move to the reference/starting point, the display shows:
+        Approaching Reference Point (XXX mm) press RES to stop
+
+3. After reaching the reference point the display shows:
+        Reference point reached, press GO to start 1st target move
+
+4. By pressing the GO key again the move to the first target point will be initiated, the display
+   shows now:
+        Approaching Target #01 (XXX mm) press RES to stop
+
+5. After reaching the first target point the display will show now::
+        Target point # 01 reached, press GO to move to next target or GO+F2 to go to last target
+
+
+6. By pressing repeatedly the GO key the column now to the next target points
+   (repeat point 4-5).
+   Should the column be moved to a previous target point simply press the GO + F2 Keys.
+   This may be helpful in order to reach a previous camera position.
+   In this example with 4 target points the display will show after reaching all points the following
+   message:
+   Final target point # 04 reached, press GO to return to reference point or GO+F2 to go to last
+   target
+
+
+7. The program has now reached the end, and by pressing the GO key once again the column will go
+   back to the reference/starting point.
+   By pressing GO+F2 the column will move back to the last target point. (in the example at point 3).
+
+
+PLEASE NOTE: In order to assure the correct function you have to prior programming or call up a
+program pass a end switch (please see mode 1, proximity sensor).
+If that is not the case the display will show the following message accordingly:
+
+        Pass upper or lower position indicator to enable programming!
+
+
+
+
+www.movietech.de                       … the easy working film equipment                                24
+MAGNUM DOLLY SYSTEM                                           JUN. 10
+
+
+
+
+Mode 1: Overlook display messages
+
+OPERATION STATUS                     Display “running” lines
+                                     No target points stored, NN free, press REC 3s to store reference
+No positions entered
+                                     point.
+                                     Reference point stored, 30 target points free, move to target and
+Reference point stored
+                                     press F1 to store
+1-29 positions stored,               NN target points stored, NN free, move to next target, press F1 to
+not yet pressed F2                   store, F2 to terminate programming
+1-30 positions stored,               Programming completed, NN target points stored, press GO to
+F2 pressed                           move to reference point
+Column moves to reference
+                                     Approaching Reference Point (XXX mm) press RES to stop
+point
+Reference point reached              Reference point reached, press GO to start 1st target move
+Column moves to target point         Approaching target # NN, XXX mm), press RES to stop.
+1. until next to last target point   Target point # NN reached, press GO to move to next target or
+reached                              GO+F2 to go to last target.
+                                     Final target point # NN reached , press GO to return to reference
+Last target point reached
+                                     point or GO+F2 to go to last target
+Move abortion thru Reset key         MOVE STOPPED!!
+Program try without passing the
+                                Pass upper or lower position indicator to enable programming!
+proximity switch
+
+
+
+
+www.movietech.de                        … the easy working film equipment                                 25
+MAGNUM DOLLY SYSTEM                                            JUN. 10
+
+
+
+
+Mode 2 - storage complete drive up to 4 Min. 20 Sec.
+This mode allows you to record and store complete moves up to 4m20s in length incl. all speed changes
+and pause times. The position of the column will be captured and stored each millisecond. The here for
+required storage space will limit the time frame to 260 seconds.
+By changing into a different mode or turning off the whole setting will be stored and will be always
+available.
+
+Keypad layout:
+REC
+                        Setting reference point (starting point) of the position sequence.
+for min. 3 sec
+1. move the zoom
+switch after            Start to record the move
+REC 3 sec.
+F2                      Stop record, column must stand still
+REC + F2
+                        Delete a stored move
+min. 3 sec.
+GO                      Start move to reference point, or next target point
+RESET                   Immediate abortion of a programmed move (Emergency stop!!!)
+
+
+
+Display after switch on:
+After switching on or change into “mode 2” the display will show one of the following 2 messages:
+
+
+If no move is stored:
+         NO MOVE RECORDED, PRESS REC 3SEC TO START RECORDING
+If move is stored:
+        Move stored, XXXs , press GO to go back to reference point or 3 sec REC+F2 to delete move
+
+
+A stored move can be initiated (e.g. program call up) or can be deleted by pressing
+REC + F2 for 3 sec.
+
+
+
+
+www.movietech.de                       … the easy working film equipment                             26
+MAGNUM DOLLY SYSTEM                                         JUN. 10
+
+
+
+
+Programming procedure:
+1. Initially the column has to be moved into the desired reference/starting position.
+   This position will be stored if the REC key is pressed for min 3 sec.
+   This action is confirmed in the display.
+        Reference Point stored, press zoom switch to start recording!
+
+2. To start record simply move the zoom switch to initiate the move.
+   As soon as the recording started the display shows continuously the stored time as well as the left
+   over recording time (example for 12 sec.):
+       Recording move, 012 sec, time left 248 sec, press F2 to terminate!
+
+3. To end recording the F2 key must be pressed while column stands still
+   (stored move must end with a stop).
+   The display will show then (account move time 1 min 35 sec.):
+       Move stored, 095 sec, press GO to go back to reference point
+
+
+4. The programming procedure is now finalized.
+To call up the program simply press the GO key to move the column to the reference point, please
+see program procedure no 2.
+
+
+Program call up (e.g. for move 1 min 35 sec):
+1. After switching on respectively selecting the mode 1 it will display the following message:
+       Move stored, 095 sec, press GO to go back to reference point
+
+2. By pressing the GO key a move to the reference point will be started.
+   The display shows:
+        Approaching Reference Point (XXX mm) press RES to stop
+
+3. After reaching the reference point the display shows:
+        Reference point reached, press GO to start recorded move
+
+4. By pressing the GO key once again the recorded move will be started.
+   The display shows:
+        Playback running, time left, 092 sec, press RESET to abort
+   As long as the column is in motion, the running time left will be displayed.
+   At this point the user basically has no need to interfere, but for safety reasons he should not leave the
+   hand control un-attended.
+   The move can be aborted at any time by pressing the RESET key.
+
+
+5. After the stored move has ended or the abortion of the move the display shows:
+        Playback over, press GO to return to reference point
+
+6. The programmed move ended now.
+   To repeat move simply press the GO key again (to return to the reference point).
+
+
+
+
+www.movietech.de                      … the easy working film equipment                                    27
+MAGNUM DOLLY SYSTEM                                        JUN. 10
+
+
+
+
+PLEASE NOTE: In order to assure the correct function you have to prior to programming or calling up a
+program, the end switch needs to be passed (please see mode 1, proximity sensor).
+If that is not the case the display will show the following message accordingly:
+        Pass upper or lower position indicator to enable programming
+
+Mode 2: Overlook display messages
+
+OPERATION STATUS                  Display “running” lines
+No moves entered                  No move recorded, press REC 3s to start recording
+Reference point set,
+                                  Reference Point stored, press zoom switch to start recording
+column stands still
+Record started,
+                                  Recording move " XXX s, time left XXX s, press F2 to terminate!
+column still stands
+Record started,
+                                  Recording, time left XXX s, press F2 to terminate!
+column moves
+Record stopped, respectively
+                                  Move stored, XXX s, press GO to go back to reference point
+status after switch on
+Column moves to reference
+                                  Approaching Reference Point (XXX mm) press RES to stop
+point
+Column stand on reference
+                                  On Reference Point, press GO to start recorded move
+point
+Play move                         Playback running, time left , XXX s, press RES to abort
+Stop or aborted move              Playback over, press GO to return to reference point
+Abortion with the RESET key       MOVE STOPPED!!
+Program try without passing the
+                                  Pass upper or lower position indicator to enable programming!
+proximity switch
+
+
+
+
+www.movietech.de                     … the easy working film equipment                              28
+MAGNUM DOLLY SYSTEM                                         JUN. 10
+
+
+
+
+Mode 3 - operation via serial interface
+This operation mode is intended for external control possibilities of the MAGNUM dolly via an external
+system (e.g. PC or Motion control system).
+This operation mode is not implemented yet, therefore the display shows:
+        No serial connection!
+
+
+However, manual moves without limitation are possible.
+
+
+Display of operation hours:
+By pressing the F2 key during the boot of the system the display will show the following:
+Running Time: XXXXX h
+Motor Time: XXXXX h
+Press GO to continue
+
+The first information on the display is the sum-up of the running time of the control electronics since the
+dolly was first built.
+The second information shows the sum-up of the hours the column actually has been moved. This helps
+to       determine      the      operational      time       of      electronics      and      mechanics.
+The counter only shows full hours in max of 5 digits, but internally the time will be stored up to seconds
+and        this    will    be      stored     at     every      switch      off     of     the      system.
+
+After   pressing      the   GO      key    the    hours     will   disappear         in     the   display.
+The column will go into operational mode and to the display accordingly.
+
+
+
+
+www.movietech.de                      … the easy working film equipment                                  29
+MAGNUM DOLLY SYSTEM                                       JUN. 10
+
+
+
+
+Error messages scheme and error correction power supply 48 Volt
+Error message      what needs to be checked and done?
+
+No.1               - let the motor cool down, and/or remove the damping cover of the motor to let
+                     the motor cool down faster.
+                     Error prevention: please note and follow minimum payload,
+                                            Minimum 80 kg
+                                            Optimum 150 kg
+                                            Maximum 250 kg
+
+                     Check for possible contact thermo resistor interruption.
+                     Check the connections from motor cable to socket board at tightening plate
+                     (plate will be visible when electronic module is removed) for proper connection
+                     and for possible damages.
+                     Connectosr have to be clicked solid in position.
+
+No.2               - Electronic module exchange.
+                     Error in system can only be rectified by the manufacturer
+
+No.3               - Function control of proximity switch via LED display on electronic board.
+                   The LED display control is right below the electronic display on the top board.
+                   It is a row of 6x SMD- LED’s.
+                   For that purpose please remove the electronic cover.
+
+                   LED No. 5 – lights up (red) if top proximity switch is activated.
+                     Position of column from 683 to 566 mm,
+                     Watch the information on display.
+                   LED No. 6 – lights up (red) if bottom proximity switch is activated
+                     Position of column from 000 bis 110 mm,
+                     Watch the information on display.
+                     In case the LED stays turned off in the proximity switch range, a defect is
+                     confirmed.
+                     A picture of board with LED can be found on page 43.
+
+                   - Check proximity switch, possibly the proximity switch is defective or the socket
+                   board is disconnected respectively the contact proximity switch cable is
+                   interrupted.
+                   Check contacts respectively exchange proximity switch.
+
+No.4                -Please do not move the zoom switch of hand control right after switching on of
+                   the system. Electronic will perform a self diagnostic for approx. 2 sec.
+                   A definite clicking sound will appear when self diagnostic is finalized.
+
+                   - Potentiometer of zoom switch not in the center spot.
+                   Spring of zoom switch maybe misaligned or broken.
+                   Adjust center spot or exchange spring.
+                   - Possible break in cable of hand control, exchange cable
+
+
+www.movietech.de                   … the easy working film equipment                                    30
+MAGNUM DOLLY SYSTEM                                      JUN. 10
+
+
+
+
+No.5               - No error code, number not in use!!!
+
+No.6               - Batteries discharged, currently below 17V, respectively 34V. Exchange both
+                   batteries for fully charged batteries (re-charged discharged immediately)
+                   - Do not use flat batteries at all, otherwise you risk the damage of the cells
+                   (exhaustive discharge).
+                   (Also see note MAGNUM batteries)
+
+No.7               - After reconnecting the electronic this error may not occur anymore
+                   - If error repeatedly occurs then the electronic module needs to be replaced, defect
+                   in unit.
+
+No.8               - possible interruption of contact in brake cable,
+                   check connector on motor cable and socket board for proper connection.
+                   Fix possible loose contact.
+                   - Otherwise like error code no.7
+                   The electronic module needs to be replaced, defect in unit.
+
+No.9               - Check both batteries for discharge and exchange accordingly for new ones.
+                   - Check the encoder, maybe loose on shaft. Encoder does not turn, tighten screws
+                   on shaft.
+                   - Possibly defective encoder or connector on encoder cable wrong positioned.
+                   Re-position, re-connect connector properly (at the last 2 points when operating the
+                   zoom switch moves without control) then the electronic will stop the system and
+                   show error code no.9.
+                   - Column hit an obstacle and electronic stops the system.
+                   Remove obstacle and possibly exchange the 30A fuse.
+                   - Drive belt tension not enough. Belt slips, readjust belt tension.
+                   - Possible error in electronic unit itself. Error code will appear right away after
+                   touching the zoom switch, even though column is not moving, electronic module
+                   needs to be replaced.
+
+No.10              - Main fuse 30A exchange, possibly defective fuse.
+                   Exchange, if error occurs again then electronic module needs to be exchanged,
+                   error in electronic.
+
+No.11              -Check motor, possibly defect.
+                   Motor exchange
+                   - Column blocks, possibly hit an obstacle.
+                   Please ensure free motion on top and bottom track
+
+No.12              - Check hand control, error in hand control or hand control cable.
+                   Possibly exchange hand control or cable.
+
+No.13              -Check hand control potentiometer.
+                   Possibly readjust or exchange potentiometer
+
+
+
+
+www.movietech.de                   … the easy working film equipment                                  31
+MAGNUM DOLLY SYSTEM                                          JUN. 10
+
+
+
+
+Movie Tech MAGNUM Dolly control unit – overview error messages
+
+error     Control display                                         Error description          Reaction of the
+No.       Code       Line 1          Line 2                                                  dolly
+1         ERR        No. 1: Hot      Motor too hot, try again     Motor temperature to       stop with ramp
+                                     later (10 min.)!             high or cable link to
+                                                                  thermo sensor broken
+2         ERR       No. 2: 12 Volt   Supply 12V defective,        Supply 12V defective       abrupt
+                                     device must be changed                                  emergency stop
+3         ERR       No.3: EndSw      Both Position indicators     Both Position indicators   stop with ramp
+                                     active, check indicators     active at the same time
+                                     and column wiring
+4         ERR       No.4: Accel      Don´t touch zoom switch      Hand control has been      no power-up
+                                     during self test/ check      used during set up
+                                     hand control
+5         Free, no use
+6         ERR        No.6: LoBatt    Battery voltage too low,     Battery voltage too low    stop with ramp
+                                     please recharge batteries
+7         ERR       No.7: Brake      Brake supply out of          By mistake, voltage on     abrupt
+                                     control, device must be      brake despite missing      emergency stop
+                                     changed                      control signal
+8         ERR       No. 8: Brake     Brake supply voltage low     Brake supply voltage low   abrupt
+                                     or brake not connected       or brake not connected     emergency stop
+9         ERR       No. 9: PosERR    Excessive Position Error,    Deviation from normal      abrupt
+                                     column mechanically          condition                  emergency stop
+                                     blocked, digital encoder
+                                     or device defective.
+                                     Check drive belt and
+                                     batteries!
+10        ERR       No. 10: Power    Power Stage Supply           Power Stage Supply         abrupt
+                                     Voltage too low, check       Voltage too low at end     emergency stop
+                                     30A Fuse! If fuse OK,        position; fuse or end
+                                     device must be changed       position defect
+11        ERR       No. 11: Motor    Excessive Motor current,     Motor current too high     abrupt
+                                     column blocked or motor                                 emergency stop
+                                     defective
+12        ERR       No. 12: Cable    Hand control buttons out     Hand control buttonsout    Note only,
+                                     of order, check cable!       of order                   moving via
+                                     Press zoom switch to start                              tippler possible
+13        ERR       No.13: Cable     Zoom switch value out of     Zoom switch value out of   stop with ramp
+                                     limits, check cable or       limits
+                                     change hand control
+
+
+
+
+www.movietech.de                     … the easy working film equipment                                          32
+ MAGNUM DOLLY SYSTEM                                            JUN. 10
+
+
+
+
+ Arrangement of controls on the electronic front
+
+
+
+
+                                                                              Control for top
+                                                                              speed pos. „4“
+Emergency                                                                     „UP-movement“
+Button                                                                        max. speed in
+To be used only                                                               combination with
+in case of hand                                                               hand control
+control                                                                       pos. „4“
+emergency
+
+
+
+Ramp control
+
+1: Standard use 1 (Speed 100%)
+2: Standard use 2 (Speed 80%)
+                                                                              Access for
+3: Jib-application 1 (Speed 70%)
+4: Jib-application 2 (Speed 60%)
+                                                                              hand control
+
+
+
+
+                                                                             Speed control
+                                                                             „UP-movement“
+
+
+
+
+                                                                             Speed control
+                                                                             „Down-
+                                                                             movement“
+   Programming control
+
+   Mode
+   0: Storage of position/ Indication of operating hours
+   1: Storage of max. 30 single positions
+   2: Storage of a complete drive. Max. drive time 4 min. 20 sec.
+   3: No configuration
+
+
+
+
+ www.movietech.de                        … the easy working film equipment          33
+    MAGNUM DOLLY SYSTEM                            JUN. 10
+
+
+
+
+    Explanation multifunctional display
+
+                            Position indication 3-digit
+                            Shows current position (in place 363 mm),
+                            and error message (Err)                     Program indication
+                                                                        1-digit
+                                                                        Current program mode
+                                                                        =0
+
+
+
+
+                                                                         Drive up speed
+                                                                         4 different speed
+Ramp level                                                               levels for the
+1-digit                                                                  column drive
+No. 1 - 4                                                                available
+active no. 1
+
+
+                                                                         Close down speed
+                                                                         3 different speed
+                                                                         levels for the
+In case of an
+                                                                         coumn drive
+Error
+                                                                         available
+Err
+Number of
+Error
+
+                           Motor 0A
+                           Advice of current power consumption
+
+
+
+
+    www.movietech.de         … the easy working film equipment                    34
+MAGNUM DOLLY SYSTEM                                       JUN. 10
+
+
+
+
+Control Unit
+
+Start up
+To switch on the dolly use the ON/OFF switch on the Picture: hand control
+hand control. The red control light lights up.
+After switching on wait 2 seconds as the system
+performs a self-test. During this time you should not
+depress any of the buttons. If you do, the system will
+consider this an error and will show “ERR Nr. 4” (see
+similar errors on page 30) on the display. Switch the
+dolly off again and switch on, do not touch the buttons
+during the self check time (2 sec.).
+                                                           Reset button
+                                                           underneath the
+                                                           hand control
+Manually operated drive
+The speed of the column can be varied with the hand
+control zoom switch. You can further control speed by
+use of the following 4 speed selections (see picture):                      Compensator
+                                                                            for up- and down
+1: Slow drive (30%)                                                         movements
+2: Medium drive (60%)
+3: Fast drive (100%)
+4: Adjustment on the electronic unit for separate up       Control lamp
+and down speed selection is active!                         for power
+                                                              on/off
+(Control for Speed up and down on page 33)                                  Switcher Pos. 4
+                                                                            In this mode the
+                                                             ON/OFF-        current positions
+With a voltage of 48 Volts in speed selection 4 and
+                                                              Switch        on the electronics
+ramp selection 1 and UP speed selection in pos. 4 you                       are active
+may reach a maximum speed of around 2.5 seconds          Programming
+for a travel of 683 mm.                                  buttons
+                                                         look at
+                                                         programming
+                                                         overview
+
+
+
+
+www.movietech.de                    … the easy working film equipment                  35
+MAGNUM DOLLY SYSTEM                                         JUN. 10
+
+
+
+
+Ramp switch
+
+The Magnum dolly has a 4 level ramp switch for changing the acceleration and braking behaviour of
+the column allowing to adapt the movement as closely as possible to the shooting requirements and
+different dolly setups.
+
+You can select the following 4 operation ramps:
+
+1. Standard 1 (speed-up 100%)
+ Very hard acceleration and abrupt stopping when you let go the zoom switch on the hand control. A
+smooth acceleration is only possible if you use the zoom switch on the hand control very delicately. This
+ramp is good for use with camera without an operator on the column.
+Use with Duo Jib is not allowed!
+
+2. Standard 2 (speed-up 80%)
+ Soft acceleration and braking for smooth stopping with 1 or 2 operators on the column when a quick
+stop by letting go the zoom switch is necessary.
+Use with Duo Jib is not allowed!
+
+ 3. Jib 1 (speed-up 70%)
+For use with Jib arm. Acceleration is softer than in position 2. Absolutely smooth stop, especially useful
+for 2 persons on the column, requires a well trained operator to use the hand control.
+
+4. Jib 2 (speed-up 60%)
+ Softest possible acceleration and deceleration. Even when you let go the handcontrol zoom switch
+suddenly, the column will stop smoothly. Best ramp selection for 2 persons on the column or use with Jib
+arm. It is not advised to use this ramp with a standard configuration as retardation of the starting and
+stopping do not allow direct control of the movement of the camera.
+
+The 4 ramps can also be applied to the programmable modes. The ramps also affect the way the
+column stops when reaching the top end and lower end of column movement, not only the way it reacts
+when pressing and releasing the hand control zoom switch.
+
+IMPORTANT: it is possible to switch ramps only when the dolly is switched off!
+For technical reasons the ramp selector is recorded by the system only once when switched on, it is
+not possible to change ramps during operation, you must first switch the dolly off, change ramp and
+then switch the dolly on again.
+
+
+
+
+www.movietech.de                      … the easy working film equipment                                      36
+MAGNUM DOLLY SYSTEM                                         JUN. 10
+
+
+
+
+Function of proximity switch
+The Magnum Dolly has two end of range switches, positioned about 11 cm before the top limit and
+bottom limit of the column. If when you switch on the dolly, the column is close to one of the switches,
+then the column will be able to move initially only till it reaches the switch (please see pict. of LED on
+next page). This way the column cannot be driven over the top or lower limit when the recorded position
+at switching off does not correspond to the position of the column when switching on (e.g. after use of
+the emergency switch). Programmed sequences are also only possible when the column is within the end
+switch range.
+
+
+
+
+Emergency override switch
+The Magnum Dolly has an emergency override switch behind the socket where the hand control is
+connected to the Magnum. This allows to move the column up and down when there is a fault in the
+control system. The emergency switch connects the motor with current from the batteries releasing the
+electromagnetic brake when depressing the switch. It moves the column at high speed without the
+possibility of slowing down or acceleration.
+
+
+IMPORTANT: AT TOP AND LOWER END POSITION THERE IS NO AUTOMATIC DECELERATION OF
+COLUMN MOVEMENT
+
+
+If the column is moved with the override switch over the endposition (out of higher or lower range) a
+fuse will burn (see pict. on page 39) and the dolly will stop working. Out of this reason MovieTech
+strongly recommends to use the emergency override switch only in real cases of emergency.
+
+
+
+
+www.movietech.de                      … the easy working film equipment                                 37
+MAGNUM DOLLY SYSTEM                                          JUN. 10
+
+
+
+
+SMD – LED advice on the board and function
+SMD – LED on the main board underneath the display, to be seen when the
+cover for the electronic unit is detached.
+
+Examples of information on LED
+
+Picture 1                                              Picture 2
+Green: Selftest has succesfully been performed         Green 1: Selftest has succesfully been performed
+Red: Lower end switch is active                        Green 2+3 : Motorbrake is open
+
+
+
+
+Picture 3
+Green: Selftest has succesfully been performed
+Red: Top end switch is active
+
+
+
+
+      1 2      3 4    56
+
+
+
+
+LED1 – lights up shortly when dolly is switched on
+LED2 - self test of the electronic unit has been performed, after about 2 seconds it lights up
+       and remains on.
+LED3 – lights up green when the zoom control switch is depressed, the motor brake is open / switches
+        off after about 3 seconds without any movement, the motor brake is on.
+LED4 – lights up green when you depress the zoom switch, motor brake is open, switches off after about
+        4 seconds without movement.
+LED5 – lights up red – top end switch is active – column within 683 - 566mm range (LED 6 is off)
+LED6 – lights up red– lower end switch is active – column within 0-110 mm range (LED 5 is off)
+
+
+
+
+www.movietech.de                       … the easy working film equipment                                  38
+MAGNUM DOLLY SYSTEM                                          JUN. 10
+
+
+
+
+Layout fuse
+View of lower electronic control board
+
+
+
+
+                                                                           Main fuse 30 A
+                                                                           The fuse will burn out if
+                                                                           the column hits an
+                                                                           obstacle or if there is a
+                                                                           short circuit in the
+                                                                           system.
+               Emergency fuse 25 A
+               The fuse will burn out if the column hits
+               an obstacle during operation with the
+               emergency override switch.
+
+
+
+
+www.movietech.de                       … the easy working film equipment                               39
+MAGNUM DOLLY SYSTEM                                        JUN. 10
+
+
+
+
+Handling and care of MAGNUM batteries
+The MovieTech Magnum-Dolly is operated with two 24 V batteries built up from four 6V-lead-acid-
+accumulators each. They deliver optimum capacity, but are (similar as car batteries) sensitive to deep
+discharge and lack of maintenance. They suffer irreversible defects by deep discharging and
+mechanical shocks.
+Batteries which are well maintained can achieve a lifetime of 5 years and more.
+The batteries are connected in series and supply 48 V DC to the control. Both batteries are identically
+stressed. The weakest 6V-cell in this configuration is determining the capacity of the complete set. As
+one faint cell brings the whole battery set down, always four good cells should be in one battery box.
+Under normal conditions (with a load of approx. 150 kg = 330 lbs) more than 800 complete
+movements (up and down) are possible with one full set of batteries. Practical experience of shooting
+under normal conditions (12 – 16 hours / day and 4 – 5 days / week) shows that 2 weeks between
+recharging cycles are possible.
+
+For trouble-free operation please consider:
+1. Do not dump, throw or hit the batteries; move them with caution
+2. Always change both batteries and use identically charged ones; do not insert batteries with less than
+   60% capacity (push test button and read “xx%”)
+3. In case the electronic shuts off during operation and displays „E06“, the batteries are discharged:
+   Change both against fresh ones, don’t continue to operate. Re-charge removed batteries and store
+   them in charged condition, do not store discharged batteries for more than 5 days
+4. You can keep batteries over a long period in the charger unit. It might be connected
+   to power (to keep the batteries fresh) or not
+5. Remove at least one battery from the dolly when the dolly is not used longer than one week from the
+   column to interrupt the power cycle. Otherwise the control pulls always a little power and kills
+   batteries within 4 – 5 months
+6. We strongly recommend to change always all 4 cells in a battery when the cells are used over a
+   period of 3 months or longer to avoid a slack in capacity. Only when the cells are new (and one is
+   defective) a single cell change makes sense
+
+Trouble shooting tips:
+1. When the dolly stops and displays (--), the voltage is low. Normally one of the batteries is
+   discharged. Test the battery capacity; remove batteries with less than 60% charge against fresh ones.
+   Always use batteries with similar charging percentage.
+2. The emergency button on the electronic front panel (see saw switch with arrows) has only two
+   functions:
+   a. If the dolly is not retracted completely when it stops because of empty batteries („E06“) it allows
+   for one-term retracting of the Magnum column
+   b. During servicing it allows for overriding the upper end switch to disassemble
+   the gas springs.
+Never use it to operate the column! This can cause damage to electronic and
+batteries! Retracting the column completely requires a load of minimum 80 kg (=
+130 lbs) on it! Never retract the column completely without additional load (it has
+to move extremely hard against 3 strong gas springs inside the column)! Damages
+caused by faulty operation or disregard of these instructions are out of warranty!
+
+
+
+
+www.movietech.de                     … the easy working film equipment                                  40
+MAGNUM DOLLY SYSTEM                                              JUN. 10
+
+
+
+
+Error messages power supply 110 or 220 Volt
+The „Err – Lamp“ on the power supply unit shows a flash-code which is to be analyzed as follows:
+
+1 blinks:          left output stage is defective
+
+2 blinks:          right output stage is defective
+
+3 blinks:          total voltage is too low (eventually due to low input voltage)
+
+4 blinks:          overconsumption of current (dolly has an excessive consumption)
+
+5 blinks:          defective brake resistor
+
+Light permanently on: battery mounted on dolly (besides the power supply unit no other battery is to be
+              mounted on the dolly. In place of the second battery a short-circuit plug [Art.-Nr. 2020]
+              must be mount
+
+
+
+
+www.movietech.de                           … the easy working film equipment                          41
+MAGNUM DOLLY SYSTEM                                          JUN. 10
+
+
+
+
+Manual for Charger Magnum Dolly 24/48 V – since 2004
+After turning on the unit 4 steps will be processed:
+
+    -    The unit recognizes a battery. At open exit the display will show the info: OPEN
+
+    -    If a battery is attached the display will show 24 V or 48 V, understanding what type battery is
+         attached.
+
+    -    During the test period of approx. 10 sec. the charging current increases slow to its nominal
+         value.
+         The red LED shows the charging procedure. Alternatively the display shows e.g.:
+         TEST/24V/0,7A/TEST/24V/1,2A
+
+    -    After reaching the nominal charge current (approx. 2A at 48V, approx. 3.8A at 24V) it will be
+         changed into regular charging mode.
+         Display shows e.g.: LOAD/24V/3.5A
+
+    -    The battery will be charged until it reached the final top charge value 55V respectively 27.5V,
+         the charge current will drop under 0.3A.
+
+    -    Subsequently, the fully charged battery will be held at proper current with approx. 0.3A.
+         The green LED indicates the charge is complete.
+         Display shows: FULL/24V/0.3A
+
+
+
+
+www.movietech.de                       … the easy working film equipment                                   42
+MAGNUM DOLLY SYSTEM                                                         JUN. 10
+
+
+
+
+                                        EC-Declaration of Conformity
+
+
+Company                  MovieTech AG
+                         Martin Kollar Str. 9
+                         81829 München
+
+
+
+
+We hereby certify that the following described machine in its conception, construction and form put by
+us into circulation is in accordance with all the relevant essential health and safety requirements of the
+EC machinery directive.
+
+
+
+
+         This declaration is no longer valid if the machine is modified without out our consent.
+
+
+
+
+Description of the machine:                     Dolly
+Type of machine:                                MovieTech Magnum Dolly
+
+
+
+
+Appropriate regulations:                        98/37/EG
+BGV C1 – for staging and production facilities for the entertainment industry
+                                                DIN 15999
+
+
+
+
+Munich: June 21th, 2006
+
+
+
+
+_________________________________________________________________________
+        (Berthold Kastl, CIO)                                    (Dipl.-Ing. Gunnar Flosbach, constructing engineer)
+
+
+
+
+www.movietech.de                                … the easy working film equipment                                      43
 

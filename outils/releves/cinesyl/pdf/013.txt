@@ -1,70 +1,1005 @@
-# https://www.cinesyl.com/wp-content/uploads/2017/04/Documentation-MasterJib.pdf
+# https://www.cinesyl.com/wp-content/uploads/2023/12/2022_10_05_MovieTech-GIZMO-JIB-User-Manual-EN.pdf
 
-Scope of delivery:     crane support with integrated base segment, horizontal and double
-                        vertical brake, adapter for monitor support, pan angle display, water
-                        level
-                       end segment 500mm (alternatively 1000mm)
-                       counter weight support incl. steel counter weight rods (Ø 30mm)
-                       arm segments 500/1000 mm with quick release system (number
-                        depends on version)
-                       panning handle flexible to mount
-                       crane head with mitchell base plate and handles on the side,
-                        horizontal angle adjustable
-
-weights:                 segment 500mm: 4,95kg, 1000mm: 8,3kg
-                         crane support incl. base segment: 25,3kg
-                         counter weight holder: 15,2kg
-                         crane head: 14,95kg
-                         panning handles: 1kg each
-                         total weight in version R6: 83,95kg
-
-segment dimensions:   120x150x500/1000mm
-
-payload:              50kg in version R6
-
-accessories:          crane dolly CD5/ 6          remote head P15
-                      ball adapter                euromount adapter
-                      counterweights              transport case with rolls
-                      display support
+   GRIP EQUIPMENT YOU CAN RELY ON!
 
 
 
 
-                                                                                                                                  (Delivery without remote head and crane dolly)
-
-MovieTech AG                                                                                     high payload but small space ratio
-Martin-Kollar-Str. 9 D-81829 München Tel. +49 89 4368913 info@movietech.de
-MovieTech Srl.                                                                                   no additional bracing, quick assembling
-Viale Edison 318     I- 20099 Milano Tel. +39 22 2470043 k.shore@movietech.de                    available and mountable in different length versions
-                                                                                                 compatible for remote and fluid heads as well as 3D Rigs
-                                    www.movietech.de
-                                                                                                        Overview on the versions R1-R6 (A)
-The MasterJib is available in 6 different length
-versions. Even in confined space conditions you thus
-may use this powerful equipment in its shortest
-version. With minimal shadowing it’s also perfect for
-working in studios.
+                                            GIZMO JIB
+          TECHNICAL USER GUIDE
+                                             Version: 10/2023
+                                             Language: English
 
 
 
 
-                                                        The steel counterweight rods (Ø 30mm outside)
-                                                        may carry different types of counterweights
-                                                        such as stage weights and fitness weights.
+              MovieTech AG
+            Martin-Kollar-Str. 9
+         80801 Munich – Germany
++49 (0) 89 /436 891 3 | info@movietech.de
+    GRIP EQUIPMENT YOU CAN RELY ON!
 
 
 
 
-Due to integrated horizontal and vertical brakes it’s
-                                                                                                                                             Side view of version R6
-easy to realize precise panning shots or still
-photographs with the MasterJib. Via a crane column
-the jib can be mounted on every MovieTech crane
-dolly.
+2
+                                                                                              GRIP EQUIPMENT YOU CAN RELY ON!
+
+
+Inhaltsverzeichnis
+1.   Introduction..................................................................................................................................... 4
+2.   General Information ....................................................................................................................... 5
+1)   Intended use: .................................................................................................................................. 5
+2)   Product details ................................................................................................................................ 5
+3)   Warranty .......................................................................................................................................... 6
+3.   EU – Declaration of conformity ...................................................................................................... 7
+4.   Safety Guidelines............................................................................................................................ 8
+5.   How to set it up ............................................................................................................................. 11
+1)   Set-Up: step by step ..................................................................................................................... 11
+6.   Technical Description ................................................................................................................... 16
+1)   GIZMO Jib – Version S .................................................................................................................. 17
+2)   GIZMO Jib – Version M ................................................................................................................. 18
+3)   GIZMO Jib – Version L .................................................................................................................. 19
+4)   GIZMO Jib – Version XL ................................................................................................................ 20
+5)   GIZMO Jib – Version XXL .............................................................................................................. 21
+7.   Recurrent inspection .................................................................................................................... 22
 
 
 
 
-                                                        The panning handles help to operate the jib.
-                                                        They may be mounted flexibly where needed.
+                                                                          3
+                                                            GRIP EQUIPMENT YOU CAN RELY ON!
+    1. Introduction
+
+We are very glad that you decided to work with our MovieTech GIZMO JIB.
+We hope you enjoy it as much as we do !
+Everyone at MovieTech is passionate about grip equipment. In case you have useful feedback for
+us or you have a question concerning our products, please do not hesitate a second to contact us
+– we´re gladly there for you!
+To make your experience with this Jib most enjoyable, please follow these instructions carefully.
+Any camera Jib is only as safe as the person operating it.
+
+
+These are our contact details:
+
+
+                                        MovieTech AG
+                                      Martin-Kollar-Str. 9
+                                   80801 Munich – Germany
+                          +49 (0) 89 /436 891 3 | info@movietech.de
+
+
+
+
+All the best,
+Your MovieTech Team.
+
+
+
+
+                                               4
+                                                              GRIP EQUIPMENT YOU CAN RELY ON!
+
+
+    2. General Information
+
+               1) Intended use:
+The GIZMO JIB is a mobile camera jib arm which shall only be used to carry cameras remote heads
+for use in motion picture productions in a stationary position (on levelling legs) or on tracks (with
+track wheels). The system may not be used for any purpose other than that specified.
+
+The GIZMO Jib System can be set up in various different assembly versions. This user manual
+describes the most common configurations. Configurations that are not described in this user
+manual require prior configuration of the MovieTech technical department. Components of other
+camera jib arms may not be combined with any component of the GIZMO Jib.
+
+Please carefully read and understand the following safety instructions and set up manual before
+use of the equipment! Operating the jib can be dangerous when the safety instructions as follows
+are not strictly taken care of. The jib may only be set-up by trained and skilled staff and in
+accordance to the instructions as follows.
+
+
+               2) Product details
+
+ Product:                MovieTech GIZMO Jib
+ Manufacturer:           MovieTech AG
+                         Martin-Kollar-Str. 9
+                         D- 80801 München
+                         +49 (0) 89 /436 891 3
+
+ Payload:                Depending on version (see following pages)
+ Material:               Aluminum (mainly), stainless steel, synthetic materials
+ Surface treatment:      Anodization, HART-COAT®
+ Year of construction:
+
+ Version:
+ Serial no.:
+ Purchaser:              Company:
+
+                         Address:
+                         Contact details:
+                         Contact person:
+
+
+
+
+                                                 5
+                                                              GRIP EQUIPMENT YOU CAN RELY ON!
+            3) Warranty
+
+All parts have a warranty period of 12 months, beginning on the date of delivery.
+Caution: Any warranty expires if operating and maintenance instructions are not strictly followed.
+The same applies if any changes are made to the product, if parts of the equipment are replaced
+with external parts, or if the equipment is handled improperly.
+The purchaser undertakes to exempt us from any claims for compensation which might arise on
+the part of third parties vis-à-vis us, whether resulting from putting into service or from using the
+equipment. The purchaser must inform our customer service management in writing about any
+discernible defects without delay – at the latest, however, within one week after receipt of the
+delivered item. Defects which do not become discernible within this period, even after careful
+examinations, must be reported to MovieTech by the purchaser in writing immediately after
+discovery. In the event that the purchaser should report that the products do not correspond to the
+warranty, we may require at our discretion that either
+    -    the defective equipment or the defective part is to be sent to MovieTech for repair and
+        subsequent return, or
+    -    the purchaser keeps the defective equipment or the defective part available, and we shall
+        commission an expert who will be sent to carry out the repair.
+Transport cost and travelling expenses incurred for the purpose of remedying defects shall be borne
+by the purchaser. Defects which occur to the equipment as a result of natural wear and tear are
+not covered by the warranty. When asserting claims under warranty, it is the duty of the purchaser
+to prove that the defects were not caused by any circumstance which are among the risks within
+his sphere of responsibility (such as transport damage, improper operation, etc.). Any further claims
+in particular claims for damages for direct or indirect damage are excluded. If after an appropriate
+time it is not possible to remedy the defect, the purchaser may at his discretion demand a reduction
+of the payment or cancellation of the contract. Only the direct purchaser shall be entitled to make
+warrantly claims against MovieTech; such claims are not assignable.
+
+
+
+
+                                                 6
+                                                               GRIP EQUIPMENT YOU CAN RELY ON!
+    3. EU – Declaration of conformity
+
+
+
+
+                    – Declaration of Conformity
+Company:       MovieTech AG
+               Martin-Kollar-Str. 9
+               DE 81829 München
+
+
+We hereby certify that the following described machine in its conception, construction and form put
+by us into circulation is in accordance with all the relevant essential health and safety requirements
+of the EC machinery directive.
+      This declaration is no longer valid if the machine is modified without out our consent.
+
+
+                                          Camera Jib Arm
+                                          Type: GIZMO Jib
+
+
+Appropriate regulations:       DIN EN ISO 12100
+                               Richtlinie für Veranstaltungs- und Produktionsstätten für szenische
+                               Darstellung (VGB 70) entspricht.
+                               DGUV V17 (formerly BGVC1)
+                               DIN 15999
+
+
+
+
+München, 2023/10/24
+
+
+
+
+                                                  7
+                                                         GRIP EQUIPMENT YOU CAN RELY ON!
+
+
+4. Safety Guidelines
+
+
+
+     Training for a safe operation of the system is offered by Movie Tech.
+      Contact us +49 (0) 89 436 89 1 3
+
+     Personnel must wear safety shoes, since the counterweights can present a particular
+      danger if they fall.
+
+     Minimum Age to operate the Jib system is 18 years.
+
+     You must read and understand the instruction manual before using the Jib. The
+      instruction manual must always be available to the operator at the point of use.
+
+     The Jib may only be operated when balanced horizontally an all directions. Levelling
+      legs or a level track are used for alignment. A bubble level is used to check the balance.
+      A commercially available bubble level can also be used.
+
+     The jib can only be operated on levelling legs or with guide wheels. The mounted
+      pneumatic tyres are used to transport the jib to the point of use only. The pneumatic
+      tyres can be used to move the erected jib without payload and without the
+      corresponding counterweight.
+
+     The jib may not be operated in a maned platform version
+
+     Make sure that the ground can bear the weight of the Jib before setting it up (at least
+      1000 kg/m2). The surface load is a result of the Jib's own weight in the required version
+      plus counterweight and payload divided by the footprint or contact area. On this basis,
+      the total surface load is approx. 1.5 m² (load-bearing capacity of ceilings in buildings).
+      For the load under an individual levelling leg, particularly important in an open area, a
+      third of the total weight of the version used is to be taken into account. It may be
+      necessary to increase the area under the levelling legs using wooden plates or similar
+      (grass, meadow, beach).
+
+     Do not set up or operate the Jib while under the influence of drugs, alcohol or other
+      medicines and narcotics.
+
+     Never operate the Jib in the immediate vicinity of high-voltage lines – danger to life.
+
+     The Jib must be shut down in sufficient time before the maximum permitted operating
+      wind of 25 km/h or 6,9 m/s (15.5mph) is reached.
+
+     Particular care is required when operating the Jib in unfavourable weather conditions.
+      The Jib must be shut down in sufficient time when a thunderstorm is threatening. When
+      in doubt, the Jib should be secured and the area evacuated. Pathways and operating
+      elements should be kept free of ice if there is a risk of ice forming.
+
+
+
+
+                                            8
+                                                         GRIP EQUIPMENT YOU CAN RELY ON!
+   All elements of the Jib must be within the field of vision of the operating personnel when
+    in use. Visual obstructions can include window blinds, fog or darkness. The Jib can only
+    be moved by line of sight.
+
+   Any movements to be carried out with the Jib must be adequately rehearsed. Pay
+    particular attention to keeping the area of movement in front of and behind the Jib free
+    of obstacles. Quick movements and/or panning must be rehearsed starting at low
+    speeds. Make sure that the stability of the Jib is not negatively affected by the dynamics
+    of the quicker movement under increasing speed. Pay attention to critical situations
+    that may arise when lifting a levelling leg or guide wheel.
+
+   EXTREME CAUTION: These safety measures are especially important when
+    moving the Jib on curved tracks! The maximum speed in the circle (Master
+    Track, diameter approx. 6 m) is 6.5 km/h | 4 mph (slow walking pace),
+    which corresponds to 35°/sec. or three crossties per second. Caution –
+    risk of tipping!
+
+   All materials and equipment used must be securely attached to prevent any drops.
+
+
+   Prevent the unauthorised use of the erected Jib system.
+
+   It is not allowed to exceed the maximum payload of the respective version and the
+    corresponding maximum counterweight.
+
+   Do not operate the Jib on vehicles of any type – uncontrollable movements can be
+    dangerous. (communication between driver <=> operating personnel, uneven surface,
+    etc.)
+
+   Standing under overhead loads until release by operating personnel is prohibited. Keep
+    the danger zone cordoned off until release and mark as a danger zone if necessary.
+    People within the pivoting range of the Jib must be specially instructed and informed
+    about the dangers. The operator must anticipate that such individuals may suddenly
+    find themselves within pivoting range of the Jib and therefore, must maintain a safe
+    distance to the Jib to ensure sufficient reaction time.
+
+
+   Should you need to route cable along the Jib arm to the remote head or camera, the
+    cable should not negatively impact the movements of the Jib in any way. It should also
+    be noted that the weight of the cable counts towards the overall payload.
+
+   The Jib system and its individual components should be clean and dry when stored. Any
+    accumulated dirt can negatively impact proper function when the Jib is operated next.
+
+   When transporting the Jib system, make sure that the components do not rub together
+    and cause any material wear. Severe damage to the surface coating can lead to
+    increased corrosion. Also make sure when transporting the individual components that
+    they do not hit against each other to avoid bending or denting them. Any bends or dents
+    can weaken the structure and make the system unusable.
+
+   Jib components that have become unusable must be professionally disposed of. Movie
+    Tech AG can properly dispose of such components for you by sending them back to us.
+
+
+
+                                          9
+                                                             GRIP EQUIPMENT YOU CAN RELY ON!
+          Warranty: The manufacturer accepts no liability for damages or injuries for incidents or
+           accidents occurring due to negligence by the Jib operator or misuse of the Jib or
+           disregarding the instruction manual.
+
+          To avoid accidents due to misuse, Accident Prevention Guidelines especially DGUV
+           regulation 1 (previously BGV A1), and DGUV regulation 3 (previously BGV A3) as well as
+           VDE regulations (especially VDE 0105 section 100) must be adhered to. If the nominal
+           voltage cannot be determined, a minimum clearance of 2m must be kept at all times.
+
+
+          The load capacities stated contain all elements that are being attached.
+
+          Mark the Jib´s working area (e.g. with flags of safety band) in order to keep all persons
+           away from working rage at any time.
+
+          Important note: All equipment mounted to the Jib may only be adjusted or dismantled
+           with the clear consent of the Jib operator, as this may interfere with the balance of the
+           system as a whole. Counterweight must be taken out of the Jib and the outrigger needs
+           to be secured before camera or any weight is taken off of the Jib.
+
+          Never operate with a damaged Jib. Immediately stop operating the Jib system when a
+           damage occurs.
+
+          Only use original MovieTech parts or parts authorized by MovieTech.
+
+          What to do when damages occur or an accident happened:
+
+Please immediately inform MovieTech about how the accident took place, how severe it was and
+about any kind of damage to the Jib. Damaged parts should be sent back to the MovieTech factory
+for evaluation, repair and replacement. Operating the Jib with damaged parts is not allowed –
+MovieTech takes no liability for damages or injuries due to the use of damaged parts. Please follow
+the locally applicable accident prevention guidelines!
+
+    Please be aware of possible dangers at all times and work with caution and responsibility.
+                                         STAY SAFE !!
+
+
+
+
+                                                10
+                                                          GRIP EQUIPMENT YOU CAN RELY ON!
+  5. How to set it up
+
+          1) Set-Up: step by step
+
+Step                   Description                              Details
+
+1 . Secure work area   Make sure that there are no
+                       unauthorized persons or objects in the
+                       working area of the Jib.
+                       If necessary, markings with barrier
+                       tapes or warning signs are required.
+
+
+2. Base or Tripof on   Position the Base Dolly on a firm and
+firm ground or on      stable ground.
+tracks
+
+                       On tracks:
+                       set up tracks according to the
+                       respective set-up manual.
+                       Always use appropriate track support.
+                       Tracks need to be levelled precisely
+
+                       On firm ground:
+                       If needed, please use ground support
+
+
+
+
+                                            11
+                                                    GRIP EQUIPMENT YOU CAN RELY ON!
+3. Attach main   Attach the Jib support to the dolly or
+segment          tripod.
+                 Add main segment and close the
+                 screw.
+
+
+
+
+4. Attach Jib    DEPENDING ON JIB VERSION
+Segments            - Lock jib head to prevent it
+                      from falling
+                    - Take off jib head
+                    - Best use Jib support
+
+
+
+
+                                     12
+                                                          GRIP EQUIPMENT YOU CAN RELY ON!
+                          -   Add Jib segments according to
+                              the version you want to set up
+                              (see setup version below)
+
+                          -   Close all levers between every
+                              segment
+
+
+
+
+6. Add parallelogram   - select desired length of the
+bars                   telescopic front segment
+                       - add the parallelogram elements by
+                       using the attached quick pin
+                       - select appropriate length of the
+                       telescopic parallelogram bracing rod.
+
+
+
+
+                                            13
+                                                            GRIP EQUIPMENT YOU CAN RELY ON!
+                          -   Level the jib head
+
+
+
+
+7. Mount counter      - mount the counterweight bars and
+weight bars           fixate them with ball lock pin.
+
+                      Note: there are different counter
+                      weight bars depending on the version
+                      of Gizmo Jib.
+
+
+
+
+10. Add your camera   - Add your camera.
+
+
+
+
+11. Add               - insert the counterweight bars
+counterweight         - add counterweight
+
+
+
+
+12.fine adjust the    - fine adjust the Jib with the help of the
+weight                precise crank rear end and the lever
+                      on your Jib parallelogram rods.
+
+
+
+
+                                              14
+                                  GRIP EQUIPMENT YOU CAN RELY ON!
+Brakes and friction brakes
+
+
+
+
+                                              Tilt brake (both sided)
+
+
+
+
+                                         Display-holder mount
+
+
+
+
+                                               Pan friction (both sided)
+
+
+
+
+                                       Tilt friction
+
+
+
+
+                             15
+                                                           GRIP EQUIPMENT YOU CAN RELY ON!
+   6. Technical Description
+             Note: Any camera Jib is only as safe as the person operating it!
+       Follow these instructions carefully to ensure a safe and enjoyable experience
+                               with the MovieTech Gizmo Jib.
+
+ATTENTION
+
+The GIZMO Jib is a lightweight construction made of a special squared tube. Despite
+its low self-weight, it can hold cameras and remote heads as heavy as 80 kg (176 lbs)
+in the Versions M and S. Please note that the maximum load capacity decreases
+with an increase in Jib length.
+It´s recommended to operate all Jib versions on a solid base dolly. Shorter Versions
+may also be operated in combination with the Bullstand tripod.
+
+ Length                          Retracted                        Extracted
+ Version S                       517 mm                           517 mm
+ Version M                       1189 mm                          1589 mm
+ Version L                       2003 mm                          2403 mm
+ Version XL                      2535 mm                          2935 mm
+ Version XXL                     3067 mm                          3467 mm
+
+
+                Self-weight            Max. payload                    Counterweight
+                                  Retracted       Extracted        Retracted         Extracted
+ Version S      23kg(51 lbs)     80kg(176 lbs)         -         52 kg (115 lbs)         -
+ Version M      30kg(66 lbs)     80kg(176 lbs)   70kg(154 lbs)   120kg (265 lbs)   152kg(335lbs)
+ Version L      40kg(80 lbs)     60kg(132 lbs)   50kg(110 lbs)   184kg (406 lbs)   188kg(415lbs)
+ Version XL     44,5kg(98 lbs)   40kg(80 lbs)    35kg(77 lbs)    192kg (423 lbs)   200kg(441lbs)
+ Version XXL    49kg(108 lbs)    30kg(66 lbs)    25kg(55 lbs)    204kg (450 lbs)   200kg(441lbs)
+
+ 2x Counterweight bar short                      Max. 128 kg
+ 2x Counterweight bar long                       Max. 208 kg
+
+ TRIPOD – Bullstand (8321-03)                     BASE DOLLY – CD 8 (7540-01Set)
+
+
+
+
+                                             16
+                                                    GRIP EQUIPMENT YOU CAN RELY ON!
+
+
+          1) GIZMO Jib – Version S
+
+
+
+
+Package includes:
+
+   -   1 x Main Segment with crankable rear piece
+   -   1 x Euro-mount head piece
+   -   2 x Counterweight bars short
+
+ Length                     Retracted                       Extracted
+ S                          517 mm                          517 mm
+
+
+Technical Data
+
+ GIZMO Jib – S
+ Weight                                   23 kg (50,7 lbs)
+ Max. payload                             80 kg (176 lbs)
+ Counterweight required.                  52 kg (115 lbs)
+
+
+
+                                        17
+                                                    GRIP EQUIPMENT YOU CAN RELY ON!
+          2) GIZMO Jib – Version M
+
+
+
+
+Package includes:
+
+   -   1 x Main Segment with crankable rear piece
+   -   1 x Extendable front segment
+   -   1 x Euro-mount head piece
+   -   1 x Hand crank
+   -   2 x Counterweight bars (long/short)
+
+ Length                     Retracted                      Extracted
+ M                          1189 mm                        1589 mm
+
+
+Technical Data
+
+ GIZMO Jib – M
+ Weight                                   30 kg (66 lbs)
+                                              Retracted              Extracted
+ Max. payload                             80 kg (176 lbs)       70kg (154 lbs)
+ Counterweight required.                  120kg (265 lbs)       152 kg (335 lbs)
+
+
+
+
+                                        18
+                                                    GRIP EQUIPMENT YOU CAN RELY ON!
+          3) GIZMO Jib – Version L
+
+
+
+
+Package includes:
+
+   -   1 x Main Segment with crankable rear piece
+   -   1 x Extendable front segment
+   -   1 x Extension segment 0,25m
+   -   1 x Extension segment 0,5m
+   -   1 x Euro-mount head piece
+   -   1 x Hand crank
+   -   2 x Counterweight bars (long/short)
+
+ Length                     Retracted                      Extracted
+ L                          2003 mm                        2403 mm
+
+Technical Data
+
+ GIZMO Jib – L
+ Weight                                   40 kg (88 lbs)
+                                              Retracted               Extracted
+ Max. payload                             60 kg (132 lbs)        50 kg (110 lbs)
+ Counterweight required.                  184kg (406 lbs)        188kg (415 lbs)
+
+
+
+
+                                        19
+                                                   GRIP EQUIPMENT YOU CAN RELY ON!
+
+
+         4) GIZMO Jib – Version XL
+
+
+
+
+Package includes:
+
+  -   1 x Main Segment with crankable rear piece
+  -   1 x Extendable front segment
+  -   1 x Extension segment 0,25m
+  -   2 x Extension segment 0,5m
+  -   1 x Euro-mount head piece
+  -   1 x Hand crank
+  -   2 x Counterweight bars (long/short)
+
+Length                     Retracted                   Extracted
+XL                         2535 mm                     2935 mm
+
+
+
+GIZMO Jib – XL
+Weight                                   44,5 kg (98 lbs)
+                                             Retracted            Extracted
+Max. payload                             40 kg (80 lbs)       35 kg (77 lbs)
+Counterweight required.                  192 kg (423 lbs)     200 kg (441 lbs)
+
+
+
+
+                                       20
+                                                   GRIP EQUIPMENT YOU CAN RELY ON!
+
+
+         5) GIZMO Jib – Version XXL
+
+
+
+
+Package includes:
+
+  -   1 x Main Segment with crankable rear piece
+  -   1 x Extendable front segment
+  -   1 x Extension segment 0,25m
+  -   3 x Extension segment 0,5m
+  -   1 x Euro-mount head piece
+  -   1 x Hand crank
+  -   2 x Counterweight bars (long/short)
+
+
+
+Length                     Retracted                   Extracted
+XXL                        3067 mm                     3467 mm
+
+
+GIZMO Jib – XXL
+Weight                                                 49kg(108 lbs)
+                                             Retracted            Extracted
+Max. payload                             30 kg (66 lbs)       25 kg (55 lbs)
+Counterweight required.                  204 kg (450 lbs)     200kg (441 lbs)
+
+
+
+
+                                       21
+                                                   GRIP EQUIPMENT YOU CAN RELY ON!
+   7. Recurrent inspection
+
+Ref. safety-related and und maschine-related equipment on stages and in studios.
+Certification of recurrent inspection according to „§34 UVV Veranstaltungs- und
+Produktionsstätten für szenische Darstellung (VBG 70).“
+
+ Product:           MovieTech – GIZMO Jib
+
+            The following inspections have been performed:
+ Date:              Description of maintenance:                   Name:
+
+
+
+
+ Date:              Description of maintenance:                   Name:
+
+
+
+
+ Date:              Description of maintenance:                   Name:
+
+
+
+
+ Date:              Description of maintenance:                   Name:
+
+
+
+
+ Date:              Description of maintenance:                   Name:
+
+
+
+
+                                          22
+                                                             GRIP EQUIPMENT YOU CAN RELY ON!
+
+
+
+
+Test Sheet Movie Tech AG
+Confirmation of expertise for installation, inspection and maintenance of specific camera Jibs in
+accordance with BetrSichV and DGUV regulation 17. The expert inspection must be repeated
+annually from year 1 - 3. An expert inspection is required in year 4.
+Examiners:
+Date:
+Manufacturer/ Type:
+Serial number:
+Customer name/ Owner:
+
+
+                                                    Tested     Defects            Others
+                                                              Yes   No
+ Visual inspection
+ Mechanical connections
+ Deformation of parts, in particular segments
+ Damage to parts, especially segments
+ (dents/cracks)
+ Thread of segments
+ Rope and crimp connections
+ Turnbuckles and hooks
+ Axles
+ Jib head with clamp/strap
+ Jib centre part with threaded pin and brakes
+ Counterweight unit with weight bars
+ Struts/ Outrigger
+ Completeness of all parts
+
+ Structure and functional test
+ Plug connection and segments
+ Folding function Outtrigger
+ Screw connections Segments
+ Swivel bearing / Smoothness / Noises
+ Brakes (horizontal and vertical)
+ Clamping Jib head 80mm/ Mitchell
+
+ Function test with payload
+ Max. Payload max. counterweight with function
+ test
+
+ Comments:
+
+
+
+
+                                               23
+                                                             GRIP EQUIPMENT YOU CAN RELY ON!
+
+
+
+
+Test Sheet Movie Tech AG
+Confirmation of expertise for installation, inspection and maintenance of specific camera Jibs in
+accordance with BetrSichV and DGUV regulation 17. The expert inspection must be repeated
+annually from year 1 - 3. An expert inspection is required in year 4.
+Examiners:
+Date:
+Manufacturer/ Type:
+Serial number:
+Customer name/ Owner:
+
+
+                                                    Tested     Defects            Others
+                                                              Yes   No
+ Visual inspection
+ Mechanical connections
+ Deformation of parts, in particular segments
+ Damage to parts, especially segments
+ (dents/cracks)
+ Thread of segments
+ Rope and crimp connections
+ Turnbuckles and hooks
+ Axles
+ Jib head with clamp/strap
+ Jib centre part with threaded pin and brakes
+ Counterweight unit with weight bars
+ Struts/ Outrigger
+ Completeness of all parts
+
+ Structure and functional test
+ Plug connection and segments
+ Folding function Outtrigger
+ Screw connections Segments
+ Swivel bearing / Smoothness / Noises
+ Brakes (horizontal and vertical)
+ Clamping Jib head 80mm/ Mitchell
+
+ Function test with payload
+ Max. Payload max. counterweight with function
+ test
+
+ Comments:
+
+
+
+
+                                               24
+                                                             GRIP EQUIPMENT YOU CAN RELY ON!
+
+
+
+
+Test Sheet Movie Tech AG
+Confirmation of expertise for installation, inspection and maintenance of specific camera Jibs in
+accordance with BetrSichV and DGUV regulation 17. The expert inspection must be repeated
+annually from year 1 - 3. An expert inspection is required in year 4.
+Examiners:
+Date:
+Manufacturer/ Type:
+Serial number:
+Customer name/ Owner:
+
+
+                                                    Tested     Defects            Others
+                                                              Yes   No
+ Visual inspection
+ Mechanical connections
+ Deformation of parts, in particular segments
+ Damage to parts, especially segments
+ (dents/cracks)
+ Thread of segments
+ Rope and crimp connections
+ Turnbuckles and hooks
+ Axles
+ Jib head with clamp/strap
+ Jib centre part with threaded pin and brakes
+ Counterweight unit with weight bars
+ Struts/ Outrigger
+ Completeness of all parts
+
+ Structure and functional test
+ Plug connection and segments
+ Folding function Outtrigger
+ Screw connections Segments
+ Swivel bearing / Smoothness / Noises
+ Brakes (horizontal and vertical)
+ Clamping Jib head 80mm/ Mitchell
+
+ Function test with payload
+ Max. Payload max. counterweight with function
+ test
+
+ Comments:
+
+
+
+
+                                               25
+                                                             GRIP EQUIPMENT YOU CAN RELY ON!
+
+
+
+
+Test Sheet Movie Tech AG
+Confirmation of expertise for installation, inspection and maintenance of specific camera Jibs in
+accordance with BetrSichV and DGUV regulation 17. The expert inspection must be repeated
+annually from year 1 - 3. An expert inspection is required in year 4.
+Examiners:
+Date:
+Manufacturer/ Type:
+Serial number:
+Customer name/ Owner:
+
+
+                                                    Tested     Defects            Others
+                                                              Yes   No
+ Visual inspection
+ Mechanical connections
+ Deformation of parts, in particular segments
+ Damage to parts, especially segments
+ (dents/cracks)
+ Thread of segments
+ Rope and crimp connections
+ Turnbuckles and hooks
+ Axles
+ Jib head with clamp/strap
+ Jib centre part with threaded pin and brakes
+ Counterweight unit with weight bars
+ Struts/ Outrigger
+ Completeness of all parts
+
+ Structure and functional test
+ Plug connection and segments
+ Folding function Outtrigger
+ Screw connections Segments
+ Swivel bearing / Smoothness / Noises
+ Brakes (horizontal and vertical)
+ Clamping Jib head 80mm/ Mitchell
+
+ Function test with payload
+ Max. Payload max. counterweight with function
+ test
+
+ Comments:
+
+
+
+
+                                               26
+                                                             GRIP EQUIPMENT YOU CAN RELY ON!
+
+
+
+
+Test Sheet Movie Tech AG
+Confirmation of expertise for installation, inspection and maintenance of specific camera Jibs in
+accordance with BetrSichV and DGUV regulation 17. The expert inspection must be repeated
+annually from year 1 - 3. An expert inspection is required in year 4.
+Examiners:
+Date:
+Manufacturer/ Type:
+Serial number:
+Customer name/ Owner:
+
+
+                                                    Tested     Defects            Others
+                                                              Yes   No
+ Visual inspection
+ Mechanical connections
+ Deformation of parts, in particular segments
+ Damage to parts, especially segments
+ (dents/cracks)
+ Thread of segments
+ Rope and crimp connections
+ Turnbuckles and hooks
+ Axles
+ Jib head with clamp/strap
+ Jib centre part with threaded pin and brakes
+ Counterweight unit with weight bars
+ Struts/ Outrigger
+ Completeness of all parts
+
+ Structure and functional test
+ Plug connection and segments
+ Folding function Outtrigger
+ Screw connections Segments
+ Swivel bearing / Smoothness / Noises
+ Brakes (horizontal and vertical)
+ Clamping Jib head 80mm/ Mitchell
+
+ Function test with payload
+ Max. Payload max. counterweight with function
+ test
+
+ Comments:
+
+
+
+
+                                               27
+                                                 GRIP EQUIPMENT YOU CAN RELY ON!
+
+
+
+
+The MovieTech family
+                            Everyone at MovieTech is passionate about grip
+                            equipment.
+
+                            Our brand stands for high quality and reliable grip
+                            equipment – since 1993.
+                            In order to meet the high demands of our customers
+                            and to fulfill our motto
+                            “Grip-Equipment you can rely on”, we produce all
+                            our MovieTech products with passion and care in our
+                            factory in Munich.
+                            Always with the aim of developing user-friendly,
+                            versatile, robust and reliable camera support
+                            systems that users will love.
+
+
+
+
+   www.movietech.de        www.abc-products.de          www.mts-germany.de
+
+
+
+                                MovieTech AG
+                              Martin-Kollar-Str. 9
+                           80801 Munich – Germany
+                  +49 (0) 89 /436 891 3 | info@movietech.de
+
+
+                                     28
 

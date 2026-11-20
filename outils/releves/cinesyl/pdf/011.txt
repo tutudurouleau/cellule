@@ -1,205 +1,25 @@
-# https://www.cinesyl.com/wp-content/uploads/2017/04/MT-400-Version.pdf
-
-Bedienungsanleitung
-Instruction Manual
-
-
-
-
-           14 MT 400 remote head versions
-14.1 400-R1 version
-
-
-
-        CAUTION:             Only the bottom weight basket can be
-                             mounted when used without strut bar!
-
-
-
-
-                                      Rear boom                                      1m         1.5 m
-                                Required boom, front                               1 x 1.5 m   1 x 1.5 m
-                                                               Front               1 x 1.5 m   1 x 1.5 m
-    Strut bars / parallelogram bars
-                                                                Rear               1x1m        1 x 1.5 m
-                                      Total travel                                  3.71 m      3.71 m
-                                                     Without column extension       3.82 m      3.38 m
-            Maximum height
-                                                       With column extension        4.15 m      4.05 m
-                               Counterweight unloaded                                0 kg        0 kg
-                                       Payload                                      80 kg       80 kg
-                             Counterweight with payload                             120 kg      80 kg
-              Boom length                             Front (reception flange)      3.01 m      3.01 m
-                                                     Rear (outer edge of basket)    1.97 m      2.45 m
-                    Own weight without payload and counterweights                  229.7 kg    256.2 kg
-
-Tab. 7: Data for 400-R1 version
-
-
-
-
-Movie Tech MT 200 / MT 400                                                                                 43
-Bedienungsanleitung
-Instruction Manual
-
-
-
-
-14.3 400-R3 version
-
-
-
-
-                                      Rear boom                                      1m         1.5 m
-                               Required boom, front                                3 x 1.5 m   3 x 1.5 m
-                                                               Front               9 x 1.5 m   9 x 1.5 m
-    Strut bars / parallelogram bars
-                                                                Rear               3x1m        3 x 1.5 m
-                                      Total travel                                  8.63 m      8.63 m
-                                                     Without column extension       6.28 m      5.25 m
-            Maximum height
-                                                       With column extension        6.61 m      6.42 m
-                              Counterweight unloaded                                92 kg       48 kg
-                                       Payload                                      80 kg       80 kg
-                             Counterweight with payload                             388 kg      264 kg
-                                                      Front (reception flange)      6.05 m      6.05 m
-              Boom length
-                                                     Rear (outer edge of basket)    1.97 m      2.45 m
-                   Own weight without payload and counterweights                   272.2 kg    298.7 kg
-
-Tab. 5: Data for 400-R3 version
-
-
-
-
-Movie Tech MT 200 / MT 400                                                                                 45
-Bedienungsanleitung
-Instruction Manual
-
-
-
-14.4 400-R4 version
-
-
-
-
-                                      Rear boom                                       1m          1.5 m
-                               Required boom, front                                4 x 1.5 m    4 x 1.5 m
-                                                               Front               10 x 1.5 m   10 x 1.5 m
-    Strut bars / parallelogram bars
-                                                                Rear                3x1m        3 x 1.5 m
-                                      Total travel                                  11.08 m      11.08 m
-                                                     Without column extension        7.5 m       6.18 m
-            Maximum height
-                                                       With column extension        7.83 m       7.54 m
-                              Counterweight unloaded                                160 kg       104 kg
-                                       Payload                                       80 kg        80 kg
-                             Counterweight with payload                             544 kg       400 kg
-              Boom length                             Front (reception flange)      7.57 m       7.57 m
-                                                     Rear (outer edge of basket)    1.97 m       2.45 m
-                   Own weight without payload and counterweights                    307 kg      333.5 kg
-Tab. 9: Data for 400-R4 version
-
-
-
-
-Movie Tech MT 200 / MT 400                                                                                   46
-Bedienungsanleitung
-Instruction Manual
-
-
-
-
-14.5 400-R5 version
-
-
-
-
-                                      Rear boom                                       1m           1.5 m
-                               Required boom, front                                5 x 1.5 m    4x1.5m+1x1m
-                                                               Front               13 x 1.5 m   12x1.5m+1x1m
-    Strut bars / parallelogram bars
-                                                                Rear                3x1m          3 x 1.5 m
-                                      Total travel                                  13.54 m       13.54 m
-                                                     Without column extension       8.49 m         7.12 m
-            Maximum height
-                                                       With column extension        8.82 m         8.7 m
-                              Counterweight unloaded                                260 kg         156 kg
-                                       Payload                                       65 kg         65 kg
-                             Counterweight with payload                             632 kg         424 kg
-              Boom length                             Front (reception flange)       9.9 m         9.9 m
-                                                     Rear (outer edge of basket)    1.97 m         2.45 m
-                  Own weight without payload and counterweights                    323.6 kg       350.1 kg
-Tab. 10: Data for 400-R5 version
-
-
-
-
-Movie Tech MT 200 / MT 400                                                                                     47
-Bedienungsanleitung
-Instruction Manual
-
-
-
-
-14.6 400-R6 version
-
-
-
-
-                                      Rear boom                                        1m            1.5 m
-                               Required boom, front                                5x1.5m+1x1m    4x1.5m+2x1m
-                                                               Front               15x1.5m+1x1m   12x1.5m+4x1m
-    Strut bars / parallelogram bars
-                                                                Rear                  3x1m          3 x 1.5 m
-                                      Total travel                                   15.52 m        15.52 m
-                                                     Without column extension         9.7 m          7.5 m
-           Maximum height
-                                                       With column extension          10.03m         9.3 m
-                              Counterweight unloaded                                  344 kg         220 kg
-                                       Payload                                        65 kg          65 kg
-                             Counterweight with payload                               764 kg         500 kg
-              Boom length                             Front (reception flange)       10.13 m         9.68 m
-                                                     Rear (outer edge of basket)      1.97 m         2.45 m
-                  Own weight without payload and counterweights                      333.1 kg       359.6 kg
-
-Tab. 11: Data for 400-R6 version
-
-
-
-
-Movie Tech MT 200 / MT 400                                                                                       48
-Bedienungsanleitung
-Instruction Manual
-
-
-
-
-           14.7 400-R7 version
-
-
-
-
-                                      Rear boom                                        1m            1.5 m
-                               Required boom, front                                5x1.5m+2x1m    4x1.5m+3x1m
-                                                               Front               15x1.5m+4x1m   12x1.5m+7x1m
-    Strut bars / parallelogram bars
-                                                                Rear                  3x1m          3 x 1.5 m
-                                      Total travel                                   16.84 m        16.84 m
-                                                     Without column extension        10.38 m         8.38 m
-           Maximum height
-                                                       With column extension         10.72 m        10.27 m
-                              Counterweight unloaded                                  432 kg         276 kg
-                                       Payload                                        45 kg          65 kg
-                             Counterweight with payload                               760 kg         592 kg
-              Boom length                             Front (reception flange)       11.13 m        10.64 m
-                                                     Rear (outer edge of basket)      1.97 m         2.45 m
-                  Own weight without payload and counterweights                      344.4 kg       367.4 kg
-
-Tab. 12: Data for 400-R7 version
-
-
-
-
-Movie Tech MT 200 / MT 400                                                                                       49
+# https://www.cinesyl.com/wp-content/uploads/2015/07/BOA.pdf
+
+CINESYL
+  01 41 61 50 00
+contact @cinesyl.fr
+CINESYL
+CINESYL
+CINESYL
+CINESYL
+     CINESYL
+
+
+
+
+17
+           13
+CINESYL
+CINESYL
+CINESYL
+                   CINESYL
+                         ATTENTION
+       REGLAGE de VERTICALITE de L’EUROPEAN COUPLING
+    sur la tête; DESSERER les VIS à TETES VERTE UNIQUEMENT.
+Ne pas démonter les vis inox de l’european coupling pour la retourner
 

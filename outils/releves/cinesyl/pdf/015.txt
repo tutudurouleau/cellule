@@ -1,32 +1,3 @@
-# https://www.cinesyl.com/wp-content/uploads/2015/07/BOA-Equilibrage.pdf
+# https://www.cinesyl.com/wp-content/uploads/2013/07/montage-aerocrane.pdf
 
- Attention : le poids maxi admissible
-      de l’ensemble tête - caméra
-         complète est de 60 kgs.
-Pour commencer l’équilibrage : il faut répartir le lest
-sur les deux points d’équilibrage ( 20 et 14 ) .
-
-Un équilibrage d’essai avec RONDFORD 7 + ARRI 435
-+ OBJ se compose de :
-- Environ 45 kgs sur barre 14
-- Environ 37 kgs sur manchon 20
-
-
-                  Barre 14
-
-
-                  Manchon 20
-                                                  Bras-caméra 11
-
-Il faut ensuite ajuster l’équilibrage et surtout la bonne
-répartition des poids ( entre 20 et 14 ) :
-
-- l’équilibre doit être identique avec le bras-caméra 11
-en position horizontale ou verticale.
-- L’articulation du bras 11 (le coude) doit être allégée
-pour qu’il se replie vers le haut sans effort et permettre de
-passer facilement d’une position verticale à horizontale
-
-- La hauteur de la base doit correspondre si possible à un
-cadrage caméra moyen , avec le bras caméra vertical.
 

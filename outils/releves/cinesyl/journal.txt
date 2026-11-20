@@ -1,3 +1,3 @@
-160 pages, 32 PDF, 194 adresses vues
+350 pages, 32 PDF, 384 adresses vues
 ÉCHEC https://www.cinesyl.com/wp-content/uploads/2015/07/Documentation-MasterJib.pdf : HTTP Error 404: Not Found
-ÉCHEC http://www.cinesyl.fr/cinesyl/liste-dolly.html : HTTP Error 404: Not Found
+ÉCHEC https://www.cinesyl.com/produits/tete-freefly-movi-xl/ : HTTP Error 404: Not Found

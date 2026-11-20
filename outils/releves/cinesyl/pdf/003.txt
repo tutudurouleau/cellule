@@ -1,718 +1,178 @@
-# https://www.cinesyl.com/wp-content/uploads/2017/12/Panther-Manual.pdf
+# https://www.cinesyl.com/wp-content/uploads/2013/04/Dolly-F2-Doc.pdf
 
-                                               Pa nthe r GmbH
-                                Manufac ture, Sales and Rental
-                               of Cinematographic Equipment
-                                               Raiffeisenallee 3
-                                   82041 Oberhac hing-Munic h
-                                  Phone: + 49 (89) 613 900-01
-SUPER PANTHER III (01/96)            Fa x: + 49 (89) 613 1000
+CINESYL        01 46 30 97 19
+   Notice utilisateur
+     Dolly F2
 
 
 
-Operating Instruc tion 02/97
-C ont e nt s
 
+    www.cinesyl.fr
+CINESYL DOLLY F2                                               01 46 30 97 19
+                                                               www.cinesyl.fr
+CARACTERISTIQUES GENERALES                                     contact@cinesyl.fr
 
 
+  Min.length (A): 38 in - 96 cm
+                                                   Min.Height (E): 16.5 in - 42 cm
+  Max length (B): 43.4 in - 110 cm
+                                                   Max.Height (F): 46 in - 117 cm
+  Min length (C): 20.4 in - 52 cm
+                                                   Travel (G):    28.3 in - 72 cm
+  Max width (D): 24.5 in - 62 cm
 
-                                                                                                                             page
 
 
 
+                                     Turn Radius (R)       0- oo
+                                     Power supply          220v - 110v / 50Hz-60Hz
+                                     Usable track gauge   24.4 in - 62 cm/ 17 in - 44 cm
+                                     Lifting capacity     131 lbs - 60 kg
+                                     Min.working P        1305 psi - 90 bars
+                                     Max.working P        2755 psi - 190 bars
+                                     Maximum arm lifts     6
+                                     Charge time          60 sec.
+                                     Weight               280 lbs - 140 kg
 
-Contents......................................................................................................................2
 
-Prefac e ...................................................................................................................... 3
 
-Safety guidelines........................................................................................................ 4
 
-Super Panther III diagram .......................................................................................... 5
+                                               MECANIQUE 3 POSITIONS
+                                               sélection très fluide :
 
-Mec hanic al princ iples............................................................................................... 6
 
-Getting started ........................................................................................................... 7
+                                                - CONVENTIONNEL
+                                                - ROUND
+                                                - CRABE
 
-Front panel................................................................................................................. 8
 
-Selec tor switc hes........................................................................................................ 9
+                                                                                           P1
+ CINESYL DOLLY F2
+ 2 BACS LATERAUX pour BATTERIES
 
-Driving patterns........................................................................................................ 10
 
-Programming ........................................................................................................... 11
 
-Power supply ............................................................................................................ 12
 
-Charging options..................................................................................................... 13
+VEROUILLAGE : tourner 1/4 de tour en appuyant sur la tôle du fond
 
-Steering .................................................................................................................... 14
 
-Wheel legs................................................................................................................ 14
 
-Wheel adjustment .................................................................................................... 15
 
-Turnstile attac hment................................................................................................. 15
+                 Plateau relevé pour passage étroit ou déployé pour grosses batteries.
 
-Load toleranc es diagram........................................................................................ 16
+                                   PLANCHERS HAUTS
 
-Column..................................................................................................................... 17
 
-Trac king .................................................................................................................... 18
 
-Maintenanc e ........................................................................................................... 18
 
-Bac k up operation ................................................................................................... 19
+                                              ATTENTION !
+                                       POSITION EXTRA BASSE
+                                       NE CONVIENT PAS AU
+                                       PASSAGE SUR RAILS
+ 4 REGLAGES en hauteur à l’avant
+                                                                                         P2
+   CINESYL DOLLY F2
 
-Tec hnic al Spec ific ations.......................................................................................... 20
 
 
 
+                              Une infinité de combinaisons de hauteurs
+                              symétriques ou asymétriques :
 
-Subjec t to c hange without notic e                                                                                                 Page 2/20
-290297
-Pr e f a c e
+                                   - 7 positions frontales
+                                   - 6 positions latérales
 
 
 
 
-Congratulations on c hoosing the Super Panther III c amera support system. The Super Panther III
-employs state-of-the-art tec hnology to give users optimum performanc e in the field of c amera dollying.
+Ultra bas; ATTENTION aux rails !
 
-Employing spec ially selec ted materials and high quality c omponents, designed around a unique
-c omputer-c ontrolled c olumn drive system, the Super Panther III offers you a whole new sc ope of
-prac tic al applic ation in studio and loc ation shooting.
 
-The Super Panther III is robust and easy to operate, and yet it enables the c ameraman to obtain
-c reative results in steady framing and smooth trac king. The Super Panther III was designed and built by
-spec ialist c raftsmen for the professional user, in c onsultation with many expert c ameramen and
-operators.
 
-In its own quiet way, the Super Panther III c ombines years of experienc e and workmanship to put a
-powerhouse of tec hnic al progress in the hands of the user.
 
-At Panther, we know you have a right to expec t reliable, dramatic results. That's why we c reated the
-Panther - so you c an c reate the pic tures. Before you do, we'd like you to read our user instruc tion
-manual. It c ontains routine maintenanc e proc edures and all the information you need to set up and
-operate the Panther safely in every c onfiguration.
+              Plancher rehaussé
 
 
+                                                                         P3
+CINESYL DOLLY F2
+                            SYSTÈME de TETE
 
+           DEPORT BAS ORIENTABLE
 
-Panther GmbH
 
 
 
+      MONTAGE avec EUROPEAN COUPLING
 
-All inquiries or c omments should be addressed to the manufac turer or your loc al Panther dealer.
 
 
 
+                                              P4
+   CINESYL DOLLY F2                            TETE EXCLUSIVE CINESYL
+                                SYSTÈME PORTE BAZOOKA
 
-Subjec t to c hange without notic e                                                              Page 3/20
-290297
-Sa f e t y Gu i d e l i ne s
 
 
 
-1.     Do not operate the dolly before these instruc tions have been read and understood. Safety rules
-       and servic ing sc hedules must be observed.
+MONTAGE - DEMONTAGE ULTRA RAPIDE                         2 POSITIONS
+FIXATION QUEUE D’ARRONDE
 
-2.     The Super Panther III Dolly may only be operated by qualified personnel. You may partic ipate in
-       one of our workshops whic h are arranged on request. Certific ates are issued for eac h workshop.
 
-3.     The entire operating, panning and lift range of the dolly must be kept c lear at all times.
-       Panther GmbH has antic ipated the possible risk of squeezes/c rushes to some extent by
-       installing deformable fenders and warning signs.
 
-4.     Always assemble the system with attention to balanc e (risk of tilting!). See loading diagrams.
-       Wheel legs must be fully turned out. See wheel legs, p. 12.
 
-5.     Note: Do not use the dolly on sloping surfac es or in vehic les. Sec ure the Super Panther III to
-       prevent rolling. The ground must be stable and unyielding, also when trac ks are being used.
+                                                      AVEC LE JEU DE
+                                                      BAZOOKAS TELESCOPIQUES CINESYL
+                                                      LE REGLAGE DE LA TETE SE FAIT
+                                                      EN UN CLIN D’ŒIL SANS DEMONTAGE.
+                                                      ET SANS OUTIL.
 
-6.     The c olumn is supported by pneumatic springs whic h have a high pressure!! If damaged,
-       inc orrec tly adjusted, or if forc e has been used, the c olumn may independently move out with
-       great forc e. Chec k the drive belt for wear or damage every 6 months or after 100 hours of
-       operation. The belt should be replac ed at least every 2 years as a safety prec aution. Note: For
-       all maintenanc e proc edures, first extend the c olumn fully to minimize pneumatic pressure. The
-       dolly should only be repaired by tec hnic al personnel trained by the manufac turer. Please
-       arrange an appointment for training with Panther GmbH.
+                                                      HAUTEUR GRIFFE 300
+                                                      de 320 à 1670 mm ( et plus avec le grand bazooka )
 
-7.     General elec tric al guidelines must be observed during elec tric al operation and maintenanc e.
-       Protec t the equipment from moisture and humidity.
 
 
 
+La stabilité du double bras de la F2
+permet ce type de montage
+                                        Levier de déblocage de la tête
+                                        (ne pas oublier de retirer la
+                                        goupille de sécurité)
 
-Subjec t to c hange without notic e                                                                  Page 4/20
-290297
-The Super Pa nther III Dolly
+                                                     Goupille de sécurité
+                                                                                                       P5
+CINESYL DOLLY F2
+                                ROUES SOFT / PNEUMATIQUES
+                                         PRESSION MINI 2.5 KG - MAXI 3 KG
 
 
 
-1.   Euro adapter - p. 15                   9.   Motor - p. 4
-2.   Turnstile attac hment - p. 13         10.   Battery - p. 10, 11
-3.   Fric tion sc rew - p. 13              11.   Steering rod - p. 12
-4.   Turnstile attac hment brake - p. 13   12.   Wheel leg - p. 12
-5.   Column platform - p. 15               13.   Steering c hain - p. 12, 16
-6.   Guide runner - p. 15                  14.   Wheel leg adjustment lever - p. 12
-7.   Front panel - p. 6, 7, 8              15.   Kombi wheel - p. 12, 13, 16
-8.   Adjustable seat-extension - p. 13     16.   Handset - p. 9
 
+      Système de montage rapide des roues soft/pneumatiques
+              1/4 de tour et verrouillage par molette
+              ( bien pousser à fond le 1/4 de tour jusqu’en butée )
 
+                              LIFTING BARS
 
 
-Subjec t to c hange without notic e                                                   Page 5/20
-290297
-Me c ha ni c a l      Pr i nc i p l e s
 
-Understanding the Super Panther III dolly's mec hanic al princ iples helps to avoid errors in operation.
-Following is a brief summary of the main points.
 
-The motor is loc ated on the side of the Panther and a spec ial belt-drive transmission rotates the c entral
-spindle that drives the c olumn up and down.
+                        Accès à la pompe à manuelle
+                           enlever la protection
 
-The Panther's design c ombines minimum weight with maximum performanc e, whic h is ac c omplished by
-a spec ial c ounter-pressure c onfiguration of 4 pneumatic springs in the base of the c olumn. These
-springs exert approx. 1.4 kN of upward pressure on the c olumn. When the Panther is switc hed on, the
-motor-drive begins working against the weight differential, or balanc e, of c olumn load minus spring
-pressure, and holds the c olumn in position. The energy needed by the motor to keep the c olumn
-stationary is in proportion to the c olumn's load ratio to the spring pressure. Energy c onsumption is least
-when load equals pressure, i. e. when the load is approx. 140 kg.
 
-When the Panther is switc hed off, the c olumn would normally drive upwards or downwards, ac c ording
-to the load. In order to hold the c olumn position when the Panther is switc hed off, there is a brake
-situated on the motor shaft that automatic ally applies spring pressure to the motor shaft as soon as the
-Panther is switc hed off.
 
-When the dolly is switc hed on, the initial stage is the ac tivation of the elec tronic system only, or stand by
-c ondition. The brake remains on until you use the manual c ontrol switc h on the handset. Then the
-brake is elec tromagnetic ally released, holds the "brake open" position and the motor switc hes on. At
-this point, the "brake open" LED on the front panel lights up.
 
-This phase, with elec tronic system, motor and elec troma gnetic brake release all ac tivated, is when
-power c onsumption is at its maximum. Therefore, when c olumn drive is not required, switc h Panther off
-to c onserve power and extend battery life.
+                                                                            P6
+CINESYL DOLLY F2
+                        CHARIOT DE RANGEMENT
 
-If the Panther is left on for a time, but drive system is not used, a sec ondary system that rec ords the
-power drag when the brake is released will reapply the brake (a "c lic k" will be heard). Onc e the brake
-is on, the Panther is bac k in stand by mode and the motor shuts down. The "brake open" LED will no
-longer be lit.
+920 X 530 X H 1350 mm   Poids 150 kg chargé
 
-Onc e the manual c ontrol switc h is pressed, the system is reac tivated: the brake is released and the
-motor operates to hold the c olumn in position.
 
-If the "c lic k" you hear whenever the brake is released or reapplied should disturb loc ation sound
-rec ord ing, operate the manual c ontrol switc h before shooting begins. This resets the sec ondary system,
-and you have the full time (depending on the load) until the next "c lic k" (brake ac tivation).
 
-Note:
-When you turn the Super Panther III dolly on, the system is in "stand by" mode.
-The brake is released after either pressing the manual c ontrol switc h on the handset or when rec alling a
-program.
-When c olumn drive is not being used, a sec ondary system will operate the brake after
-120 sec onds.
 
+     BACS A BATTERIES
 
 
-
-Subjec t to c hange without notic e                                                                    Page 6/20
-290297
-Get t i ng St a r t e d
-
-
-1.     Before switc hing the Panther on, make absolutely sure that the entire lift, panning and operating
-       range of dolly and ac c essories is c lear.
-
-2.     Supply the dolly with elec tric ity as desc ribed in "Power Supply" p. 10, 11. Note: Please fully
-       c omply with instruc tions.
-
-3.     Chec k if handset, c able and dolly are properly c onnec ted.
-
-4.     Set the switc hes on front panel (7) as desired (see "Front Panel", p. 6, 7, 8).
-
-5.     Turn the Panther on at the main switc h. The c ontrol LED "POWER" on the front panel will light up,
-       showing that the Panther is on. Make sure the battery (batteries) is (are) fully c harged. You c an
-       keep the main switc h "on" due to the "On-Off" - switc h loc ated
-       on the handset (16) whic h enables you to switc h the dolly "on" or "off".
-       The Dolly does not turn on if one of these two switc hes is off.
-
-6.     Using the handset (16), bring the c olumn to the desired position. Press the manual c ontrol switc h
-       forward to elevate the c olumn, pull bac k to lower the c olumn. This switc h also determines the
-       speed of travel, ac c ording to the pressure used.
-       Note: When not using the c olumn lift, switc h the Panther off to c onserve battery power.
-       The Super Panther has a "On-Off" - switc h loc ated on the handset, next to the manual c ontrol
-       switc h (red knob). This switc h is used to stop the elevating mec hanism during unintentional
-       movements.
-       The Super Panther III may not be operated with mains power units + c hargers sold before 1
-       January, 1996.
-
-
-
-
-Subjec t to c hange without notic e                                                                    Page 7/20
-290297
-F r o nt    Pa ne l
-
-
-The ergonomic ally designed front panel displays all information at a glanc e and enables direc t c ontrol
-of operating parameters suc h as speed, ramp setting etc .
-
-                                                         1.       On/off switc h (with automatic c ut-out)
-                                                         2.       LCD display
-                                                         3.       Control LEDs
-                                                         4.       Super Jib operation on/off
-                                                         5.       Ha ndset programming on/off
-                                                         6.       Speed selec tor
-                                                         7.       Ramp selec ting switc h
-                                                         8.       "POWER OFF" safety switc h
-                                                         9.       Manual c ontrol switc h
-                                                        110.      Storage/rec all keys for programmed
-                                                                  movements
-
-
-
-
-The manual c ontrol switc h (9) is applic able for c olumn movements in both direc tions and at any speed.
-More than 250 c olumn movements c an be programmed at any position or speed and rec alled at will
-by using the storage/rec all keys (10). The manual func tioning is nevertheless maintained. The position
-ac c urac y leaves nothing to be desired.
-
-
-
-MAIN SWITCH                    Combination of power on/off, safety power off switc h on handset
-(on/off switc h):              and fuse (that will switc h off at a c onstant c urrent exc eeding 10 A).
-
-
-LCD-DISPLAY:                   shows the momentary motor voltage (with one battery approx. 24 V, with two
-                               batteries approx. 48 V)
-
-
-CONTROL LEDS:
-
-Power                          yellow LED; will light up when the dolly is turned on
-
-Brake open                     green LED; will light up when the brake is open. If the dolly is not in operation
-                               for longer than 120 sec onds, the brake will c lose automatic ally and the LED will
-                               go out.
-
-Battery empty/error            red LED; will light up when batteries are empty. The LED will start blinking in
-                               c ase of an error. The error c an be determined by removing the elec tronic s
-                               c over and looking at the display on the left side of the elec tronic s housing:
-
-                               b. (on)          battery empty
-                               d. (blinking)    fault at rotary enc oder
-                               E. (blinking)    fault at end switc h
-                               H. (blinking)    fault at handset
-                               L. (blinking)    c urrent exc eeding normal value
-
-
-Subjec t to c hange without notic e                                                                          Page 8/20
-290297
-SELECT OR SWI T CHES
-
-                      Position on:    Movements with Super Jib (all start and stop ramps are
-                                      smoother/adapted to Super Jib operation)
-
-                      Position off:   Standard movements (start and stop ramps are adapted to
-                                      standard operation).
-
-                      Position on:    Programming keys on handset are ac tivated. (Note: take c are
-                                      against unintentional operation, see "Programming",
-                                      p. 10.)
-
-                      Postion off:    Standard travelling (programming keys on handset without
-                                      effec t)
-                      Position 1:     speed 0 ... 25 %
-                      Position 2:     speed 0 ... 50 %
-                      Position 3:     speed 0 ... 75 %
-                      Position 4:     speed 0 ... 100 % (maximum speed)
-                                      When using only one battery, all c olumn movements are
-                                      effec ted at half the speed of the selec ted position
-
-
-
-
-       Ac c eleration and dec eleration phases of the Panther c olumn c an be adjusted with the ramp
-       selec ting switc h.
-
-
-                      soft ramp:      ac c eleration very soft, hardly perc eivable
-
-                      hard ramp:      strong ac c eleration to maximum speed, strong dec eleration
-                                      until stopping
-
-                      medium          c harac teristic between soft and hard
-                      ra mp :
-
-
-
-
-Subjec t to c hange without notic e                                                                   Page 9/20
-290297
-The start and stop ramps are programmed in our fac tory. Speed selec tor 1,2,3,4 and Super Jib on/off
-switc h c hange the start and stop ramps ac c ording to the selec ted requirements.
-
-
-Note: At all ramp settings (soft, medium and hard), but espec ially at "soft", the Panther c olumn will still
-      move somewhat after the handset's manual c ontrol switc h (9) is released: risk of c rushing!
-      Observe safety distanc es. If there is any danger of c rushing, press the "power off" safety switc h
-      on handset. Also see "Opera tion/Safety Prec autions Super Jib I and II".
-
-
-
-
-Subjec t to c hange without notic e                                                                   Page 10/20
-290297
-Pr og r a mmi ng
-
-
-
-a)     Set "Program" switc h on front panel to "on". Use manual c ontrol switc h to selec t the c olumn height
-       that will serve as starting point. Press the key marked STF to enter the first point (starting point) in
-       the program memory. (When STF is pressed, only the starting point is memorized, and any existing
-       programs are erased.)
-
-b)     Use the manual c ontrol switc h to bring the c olumn to the next desired point (= first stopping
-       point). The Panther elec tronic s will memorize only the highest speed used to reac h this point
-       manually, and will repeat the move at this speed throughout. If you wish to program a slower
-       movement, you must drive slowly to the stopping point.
-
-c)     You may drive up or down to any stopping point until it is entered. Enter the point by pressing
-       STM.
-       Note: Stopping point will only be rec orded when the c olumn is c ompletely stationary. To be quite
-       sure of c orrec t entry of any point, always wait a moment before pressing STM.
-
-d)     Move to the sec ond stopping point and enter it by pressing STM. Any of up to 255 stopping
-       points are entered by always pressing STM.
-
-e)     Before rec alling or resetting the program in sequenc e, move to the starting point by pressing GRF.
-       The c olumn automatic ally returns to this point at the maximum speed c hosen with the speed
-       selec tor.
-
-f)     To rec all the program, press A (Ac tion) for every movement in c hronologic al order.
-
-
-
-Note: For safety reasons, set "program" switc h on the front panel to "off" when not using programming
-mode. This will not erase programmed movements; these are reac tivated when "program" switc h is set
-to "on".
-
-
-
-
-Subjec t to c hange without notic e                                                                  Page 11/20
-290297
-Powe r Su p p l y
-
-The Super Panther III dolly c an be supplied with power as shown on the diagrams below.
-Should your Super Panther III dolly be equipped with a snap-on mains power unit + c harger (SN),
-please read "Operating instruc tions for Snap-On Mains Power Unit + Charger" before operation.
-
-                                                 B=        b a ttery
-                                                 SN =      snap-on mains unit + c harger
-                                                 24 V =    single speed
-                                                           speed selec tor switc h setting 2
-                                                           (speed 2)
-                                                 48 V =    double speed
-                                                           speed selec tor switc h setting 4 (speed
-                                                           4)
-
-
-
-
-Powe r Su p p l y Opt i o ns
-
-
-
-
-Subjec t to c hange without notic e                                                            Page 12/20
-290297
-Cha r g i ng Opt i o ns
-
-
-B=          b a ttery
-SN =        snap-on mains unit + c harger
-ZL =        extra c harger for 1 or 2 batteries
-
-
-
-
-Subjec t to c hange without notic e               Page 13/20
-290297
-St e e r i ng
-
-Symmetric al c onfiguration of 4 identic al wheel legs enables 1-wheel, 2-wheel and 4-wheel steering
-(c rab & steer) from all 4 sides.
-
-
-
-
-1-wheel steering           Disengage the loc king levers on two adjac ent kombi wheels and align them using
-                           the ac c essory wheel loc king bar (order # 100514 or # 100522). Remove the fourth
-                           kombi wheel. For safety reasons, the Super Panther III dolly may not be loaded
-                           laterally (risk of tilting!)
-
-
-2-wheel steering           Disengage the loc king levers on two adjac ent kombi wheels and align them using
-                           the ac c essory wheel loc king bar (order # 100514 or # 100522). Connec t the
-                           ac c essory steerage transmission rod (order # 100473 or # 100521) to the remaining
-                           - steering - wheels, one of whic h is disengaged using the kombi wheel loc king
-                           lever. The steering transmission rod attac hes to the wheels in the kombi brake
-                           notc hes. The steering rod may be attac hed to one of the soc kets loc ated above
-                           a steering kombi wheel.
-
-
-4-wheel steering           The vertic al axles of all four kombi wheels are c onnec ted to the steering c hain.
-                           The steering rod may be attac hed to any of the steering soc kets.
-
-
-
-
-Note:                      For safety reasons, the Super Panther III dolly may not be loaded laterally when
-                           using 1-wheel steering, narrow gauge or c ompac t gauge c onfiguration (risk of
-                           tilting!).
-
-
-
-
-Whe e l     l egs
-
-In order to set a wheel leg c onfiguration, press down the leg adjustment lever (14) to unloc k the
-individual wheel position. The lever should c lic k bac k into plac e after release, but c hec k that it loc ks
-sec urely to be quite sure.
-
-When using a jib arm or outrigger, always use wide gauge wheel c onfiguration. Always pay attention
-to load toleranc es (see "Load tolerc anc es diagram").
-
-
-
-
-Subjec t to c hange without notic e                                                                      Page 14/20
-290297
-Whe e l     a d j u st me nt
-
-It c an happen that a wheel or wheels get knoc ked out of position in transport, by misuse or use of
-forc e. This sec tion deals with realigning and adjusting wheels.
-
-Loosen the steering axle pivot sc rews on all four kombi wheels. (The pivot sc rew is loc ated in a deep
-bore in the kombi wheel c arrier.) Turn the wheels until the kombi wheel c lutc h levers for the front wheels
-are pointing forwards, and the rear levers pointing bac kwards (see diagram).
-
-
-
-
-                                       Align two wheels at a time using the wheel loc king bar (wheels
-                                       side by side) or the side loc king bar (one wheel behind the
-                                       other) and sec ure the pivot sc rews; then, the next two wheels,
-                                       and so on.
-
-
-
-
-Tu r n s t i l e   A t t a c h me nt
-
-The turnstile attac hment rotates on a ball bearing. Fric tion of rotation c an be varied using the fric tion
-sc rews.
-
-The entire turnstile c an be fixed in any setting using the brake.
-
-The extension brac ket for the sec ond seat (foc us-puller) c an be dismantled by undoing the 2 Allen
-sc rews on either side.
-The c amera operator's seat should not be extended, as this c ould result in damage to the threaded
-seat-extension rod.
-
-
-
-
-Subjec t to c hange without notic e                                                                  Page 15/20
-290297
-Lo a d T o l e r a nc e s Di a g r a m f o r Su p e r P a n t h e r I I I
-
-
-
-
-When using the Super Panther III with outriggers (e. g. outrigger III, U-Bangi), always use wide gauge
-wheel c onfiguration for safety reasons (p. 12). The load toleranc es diagram must b e a d hered to.
-maximum c entral c olumn load: 250 kg / 550 lbs
-maximum offset distanc e: 140 c m
-
-A c ounterbalanc e rod (order # 100503) c an be used to inc rease stability. The rod is installed at the side
-opposite the lateral c olumn load and the ac c ording number of c ounterweights attac hed. In this c ase,
-the outrigger (e. g. outrigger III, U-Bangi) may not be rotated! When using Panther jib arms (e. g. Super
-Jib II), observe the c orresponding load toleranc e diagrams.
-
-
-
-
-Subjec t to c hange without notic e                                                                Page 16/20
-290297
-Col u mn
-
-Mid -way on the c olumn there is a small platform, intended as a footrest for the c amera operator. The
-platform has a fail-safe breakage point built in, so that serious injuries will not oc c ur. If the operator's
-foot happens to be under the platform while the c olumn is being retrac ted, the platform is designed to
-break.
-
-The c olumn is guided by runners between bearings. The c olumn guide runners should be kept free of
-dust or grit but never oiled. (Oil might c ause the inc remental rotary enc oder to slip against the guide
-runner and this would result in misreading of drive parameters and unc ontrolled c olumn lift movements.)
-
-The small c olumn (on whic h the euro adapter is mounted) should never be pulled upwards, as the
-internal steel c ables would slac ken and possibly kink. Please be espec ially c areful when taking off a jib
-arm. The jib arm c ould c ant with the euro adapter and when lifting the jib arm the c olumn would then
-be pulled out, too.
-
-
-
-
-What is unique in the patented c olumn guiding
-system of PANTHER® ...?
-
-
-... the redirec tion of a high lateral c olumn load
-into an almost vertic al load!
-
-
-
-
-The advantages of the PANTHER® c olumn are demonstrated by direc t c omparison of c olumns A and B
-(see diagram):
-- The roller bearing's diameter is inc reased, due to its position against the c olumn
-    Advantage 1: larger and stronger roller bearings
-    Advantage 2: fewer revolutions, i. e. quieter and longer-lasting bearings
-- The horizontal distanc e between the roller bearings (a) c an be kept very small, due to the guide
-    runner.
-    Advantage 3: more c ompac t and lighter c onstruc tion (b)
-    Advantage 4: very steep (almost vertic al) vec tor of forc e, i. e. little pressure on guide rails ? stronger
-    c olumn unit, higher lateral loading c apac ity!
-- The vertic al distanc e of the roller bearings (c ) c an also be kept small due to this patent.
-    Advantage 5: lower c amera position (dotted line)
-    Advantage 6: more c olumn lift range (d) at same c olumn length (e)
-    Advantage 7: The PANTHER® c olumn is maintenanc e-free. Adjustment of roller bearings is not
-    required.
-
-T r a c ki ng
-
-Subjec t to c hange without notic e                                                                    Page 17/20
-290297
-The Super Panther III Dolly c an be operated on wide gauge (62 c m) trac ks and narrow gauge (36 c m)
-trac ks. The wheel gauge is adapted to the trac k gauge (p. 12). All four kombi wheels are unloc ked
-from the steering c hain before trac king (p. 12), otherwise the dolly c ould derail (espec ially on c urved
-trac ks). If there is a high c olumn payload, the standard trac k wheels should be exc hanged with hard
-trac k wheels. This will prevent possible damage to the standard trac k wheels and lower fric tional
-resistanc e.
-
-Always selec t wide gauge trac king when using jib arms or outriggers. Always observe load toleranc es
-diagram.
-
-
-
-
-Ma i n t e na nc e
-
-
-
-Maintenanc e should only be effec ted by trained personnel that is familiar with the Super Panther III
-mec hanic s. The Super Panther III is, generally speaking, a maintenanc e-free dolly that will work soundly
-and reliably.
-In order to ensure a long life and c onstant quality, the spec ified servic ing intervals should be observed.
-
-A c ompetent person should c hec k all elements relevant to safety and func tioning when the need
-arises, but at least every 6 months, ac c ording to ZH 1/222 para. 3.2 or UVV VBG 70 §14/2, and
-exc hange them if nec essary.
-
-Following elements should be c hec ked regarding func tion and wear:
-
-Spindle nut                           free from play or little play (exc hange if needed, but at least
-                                      every 6        month)
-Drive belt                            when lightly pressed approx. 10 mm
-Pneumatic springs                     approx. 700 N
-Steel c ables                         to be replac ed ac c ording to DIN 15020 part 2 (e. g. no kinks)
-
-Please see our video tape "Servic e Instruc tions" for further information on c hec king/adjusting these
-elements.
-
-Chec k wheel leg attac hments and wheel leg adjustment levers for c orrec t loc king, and repair if
-nec essary.
-
-The motor brake toleranc e is 0.4 mm - adjust if nec essary.
-
-Chec k battery voltage regularly. Battery c ells should be exc hanged approx. every 2 years.
-
-Column guide runners and roller bearings should always be free of grease. They should be c leaned (e.
-g. with alc ohol) after shooting has finished for the day.
-
-
-
-
-Subjec t to c hange without notic e                                                                      Page 18/20
-290297
-Ba c k up Oper a t i on
-
-
-In the event of malfunc tion or breakdown of the Panther's elec tronic system, the c olumn
-c an be elevated or retrac ted mec hanic ally.
-
-
-Proc edure:
-
-1.     When being retrac ted, the c olumn must be loaded with approx. 180 kg. When being elevated,
-       the c olumn must be relaxed (< 140 kg).
-
-2.     At the same time, the motor brake must be kept open. Two sc rew drivers are of prac tic al help in
-       c ountering the brake disk's spring pressure. In c ase of any unc ertainty, please see our video tape
-       "Servic e Instruc tions".
-
-
-
-
-.
-
-
-
-
-Subjec t to c hange without notic e                                                               Page 19/20
-290297
-T e c hni c a l     Sp e c i f i c a t i o ns
-
-
-
-Weight..............................................................123 kg (271 lbs)
-minimum height................................................69 c m (27 1/4")
-maximum height ..............................................138 c m (54 3/10")
-lift range ...........................................................69 c m (27 1/4")
-lifting c apac ity .................................................300 kg (661 lbs)
-maximum c olumn load
-c apac ity with retrac ted c olumn ......................1000 kg (2,204 lbs)
-maximum c olumn load
-c apac ity with elevated c olumn.......................500 kg (1,102 lbs)
-c olumn lift v max. ............................................3.6 sec .
-sound level.......................................................28 dB - 32 dB
-wind load max. ................................................40 km/h (24.86 mph)
-c olumns............................................................2
-pneumatic springs...........................................2
-wheel legs........................................................4
-wide gauge trac k ............................................62 c m (24 2/5")
-narrow gauge trac k.........................................36 c m (14 1/4") - not permissible for Super
-                                                                      Jib II operation, see p. 13!
-
-
-
-Mo t or
-
-DC servo-motor ................................................d. c . elec tric motor with tac hometer
-torque at rated load ........................................1.00 Nm
-rated c urrent....................................................7.5 A
-ra ted sp eed .....................................................4000 Min -1
-tension c onstant...............................................14 V/1000 Min-1
-torque c onstant ...............................................0.133 Nm/A
-motor brake .....................................................DC 24 V
-motor brake play .............................................0.4 mm
-
-
-
-
-Subjec t to c hange without notic e                                                                        Page 20/20
-290297
+                                               P7
 

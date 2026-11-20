@@ -1,25 +1,104 @@
-# https://www.cinesyl.com/wp-content/uploads/2015/07/BOA.pdf
+# https://www.cinesyl.com/wp-content/uploads/2013/07/doc-aerocrane.pdf
 
-CINESYL
-  01 41 61 50 00
-contact @cinesyl.fr
-CINESYL
-CINESYL
-CINESYL
-CINESYL
-     CINESYL
+                              Assembly of the Aerocrane Jib
 
 
 
 
-17
-           13
-CINESYL
-CINESYL
-CINESYL
-                   CINESYL
-                         ATTENTION
-       REGLAGE de VERTICALITE de L’EUROPEAN COUPLING
-    sur la tête; DESSERER les VIS à TETES VERTE UNIQUEMENT.
-Ne pas démonter les vis inox de l’european coupling pour la retourner
+Before you start assembling the Jib Arm, please read this manual carefully.
+
+The crane base, Pedestal, or dolly should be level before use, and keep the crane jib as
+balanced as possible during assembly.
+
+Safe working load on spoon (swl) = 50Kg (110 lbs)
+Maximum weight in bucket = 96Kg (211 lbs)
+When assembling the jib arm on a base or dolly equipped with an Elemack boss, you
+should start with the leveling-head. Slide the leveling-head over the Elemack boss
+and turn the wheel clockwise in the leveling-head to secure the leveling-head onto the
+Elemack boss. It is advisable to use the punch which fits into the wheel.
+
+
+
+
+If you wish to build the jib directly on a Mitchell base, attach the Mitchell fulcrum adapter
+to the fulcrum.
+
+To use the leveling-head combined with the Mitchell fulcrum adapter,
+attach the euro-riser to the Mitchell fulcrum adapter.
+Place the fulcrum onto the leveling-head and turn the wheel in the fulcrum clockwise and
+tighten the tie down bolt with the Swiss punch.
+Before you begin to assemble the arm sections, you should level the fulcrum. The
+fulcrum has a level on the tie down bolt.
+
+
+Place the mid arm section in a horizontal position and engage the pan and tilt brake.
+Before you connect an arm section, first attach a parallel rod. The parallel rod should be
+of the same length as the arm section you intent to connect.
+The arm sections are connected by a specially made coupling. The coupling consists of a
+male and female section. The oval opening in the female part should be in the upright
+position to allow the male part to slide into the female coupling.
+
+
+
+
+After the coupling is joined together you must turn the wheel 90 degrees in the female
+coupling. If this is done correctly, you should see two black dots on either side of the
+coupling aligned. If it is impossible to turn the wheel in the female coupling, either the
+two coupling halves are not properly fitted together, or the hammer bolt of the male
+coupling should be unscrewed further.
+
+
+
+
+Once the dots are properly aligned, tighten the hammer bolt with the Swiss punch in the
+close direction, being careful not to over tighten. Warning, over-tightening may cause
+damage to the equipment.
+The assembly of the other sections to build the jib or crane to the desired length can be
+done in the same sequence as described before.
+There are two different arm end sections: the 2 foot nose section, and the 1 foot tail
+section. Shown with these instructions is a detail of the 2 foot nose section.
+
+
+
+
+Both sections are provided with their own parallel rod.
+
+
+
+
+After connecting the end-sections, you can connect the tail and nose plate to the parallel
+rod by sliding the collar on the parallel rod backwards. Thereafter, you can slide the male
+part attached to both tail and nose plate into the female part of the parallel rods.
+After connecting all the desired arm sections, you can attach/hook up the weight bucket
+on the bucket side and on the camera side the low angle or spoonbill.
+
+
+
+
+Support the mounted arm section as shown on the picture below.
+Balance the arm by putting some weight in the bucket, but maintain downward force on
+the support in the front end.
+.
+If the jib arm is used as a camera crane, it is advisable, for reasons of stability, to use
+the cable's with outriggers.
+
+Place the cable outriggers in the mid-section of the fulcrum and attach the cable’s onto
+the putt-eye’s. The turnbuckles should be on the weight bucket end.
+
+When the jib arm is configured as a camera crane, a 2 foot section, i.e. with the handles,
+should be mounted between the fulcrum and weight bucket.
+To fine-tune the balance of the crane or jib, you can use the sliding
+weight.
+
+These procedures are used for all configurations of the jib.
+
+N.B. The one foot section should only be used for downscaling the arm length,
+and should not be used as an extra extension on either side of the fulcrum.
+
+A full bucket with lead does not exceed the safety margin of the crane if the crane or jib
+has been assembled according these instructions.
+Under no circumstance is it allowed to put extra weight on the bucket.
+
+If you have followed all these instructions, God will be with you
+to prevent you of any accident.
 

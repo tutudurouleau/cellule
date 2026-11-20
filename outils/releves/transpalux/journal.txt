@@ -1,3 +1,8 @@
-17 pages, 1 PDF, 20 adresses vues
-ÉCHEC https://www.transpalux.fr/ : <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.transpalux.fr'. (_ssl.c:1011)>
+30 pages, 3 PDF, 40 adresses vues
+ÉCHEC http://transpalux.com/under-construction/transpagroup/ : HTTP Error 404: Not Found
+ÉCHEC http://transpalux.com/les-agences/ : HTTP Error 404: Not Found
+ÉCHEC http://transpalux.com/fournisseurs/ : HTTP Error 404: Not Found
+ÉCHEC http://transpalux.com/studios-de-paris/ : HTTP Error 404: Not Found
+ÉCHEC http://transpalux.com/66e-festival-de-cannes/ : HTTP Error 404: Not Found
+ÉCHEC http://transpalux.com/a-propos/ : HTTP Error 404: Not Found
 ÉCHEC https://transpalux.com/contact-transpalux/ : HTTP Error 404: Not Found

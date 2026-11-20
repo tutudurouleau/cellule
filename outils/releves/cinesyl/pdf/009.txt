@@ -1,102 +1,70 @@
-# https://www.cinesyl.com/wp-content/uploads/2015/07/152.pdf
+# https://www.cinesyl.com/wp-content/uploads/2017/04/Documentation-MasterJib.pdf
 
-152
-                        Porte de la Villette
-                                                                                                                                                                                                                                              -1  91                                                     s
-                                                                                                                                                                                                                                                                                                                                                                                  Gonesse
-                                                                                                                                                                                                                                                                       ille                                                                                       ZAC des Tulipes Nord
-                                                                                                                                                                                                 rè
-                                                                                                                                                                                                    s
-                                                                                                                                                                                                                                        1  76            e rc         V                            tion                    ce
-                                                                                                                                                                                               u             5                       n°                 l                                         i                       a
-                                                                                                                  in                                                                        Ja          1 94                       r               L ec          l de                         p os                    Es
-                                                                                                                                                                                                                                                                                                                        p
-                                                                                                                 t                                                                       an           i                        ie                            t e                             x                      l’
-                                                                                                            P an                     n                        rs        ec          – Je         M
-                                                                                                                                                                                                    a
-                                                                                                                                                                                                                           utu
-                                                                                                                                                                                                                              r
-                                                                                                                                                                                                                                         is ion Hô                                       esE                     de                    me                                      on
-                                                                                                          –                        e                       ie         n           t            8                         o             v              –                                d                       t                      a
-                                                                                                     e rs   in s
-                                                                                                                               risi
-                                                                                                                                                       vill
-                                                                                                                                                                   en         la n         e –                       t- C            Di
-                                                                                                                                                                                                                                                lo  n                               rc                    ir e
-                                                                                                                                                                                                                                                                                                                                e -D          nt          n               -S im       rcs
-                                                                                                                                                                             l                                                  s– avil                                                                                                     o            e                         a
-                                                                                                villi hem          t       e Pa
-                                                                                                                                     ière         b er         o ch       Vai          euv          a u
-                                                                                                                                                                                                               illan         rè                           rie                   –Pa
-                                                                                                                                                                                                                                                                                                   e  l’A                    otr         um          abi      ian     aint       sP         cle
-                                                                                         ta e Cr                ce        r         s            u           C         d           rn             te          a             u           C              u                      t                  d                        N             D           F       ch       S          e          è
-                                                                                      gen Aub atre         d or       etiè     h os         t d’A     è ne         u ar         o u           R a
-                                                                                                                                                                                                          P. V
-                                                                                                                                                                                                                       n
-                                                                                                                                                                                                                          Ja      z an            reC           s  e     h ele     e ro
-                                                                                                                                                                                                                                                                                       t
-                                                                                                                                                                                                                                                                                            s ée         i n e
-                                                                                                                                                                                                                                                                                                                      min           tos        n el
-                                                                                                                                                                                                                                                                                                                                                        n ou
-                                                                                                                                                                                                                                                                                                                                                                 m e        ted      me
-                                                                                                                                                                                                                                                                                                                                                                                         Si
-                                                                                     a                   n           m        c           r          l            o            C           e            .            a           i           e  r             li       ic         d        u            n           e            n          lo         a        r         u         è
-                                                                                    M      Qu         Co           Ci       Re         Fo         Hé          Éd           La           Ru          Av             Je        An           Pi              Ég         M          Di        M         Lé           Ch           Sa          Co         M        Fe       Ro         21
-                                                                                                                                                                                Rimbaud
-                                                                                                                                                                                                                                                                                         Aéroport
-                                                                                                                                                                                   @d                                                                                                  du Bourget                                         BONNEUIL                           GONESSE
-                                                                                                                        AUBERVILLIERS
-                                                                                                                                                      @o                                                                                               @c           Parc des
-                                                                                                                                                                                                                                                                  Expositions        Musée de l’Air
-                                                                                                                                                                                                                                                                                                      DUGNY                               en-FRANCE
-                                                                                                                                                      A. Delaune
-                                                                                                                                                                                     @A                                                              St-Nicolas
-                                                                                                   @d                                                                                                                                                                                 @a
-                                                                                                J.P. Timbaud
-                                    Av. de la Pte de la                              Avenue                                  Jean                                    Jaurès         Av.   Paul Vaillant-Couturier                                                 Avenue        du         8           Mai         1945                   Route de             @I
-                                                                                                                                                                                                                                                                                                                                                               ZAC des
+Scope of delivery:     crane support with integrated base segment, horizontal and double
+                        vertical brake, adapter for monitor support, pan angle display, water
+                        level
+                       end segment 500mm (alternatively 1000mm)
+                       counter weight support incl. steel counter weight rods (Ø 30mm)
+                       arm segments 500/1000 mm with quick release system (number
+                        depends on version)
+                       panning handle flexible to mount
+                       crane head with mitchell base plate and handles on the side,
+                        horizontal angle adjustable
 
+weights:                 segment 500mm: 4,95kg, 1000mm: 8,3kg
+                         crane support incl. base segment: 25,3kg
+                         counter weight holder: 15,2kg
+                         crane head: 14,95kg
+                         panning handles: 1kg each
+                         total weight in version R6: 83,95kg
 
-                        Macdonald
-                                                                                                                                                                                                                                                                                                                                                               Tulipes Sud
-                                                  Villette
-                                                                                                                    Marcel
-                                                                                                                                                                                                               A 86
-                                                                                                                                                                                                                      Avenue de la Division    Leclerc                                            @j                                      Flandres
-                                                                                                   @d
-                                      Boulevard
-                                                                                                                    Cerdan   @o                         @o                         @c                                                                                                                                     R
+segment dimensions:   120x150x500/1000mm
+
+payload:              50kg in version R6
+
+accessories:          crane dolly CD5/ 6          remote head P15
+                      ball adapter                euromount adapter
+                      counterweights              transport case with rolls
+                      display support
 
 
 
 
-                                                         Boulevards Périphériques
-                                                                                                 Berthelot                                                           @d         St-Yves         @o                                                                                                                      Pon ue du
-                                                                                                               @c
-                                                                                                       Ste-Marthe
-                                                                                                                                                       ASPTT
-                                                                                                                                                                     Lycée
-                                                                                                                                                                   St-Rosaire
-                                                                                                                                                                                                 D. Fery                                                                                                                   t Yb
-                                                                                                                                                                                                                                                                                                                               lon                    Avenue      du         21e     Siècle
-                                                                                                                Cimetière Parisien   Fort d’Aubervilliers
-                                                                                                                   de Pantin
+                                                                                                                                  (Delivery without remote head and crane dolly)
 
-                                    PARIS                                                                                         PANTIN                                                       LA COURNEUVE                   LE BOURGET                                                       LE BLANC-MESNIL               Rue
-
-                                                                                                                                                                                                                                                                                                                                      s Frères
-                                                                                                                                                                                                                                                                                                                                     de               Lumière
-                                                                                                                                                                                              @A                                                                                                                      Le Blanc-Mesnil                      @I
- Arrêt non accessible
- aux UFR
-                                    139 150                                                       150 170 249                                          134 173 234
-                                                                                                                                                       248 250 330
-                                                                                                                                                                                              607 609 610
-                                                                                                                                                                                                                           133 143 146
-                                                                                                                                                                                                                           607 609 610
-                                                                                                                                                                                                                                                                                       148 350                       ZA du Pont Yblon                   ZI Pont Yblon
+MovieTech AG                                                                                     high payload but small space ratio
+Martin-Kollar-Str. 9 D-81829 München Tel. +49 89 4368913 info@movietech.de
+MovieTech Srl.                                                                                   no additional bracing, quick assembling
+Viale Edison 318     I- 20099 Milano Tel. +39 22 2470043 k.shore@movietech.de                    available and mountable in different length versions
+                                                                                                 compatible for remote and fluid heads as well as 3D Rigs
+                                    www.movietech.de
+                                                                                                        Overview on the versions R1-R6 (A)
+The MasterJib is available in 6 different length
+versions. Even in confined space conditions you thus
+may use this powerful equipment in its shortest
+version. With minimal shadowing it’s also perfect for
+working in studios.
 
 
-                                                                                    ZONE TARIFAIRE 2                                                                                                                                        ZONE TARIFAIRE 3                                                                                                                       Z. T. 4
-                                                                                                                                                                                                                                                                                      152 RATP / CML / AGENCE CARTHOGRAPHIQUE - 11.2014 - LC - PROPRIÉTÉ DE LA RATP - REPRODUCTION INTERDITE
+
+
+                                                        The steel counterweight rods (Ø 30mm outside)
+                                                        may carry different types of counterweights
+                                                        such as stage weights and fitness weights.
+
+
+
+
+Due to integrated horizontal and vertical brakes it’s
+                                                                                                                                             Side view of version R6
+easy to realize precise panning shots or still
+photographs with the MasterJib. Via a crane column
+the jib can be mounted on every MovieTech crane
+dolly.
+
+
+
+
+                                                        The panning handles help to operate the jib.
+                                                        They may be mounted flexibly where needed.
 
