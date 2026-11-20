@@ -1,0 +1,84 @@
+name: Loueurs
+
+# Relevé des catalogues des loueurs et des documents techniques, que seules les
+# machines de GitHub peuvent joindre. Un loueur par job ; le dernier job verse
+# tous les relevés dans outils/releves/ par un commit automatique (qui ne
+# relance aucun workflow).
+on:
+  push:
+    paths:
+      - "outils/loueurs.json"
+      - "outils/loueurs.py"
+  workflow_dispatch:
+
+concurrency:
+  group: loueurs-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  liste:
+    runs-on: ubuntu-latest
+    outputs:
+      ids: ${{ steps.l.outputs.ids }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: l
+        run: echo "ids=$(python3 outils/loueurs.py --liste)" >> "$GITHUB_OUTPUT"
+
+  relever:
+    needs: liste
+    name: Relever ${{ matrix.id }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        id: ${{ fromJson(needs.liste.outputs.ids) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Installer Playwright et pdftotext
+        run: |
+          sudo apt-get install -y poppler-utils > /dev/null
+          pip install playwright > /dev/null
+          python -m playwright install --with-deps chromium > /dev/null
+      - name: Relever
+        run: python3 outils/loueurs.py ${{ matrix.id }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: releve-${{ matrix.id }}
+          path: outils/releves/${{ matrix.id }}
+          if-no-files-found: ignore
+
+  verser:
+    needs: relever
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: telecharges
+      - name: Verser dans le dépôt
+        run: |
+          mkdir -p outils/releves
+          for d in telecharges/releve-*; do
+            [ -d "$d" ] || continue
+            id="${d#telecharges/releve-}"
+            rm -rf "outils/releves/$id"
+            cp -r "$d" "outils/releves/$id"
+          done
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A outils/releves
+          if git diff --cached --quiet; then echo "Rien de nouveau."; exit 0; fi
+          git commit -m "Relevés des loueurs et documents techniques"
+          for i in 1 2 3; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break
+            sleep 5
+          done

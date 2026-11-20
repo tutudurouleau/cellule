@@ -1,0 +1,34 @@
+[
+  {"id": "rvz", "nom": "RVZ", "depart": ["https://www.rvz.fr/", "https://rvz.fr/"], "pages": 260},
+  {"id": "tsf", "nom": "TSF", "depart": ["https://www.tsf.fr/", "https://tsf.fr/"], "pages": 260},
+  {"id": "transpalux", "nom": "Transpalux", "depart": ["https://www.transpalux.com/", "https://www.transpalux.fr/"], "pages": 260},
+  {"id": "panavision", "nom": "Panavision Alga / Direct Digital", "depart": ["https://www.panavision.com/fr", "https://fr.panavision.com/", "https://www.panavision.com/locations/paris", "https://www.directdigital.fr/"], "pages": 160},
+  {"id": "nextshot", "nom": "Next Shot", "depart": ["https://www.nextshot.fr/", "https://nextshot.fr/", "https://www.next-shot.fr/"], "pages": 220},
+  {"id": "vantage", "nom": "Vantage Paris", "depart": ["https://www.vantagefilm.com/", "https://www.vantagefilm.com/rentals"], "pages": 160},
+  {"id": "cinesyl", "nom": "Cinesyl", "depart": ["https://www.cinesyl.fr/", "https://www.cinesyl.com/", "https://cinesyl.fr/"], "pages": 160},
+  {"id": "recherche", "nom": "Recherche des sites", "navigateur": false, "pages": 40, "pause": 2,
+   "domaines": ["duckduckgo.com", "bing.com"],
+   "depart": [
+     "https://html.duckduckgo.com/html/?q=Cinesyl+location+mat%C3%A9riel+cin%C3%A9ma",
+     "https://html.duckduckgo.com/html/?q=RVZ+location+lumi%C3%A8re+cin%C3%A9ma+catalogue",
+     "https://html.duckduckgo.com/html/?q=TSF+lumi%C3%A8re+catalogue+location",
+     "https://html.duckduckgo.com/html/?q=Transpalux+catalogue+projecteurs",
+     "https://html.duckduckgo.com/html/?q=Next+Shot+location+cam%C3%A9ra+Saint-Denis",
+     "https://html.duckduckgo.com/html/?q=Panavision+Alga+Paris+location+cam%C3%A9ra",
+     "https://html.duckduckgo.com/html/?q=loueur+mat%C3%A9riel+cin%C3%A9ma+Paris+lumi%C3%A8re+machinerie",
+     "https://html.duckduckgo.com/html/?q=demande+de+devis+location+mat%C3%A9riel+cin%C3%A9ma+pdf",
+     "https://www.bing.com/search?q=Cinesyl+location+cin%C3%A9ma",
+     "https://www.bing.com/search?q=loueur+mat%C3%A9riel+cin%C3%A9ma+tarifs+publics+pdf"
+   ]},
+  {"id": "kodak", "nom": "Documents Kodak (couleur)", "navigateur": false, "pages": 20,
+   "domaines": ["kodak.com", "kodakmoments.com", "125px.com", "kodakalaris.com"],
+   "depart": [
+     "https://www.kodak.com/content/products-brochures/Film/Processing-KODAK-Motion-Picture-Films-Module-7.pdf",
+     "https://www.kodak.com/content/products-brochures/Film/Using-KODAK-Kit-Chemicals-in-Motion-Picture-Film-Laboratories.pdf",
+     "https://business.kodakmoments.com/sites/default/files/files/resources/ti2443.pdf",
+     "https://125px.com/docs/techpubs/kodak/z119-10.pdf",
+     "https://125px.com/docs/unsorted/kodak/z119-3.pdf",
+     "https://business.kodakmoments.com/sites/default/files/wysiwyg/pro/chemistry/z131.pdf",
+     "https://business.kodakmoments.com/sites/default/files/wysiwyg/retailers/chemistry/techpub/CIS-269.pdf"
+   ]}
+]

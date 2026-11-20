@@ -3,6 +3,8 @@ name: Compiler
 on:
   push:
     branches: ["**"]
+    # Les relevés et la doc ne changent pas l'APK.
+    paths-ignore: ["outils/**", "docs/**", "*.md"]
   pull_request:
   workflow_dispatch:
 
