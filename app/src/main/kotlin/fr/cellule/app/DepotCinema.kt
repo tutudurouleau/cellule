@@ -75,6 +75,7 @@ class DepotCinema(contexte: Context) {
         MonMateriel.charger(contexte)
         PlansSol.charger(contexte)
         RapportsCamera.charger(contexte)
+        RaccordsLumiere.charger(contexte)
     }
 
     val donnees: CarnetCinemaDonnees get() = etat.value

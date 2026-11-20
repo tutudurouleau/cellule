@@ -176,7 +176,7 @@ fun CarnetCinemaEcran(cinema: DepotCinema, journal: DepotJournal, reglages: Regl
         )
     }
 
-    planOuvert?.let { id -> FeuillePlan(cinema, id) { planOuvert = null } }
+    planOuvert?.let { id -> FeuillePlan(cinema, id, lux = reglages.lumiereLux) { planOuvert = null } }
 }
 
 @Composable

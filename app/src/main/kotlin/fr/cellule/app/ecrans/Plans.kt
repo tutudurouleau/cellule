@@ -619,7 +619,7 @@ fun rememberExporteurPdf(cinema: DepotCinema): ExporteurPdf {
  * l'exposition sont des relevés : ils se lisent, ils ne se retouchent pas.
  */
 @Composable
-fun FeuillePlan(cinema: DepotCinema, identifiant: Long, avis: String = "", onFermer: () -> Unit) {
+fun FeuillePlan(cinema: DepotCinema, identifiant: Long, avis: String = "", lux: Boolean = true, onFermer: () -> Unit) {
     val enregistre = cinema.plan(identifiant)
     if (enregistre == null) {
         onFermer()
@@ -762,6 +762,9 @@ fun FeuillePlan(cinema: DepotCinema, identifiant: Long, avis: String = "", onFer
             if (enregistre.cameraTelephone.isNotBlank()) {
                 Ligne("Caméra du téléphone", "", enregistre.cameraTelephone)
             }
+
+            Separateur()
+            BlocRaccordLumiere(enregistre.identifiant, enregistre.jourId, lux)
 
             Separateur()
             Champ(

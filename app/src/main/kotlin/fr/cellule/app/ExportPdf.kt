@@ -286,6 +286,28 @@ object ExportPdf {
             r.rubrique("Notes")
             r.texte(plan.notes, corps)
         }
+
+        /* ── Le raccord lumière ────────────────────────────────────────── */
+        RaccordsLumiere.du(plan.identifiant)?.let { raccord ->
+            val mesures = raccord.mesures.filter { it.lux != null }
+            if (mesures.isEmpty() && raccord.sources.isEmpty() && raccord.notes.isBlank() && raccord.ciel.isBlank()) return@let
+            if (r.reste() < 90f) {
+                r.nouvellePage()
+                r.texte(plan.reference + " — suite", pinceau(8.5f, GRIS), apres = 4f)
+            }
+            r.rubrique("Raccord lumière")
+            r.ligne("Moment", listOf(raccord.heure, raccord.ciel).filter { it.isNotBlank() }.joinToString(" · "))
+            mesures.forEach { m ->
+                if (r.reste() < 20f) r.nouvellePage()
+                r.ligne(m.endroit.ifBlank { "Mesure" }, nombreCourt(m.lux ?: 0.0, 0) + " lx" + if (m.note.isNotBlank()) " — " + m.note else "")
+            }
+            fr.cellule.core.Raccord.rapport(raccord)?.let { r.ligne("Face / débouchage", nombreCourt(it, 1) + " : 1") }
+            raccord.sources.filter { it.nom.isNotBlank() || it.reglage.isNotBlank() }.forEach { s ->
+                if (r.reste() < 20f) r.nouvellePage()
+                r.ligne(s.nom.ifBlank { "Source" }, s.reglage)
+            }
+            if (raccord.notes.isNotBlank()) r.ligne("Notes", raccord.notes)
+        }
     }
 
     private fun fichier(contexte: Context, nom: String): File {
