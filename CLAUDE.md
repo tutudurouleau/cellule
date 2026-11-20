@@ -3,9 +3,12 @@
 Appli Android de photo et de cinéma pour un étudiant en cinéma (prépa Louis-Lumière),
 qui teste sur son téléphone.
 
-- **Où on en est** : la **v5.0** est codée (les 5 étapes de `docs/v5/PLAN-V5.md`).
-  Reste pour plus tard : l'éditeur de plans sur PC (**v5.5**, même format de plan,
-  transfert par QR/texte déjà en place : `core/PlanCodec.kt`, `sol/TransfertPlan.kt`).
+- **Où on en est** : **v5.5** (versionName 5.5). La v5 (5 étapes de `docs/v5/PLAN-V5.md`)
+  plus l'éditeur de plans au sol pour PC : `pc/editeur-plan.src.html`, assemblé par
+  `python3 -I outils/editeur_pc.py` en `pc/editeur-plan.html` (fichier hors ligne) et
+  `pc/artifact/editeur-plan.html`, publié en Artifact (lien dans `sol/TransfertPlan.kt`,
+  `EDITEUR_PC`). Même format que l'appli (`core/PlanCodec.kt` : zlib, Base64 URL,
+  morceaux « CELLULE1:i/n: »).
 - Web : la session n'atteint pas les sites ; les machines de GitHub oui. Relevés des
   loueurs : `outils/loueurs.json` → workflow « Loueurs » → `outils/releves/`, puis
   `python3 -I outils/dispo.py` régénère `core/DisponibiliteLoueurs.kt`. Photos libres :

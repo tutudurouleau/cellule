@@ -14,6 +14,7 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -66,6 +67,9 @@ import java.util.concurrent.Executors
  * des QR codes à scanner, un texte à coller, ou un fichier. C'est aussi le
  * chemin qu'empruntera l'éditeur de plans sur PC.
  */
+
+/** L'éditeur de plans au sol pour PC (la même page est dans le dépôt : pc/editeur-plan.html). */
+const val EDITEUR_PC = "https://claude.ai/artifact/R7TiuWoEYZx5MMGkbMg5Ch"
 
 /** Un QR code net, noir sur blanc, de [taille] pixels de côté. */
 private fun qr(texte: String, taille: Int = 900): Bitmap {
@@ -166,10 +170,19 @@ internal fun ContenuReceptionPlan(jourId: Long?, surRecu: (PlanSol) -> Unit) {
                 essayer(PlanCodec.depuisTexte(colle) ?: colle.takeIf { it.trimStart().startsWith("[") })
             }
         }
-        else -> Text(
-            "Le plan reçu s'ajoute à tes plans, sans jamais en remplacer un.",
-            style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
+        else -> {
+            Text(
+                "Le plan reçu s'ajoute à tes plans, sans jamais en remplacer un.",
+                style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(Modifier.height(Interligne))
+            val liens = androidx.compose.ui.platform.LocalUriHandler.current
+            Text(
+                "Faire tes plans sur PC, à la souris : ouvre l'éditeur Cellule sur ton ordinateur ↗ (" + EDITEUR_PC + "), puis « Envoyer au téléphone » et scanne ici.",
+                style = Detail, color = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(8.dp)).clickable { runCatching { liens.openUri(EDITEUR_PC) } }.padding(vertical = 6.dp)
+            )
+        }
     }
     if (erreur.isNotBlank()) Text(erreur, style = Detail, color = MaterialTheme.colorScheme.error, modifier = Modifier.padding(top = 6.dp))
 }
