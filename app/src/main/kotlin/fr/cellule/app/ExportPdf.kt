@@ -23,6 +23,9 @@ import fr.cellule.core.CarnetCinemaDonnees
 import fr.cellule.core.JourCinema
 import fr.cellule.core.Plan
 import fr.cellule.core.PlanSol
+import fr.cellule.core.PriseCamera
+import fr.cellule.core.RapportCamera
+import fr.cellule.core.VerdictPrise
 import fr.cellule.core.Tuiles
 import fr.cellule.core.nombreCourt
 import java.io.File
@@ -417,6 +420,63 @@ object ExportPdf {
         pagePlanSol(contexte, r, plan, enTete, metres)
         r.fermer()
         val sortie = fichier(contexte, "Plan au sol " + plan.nom)
+        sortie.outputStream().use { document.writeTo(it) }
+        document.close()
+        return sortie
+    }
+
+    /**
+     * Le rapport caméra d'un jour : une ligne par prise, en tableau, les
+     * titres de colonnes repris en haut de chaque page. Bloquant.
+     */
+    fun rapportCamera(contexte: Context, prises: List<PriseCamera>, enTete: String, jour: String): File {
+        val document = PdfDocument()
+        val r = Redaction(document, "Cellule — rapport caméra")
+        val colonnes = listOf(
+            "Séq. · plan · prise" to 96f, "Cam." to 30f, "Objectif" to 60f, "T" to 32f, "Filtres" to 66f,
+            "EI · im/s · obt." to 78f, "Carte" to 40f, "Prise" to 40f, "Remarques" to (UTILE - 442f)
+        )
+        val corps = pinceau(8.5f)
+        val titre = pinceau(7.5f, GRIS, gras = true)
+        fun ecrire(cellules: List<String>, p: TextPaint): Float {
+            val hauteur = cellules.zip(colonnes).maxOf { (t, c) -> r.hauteur(t.ifBlank { " " }, p, c.second - 4f) }
+            val depart = r.y
+            var x = MARGE
+            cellules.zip(colonnes).forEach { (t, c) ->
+                r.y = depart
+                r.texte(t, p, x = x, largeur = c.second - 4f)
+                x += c.second
+            }
+            r.y = depart + hauteur + 3f
+            r.filet(apres = 3f)
+            return hauteur
+        }
+        fun titres() = ecrire(colonnes.map { it.first }, titre)
+
+        r.nouvellePage()
+        if (enTete.isNotBlank()) r.texte(enTete, pinceau(8.5f, GRIS), apres = 4f)
+        r.texte("RAPPORT CAMÉRA", pinceau(8.5f, ACCENT, gras = true), apres = 2f)
+        r.texte(jour, pinceau(18f, ENCRE, gras = true), apres = 4f)
+        r.texte(RapportCamera.bilan(prises), pinceau(9.5f, GRIS), apres = 10f)
+        titres()
+        prises.forEach { p ->
+            val cellules = listOf(
+                p.reference, p.camera, p.objectif, p.tStop, p.filtres,
+                listOf(p.ei, p.cadence, p.obturateur.takeIf { it.isNotBlank() }?.let { "$it°" } ?: "").filter { it.isNotBlank() }.joinToString(" · "),
+                p.carte,
+                if (p.verdict == VerdictPrise.A_VOIR) "" else p.verdict.court,
+                listOf(p.heure, p.remarques).filter { it.isNotBlank() }.joinToString(" — ")
+            )
+            val hauteur = cellules.zip(colonnes).maxOf { (t, c) -> r.hauteur(t.ifBlank { " " }, corps, c.second - 4f) }
+            if (r.reste() < hauteur + 8f) {
+                r.nouvellePage()
+                r.texte(jour + " — suite", pinceau(8.5f, GRIS), apres = 6f)
+                titres()
+            }
+            ecrire(cellules, corps)
+        }
+        r.fermer()
+        val sortie = fichier(contexte, "Rapport camera " + jour)
         sortie.outputStream().use { document.writeTo(it) }
         document.close()
         return sortie
