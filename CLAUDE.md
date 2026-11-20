@@ -3,9 +3,14 @@
 Appli Android de photo et de cinéma pour un étudiant en cinéma (prépa Louis-Lumière),
 qui teste sur son téléphone.
 
-- **Où on en est** : la v4 est finie (versionName 4.0). La **v5** est débriefée et
-  planifiée, rien n'est codé : lis `docs/v5/PLAN-V5.md`. Attends le « top » de
-  l'utilisateur avant de coder.
+- **Où on en est** : la **v5.0** est codée (les 5 étapes de `docs/v5/PLAN-V5.md`).
+  Reste pour plus tard : l'éditeur de plans sur PC (**v5.5**, même format de plan,
+  transfert par QR/texte déjà en place : `core/PlanCodec.kt`, `sol/TransfertPlan.kt`).
+- Web : la session n'atteint pas les sites ; les machines de GitHub oui. Relevés des
+  loueurs : `outils/loueurs.json` → workflow « Loueurs » → `outils/releves/`, puis
+  `python3 -I outils/dispo.py` régénère `core/DisponibiliteLoueurs.kt`. Photos libres :
+  `outils/photos.json` → workflow « Photos » (candidates dans `outils/candidats/`, on
+  choisit avec « choix »).
 - Guide de l'interface et carte des fichiers : `docs/refonte-interface/LISEZ-MOI.md`.
 - Branche de travail : `claude/adoring-lamport-yln7ao`. Pas de PR sans demande.
 

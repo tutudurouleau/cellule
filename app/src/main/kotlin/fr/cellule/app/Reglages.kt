@@ -141,6 +141,17 @@ class Reglages(contexte: Context) {
     /** Vrai : on tape la réponse au lieu de choisir parmi quatre. */
     var quizTaper by BooleenPref(prefs, "quiz_taper", false)
 
+    /** La production, pour les demandes de location : « clé=valeur ». */
+    var demandeInfos by TextePref(prefs, "demande_infos", "")
+
+    /** Les prix relevés sur les vrais devis : « désignation\tprix HT par jour ». */
+    var mesTarifs by TextePref(prefs, "mes_tarifs", "")
+
+    /** Le pointage chez le loueur, pour un jour de tournage. */
+    fun pointage(jourId: Long): String = prefs.getString("pointage_$jourId", "") ?: ""
+
+    fun noterPointage(jourId: Long, texte: String) = prefs.edit().putString("pointage_$jourId", texte).apply()
+
     /** Les mots du plateau ajoutés par la personne : « mot\tdéfinition », une ligne chacun. */
     var lexiquePerso by TextePref(prefs, "lexique_perso", "")
 

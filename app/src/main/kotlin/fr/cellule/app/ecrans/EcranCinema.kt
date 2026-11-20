@@ -421,6 +421,10 @@ private fun PageJour(
                 Text("Rien à louer d'après les plans au sol.", style = Corps, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             location.forEach { Ligne(it.nom, it.combien, it.categorie + if (it.auto) " · ajouté d'office" else "") }
+            if (location.isNotEmpty()) {
+                Separateur()
+                BoutonsLocation(reglages, jour.identifiant, location, plansSol, reglages.lumiereMetres)
+            }
         }
     }
 

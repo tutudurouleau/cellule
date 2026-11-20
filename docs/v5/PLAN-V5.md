@@ -1,8 +1,10 @@
 # Cellule v5 — le plan validé avec l'utilisateur
 
-Débrief fait le 20 novembre 2026. Rien n'est encore codé pour la v5 :
-**attendre le « top » de l'utilisateur avant de coder.** Une étape = un commit
-= un APK envoyé = un retour de l'utilisateur.
+Débrief fait le 20 novembre 2026, feu vert donné le jour même pour les cinq
+étapes (APK intermédiaire après la 5.3, APK finale à la 5.5). **État : les cinq
+étapes sont codées (versionName 5.0).** À reprendre : choisir les photos des
+nouvelles fiches parmi les candidates, élargir les relevés (RVZ, Next Shot,
+Transpalux dont le catalogue est en JavaScript), puis la v5.5.
 
 L'idée de la v5 : rendre l'appli concrète en tournage. On prépare son tournage
 avec, et on arrive chez le loueur avec un vrai dossier. Ce n'est pas

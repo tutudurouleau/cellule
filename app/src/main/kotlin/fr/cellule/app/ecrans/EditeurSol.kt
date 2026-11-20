@@ -1503,6 +1503,10 @@ private fun FeuilleListeSol(plan: PlanSol, reglages: Reglages, surChangement: (P
                 style = Detail, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 4.dp)
             )
         }
+        if (lignes.isNotEmpty()) {
+            Spacer(Modifier.height(Interligne))
+            BoutonsLocation(reglages, plan.jourId ?: -plan.identifiant, lignes, listOf(plan), reglages.lumiereMetres)
+        }
 
         Separateur()
         Etiquette("Les prolongs")

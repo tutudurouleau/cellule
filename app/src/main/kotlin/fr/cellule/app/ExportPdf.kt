@@ -530,6 +530,83 @@ object ExportPdf {
         return sortie
     }
 
+    /**
+     * La demande de location adressée à un loueur : la production, les
+     * dates, la liste rangée par service, et en annexe les plans au sol qui
+     * l'expliquent. Le PDF n'est envoyé à personne : la personne le partage
+     * elle-même, après l'avoir relu. Bloquant.
+     */
+    fun demandeLocation(
+        contexte: Context,
+        loueur: String,
+        infos: fr.cellule.core.InfosProduction,
+        lignes: List<fr.cellule.core.LigneLocation>,
+        tarifs: Map<String, Double>,
+        avecPrix: Boolean,
+        plans: List<PlanSol>,
+        metres: Boolean
+    ): File {
+        val document = PdfDocument()
+        val r = Redaction(document, "Demande de location — " + infos.titre.ifBlank { "tournage" } + " — établie avec Cellule")
+        r.nouvellePage()
+        val date = java.time.LocalDate.now().format(java.time.format.DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.FRANCE))
+        r.texte("DEMANDE DE DEVIS — LOCATION DE MATÉRIEL", pinceau(8.5f, ACCENT, gras = true), apres = 2f)
+        r.texte(loueur.ifBlank { "Loueur" }, pinceau(20f, ENCRE, gras = true), apres = 2f)
+        r.texte("Le $date", pinceau(9.5f, GRIS), apres = 10f)
+        r.rubrique("Production")
+        r.ligne("Projet", infos.titre)
+        r.ligne("Société", infos.societe)
+        r.ligne("Contact", infos.contact)
+        r.ligne("Téléphone", infos.telephone)
+        r.ligne("E-mail", infos.email)
+        r.ligne("Livraison", infos.livraison)
+        r.rubrique("Dates")
+        r.ligne("Enlèvement", infos.enlevement)
+        r.ligne("Retour", infos.retour)
+        r.ligne("Tournage", infos.joursTournage.toString() + " jour" + if (infos.joursTournage > 1) "s" else "")
+        if (infos.notes.isNotBlank()) { r.rubrique("Précisions"); r.texte(infos.notes, pinceau(9.5f), apres = 4f) }
+
+        val colonnes = if (avecPrix) listOf("Désignation" to (UTILE - 190f), "Qté" to 50f, "Prix/jour HT" to 70f, "Note" to 70f)
+        else listOf("Désignation" to (UTILE - 140f), "Qté" to 50f, "Note" to 90f)
+        val corps = pinceau(9f)
+        val entete = pinceau(7.5f, GRIS, gras = true)
+        fun rang(cellules: List<String>, p: TextPaint) {
+            val hauteur = cellules.zip(colonnes).maxOf { (t, c) -> r.hauteur(t.ifBlank { " " }, p, c.second - 4f) }
+            if (r.reste() < hauteur + 8f) r.nouvellePage()
+            val depart = r.y
+            var x = MARGE
+            cellules.zip(colonnes).forEach { (t, c) -> r.y = depart; r.texte(t, p, x = x, largeur = c.second - 4f); x += c.second }
+            r.y = depart + hauteur + 3f
+            r.filet(apres = 3f)
+        }
+        fr.cellule.core.DemandeLocation.parService(lignes).forEach { (service, l) ->
+            if (r.reste() < 70f) r.nouvellePage()
+            r.rubrique(service)
+            rang(colonnes.map { it.first }, entete)
+            l.forEach { ligne ->
+                val prix = tarifs[ligne.nom]?.let { nombreCourt(it, 2) + " €" }.orEmpty()
+                val note = if (ligne.auto) "proposé" else ""
+                rang(if (avecPrix) listOf(ligne.nom, ligne.combien, prix, note) else listOf(ligne.nom, ligne.combien, note), corps)
+            }
+        }
+        if (avecPrix) {
+            val e = fr.cellule.core.MesTarifs.estimer(lignes, tarifs)
+            if (r.reste() < 60f) r.nouvellePage()
+            r.rubrique("Estimation indicative")
+            r.ligne("Par jour", nombreCourt(e.parJour, 2) + " € HT" + if (!e.complete) " (" + e.lignesChiffrees + " lignes chiffrées sur " + e.lignesTotal + ")" else "")
+            r.ligne("Pour ${infos.joursTournage} j", nombreCourt(e.parJour * infos.joursTournage, 2) + " € HT, avant remise et conditions du loueur")
+        }
+        if (r.reste() < 90f) r.nouvellePage()
+        r.y += 8f
+        fr.cellule.core.DemandeLocation.MENTIONS.forEach { r.texte("· $it", pinceau(8.5f, GRIS), apres = 3f) }
+        plans.forEach { pagePlanSol(contexte, r, it, infos.titre, metres) }
+        r.fermer()
+        val sortie = fichier(contexte, "Demande de location " + loueur + " " + infos.titre)
+        sortie.outputStream().use { document.writeTo(it) }
+        document.close()
+        return sortie
+    }
+
     /** Ouvre la feuille de partage d'Android sur le PDF. */
     fun partager(contexte: Context, pdf: File) {
         val uri = FileProvider.getUriForFile(contexte, contexte.packageName + ".partage", pdf)
